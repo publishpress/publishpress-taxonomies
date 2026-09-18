@@ -76,7 +76,7 @@ class SimpleTags_Client_RelatedPosts
             'dateformat'    => get_option('date_format'),
             'xformat' => sprintf(
                 '<a href="%%post_permalink%%" title="%%post_title%% (%%post_date%%)" style="font-size:%%post_size%%;color:%%post_color%%">' .
-                '<img src="%%post_thumb_url%%" height="%d" width="%d" class="custom-image-class"/>' .
+                '<img src="%%post_thumb_url%%" alt="%%post_title%%" height="%d" width="%d" class="custom-image-class"/>' .
                 '<br>%%post_title%%<br>%%post_category%%</a>' .
                 '(%%post_comment%%)',
                 $width,
@@ -346,7 +346,7 @@ class SimpleTags_Client_RelatedPosts
             if ($format == 'box') {
                 $defaults['number']    = 3;
                 $defaults['xformat']   = __('<a href="%post_permalink%" title="%post_title% (%post_date%)"> 
-			                       <img src="%post_thumb_url%" height="200" width="200" class="custom-image-class" />
+			                       <img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" />
 								   <br>
 								   %post_title%
 								   <br>
@@ -571,7 +571,7 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (empty($post_thumbnail_url)) {
-                $element_loop = preg_replace('/<img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
+                $element_loop = preg_replace('/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
             }
 
             $element_loop = str_replace('%post_thumb_url%', $post_thumbnail_url, $element_loop);
