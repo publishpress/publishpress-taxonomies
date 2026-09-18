@@ -84,21 +84,20 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
 
     public function process_bulk_action()
     {
+        $current_action = $this->current_action();
 
-        $query_arg = '_wpnonce';
-        $action = 'bulk-' . $this->_args['plural'];
-        $checked = $result = isset($_REQUEST[$query_arg]) ? wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$query_arg])), $action) : false;
-
-        if (!$checked || !current_user_can('simple_tags')) {
+        if ('taxopress-autoterms-delete-logs' !== $current_action || !current_user_can('simple_tags')) {
             return;
         }
 
-        if ($this->current_action() === 'taxopress-autoterms-delete-logs') {
-            $taxopress_autoterms_schedule_logs = isset($_REQUEST['taxopress_autoterms_schedule_logs']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_autoterms_schedule_logs'])) : [];
-            if (!empty($taxopress_autoterms_schedule_logs)) {
-                foreach ($taxopress_autoterms_schedule_logs as $taxopress_autoterms_log) {
-                    wp_delete_post($taxopress_autoterms_log, true);
-                }
+        check_admin_referer('bulk-' . $this->_args['plural']);
+
+        $taxopress_autoterms_schedule_logs = isset($_REQUEST['taxopress_autoterms_schedule_logs'])
+            ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_autoterms_schedule_logs']))
+            : [];
+        if (!empty($taxopress_autoterms_schedule_logs)) {
+            foreach ($taxopress_autoterms_schedule_logs as $taxopress_autoterms_log) {
+                wp_delete_post($taxopress_autoterms_log, true);
             }
         }
     }
