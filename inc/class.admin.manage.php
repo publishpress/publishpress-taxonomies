@@ -925,16 +925,17 @@ class SimpleTags_Admin_Manage
         }
     }
 
+    private static function extract_merge_term_name($term)
+    {
+        return trim(preg_replace('/\s*\(.*?\)$/', '', $term));
+    }
+
     private static function get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type)
     {
-        $extractTermName = function ($term) {
-            return trim(preg_replace('/\s*\(.*?\)$/', '', $term));
-        };
-
         $term_ids = [];
 
         foreach ($old_terms_input as $term_name) {
-            $term_name_clean = sanitize_text_field($extractTermName($term_name));
+            $term_name_clean = sanitize_text_field(self::extract_merge_term_name($term_name));
 
             if (empty($term_name_clean)) {
                 continue;
@@ -1091,14 +1092,10 @@ class SimpleTags_Admin_Manage
             wp_die();
         }
 
-        $extractTermName = function ($term) {
-            return trim(preg_replace('/\s*\(.*?\)$/', '', $term));
-        };
-
         $old_terms = [];
 
         foreach ($old_terms_input as $term_name) {
-            $term_name_clean = $extractTermName($term_name);
+            $term_name_clean = self::extract_merge_term_name($term_name);
             $term = get_term_by('name', $term_name_clean, $taxonomy);
             if (!$term || is_wp_error($term)) {
                 $term = get_term_by('slug', sanitize_title($term_name_clean), $taxonomy);
