@@ -760,12 +760,11 @@
      * @returns {string | *}
      */
     function html_entity_decode(str) {
-      var toReturn = '';
-      var ta = document.createElement('textarea');
-      ta.innerHTML = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      toReturn = ta.value;
-      ta = null;
-      return toReturn;
+      var parser = new DOMParser();
+      var safeString = String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      var parsed = parser.parseFromString(safeString, 'text/html');
+
+      return parsed.documentElement.textContent || '';
     }
 
     /**
