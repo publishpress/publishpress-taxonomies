@@ -890,16 +890,18 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function process_bulk_action()
     {
+        $current_action = $this->current_action();
 
-        $query_arg = '_wpnonce';
-        $action = 'bulk-' . $this->_args['plural'];
-        $checked = isset($_REQUEST[$query_arg]) ? wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$query_arg])), $action) : false;
-
-        if (!$checked || !current_user_can('simple_tags')) {
+        if (
+            !in_array($current_action, ['taxopress-terms-delete-terms', 'taxopress-terms-copy-terms'], true)
+            || !current_user_can('simple_tags')
+        ) {
             return;
         }
 
-        if ($this->current_action() === 'taxopress-terms-delete-terms') {
+        check_admin_referer('bulk-' . $this->_args['plural']);
+
+        if ($current_action === 'taxopress-terms-delete-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             if (!empty($taxopress_terms)) {
                 $deleted_terms_by_taxonomy = [];
@@ -927,7 +929,7 @@ class Taxopress_Terms_List extends WP_List_Table
                 }
             }
         }
-        if ($this->current_action() === 'taxopress-terms-copy-terms') {
+        if ($current_action === 'taxopress-terms-copy-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             $destination_taxonomy = !empty($_REQUEST['taxopress_destination_taxonomy']) ? sanitize_key(wp_unslash($_REQUEST['taxopress_destination_taxonomy'])) : '';
             $destination_post = !empty($_REQUEST['taxopress_destination_post_type']) ? sanitize_text_field(wp_unslash($_REQUEST['taxopress_destination_post_type'])) : '';
