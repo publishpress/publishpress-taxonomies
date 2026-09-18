@@ -298,6 +298,47 @@ class Taxopress_Terms_List extends WP_List_Table
     /**
      * Arrange terms in hierarchical order with depth info for dash prefixing.
     */
+    private function append_hierarchical_terms(&$ordered, &$visited, $terms_by_id, $children, $term_ids)
+    {
+        $stack = [];
+
+        foreach (array_reverse($term_ids) as $term_id) {
+            $stack[] = [
+                'term_id' => (int) $term_id,
+                'depth'   => 0,
+            ];
+        }
+
+        while (!empty($stack)) {
+            $node = array_pop($stack);
+            $term_id = (int) $node['term_id'];
+
+            if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
+                continue;
+            }
+
+            $visited[$term_id] = true;
+            $term = $terms_by_id[$term_id];
+            $term->taxopress_depth = (int) $node['depth'];
+            $ordered[] = $term;
+
+            if (!empty($children[$term_id])) {
+                foreach (array_reverse($children[$term_id]) as $child_id) {
+                    $child_id = (int) $child_id;
+
+                    if ($child_id === $term_id || isset($visited[$child_id])) {
+                        continue;
+                    }
+
+                    $stack[] = [
+                        'term_id' => $child_id,
+                        'depth'   => (int) $node['depth'] + 1,
+                    ];
+                }
+            }
+        }
+    }
+
     public function taxopress_arrange_terms_hierarchically($terms)
     {
         $terms_by_id = [];
@@ -317,46 +358,6 @@ class Taxopress_Terms_List extends WP_List_Table
         $ordered = [];
         $visited = [];
 
-        $add_terms = function ($term_ids) use (&$terms_by_id, &$children, &$ordered, &$visited) {
-            $stack = [];
-
-            foreach (array_reverse($term_ids) as $term_id) {
-                $stack[] = [
-                    'term_id' => (int) $term_id,
-                    'depth'   => 0,
-                ];
-            }
-
-            while (!empty($stack)) {
-                $node = array_pop($stack);
-                $term_id = (int) $node['term_id'];
-
-                if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
-                    continue;
-                }
-
-                $visited[$term_id] = true;
-                $term = $terms_by_id[$term_id];
-                $term->taxopress_depth = (int) $node['depth'];
-                $ordered[] = $term;
-
-                if (!empty($children[$term_id])) {
-                    foreach (array_reverse($children[$term_id]) as $child_id) {
-                        $child_id = (int) $child_id;
-
-                        if ($child_id === $term_id || isset($visited[$child_id])) {
-                            continue;
-                        }
-
-                        $stack[] = [
-                            'term_id' => $child_id,
-                            'depth'   => (int) $node['depth'] + 1,
-                        ];
-                    }
-                }
-            }
-        };
-
         // Start with root terms
         $root_ids = [];
         foreach ($terms as $term) {
@@ -368,13 +369,13 @@ class Taxopress_Terms_List extends WP_List_Table
             }
         }
 
-        $add_terms($root_ids);
+        $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, $root_ids);
 
         // Include any disconnected or cyclic branches once, without recursion.
         foreach ($terms as $term) {
             $term_id = (int) $term->term_id;
             if (!isset($visited[$term_id])) {
-                $add_terms([$term_id]);
+                $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, [$term_id]);
             }
         }
 
