@@ -2501,6 +2501,15 @@ function taxopress_get_dropdown()
 /**
  * Helper to sort terms based on PublishPress Taxonomies settings.
  */
+function taxopress_get_term_sort_value($term, $key)
+{
+    if (!is_object($term) || !isset($term->$key)) {
+        return null;
+    }
+
+    return $term->$key;
+}
+
 function taxopress_sort_terms_by_settings($terms, $taxonomy, $settings = [], $is_admin = false)
 {
     static $custom_orders_cache = [];
@@ -2562,19 +2571,21 @@ function taxopress_sort_terms_by_settings($terms, $taxonomy, $settings = [], $is
 
     // Built-in sorting fallbacks
     usort($terms, function ($a, $b) use ($orderby_setting, $order_setting) {
-        $get = fn ($term, $key) => is_object($term) && isset($term->$key) ? $term->$key : null;
-
         switch ($orderby_setting) {
             case 'term_id':
             case 'ID':
-                return ($order_setting === 'desc' ? -1 : 1) * ((int) $get($a, 'term_id') - (int) $get($b, 'term_id'));
+                return ($order_setting === 'desc' ? -1 : 1) * (
+                    (int) taxopress_get_term_sort_value($a, 'term_id') - (int) taxopress_get_term_sort_value($b, 'term_id')
+                );
 
             case 'count':
-                return ($order_setting === 'desc' ? -1 : 1) * ((int) $get($a, 'count') - (int) $get($b, 'count'));
+                return ($order_setting === 'desc' ? -1 : 1) * (
+                    (int) taxopress_get_term_sort_value($a, 'count') - (int) taxopress_get_term_sort_value($b, 'count')
+                );
 
             case 'name':
-                $a_name = (string) ($get($a, 'name') ?? '');
-                $b_name = (string) ($get($b, 'name') ?? '');
+                $a_name = (string) (taxopress_get_term_sort_value($a, 'name') ?? '');
+                $b_name = (string) (taxopress_get_term_sort_value($b, 'name') ?? '');
                 return ($order_setting === 'desc')
                     ? strcasecmp($b_name, $a_name)
                     : strcasecmp($a_name, $b_name);
