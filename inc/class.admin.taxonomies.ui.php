@@ -521,10 +521,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a text input.
+     * Return a text input element.
      *
      * @param array $args Arguments to use with the text input.
-     * @return string Complete text `<input>` with proper attributes.
+     * @return string Complete text input element with proper attributes.
      */
     public function get_text_input($args = [])
     {
@@ -601,7 +601,7 @@ class taxopress_admin_ui
      * Return a number input.
      *
      * @param array $args Arguments to use with the text input.
-     * @return string Complete text `<input>` with proper attributes.
+     * @return string Complete number input element with proper attributes.
      */
     public function get_number_input($args = [])
     {
@@ -799,10 +799,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a checkbox `<input>`.
+     * Return a checkbox input element.
      *
      * @param array $args Arguments to use with the checkbox input.
-     * @return string $value Complete checkbox `<input>` with proper attributes.
+     * @return string $value Complete checkbox input element with proper attributes.
      */
     public function get_check_input($args = [])
     {
@@ -852,10 +852,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a button `<input>`.
+     * Return a button input element.
      *
      * @param array $args Arguments to use with the button input.
-     * @return string Complete button `<input>`.
+     * @return string Complete button input element.
      */
     public function get_button($args = [])
     {
