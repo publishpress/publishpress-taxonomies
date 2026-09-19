@@ -186,7 +186,7 @@ class Autoterms_Logs extends WP_List_Table
     public function get_columns()
     {
         $columns = [
-            'cb' => '<input type="checkbox"/>', //Render a checkbox instead of text
+            'cb' => '<input type="checkbox" aria-label="' . esc_attr__('Select all auto terms logs', 'simple-tags') . '" />', //Render a checkbox instead of text
             'title'     => esc_html__('Post', 'simple-tags'),
             'post_type'     => esc_html__('Post type', 'simple-tags'),
             'taxonomy'     => esc_html__('Taxonomy', 'simple-tags'),
@@ -228,7 +228,16 @@ class Autoterms_Logs extends WP_List_Table
      */
     protected function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'taxopress_autoterms_logs', $item->ID);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'taxopress_autoterms_logs',
+            $item->ID,
+            sprintf(
+                /* translators: %s: log ID. */
+                esc_attr__('Select auto terms log %s', 'simple-tags'),
+                (string) $item->ID
+            )
+        );
     }
 
     /**
@@ -548,7 +557,7 @@ class Autoterms_Logs extends WP_List_Table
         <p class="search-box">
             <span class="autoterms-log-table-limit-settings">
                 <label for="taxopress_auto_terms_logs_limit"><?php esc_html_e('Limit the number of logs', 'simple-tags'); ?></label>
-                <input data-link="<?php echo esc_attr($log_limit_link); ?>" type="number" step="1" min="1" name="taxopress_auto_terms_logs_limit" id="taxopress_auto_terms_logs_limit" value="<?php echo (int)get_option('taxopress_auto_terms_logs_limit', 1000); ?>" />
+                <input data-link="<?php echo esc_attr($log_limit_link); ?>" type="number" step="1" min="1" name="taxopress_auto_terms_logs_limit" id="taxopress_auto_terms_logs_limit" aria-label="<?php esc_attr_e('Limit the number of logs', 'simple-tags'); ?>" value="<?php echo (int)get_option('taxopress_auto_terms_logs_limit', 1000); ?>" />
                 <a href="javascript:void(0)" class="taxopress-logs-limit-update button"><?php esc_html_e('Update', 'simple-tags'); ?></a>
             </span>
 
