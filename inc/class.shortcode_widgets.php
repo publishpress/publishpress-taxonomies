@@ -18,10 +18,10 @@ class SimpleTags_Shortcode_Widget extends WP_Widget
     {
         parent::__construct(
             'simpletags-shortcode',
-            esc_html__('Terms Display (PublishPress Taxonomies Shortcode)', 'simple-tags'),
+            esc_html__('Terms Display (Taxonomies Shortcode)', 'simple-tags'),
             array(
                 'classname'   => 'widget-simpletags-shortcode',
-                'description' => esc_html__('PublishPress Taxonomies Terms Display Shortcode', 'simple-tags')
+                'description' => esc_html__('Taxonomies Terms Display Shortcode', 'simple-tags')
             )
         );
     }

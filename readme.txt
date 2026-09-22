@@ -201,7 +201,7 @@ Inside the “Taxonomies” screen, you can click the “Admin Area” tab and c
 
 = How Do I Display Taxonomy Terms in a Widget? =
 
-It is possible to use PublishPress Taxonomies to show terms in a WordPress widget. Go to Appearance > Widget and look for the “Term Display (PublishPress Taxonomies Shortcode)” widget. This can be placed into any area that your theme has available.
+It is possible to use PublishPress Taxonomies to show terms in a WordPress widget. Go to Appearance > Widget and look for the “Term Display (Taxonomies Shortcode)” widget. This can be placed into any area that your theme has available.
 
 [Click here to see more about showing terms in a widget](https://taxopress.com/docs/tag-cloud-widget/).
 
