@@ -848,7 +848,7 @@ class SimpleTags_Admin
 
         add_menu_page(
             __('PublishPress Taxonomies: Options', 'simple-tags'),
-            __('PublishPress Taxonomies', 'simple-tags'),
+            __('Taxonomies', 'simple-tags'),
             'admin_simple_tags',
             self::MENU_SLUG,
             array(
