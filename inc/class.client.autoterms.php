@@ -33,8 +33,8 @@ class SimpleTags_Client_Autoterms
         $options = get_option(STAGS_OPTIONS_NAME_AUTO);
 
         // user preference for this post ?
-        $meta_value = isset($_POST['exclude_autotags']) ? sanitize_text_field(wp_unslash($_POST['exclude_autotags'])) : false;
-        if ($meta_value) {
+        $post_autoterms_status = self::get_post_feature_status($post_id, '_taxopress_autoterms_status', '_exclude_autotags');
+        if ('disabled' === $post_autoterms_status) {
             return false;
         }
 
@@ -67,7 +67,7 @@ class SimpleTags_Client_Autoterms
                 continue;
             }
             // check if auto term is enabled for post
-            if (empty($autoterm_data['autoterm_for_post'])) {
+            if (empty($autoterm_data['autoterm_for_post']) && 'enabled' !== $post_autoterms_status) {
                 continue;
             }
 
@@ -184,8 +184,7 @@ class SimpleTags_Client_Autoterms
 
         $terms_to_add = array();
 
-        $exclude_autotags = get_post_meta($object->ID, '_exclude_autotags', true);
-        if ($exclude_autotags) {
+        if ('disabled' === self::get_post_feature_status($object->ID, '_taxopress_autoterms_status', '_exclude_autotags')) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Post is excluded from Auto Term from post area.', 'simple-tags');
             return false;
         }
@@ -998,7 +997,6 @@ class SimpleTags_Client_Autoterms
      */
     public static function update_taxopress_logs($object, $taxonomy = 'post_tag', $options = array(), $counter = false, $action = 'save_posts', $component = 'st_autoterms', $terms_to_add = [], $status = 'failed', $status_message = 'not_provided')
     {
-
         if (get_option('taxopress_autoterms_logs_disabled') || !post_type_exists('taxopress_logs')) {
             return;
         }
@@ -1045,5 +1043,20 @@ class SimpleTags_Client_Autoterms
                 }
             }
         }
+    }
+
+    private static function get_post_feature_status($post_id, $status_meta_key, $legacy_disable_meta_key = '')
+    {
+        $status = get_post_meta($post_id, $status_meta_key, true);
+
+        if (in_array($status, ['default', 'enabled', 'disabled'], true)) {
+            return $status;
+        }
+
+        if ($legacy_disable_meta_key && get_post_meta($post_id, $legacy_disable_meta_key, true)) {
+            return 'disabled';
+        }
+
+        return 'default';
     }
 }

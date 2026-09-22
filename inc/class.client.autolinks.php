@@ -17,26 +17,20 @@ class SimpleTags_Client_Autolinks
     public function __construct()
     {
 
+        // Register frontend filters regardless of the global setting so a post-level
+        // "enabled" status can force Auto Links on.
+        add_filter('the_posts', array(__CLASS__, 'the_posts'), 10);
+        add_filter('the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
+        add_filter('the_title', array(__CLASS__, 'taxopress_autolinks_the_title'), 5);
+
+        // Elementor compatibility: elementor outputs content through its own filters,
+        // so also run our autolinks on those outputs.
+        if (defined('ELEMENTOR_VERSION') || class_exists('\Elementor\Plugin')) {
+            add_filter('elementor/frontend/the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
+            add_filter('elementor/frontend/builder_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
+        }
+
         if (1 === (int) SimpleTags_Plugin::get_option_value('active_auto_links')) {
-            $auto_link_priority = SimpleTags_Plugin::get_option_value('auto_link_priority');
-            if (0 === (int) $auto_link_priority) {
-                $auto_link_priority = 12;
-            }
-
-            // Auto link tags
-            add_filter('the_posts', array(__CLASS__, 'the_posts'), 10);
-
-            //new UI
-            add_filter('the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
-            add_filter('the_title', array(__CLASS__, 'taxopress_autolinks_the_title'), 5);
-
-            // Elementor compatibility: elementor outputs content through its own filters,
-            // so also run our autolinks on those outputs.
-            if (defined('ELEMENTOR_VERSION') || class_exists('\Elementor\Plugin')) {
-                add_filter('elementor/frontend/the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
-                add_filter('elementor/frontend/builder_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
-            }
-
             add_action('admin_init', [$this, 'taxopress_customurl_taxonomies_fields']);
         }
     }
@@ -385,6 +379,24 @@ class SimpleTags_Client_Autolinks
             }
         }
         return true;
+    }
+
+    private static function prepare_excluded_terms($exclude_terms)
+    {
+        $prepared_terms = [];
+        $exclude_terms  = explode(',', (string) $exclude_terms);
+
+        foreach ($exclude_terms as $exclude_term) {
+            $exclude_term = trim(stripslashes($exclude_term));
+
+            if ('' === $exclude_term) {
+                continue;
+            }
+
+            $prepared_terms[] = $exclude_term;
+        }
+
+        return array_unique($prepared_terms);
     }
 
     /**
@@ -973,11 +985,16 @@ class SimpleTags_Client_Autolinks
 
         $post_tags = taxopress_get_autolink_data();
 
-        // user preference for this post ?
-        $meta_value = get_post_meta($post->ID, '_exclude_autolinks', true);
-        if (!empty($meta_value)) {
+        // User preference for this post?
+        $feature_status = self::get_post_feature_status($post->ID);
+        if (
+            'disabled' === $feature_status
+            || ('default' === $feature_status && 1 !== (int) SimpleTags_Plugin::get_option_value('active_auto_links'))
+        ) {
             return $content;
         }
+
+        $force_enabled = 'enabled' === $feature_status;
 
         if (count($post_tags) > 0) {
             $auto_link_replace = [];
@@ -985,11 +1002,7 @@ class SimpleTags_Client_Autolinks
                 // Get option
                 $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
 
-                if (!$embedded) {
-                    continue;
-                }
-
-                if (!in_array($post->post_type, $embedded)) {
+                if (!$force_enabled && (!$embedded || !in_array($post->post_type, $embedded, true))) {
                     continue;
                 }
 
@@ -1020,14 +1033,7 @@ class SimpleTags_Client_Autolinks
                     $case       = (1 === (int) $post_tag['ignore_case']) ? 'i' : '';
                     $strpos_fnc = ('i' === $case) ? 'stripos' : 'strpos';
 
-                    // Prepare exclude terms array
-                    $excludes_terms = explode(',', $post_tag['auto_link_exclude']);
-                    if (empty($excludes_terms)) {
-                        $excludes_terms = array();
-                    } else {
-                        $excludes_terms = array_filter($excludes_terms, '_delete_empty_element');
-                        $excludes_terms = array_unique($excludes_terms);
-                    }
+                    $excludes_terms = self::prepare_excluded_terms($post_tag['auto_link_exclude']);
 
                     $z = 0;
 
@@ -1092,22 +1098,23 @@ class SimpleTags_Client_Autolinks
         $post_tags = taxopress_get_autolink_data();
 
 
-        // user preference for this post ?
-        $meta_value = get_post_meta($post->ID, '_exclude_autolinks', true);
-        if (!empty($meta_value)) {
+        // User preference for this post?
+        $feature_status = self::get_post_feature_status($post->ID);
+        if (
+            'disabled' === $feature_status
+            || ('default' === $feature_status && 1 !== (int) SimpleTags_Plugin::get_option_value('active_auto_links'))
+        ) {
             return $title;
         }
+
+        $force_enabled = 'enabled' === $feature_status;
 
         if (count($post_tags) > 0) {
             foreach ($post_tags as $post_tag) {
                 // Get option
                 $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
 
-                if (!$embedded) {
-                    continue;
-                }
-
-                if (!in_array($post->post_type, $embedded)) {
+                if (!$force_enabled && (!$embedded || !in_array($post->post_type, $embedded, true))) {
                     continue;
                 }
 
@@ -1137,14 +1144,7 @@ class SimpleTags_Client_Autolinks
                     $case       = (1 === (int) $post_tag['ignore_case']) ? 'i' : '';
                     $strpos_fnc = ('i' === $case) ? 'stripos' : 'strpos';
 
-                    // Prepare exclude terms array
-                    $excludes_terms = explode(',', $post_tag['auto_link_exclude']);
-                    if (empty($excludes_terms)) {
-                        $excludes_terms = array();
-                    } else {
-                        $excludes_terms = array_filter($excludes_terms, '_delete_empty_element');
-                        $excludes_terms = array_unique($excludes_terms);
-                    }
+                    $excludes_terms = self::prepare_excluded_terms($post_tag['auto_link_exclude']);
 
                     $z = 0;
                     $auto_link_replace = [];
@@ -1188,5 +1188,20 @@ class SimpleTags_Client_Autolinks
 
 
         return $title;
+    }
+
+    private static function get_post_feature_status($post_id)
+    {
+        $status = get_post_meta($post_id, '_taxopress_autolinks_status', true);
+
+        if (in_array($status, ['default', 'enabled', 'disabled'], true)) {
+            return $status;
+        }
+
+        if (get_post_meta($post_id, '_exclude_autolinks', true)) {
+            return 'disabled';
+        }
+
+        return 'default';
     }
 }
