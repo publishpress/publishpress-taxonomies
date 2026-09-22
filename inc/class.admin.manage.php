@@ -654,36 +654,52 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                // Ensure the new term exists or create it
+                // Resolve the source terms before creating the destination term.
+                $source_terms = [];
+                foreach ((array) $old_terms as $old_tag) {
+                    $old_tag = sanitize_text_field($old_tag);
+                    $term = get_term_by('name', $old_tag, $taxonomy);
+                    if (!$term || is_wp_error($term)) {
+                        $term = get_term_by('slug', sanitize_title($old_tag), $taxonomy);
+                    }
+
+                    if ($term && !is_wp_error($term)) {
+                        $source_terms[(int) $term->term_id] = $term;
+                    }
+                }
+
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
+                    return false;
+                }
+
+                // Ensure the destination term exists only after valid source terms are found.
                 $new_term = get_term_by('name', $new_tag, $taxonomy);
-                if (!$new_term) {
+                if (!$new_term || is_wp_error($new_term)) {
+                    $new_term = get_term_by('slug', sanitize_title($new_tag), $taxonomy);
+                }
+
+                if (!$new_term || is_wp_error($new_term)) {
                     $new_term_info = wp_insert_term($new_tag, $taxonomy);
                     if (is_wp_error($new_term_info)) {
                         add_settings_error(__CLASS__, __CLASS__, esc_html__('Failed to create the new term.', 'simple-tags'), 'error taxopress-notice');
                         return false;
                     }
-                    $new_term_id = $new_term_info['term_id'];
-                    $new_term_slug = isset($new_term_info['slug']) ? $new_term_info['slug'] : sanitize_title($new_tag);
+                    $new_term_id = (int) $new_term_info['term_id'];
                 } else {
-                    $new_term_id = $new_term->term_id;
-                    $new_term_slug = $new_term->slug;
+                    $new_term_id = (int) $new_term->term_id;
                 }
 
-                // Get terms ID from old terms names
-                $terms_id = array();
-                $found_terms = array();
-                foreach ((array) $old_terms as $old_tag) {
-                    $term       = get_term_by('name', addslashes(sanitize_text_field($old_tag)), $taxonomy);
-                    if ($term) {
-                        $terms_id[] = (int) $term->term_id;
-                        $found_terms[] = $term->name;
-                    }
-                }
+                // Never delete the destination when it was also selected as a source term.
+                unset($source_terms[$new_term_id]);
 
-                if (empty($terms_id)) {
-                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No other matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
                     return false;
                 }
+
+                $terms_id = array_keys($source_terms);
+                $found_terms = wp_list_pluck(array_values($source_terms), 'name');
 
                 // Get objects from terms ID
                 $objects_id = get_objects_in_term($terms_id, $taxonomy, ['fields' => 'ids']);
@@ -699,7 +715,7 @@ class SimpleTags_Admin_Manage
                     // Check if the object already has the term assigned
                     $current_terms = wp_get_object_terms($object_id, $taxonomy, ['fields' => 'ids']);
                     if (!in_array($new_term_id, $current_terms)) {
-                        wp_set_object_terms($object_id, $new_term_slug, $taxonomy, true);
+                        wp_set_object_terms($object_id, $new_term_id, $taxonomy, true);
                     }
                     $unique_objects[$object_id] = true; // Add to unique set
                 }
