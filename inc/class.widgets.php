@@ -1,9 +1,9 @@
 <?php
 
-// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
- * PublishPress Taxonomies widget class
+ * TaxoPress widget class
  *
  */
 class SimpleTags_Widget extends WP_Widget
@@ -18,7 +18,7 @@ class SimpleTags_Widget extends WP_Widget
     {
         parent::__construct(
             'simpletags',
-            esc_html__('Tag Cloud (PublishPress Taxonomies Legacy)', 'simple-tags'),
+            esc_html__('Tag Cloud (TaxoPress Legacy)', 'simple-tags'),
             array(
                 'classname'   => 'widget-simpletags',
                 'description' => esc_html__('[DEPRECATED] - Your most used tags in cloud format with dynamic color and many options', 'simple-tags')
@@ -221,7 +221,7 @@ class SimpleTags_Widget extends WP_Widget
         //Defaults
         $instance = wp_parse_args((array) $instance, self::get_fields());
         ?>
-        <p style="color:red;"><?php esc_html_e('This widget is no longer being updated. Please use the "Terms Display (Taxonomies Shortcode)" widget instead.', 'simple-tags'); ?></p>
+        <p style="color:red;"><?php esc_html_e('This widget is no longer being updated. Please use the "Terms Display (TaxoPress Shortcode)" widget instead.', 'simple-tags'); ?></p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
