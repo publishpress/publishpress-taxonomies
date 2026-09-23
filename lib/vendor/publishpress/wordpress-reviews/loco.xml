@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="PublishPress WordPress Reviews">
+  <domain name="publishpress-wordpress-reviews">
+    <project>
+      <source>
+        <file>ReviewsController.php</file>
+      </source>
+      <target>
+        <directory>languages</directory>
+      </target>
+      <template locked="true">
+        <file>languages/publishpress-wordpress-reviews.pot</file>
+      </template>
+    </project>
+  </domain>
+</bundle>

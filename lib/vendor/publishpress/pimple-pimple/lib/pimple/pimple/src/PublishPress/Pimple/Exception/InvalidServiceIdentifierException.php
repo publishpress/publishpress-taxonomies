@@ -22,9 +22,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace PublishPress\Pimple\Exception;
@@ -32,17 +29,17 @@ namespace PublishPress\Pimple\Exception;
 use PublishPress\Psr\Container\NotFoundExceptionInterface;
 
 /**
- * The identifier of a valid service or parameter was expected.
+ * An attempt to perform an operation that requires a service identifier was made.
  *
  * @author Pascal Luna <skalpa@zetareticuli.org>
  */
-class UnknownIdentifierException extends \InvalidArgumentException implements NotFoundExceptionInterface
+class InvalidServiceIdentifierException extends \InvalidArgumentException implements NotFoundExceptionInterface
 {
     /**
-     * @param string $id The unknown identifier
+     * @param string $id The invalid identifier
      */
     public function __construct($id)
     {
-        parent::__construct(\sprintf('Identifier "%s" is not defined.', $id));
+        parent::__construct(\sprintf('Identifier "%s" does not contain an object definition.', $id));
     }
 }

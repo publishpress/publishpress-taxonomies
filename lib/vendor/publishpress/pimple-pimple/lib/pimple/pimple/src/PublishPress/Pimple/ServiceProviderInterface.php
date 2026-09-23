@@ -22,27 +22,23 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
-namespace PublishPress\Pimple\Exception;
-
-use PublishPress\Psr\Container\ContainerExceptionInterface;
+namespace PublishPress\Pimple;
 
 /**
- * An attempt to modify a frozen service was made.
+ * Pimple service provider interface.
  *
- * @author Pascal Luna <skalpa@zetareticuli.org>
+ * @author  Fabien Potencier
+ * @author  Dominik Zogg
  */
-class FrozenServiceException extends \RuntimeException implements ContainerExceptionInterface
+interface ServiceProviderInterface
 {
     /**
-     * @param string $id Identifier of the frozen service
+     * Registers services on the given container.
+     *
+     * This method should only be used to configure services and parameters.
+     * It should not get services.
      */
-    public function __construct($id)
-    {
-        parent::__construct(\sprintf('Cannot override frozen service "%s".', $id));
-    }
+    public function register(Container $pimple);
 }
