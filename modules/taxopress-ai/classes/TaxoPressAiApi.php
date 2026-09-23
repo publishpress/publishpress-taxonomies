@@ -443,7 +443,7 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
-         * Clean api response to fix //https://github.com/TaxoPress/TaxoPress/issues/2258
+         * Clean api response to fix //https://github.com/publishpress/publishpress-taxonomies/issues/2258
          */
         public static function clean_api_response($content)
         {
@@ -638,7 +638,7 @@ if (!class_exists('TaxoPressAiApi')) {
                             if ($status_code !== 200) {
                                 $error_message = (is_array($body_data) && !empty($body_data['error']['message'])) ? $body_data['error']['message'] : $status_code;
                                 if (strpos($error_message, 'You exceeded your current quota, please check your plan and billing details') !== false) {
-                                    // https://github.com/TaxoPress/TaxoPress/issues/1951
+                                    // https://github.com/publishpress/publishpress-taxonomies/issues/1951
                                     $error_message = esc_html__('Error: OpenAI says there is an issue with this API key. Please check your plan or billing details.', 'simple-tags');
                                 }
                                 $return['status'] = 'error';

@@ -1,7 +1,7 @@
 <div class="taxopress-block-wrap">
 <div class="wrap st_wrap tagcloudui admin-settings">
     <div id="icon-themes" class="icon32"><br></div>
-    <h2><?php _e('TaxoPress: Options', 'simple-tags'); ?></h2>
+    <h2><?php _e('PublishPress Taxonomies: Options', 'simple-tags'); ?></h2>
 
     <h2 class="nav-tab-wrapper">
         <?php

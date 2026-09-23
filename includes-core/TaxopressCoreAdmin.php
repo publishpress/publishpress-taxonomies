@@ -7,58 +7,24 @@ class TaxopressCoreAdmin
     public function __construct()
     {
 
-        if (current_user_can('simple_tags')) {
-            if (is_admin()) {
-                if (class_exists('PublishPress\WordpressVersionNotices\Module\TopNotice\Module')) {
-                    add_filter(
-                        \PublishPress\WordpressVersionNotices\Module\TopNotice\Module::SETTINGS_FILTER,
-                        function ($settings) {
-                            $settings['publishpress-taxopress'] = [
-                                'message' => esc_html__("You're using TaxoPress Free. The Pro version has more features and support. %sUpgrade to Pro%s", 'simple-tags'),
-                                'link'    => 'https://taxopress.com/taxopress/',
-                                'screens' => [
-                                    ['base' => 'taxopress_page_st_dashboard', 'id'   => 'taxopress_page_st_dashboard'],
-                                    ['base' => 'taxopress_page_st_taxonomies', 'id'   => 'taxopress_page_st_taxonomies'],
-                                    ['base' => 'taxopress_page_st_mass_terms', 'id'   => 'taxopress_page_st_mass_terms'],
-                                    ['base' => 'taxopress_page_st_manage',     'id'   => 'taxopress_page_st_manage'],
-                                    ['base' => 'taxopress_page_st_auto',       'id'   => 'taxopress_page_st_auto'],
-                                    ['base' => 'toplevel_page_st_options',     'id'   => 'toplevel_page_st_options'],
-                                    ['base' => 'taxopress_page_st_terms_display', 'id' => 'taxopress_page_st_terms_display'],
-                                    ['base' => 'toplevel_page_st_posts',     'id'   => 'toplevel_page_st_posts'],
-                                    ['base' => 'taxopress_page_st_posts',       'id'  => 'taxopress_page_st_posts'],
-                                    ['base' => 'taxopress_page_st_post_tags',   'id'  => 'taxopress_page_st_post_tags'],
-                                    ['base' => 'taxopress_page_st_related_posts', 'id' => 'taxopress_page_st_related_posts'],
-                                    ['base' => 'taxopress_page_st_autolinks',   'id'  => 'taxopress_page_st_autolinks'],
-                                    ['base' => 'taxopress_page_st_autoterms',   'id'  => 'taxopress_page_st_autoterms'],
-                                    ['base' => 'taxopress_page_st_autoterms_content',   'id'  => 'taxopress_page_st_autoterms_content'],
-                                    ['base' => 'taxopress_page_st_suggestterms', 'id'  => 'taxopress_page_st_suggestterms'],
-                                    ['base' => 'taxopress_page_st_terms',       'id'  => 'taxopress_page_st_terms'],
-                                    ['base' => 'taxopress_page_st_taxopress_ai', 'id'  => 'taxopress_page_st_taxopress_ai'],
-                                    ['base' => 'taxopress_page_st_autoterms_schedule', 'id'  => 'taxopress_page_st_autoterms_schedule']
-                                ]
-                            ];
+        if (current_user_can('simple_tags') && is_admin()) {
+            add_action('in_admin_header', [$this, 'taxopress_render_upgrade_notice']);
 
-                            return $settings;
-                        }
-                    );
+            if (class_exists('PublishPress\WordpressVersionNotices\Module\MenuLink\Module')) {
+                add_filter(
+                    \PublishPress\WordpressVersionNotices\Module\MenuLink\Module::SETTINGS_FILTER,
+                    function ($settings) {
+                        $settings['publishpress-taxopress'] = [
+                            'parent' => 'st_options',
+                            'label'  => __('Upgrade to Pro', 'simple-tags'),
+                            'link'   => 'https://taxopress.com/taxopress/',
+                        ];
 
-                    add_filter(
-                        \PublishPress\WordpressVersionNotices\Module\MenuLink\Module::SETTINGS_FILTER,
-                        function ($settings) {
-                            $settings['publishpress-taxopress'] = [
-                                'parent' => 'st_options',
-                                'label'  => __('Upgrade to Pro', 'simple-tags'),
-                                'link'   => 'https://taxopress.com/taxopress/',
-                            ];
-
-                            return $settings;
-                        }
-                    );
-                }
+                        return $settings;
+                    }
+                );
             }
         }
-
-
         add_action('taxopress_admin_class_before_assets_register', [$this, 'taxopress_load_admin_core_assets']);
         add_action('taxopress_admin_class_after_styles_enqueue', [$this, 'taxopress_load_admin_core_styles']);
         add_action('taxopress_admin_after_sidebar', [$this, 'taxopress_admin_advertising_sidebar_banner']);
@@ -91,6 +57,29 @@ class TaxopressCoreAdmin
         add_action('taxopress_schedule_frequency_fields', [$this, 'taxopress_free_schedule_frequency_fields']);
     }
 
+    /**
+     * Render the Free-to-Pro upgrade notice on Taxonomies administration pages.
+     *
+     * Rendered directly to keep this Free-plugin notice scoped to Taxonomies.
+     */
+    public function taxopress_render_upgrade_notice()
+    {
+        if (! function_exists('is_taxopress_admin_page') || ! is_taxopress_admin_page()) {
+            return;
+        }
+
+        ?>
+        <div class="pp-version-notice-bold-purple taxopress-free-version-notice">
+            <div class="pp-version-notice-bold-purple-message">
+                <?php esc_html_e("You're using PublishPress Taxonomies Free. The Pro version has more features and support.", 'simple-tags'); ?>
+            </div>
+            <div class="pp-version-notice-bold-purple-button">
+                <a href="https://taxopress.com/taxopress/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
+            </div>
+        </div>
+        <?php
+    }
+
     public function taxopress_load_admin_core_assets()
     {
         wp_register_style('st-admin-core', STAGS_URL . '/includes-core/assets/css/core.css', array(), STAGS_VERSION, 'all');
@@ -111,12 +100,12 @@ class TaxopressCoreAdmin
                     <div class="advertisement-box-content postbox">
                         <div class="postbox-header">
                             <h3 class="advertisement-box-header hndle is-non-sortable">
-                                <span><?php echo esc_html__('Upgrade to TaxoPress Pro', 'simple-tags'); ?></span>
+                                <span><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
                             </h3>
                         </div>
 
                         <div class="inside">
-                            <p><?php echo esc_html__('Enhance the power of TaxoPress with the Pro version:', 'simple-tags'); ?>
+                            <p><?php echo esc_html__('Enhance the power of PublishPress Taxonomies with the Pro version:', 'simple-tags'); ?>
                             </p>
                             <ul>
                                 <li><?php echo esc_html__('Unlimited “Term Display”', 'simple-tags'); ?></li>
@@ -140,7 +129,7 @@ class TaxopressCoreAdmin
                     <div class="advertisement-box-content postbox">
                         <div class="postbox-header">
                             <h3 class="advertisement-box-header hndle is-non-sortable">
-                                <span><?php echo esc_html__('Need TaxoPress Support?', 'simple-tags'); ?></span>
+                                <span><?php echo esc_html__('Need PublishPress Taxonomies Support?', 'simple-tags'); ?></span>
                             </h3>
                         </div>
 
@@ -184,7 +173,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to integrate OpenAI to analyze your content and suggest terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to integrate OpenAI to analyze your content and suggest terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -208,7 +197,7 @@ class TaxopressCoreAdmin
                 </div>
 
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to integrate Watson to analyze your content and suggest terms.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to integrate Watson to analyze your content and suggest terms.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -232,7 +221,7 @@ class TaxopressCoreAdmin
                 </div>
 
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to integrate Dandelion to analyze your content and suggest terms.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to integrate Dandelion to analyze your content and suggest terms.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -256,7 +245,7 @@ class TaxopressCoreAdmin
                 </div>
 
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to integrate LSEG / Refinitiv to analyze your content and suggest terms.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to integrate LSEG / Refinitiv to analyze your content and suggest terms.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -283,7 +272,7 @@ class TaxopressCoreAdmin
                     </h3>
                 </div>
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to suggest new terms for your content using the OpenAI. This service can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to suggest new terms for your content using the OpenAI. This service can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -301,7 +290,7 @@ class TaxopressCoreAdmin
                 </div>
 
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to suggest new terms for your content using the IBM Watson. This service can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to suggest new terms for your content using the IBM Watson. This service can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -400,7 +389,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -418,7 +407,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -436,7 +425,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -454,7 +443,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to generate new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and add new terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -478,7 +467,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to suggest new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to suggest new terms for your content using the OpenAI, IBM Watson, Dandelion and Open Calais services. These services can analyze your content and suggest new terms.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -502,7 +491,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you complete control over where Auto Links are added. You can choose to skip any HTML elements that appear in your content.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you complete control over where Auto Links are added. You can choose to skip any HTML elements that appear in your content.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -526,7 +515,7 @@ class TaxopressCoreAdmin
                     </div>
 
                     <div class="inside-content">
-                        <p><?php echo esc_html__('TaxoPress Pro allows you to change how Auto Terms analyzes your posts. You will need to know how to write Regular Expressions to use this feature.', 'simple-tags'); ?></p>
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to change how Auto Terms analyzes your posts. You will need to know how to write Regular Expressions to use this feature.', 'simple-tags'); ?></p>
                         <div class="upgrade-btn">
                             <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                         </div>
@@ -572,7 +561,7 @@ class TaxopressCoreAdmin
                     </h3>
                 </div>
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to create powerful connections between your terms. When one term is added to a post, its linked terms can be automatically added too. This helps maintain consistent organization across your content.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to create powerful connections between your terms. When one term is added to a post, its linked terms can be automatically added too. This helps maintain consistent organization across your content.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -610,7 +599,7 @@ class TaxopressCoreAdmin
                     </h3>
                 </div>
                 <div class="inside-content">
-                    <p><?php echo esc_html__('TaxoPress Pro allows you to have multiple words associated with a single term. If TaxoPress scans your content and finds a synonym, it will act as if it has found the main term.', 'simple-tags'); ?></p>
+                    <p><?php echo esc_html__('PublishPress Taxonomies Pro allows you to have multiple words associated with a single term. If PublishPress Taxonomies scans your content and finds a synonym, it will act as if it has found the main term.', 'simple-tags'); ?></p>
                     <div class="upgrade-btn">
                         <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                     </div>
@@ -638,12 +627,12 @@ class TaxopressCoreAdmin
                     <span class="pp-tooltips-library" data-toggle="tooltip">
                         <span class="dashicons dashicons-lock taxopress-select-icon"></span>
                         <span class="taxopress tooltip-text">' .
-                        esc_html__('This feature is available in TaxoPress Pro', 'simple-tags') .
+                        esc_html__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags') .
                     '</span>
                     </span>
                 </div>
                 <div class="taxopress-stpexplan">' .
-                esc_html__('Customize the display of terms in the TaxoPress metabox.', 'simple-tags') . '<br />' .
+                esc_html__('Customize the display of terms in the PublishPress Taxonomies metabox.', 'simple-tags') . '<br />' .
                 esc_html__('Options include checkboxes and a dropdown list.', 'simple-tags') .
             '</div>',
             'taxopress-select-with-icon taxopress-ai-tab-content-sub taxopress-ai-' . $post_type . '-content-sub enable_taxopress_ai_' . $post_type . '_post_terms_tab_field st-subhide-content',
@@ -684,7 +673,7 @@ class TaxopressCoreAdmin
 
             <div class="inside-content">
                 <h2><?php echo esc_html__('To Copy terms with their metadata, please upgrade to pro.', 'simple-tags') ?></h2>
-                <p><?php echo esc_html__('With TaxoPress Pro, you can duplicate taxonomy terms along with all their metadata. This includes term descriptions, images, and custom fields. You can copy terms between taxonomies to maintain consistent organization across your site.', 'simple-tags'); ?></p>
+                <p><?php echo esc_html__('With PublishPress Taxonomies Pro, you can duplicate taxonomy terms along with all their metadata. This includes term descriptions, images, and custom fields. You can copy terms between taxonomies to maintain consistent organization across your site.', 'simple-tags'); ?></p>
                 <div class="upgrade-btn">
                     <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                 </div>
@@ -727,7 +716,7 @@ class TaxopressCoreAdmin
                     </select>
                     <span class="pp-tooltips-library" data-toggle="tooltip">
                         <span class="dashicons dashicons-lock taxopress-select-icon taxopress-formats"></span>
-                        <span class="taxopress tooltip-text"><?php echo esc_html__('This feature is available in TaxoPress Pro', 'simple-tags'); ?></span>
+                        <span class="taxopress tooltip-text"><?php echo esc_html__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
                     </span>
                 </div>
                 <div class="taxopress-stpexplan">
@@ -774,7 +763,7 @@ class TaxopressCoreAdmin
                     <span class="dashicons dashicons-lock taxopress-pro-feature-lock"></span>
                     <?php echo esc_html__('Pro Feature', 'simple-tags'); ?>
                 </button>
-                <span class="taxopress tooltip-text"><?php echo esc_html__('Some of these features are available in TaxoPress Pro', 'simple-tags'); ?></span>
+                <span class="taxopress tooltip-text"><?php echo esc_html__('Some of these features are available in PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
             </span>
         </div>
         <?php
@@ -826,7 +815,7 @@ class TaxopressCoreAdmin
                                 <span class="dashicons dashicons-lock taxopress-pro-feature-lock"></span>
                                 <?php echo esc_html__('Pro Feature', 'simple-tags'); ?>
                             </button>
-                            <span class="taxopress tooltip-text"><?php echo esc_html__('Some of these features are available in TaxoPress Pro', 'simple-tags'); ?></span>
+                            <span class="taxopress tooltip-text"><?php echo esc_html__('Some of these features are available in PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
                         </span>
                     </div>
                 </td>
@@ -897,7 +886,7 @@ class TaxopressCoreAdmin
                     <div class="taxopress tooltip-text">%s</div>
                 </div>',
                 esc_html__('Disabled', 'simple-tags'),
-                esc_html__('You have disabled TaxoPress ordering', 'simple-tags')
+                esc_html__('You have disabled PublishPress Taxonomies ordering', 'simple-tags')
             );
         }
 
@@ -967,7 +956,7 @@ class TaxopressCoreAdmin
                     <div>
                         <span class="pp-tooltips-library" data-toggle="tooltip">
                             <span class="dashicons dashicons-lock taxopress-select-icon order"></span>
-                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to TaxoPress Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
+                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
                         </span>
                     </div>
                 </div>
@@ -1011,7 +1000,7 @@ class TaxopressCoreAdmin
                     <div>
                         <span class="pp-tooltips-library" data-toggle="tooltip">
                             <span class="dashicons dashicons-lock taxopress-select-icon order"></span>
-                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to TaxoPress Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
+                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
                         </span>
                     </div>
                 </div>

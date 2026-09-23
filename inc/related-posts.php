@@ -316,13 +316,13 @@ class SimpleTags_Related_Post
                                         <?php if ($related_post_limit) {
                                             echo '<div class="st-taxonomy-content promo-box-area"><div class="taxopress-warning upgrade-pro">
                                             <h2 style="margin-bottom: 5px;">' . esc_html__(
-                                                'To create more Related Posts, please upgrade to TaxoPress Pro.',
+                                                'To create more Related Posts, please upgrade to PublishPress Taxonomies Pro.',
                                                 'simple-tags'
                                             ) . '</h2>
                                                             <p>
                 
                                             ' . esc_html__(
-                                                'With TaxoPress Pro, you can create unlimited Related Posts. You can create Related Posts for any taxonomy and then display those Related Posts anywhere on your site.',
+                                                'With PublishPress Taxonomies Pro, you can create unlimited Related Posts. You can create Related Posts for any taxonomy and then display those Related Posts anywhere on your site.',
                                                 'simple-tags'
                                             ) . '
 
@@ -662,7 +662,7 @@ class SimpleTags_Related_Post
                                                         'Attempt to automatically display related posts',
                                                         'simple-tags'
                                                     ) . '</label><br /><small style=" color: #646970;">' . esc_html__(
-                                                        'TaxoPress will attempt to automatically display related posts in this content. It may not be successful for all post types and layouts.',
+                                                        'PublishPress Taxonomies will attempt to automatically display related posts in this content. It may not be successful for all post types and layouts.',
                                                         'simple-tags'
                                                     ) . '</small></th><td>
                                                                 <table class="visbile-table">';
@@ -789,7 +789,7 @@ class SimpleTags_Related_Post
                                                         'Post Types',
                                                         'simple-tags'
                                                     ) . '</label><br /><small style=" color: #646970;">' . esc_html__(
-                                                        'TaxoPress will display related posts from selected post types.',
+                                                        'PublishPress Taxonomies will display related posts from selected post types.',
                                                         'simple-tags'
                                                     ) . '</small></th><td>
                                                                 <table class="visbile-table">';
@@ -1137,11 +1137,11 @@ class SimpleTags_Related_Post
                                                                             <div class="default-featured-media-field-container">
                                                                                 <?php
                                                                                 $current_value = isset($current['default_featured_media']) ? $current['default_featured_media'] : '';
-                                                                                $default_image = STAGS_URL . '/assets/images/taxopress-white-logo.png';
+                                                                                $default_image = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
 
                                                                                 if ($current_value === $default_image) {
                                                                                     echo '<img src="' . esc_url($default_image) . '" style="max-width: 300px;" alt=""/>';
-                                                                                    echo '<p class="description">' . esc_html__('Using default TaxoPress image', 'simple-tags') . '</p>';
+                                                                                    echo '<p class="description">' . esc_html__('Using default PublishPress Taxonomies image', 'simple-tags') . '</p>';
                                                                                 } elseif (!empty($current_value)) {
                                                                                     echo '<img src="' . esc_url($current_value) . '" style="max-width: 300px;" alt=""/>';
                                                                                 }
@@ -1191,7 +1191,7 @@ class SimpleTags_Related_Post
 
                                 <?php if ($related_post_limit) { ?>
                                     <div class="pp-version-notice-bold-purple" style="margin-left:0px;">
-                                        <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using TaxoPress Free.
+                                        <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                             The Pro version has more features and support.', 'simple-tags'); ?>
                                         </div>
                                         <div class="pp-version-notice-bold-purple-button"><a
@@ -1375,7 +1375,7 @@ class SimpleTags_Related_Post
 
         // If it's the default value, use the proper plugin URL path
         if ($default_featured_media === 'default') {
-            $default_featured_media = STAGS_URL . '/assets/images/taxopress-white-logo.png';
+            $default_featured_media = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
         }
         // Prepare arguments with strict type casting and validation
         $args = array(

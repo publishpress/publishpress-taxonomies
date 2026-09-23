@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitTaxoPress
+class ComposerStaticInitPublishPressTaxonomies
 {
     public static $files = array (
         '3b1e1688e889525de91ac2456aba9efd' => __DIR__ . '/..' . '/publishpress/psr-container/lib/include.php',
@@ -20,7 +20,7 @@ class ComposerStaticInitTaxoPress
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitTaxoPress::$classMap;
+            $loader->classMap = ComposerStaticInitPublishPressTaxonomies::$classMap;
 
         }, null, ClassLoader::class);
     }

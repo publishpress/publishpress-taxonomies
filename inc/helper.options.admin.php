@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 require_once STAGS_DIR . '/modules/taxopress-ai/classes/TaxoPressAiUtilities.php';
 
@@ -207,7 +207,7 @@ foreach (TaxoPressAiUtilities::get_post_types_options() as $post_type => $post_t
                 'width' => '80%'
             )
         );
-        // allow to taxopress ai field for each post type
+        // allow to PublishPress Taxonomies ai field for each post type
         $taxopress_ai_fields = apply_filters('taxopress_settings_post_type_ai_fields', $taxopress_ai_fields, $post_type);
     }
     $pt_index++;
@@ -241,7 +241,7 @@ foreach (taxopress_get_all_wp_roles() as $role_name => $role_info) {
         esc_html__('Metabox Access', 'simple-tags'),
         'checkbox',
         '1',
-        sprintf(esc_html__('Allow users in the %1s role to use the TaxoPress metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))),
+        sprintf(esc_html__('Allow users in the %1s role to use the PublishPress Taxonomies metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))),
         'metabox-tab-content metabox-' . $role_name . '-content ' . $hidden_field . ''
     );
     // add option to manage terms per user role
@@ -250,7 +250,7 @@ foreach (taxopress_get_all_wp_roles() as $role_name => $role_info) {
        esc_html__('Block Users from Creating New Terms', 'simple-tags'),
        'checkbox',
        '1',
-       sprintf(esc_html__('Prevent users in the %1$s role from creating new terms in the TaxoPress metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))),
+       sprintf(esc_html__('Prevent users in the %1$s role from creating new terms in the PublishPress Taxonomies metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))),
        'metabox-tab-content metabox-' . $role_name . '-content ' . $hidden_field . ''
     );
     // add metabox allowed taxonomies
@@ -259,7 +259,7 @@ foreach (taxopress_get_all_wp_roles() as $role_name => $role_info) {
         '<div class="metabox-tab-content taxopress-settings-subtab-title metabox-' . $role_name . '-content enable_' . $role_name . '_metabox_field ' . $hidden_field . '">' . esc_html__('Taxonomies in Metabox', 'simple-tags') . '</div>',
         'multiselect_with_desc_top',
         $metabox_taxonomy_options,
-        '<p class="metabox-tab-content taxopress-settings-description metabox-' . $role_name . '-content enable_' . $role_name . '_metabox_field description ' . $hidden_field . '">' . sprintf(esc_html__('Select the taxonomies that users in %1s role can manage in the TaxoPress metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))) . '</p>',
+        '<p class="metabox-tab-content taxopress-settings-description metabox-' . $role_name . '-content enable_' . $role_name . '_metabox_field description ' . $hidden_field . '">' . sprintf(esc_html__('Select the taxonomies that users in %1s role can manage in the PublishPress Taxonomies metabox.', 'simple-tags'), esc_html(translate_user_role($role_info['name']))) . '</p>',
         'metabox-tab-content metabox-' . $role_name . '-content enable_' . $role_name . '_metabox_field ' . $hidden_field . ''
     );
     // add core removed taxonomies
@@ -352,7 +352,7 @@ $options = array(
             '',
             'helper',
             '',
-            __('This feature allows you to have multiple words associated with a single term. If TaxoPress scans your content and finds a synonym, it will act as if it has found the main term.', 'simple-tags'),
+            __('This feature allows you to have multiple words associated with a single term. If PublishPress Taxonomies scans your content and finds a synonym, it will act as if it has found the main term.', 'simple-tags'),
             ''
         ),
         array(
@@ -393,7 +393,7 @@ $options = array(
             '',
             'helper',
             '',
-            __('TaxoPress loads CSS and JavaScript files on the frontend for features like Terms Display, Related Posts, and Terms for Current Post. If you disable these scripts, those features may not display correctly.', 'simple-tags'),
+            __('PublishPress Taxonomies loads CSS and JavaScript files on the frontend for features like Terms Display, Related Posts, and Terms for Current Post. If you disable these scripts, those features may not display correctly.', 'simple-tags'),
             ''
         ),
         array(
@@ -401,7 +401,7 @@ $options = array(
             __('Disable Frontend Scripts:', 'simple-tags'),
             'checkbox',
             '1',
-            __('Check this to prevent TaxoPress from loading CSS and JavaScript files on the frontend of your site.', 'simple-tags'),
+            __('Check this to prevent PublishPress Taxonomies from loading CSS and JavaScript files on the frontend of your site.', 'simple-tags'),
             ''
         ),
         array(
@@ -409,7 +409,7 @@ $options = array(
             __('Disable Admin Preview Scripts:', 'simple-tags'),
             'checkbox',
             '1',
-            __('Check this to prevent TaxoPress from loading frontend CSS and JavaScript files in the WordPress admin area. This will break the preview functionality when editing Terms Display, Related Posts, and Terms for Current Post.', 'simple-tags'),
+            __('Check this to prevent PublishPress Taxonomies from loading frontend CSS and JavaScript files in the WordPress admin area. This will break the preview functionality when editing Terms Display, Related Posts, and Terms for Current Post.', 'simple-tags'),
             ''
         )
     ),

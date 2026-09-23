@@ -1,7 +1,7 @@
 <?php
 
-// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
-//Taxopress auto terms => Auto terms all content ajax callback
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// PublishPress Taxonomies auto terms => Auto terms all content ajax callback
 add_action('wp_ajax_taxopress_autoterms_content_by_ajax', 'taxopress_autoterms_content_by_ajax');
 function taxopress_autoterms_content_by_ajax()
 {
@@ -237,7 +237,7 @@ function taxopress_autoterms_content_by_ajax()
 }
 
 
-//Taxopress search post call back
+// PublishPress Taxonomies search post call back
 add_action('wp_ajax_taxopress_post_search', 'taxopress_post_search_callback');
 
 function taxopress_post_search_callback()
@@ -286,7 +286,7 @@ function taxopress_post_search_callback()
 }
 
 
-//Taxopress search field call back
+// PublishPress Taxonomies search field call back
 add_action('wp_ajax_taxopress_custom_fields_search', 'taxopress_custom_fields_search_callback');
 
 function taxopress_custom_fields_search_callback()

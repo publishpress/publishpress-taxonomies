@@ -1778,12 +1778,12 @@ class SimpleTags_Admin_Taxonomies
                                             </tr>
                                             <tr>
                                                 <th scope="row">
-                                                    <label for="taxopress_enable_ordering"><?php esc_html_e('Enable TaxoPress ordering', 'simple-tags'); ?></label>
+                                                    <label for="taxopress_enable_ordering"><?php esc_html_e('Enable PublishPress Taxonomies ordering', 'simple-tags'); ?></label>
                                                 </th>
                                                 <td>
                                                     <input type="checkbox" name="cpt_custom_tax[enable_taxopress_ordering]" id="taxopress_enable_ordering" value="1"
                                                         <?php checked(!empty($current['enable_taxopress_ordering']), 1); ?> />
-                                                    <span class="description"><?php esc_html_e('Enable TaxoPress ordering for this taxonomy in the frontend and admin area.', 'simple-tags'); ?></span>
+                                                    <span class="description"><?php esc_html_e('Enable PublishPress Taxonomies ordering for this taxonomy in the frontend and admin area.', 'simple-tags'); ?></span>
                                                 </td>
                                             </tr>
                                             <?php
@@ -1858,11 +1858,11 @@ class SimpleTags_Admin_Taxonomies
                                            id="cpt_submit_delete"
                                            value="<?php echo esc_attr(apply_filters(
                                                'taxopress_taxonomy_submit_delete',
-                                               esc_html__('Delete TaxoPress Edit Data', 'simple-tags')
+                                               esc_html__('Delete PublishPress Taxonomies Edit Data', 'simple-tags')
                                            )); ?>"/>
                                                         <?php
                                                         echo '<div class="taxopress-warning"">' . esc_html__(
-                                                            'You can only delete taxonomies created with TaxoPress. However, you can delete any changes or edit made from TaxoPress which will remove TaxoPress version edit restoring original taxonomies data or removing it if already deleted',
+                                                            'You can only delete taxonomies created with PublishPress Taxonomies. However, you can delete any changes or edit made from PublishPress Taxonomies which will remove PublishPress Taxonomies version edit restoring original taxonomies data or removing it if already deleted',
                                                             'simple-tags'
                                                         ) . '</div>';
                                 }

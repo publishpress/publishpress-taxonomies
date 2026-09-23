@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Compatibility
 {
@@ -21,7 +21,7 @@ class SimpleTags_Compatibility
             return;
         }
 
-        trigger_error(sprintf(esc_html__('TaxoPress requires PHP version %s or greater to be activated.'), esc_html(STAGS_MIN_PHP_VERSION)));
+        trigger_error(sprintf(esc_html__('PublishPress Taxonomies requires PHP version %s or greater to be activated.'), esc_html(STAGS_MIN_PHP_VERSION)));
 
         // Deactive self
         deactivate_plugins(plugin_basename(STAGS_DIR . '/simple-tags.php'));

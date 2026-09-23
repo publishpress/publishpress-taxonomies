@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaxoPress widget class
+ * PublishPress Taxonomies widget class
  *
  */
 class SimpleTags_RelatedPosts_Widget extends WP_Widget
@@ -16,10 +16,10 @@ class SimpleTags_RelatedPosts_Widget extends WP_Widget
     {
         parent::__construct(
             'simpletags-relatedposts',
-            esc_html__('Related Posts (TaxoPress)', 'simple-tags'),
+            esc_html__('Related Posts (PublishPress Taxonomies)', 'simple-tags'),
             [
                 'classname'   => 'widget-simpletags-relatedposts',
-                'description' => esc_html__('Taxopress Related Posts Shortcode', 'simple-tags')
+                'description' => esc_html__('PublishPress Taxonomies Related Posts Shortcode', 'simple-tags')
             ]
         );
     }

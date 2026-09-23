@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 if (!class_exists('SimpleTags_Hidden_Terms')) {
     class SimpleTags_Hidden_Terms

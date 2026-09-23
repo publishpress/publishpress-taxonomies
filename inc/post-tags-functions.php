@@ -1,9 +1,9 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
- * Fetch our TAXOPRESS Terms Display option.
+ * Fetch our PublishPress Taxonomies Terms Display option.
  *
  * @return mixed
  */
@@ -280,7 +280,7 @@ function taxopress_delete_posttags_filter_removable_query_args(array $args)
 }
 
 /**
- * Add to or update our TAXOPRESS option with new data.
+ * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
  * @param array $data Array of posttags data to update. Optional.

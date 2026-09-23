@@ -58,7 +58,7 @@ class SimpleTags_Plugin
     {
         $default_options = (array) include STAGS_DIR . '/inc/helper.options.default.php';
 
-        // add taxopress ai post type and taxonomies options so we can have all post types. TODO: This need to be a filter
+        // add PublishPress Taxonomies ai post type and taxonomies options so we can have all post types. TODO: This need to be a filter
         foreach (get_post_types(['public' => true], 'names') as $post_type => $post_type_object) {
             if ($post_type == 'post') {
                 $opt_default_value = 'post_tag';

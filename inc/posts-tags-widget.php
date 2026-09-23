@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaxoPress widget class
+ * PublishPress Taxonomies widget class
  *
  */
 class SimpleTags_PostTags_Widget extends WP_Widget
@@ -16,10 +16,10 @@ class SimpleTags_PostTags_Widget extends WP_Widget
     {
         parent::__construct(
             'simpletags-posttags',
-            esc_html__('Terms for Current Post (TaxoPress)', 'simple-tags'),
+            esc_html__('Terms for Current Post (PublishPress Taxonomies)', 'simple-tags'),
             array(
                 'classname'   => 'widget-simpletags-posttags',
-                'description' => esc_html__('Taxopress Terms for Current Post Shortcode', 'simple-tags')
+                'description' => esc_html__('PublishPress Taxonomies Terms for Current Post Shortcode', 'simple-tags')
             )
         );
     }

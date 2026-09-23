@@ -392,7 +392,7 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     background-color: rgba(255,255,255,1)!important;
     z-index: 999!important;
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.06)!important;
-    height: 4rem!important;
+    height: 5rem!important;
     margin-left: -20px;
 }
 
@@ -423,7 +423,7 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
 .taxopress-welcome-banner .banner-wrap .banner-inner a img {
     max-width: 100%;
     margin-right: 0.5rem!important;
-    height: 46px;
+    height: 56px;
     width: auto;
 }
 
@@ -1099,18 +1099,86 @@ select#stb-tag-clouds-select {
 }
 
 .taxopress-warning.upgrade-pro {
-    color: #1F48AC;
+    color: #655997;
 }
 .taxopress-warning.upgrade-pro h2 {
-    color: #1F48AC;
+    color: #655997;
     font-size: 1.3em !important;
     font-weight: 600 !important;
     padding-left: 0 !important;
 }
 .pp-version-notice-bold-purple {
-    background: #1F48AC !important;
+    background: #655997 !important;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: auto;
+    padding: 10px 20px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
 }
 
+.pp-version-notice-bold-purple-message {
+    flex: 1;
+    min-width: 0;
+    color: #fff;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.pp-version-notice-bold-purple-button {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    max-width: 170px;
+    padding: 6px 10px;
+    border: 1px solid #cc8e00;
+    border-radius: 4px;
+    background: #ffb200;
+    color: #1b004f !important;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.pp-version-notice-bold-purple-button:hover,
+.pp-version-notice-bold-purple-button:active {
+    background: #fcca46;
+    color: #1b004f !important;
+}
+
+.pp-version-notice-bold-purple-button a {
+    color: #1b004f !important;
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 960px) {
+    .pp-version-notice-bold-purple {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .pp-version-notice-bold-purple-button {
+        width: auto;
+        max-width: 100%;
+    }
+
+}
+
+.taxopress-free-version-notice {
+    margin-left: -20px;
+}
+
+@media only screen and (max-width: 960px) {
+    .taxopress-free-version-notice {
+        margin-left: -10px;
+    }
+}
 .taxopress-help-tooltip {
     display:inline-block;
     position:relative;
@@ -1531,7 +1599,7 @@ body.block-editor-page .clicktags-search-wrapper .option input {
 } 
 
 .taxopress-advertisement-right-sidebar .upgrade-btn a {
-    background: #FCB223;
+    background: #ffb200;
     color: #000 !important;
     font-weight: normal;
     text-decoration: none;
@@ -1627,7 +1695,7 @@ body.block-editor-page .clicktags-search-wrapper .option input {
     bottom: 0;
     left: 0;
     z-index: 0;
-    background-color: #3C50FF;
+    background-color: #655997;
     mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/></svg>");
     -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/></svg>");
     mask-size: 16px;
@@ -1647,7 +1715,7 @@ body.block-editor-page .clicktags-search-wrapper .option input {
 
 .taxopress-advertisement-right-sidebar .advertisement-box-header,
 .taxopress-content-promo-box .advertisement-box-header {
-    background: #1F48AC;
+    background: #655997;
     color: #ffffff !important;
     padding: 8px 12px !important;
 }
@@ -1659,7 +1727,7 @@ body.block-editor-page .clicktags-search-wrapper .option input {
 
 .taxopress-advertisement-right-sidebar .advertisement-box-content,
 .taxopress-content-promo-box.advertisement-box-content {
-    border: 1px solid #1F48AC;
+    border: 1px solid #655997;
 }
 
 
@@ -1668,7 +1736,7 @@ body.block-editor-page .clicktags-search-wrapper .option input {
 }
 
 .taxopress-content-promo-box .upgrade-btn a {
-    background: #FCB223;
+    background: #ffb200;
     color: #000 !important;
     font-weight: normal;
     text-decoration: none;

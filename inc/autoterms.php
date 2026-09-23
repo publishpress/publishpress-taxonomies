@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.Operators.OperatorSpacing.NoSpaceAfter,PSR12.Operators.OperatorSpacing.NoSpaceBefore,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose,Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML,WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.Operators.OperatorSpacing.NoSpaceAfter,PSR12.Operators.OperatorSpacing.NoSpaceBefore,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose,Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML,WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Autoterms
 {
@@ -417,12 +417,12 @@ class SimpleTags_Autoterms
                                             echo '<div class="st-taxonomy-content promo-box-area"><div class="taxopress-warning upgrade-pro">
 
                                             <h2 style="margin-bottom: 5px;">' . esc_html__(
-                                                'To create more Auto Terms, please upgrade to TaxoPress Pro.',
+                                                'To create more Auto Terms, please upgrade to PublishPress Taxonomies Pro.',
                                                 'simple-tags'
                                             ) . '</h2>
                                                     <p>
                                             ' . esc_html__(
-                                                'With TaxoPress Pro, you can create unlimited Auto Terms. You can create Auto Terms for any taxonomy.',
+                                                'With PublishPress Taxonomies Pro, you can create unlimited Auto Terms. You can create Auto Terms for any taxonomy.',
                                                 'simple-tags'
                                             ) . '
 
@@ -1292,7 +1292,7 @@ class SimpleTags_Autoterms
                                                         'simple-tags'
                                                     ),
                                                     'aftertext'  => esc_html__(
-                                                        'TaxoPress will add a term to the post if a synonym is found.',
+                                                        'PublishPress Taxonomies will add a term to the post if a synonym is found.',
                                                         'simple-tags'
                                                     ),
                                                     'selections' => $select, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -1658,7 +1658,7 @@ class SimpleTags_Autoterms
                             <?php if ($autoterm_limit) { ?>
 
                                 <div class="pp-version-notice-bold-purple" style="margin-left:0px;">
-                                    <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using TaxoPress Free.
+                                    <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                     </div>
                                     <div class="pp-version-notice-bold-purple-button"><a
@@ -1724,7 +1724,7 @@ class SimpleTags_Autoterms
                             <div class="advertisement-box-content postbox">
                                 <div class="postbox-header">
                                     <h3 class="advertisement-box-header hndle is-non-sortable">
-                                        <span><?php echo esc_html__('TaxoPress and Languages', 'simple-tags'); ?></span>
+                                        <span><?php echo esc_html__('PublishPress Taxonomies and Languages', 'simple-tags'); ?></span>
                                     </h3>
                                 </div>
                                 <div class="inside">

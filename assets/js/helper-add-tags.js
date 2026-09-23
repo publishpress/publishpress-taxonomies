@@ -9,7 +9,7 @@ function addTag(tag, custom_taxonomy = false, term_id = false) {
       custom_taxonomy = 'post_tag';
   }
 
-  if (document.getElementById('adv-tags-input')) { // Tags input from TaxoPress
+  if (document.getElementById('adv-tags-input')) { // Tags input from PublishPress Taxonomies
 
     var tag_entry = document.getElementById('adv-tags-input');
     if (tag_entry.value.length > 0 && !tag_entry.value.match(/,\s*$/)) {

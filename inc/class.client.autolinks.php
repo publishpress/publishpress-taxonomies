@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.Security.NonceVerification.Missing -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.Security.NonceVerification.Missing -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_Autolinks
 {
@@ -562,8 +562,8 @@ class SimpleTags_Client_Autolinks
             return 'STARTTAXOPRESSENTITY' . $matches[1] . 'TAXOPRESSENTITYEND';
         }, $content);
 
-        //$content = str_replace('&#','|--|',$content);//https://github.com/TaxoPress/TaxoPress/issues/824
-        //$content = str_replace('&','&#38;',$content); //https://github.com/TaxoPress/TaxoPress/issues/770*/
+        //$content = str_replace('&#','|--|',$content);//https://github.com/publishpress/publishpress-taxonomies/issues/824
+        //$content = str_replace('&','&#38;',$content); //https://github.com/publishpress/publishpress-taxonomies/issues/770*/
         $content = 'starttaxopressrandom' . $content . 'endtaxopressrandom'; //we're having issue when content start with styles https://wordpress.org/support/topic/3-7-2-auto-link-case-not-working/#post-16665257
         //$content = utf8_decode($content);
 
@@ -601,7 +601,7 @@ class SimpleTags_Client_Autolinks
             $rel     = $search_details['rel'];
             $options = $search_details['options'];
 
-            $search = str_replace('&amp;', 'taxopressamp', $search); // https://github.com/TaxoPress/TaxoPress/issues/1638
+            $search = str_replace('&amp;', 'taxopressamp', $search); // https://github.com/publishpress/publishpress-taxonomies/issues/1638
 
             if (is_array($options)) {
                 $autolink_case   = $options['autolink_case'];
@@ -773,9 +773,9 @@ class SimpleTags_Client_Autolinks
 
         // get only the body tag with its contents, then trim the body tag itself to get only the original content
         //$content = mb_substr($dom->saveHTML($xpath->query('//body')->item(0)), 6, -7, "UTF-8");
-        $content = str_replace('|--|', '&#', $content); //https://github.com/TaxoPress/TaxoPress/issues/824
+        $content = str_replace('|--|', '&#', $content); //https://github.com/publishpress/publishpress-taxonomies/issues/824
         /**
-         * I commented the line below because of https://github.com/TaxoPress/TaxoPress/issues/2118
+         * I commented the line below because of https://github.com/publishpress/publishpress-taxonomies/issues/2118
          * In summary, when content contain < and > special character which are intentiona;, they're been
          * changed to < > which is not needed
          */
@@ -789,9 +789,9 @@ class SimpleTags_Client_Autolinks
         $content = str_replace('&amp ;rsquo;', '&rsquo;', $content);
         $content = str_replace(['’', ' ’', '&rsquor;', ' &rsquor;', '&rsquo;', ' &rsquo;'], '\'', $content);
 
-        $content = str_replace('&#38;', '&', $content); //https://github.com/TaxoPress/TaxoPress/issues/770
-        $content = str_replace(';amp;', ';', $content); //https://github.com/TaxoPress/TaxoPress/issues/810
-        $content = str_replace('%7C--%7C038;', '&', $content); //https://github.com/TaxoPress/TaxoPress/issues/1377
+        $content = str_replace('&#38;', '&', $content); //https://github.com/publishpress/publishpress-taxonomies/issues/770
+        $content = str_replace(';amp;', ';', $content); //https://github.com/publishpress/publishpress-taxonomies/issues/810
+        $content = str_replace('%7C--%7C038;', '&', $content); //https://github.com/publishpress/publishpress-taxonomies/issues/1377
 
         $content = str_replace('starttaxopressrandom', '', $content);
         $content = str_replace('endtaxopressrandom', '', $content);

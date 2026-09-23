@@ -18,8 +18,8 @@
  * Original Author: danieliser
  * Original Author URL: https://danieliser.com
  *
- * TODO Search & Replace taxopress_ with your prefix
- * TODO Search & Replace Taxopress_ with your prefix
+ * TODO Search & Replace the plugin prefix
+ * TODO Search & Replace the plugin class prefix
  * TODO Search & Replace 'simple-tags' with your 'simple-tags'
  * TODO Change the $api_url if your using the accompanying tracking server. Leave it blank to disable this feature.
  * TODO Modify the ::triggers function array with your custom triggers & text.
@@ -279,7 +279,7 @@ if (!class_exists('Taxopress_Modules_Reviews')) {
 
             if (!isset($triggers)) {
                 $time_message = __(
-                    "Hey, you've been using TaxoPress for %s on your site. We hope the plugin has been useful. Please could you quickly leave a 5-star rating on WordPress.org? It really does help to keep TaxoPress growing.",
+                    "Hey, you've been using PublishPress Taxonomies for %s on your site. We hope the plugin has been useful. Please could you quickly leave a 5-star rating on WordPress.org? It really does help to keep PublishPress Taxonomies growing.",
                     'simple-tags'
                 );
 
@@ -368,7 +368,7 @@ if (!class_exists('Taxopress_Modules_Reviews')) {
                     <a class="button button-primary taxopress-dismiss" target="_blank"
                        href="https://wordpress.org/support/plugin/simple-tags/reviews/?rate=5#rate-response"
                        data-reason="am_now">
-                        <strong><?php _e('Click here to add your rating for TaxoPress', 'simple-tags'); ?></strong>
+                        <strong><?php _e('Click here to add your rating for PublishPress Taxonomies', 'simple-tags'); ?></strong>
                     </a> <a href="#" class="button taxopress-dismiss" data-reason="maybe_later">
                         <?php _e('Maybe later', 'simple-tags'); ?>
                     </a> <a href="#" class="button taxopress-dismiss" data-reason="already_did">
@@ -479,15 +479,15 @@ if (!class_exists('Taxopress_Modules_Reviews')) {
             .taxopress-notice .button:not(.button-primary):hover,
             .taxopress-notice .button:not(.button-primary):active,
             .taxopress-notice .button:not(.button-primary):focus {
-                border-color: #1F48AC !important;
-                color: #1F48AC !important;
+                border-color: #655997 !important;
+                color: #655997 !important;
             }
             .taxopress-notice .button-primary,
             .taxopress-notice .button-primary:hover,
             .taxopress-notice .button-primary:active,
             .taxopress-notice .button-primary:focus {
-                border-color: #1F48AC !important;
-                background: #1F48AC !important;
+                border-color: #655997 !important;
+                background: #655997 !important;
             }
             </style>
             <?php

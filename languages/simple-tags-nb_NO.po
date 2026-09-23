@@ -1,0 +1,4802 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Taxonomies Free 3.53.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
+"PO-Revision-Date: 2026-09-04 16:07+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: simple-tags\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nb-NO\n"
+
+#: simple-tags.php:4, fuzzy
+#. Plugin Name of the plugin
+msgid "PublishPress Taxonomies Free"
+msgstr "PublishPress Taxonomies Free"
+
+#: simple-tags.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/simple-tags/"
+msgstr "https://wordpress.org/plugins/simple-tags/"
+
+#: simple-tags.php:6
+#. Description of the plugin
+msgid ""
+"PublishPress Taxonomies allows you to create and manage Tags, Categories, "
+"and all your WordPress taxonomy terms."
+msgstr ""
+"PublishPress Taxonomies lar deg opprette og administrere Tags, Kategorier, "
+"og alle dine WordPress taksonomibegreper."
+
+#: simple-tags.php:8
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: simple-tags.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: blocks/post-tags.php:63
+#: dist/simple-tags/blocks/post-tags.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:141
+#: inc/related-posts-widget.php:141
+msgid "Here"
+msgstr "Her"
+
+#: blocks/post-tags.php:66
+#: dist/simple-tags/blocks/post-tags.php:66
+msgid " Select current post"
+msgstr " Velg nåværende innlegg"
+
+#: blocks/post-tags.php:67
+#: dist/simple-tags/blocks/post-tags.php:67
+msgid "Current Posts (PublishPress Taxonomies)"
+msgstr "Nåværende innlegg (PublishPress Taxonomies)"
+
+#: blocks/related-posts.php:80
+#: blocks/tag-clouds.php:63
+#: dist/simple-tags/blocks/related-posts.php:80
+#: dist/simple-tags/blocks/tag-clouds.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:109
+#: inc/related-posts-widget.php:109
+msgid "this page."
+msgstr "denne siden."
+
+#: blocks/related-posts.php:83
+#: dist/simple-tags/blocks/related-posts.php:83
+msgid "Select related post"
+msgstr "Velg relatert innlegg"
+
+#: blocks/related-posts.php:84
+#: dist/simple-tags/blocks/related-posts.php:84
+#: dist/simple-tags/inc/related-posts-widget.php:19
+#: inc/related-posts-widget.php:19
+msgid "Related Posts (PublishPress Taxonomies)"
+msgstr "Relaterte innlegg (PublishPress Taxonomies)"
+
+#: blocks/tag-clouds.php:66
+#: dist/simple-tags/blocks/tag-clouds.php:66
+msgid "Select Terms Display"
+msgstr "Velg begrepsvisning"
+
+#: blocks/tag-clouds.php:67
+#: dist/simple-tags/blocks/tag-clouds.php:67
+msgid "Terms Display (PublishPress Taxonomies)"
+msgstr "Begrepsvisning (PublishPress Taxonomies)"
+
+#: dist/simple-tags/inc/related-posts-functions.php:167
+#: dist/simple-tags/inc/related-posts-table.php:15
+#: dist/simple-tags/inc/related-posts.php:73
+#: dist/simple-tags/inc/related-posts.php:74
+#: dist/simple-tags/inc/related-posts.php:131
+#: inc/related-posts-functions.php:167
+#: inc/related-posts-table.php:15
+#: inc/related-posts.php:73
+#: inc/related-posts.php:74
+#: inc/related-posts.php:131
+msgid "Related Posts"
+msgstr "Relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts-functions.php:176
+#: inc/related-posts-functions.php:176
+msgid "No related posts."
+msgstr "Ingen relaterte innlegg."
+
+#: dist/simple-tags/inc/related-posts-functions.php:262
+#: dist/simple-tags/inc/schedule.php:173
+#: dist/simple-tags/inc/tag-clouds-functions.php:245
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:181
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:311
+#: inc/related-posts-functions.php:262
+#: inc/schedule.php:173
+#: inc/tag-clouds-functions.php:245
+#: modules/taxopress-ai/taxopress-ai.php:181
+#: modules/taxopress-ai/taxopress-ai.php:311
+msgid "Settings updated successfully."
+msgstr "Innstillinger oppdatert med suksess."
+
+#: dist/simple-tags/inc/related-posts-functions.php:271
+#: inc/related-posts-functions.php:271
+msgid "Related Posts successfully deleted."
+msgstr "Relaterte innlegg slettet med suksess."
+
+#: dist/simple-tags/inc/related-posts-functions.php:366
+#: inc/related-posts-functions.php:366
+msgid "Related Posts not found."
+msgstr "Relaterte innlegg ikke funnet."
+
+#: dist/simple-tags/inc/related-posts-table.php:14
+#: inc/related-posts-table.php:14
+msgid "Related Post"
+msgstr "Relatert innlegg"
+
+#: dist/simple-tags/inc/related-posts-table.php:65
+#: dist/simple-tags/inc/related-posts.php:382
+#: dist/simple-tags/inc/tag-clouds-table.php:65
+#: dist/simple-tags/inc/tag-clouds.php:377
+#: dist/simple-tags/inc/terms-table.php:732
+#: dist/simple-tags/inc/terms-table.php:739
+#: inc/related-posts-table.php:65
+#: inc/related-posts.php:382
+#: inc/tag-clouds-table.php:65
+#: inc/tag-clouds.php:377
+#: inc/terms-table.php:732
+#: inc/terms-table.php:739
+msgid "Title"
+msgstr "Tittel"
+
+#: dist/simple-tags/inc/related-posts-table.php:66
+#: dist/simple-tags/inc/related-posts.php:502
+#: dist/simple-tags/inc/schedule-logs-table.php:53
+#: dist/simple-tags/inc/tag-clouds-table.php:66
+#: dist/simple-tags/inc/tag-clouds.php:463
+#: dist/simple-tags/inc/terms-table.php:742
+#: dist/simple-tags/inc/terms-table.php:867
+#: inc/related-posts-table.php:66
+#: inc/related-posts.php:502
+#: inc/schedule-logs-table.php:53
+#: inc/tag-clouds-table.php:66
+#: inc/tag-clouds.php:463
+#: inc/terms-table.php:742
+#: inc/terms-table.php:867
+msgid "Taxonomy"
+msgstr "Taxonomi"
+
+#: dist/simple-tags/inc/related-posts-table.php:67
+#: dist/simple-tags/inc/related-posts.php:341
+#: dist/simple-tags/inc/related-posts.php:788
+#: dist/simple-tags/inc/taxonomies.php:481
+#: dist/simple-tags/inc/terms-table.php:743
+#: inc/related-posts-table.php:67
+#: inc/related-posts.php:341
+#: inc/related-posts.php:788
+#: inc/taxonomies.php:481
+#: inc/terms-table.php:743
+msgid "Post Types"
+msgstr "Posttyper"
+
+#: dist/simple-tags/inc/related-posts-table.php:68
+#: inc/related-posts-table.php:68
+msgid "Automatic display"
+msgstr "Automatisk visning"
+
+#: dist/simple-tags/inc/related-posts-table.php:69
+#: dist/simple-tags/inc/tag-clouds-table.php:69
+#: inc/related-posts-table.php:69
+#: inc/tag-clouds-table.php:69
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: dist/simple-tags/inc/related-posts-table.php:91
+#: dist/simple-tags/inc/tag-clouds-table.php:91
+#: inc/related-posts-table.php:91
+#: inc/tag-clouds-table.php:91
+msgid "No item avaliable."
+msgstr "Ingen element tilgjengelig."
+
+#: dist/simple-tags/inc/related-posts-table.php:276
+#: dist/simple-tags/inc/tag-clouds-table.php:276
+#: dist/simple-tags/inc/terms-table.php:1155
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1523
+#: inc/related-posts-table.php:276
+#: inc/tag-clouds-table.php:276
+#: inc/terms-table.php:1155
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: modules/taxopress-ai/taxopress-ai.php:1523
+msgid "Edit"
+msgstr "Rediger"
+
+#: dist/simple-tags/inc/related-posts-table.php:289
+#: dist/simple-tags/inc/schedule-logs-table.php:79
+#: dist/simple-tags/inc/tag-clouds-table.php:289
+#: dist/simple-tags/inc/terms-table.php:800
+#: dist/simple-tags/inc/terms-table.php:1197
+#: inc/related-posts-table.php:289
+#: inc/schedule-logs-table.php:79
+#: inc/tag-clouds-table.php:289
+#: inc/terms-table.php:800
+#: inc/terms-table.php:1197
+msgid "Delete"
+msgstr "Slett"
+
+#: dist/simple-tags/inc/related-posts-table.php:349
+#: inc/related-posts-table.php:349
+msgid "Current post type"
+msgstr "Nåværende posttype"
+
+#: dist/simple-tags/inc/related-posts-table.php:351
+#: dist/simple-tags/inc/tag-clouds-table.php:359
+#: inc/related-posts-table.php:351
+#: inc/tag-clouds-table.php:359
+msgid "All"
+msgstr "Alle"
+
+#: dist/simple-tags/inc/related-posts-table.php:386
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:616
+#: inc/related-posts-table.php:386
+#: includes-core/TaxopressCoreAdmin.php:616
+msgid "Default"
+msgstr "Standard"
+
+#: dist/simple-tags/inc/related-posts-table.php:417
+#: dist/simple-tags/inc/related-posts.php:638
+#: inc/related-posts-table.php:417
+#: inc/related-posts.php:638
+msgid "Homepage"
+msgstr "Hjemmeside"
+
+#: dist/simple-tags/inc/related-posts-table.php:418
+#: dist/simple-tags/inc/related-posts.php:639
+#: inc/related-posts-table.php:418
+#: inc/related-posts.php:639
+msgid "Blog display"
+msgstr "Bloggvisning"
+
+#: dist/simple-tags/inc/related-posts-table.php:419
+#: inc/related-posts-table.php:419
+msgid "Single post display"
+msgstr "Visning av enkeltinnlegg"
+
+#: dist/simple-tags/inc/related-posts-table.php:420
+#: inc/related-posts-table.php:420
+msgid "RSS feed"
+msgstr "RSS-feed"
+
+#: dist/simple-tags/inc/related-posts-table.php:430
+#: dist/simple-tags/inc/related-posts.php:1329
+#: dist/simple-tags/inc/tag-clouds.php:1092
+#: dist/simple-tags/inc/taxonomies.php:1986
+#: inc/related-posts-table.php:430
+#: inc/related-posts.php:1329
+#: inc/tag-clouds.php:1092
+#: inc/taxonomies.php:1986
+msgid "No"
+msgstr "Nei"
+
+#: dist/simple-tags/inc/related-posts-widget.php:22
+#: inc/related-posts-widget.php:22
+msgid "PublishPress Taxonomies Related Posts Shortcode"
+msgstr "PublishPress Taxonomies Relaterte innlegg Shortcode"
+
+#: dist/simple-tags/inc/related-posts-widget.php:112
+#: inc/related-posts-widget.php:112
+msgid "Related Posts are added on "
+msgstr "Relaterte innlegg legges til den "
+
+#: dist/simple-tags/inc/related-posts-widget.php:120
+#: inc/related-posts-widget.php:120
+msgid "Select widget Related Posts."
+msgstr "Velg widget Relaterte innlegg."
+
+#: dist/simple-tags/inc/related-posts-widget.php:144
+#: inc/related-posts-widget.php:144
+msgid "No Related Posts shortcode available. Add new shortcode "
+msgstr "Ingen Relaterte innlegg shortcode tilgjengelig. Legg til ny shortcode "
+
+#: dist/simple-tags/inc/related-posts.php:96
+#: dist/simple-tags/inc/schedule.php:58
+#: dist/simple-tags/inc/tag-clouds.php:96
+#: dist/simple-tags/inc/taxonomies.php:137
+#: dist/simple-tags/inc/terms.php:197
+#: inc/related-posts.php:96
+#: inc/schedule.php:58
+#: inc/tag-clouds.php:96
+#: inc/taxonomies.php:137
+#: inc/terms.php:197
+msgid "Number of items per page"
+msgstr "Antall elementer per side"
+
+#: dist/simple-tags/inc/related-posts.php:137
+#: inc/related-posts.php:137
+msgid "Add New Related Post"
+msgstr "Legg til nytt relatert innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:140
+#: inc/related-posts.php:140
+msgid ""
+"The Related Posts feature works by checking for shared taxonomy terms. If "
+"your post has the terms “WordPress” and “Website”, then Related Posts will "
+"display other posts that also have the terms “WordPress” and “Website”."
+msgstr ""
+"Funksjonen Relaterte innlegg fungerer ved å sjekke for delte "
+"taksonomibegrep. Hvis innlegget ditt har begrepene “WordPress” og "
+"“Nettside”, vil Relaterte innlegg vise andre innlegg som også har begrepene "
+"“WordPress” og “Nettside”."
+
+#: dist/simple-tags/inc/related-posts.php:147
+#: dist/simple-tags/inc/tag-clouds.php:145
+#: dist/simple-tags/inc/taxonomies.php:181
+#: dist/simple-tags/inc/terms.php:291
+#: inc/related-posts.php:147
+#: inc/tag-clouds.php:145
+#: inc/taxonomies.php:181
+#: inc/terms.php:291
+#. translators: %s: search keywords
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Søkeresultater for &#8220;%s&#8221;"
+
+#: dist/simple-tags/inc/related-posts.php:159
+#: inc/related-posts.php:159
+msgid "Search Related Posts"
+msgstr "Søk etter relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:170
+#: dist/simple-tags/inc/schedule.php:485
+#: dist/simple-tags/inc/tag-clouds.php:172
+#: dist/simple-tags/inc/taxonomies.php:257
+#: dist/simple-tags/inc/terms.php:324
+#: inc/related-posts.php:170
+#: inc/schedule.php:485
+#: inc/tag-clouds.php:172
+#: inc/taxonomies.php:257
+#: inc/terms.php:324
+msgid "Description here."
+msgstr "Beskrivelse her."
+
+#: dist/simple-tags/inc/related-posts.php:234
+#: inc/related-posts.php:234
+msgid "Manage Related Posts"
+msgstr "Administrer relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:250
+#: inc/related-posts.php:250
+msgid "Preview Related Posts"
+msgstr "Forhåndsvis relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:256
+#: dist/simple-tags/inc/tag-clouds.php:270
+#: inc/related-posts.php:256
+#: inc/tag-clouds.php:270
+msgid "Toggle panel"
+msgstr "Veksle panel"
+
+#: dist/simple-tags/inc/related-posts.php:277
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:465
+#: inc/related-posts.php:277
+#: modules/taxopress-ai/taxopress-ai.php:465
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+#: dist/simple-tags/inc/related-posts.php:300
+#: inc/related-posts.php:300
+msgid "Edit Related Posts"
+msgstr "Rediger relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:307
+#: inc/related-posts.php:307
+msgid "Add new Related Posts"
+msgstr "Legg til nye relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:318
+#: inc/related-posts.php:318
+msgid "To create more Related Posts, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"For å opprette flere relaterte innlegg, vennligst oppgrader til "
+"PublishPress Taxonomies Pro."
+
+#: dist/simple-tags/inc/related-posts.php:324
+#: inc/related-posts.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Related Posts. "
+"You can create Related Posts for any taxonomy and then display those "
+"Related Posts anywhere on your site."
+msgstr ""
+"Med PublishPress Taxonomies Pro kan du opprette ubegrensede relaterte "
+"innlegg. Du kan opprette relaterte innlegg for hvilken som helst taksonomi "
+"og deretter vise disse relaterte innleggene hvor som helst på nettstedet "
+"ditt."
+
+#: dist/simple-tags/inc/related-posts.php:337
+#: dist/simple-tags/inc/tag-clouds.php:334
+#: dist/simple-tags/inc/taxonomies.php:475
+#: inc/related-posts.php:337
+#: inc/tag-clouds.php:334
+#: inc/taxonomies.php:475
+msgid "General"
+msgstr "Generelt"
+
+#: dist/simple-tags/inc/related-posts.php:345
+#: inc/related-posts.php:345
+msgid "Display"
+msgstr "Visning"
+
+#: dist/simple-tags/inc/related-posts.php:349
+#: dist/simple-tags/inc/tag-clouds.php:354
+#: inc/related-posts.php:349
+#: inc/tag-clouds.php:354, fuzzy
+msgid "Design"
+msgstr "Design"
+
+#: dist/simple-tags/inc/related-posts.php:353
+#: dist/simple-tags/inc/tag-clouds.php:346
+#: inc/related-posts.php:353
+#: inc/tag-clouds.php:346
+msgid "Layout"
+msgstr "Oppsett"
+
+#: dist/simple-tags/inc/related-posts.php:357
+#: dist/simple-tags/inc/related-posts.php:724
+#: dist/simple-tags/inc/tag-clouds-table.php:68
+#: dist/simple-tags/inc/tag-clouds.php:670
+#: inc/related-posts.php:357
+#: inc/related-posts.php:724
+#: inc/tag-clouds-table.php:68
+#: inc/tag-clouds.php:670
+msgid "Display format"
+msgstr "Visningsformat"
+
+#: dist/simple-tags/inc/related-posts.php:361
+#: dist/simple-tags/inc/tag-clouds.php:342
+#: inc/related-posts.php:361
+#: inc/tag-clouds.php:342
+msgid "Options"
+msgstr "Alternativer"
+
+#: dist/simple-tags/inc/related-posts.php:365
+#: dist/simple-tags/inc/taxonomies.php:504
+#: inc/related-posts.php:365
+#: inc/taxonomies.php:504
+msgid "Advanced"
+msgstr "Avansert"
+
+#: dist/simple-tags/inc/related-posts.php:401
+#: dist/simple-tags/inc/related-posts.php:558
+#: dist/simple-tags/inc/related-posts.php:992
+#: dist/simple-tags/inc/schedule.php:322
+#: dist/simple-tags/inc/tag-clouds.php:397
+#: dist/simple-tags/inc/tag-clouds.php:741
+#: dist/simple-tags/inc/tag-clouds.php:779
+#: dist/simple-tags/inc/tag-clouds.php:852
+#: dist/simple-tags/inc/taxonomies.php:632
+#: dist/simple-tags/inc/taxonomies.php:762
+#: dist/simple-tags/inc/taxonomies.php:776
+#: dist/simple-tags/inc/taxonomies.php:890
+#: dist/simple-tags/inc/taxonomies.php:930
+#: dist/simple-tags/inc/taxonomies.php:957
+#: dist/simple-tags/inc/taxonomies.php:994
+#: dist/simple-tags/inc/taxonomies.php:1018
+#: dist/simple-tags/inc/taxonomies.php:1042
+#: dist/simple-tags/inc/taxonomies.php:1067
+#: dist/simple-tags/inc/taxonomies.php:1091
+#: dist/simple-tags/inc/taxonomies.php:1118
+#: dist/simple-tags/inc/taxonomies.php:1585
+#: dist/simple-tags/inc/taxonomies.php:1656
+#: dist/simple-tags/inc/taxonomies.php:1683
+#: dist/simple-tags/inc/taxonomies.php:1710
+#: inc/related-posts.php:401
+#: inc/related-posts.php:558
+#: inc/related-posts.php:992
+#: inc/schedule.php:322
+#: inc/tag-clouds.php:397
+#: inc/tag-clouds.php:741
+#: inc/tag-clouds.php:779
+#: inc/tag-clouds.php:852
+#: inc/taxonomies.php:632
+#: inc/taxonomies.php:762
+#: inc/taxonomies.php:776
+#: inc/taxonomies.php:890
+#: inc/taxonomies.php:930
+#: inc/taxonomies.php:957
+#: inc/taxonomies.php:994
+#: inc/taxonomies.php:1018
+#: inc/taxonomies.php:1042
+#: inc/taxonomies.php:1067
+#: inc/taxonomies.php:1091
+#: inc/taxonomies.php:1118
+#: inc/taxonomies.php:1585
+#: inc/taxonomies.php:1656
+#: inc/taxonomies.php:1683
+#: inc/taxonomies.php:1710
+msgid "False"
+msgstr "Falsk"
+
+#: dist/simple-tags/inc/related-posts.php:406
+#: dist/simple-tags/inc/related-posts.php:563
+#: dist/simple-tags/inc/related-posts.php:997
+#: dist/simple-tags/inc/schedule.php:327
+#: dist/simple-tags/inc/tag-clouds.php:402
+#: dist/simple-tags/inc/tag-clouds.php:746
+#: dist/simple-tags/inc/tag-clouds.php:784
+#: dist/simple-tags/inc/tag-clouds.php:856
+#: dist/simple-tags/inc/taxonomies.php:637
+#: dist/simple-tags/inc/taxonomies.php:767
+#: dist/simple-tags/inc/taxonomies.php:780
+#: dist/simple-tags/inc/taxonomies.php:894
+#: dist/simple-tags/inc/taxonomies.php:934
+#: dist/simple-tags/inc/taxonomies.php:962
+#: dist/simple-tags/inc/taxonomies.php:998
+#: dist/simple-tags/inc/taxonomies.php:1022
+#: dist/simple-tags/inc/taxonomies.php:1046
+#: dist/simple-tags/inc/taxonomies.php:1072
+#: dist/simple-tags/inc/taxonomies.php:1096
+#: dist/simple-tags/inc/taxonomies.php:1123
+#: dist/simple-tags/inc/taxonomies.php:1589
+#: dist/simple-tags/inc/taxonomies.php:1660
+#: dist/simple-tags/inc/taxonomies.php:1687
+#: dist/simple-tags/inc/taxonomies.php:1714
+#: inc/related-posts.php:406
+#: inc/related-posts.php:563
+#: inc/related-posts.php:997
+#: inc/schedule.php:327
+#: inc/tag-clouds.php:402
+#: inc/tag-clouds.php:746
+#: inc/tag-clouds.php:784
+#: inc/tag-clouds.php:856
+#: inc/taxonomies.php:637
+#: inc/taxonomies.php:767
+#: inc/taxonomies.php:780
+#: inc/taxonomies.php:894
+#: inc/taxonomies.php:934
+#: inc/taxonomies.php:962
+#: inc/taxonomies.php:998
+#: inc/taxonomies.php:1022
+#: inc/taxonomies.php:1046
+#: inc/taxonomies.php:1072
+#: inc/taxonomies.php:1096
+#: inc/taxonomies.php:1123
+#: inc/taxonomies.php:1589
+#: inc/taxonomies.php:1660
+#: inc/taxonomies.php:1687
+#: inc/taxonomies.php:1714
+msgid "True"
+msgstr "Sant"
+
+#: dist/simple-tags/inc/related-posts.php:416
+#: inc/related-posts.php:416
+msgid "Hide title in output ?"
+msgstr "Skjul tittel i utdata?"
+
+#: dist/simple-tags/inc/related-posts.php:428
+#: dist/simple-tags/inc/schedule-logs-table.php:192
+#: inc/related-posts.php:428
+#: inc/schedule-logs-table.php:192
+msgid "None"
+msgstr "Ingen"
+
+#: dist/simple-tags/inc/related-posts.php:432
+#: inc/related-posts.php:432, fuzzy
+msgid "H1"
+msgstr "H1"
+
+#: dist/simple-tags/inc/related-posts.php:436
+#: inc/related-posts.php:436, fuzzy
+msgid "H2"
+msgstr "H2"
+
+#: dist/simple-tags/inc/related-posts.php:440
+#: inc/related-posts.php:440, fuzzy
+msgid "H3"
+msgstr "H3"
+
+#: dist/simple-tags/inc/related-posts.php:444
+#: inc/related-posts.php:444, fuzzy
+msgid "H4"
+msgstr "H4"
+
+#: dist/simple-tags/inc/related-posts.php:449
+#: inc/related-posts.php:449, fuzzy
+msgid "H5"
+msgstr "H5"
+
+#: dist/simple-tags/inc/related-posts.php:453
+#: inc/related-posts.php:453, fuzzy
+msgid "H6"
+msgstr "H6"
+
+#: dist/simple-tags/inc/related-posts.php:467
+#: inc/related-posts.php:467
+msgid "Title header"
+msgstr "Titteloverskrift"
+
+#: dist/simple-tags/inc/related-posts.php:521
+#: dist/simple-tags/inc/tag-clouds.php:813
+#: inc/related-posts.php:521
+#: inc/tag-clouds.php:813
+msgid "Font size minimum"
+msgstr "Minste skrifttype"
+
+#: dist/simple-tags/inc/related-posts.php:531
+#: dist/simple-tags/inc/tag-clouds.php:823
+#: inc/related-posts.php:531
+#: inc/tag-clouds.php:823
+msgid "Font size maximum"
+msgstr "Største skrifttype"
+
+#: dist/simple-tags/inc/related-posts.php:538
+#: dist/simple-tags/inc/tag-clouds.php:830
+#: inc/related-posts.php:538
+#: inc/tag-clouds.php:830
+msgid "Point"
+msgstr "Punkt"
+
+#: dist/simple-tags/inc/related-posts.php:539
+#: dist/simple-tags/inc/tag-clouds.php:831
+#: inc/related-posts.php:539
+#: inc/tag-clouds.php:831
+msgid "Pixel"
+msgstr "Piksler"
+
+#: dist/simple-tags/inc/related-posts.php:540
+#: dist/simple-tags/inc/tag-clouds.php:832
+#: inc/related-posts.php:540
+#: inc/tag-clouds.php:832, fuzzy
+msgid "Em"
+msgstr "Em"
+
+#: dist/simple-tags/inc/related-posts.php:541
+#: dist/simple-tags/inc/tag-clouds.php:833
+#: inc/related-posts.php:541
+#: inc/tag-clouds.php:833
+msgid "Percent"
+msgstr "Prosent"
+
+#: dist/simple-tags/inc/related-posts.php:550
+#: dist/simple-tags/inc/tag-clouds.php:842
+#: inc/related-posts.php:550
+#: inc/tag-clouds.php:842
+msgid "Unit font size"
+msgstr "Enhet skrifttype"
+
+#: dist/simple-tags/inc/related-posts.php:574
+#: dist/simple-tags/inc/tag-clouds.php:873
+#: inc/related-posts.php:574
+#: inc/tag-clouds.php:873
+msgid "Enable colors for terms"
+msgstr "Aktiver farger for termer"
+
+#: dist/simple-tags/inc/related-posts.php:584
+#: dist/simple-tags/inc/tag-clouds.php:883
+#: inc/related-posts.php:584
+#: inc/tag-clouds.php:883
+msgid "Font color minimum"
+msgstr "Minste skrifttypefarge"
+
+#: dist/simple-tags/inc/related-posts.php:585
+#: inc/related-posts.php:585
+msgid "This is the color of the least popular term."
+msgstr "Dette er fargen på det minst populære termen."
+
+#: dist/simple-tags/inc/related-posts.php:595
+#: dist/simple-tags/inc/tag-clouds.php:894
+#: inc/related-posts.php:595
+#: inc/tag-clouds.php:894
+msgid "Font color maximum"
+msgstr "Maksimal fontfarge"
+
+#: dist/simple-tags/inc/related-posts.php:596
+#: inc/related-posts.php:596
+msgid "This is the color of the most popular term."
+msgstr "Dette er fargen på det mest populære termen."
+
+#: dist/simple-tags/inc/related-posts.php:640
+#: inc/related-posts.php:640
+msgid "Posts"
+msgstr "Innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:653
+#: inc/related-posts.php:653
+msgid "Maximum related posts to display"
+msgstr "Maksimalt antall relaterte innlegg som skal vises"
+
+#: dist/simple-tags/inc/related-posts.php:657
+#: inc/related-posts.php:657
+msgid "Specify the number of related posts to display."
+msgstr "Spesifiser antallet relaterte innlegg som skal vises."
+
+#: dist/simple-tags/inc/related-posts.php:661
+#: inc/related-posts.php:661
+msgid "Attempt to automatically display related posts"
+msgstr "Forsøk å automatisk vise relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:664
+#: inc/related-posts.php:664
+msgid ""
+"PublishPress Taxonomies will attempt to automatically display related posts "
+"in this content. It may not be successful for all post types and layouts."
+msgstr ""
+"PublishPress Taxonomies vil forsøke å automatisk vise relaterte innlegg i "
+"dette innholdet. Det kan hende det ikke lykkes for alle innleggstyper og "
+"oppsett."
+
+#: dist/simple-tags/inc/related-posts.php:713
+#: inc/related-posts.php:713
+msgid "Box List"
+msgstr "Boks liste"
+
+#: dist/simple-tags/inc/related-posts.php:714
+#: dist/simple-tags/inc/tag-clouds-table.php:377
+#: dist/simple-tags/inc/tag-clouds.php:656
+#: inc/related-posts.php:714
+#: inc/tag-clouds-table.php:377
+#: inc/tag-clouds.php:656
+msgid "Unordered List (UL/LI)"
+msgstr "Uordnet liste (UL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:715
+#: dist/simple-tags/inc/tag-clouds-table.php:378
+#: dist/simple-tags/inc/tag-clouds.php:657
+#: inc/related-posts.php:715
+#: inc/tag-clouds-table.php:378
+#: inc/tag-clouds.php:657
+msgid "Ordered List (OL/LI)"
+msgstr "Ordnet liste (OL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:744
+#: dist/simple-tags/inc/tag-clouds.php:939
+#: inc/related-posts.php:744
+#: inc/tag-clouds.php:939
+msgid "Term link format"
+msgstr "Format for termlink"
+
+#: dist/simple-tags/inc/related-posts.php:745
+#: inc/related-posts.php:745
+#, php-format
+msgid ""
+"This settings allows to customize the appearance of Related Post links. You "
+"can find tokens and explanations in the sidebar and %1sin the "
+"documentation%2s."
+msgstr ""
+"Denne innstillingen lar deg tilpasse utseendet på Relaterte innlegg lenker. "
+"Du kan finne tokens og forklaringer i sidepanelet og %1$sin "
+"dokumentasjonen%2s."
+
+#: dist/simple-tags/inc/related-posts.php:791
+#: inc/related-posts.php:791
+msgid "PublishPress Taxonomies will display related posts from selected post types."
+msgstr "PublishPress Taxonomies vil vise relaterte innlegg fra valgte innleggstyper."
+
+#: dist/simple-tags/inc/related-posts.php:845
+#: inc/related-posts.php:845
+msgid "Text to display before posts list"
+msgstr "Tekst som skal vises før innlegglisten"
+
+#: dist/simple-tags/inc/related-posts.php:849
+#: inc/related-posts.php:849
+msgid "Enter the text that should be displayed before the posts list."
+msgstr "Skriv inn teksten som skal vises før innlegglisten."
+
+#: dist/simple-tags/inc/related-posts.php:861
+#: inc/related-posts.php:861
+msgid "Text to display after posts list"
+msgstr "Tekst som skal vises etter innlegglisten"
+
+#: dist/simple-tags/inc/related-posts.php:865
+#: inc/related-posts.php:865
+msgid "Enter the text that should be display after the posts list."
+msgstr "Skriv inn teksten som skal vises etter innlegglisten."
+
+#: dist/simple-tags/inc/related-posts.php:876
+#: dist/simple-tags/inc/tag-clouds.php:605
+#: inc/related-posts.php:876
+#: inc/tag-clouds.php:605
+msgid "24 hours"
+msgstr "24 timer"
+
+#: dist/simple-tags/inc/related-posts.php:880
+#: dist/simple-tags/inc/tag-clouds.php:606
+#: inc/related-posts.php:880
+#: inc/tag-clouds.php:606
+msgid "7 days"
+msgstr "7 dager"
+
+#: dist/simple-tags/inc/related-posts.php:884
+#: dist/simple-tags/inc/tag-clouds.php:607
+#: inc/related-posts.php:884
+#: inc/tag-clouds.php:607
+msgid "2 weeks"
+msgstr "2 uker"
+
+#: dist/simple-tags/inc/related-posts.php:888
+#: dist/simple-tags/inc/tag-clouds.php:608
+#: dist/simple-tags/review-request/review.php:298
+#: inc/related-posts.php:888
+#: inc/tag-clouds.php:608
+#: review-request/review.php:298
+msgid "1 month"
+msgstr "1 måned"
+
+#: dist/simple-tags/inc/related-posts.php:892
+#: dist/simple-tags/inc/tag-clouds.php:609
+#: inc/related-posts.php:892
+#: inc/tag-clouds.php:609
+msgid "6 months"
+msgstr "6 måneder"
+
+#: dist/simple-tags/inc/related-posts.php:896
+#: dist/simple-tags/inc/tag-clouds.php:610
+#: inc/related-posts.php:896
+#: inc/tag-clouds.php:610
+msgid "1 year"
+msgstr "1 år"
+
+#: dist/simple-tags/inc/related-posts.php:900
+#: dist/simple-tags/inc/schedule.php:396
+#: dist/simple-tags/inc/schedule.php:430
+#: dist/simple-tags/inc/tag-clouds.php:611
+#: inc/related-posts.php:900
+#: inc/schedule.php:396
+#: inc/schedule.php:430
+#: inc/tag-clouds.php:611
+msgid "No limit"
+msgstr "Ingen grense"
+
+#: dist/simple-tags/inc/related-posts.php:911
+#: inc/related-posts.php:911
+msgid "Limit related posts based on timeframe"
+msgstr "Begrens relaterte innlegg basert på tidsramme"
+
+#: dist/simple-tags/inc/related-posts.php:923
+#: inc/related-posts.php:923
+msgid "Least common tags between posts"
+msgstr "Minst vanlige merker mellom innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:930
+#: inc/related-posts.php:930
+msgid "Most common tags between posts"
+msgstr "Mest vanlige merker mellom innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:938
+#: inc/related-posts.php:938
+msgid "Older Entries"
+msgstr "Eldre innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:942
+#: inc/related-posts.php:942
+msgid "Newer Entries"
+msgstr "Nyere innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:946
+#: inc/related-posts.php:946
+msgid "Alphabetical"
+msgstr "Alfabetisk"
+
+#: dist/simple-tags/inc/related-posts.php:950
+#: inc/related-posts.php:950
+msgid "Inverse Alphabetical"
+msgstr "Omvendt alfabetisk"
+
+#: dist/simple-tags/inc/related-posts.php:957
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:870
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:930
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:974
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+#: inc/related-posts.php:957
+#: includes-core/TaxopressCoreAdmin.php:870
+#: includes-core/TaxopressCoreAdmin.php:930
+#: includes-core/TaxopressCoreAdmin.php:974
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+msgid "Random"
+msgstr "Tilfeldig"
+
+#: dist/simple-tags/inc/related-posts.php:967
+#: inc/related-posts.php:967
+msgid "Related Posts Order"
+msgstr "Rekkefølge for relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:979
+#: inc/related-posts.php:979
+msgid "Text to show when there is no related post"
+msgstr "Tekst som vises når det ikke finnes noe relatert innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1007
+#: inc/related-posts.php:1007
+msgid "Hide output if no related post is found ?"
+msgstr "Skjule utdata hvis ingen relaterte innlegg finnes?"
+
+#: dist/simple-tags/inc/related-posts.php:1029
+#: inc/related-posts.php:1029
+msgid "Related Posts div class"
+msgstr "Klasse for relaterte innlegg div"
+
+#: dist/simple-tags/inc/related-posts.php:1040
+#: dist/simple-tags/inc/tag-clouds.php:926
+#: inc/related-posts.php:1040
+#: inc/tag-clouds.php:926
+msgid "Term link class"
+msgstr "Klasse for termlink"
+
+#: dist/simple-tags/inc/related-posts.php:1047
+#: inc/related-posts.php:1047
+msgid "d.m.Y (e.g., 09.10.2024)"
+msgstr "d.m.Y (f.eks. 09.10.2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1048
+#: inc/related-posts.php:1048
+msgid "F j, Y (e.g., October 9, 2024)"
+msgstr "F j, Y (f.eks. 9. oktober 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1049
+#: inc/related-posts.php:1049
+msgid "Y-m-d (e.g., 2024-10-09)"
+msgstr "Y-m-d (f.eks. 2024-10-09)"
+
+#: dist/simple-tags/inc/related-posts.php:1050
+#: inc/related-posts.php:1050
+msgid "m/d/Y (e.g., 10/09/2024)"
+msgstr "m/d/Y (f.eks. 10/09/2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1051
+#: inc/related-posts.php:1051
+msgid "d M, Y (e.g., 09 Oct, 2024)"
+msgstr "d M, Y (f.eks. 09 Okt, 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1060
+#: inc/related-posts.php:1060
+msgid "Post date format"
+msgstr "Postdatoformat"
+
+#: dist/simple-tags/inc/related-posts.php:1069
+#: inc/related-posts.php:1069
+msgid "Maximum characters of post content to display"
+msgstr "Maksimalt antall tegn i postinnhold som skal vises"
+
+#: dist/simple-tags/inc/related-posts.php:1082
+#: inc/related-posts.php:1082
+msgid "Maximum number of categories"
+msgstr "Maksimalt antall kategorier"
+
+#: dist/simple-tags/inc/related-posts.php:1086
+#: inc/related-posts.php:1086
+msgid "You must set zero (0) to display all post categories."
+msgstr "Du må sette null (0) for å vise alle postkategorier."
+
+#: dist/simple-tags/inc/related-posts.php:1096
+#: inc/related-posts.php:1096
+msgid "Maximum number of tags"
+msgstr "Maksimalt antall tagger"
+
+#: dist/simple-tags/inc/related-posts.php:1100
+#: inc/related-posts.php:1100
+msgid "You must set zero (0) to display all post tags."
+msgstr "Du må sette null (0) for å vise alle posttagger."
+
+#: dist/simple-tags/inc/related-posts.php:1107
+#: inc/related-posts.php:1107
+msgid "Thumbnail (150x150)"
+msgstr "Miniatyrbilde (150x150)"
+
+#: dist/simple-tags/inc/related-posts.php:1108
+#: inc/related-posts.php:1108, fuzzy
+msgid "Medium (300x300)"
+msgstr "Medium (300x300)"
+
+#: dist/simple-tags/inc/related-posts.php:1109
+#: inc/related-posts.php:1109
+msgid "Large (1024x1024)"
+msgstr "Stor (1024x1024)"
+
+#: dist/simple-tags/inc/related-posts.php:1110
+#: inc/related-posts.php:1110
+msgid "1536x1536 (High Res)"
+msgstr "1536x1536 (Høy oppløsning)"
+
+#: dist/simple-tags/inc/related-posts.php:1111
+#: inc/related-posts.php:1111
+msgid "2048x2048 (Ultra High Res)"
+msgstr "2048x2048 (Ultra høy oppløsning)"
+
+#: dist/simple-tags/inc/related-posts.php:1122
+#: inc/related-posts.php:1122
+msgid "Thumbnail image resolution"
+msgstr "Oppløsning for miniatyrbilde"
+
+#: dist/simple-tags/inc/related-posts.php:1133
+#: inc/related-posts.php:1133
+msgid "Default post thumbnail"
+msgstr "Standard postminiatyrbilde"
+
+#: dist/simple-tags/inc/related-posts.php:1144
+#: inc/related-posts.php:1144
+msgid "Using default PublishPress Taxonomies image"
+msgstr "Bruker standard PublishPress Taxonomies-bilde"
+
+#: dist/simple-tags/inc/related-posts.php:1153
+#: inc/related-posts.php:1153
+msgid "Select Media"
+msgstr "Velg media"
+
+#: dist/simple-tags/inc/related-posts.php:1156
+#: inc/related-posts.php:1156
+msgid "Use Default Image"
+msgstr "Bruk standardbilde"
+
+#: dist/simple-tags/inc/related-posts.php:1159
+#: inc/related-posts.php:1159
+msgid "Remove Image"
+msgstr "Fjern bilde"
+
+#: dist/simple-tags/inc/related-posts.php:1166
+#: inc/related-posts.php:1166
+msgid ""
+"Select the default %post_thumb_url% to be used when a post doesn't have a "
+"featured image."
+msgstr ""
+"Velg den standard %post_thumb_url% som skal brukes når et innlegg ikke har "
+"et utvalgt bilde."
+
+#: dist/simple-tags/inc/related-posts.php:1194
+#: inc/related-posts.php:1194
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                            The Pro version has more "
+"features and support."
+msgstr ""
+"Du bruker PublishPress Taxonomies Free. Den pro versionen har flere "
+"funksjoner og støtte."
+
+#: dist/simple-tags/inc/related-posts.php:1198
+#: dist/simple-tags/inc/tag-clouds.php:970
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:19
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:77
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:125
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:178
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:202
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:226
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:250
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:277
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:295
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:394
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:412
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:430
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:448
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:472
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:496
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:520
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:566
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:604
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:678
+#: inc/related-posts.php:1198
+#: inc/tag-clouds.php:970
+#: includes-core/TaxopressCoreAdmin.php:19
+#: includes-core/TaxopressCoreAdmin.php:77
+#: includes-core/TaxopressCoreAdmin.php:125
+#: includes-core/TaxopressCoreAdmin.php:178
+#: includes-core/TaxopressCoreAdmin.php:202
+#: includes-core/TaxopressCoreAdmin.php:226
+#: includes-core/TaxopressCoreAdmin.php:250
+#: includes-core/TaxopressCoreAdmin.php:277
+#: includes-core/TaxopressCoreAdmin.php:295
+#: includes-core/TaxopressCoreAdmin.php:394
+#: includes-core/TaxopressCoreAdmin.php:412
+#: includes-core/TaxopressCoreAdmin.php:430
+#: includes-core/TaxopressCoreAdmin.php:448
+#: includes-core/TaxopressCoreAdmin.php:472
+#: includes-core/TaxopressCoreAdmin.php:496
+#: includes-core/TaxopressCoreAdmin.php:520
+#: includes-core/TaxopressCoreAdmin.php:566
+#: includes-core/TaxopressCoreAdmin.php:604
+#: includes-core/TaxopressCoreAdmin.php:678
+msgid "Upgrade to Pro"
+msgstr "Oppgrader til Pro"
+
+#: dist/simple-tags/inc/related-posts.php:1235
+#: inc/related-posts.php:1235
+msgid "Save Related Posts"
+msgstr "Lagre relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1243
+#: inc/related-posts.php:1243
+msgid "Add Related Posts"
+msgstr "Legg til relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1256
+#: dist/simple-tags/inc/tag-clouds.php:1021
+#: inc/related-posts.php:1256
+#: inc/tag-clouds.php:1021, fuzzy
+msgid "Shortcode: "
+msgstr "Shortcode: "
+
+#: dist/simple-tags/inc/related-posts.php:1278
+#: inc/related-posts.php:1278
+msgid "Related Posts format"
+msgstr "Format for relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1283
+#: inc/related-posts.php:1283
+msgid "Here are the tokens you can use for related posts format"
+msgstr "Her er tokenene du kan bruke for formatet for relaterte innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1285
+#: inc/related-posts.php:1285
+msgid "The URL of the post"
+msgstr "URL-en til innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1286
+#: inc/related-posts.php:1286
+msgid "The title of the post"
+msgstr "Tittelen på innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1287
+#: inc/related-posts.php:1287
+msgid "The date of the post (this shows inside a tooltip)"
+msgstr "Datoen for innlegget (denne vises inne i et verktøytips)"
+
+#: dist/simple-tags/inc/related-posts.php:1288
+#: inc/related-posts.php:1288
+msgid "The number of tags used by both posts"
+msgstr "Antall tagger brukt av begge innlegg"
+
+#: dist/simple-tags/inc/related-posts.php:1289
+#: inc/related-posts.php:1289
+msgid "The number of comments on the post"
+msgstr "Antall kommentarer på innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1290
+#: inc/related-posts.php:1290
+msgid "The ID of the post"
+msgstr "ID-en til innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1291
+#: inc/related-posts.php:1291
+msgid "A list of tags used by both the current post and the related post"
+msgstr ""
+"En liste over tagger brukt av både det nåværende innlegget og det relaterte "
+"innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1292
+#: inc/related-posts.php:1292
+msgid "The post excerpt"
+msgstr "Utdraget av innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1293
+#: inc/related-posts.php:1293
+msgid "The post featured image url"
+msgstr "URL-en til innleggets utvalgte bilde"
+
+#: dist/simple-tags/inc/related-posts.php:1294
+#: inc/related-posts.php:1294
+msgid "The post content"
+msgstr "Innholdet i innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1295
+#: inc/related-posts.php:1295
+msgid "The post category"
+msgstr "Kategorien til innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1296
+#: inc/related-posts.php:1296
+msgid "The font size of the post"
+msgstr "Skriftstørrelsen til innlegget"
+
+#: dist/simple-tags/inc/related-posts.php:1297
+#: inc/related-posts.php:1297
+msgid "The color of the post title"
+msgstr "Fargen på posttittelen"
+
+#: dist/simple-tags/inc/related-posts.php:1319
+#: dist/simple-tags/inc/tag-clouds.php:1082
+#: dist/simple-tags/inc/taxonomies.php:1976
+#: inc/related-posts.php:1319
+#: inc/tag-clouds.php:1082
+#: inc/taxonomies.php:1976
+msgid "Please complete the following required fields to save your changes:"
+msgstr ""
+"Vennligst fullfør de følgende obligatoriske feltene for å lagre endringene "
+"dine:"
+
+#: dist/simple-tags/inc/related-posts.php:1322
+#: dist/simple-tags/inc/tag-clouds.php:1085
+#: dist/simple-tags/inc/taxonomies.php:1979
+#: inc/related-posts.php:1322
+#: inc/tag-clouds.php:1085
+#: inc/taxonomies.php:1979
+msgid "Okay"
+msgstr "OK"
+
+#: dist/simple-tags/inc/related-posts.php:1331
+#: dist/simple-tags/inc/tag-clouds.php:1094
+#: dist/simple-tags/inc/taxonomies.php:1988
+#: inc/related-posts.php:1331
+#: inc/tag-clouds.php:1094
+#: inc/taxonomies.php:1988
+msgid "Yes"
+msgstr "Ja"
+
+#: dist/simple-tags/inc/related-posts.php:1343
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1141
+#: inc/related-posts.php:1343
+#: modules/taxopress-ai/taxopress-ai.php:1141
+msgid "Security check failed."
+msgstr "Sikkerhetssjekk feilet."
+
+#: dist/simple-tags/inc/related-posts.php:1347
+#: dist/simple-tags/inc/tag-clouds.php:1113
+#: dist/simple-tags/inc/terms-functions.php:200
+#: dist/simple-tags/inc/terms-functions.php:217
+#: dist/simple-tags/inc/terms-functions.php:261
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1164
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1735
+#: inc/related-posts.php:1347
+#: inc/tag-clouds.php:1113
+#: inc/terms-functions.php:200
+#: inc/terms-functions.php:217
+#: inc/terms-functions.php:261
+#: modules/taxopress-ai/taxopress-ai.php:1164
+#: modules/taxopress-ai/taxopress-ai.php:1735
+msgid "Permission denied."
+msgstr "Tillatelse nektet."
+
+#: dist/simple-tags/inc/related-posts.php:1354
+#: inc/related-posts.php:1354
+msgid "Select a post to see a preview."
+msgstr "Velg en post for å se en forhåndsvisning."
+
+#: dist/simple-tags/inc/related-posts.php:1422
+#: inc/related-posts.php:1422
+msgid "No related posts found."
+msgstr "Ingen relaterte innlegg funnet."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:13
+#: inc/schedule-logs-table.php:13, fuzzy
+msgid "autotermsschedulelog"
+msgstr "autotermsschedulelog"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:14
+#: inc/schedule-logs-table.php:14, fuzzy
+msgid "autotermsschedulelogs"
+msgstr "autotermsschedulelogs"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:51
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
+#: inc/schedule-logs-table.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:816, fuzzy
+msgid "Post"
+msgstr "Post"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:52
+#: dist/simple-tags/inc/terms-table.php:858
+#: inc/schedule-logs-table.php:52
+#: inc/terms-table.php:858
+msgid "Post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:54
+#: inc/schedule-logs-table.php:54
+msgid "Terms added"
+msgstr "Betingelser lagt til"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:55
+#: inc/schedule-logs-table.php:55
+msgid "Date"
+msgstr "Dato"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:68
+#: inc/schedule-logs-table.php:68
+msgid "Schedule log is empty."
+msgstr "Planlogg er tom."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:130
+#: inc/schedule-logs-table.php:130
+msgid "Edit Main Post"
+msgstr "Rediger hovedinnlegg"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:143
+#: inc/schedule-logs-table.php:143
+msgid "Delete Log"
+msgstr "Slett logg"
+
+#: dist/simple-tags/inc/schedule.php:40
+#: dist/simple-tags/inc/schedule.php:41
+#: dist/simple-tags/inc/schedule.php:201
+#: inc/schedule.php:40
+#: inc/schedule.php:41
+#: inc/schedule.php:201
+msgid "Auto Terms Schedule"
+msgstr "Automatiske vilkår planlegging"
+
+#: dist/simple-tags/inc/schedule.php:83
+#: inc/schedule.php:83
+msgid "Schedule is disabled. Please enable a schedule frequency to run a test."
+msgstr ""
+"Planlegging er deaktivert. Vennligst aktiver en planleggingsfrekvens for å "
+"kjøre en test."
+
+#: dist/simple-tags/inc/schedule.php:99
+#: inc/schedule.php:99
+#, php-format
+msgid ""
+"Scheduled the cron event %s to run now. The original event will not be "
+"affected."
+msgstr ""
+"Planla cron-hendelsen %s til å kjøre nå. Den opprinnelige hendelsen vil "
+"ikke bli påvirket."
+
+#: dist/simple-tags/inc/schedule.php:123
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+#: inc/schedule.php:123
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+msgid "An error occured."
+msgstr "En feil oppstod."
+
+#: dist/simple-tags/inc/schedule.php:126
+#: inc/schedule.php:126
+msgid "Limit per batches is required."
+msgstr "Grense per batch er påkrevd."
+
+#: dist/simple-tags/inc/schedule.php:128
+#: inc/schedule.php:128
+msgid "Batches wait time is required."
+msgstr "Ventetid per batch er påkrevd."
+
+#: dist/simple-tags/inc/schedule.php:170
+#: inc/schedule.php:170
+msgid "Schedule is not enabled for selected Auto Terms."
+msgstr "Planlegging er ikke aktivert for valgte Auto Terms."
+
+#: dist/simple-tags/inc/schedule.php:203
+#: inc/schedule.php:203
+msgid ""
+"This feature allows you to run the Auto Terms feature on a schedule. This "
+"is helpful if you regularly import content into WordPress. PublishPress "
+"Taxonomies can run on a schedule and add terms to your imported content."
+msgstr ""
+"Denne funksjonen lar deg kjøre Auto Terms-funksjonen etter en tidsplan. "
+"Dette er nyttig hvis du regelmessig importerer innhold til WordPress. "
+"PublishPress Taxonomies kan kjøre etter en tidsplan og legge til termer i "
+"ditt importerte innhold."
+
+#: dist/simple-tags/inc/schedule.php:213
+#: inc/schedule.php:213
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: dist/simple-tags/inc/schedule.php:225
+#: inc/schedule.php:225
+msgid "Select an option..."
+msgstr "Velg et alternativ..."
+
+#: dist/simple-tags/inc/schedule.php:249
+#: inc/schedule.php:249
+msgid "Auto Terms setting"
+msgstr "Innstilling for Auto Terms"
+
+#: dist/simple-tags/inc/schedule.php:253
+#: inc/schedule.php:253
+msgid "Select Auto Terms settings to use when running the \"Schedule\" feature."
+msgstr ""
+"Velg innstillinger for Auto Terms som skal brukes når du kjører "
+"\"Planlegging\"-funksjonen."
+
+#: dist/simple-tags/inc/schedule.php:259
+#: inc/schedule.php:259
+msgid "Do not run on a schedule"
+msgstr "Kjør ikke etter en tidsplan"
+
+#: dist/simple-tags/inc/schedule.php:260
+#: inc/schedule.php:260
+msgid "Weekly"
+msgstr "Ukentlig"
+
+#: dist/simple-tags/inc/schedule.php:264
+#: inc/schedule.php:264
+msgid "Schedule Frequency"
+msgstr "Planleggingsfrekvens"
+
+#: dist/simple-tags/inc/schedule.php:290
+#: inc/schedule.php:290
+msgid "Disable 'Do not run on a schedule' to select schedule frequency."
+msgstr "Deaktiver 'Kjør ikke etter en tidsplan' for å velge planleggingsfrekvens."
+
+#: dist/simple-tags/inc/schedule.php:338
+#: inc/schedule.php:338
+msgid "Exclude previously analyzed content"
+msgstr "Ekskluder tidligere analyserte innlegg"
+
+#: dist/simple-tags/inc/schedule.php:339
+#: inc/schedule.php:339
+msgid ""
+"This enables you to skip posts that have already been analyzed by the "
+"Schedule feature."
+msgstr ""
+"Dette gjør at du kan hoppe over innlegg som allerede er analysert av "
+"Planlegging-funksjonen."
+
+#: dist/simple-tags/inc/schedule.php:347
+#: inc/schedule.php:347
+msgid "Limit per batches"
+msgstr "Grense per batch"
+
+#: dist/simple-tags/inc/schedule.php:351
+#: inc/schedule.php:351
+msgid ""
+"This enables your scheduled Auto Terms to run in batches. If you have a lot "
+"of content, set this to a lower number to avoid timeouts."
+msgstr ""
+"Dette gjør at dine planlagte Auto Terms kan kjøres i batcher. Hvis du har "
+"mye innhold, sett dette til et lavere tall for å unngå tidsavbrudd."
+
+#: dist/simple-tags/inc/schedule.php:361
+#: inc/schedule.php:361
+msgid "Batches wait time"
+msgstr "Ventetid per batch"
+
+#: dist/simple-tags/inc/schedule.php:362
+#: inc/schedule.php:362
+msgid ""
+"This is the wait time (in seconds) between processing batches of Auto "
+"Terms. If you have a lot of existing content, set this to a higher number "
+"to avoid timeouts."
+msgstr ""
+"Dette er ventetiden (i sekunder) mellom behandling av batcher med Auto "
+"Terms. Hvis du har mye eksisterende innhold, sett dette til et høyere tall "
+"for å unngå tidsavbrudd."
+
+#: dist/simple-tags/inc/schedule.php:371
+#: dist/simple-tags/inc/schedule.php:406
+#: inc/schedule.php:371
+#: inc/schedule.php:406
+msgid "24 hours ago"
+msgstr "24 timer siden"
+
+#: dist/simple-tags/inc/schedule.php:375
+#: dist/simple-tags/inc/schedule.php:410
+#: inc/schedule.php:375
+#: inc/schedule.php:410
+msgid "7 days ago"
+msgstr "7 dager siden"
+
+#: dist/simple-tags/inc/schedule.php:379
+#: dist/simple-tags/inc/schedule.php:414
+#: inc/schedule.php:379
+#: inc/schedule.php:414
+msgid "2 weeks ago"
+msgstr "2 uker siden"
+
+#: dist/simple-tags/inc/schedule.php:383
+#: dist/simple-tags/inc/schedule.php:418
+#: inc/schedule.php:383
+#: inc/schedule.php:418
+msgid "1 month ago"
+msgstr "1 måned siden"
+
+#: dist/simple-tags/inc/schedule.php:388
+#: dist/simple-tags/inc/schedule.php:422
+#: inc/schedule.php:388
+#: inc/schedule.php:422
+msgid "6 months ago"
+msgstr "6 måneder siden"
+
+#: dist/simple-tags/inc/schedule.php:392
+#: dist/simple-tags/inc/schedule.php:426
+#: inc/schedule.php:392
+#: inc/schedule.php:426
+msgid "1 year ago"
+msgstr "1 år siden"
+
+#: dist/simple-tags/inc/schedule.php:443
+#: inc/schedule.php:443
+msgid "Limit Auto Terms, based on published date"
+msgstr "Begrens Auto Vilkår, basert på publiseringsdato"
+
+#: dist/simple-tags/inc/schedule.php:447
+#: inc/schedule.php:447
+msgid ""
+"This setting can limit your scheduled Auto Terms query to only recent "
+"content. We recommend using this feature to avoid timeouts on large sites."
+msgstr ""
+"Denne innstillingen kan begrense forespørselen din for planlagte Auto "
+"Vilkår til kun nylig innhold. Vi anbefaler å bruke denne funksjonen for å "
+"unngå tidsavbrudd på store nettsteder."
+
+#: dist/simple-tags/inc/schedule.php:457
+#: inc/schedule.php:457
+msgid "Save Settings"
+msgstr "Lagre innstillinger"
+
+#: dist/simple-tags/inc/schedule.php:458
+#: inc/schedule.php:458
+msgid "Test Run"
+msgstr "Testkjøring"
+
+#: dist/simple-tags/inc/schedule.php:467
+#: inc/schedule.php:467
+msgid "Recent Schedule Runs"
+msgstr "Nylige planlagte kjøringer"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+#, php-format
+msgid "You can see full log details on the %1s screen"
+msgstr "Du kan se full loggdetaljer på %1s-skjermen"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+msgid "Auto Terms Logs"
+msgstr "Auto Vilkår-loggene"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:153
+#: dist/simple-tags/inc/tag-clouds-table.php:14
+#: dist/simple-tags/inc/tag-clouds-table.php:15
+#: dist/simple-tags/inc/tag-clouds.php:73
+#: dist/simple-tags/inc/tag-clouds.php:74
+#: dist/simple-tags/inc/tag-clouds.php:129
+#: inc/tag-clouds-functions.php:153
+#: inc/tag-clouds-table.php:14
+#: inc/tag-clouds-table.php:15
+#: inc/tag-clouds.php:73
+#: inc/tag-clouds.php:74
+#: inc/tag-clouds.php:129
+msgid "Terms Display"
+msgstr "Vilkårsvisning"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:254
+#: inc/tag-clouds-functions.php:254
+msgid "Terms Display successfully deleted."
+msgstr "Vilkårsvisning ble slettet."
+
+#: dist/simple-tags/inc/tag-clouds-table.php:67
+#: dist/simple-tags/inc/tag-clouds.php:435
+#: inc/tag-clouds-table.php:67
+#: inc/tag-clouds.php:435
+msgid "Post Type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:376
+#: dist/simple-tags/inc/tag-clouds.php:655
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:694
+#: inc/tag-clouds-table.php:376
+#: inc/tag-clouds.php:655
+#: includes-core/TaxopressCoreAdmin.php:694, fuzzy
+msgid "Cloud"
+msgstr "Cloud"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:379
+#: dist/simple-tags/inc/tag-clouds.php:658
+#: inc/tag-clouds-table.php:379
+#: inc/tag-clouds.php:658, fuzzy
+msgid "WordPress Default"
+msgstr "WordPress Default"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:380
+#: dist/simple-tags/inc/tag-clouds.php:659
+#: inc/tag-clouds-table.php:380
+#: inc/tag-clouds.php:659
+msgid "Table List"
+msgstr "Tabelliste"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:381
+#: dist/simple-tags/inc/tag-clouds.php:660
+#: inc/tag-clouds-table.php:381
+#: inc/tag-clouds.php:660, fuzzy
+msgid "Border Cloud"
+msgstr "Border Cloud"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:382
+#: dist/simple-tags/inc/tag-clouds.php:661
+#: inc/tag-clouds-table.php:382
+#: inc/tag-clouds.php:661
+msgid "Parent / Child"
+msgstr "Forelder / Barn"
+
+#: dist/simple-tags/inc/tag-clouds.php:135
+#: inc/tag-clouds.php:135
+msgid "Add New Terms Display"
+msgstr "Legg til ny visning av termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:138
+#: inc/tag-clouds.php:138
+msgid ""
+"This feature allows you to create a customizable display of all the terms "
+"in one taxonomy."
+msgstr ""
+"Denne funksjonen lar deg lage en tilpassbar visning av alle termene i én "
+"taxonomy."
+
+#: dist/simple-tags/inc/tag-clouds.php:161
+#: inc/tag-clouds.php:161
+msgid "Search Terms Display"
+msgstr "Søk etter termer visning"
+
+#: dist/simple-tags/inc/tag-clouds.php:242
+#: inc/tag-clouds.php:242
+msgid "Manage Terms Display"
+msgstr "Administrer termer visning"
+
+#: dist/simple-tags/inc/tag-clouds.php:258
+#: inc/tag-clouds.php:258
+msgid "Preview Terms Display"
+msgstr "Forhåndsvisning av termer visning"
+
+#: dist/simple-tags/inc/tag-clouds.php:263
+#: inc/tag-clouds.php:263
+msgid "Move up"
+msgstr "Flytt opp"
+
+#: dist/simple-tags/inc/tag-clouds.php:266
+#: inc/tag-clouds.php:266
+msgid "Move down"
+msgstr "Flytt ned"
+
+#: dist/simple-tags/inc/tag-clouds.php:303
+#: inc/tag-clouds.php:303
+msgid "Edit Terms Display"
+msgstr "Rediger termer visning"
+
+#: dist/simple-tags/inc/tag-clouds.php:310
+#: inc/tag-clouds.php:310
+msgid "Add new Terms Display"
+msgstr "Legg til ny visning av termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:321
+#: inc/tag-clouds.php:321
+msgid "To create more Terms Display, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"For å lage flere visninger av termer, vennligst oppgrader til PublishPress "
+"Taxonomies Pro."
+
+#: dist/simple-tags/inc/tag-clouds.php:324
+#: inc/tag-clouds.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Terms Display. "
+"You can create Terms Display for any taxonomy and then display those Terms "
+"Display anywhere on your site."
+msgstr ""
+"Med PublishPress Taxonomies Pro kan du lage ubegrensede visninger av "
+"termer. Du kan lage visninger av termer for hvilken som helst taxonomy og "
+"deretter vise disse visningene av termer hvor som helst på nettstedet ditt."
+
+#: dist/simple-tags/inc/tag-clouds.php:338
+#: inc/tag-clouds.php:338
+msgid "Choose Terms"
+msgstr "Velg termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:350
+#: inc/tag-clouds.php:350
+msgid "Exceptions"
+msgstr "Unntak"
+
+#: dist/simple-tags/inc/tag-clouds.php:358
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:700
+#: inc/tag-clouds.php:358
+#: includes-core/TaxopressCoreAdmin.php:700
+msgid "Display Format"
+msgstr "Visningsformat"
+
+#: dist/simple-tags/inc/tag-clouds.php:412
+#: inc/tag-clouds.php:412
+msgid "Hide title in output?"
+msgstr "Skjul tittel i utdata?"
+
+#: dist/simple-tags/inc/tag-clouds.php:418
+#: inc/tag-clouds.php:418
+msgid "All post types"
+msgstr "Alle innleggstyper"
+
+#: dist/simple-tags/inc/tag-clouds.php:469
+#: inc/tag-clouds.php:469
+msgid "All Parent Terms"
+msgstr "Alle overordnede termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:519
+#: inc/tag-clouds.php:519
+msgid "Parent Term"
+msgstr "Overordnet term"
+
+#: dist/simple-tags/inc/tag-clouds.php:525
+#: inc/tag-clouds.php:525
+msgid "Display only Parent Terms"
+msgstr "Vis kun overordnede termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:526
+#: inc/tag-clouds.php:526
+msgid "Display only Sub-Terms"
+msgstr "Vis kun undertermer"
+
+#: dist/simple-tags/inc/tag-clouds.php:527
+#: inc/tag-clouds.php:527
+msgid "Display Parents and Sub-Terms"
+msgstr "Vis foreldre og underbegreper"
+
+#: dist/simple-tags/inc/tag-clouds.php:537
+#: inc/tag-clouds.php:537
+msgid "Display Mode"
+msgstr "Visningsmodus"
+
+#: dist/simple-tags/inc/tag-clouds.php:554
+#: inc/tag-clouds.php:554
+msgid "Term selection mode"
+msgstr "Modus for valg av begreper"
+
+#: dist/simple-tags/inc/tag-clouds.php:562
+#: inc/tag-clouds.php:562
+msgid "Automatic"
+msgstr "Automatisk"
+
+#: dist/simple-tags/inc/tag-clouds.php:565
+#: inc/tag-clouds.php:565
+msgid "Display terms based on settings in the \"General\" tab."
+msgstr "Vis begreper basert på innstillinger i \"Generelt\" fanen."
+
+#: dist/simple-tags/inc/tag-clouds.php:571
+#: inc/tag-clouds.php:571
+msgid "Custom"
+msgstr "Egendefinert"
+
+#: dist/simple-tags/inc/tag-clouds.php:574
+#: inc/tag-clouds.php:574
+msgid ""
+"Display only the specific terms entered in the \"Custom terms to display\" "
+"field below."
+msgstr ""
+"Vis kun de spesifikke begrepene som er angitt i feltet \"Egendefinerte "
+"begreper å vise\" nedenfor."
+
+#: dist/simple-tags/inc/tag-clouds.php:580
+#: inc/tag-clouds.php:580
+msgid "Combined"
+msgstr "Kombinert"
+
+#: dist/simple-tags/inc/tag-clouds.php:583
+#: inc/tag-clouds.php:583
+msgid "Display automatic terms plus any additional custom terms specified below."
+msgstr ""
+"Vis automatiske begreper pluss eventuelle ekstra egendefinerte begreper "
+"spesifisert nedenfor."
+
+#: dist/simple-tags/inc/tag-clouds.php:598
+#: inc/tag-clouds.php:598
+msgid "Custom terms to display"
+msgstr "Egendefinerte begreper å vise"
+
+#: dist/simple-tags/inc/tag-clouds.php:599
+#: inc/tag-clouds.php:599
+msgid "Enter terms (comma-separated) to display. Used in Custom and Combined modes."
+msgstr ""
+"Skriv inn begreper (kommaseparert) som skal vises. Brukes i egendefinerte "
+"og kombinerte moduser."
+
+#: dist/simple-tags/inc/tag-clouds.php:620
+#: inc/tag-clouds.php:620
+msgid "Limit terms based on timeframe"
+msgstr "Begrens begreper basert på tidsramme"
+
+#: dist/simple-tags/inc/tag-clouds.php:629
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:826
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+#: inc/tag-clouds.php:629
+#: includes-core/TaxopressCoreAdmin.php:826
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+msgid "Ascending"
+msgstr "Stigende"
+
+#: dist/simple-tags/inc/tag-clouds.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:827
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+#: inc/tag-clouds.php:630
+#: includes-core/TaxopressCoreAdmin.php:827
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+msgid "Descending"
+msgstr "Synkende"
+
+#: dist/simple-tags/inc/tag-clouds.php:639
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:832
+#: inc/tag-clouds.php:639
+#: includes-core/TaxopressCoreAdmin.php:832
+msgid "Ordering for choosing terms for display"
+msgstr "Rekkefølge for valg av begreper for visning"
+
+#: dist/simple-tags/inc/tag-clouds.php:688
+#: inc/tag-clouds.php:688
+msgid "Text to display before terms list"
+msgstr "Tekst å vise før listen over begreper"
+
+#: dist/simple-tags/inc/tag-clouds.php:692
+#: inc/tag-clouds.php:692
+msgid ""
+"Enter the text that should be display before terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Skriv inn teksten som skal vises før listen over begreper. Dette feltet "
+"godtar grunnleggende HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:704
+#: inc/tag-clouds.php:704
+msgid "Text to display after terms list"
+msgstr "Tekst å vise etter listen over begreper"
+
+#: dist/simple-tags/inc/tag-clouds.php:708
+#: inc/tag-clouds.php:708
+msgid ""
+"Enter the text that should be display after terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Skriv inn teksten som skal vises etter listen over begreper. Dette feltet "
+"godtar grunnleggende HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:729
+#: inc/tag-clouds.php:729
+msgid "Exclude terms from terms display"
+msgstr "Ekskluder begreper fra visning av begreper"
+
+#: dist/simple-tags/inc/tag-clouds.php:730
+#: inc/tag-clouds.php:730
+msgid "Enter terms (comma-separated) to exclude from the terms display."
+msgstr ""
+"Skriv inn termer (kommaseparert) som skal ekskluderes fra visningen av "
+"termer."
+
+#: dist/simple-tags/inc/tag-clouds.php:758
+#: inc/tag-clouds.php:758
+msgid "Exclude hidden terms from Terms Display?"
+msgstr "Ekskluder skjulte termer fra visningen av termer?"
+
+#: dist/simple-tags/inc/tag-clouds.php:794
+#: inc/tag-clouds.php:794
+msgid "Hide display output if no terms?"
+msgstr "Skjul visningsutdata hvis ingen termer?"
+
+#: dist/simple-tags/inc/tag-clouds.php:803
+#: inc/tag-clouds.php:803
+msgid "Maximum terms to display"
+msgstr "Maksimalt antall termer som skal vises"
+
+#: dist/simple-tags/inc/tag-clouds.php:884
+#: inc/tag-clouds.php:884
+msgid "This is the color of the least popular term"
+msgstr "Dette er fargen på den minst populære termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:895
+#: inc/tag-clouds.php:895
+msgid "This is the color of the most popular term"
+msgstr "Dette er fargen på den mest populære termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:915
+#: inc/tag-clouds.php:915
+msgid "Term display div class"
+msgstr "Div-klasse for visning av termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:940
+#: inc/tag-clouds.php:940
+#, php-format
+msgid ""
+"This option allows you to change the format of your terms. You can use any "
+"of the tokens in the \"Terms Display format\" sidebar\". Find more details "
+"%1sin the documentation%2s."
+msgstr ""
+"Dette alternativet lar deg endre formatet på termer. Du kan bruke noen av "
+"tokenene i \"Visningsformat for termer\" sidepanelet\". Finn flere detaljer "
+"%1$s i dokumentasjonen %2$s."
+
+#: dist/simple-tags/inc/tag-clouds.php:966
+#: inc/tag-clouds.php:966
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                        The Pro version has more features "
+"and support."
+msgstr ""
+"Du bruker PublishPress Taxonomies Free.\n"
+"                                        Pro-versjonen har flere funksjoner "
+"og støtte."
+
+#: dist/simple-tags/inc/tag-clouds.php:975
+#: inc/tag-clouds.php:975
+msgid "Font size minimum must not be greater than Font size maximum value."
+msgstr "Minimum fontstørrelse må ikke være større enn maksimum fontstørrelse."
+
+#: dist/simple-tags/inc/tag-clouds.php:1007
+#: inc/tag-clouds.php:1007
+msgid "Save Terms Display"
+msgstr "Lagre visning av termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:1011
+#: inc/tag-clouds.php:1011
+msgid "Add Terms Display"
+msgstr "Legg til visning av termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:1039
+#: inc/tag-clouds.php:1039
+msgid "Terms Display format"
+msgstr "Visningsformat for termer"
+
+#: dist/simple-tags/inc/tag-clouds.php:1044
+#: inc/tag-clouds.php:1044
+msgid "Here are the tokens you can use for Term link format"
+msgstr "Her er tokenene du kan bruke for formatet til termlinker"
+
+#: dist/simple-tags/inc/tag-clouds.php:1046
+#: inc/tag-clouds.php:1046
+msgid "The URL of the term"
+msgstr "URL-en til termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1047
+#: inc/tag-clouds.php:1047
+msgid "The ID of the term"
+msgstr "ID-en til termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1048
+#: inc/tag-clouds.php:1048
+msgid "The weighted size of the term in the display"
+msgstr "Den vektede størrelsen på termen i visningen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1049
+#: inc/tag-clouds.php:1049
+msgid "The number of times the term is used"
+msgstr "Antall ganger termen er brukt"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "This provides rel tag markup"
+msgstr "Dette gir rel-tag markup"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "it creates"
+msgstr "det oppretter"
+
+#: dist/simple-tags/inc/tag-clouds.php:1051
+#: inc/tag-clouds.php:1051
+msgid "The font size for the term"
+msgstr "Skriftstørrelsen for termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1052
+#: inc/tag-clouds.php:1052
+msgid "The font color for the term"
+msgstr "Skriftfargen for termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1053
+#: inc/tag-clouds.php:1053
+msgid "The name of the term"
+msgstr "Navnet på termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1054
+#: inc/tag-clouds.php:1054
+msgid "The name of the term with any HTML stripped out"
+msgstr "Navnet på termen med all HTML fjernet"
+
+#: dist/simple-tags/inc/tag-clouds.php:1055
+#: inc/tag-clouds.php:1055
+msgid "The description of the term"
+msgstr "Beskrivelsen av termen"
+
+#: dist/simple-tags/inc/tag-clouds.php:1109
+#: inc/tag-clouds.php:1109
+msgid "Invalid nonce"
+msgstr "Ugyldig nonce"
+
+#: dist/simple-tags/inc/tag-clouds.php:1117
+#: inc/tag-clouds.php:1117
+msgid "Missing display ID."
+msgstr "Mangler visnings-ID."
+
+#: dist/simple-tags/inc/tag-clouds.php:1125
+#: inc/tag-clouds.php:1125
+msgid "Invalid terms display configuration."
+msgstr "Ugyldig konfigurasjon av termvisning."
+
+#: dist/simple-tags/inc/tag-clouds.php:1175
+#: inc/tag-clouds.php:1175
+msgid "There are no terms in this taxonomy."
+msgstr "Det finnes ingen termer i denne taxonomien."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:124
+#: dist/simple-tags/inc/taxonomies-functions.php:1969
+#: inc/taxonomies-functions.php:124
+#: inc/taxonomies-functions.php:1969
+msgid "Please provide a taxonomy to delete"
+msgstr "Vennligst oppgi en taksonomi for å slette"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:274
+#: inc/taxonomies-functions.php:274
+msgid "Please provide a taxonomy name"
+msgstr "Vennligst oppgi et taksonominavn"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1115
+#: inc/taxonomies-functions.php:1115
+msgid "Object"
+msgstr "Objekt"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1149
+#: dist/simple-tags/inc/taxonomies-functions.php:1560
+#: inc/taxonomies-functions.php:1149
+#: inc/taxonomies-functions.php:1560
+#, php-format
+msgid "%s has been successfully added"
+msgstr "%s har blitt lagt til"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1164
+#: dist/simple-tags/inc/taxonomies-functions.php:1562
+#: inc/taxonomies-functions.php:1164
+#: inc/taxonomies-functions.php:1562
+#, php-format
+msgid "%s has failed to be added"
+msgstr "%s har ikke blitt lagt til"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1179
+#: dist/simple-tags/inc/taxonomies-functions.php:1566
+#: inc/taxonomies-functions.php:1179
+#: inc/taxonomies-functions.php:1566
+#, php-format
+msgid "%s has been successfully updated"
+msgstr "%s har blitt oppdatert"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1193
+#: dist/simple-tags/inc/taxonomies-functions.php:1568
+#: inc/taxonomies-functions.php:1193
+#: inc/taxonomies-functions.php:1568
+#, php-format
+msgid "%s has failed to be updated"
+msgstr "%s har ikke blitt oppdatert"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1208
+#: dist/simple-tags/inc/taxonomies-functions.php:1572
+#: inc/taxonomies-functions.php:1208
+#: inc/taxonomies-functions.php:1572
+#, php-format
+msgid "%s has been successfully deleted"
+msgstr "%s har blitt slettet"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1222
+#: dist/simple-tags/inc/taxonomies-functions.php:1574
+#: inc/taxonomies-functions.php:1222
+#: inc/taxonomies-functions.php:1574
+#, php-format
+msgid "%s has failed to be deleted"
+msgstr "%s har ikke blitt slettet"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1234
+#: inc/taxonomies-functions.php:1234
+msgid "Nonce failed verification"
+msgstr "Nonce feilet verifikasjon"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1248
+#: inc/taxonomies-functions.php:1248
+#, php-format
+msgid "Please choose a different taxonomy name. %s is already registered."
+msgstr "Vennligst velg et annet taksonominavn. %s er allerede registrert."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1261
+#: inc/taxonomies-functions.php:1261
+msgid "Please provide a post type to attach to."
+msgstr "Vennligst oppgi en post type å knytte til."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1284
+#: inc/taxonomies-functions.php:1284
+#, php-format
+msgid ""
+"Please choose a different post type name. %s matches an existing page slug, "
+"which can cause conflicts."
+msgstr ""
+"Vennligst velg et annet navn for post type. %s samsvarer med en "
+"eksisterende side-slug, noe som kan forårsake konflikter."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1300
+#: inc/taxonomies-functions.php:1300
+msgid "Please do not use quotes in post type/taxonomy names or rewrite slugs"
+msgstr ""
+"Vennligst ikke bruk anførselstegn i post type/taxonomy navn eller skriv om "
+"slugs"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1578
+#: inc/taxonomies-functions.php:1578
+#, php-format
+msgid "%s has been successfully imported"
+msgstr "%s har blitt importert med suksess"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1580
+#: inc/taxonomies-functions.php:1580
+#, php-format
+msgid "%s has failed to be imported"
+msgstr "%s har ikke blitt importert"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1666
+#: dist/simple-tags/inc/taxonomies-functions.php:1684
+#: dist/simple-tags/inc/taxonomies-functions.php:1707
+#: dist/simple-tags/inc/taxonomies-functions.php:1726
+#: dist/simple-tags/inc/taxonomies.php:1271
+#: inc/taxonomies-functions.php:1666
+#: inc/taxonomies-functions.php:1684
+#: inc/taxonomies-functions.php:1707
+#: inc/taxonomies-functions.php:1726
+#: inc/taxonomies.php:1271
+#, php-format
+msgid "Add new %s"
+msgstr "Legg til ny %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1667
+#: dist/simple-tags/inc/taxonomies-functions.php:1682
+#: dist/simple-tags/inc/taxonomies-functions.php:1708
+#: dist/simple-tags/inc/taxonomies-functions.php:1724
+#: dist/simple-tags/inc/taxonomies.php:1205
+#: inc/taxonomies-functions.php:1667
+#: inc/taxonomies-functions.php:1682
+#: inc/taxonomies-functions.php:1708
+#: inc/taxonomies-functions.php:1724
+#: inc/taxonomies.php:1205
+#, php-format
+msgid "Edit %s"
+msgstr "Rediger %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1668
+#: dist/simple-tags/inc/taxonomies-functions.php:1709
+#: inc/taxonomies-functions.php:1668
+#: inc/taxonomies-functions.php:1709
+#, php-format
+msgid "New %s"
+msgstr "Ny %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1669
+#: dist/simple-tags/inc/taxonomies-functions.php:1670
+#: dist/simple-tags/inc/taxonomies-functions.php:1710
+#: dist/simple-tags/inc/taxonomies-functions.php:1713
+#: dist/simple-tags/inc/taxonomies.php:1226
+#: inc/taxonomies-functions.php:1669
+#: inc/taxonomies-functions.php:1670
+#: inc/taxonomies-functions.php:1710
+#: inc/taxonomies-functions.php:1713
+#: inc/taxonomies.php:1226
+#, php-format
+msgid "View %s"
+msgstr "Vis %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1671
+#: dist/simple-tags/inc/taxonomies-functions.php:1679
+#: dist/simple-tags/inc/taxonomies-functions.php:1714
+#: dist/simple-tags/inc/taxonomies-functions.php:1732
+#: dist/simple-tags/inc/taxonomies-functions.php:2429
+#: dist/simple-tags/inc/taxonomies.php:1184
+#: dist/simple-tags/inc/terms-table.php:852
+#: inc/taxonomies-functions.php:1671
+#: inc/taxonomies-functions.php:1679
+#: inc/taxonomies-functions.php:1714
+#: inc/taxonomies-functions.php:1732
+#: inc/taxonomies-functions.php:2429
+#: inc/taxonomies.php:1184
+#: inc/terms-table.php:852
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1672
+#: dist/simple-tags/inc/taxonomies-functions.php:1677
+#: dist/simple-tags/inc/taxonomies-functions.php:1715
+#: dist/simple-tags/inc/taxonomies-functions.php:1730
+#: dist/simple-tags/inc/taxonomies.php:1355
+#: inc/taxonomies-functions.php:1672
+#: inc/taxonomies-functions.php:1677
+#: inc/taxonomies-functions.php:1715
+#: inc/taxonomies-functions.php:1730
+#: inc/taxonomies.php:1355
+#, php-format
+msgid "Search %s"
+msgstr "Søk %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1673
+#: dist/simple-tags/inc/taxonomies-functions.php:1716
+#: inc/taxonomies-functions.php:1673
+#: inc/taxonomies-functions.php:1716
+#, php-format
+msgid "No %s found."
+msgstr "Ingen %s funnet."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1674
+#: dist/simple-tags/inc/taxonomies-functions.php:1717
+#: inc/taxonomies-functions.php:1674
+#: inc/taxonomies-functions.php:1717
+#, php-format
+msgid "No %s found in trash."
+msgstr "Ingen %s funnet i søppel."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1678
+#: dist/simple-tags/inc/taxonomies-functions.php:1731
+#: dist/simple-tags/inc/taxonomies.php:1376
+#: inc/taxonomies-functions.php:1678
+#: inc/taxonomies-functions.php:1731
+#: inc/taxonomies.php:1376
+#, php-format
+msgid "Popular %s"
+msgstr "Populære %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1680
+#: dist/simple-tags/inc/taxonomies-functions.php:1722
+#: dist/simple-tags/inc/taxonomies.php:1313
+#: inc/taxonomies-functions.php:1680
+#: inc/taxonomies-functions.php:1722
+#: inc/taxonomies.php:1313
+#, php-format
+msgid "Parent %s"
+msgstr "Forelder %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1681
+#: dist/simple-tags/inc/taxonomies-functions.php:1723
+#: dist/simple-tags/inc/taxonomies.php:1334
+#: inc/taxonomies-functions.php:1681
+#: inc/taxonomies-functions.php:1723
+#: inc/taxonomies.php:1334
+#, php-format
+msgid "Parent %s:"
+msgstr "Forelder %s:"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1683
+#: dist/simple-tags/inc/taxonomies-functions.php:1725
+#: inc/taxonomies-functions.php:1683
+#: inc/taxonomies-functions.php:1725
+#, php-format
+msgid "Update %s"
+msgstr "Oppdater %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1685
+#: dist/simple-tags/inc/taxonomies-functions.php:1727
+#: dist/simple-tags/inc/taxonomies.php:1292
+#: inc/taxonomies-functions.php:1685
+#: inc/taxonomies-functions.php:1727
+#: inc/taxonomies.php:1292
+#, php-format
+msgid "New %s name"
+msgstr "Nytt %s navn"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1686
+#: dist/simple-tags/inc/taxonomies-functions.php:1733
+#: dist/simple-tags/inc/taxonomies.php:1402
+#: inc/taxonomies-functions.php:1686
+#: inc/taxonomies-functions.php:1733
+#: inc/taxonomies.php:1402
+#. translators: Used for autofill
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Skill %s med komma"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1687
+#: dist/simple-tags/inc/taxonomies-functions.php:1734
+#: dist/simple-tags/inc/taxonomies.php:1427
+#: inc/taxonomies-functions.php:1687
+#: inc/taxonomies-functions.php:1734
+#: inc/taxonomies.php:1427
+#, php-format
+msgid "Add or remove %s"
+msgstr "Legg til eller fjern %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1688
+#: dist/simple-tags/inc/taxonomies-functions.php:1735
+#: dist/simple-tags/inc/taxonomies.php:1453
+#: inc/taxonomies-functions.php:1688
+#: inc/taxonomies-functions.php:1735
+#: inc/taxonomies.php:1453
+#. translators: Used for autofill
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "Velg fra de mest brukte %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1814
+#: inc/taxonomies-functions.php:1814
+msgid "Kindly select an action in bulk action dropdown!"
+msgstr "Vennligst velg en handling i nedtrekksmenyen for massehandling!"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1826
+#: inc/taxonomies-functions.php:1826
+msgid "Kindly select atleast one taxonomy to proceed"
+msgstr "Vennligst velg minst én taxonomy for å fortsette"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1837
+#: inc/taxonomies-functions.php:1837
+msgid "Taxonomy has been successfully deactivated"
+msgstr "Taxonomy har blitt deaktivert"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1846
+#: inc/taxonomies-functions.php:1846
+msgid "Taxonomy has been successfully activated"
+msgstr "Taxonomy har blitt aktivert"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1855
+#: inc/taxonomies-functions.php:1855
+msgid "Taxonomy has been successfully deleted"
+msgstr "Taxonomy har blitt slettet"
+
+#: dist/simple-tags/inc/taxonomies.php:77
+#: inc/taxonomies.php:77
+msgid ""
+"Are you sure you want to delete this? Deleting will NOT remove created "
+"content."
+msgstr ""
+"Er du sikker på at du vil slette dette? Sletting vil IKKE fjerne opprettet "
+"innhold."
+
+#: dist/simple-tags/inc/taxonomies.php:81
+#: inc/taxonomies.php:81
+msgid "Please select at least one post type."
+msgstr "Vennligst velg minst én post type."
+
+#: dist/simple-tags/inc/taxonomies.php:83
+#: inc/taxonomies.php:83
+msgid "Taxonomy slug cannot be numbers only."
+msgstr "Taxonomy slug kan ikke være kun tall."
+
+#: dist/simple-tags/inc/taxonomies.php:114
+#: dist/simple-tags/inc/taxonomies.php:115
+#: dist/simple-tags/inc/taxonomies.php:170
+#: inc/taxonomies.php:114
+#: inc/taxonomies.php:115
+#: inc/taxonomies.php:170
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:172
+#: inc/taxonomies.php:172
+msgid "Add New"
+msgstr "Legg til ny"
+
+#: dist/simple-tags/inc/taxonomies.php:174
+#: inc/taxonomies.php:174
+msgid ""
+"This feature allows you to create new taxonomies and edit all the settings "
+"for each taxonomy."
+msgstr ""
+"Denne funksjonen lar deg opprette nye taxonomies og redigere alle "
+"innstillingene for hver taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:197
+#: inc/taxonomies.php:197
+msgid "Search Taxonomies"
+msgstr "Søk taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:215
+#: dist/simple-tags/inc/terms-table.php:876
+#: inc/taxonomies.php:215
+#: inc/terms-table.php:876
+msgid "All Taxonomies"
+msgstr "Alle taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:216
+#: dist/simple-tags/inc/terms-table.php:877
+#: inc/taxonomies.php:216
+#: inc/terms-table.php:877
+msgid "Public Taxonomies"
+msgstr "Offentlige taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:217
+#: dist/simple-tags/inc/terms-table.php:878
+#: inc/taxonomies.php:217
+#: inc/terms-table.php:878
+msgid "Private Taxonomies"
+msgstr "Private taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:237
+#: inc/taxonomies.php:237
+msgid "All Post Types"
+msgstr "Alle posttyper"
+
+#: dist/simple-tags/inc/taxonomies.php:297
+#: inc/taxonomies.php:297
+msgid "Invalid nonce. Request is not authorized."
+msgstr "Ugyldig nonce. Forespørselen er ikke autorisert."
+
+#: dist/simple-tags/inc/taxonomies.php:307
+#: inc/taxonomies.php:307
+msgid "You do not have permission to view terms in this taxonomy."
+msgstr "Du har ikke tillatelse til å se vilkår i denne taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:322
+#: inc/taxonomies.php:322
+msgid "Unable to retrieve terms for this taxonomy."
+msgstr "Kan ikke hente vilkår for denne taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:440
+#: inc/taxonomies.php:440
+msgid "Manage Taxonomy"
+msgstr "Administrer Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:462
+#: inc/taxonomies.php:462
+msgid "Edit Taxonomy"
+msgstr "Rediger Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:464
+#: inc/taxonomies.php:464
+msgid "Add new Taxonomy"
+msgstr "Legg til ny Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:487
+#: inc/taxonomies.php:487, fuzzy
+msgid "Permalinks"
+msgstr "Permalinks"
+
+#: dist/simple-tags/inc/taxonomies.php:492
+#: inc/taxonomies.php:492
+msgid "Admin Area"
+msgstr "Admin område"
+
+#: dist/simple-tags/inc/taxonomies.php:496
+#: inc/taxonomies.php:496
+msgid "Other Labels"
+msgstr "Andre etiketter"
+
+#: dist/simple-tags/inc/taxonomies.php:500
+#: inc/taxonomies.php:500, fuzzy
+msgid "REST API"
+msgstr "REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:508
+#: inc/taxonomies.php:508
+msgid "Order"
+msgstr "Bestilling"
+
+#: dist/simple-tags/inc/taxonomies.php:513
+#: dist/simple-tags/inc/terms-table.php:740
+#: dist/simple-tags/inc/terms-table.php:1442
+#: inc/taxonomies.php:513
+#: inc/terms-table.php:740
+#: inc/terms-table.php:1442, fuzzy
+msgid "Slug"
+msgstr "Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:522
+#: inc/taxonomies.php:522
+msgid "Deactivate or Delete"
+msgstr "Deaktiver eller Slett"
+
+#: dist/simple-tags/inc/taxonomies.php:540
+#: dist/simple-tags/inc/taxonomies.php:818
+#: inc/taxonomies.php:540
+#: inc/taxonomies.php:818, fuzzy
+msgid "Taxonomy Slug"
+msgstr "Taxonomy Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:543
+#: dist/simple-tags/inc/taxonomies.php:821
+#: inc/taxonomies.php:543
+#: inc/taxonomies.php:821
+msgid "Slug has changed"
+msgstr "Slug har endret seg"
+
+#: dist/simple-tags/inc/taxonomies.php:548
+#: dist/simple-tags/inc/taxonomies.php:826
+#: inc/taxonomies.php:548
+#: inc/taxonomies.php:826
+msgid "Slug already exists"
+msgstr "Slug eksisterer allerede"
+
+#: dist/simple-tags/inc/taxonomies.php:552
+#: dist/simple-tags/inc/taxonomies.php:831
+#: inc/taxonomies.php:552
+#: inc/taxonomies.php:831
+msgid "Special character not allowed in slug."
+msgstr "Spesialtegn er ikke tillatt i slug."
+
+#: dist/simple-tags/inc/taxonomies.php:563
+#: inc/taxonomies.php:563
+msgid ""
+"The “slug” is the URL-friendly version of the name. It is usually all "
+"lowercase and contains only letters, numbers, and underscores."
+msgstr ""
+"“Slug” er den URL-vennlige versjonen av navnet. Den er vanligvis helt med "
+"små bokstaver og inneholder kun bokstaver, tall og understreker."
+
+#: dist/simple-tags/inc/taxonomies.php:575
+#: dist/simple-tags/inc/taxonomies.php:851
+#: inc/taxonomies.php:575
+#: inc/taxonomies.php:851
+msgid ""
+"DO NOT EDIT the taxonomy slug unless also planning to migrate terms. "
+"Changing the slug registers a new taxonomy entry."
+msgstr ""
+"IKKE REDIGER slug-en for taxonomy med mindre du også planlegger å migrere "
+"termer. Å endre slug-en registrerer et nytt taxonomy-oppføring."
+
+#: dist/simple-tags/inc/taxonomies.php:588
+#: dist/simple-tags/inc/taxonomies.php:864
+#: inc/taxonomies.php:588
+#: inc/taxonomies.php:864
+msgid "Migrate terms to newly renamed taxonomy?"
+msgstr "Migrere termer til nylig omdøpt taxonomy?"
+
+#: dist/simple-tags/inc/taxonomies.php:607
+#: dist/simple-tags/inc/taxonomies.php:1157
+#: inc/taxonomies.php:607
+#: inc/taxonomies.php:1157
+msgid "(e.g. Jobs)"
+msgstr "(f.eks. Jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:608
+#: inc/taxonomies.php:608
+msgid "Plural Label"
+msgstr "Flertalls etikett"
+
+#: dist/simple-tags/inc/taxonomies.php:619
+#: inc/taxonomies.php:619
+msgid "(e.g. Job)"
+msgstr "(f.eks. Jobb)"
+
+#: dist/simple-tags/inc/taxonomies.php:620
+#: inc/taxonomies.php:620
+msgid "Singular Label"
+msgstr "Enkel etikett"
+
+#: dist/simple-tags/inc/taxonomies.php:647
+#: inc/taxonomies.php:647
+msgid "Parent-Child Relationships"
+msgstr "Foreldre-barn relasjoner"
+
+#: dist/simple-tags/inc/taxonomies.php:648
+#: inc/taxonomies.php:648
+msgid "Can terms in this taxonomy be organized into hierarchical relationships?"
+msgstr "Kan termer i denne taksonomien organiseres i hierarkiske relasjoner?"
+
+#: dist/simple-tags/inc/taxonomies.php:667
+#: dist/simple-tags/inc/terms-table.php:733
+#: dist/simple-tags/inc/terms-table.php:741
+#: inc/taxonomies.php:667
+#: inc/terms-table.php:733
+#: inc/terms-table.php:741
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: dist/simple-tags/inc/taxonomies.php:668
+#: inc/taxonomies.php:668
+msgid "Describe what your taxonomy is used for."
+msgstr "Beskriv hva taksonomien din brukes til."
+
+#: dist/simple-tags/inc/taxonomies.php:679
+#: inc/taxonomies.php:679
+msgid "Default Terms"
+msgstr "Standard termer"
+
+#: dist/simple-tags/inc/taxonomies.php:680
+#: inc/taxonomies.php:680
+msgid ""
+"Set the default terms for this taxonomy. These will be automatically added "
+"to all new posts. Enter the term names or slugs. Separate multiple terms "
+"with by comma."
+msgstr ""
+"Sett standardtermene for denne taksonomien. Disse vil bli automatisk lagt "
+"til alle nye innlegg. Skriv inn termenavnene eller sluggene. Skill flere "
+"termer med komma."
+
+#: dist/simple-tags/inc/taxonomies.php:795
+#: inc/taxonomies.php:795
+msgid "Archive page result"
+msgstr "Arkivside resultat"
+
+#: dist/simple-tags/inc/taxonomies.php:796
+#: inc/taxonomies.php:796
+msgid ""
+"Normally, WordPress will only show one post type on taxonomy archive pages. "
+"Enable this feature to show content from all selected posts types."
+msgstr ""
+"Normalt vil WordPress kun vise én posttype på taksonomiarkivsider. Aktiver "
+"denne funksjonen for å vise innhold fra alle valgte posttyper."
+
+#: dist/simple-tags/inc/taxonomies.php:905
+#: inc/taxonomies.php:905
+msgid "Rewrite"
+msgstr "Skriv om"
+
+#: dist/simple-tags/inc/taxonomies.php:906
+#: inc/taxonomies.php:906
+msgid ""
+"WordPress can use a custom permalink for this taxonomy. It does not have to "
+"match the slug."
+msgstr ""
+"WordPress kan bruke en tilpasset permalink for denne taksonomien. Den "
+"trenger ikke å matche slugen."
+
+#: dist/simple-tags/inc/taxonomies.php:918
+#: inc/taxonomies.php:918
+msgid "(default: taxonomy name)"
+msgstr "(standard: taksonomi navn)"
+
+#: dist/simple-tags/inc/taxonomies.php:919
+#: inc/taxonomies.php:919
+msgid "Custom Rewrite Slug"
+msgstr "Tilpasset skriv om slug"
+
+#: dist/simple-tags/inc/taxonomies.php:920
+#: inc/taxonomies.php:920
+msgid "Custom taxonomy rewrite slug."
+msgstr "Tilpasset taksonomi skriv om slug."
+
+#: dist/simple-tags/inc/taxonomies.php:945
+#: inc/taxonomies.php:945
+msgid "Rewrite With Front"
+msgstr "Skriv om med front"
+
+#: dist/simple-tags/inc/taxonomies.php:946
+#: inc/taxonomies.php:946
+msgid "Should the permastruct be prepended with the front base."
+msgstr "Skal permastructen forhåndsinnstilles med frontbase?"
+
+#: dist/simple-tags/inc/taxonomies.php:972
+#: inc/taxonomies.php:972
+msgid "Rewrite Hierarchical"
+msgstr "Skriv om hierarkisk"
+
+#: dist/simple-tags/inc/taxonomies.php:973
+#: inc/taxonomies.php:973
+msgid "Should the permastruct allow hierarchical urls."
+msgstr "Skal permastructen tillate hierarkiske URL-er?"
+
+#: dist/simple-tags/inc/taxonomies.php:1009
+#: inc/taxonomies.php:1009
+msgid "Show user interface"
+msgstr "Vis brukergrensesnitt"
+
+#: dist/simple-tags/inc/taxonomies.php:1010
+#: inc/taxonomies.php:1010
+msgid ""
+"Should there be a visible interface in the WordPress admin area to manage "
+"these terms?"
+msgstr ""
+"Skal det være et synlig grensesnitt i WordPress-adminområdet for å "
+"administrere disse termene?"
+
+#: dist/simple-tags/inc/taxonomies.php:1033
+#: inc/taxonomies.php:1033
+msgid "Show in admin menus"
+msgstr "Vis i admin-menyene"
+
+#: dist/simple-tags/inc/taxonomies.php:1034
+#: inc/taxonomies.php:1034
+msgid "Should there be links to this taxonomy in the WordPress admin menus?"
+msgstr "Skal det være lenker til denne taxonomy i WordPress admin-menyene?"
+
+#: dist/simple-tags/inc/taxonomies.php:1057
+#: inc/taxonomies.php:1057
+msgid "Show in frontend menus"
+msgstr "Vis i frontend-menyene"
+
+#: dist/simple-tags/inc/taxonomies.php:1058
+#: inc/taxonomies.php:1058
+msgid ""
+"Should this taxonomy be available for the frontend “Menus” and “Navigation” "
+"options?"
+msgstr ""
+"Skal denne taxonomy være tilgjengelig for frontend “Meny” og “Navigasjon” "
+"alternativer?"
+
+#: dist/simple-tags/inc/taxonomies.php:1082
+#: inc/taxonomies.php:1082
+msgid "Show admin column"
+msgstr "Vis admin-kolonne"
+
+#: dist/simple-tags/inc/taxonomies.php:1083
+#: inc/taxonomies.php:1083
+msgid ""
+"Should a column for this taxonomy appear on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Skal en kolonne for denne taxonomy vises på skjermene som “Innlegg” og "
+"“Sider”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1106
+#: inc/taxonomies.php:1106
+msgid "Show in \"Quick Edit\" and \"Bulk Edit\""
+msgstr "Vis i \"Rask redigering\" og \"Masseredigering\""
+
+#: dist/simple-tags/inc/taxonomies.php:1110
+#: inc/taxonomies.php:1110
+msgid ""
+"Should this taxonomy be available in editing tools on screens such as "
+"“Posts” and “Pages”?"
+msgstr ""
+"Skal denne taxonomy være tilgjengelig i redigeringsverktøy på skjermene som "
+"“Innlegg” og “Sider”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1134
+#: inc/taxonomies.php:1134
+msgid "Show in Filter"
+msgstr "Vis i filter"
+
+#: dist/simple-tags/inc/taxonomies.php:1138
+#: inc/taxonomies.php:1138
+msgid ""
+"Should this taxonomy be available in filters on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Skal denne taxonomy være tilgjengelig i filtre på skjermene som “Innlegg” "
+"og “Sider”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1158
+#: inc/taxonomies.php:1158
+msgid "Menu Name"
+msgstr "Meny navn"
+
+#: dist/simple-tags/inc/taxonomies.php:1159
+#: inc/taxonomies.php:1159
+msgid "Custom admin menu name for your taxonomy."
+msgstr "Egendefinert admin-meny navn for din taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1175
+#: inc/taxonomies.php:1175
+msgid "(e.g. All Jobs)"
+msgstr "(f.eks. Alle Jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:1176
+#: inc/taxonomies.php:1176
+msgid "All Items"
+msgstr "Alle Elementer"
+
+#: dist/simple-tags/inc/taxonomies.php:1177
+#: inc/taxonomies.php:1177
+msgid ""
+"Used as tab text when showing all terms for hierarchical taxonomy while "
+"editing post."
+msgstr ""
+"Brukes som fane tekst når alle termer for hierarkisk taxonomy vises under "
+"redigering av innlegg."
+
+#: dist/simple-tags/inc/taxonomies.php:1196
+#: inc/taxonomies.php:1196
+msgid "(e.g. Edit Job)"
+msgstr "(f.eks. Rediger Jobb)"
+
+#: dist/simple-tags/inc/taxonomies.php:1197
+#: inc/taxonomies.php:1197
+msgid "Edit Item"
+msgstr "Rediger Element"
+
+#: dist/simple-tags/inc/taxonomies.php:1198
+#: inc/taxonomies.php:1198
+msgid "Used at the top of the term editor screen for an existing taxonomy term."
+msgstr ""
+"Brukes øverst på termen redigeringsskjermen for et eksisterende "
+"taxonomy-term."
+
+#: dist/simple-tags/inc/taxonomies.php:1217
+#: inc/taxonomies.php:1217
+msgid "(e.g. View Job)"
+msgstr "(f.eks. Vis Jobb)"
+
+#: dist/simple-tags/inc/taxonomies.php:1218
+#: inc/taxonomies.php:1218
+msgid "View Item"
+msgstr "Vis Element"
+
+#: dist/simple-tags/inc/taxonomies.php:1219
+#: inc/taxonomies.php:1219
+msgid ""
+"Used in the admin bar when viewing editor screen for an existing taxonomy "
+"term."
+msgstr ""
+"Brukt i admin-baren når du ser på redigeringsskjermen for et eksisterende "
+"taxonomy-term."
+
+#: dist/simple-tags/inc/taxonomies.php:1238
+#: inc/taxonomies.php:1238
+msgid "(e.g. Update Job Name)"
+msgstr "(f.eks. Oppdater Jobbnavn)"
+
+#: dist/simple-tags/inc/taxonomies.php:1239
+#: inc/taxonomies.php:1239
+msgid "Update Item Name"
+msgstr "Oppdater Elementnavn"
+
+#: dist/simple-tags/inc/taxonomies.php:1240
+#: dist/simple-tags/inc/taxonomies.php:1285
+#: dist/simple-tags/inc/taxonomies.php:1306
+#: dist/simple-tags/inc/taxonomies.php:1327
+#: dist/simple-tags/inc/taxonomies.php:1348
+#: dist/simple-tags/inc/taxonomies.php:1369
+#: dist/simple-tags/inc/taxonomies.php:1396
+#: dist/simple-tags/inc/taxonomies.php:1420
+#: dist/simple-tags/inc/taxonomies.php:1447
+#: inc/taxonomies.php:1240
+#: inc/taxonomies.php:1285
+#: inc/taxonomies.php:1306
+#: inc/taxonomies.php:1327
+#: inc/taxonomies.php:1348
+#: inc/taxonomies.php:1369
+#: inc/taxonomies.php:1396
+#: inc/taxonomies.php:1420
+#: inc/taxonomies.php:1447
+msgid "Custom taxonomy label. Used in the admin menu for displaying taxonomies."
+msgstr "Egendefinert taxonomy-etikett. Brukt i admin-menyen for å vise taxonomies."
+
+#: dist/simple-tags/inc/taxonomies.php:1247
+#: inc/taxonomies.php:1247
+#, php-format
+msgid "Update %s name"
+msgstr "Oppdater %s-navn"
+
+#: dist/simple-tags/inc/taxonomies.php:1262
+#: inc/taxonomies.php:1262
+msgid "(e.g. Add New Job)"
+msgstr "(f.eks. Legg til Ny Jobb)"
+
+#: dist/simple-tags/inc/taxonomies.php:1263
+#: inc/taxonomies.php:1263
+msgid "Add New Item"
+msgstr "Legg til Nytt Element"
+
+#: dist/simple-tags/inc/taxonomies.php:1264
+#: inc/taxonomies.php:1264
+msgid ""
+"Used at the top of the term editor screen and button text for a new "
+"taxonomy term."
+msgstr ""
+"Brukt øverst på termen redigeringsskjermen og knappetekst for et nytt "
+"taxonomy-term."
+
+#: dist/simple-tags/inc/taxonomies.php:1283
+#: inc/taxonomies.php:1283
+msgid "(e.g. New Job Name)"
+msgstr "(f.eks. Nytt Jobbnavn)"
+
+#: dist/simple-tags/inc/taxonomies.php:1284
+#: inc/taxonomies.php:1284
+msgid "New Item Name"
+msgstr "Nytt Elementnavn"
+
+#: dist/simple-tags/inc/taxonomies.php:1304
+#: inc/taxonomies.php:1304
+msgid "(e.g. Parent Job)"
+msgstr "(f.eks. Overordnet Jobb)"
+
+#: dist/simple-tags/inc/taxonomies.php:1305
+#: inc/taxonomies.php:1305
+msgid "Parent Item"
+msgstr "Overordnet Element"
+
+#: dist/simple-tags/inc/taxonomies.php:1325
+#: inc/taxonomies.php:1325
+msgid "(e.g. Parent Job:)"
+msgstr "(f.eks. Overordnet Jobb:)"
+
+#: dist/simple-tags/inc/taxonomies.php:1326
+#: inc/taxonomies.php:1326
+msgid "Parent Item Colon"
+msgstr "Overordnet Element Kolon"
+
+#: dist/simple-tags/inc/taxonomies.php:1346
+#: inc/taxonomies.php:1346
+msgid "(e.g. Search Jobs)"
+msgstr "(f.eks. Søk Jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:1347
+#: inc/taxonomies.php:1347
+msgid "Search Items"
+msgstr "Søk Elementer"
+
+#: dist/simple-tags/inc/taxonomies.php:1367
+#: inc/taxonomies.php:1367
+msgid "(e.g. Popular Jobs)"
+msgstr "(f.eks. Populære Jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:1368
+#: inc/taxonomies.php:1368
+msgid "Popular Items"
+msgstr "Populære Elementer"
+
+#: dist/simple-tags/inc/taxonomies.php:1388
+#: inc/taxonomies.php:1388
+msgid "(e.g. Separate Jobs with commas)"
+msgstr "(f.eks. Skill Jobber med komma)"
+
+#: dist/simple-tags/inc/taxonomies.php:1392
+#: inc/taxonomies.php:1392
+msgid "Separate Items with Commas"
+msgstr "Skill Elementer med Komma"
+
+#: dist/simple-tags/inc/taxonomies.php:1415
+#: inc/taxonomies.php:1415
+msgid "(e.g. Add or remove Jobs)"
+msgstr "(f.eks. Legg til eller fjern jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:1419
+#: inc/taxonomies.php:1419
+msgid "Add or Remove Items"
+msgstr "Legg til eller fjern elementer"
+
+#: dist/simple-tags/inc/taxonomies.php:1442
+#: inc/taxonomies.php:1442
+msgid "(e.g. Choose from the most used Jobs)"
+msgstr "(f.eks. Velg fra de mest brukte jobbene)"
+
+#: dist/simple-tags/inc/taxonomies.php:1446
+#: inc/taxonomies.php:1446
+msgid "Choose From Most Used"
+msgstr "Velg fra mest brukte"
+
+#: dist/simple-tags/inc/taxonomies.php:1466
+#: inc/taxonomies.php:1466
+msgid "(e.g. No jobs)"
+msgstr "(f.eks. Ingen jobber)"
+
+#: dist/simple-tags/inc/taxonomies.php:1467
+#: inc/taxonomies.php:1467
+msgid "No terms"
+msgstr "Ingen termer"
+
+#: dist/simple-tags/inc/taxonomies.php:1468
+#: inc/taxonomies.php:1468
+msgid ""
+"Used when indicating that there are no terms in the given taxonomy "
+"associated with an object."
+msgstr ""
+"Brukes når man indikerer at det ikke er noen termer i den gitte taksonomien "
+"knyttet til et objekt."
+
+#: dist/simple-tags/inc/taxonomies.php:1475
+#: inc/taxonomies.php:1475
+#, php-format
+msgid "No %s"
+msgstr "Ingen %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1487
+#: inc/taxonomies.php:1487
+msgid "(e.g. Jobs list navigation)"
+msgstr "(f.eks. Navigering i jobblisten)"
+
+#: dist/simple-tags/inc/taxonomies.php:1491
+#: inc/taxonomies.php:1491
+msgid "Items List Navigation"
+msgstr "Navigering i elementlisten"
+
+#: dist/simple-tags/inc/taxonomies.php:1492
+#: inc/taxonomies.php:1492
+msgid "Screen reader text for the pagination heading on the term listing screen."
+msgstr "Skjermleser tekst for paginering overskriften på termlisten skjermen."
+
+#: dist/simple-tags/inc/taxonomies.php:1499
+#: inc/taxonomies.php:1499
+#, php-format
+msgid "%s list navigation"
+msgstr "%s liste navigering"
+
+#: dist/simple-tags/inc/taxonomies.php:1514
+#: inc/taxonomies.php:1514
+msgid "(e.g. Jobs list)"
+msgstr "(f.eks. Jobbliste)"
+
+#: dist/simple-tags/inc/taxonomies.php:1515
+#: inc/taxonomies.php:1515
+msgid "Items List"
+msgstr "Elementliste"
+
+#: dist/simple-tags/inc/taxonomies.php:1516
+#: inc/taxonomies.php:1516
+msgid "Screen reader text for the items list heading on the term listing screen."
+msgstr "Skjermleser tekst for elementlisten overskriften på termlisten skjermen."
+
+#: dist/simple-tags/inc/taxonomies.php:1523
+#: inc/taxonomies.php:1523
+#, php-format
+msgid "%s list"
+msgstr "%s liste"
+
+#: dist/simple-tags/inc/taxonomies.php:1535
+#: inc/taxonomies.php:1535
+msgid "(e.g. No jobs found)"
+msgstr "(f.eks. Ingen jobber funnet)"
+
+#: dist/simple-tags/inc/taxonomies.php:1536
+#: inc/taxonomies.php:1536
+msgid "Not Found"
+msgstr "Ikke funnet"
+
+#: dist/simple-tags/inc/taxonomies.php:1537
+#: inc/taxonomies.php:1537
+msgid ""
+"The text displayed via clicking ‘Choose from the most used items’ in the "
+"taxonomy meta box when no items are available."
+msgstr ""
+"Teksten som vises ved å klikke på ‘Velg fra de mest brukte elementene’ i "
+"taksonomi metaboksen når ingen elementer er tilgjengelige."
+
+#: dist/simple-tags/inc/taxonomies.php:1544
+#: inc/taxonomies.php:1544
+#, php-format
+msgid "No %s found"
+msgstr "Ingen %s funnet"
+
+#: dist/simple-tags/inc/taxonomies.php:1556
+#: inc/taxonomies.php:1556
+msgid "(e.g. &larr; Back to jobs"
+msgstr "(f.eks. &larr; Tilbake til jobber"
+
+#: dist/simple-tags/inc/taxonomies.php:1560
+#: inc/taxonomies.php:1560
+msgid "Back to Items"
+msgstr "Tilbake til elementer"
+
+#: dist/simple-tags/inc/taxonomies.php:1561
+#: inc/taxonomies.php:1561
+msgid ""
+"The text displayed after a term has been updated for a link back to main "
+"index."
+msgstr ""
+"Teksten som vises etter et begrep har blitt oppdatert for en lenke tilbake "
+"til hovedindeksen."
+
+#: dist/simple-tags/inc/taxonomies.php:1568
+#: inc/taxonomies.php:1568
+#, php-format
+msgid "Back to %s"
+msgstr "Tilbake til %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1600
+#: inc/taxonomies.php:1600
+msgid "Show in REST API"
+msgstr "Vis i REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:1601
+#: inc/taxonomies.php:1601
+msgid "Add the taxonomy to the WordPress wp-json API."
+msgstr "Legg til taksonomien i WordPress wp-json API."
+
+#: dist/simple-tags/inc/taxonomies.php:1621
+#: inc/taxonomies.php:1621, fuzzy
+msgid "REST API base slug"
+msgstr "REST API base slug"
+
+#: dist/simple-tags/inc/taxonomies.php:1622
+#: inc/taxonomies.php:1622
+msgid "The base slug that this taxonomy will use in the REST API."
+msgstr "Base slug som denne taksonomien vil bruke i REST API."
+
+#: dist/simple-tags/inc/taxonomies.php:1630
+#: inc/taxonomies.php:1630
+msgid "REST API controller class"
+msgstr "REST API controller klasse"
+
+#: dist/simple-tags/inc/taxonomies.php:1634
+#: inc/taxonomies.php:1634
+msgid ""
+"The name of a custom Rest Controller class instead of "
+"WP_REST_Terms_Controller."
+msgstr ""
+"Navnet på en tilpasset REST Controller klasse i stedet for "
+"WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1635
+#: inc/taxonomies.php:1635
+msgid "Custom controller to use instead of WP_REST_Terms_Controller."
+msgstr ""
+"Egendefinert kontroller som skal brukes i stedet for "
+"WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1671
+#: inc/taxonomies.php:1671
+msgid "Public"
+msgstr "Offentlig"
+
+#: dist/simple-tags/inc/taxonomies.php:1672
+#: inc/taxonomies.php:1672
+msgid "The taxonomy is for public use. It can be seen by frontend users."
+msgstr "Taksonomien er for offentlig bruk. Den kan sees av frontend-brukere."
+
+#: dist/simple-tags/inc/taxonomies.php:1698
+#: inc/taxonomies.php:1698
+msgid "Public Queryable"
+msgstr "Offentlig spørrbar"
+
+#: dist/simple-tags/inc/taxonomies.php:1699
+#: inc/taxonomies.php:1699
+msgid "The taxonomy is publicly queryable."
+msgstr "Taksonomien er offentlig spørrbar."
+
+#: dist/simple-tags/inc/taxonomies.php:1725
+#: inc/taxonomies.php:1725
+msgid "Query Var"
+msgstr "Spørringsvariabel"
+
+#: dist/simple-tags/inc/taxonomies.php:1726
+#: inc/taxonomies.php:1726
+msgid "Enable a custom query_var key for this taxonomy."
+msgstr "Aktiverer en egendefinert query_var-nøkkel for denne taksonomien."
+
+#: dist/simple-tags/inc/taxonomies.php:1739
+#: inc/taxonomies.php:1739
+msgid "Custom Query Var String"
+msgstr "Egendefinert spørringsvariabel streng"
+
+#: dist/simple-tags/inc/taxonomies.php:1740
+#: inc/taxonomies.php:1740
+msgid "Sets a custom query_var slug for this taxonomy."
+msgstr "Setter en egendefinert query_var slug for denne taksonomien."
+
+#: dist/simple-tags/inc/taxonomies.php:1751
+#: inc/taxonomies.php:1751
+msgid "Metabox callback"
+msgstr "Metabox tilbakekallingsfunksjon"
+
+#: dist/simple-tags/inc/taxonomies.php:1752
+#: inc/taxonomies.php:1752
+msgid ""
+"Sets a callback function name for the meta box display. Hierarchical "
+"default: post_categories_meta_box, non-hierarchical default: "
+"post_tags_meta_box. To remove the metabox completely, use \"false\"."
+msgstr ""
+"Setter et tilbakekallingsfunksjonsnavn for visning av metabox. Hierarkisk "
+"standard: post_categories_meta_box, ikke-hierarkisk standard: "
+"post_tags_meta_box. For å fjerne metabox helt, bruk \"false\"."
+
+#: dist/simple-tags/inc/taxonomies.php:1763
+#: inc/taxonomies.php:1763
+msgid "Categories"
+msgstr "Kategorier"
+
+#: dist/simple-tags/inc/taxonomies.php:1771
+#: inc/taxonomies.php:1771
+#, php-format
+msgid ""
+"This feature controls the order of %s when you're editing posts, and in "
+"frontend displays."
+msgstr ""
+"Denne funksjonen kontrollerer rekkefølgen av %s når du redigerer innlegg, "
+"og i frontendvisninger."
+
+#: dist/simple-tags/inc/taxonomies.php:1781
+#: inc/taxonomies.php:1781
+msgid "Enable PublishPress Taxonomies ordering"
+msgstr "Aktiver PublishPress Taxonomies rekkefølge"
+
+#: dist/simple-tags/inc/taxonomies.php:1786
+#: inc/taxonomies.php:1786
+msgid ""
+"Enable PublishPress Taxonomies ordering for this taxonomy in the frontend "
+"and admin area."
+msgstr ""
+"Aktiver PublishPress Taxonomies rekkefølge for denne taxonomy i frontend og "
+"adminområde."
+
+#: dist/simple-tags/inc/taxonomies.php:1836
+#: inc/taxonomies.php:1836
+msgid "Re-activate Taxonomy"
+msgstr "Re-aktiver Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1839
+#: inc/taxonomies.php:1839
+msgid "Deactivate Taxonomy"
+msgstr "Deaktiver Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1853
+#: inc/taxonomies.php:1853
+msgid "Delete Taxonomy"
+msgstr "Slett Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1861
+#: inc/taxonomies.php:1861
+msgid "Delete PublishPress Taxonomies Edit Data"
+msgstr "Slett PublishPress Taxonomies Rediger Data"
+
+#: dist/simple-tags/inc/taxonomies.php:1864
+#: inc/taxonomies.php:1864
+msgid ""
+"You can only delete taxonomies created with PublishPress Taxonomies. "
+"However, you can delete any changes or edit made from PublishPress "
+"Taxonomies which will remove PublishPress Taxonomies version edit restoring "
+"original taxonomies data or removing it if already deleted"
+msgstr ""
+"Du kan bare slette taxonomier opprettet med PublishPress Taxonomies. Du kan "
+"imidlertid slette eventuelle endringer eller redigeringer gjort fra "
+"PublishPress Taxonomies, som vil fjerne PublishPress Taxonomies "
+"versjonsredigering og gjenopprette originale taxonomidata eller fjerne dem "
+"hvis de allerede er slettet"
+
+#: dist/simple-tags/inc/taxonomies.php:1931
+#: inc/taxonomies.php:1931
+msgid "Save Taxonomy"
+msgstr "Lagre Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1946
+#: inc/taxonomies.php:1946
+msgid "Add Taxonomy"
+msgstr "Legg til Taxonomy"
+
+#: dist/simple-tags/inc/terms-functions.php:313
+#: inc/terms-functions.php:313
+msgid "Term copied successfully."
+msgstr "Termin kopiert med suksess."
+
+#: dist/simple-tags/inc/terms-functions.php:322
+#: dist/simple-tags/inc/terms-table.php:926
+#: inc/terms-functions.php:322
+#: inc/terms-table.php:926
+msgid "Term deleted successfully."
+msgstr "Termin slettet med suksess."
+
+#: dist/simple-tags/inc/terms-functions.php:331
+#: inc/terms-functions.php:331
+msgid "Term removed from all posts successfully."
+msgstr "Termin fjernet fra alle innlegg med suksess."
+
+#: dist/simple-tags/inc/terms-table.php:734
+#: dist/simple-tags/inc/terms-table.php:748
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1652
+#: inc/terms-table.php:734
+#: inc/terms-table.php:748
+#: modules/taxopress-ai/taxopress-ai.php:1652
+msgid "Count"
+msgstr "Antall"
+
+#: dist/simple-tags/inc/terms-table.php:744
+#: inc/terms-table.php:744
+msgid "Custom URL"
+msgstr "Egendefinert URL"
+
+#: dist/simple-tags/inc/terms-table.php:745
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:581
+#: inc/terms-table.php:745
+#: includes-core/TaxopressCoreAdmin.php:581
+msgid "Synonyms"
+msgstr "Synonymer"
+
+#: dist/simple-tags/inc/terms-table.php:746
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:539
+#: inc/terms-table.php:746
+#: includes-core/TaxopressCoreAdmin.php:539
+msgid "Linked Terms"
+msgstr "Koblede Termer"
+
+#: dist/simple-tags/inc/terms-table.php:747
+#: inc/terms-table.php:747, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: dist/simple-tags/inc/terms-table.php:801
+#: dist/simple-tags/inc/terms-table.php:1219
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:318
+#: inc/terms-table.php:801
+#: inc/terms-table.php:1219
+#: includes-core/TaxopressCoreAdmin.php:318
+msgid "Copy"
+msgstr "Kopier"
+
+#: dist/simple-tags/inc/terms-table.php:841
+#: inc/terms-table.php:841
+msgid "Select Destination Taxonomy"
+msgstr "Velg destinasjonstaxonomi"
+
+#: dist/simple-tags/inc/terms-table.php:847
+#: inc/terms-table.php:847
+msgid "Search posts"
+msgstr "Søk etter innlegg"
+
+#: dist/simple-tags/inc/terms-table.php:849
+#: inc/terms-table.php:849
+msgid "post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/terms-table.php:851
+#: inc/terms-table.php:851
+#, php-format
+msgid "Select Destination %s"
+msgstr "Velg destinasjon %s"
+
+#: dist/simple-tags/inc/terms-table.php:881
+#: inc/terms-table.php:881
+msgid "Filter"
+msgstr "Filtrer"
+
+#: dist/simple-tags/inc/terms-table.php:923
+#: inc/terms-table.php:923
+msgid "Terms deleted successfully."
+msgstr "Termer slettet med suksess."
+
+#: dist/simple-tags/inc/terms-table.php:987
+#: inc/terms-table.php:987
+msgid "Term(s) copied successfully."
+msgstr "Termin(er) kopiert med suksess."
+
+#: dist/simple-tags/inc/terms-table.php:1005
+#: inc/terms-table.php:1005
+msgid "Hidden"
+msgstr "Skjult"
+
+#: dist/simple-tags/inc/terms-table.php:1008
+#: inc/terms-table.php:1008, fuzzy
+msgid "Live"
+msgstr "Live"
+
+#: dist/simple-tags/inc/terms-table.php:1027
+#: inc/terms-table.php:1027
+msgid "No terms found."
+msgstr "Ingen termer funnet."
+
+#: dist/simple-tags/inc/terms-table.php:1166
+#: inc/terms-table.php:1166
+#. translators: %s: Taxonomy term name.
+#, php-format
+msgid "Quick edit &#8220;%s&#8221; inline"
+msgstr "Rask redigering &#8220;%s&#8221; inline"
+
+#: dist/simple-tags/inc/terms-table.php:1167
+#: inc/terms-table.php:1167
+msgid "Quick&nbsp;Edit"
+msgstr "Rask&nbsp;redigering"
+
+#: dist/simple-tags/inc/terms-table.php:1182
+#: inc/terms-table.php:1182
+msgid "Remove From All Posts"
+msgstr "Fjern fra alle innlegg"
+
+#: dist/simple-tags/inc/terms-table.php:1205
+#: inc/terms-table.php:1205
+msgid "View"
+msgstr "Vis"
+
+#: dist/simple-tags/inc/terms-table.php:1434
+#: inc/terms-table.php:1434
+msgid "Quick Edit"
+msgstr "Rask redigering"
+
+#: dist/simple-tags/inc/terms-table.php:1461
+#: inc/terms-table.php:1461
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: dist/simple-tags/inc/terms-table.php:1462
+#: inc/terms-table.php:1462
+msgid "Update"
+msgstr "Oppdater"
+
+#: dist/simple-tags/inc/terms.php:172
+#: dist/simple-tags/inc/terms.php:173
+#: dist/simple-tags/inc/terms.php:239
+#: dist/simple-tags/inc/terms.php:273
+#: inc/terms.php:172
+#: inc/terms.php:173
+#: inc/terms.php:239
+#: inc/terms.php:273
+msgid "Terms"
+msgstr "Termer"
+
+#: dist/simple-tags/inc/terms.php:241
+#: dist/simple-tags/inc/terms.php:282
+#: inc/terms.php:241
+#: inc/terms.php:282
+msgid "This screen allows you to search and edit all the terms on your site."
+msgstr "Denne skjermen lar deg søke og redigere alle termene på nettstedet ditt."
+
+#: dist/simple-tags/inc/terms.php:280
+#: inc/terms.php:280
+msgid "This screen allows you to order terms via drag and drop."
+msgstr "Denne skjermen lar deg bestille begreper via dra og slipp."
+
+#: dist/simple-tags/inc/terms.php:309
+#: inc/terms.php:309
+msgid "Search Terms"
+msgstr "Søkebegreper"
+
+#: dist/simple-tags/inc/utilities.php:10
+#: dist/simple-tags/inc/utilities.php:12
+#: dist/simple-tags/inc/utilities.php:34
+#: inc/utilities.php:10
+#: inc/utilities.php:12
+#: inc/utilities.php:34
+msgid "Media Tags"
+msgstr "Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:11
+#: inc/utilities.php:11
+msgid "Media Tag"
+msgstr "Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:13
+#: inc/utilities.php:13
+msgid "All Media Tags"
+msgstr "Alle Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:14
+#: inc/utilities.php:14
+msgid "Edit Media Tag"
+msgstr "Rediger Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:15
+#: inc/utilities.php:15
+msgid "View Media Tag"
+msgstr "Vis Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:16
+#: inc/utilities.php:16
+msgid "Update Media Tag name"
+msgstr "Oppdater navnet på Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:17
+#: inc/utilities.php:17
+msgid "Add new Media Tag"
+msgstr "Legg til ny Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:18
+#: inc/utilities.php:18
+msgid "New Media Tag name"
+msgstr "Nytt Medietagg navn"
+
+#: dist/simple-tags/inc/utilities.php:19
+#: inc/utilities.php:19
+msgid "Parent Media Tag"
+msgstr "Overordnet Medietagg"
+
+#: dist/simple-tags/inc/utilities.php:20
+#: inc/utilities.php:20
+msgid "Parent Media Tag:"
+msgstr "Overordnet Medietagg:"
+
+#: dist/simple-tags/inc/utilities.php:21
+#: inc/utilities.php:21
+msgid "Search Media Tags"
+msgstr "Søk etter Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:22
+#: inc/utilities.php:22
+msgid "Popular Media Tags"
+msgstr "Populære Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:23
+#: inc/utilities.php:23
+msgid "Separate Media Tags with commas"
+msgstr "Skille Medietagger med komma"
+
+#: dist/simple-tags/inc/utilities.php:24
+#: inc/utilities.php:24
+msgid "Add or remove Media Tags"
+msgstr "Legg til eller fjern Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:25
+#: inc/utilities.php:25
+msgid "Choose from the most used Media Tags"
+msgstr "Velg blant de mest brukte Medietaggene"
+
+#: dist/simple-tags/inc/utilities.php:26
+#: inc/utilities.php:26
+msgid "No Media Tags found"
+msgstr "Ingen Medietagger funnet"
+
+#: dist/simple-tags/inc/utilities.php:27
+#: inc/utilities.php:27
+msgid "No Media Tags"
+msgstr "Ingen Medietagger"
+
+#: dist/simple-tags/inc/utilities.php:28
+#: inc/utilities.php:28
+msgid "Media Tags list navigation"
+msgstr "Navigering av Medietagg-liste"
+
+#: dist/simple-tags/inc/utilities.php:29
+#: inc/utilities.php:29
+msgid "Media Tags list"
+msgstr "Medietags liste"
+
+#: dist/simple-tags/inc/utilities.php:30
+#: inc/utilities.php:30
+msgid "Back to Media Tags"
+msgstr "Tilbake til Medietags"
+
+#: dist/simple-tags/inc/utilities.php:62
+#: dist/simple-tags/inc/utilities.php:63
+#: dist/simple-tags/inc/utilities.php:65
+#: dist/simple-tags/inc/utilities.php:70
+#: inc/utilities.php:62
+#: inc/utilities.php:63
+#: inc/utilities.php:65
+#: inc/utilities.php:70
+msgid "PublishPress Taxonomies Logs"
+msgstr "PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/inc/utilities.php:64
+#: inc/utilities.php:64
+msgid "Search PublishPress Taxonomies Logs"
+msgstr "Søk i PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/inc/utilities.php:66
+#: inc/utilities.php:66
+msgid "Edit PublishPress Taxonomies Logs"
+msgstr "Rediger PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/inc/utilities.php:67
+#: inc/utilities.php:67
+msgid "Update PublishPress Taxonomies Logs"
+msgstr "Oppdater PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/inc/utilities.php:68
+#: inc/utilities.php:68
+msgid "Add New PublishPress Taxonomies Logs"
+msgstr "Legg til nye PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/inc/utilities.php:69
+#: inc/utilities.php:69
+msgid "New PublishPress Taxonomies Logs"
+msgstr "Nye PublishPress Taxonomies Logger"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:74
+#: includes-core/TaxopressCoreAdmin.php:74
+msgid ""
+"You're using PublishPress Taxonomies Free. The Pro version has more "
+"features and support."
+msgstr ""
+"Du bruker PublishPress Taxonomies Gratis. Pro-versjonen har flere "
+"funksjoner og støtte."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:103
+#: includes-core/TaxopressCoreAdmin.php:103
+msgid "Upgrade to PublishPress Taxonomies Pro"
+msgstr "Oppgrader til PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:108
+#: includes-core/TaxopressCoreAdmin.php:108
+msgid "Enhance the power of PublishPress Taxonomies with the Pro version:"
+msgstr "Forbedre kraften til PublishPress Taxonomies med Pro-versjonen:"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:111
+#: includes-core/TaxopressCoreAdmin.php:111
+msgid "Unlimited “Term Display”"
+msgstr "Ubegrenset “Termvisning”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:112
+#: includes-core/TaxopressCoreAdmin.php:112
+msgid "Unlimited “Terms for Current Posts”"
+msgstr "Ubegrenset “Termer for nåværende innlegg”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:113
+#: includes-core/TaxopressCoreAdmin.php:113
+msgid "Unlimited “Related Posts”"
+msgstr "Ubegrenset “Relaterte innlegg”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:114
+#: includes-core/TaxopressCoreAdmin.php:114
+msgid "Unlimited “Auto Links”"
+msgstr "Ubegrenset “Auto-lenker”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:115
+#: includes-core/TaxopressCoreAdmin.php:115
+msgid "Unlimited “Auto Terms”"
+msgstr "Ubegrenset “Auto-termer”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:116
+#: includes-core/TaxopressCoreAdmin.php:116
+msgid "Create new terms using OpenAI and other sources"
+msgstr "Opprett nye termer ved hjelp av OpenAI og andre kilder"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:117
+#: includes-core/TaxopressCoreAdmin.php:117
+msgid "Use Linked Terms"
+msgstr "Bruk lenkede termer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:118
+#: includes-core/TaxopressCoreAdmin.php:118
+msgid "Use Synonyms"
+msgstr "Bruk synonymer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:119
+#: includes-core/TaxopressCoreAdmin.php:119
+msgid "Schedule Auto Terms to run automatically"
+msgstr "Planlegg Auto-termer til å kjøre automatisk"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:120
+#: includes-core/TaxopressCoreAdmin.php:120
+msgid "Control the display of term metaboxes"
+msgstr "Kontroller visningen av term metaboxer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:121
+#: includes-core/TaxopressCoreAdmin.php:121
+msgid "Fast, professional support"
+msgstr "Rask, profesjonell støtte"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:122
+#: includes-core/TaxopressCoreAdmin.php:122
+msgid "No ads inside the plugin"
+msgstr "Ingen annonser inne i pluginen"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:132
+#: includes-core/TaxopressCoreAdmin.php:132
+msgid "Need PublishPress Taxonomies Support?"
+msgstr "Trenger du PublishPress Taxonomies støtte?"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:137
+#: includes-core/TaxopressCoreAdmin.php:137
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Hvis du trenger hjelp eller har et nytt funksjonsønske, gi oss beskjed."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:139
+#: includes-core/TaxopressCoreAdmin.php:139
+msgid "Request Support"
+msgstr "Be om støtte"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:146
+#: includes-core/TaxopressCoreAdmin.php:146
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Detaljert dokumentasjon er også tilgjengelig på pluginens nettsted."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:148
+#: includes-core/TaxopressCoreAdmin.php:148
+msgid "View Knowledge Base"
+msgstr "Se kunnskapsbase"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:171
+#: includes-core/TaxopressCoreAdmin.php:171
+msgid "OpenAI Integration"
+msgstr "OpenAI-integrasjon"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:176
+#: includes-core/TaxopressCoreAdmin.php:176
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate OpenAI to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg integrere OpenAI for å analysere "
+"innholdet ditt og foreslå termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:195
+#: includes-core/TaxopressCoreAdmin.php:195
+msgid "IBM Watson Integration"
+msgstr "IBM Watson-integrasjon"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:200
+#: includes-core/TaxopressCoreAdmin.php:200
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Watson to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg integrere Watson for å analysere "
+"innholdet ditt og foreslå termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:219
+#: includes-core/TaxopressCoreAdmin.php:219
+msgid "Dandelion Integration"
+msgstr "Dandelion-integrasjon"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:224
+#: includes-core/TaxopressCoreAdmin.php:224
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Dandelion to analyze "
+"your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg integrere Dandelion for å analysere "
+"innholdet ditt og foreslå termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:243
+#: includes-core/TaxopressCoreAdmin.php:243
+msgid "LSEG / Refinitiv Integration"
+msgstr "LSEG / Refinitiv-integrasjon"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:248
+#: includes-core/TaxopressCoreAdmin.php:248
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate LSEG / Refinitiv to "
+"analyze your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg integrere LSEG / Refinitiv for å "
+"analysere innholdet ditt og foreslå termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:271
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:288
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:465
+#: includes-core/TaxopressCoreAdmin.php:271
+#: includes-core/TaxopressCoreAdmin.php:288
+#: includes-core/TaxopressCoreAdmin.php:465
+msgid "Suggest terms using AI"
+msgstr "Foreslå termer ved hjelp av AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:275
+#: includes-core/TaxopressCoreAdmin.php:275
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI. This service can analyze your content and suggest "
+"new terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg foreslå nye termer for innholdet ditt "
+"ved hjelp av OpenAI. Denne tjenesten kan analysere innholdet ditt og "
+"foreslå nye termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:293
+#: includes-core/TaxopressCoreAdmin.php:293
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the IBM Watson. This service can analyze your content and "
+"suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg foreslå nye termer for innholdet ditt "
+"ved hjelp av IBM Watson. Denne tjenesten kan analysere innholdet ditt og "
+"foreslå nye termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:357
+#: includes-core/TaxopressCoreAdmin.php:357
+msgid "Copy with Metadata"
+msgstr "Kopier med metadata"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:387
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:405
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:423
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:441
+#: includes-core/TaxopressCoreAdmin.php:387
+#: includes-core/TaxopressCoreAdmin.php:405
+#: includes-core/TaxopressCoreAdmin.php:423
+#: includes-core/TaxopressCoreAdmin.php:441
+msgid "Auto terms using AI"
+msgstr "Automatiske termer ved hjelp av AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:392
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:410
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:428
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:446
+#: includes-core/TaxopressCoreAdmin.php:392
+#: includes-core/TaxopressCoreAdmin.php:410
+#: includes-core/TaxopressCoreAdmin.php:428
+#: includes-core/TaxopressCoreAdmin.php:446
+msgid ""
+"PublishPress Taxonomies Pro allows you to generate new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and add new terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg generere nye termer for innholdet ditt "
+"ved hjelp av OpenAI, IBM Watson, Dandelion og Open Calais-tjenestene. Disse "
+"tjenestene kan analysere innholdet ditt og legge til nye termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:470
+#: includes-core/TaxopressCoreAdmin.php:470
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg foreslå nye termer for innholdet ditt "
+"ved hjelp av OpenAI, IBM Watson, Dandelion og Open Calais-tjenestene. Disse "
+"tjenestene kan analysere innholdet ditt og foreslå nye termer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:489
+#: includes-core/TaxopressCoreAdmin.php:489
+msgid "Add Custom Elements"
+msgstr "Legg til tilpassede elementer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:494
+#: includes-core/TaxopressCoreAdmin.php:494
+msgid ""
+"PublishPress Taxonomies Pro allows you complete control over where Auto "
+"Links are added. You can choose to skip any HTML elements that appear in "
+"your content."
+msgstr ""
+"PublishPress Taxonomies Pro gir deg full kontroll over hvor automatiske "
+"lenker legges til. Du kan velge å hoppe over eventuelle HTML-elementer som "
+"vises i innholdet ditt."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:513
+#: includes-core/TaxopressCoreAdmin.php:513
+msgid "Use Regular Expressions to modify Auto Terms"
+msgstr "Bruk regulære uttrykk for å endre automatiske termer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:518
+#: includes-core/TaxopressCoreAdmin.php:518
+msgid ""
+"PublishPress Taxonomies Pro allows you to change how Auto Terms analyzes "
+"your posts. You will need to know how to write Regular Expressions to use "
+"this feature."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg endre hvordan automatiske termer "
+"analyserer innleggene dine. Du må vite hvordan du skriver regulære uttrykk "
+"for å bruke denne funksjonen."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:540
+#: includes-core/TaxopressCoreAdmin.php:540
+msgid ""
+"This feature allows you to connect terms. When the main term or any of "
+"these terms are added to the post, all the other terms will be added also."
+msgstr ""
+"Denne funksjonen lar deg koble termer. Når hovedtermen eller noen av disse "
+"termene legges til innlegget, vil alle de andre termene også bli lagt til."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:560
+#: includes-core/TaxopressCoreAdmin.php:560
+msgid "Linked Terms Feature"
+msgstr "Funksjon for koblede termer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:564
+#: includes-core/TaxopressCoreAdmin.php:564
+msgid ""
+"PublishPress Taxonomies Pro allows you to create powerful connections "
+"between your terms. When one term is added to a post, its linked terms can "
+"be automatically added too. This helps maintain consistent organization "
+"across your content."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg lage kraftige forbindelser mellom "
+"termene dine. Når en term legges til et innlegg, kan de koblede termene "
+"også legges til automatisk. Dette hjelper med å opprettholde en konsekvent "
+"organisering på tvers av innholdet ditt."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:582
+#: includes-core/TaxopressCoreAdmin.php:582
+msgid ""
+"This feature allows you to associate additional words with each term. For "
+"example, \"website\" can have synonyms such as \"websites\", \"web site\", "
+"and \"web pages\"."
+msgstr ""
+"Denne funksjonen lar deg assosiere flere ord med hver term. For eksempel "
+"kan \"nettsted\" ha synonymer som \"nettsider\", \"nettside\", og "
+"\"nettsider\"."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:598
+#: includes-core/TaxopressCoreAdmin.php:598
+msgid "Synonyms Terms Feature"
+msgstr "Funksjon for synonymer"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:602
+#: includes-core/TaxopressCoreAdmin.php:602
+msgid ""
+"PublishPress Taxonomies Pro allows you to have multiple words associated "
+"with a single term. If PublishPress Taxonomies scans your content and finds "
+"a synonym, it will act as if it has found the main term."
+msgstr ""
+"PublishPress Taxonomies Pro lar deg ha flere ord assosiert med en enkelt "
+"term. Hvis PublishPress Taxonomies skanner innholdet ditt og finner et "
+"synonym, vil det opptre som om det har funnet hovedtermen."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:622
+#: includes-core/TaxopressCoreAdmin.php:622
+msgid "Taxonomy Display"
+msgstr "Visning av taksonomi"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:719
+#: includes-core/TaxopressCoreAdmin.php:630
+#: includes-core/TaxopressCoreAdmin.php:719
+msgid "This feature is available in PublishPress Taxonomies Pro"
+msgstr "Denne funksjonen er tilgjengelig i PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:635
+#: includes-core/TaxopressCoreAdmin.php:635
+msgid "Customize the display of terms in the PublishPress Taxonomies metabox."
+msgstr "Tilpass visningen av termer i PublishPress Taxonomies-metaboksen."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:636
+#: includes-core/TaxopressCoreAdmin.php:636
+msgid "Options include checkboxes and a dropdown list."
+msgstr "Alternativene inkluderer avkrysningsbokser og en nedtrekksliste."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:670
+#: includes-core/TaxopressCoreAdmin.php:670
+msgid "Copy Term with Metadata"
+msgstr "Kopier term med metadata"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:675
+#: includes-core/TaxopressCoreAdmin.php:675
+msgid "To Copy terms with their metadata, please upgrade to pro."
+msgstr "For å kopiere termer med metadata, vennligst oppgrader til pro."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:676
+#: includes-core/TaxopressCoreAdmin.php:676
+msgid ""
+"With PublishPress Taxonomies Pro, you can duplicate taxonomy terms along "
+"with all their metadata. This includes term descriptions, images, and "
+"custom fields. You can copy terms between taxonomies to maintain consistent "
+"organization across your site."
+msgstr ""
+"Med PublishPress Taxonomies Pro kan du duplisere taksonomitermer sammen med "
+"all deres metadata. Dette inkluderer termbeskrivelser, bilder og tilpassede "
+"felt. Du kan kopiere termer mellom taksonomier for å opprettholde en "
+"konsekvent organisering på tvers av nettstedet ditt."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:723
+#: includes-core/TaxopressCoreAdmin.php:723
+msgid ""
+"Choose the display formats of your terms, options include table list, "
+"ordered list, border-cloud and lots more."
+msgstr ""
+"Velg visningsformatene for termene dine, alternativer inkluderer "
+"tabelliste, ordnet liste, grense-sky og mye mer."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:743
+#: includes-core/TaxopressCoreAdmin.php:743
+msgid "Hourly"
+msgstr "Timevis"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:756
+#: includes-core/TaxopressCoreAdmin.php:756
+msgid "Daily"
+msgstr "Dagsvis"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:764
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:816
+#: includes-core/TaxopressCoreAdmin.php:764
+#: includes-core/TaxopressCoreAdmin.php:816
+msgid "Pro Feature"
+msgstr "Pro-funksjon"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:766
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:818
+#: includes-core/TaxopressCoreAdmin.php:766
+#: includes-core/TaxopressCoreAdmin.php:818
+msgid "Some of these features are available in PublishPress Taxonomies Pro"
+msgstr "Noen av disse funksjonene er tilgjengelige i PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:776
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:868
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:893
+#: includes-core/TaxopressCoreAdmin.php:776
+#: includes-core/TaxopressCoreAdmin.php:868
+#: includes-core/TaxopressCoreAdmin.php:893, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:777
+#: includes-core/TaxopressCoreAdmin.php:777
+msgid "Name (Pro)"
+msgstr "Navn (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:778
+#: includes-core/TaxopressCoreAdmin.php:778
+msgid "Counter (Pro)"
+msgstr "Teller (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:779
+#: includes-core/TaxopressCoreAdmin.php:779
+msgid "Random (Pro)"
+msgstr "Tilfeldig (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:780
+#: includes-core/TaxopressCoreAdmin.php:780
+msgid "Term Order (Pro)"
+msgstr "Termrekkefølge (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:792
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:939
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:983
+#: includes-core/TaxopressCoreAdmin.php:792
+#: includes-core/TaxopressCoreAdmin.php:939
+#: includes-core/TaxopressCoreAdmin.php:983
+msgid "Method for choosing terms for display"
+msgstr "Metode for å velge termer for visning"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:867
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:928
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:972
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+#: includes-core/TaxopressCoreAdmin.php:867
+#: includes-core/TaxopressCoreAdmin.php:928
+#: includes-core/TaxopressCoreAdmin.php:972
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+msgid "Name"
+msgstr "Navn"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:869
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:929
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:973
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+#: includes-core/TaxopressCoreAdmin.php:869
+#: includes-core/TaxopressCoreAdmin.php:929
+#: includes-core/TaxopressCoreAdmin.php:973
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+msgid "Counter"
+msgstr "Teller"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:871
+#: includes-core/TaxopressCoreAdmin.php:871
+msgid "Term Order"
+msgstr "Termrekkefølge"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:888
+#: includes-core/TaxopressCoreAdmin.php:888
+msgid "Disabled"
+msgstr "Deaktivert"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:889
+#: includes-core/TaxopressCoreAdmin.php:889
+msgid "You have disabled PublishPress Taxonomies ordering"
+msgstr "Du har deaktivert PublishPress Taxonomies-bestilling"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:895
+#: includes-core/TaxopressCoreAdmin.php:895
+#, php-format
+msgid "Terms in this taxonomy are ordered by %s"
+msgstr "Termer i denne taksonomien er ordnet etter %s"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:931
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:975
+#: includes-core/TaxopressCoreAdmin.php:931
+#: includes-core/TaxopressCoreAdmin.php:975
+msgid "Term Order(Pro)"
+msgstr "Termrekkefølge (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:959
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:1003
+#: includes-core/TaxopressCoreAdmin.php:959
+#: includes-core/TaxopressCoreAdmin.php:1003
+msgid ""
+"Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order "
+"Terms"
+msgstr ""
+"Oppgrader til PublishPress Taxonomies Pro for å bruke Termrekkefølge til å "
+"manuelt ordne termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+msgid "Request completed."
+msgstr "Forespørsel fullført."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+msgid "Security error. Kindly reload this page and try again"
+msgstr "Sikkerhetsfeil. Vennligst last inn denne siden på nytt og prøv igjen"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+msgid ""
+"Permission error. You do not have permission to manage PublishPress "
+"Taxonomies"
+msgstr ""
+"Tillatelsesfeil. Du har ikke tillatelse til å administrere PublishPress "
+"Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+msgid "Posts content and title is empty."
+msgstr "Innholdet og tittelen på innlegg er tom."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+msgid "Permission error. You do not have permission to preview this post."
+msgstr "Tillatelsesfeil. Du har ikke tillatelse til å forhåndsvise dette innlegget."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#, php-format
+msgid ""
+"You do not have permission to manage this taxonomy. Enable Metabox Access "
+"Taxonomies for this role in %1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Du har ikke tillatelse til å administrere denne taxonomy. Aktiver Metabox "
+"Access Taxonomies for denne rollen i %1sPublishPress Taxonomies Settings%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+msgid "Too many AI preview requests. Please wait a minute and try again."
+msgstr ""
+"For mange AI forhåndsvisningsforespørsel. Vennligst vent et minutt og prøv "
+"igjen."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+msgid "Term Results"
+msgstr "Termresultater"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+msgid "No results found for this post with this taxonomy."
+msgstr "Ingen resultater funnet for dette innlegget med denne taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+msgid "Invalid Auto Term ID. Please save the settings before using preview."
+msgstr ""
+"Ugyldig Auto Term ID. Vennligst lagre innstillingene før du bruker "
+"forhåndsvisning."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+msgid "You must enable at least one AI integration source to use auto term preview."
+msgstr ""
+"Du må aktivere minst én AI integrasjonskilde for å bruke auto term "
+"forhåndsvisning."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+msgid ""
+"This Auto Terms option is not enabled for metaboxes. Please enable it in "
+"the Auto Terms settings."
+msgstr ""
+"Denne Auto Terms-alternativet er ikke aktivert for metaboxer. Vennligst "
+"aktiver det i innstillingene for Auto Terms."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#, php-format
+msgid "Click %1s to select or deselect them from this %2s."
+msgstr "Klikk %1s for å velge eller deselectere dem fra denne %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+msgid "Suggest Existing Terms"
+msgstr "Foreslå eksisterende termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:341, fuzzy
+msgid "OpenAI"
+msgstr "OpenAI"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:356
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:356, fuzzy
+msgid "IBM Watson"
+msgstr "IBM Watson"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:371, fuzzy
+msgid "Dandelion"
+msgstr "Dandelion"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:386
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:386, fuzzy
+msgid "LSEG / Refinitiv"
+msgstr "LSEG / Refinitiv"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#, php-format
+msgid "Update %1s on this %2s"
+msgstr "Oppdater %1s på denne %2s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+msgid "Existing Terms not found for the selected post type and taxonomies"
+msgstr "Eksisterende termer ble ikke funnet for den valgte posttypen og taxonomiene"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+msgid ""
+"Existing Terms taxonomy is required. Kindly select taxonomies and save the "
+"settings before running preview."
+msgstr ""
+"Eksisterende termer taxonomy er påkrevd. Vennligst velg taxonomier og lagre "
+"innstillingene før du kjører forhåndsvisning."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+msgid "Result from ajax request."
+msgstr "Resultat fra ajax-forespørsel."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+msgid "The selected taxonomy is not associated with the selected post type."
+msgstr "Den valgte taxonomy er ikke assosiert med den valgte post type."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+msgid "No results found for this taxonomy."
+msgstr "Ingen resultater funnet for denne taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+msgid "You do not have permission to edit this post."
+msgstr "Du har ikke tillatelse til å redigere dette innlegget."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+msgid "You do not have permission to assign terms from this taxonomy."
+msgstr "Du har ikke tillatelse til å tilordne termer fra denne taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#, php-format
+msgid "Click Term to select or deselect from this %1s"
+msgstr "Klikk på Term for å velge eller fjerne fra denne %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+msgid "Both Taxonomy and Post are required."
+msgstr "Både Taxonomy og Post er påkrevd."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+msgid "No new terms were selected or deselected."
+msgstr "Ingen nye termer ble valgt eller fjernet."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#, php-format
+msgid "%1s terms added to this %2s."
+msgstr "%1s termer lagt til dette %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#, php-format
+msgid "%1s terms removed from this %2s."
+msgstr "%1s termer fjernet fra dette %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+msgid "You do not have capability to manage this taxonomy."
+msgstr "Du har ikke kapasitet til å administrere denne taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+msgid "You do not have permission to edit this post with this taxonomy."
+msgstr "Du har ikke tillatelse til å redigere dette innlegget med denne taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#, php-format
+msgid "Terms cannot contain the following characters: %s"
+msgstr "Termer kan ikke inneholde følgende tegn: %s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#, php-format
+msgid "Terms must be at least %d characters long."
+msgstr "Termer må være minst %d tegn lange."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#, php-format
+msgid "Terms cannot exceed %d characters."
+msgstr "Termer kan ikke overstige %d tegn."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+msgid "The Dandelion integration is disabled in the Legacy AI Sources settings."
+msgstr "Dandelion-integrasjonen er deaktivert i Legacy AI Sources-innstillingene."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+msgid "No matched result from the API Server."
+msgstr "Ingen samsvarende resultat fra API-serveren."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+msgid ""
+"The Dandelion integration requires an API Key. Please add your API Key in "
+"the Auto Term settings."
+msgstr ""
+"Dandelion-integrasjonen krever en API-nøkkel. Vennligst legg til din "
+"API-nøkkel i Auto Term-innstillingene."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+msgid "Selected content is empty."
+msgstr "Valgt innhold er tomt."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+msgid "Result from cache."
+msgstr "Resultat fra cache."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#, php-format
+msgid "API Error: %1s."
+msgstr "API-feil: %1$s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+msgid "Result from api."
+msgstr "Resultat fra API."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+msgid "Error establishing connection with the API server. Try again."
+msgstr "Feil ved etablering av forbindelse med API-serveren. Prøv igjen."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+msgid ""
+"The LSEG / Refinitiv integration is disabled in the Legacy AI Sources "
+"settings."
+msgstr ""
+"LSEG / Refinitiv-integrasjonen er deaktivert i innstillingene for Legacy "
+"AI-kilder."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+msgid ""
+"The LSEG / Refinitiv integration requires an API Key. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"LSEG / Refinitiv-integrasjonen krever en API-nøkkel. Vennligst legg til din "
+"API-nøkkel i innstillingene for Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+msgid "API Error: No matched result for content."
+msgstr "API-feil: Ingen samsvarende resultat for innhold."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+msgid "The IBM Watson integration is disabled in the Legacy AI Sources settings."
+msgstr ""
+"IBM Watson-integrasjonen er deaktivert i innstillingene for Legacy "
+"AI-kilder."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+msgid ""
+"The IBM Watson integration requires an API Key and URL. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"IBM Watson-integrasjonen krever en API-nøkkel og URL. Vennligst legg til "
+"din API-nøkkel i innstillingene for Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+msgid ""
+"The IBM Watson API URL must use HTTPS and an official Natural Language "
+"Understanding service hostname."
+msgstr ""
+"IBM Watson API-URL må bruke HTTPS og et offisielt domenenavn for Natural "
+"Language Understanding-tjenesten."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+msgid ""
+"The OpenAI integration requires an API Key. Please add your API Key in the "
+"Auto Term settings."
+msgstr ""
+"OpenAI-integrasjonen krever en API-nøkkel. Vennligst legg til din "
+"API-nøkkel i innstillingene for Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#, php-format
+msgid ""
+"Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
+"{post_terms}, {site_terms}"
+msgstr ""
+"Ugyldige plassholdere oppdaget: {%s}. Gyldige plassholdere er: {content}, "
+"{post_terms}, {site_terms}"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+msgid ""
+"You added {post_terms} in the prompt but your post does not contain any "
+"terms."
+msgstr ""
+"Du la til {post_terms} i prompten, men innlegget ditt inneholder ingen "
+"termer."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+msgid ""
+"You added {site_terms} in the prompt but your site does not contain any "
+"terms for this taxonomy."
+msgstr ""
+"Du la til {site_terms} i prompten, men nettstedet ditt inneholder ingen "
+"termer for denne taksonomien."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+msgid ""
+"Error: OpenAI says there is an issue with this API key. Please check your "
+"plan or billing details."
+msgstr ""
+"Feil: OpenAI sier det er et problem med denne API-nøkkelen. Vennligst sjekk "
+"planen din eller faktureringsdetaljene."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1373
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1695
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: modules/taxopress-ai/taxopress-ai.php:1373
+#: modules/taxopress-ai/taxopress-ai.php:1695
+msgid "Show All Existing Terms"
+msgstr "Vis alle eksisterende termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1381
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1696
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: modules/taxopress-ai/taxopress-ai.php:1381
+#: modules/taxopress-ai/taxopress-ai.php:1696
+msgid "Manage Post Terms"
+msgstr "Administrer innleggstermer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1697
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: modules/taxopress-ai/taxopress-ai.php:1697
+msgid "Auto Terms"
+msgstr "Auto-termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1394
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1698
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: modules/taxopress-ai/taxopress-ai.php:1394
+#: modules/taxopress-ai/taxopress-ai.php:1698
+msgid "Create Terms"
+msgstr "Opprett termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+msgid "View Existing Terms"
+msgstr "Vis eksisterende termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+msgid "This feature allows you to browse all the terms in a taxonomy."
+msgstr "Denne funksjonen lar deg bla gjennom alle termene i en taksonomi."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+msgid "View Current Post Terms"
+msgstr "Vis nåværende innleggsterminer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+msgid ""
+"This feature allows you to manage all the terms that are currently attached "
+"to a post."
+msgstr ""
+"Denne funksjonen lar deg administrere alle termene som for øyeblikket er "
+"knyttet til et innlegg."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1555
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: modules/taxopress-ai/taxopress-ai.php:1555
+msgid "View Terms"
+msgstr "Vis termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+msgid ""
+"This feature allows you to browse based on selected auto terms settings and "
+"sources."
+msgstr ""
+"Denne funksjonen lar deg bla gjennom basert på valgte innstillinger og "
+"kilder for auto-termer."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+msgid "Suggest Terms"
+msgstr "Forslå termer"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Select all %1s"
+msgstr "Velg alle %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Deselect all %1s"
+msgstr "Fjern merket for alle %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#, php-format
+msgid "Select %1s"
+msgstr "Velg %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:411
+#: modules/taxopress-ai/taxopress-ai.php:411
+msgid "Please choose a post to use with PublishPress Taxonomies AI."
+msgstr "Vennligst velg et innlegg å bruke med PublishPress Taxonomies AI."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:420
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1747
+#: modules/taxopress-ai/taxopress-ai.php:420
+#: modules/taxopress-ai/taxopress-ai.php:1747
+msgid "Label can't be empty."
+msgstr "Merket kan ikke være tomt."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:421
+#: modules/taxopress-ai/taxopress-ai.php:421
+msgid "Label can't exceed 30 characters."
+msgstr "Merket kan ikke overskride 30 tegn."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:422
+#: modules/taxopress-ai/taxopress-ai.php:422
+msgid "Unknown tab type."
+msgstr "Ukjent fane-type."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:423
+#: modules/taxopress-ai/taxopress-ai.php:423
+msgid "Error saving label."
+msgstr "Feil ved lagring av merket."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:424
+#: modules/taxopress-ai/taxopress-ai.php:424
+msgid "Please choose a post to preview."
+msgstr "Vennligst velg et innlegg for å forhåndsvise."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:441
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:473
+#: modules/taxopress-ai/taxopress-ai.php:440
+#: modules/taxopress-ai/taxopress-ai.php:441
+#: modules/taxopress-ai/taxopress-ai.php:473
+msgid "Metaboxes"
+msgstr "Metabokser"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:466
+#: modules/taxopress-ai/taxopress-ai.php:466
+msgid "Metabox Settings"
+msgstr "Innstillinger for metabokser"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:467
+#: modules/taxopress-ai/taxopress-ai.php:467
+msgid "Metabox Access"
+msgstr "Tilgang til metabokser"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:476
+#: modules/taxopress-ai/taxopress-ai.php:476
+msgid ""
+"This feature allows you to customize the metabox interface you see when "
+"adding terms to posts."
+msgstr ""
+"Denne funksjonen lar deg tilpasse metabox-grensesnittet du ser når du "
+"legger til termer i innlegg."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:825
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:870
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:952
+#: dist/simple-tags/views/admin/page-settings.php:53
+#: modules/taxopress-ai/taxopress-ai.php:825
+#: modules/taxopress-ai/taxopress-ai.php:870
+#: modules/taxopress-ai/taxopress-ai.php:952
+#: views/admin/page-settings.php:53
+msgid "Save Changes"
+msgstr "Lagre endringer"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:941
+#: modules/taxopress-ai/taxopress-ai.php:941
+msgid "Select..."
+msgstr "Velg..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1067
+#: modules/taxopress-ai/taxopress-ai.php:1067
+#, php-format
+msgid "Select %s"
+msgstr "Velg %s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1129
+#: modules/taxopress-ai/taxopress-ai.php:1129
+msgid "Invalid request."
+msgstr "Ugyldig forespørsel."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1171
+#: modules/taxopress-ai/taxopress-ai.php:1171
+msgid "No terms in your WordPress database."
+msgstr "Ingen termer i WordPress-databasen din."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1180
+#: modules/taxopress-ai/taxopress-ai.php:1180
+msgid "There's no content to scan."
+msgstr "Det er ikke noe innhold å skanne."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1187
+#: modules/taxopress-ai/taxopress-ai.php:1187
+msgid "No results from your WordPress database."
+msgstr "Ingen resultater fra WordPress-databasen din."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1229
+#: modules/taxopress-ai/taxopress-ai.php:1229
+msgid "There are no terms that are relevant to your content."
+msgstr "Det er ingen termer som er relevante for innholdet ditt."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1279
+#: modules/taxopress-ai/taxopress-ai.php:1279
+msgid "Tags"
+msgstr "Tagger"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1311
+#: modules/taxopress-ai/taxopress-ai.php:1311, fuzzy
+msgid "PublishPress Taxonomies"
+msgstr "PublishPress Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1497
+#: modules/taxopress-ai/taxopress-ai.php:1497
+#, php-format
+msgid ""
+"This user does not have access to manage any of this post attached "
+"taxonomies. Enable Metabox Access Taxonomies for this role in "
+"%1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Denne brukeren har ikke tilgang til å administrere noen av taxonomiene "
+"knyttet til dette innlegget. Aktiver Metabox Access Taxonomies for denne "
+"rollen i %1sPublishPress Taxonomies Settings%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1501
+#: modules/taxopress-ai/taxopress-ai.php:1501
+msgid "No PublishPress Taxonomies Metabox features are enabled for this post type."
+msgstr ""
+"Ingen PublishPress Taxonomies Metabox-funksjoner er aktivert for denne "
+"posttypen."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1529
+#: modules/taxopress-ai/taxopress-ai.php:1529
+msgid "Save, You can also press Enter to save and escape to cancel"
+msgstr "Lagre, Du kan også trykke Enter for å lagre og Escape for å avbryte"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1571
+#: modules/taxopress-ai/taxopress-ai.php:1571
+msgid "Search Terms..."
+msgstr "Søketermer..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1590
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1610
+#: modules/taxopress-ai/taxopress-ai.php:1590
+#: modules/taxopress-ai/taxopress-ai.php:1610
+msgid "Create Term"
+msgstr "Opprett term"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1670
+#: modules/taxopress-ai/taxopress-ai.php:1670
+msgid ""
+"You do not have the required capabilities to manage any of this post "
+"attached taxonomies."
+msgstr ""
+"Du har ikke de nødvendige rettighetene til å administrere noen av "
+"taxonomiene knyttet til dette innlegget."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1738
+#: modules/taxopress-ai/taxopress-ai.php:1738
+msgid "You can not edit this label."
+msgstr "Du kan ikke redigere denne etiketten."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1741
+#: modules/taxopress-ai/taxopress-ai.php:1741
+msgid "Invalid nonce token."
+msgstr "Ugyldig nonce-token."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1750
+#: modules/taxopress-ai/taxopress-ai.php:1750
+msgid "Label is too long."
+msgstr "Etiketten er for lang."
+
+#: dist/simple-tags/review-request/review.php:281
+#: review-request/review.php:281
+#, php-format
+msgid ""
+"Hey, you've been using PublishPress Taxonomies for %s on your site. We hope "
+"the plugin has been useful. Please could you quickly leave a 5-star rating "
+"on WordPress.org? It really does help to keep PublishPress Taxonomies "
+"growing."
+msgstr ""
+"Hei, du har brukt PublishPress Taxonomies for %s på nettstedet ditt. Vi "
+"håper at plugin-en har vært nyttig. Kan du raskt legge igjen en 5-stjerners "
+"vurdering på WordPress.org? Det hjelper virkelig å holde PublishPress "
+"Taxonomies i vekst."
+
+#: dist/simple-tags/review-request/review.php:290
+#: review-request/review.php:290
+msgid "1 week"
+msgstr "1 uke"
+
+#: dist/simple-tags/review-request/review.php:306
+#: review-request/review.php:306
+msgid "3 months"
+msgstr "3 måneder"
+
+#: dist/simple-tags/review-request/review.php:371
+#: review-request/review.php:371
+msgid "Click here to add your rating for PublishPress Taxonomies"
+msgstr "Klikk her for å legge til vurderingen din for PublishPress Taxonomies"
+
+#: dist/simple-tags/review-request/review.php:373
+#: review-request/review.php:373
+msgid "Maybe later"
+msgstr "Kanskje senere"
+
+#: dist/simple-tags/review-request/review.php:375
+#: review-request/review.php:375
+msgid "I already did"
+msgstr "Jeg har allerede gjort det"
+
+#: dist/simple-tags/simple-tags.php:97
+#: simple-tags.php:97
+msgid "This plugin can be deleted."
+msgstr "Denne utvidelsen kan slettes."
+
+#: dist/simple-tags/simple-tags.php:125
+#: simple-tags.php:125
+msgid ""
+"PublishPress Taxonomies was not activated because PublishPress Taxonomies "
+"Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
+msgstr ""
+"PublishPress Taxonomies ble ikke aktivert fordi PublishPress Taxonomies Pro "
+"allerede er aktivert. Vennligst ha kun PublishPress Taxonomies Pro aktivert."
+
+#: dist/simple-tags/views/admin/page-settings.php:4
+#: views/admin/page-settings.php:4
+msgid "PublishPress Taxonomies: Options"
+msgstr "PublishPress Taxonomies: Alternativer"
+
+#: dist/simple-tags/inc/terms-table.php:1437
+#: inc/terms-table.php:1437
+msgctxt "term name"
+msgid "Name"
+msgstr "Navn"
+
+#: dist/simple-tags/inc/terms-table.php:1446
+#: inc/terms-table.php:1446
+msgctxt "term name"
+msgid "Taxonomy"
+msgstr "taxonomy"

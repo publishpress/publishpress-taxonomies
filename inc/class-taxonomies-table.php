@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
@@ -393,7 +393,7 @@ class Taxonomy_List extends WP_List_Table
             return __('WordPress core', 'simple-tags');
         } else {
             if ($item->name === 'media_tag' || array_key_exists($item->name, taxopress_get_taxonomy_data())) {
-                $alt_description = __('TaxoPress', 'simple-tags');
+                $alt_description = __('PublishPress Taxonomies', 'simple-tags');
             } else {
                 $alt_description = '&mdash;';
             }
@@ -482,12 +482,12 @@ class Taxonomy_List extends WP_List_Table
         if ($item->name === 'media_tag' || array_key_exists($item->name, $taxopress_taxonomies) || array_key_exists($item->name, $external_taxonomies)) {
             return '<div class="pp-tooltips-library" data-toggle="tooltip">
                     <span class="dashicons dashicons-yes-alt taxopress-edited-indicator taxopress-edited-yes"></span>
-                    <div class="taxopress tooltip-text">This taxonomy has been edited with TaxoPress</div>
+                    <div class="taxopress tooltip-text">This taxonomy has been edited with PublishPress Taxonomies</div>
                     </div>';
         } else {
             return '<div class="pp-tooltips-library" data-toggle="tooltip">
                     <span class="dashicons dashicons-no-alt taxopress-edited-indicator taxopress-edited-no"></span>
-                    <div class="taxopress tooltip-text">This taxonomy has not been edited with TaxoPress</div>
+                    <div class="taxopress tooltip-text">This taxonomy has not been edited with PublishPress Taxonomies</div>
                     </div>';
         }
     }
