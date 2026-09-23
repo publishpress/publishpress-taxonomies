@@ -2462,24 +2462,19 @@
       }
 
       const mergeType = $form.find('input[name="mergeterm_type"]:checked').val();
-      function stripTermName(term) {
-        return term.replace(/\s*\(.*?\)$/, '').trim(); // Strips "(slug)" from end
-      }
-      
       const oldTermsRaw = $form.find('#mergeterm_old').val().split(',').map(function(term) {
         return term.trim();
-      }).filter(Boolean);  
-      const oldTerms = oldTermsRaw.map(stripTermName);
+      }).filter(Boolean);
       const batchSize = 20;
 
-      if ((mergeType === 'different_name' || mergeType === 'same_name') && oldTerms.length > 2) {
+      if ((mergeType === 'different_name' || mergeType === 'same_name') && oldTermsRaw.length > 2) {
         e.preventDefault();
 
         const newTerm = mergeType === 'different_name' ? $form.find('#mergeterm_new').val().trim() : '';
         const taxonomy = $form.find('input[name="current_taxo"]').val();
         const $mergeSubmitButtons = $form.find('button[type="submit"], input[type="submit"]');
         const batches = [];
-        const isLargeMerge = oldTerms.length > batchSize;
+        const isLargeMerge = oldTermsRaw.length > batchSize;
         let useAjaxControls = isLargeMerge;
         let isPaused = false;
         let isCancelled = false;
@@ -2493,8 +2488,8 @@
         let firstBatchSucceeded = false;
         let preflightData = {};
 
-        for (var i = 0; i < oldTerms.length; i += batchSize) {
-          batches.push(oldTerms.slice(i, i + batchSize));
+        for (var i = 0; i < oldTermsRaw.length; i += batchSize) {
+          batches.push(oldTermsRaw.slice(i, i + batchSize));
         }
 
         $('.taxopress-response-css').remove();
@@ -2527,7 +2522,7 @@
       }
 
       function init_merge_progress() {
-        const preflightTermsCount = parseInt(preflightData.terms_count || oldTerms.length, 10);
+        const preflightTermsCount = parseInt(preflightData.terms_count || oldTermsRaw.length, 10);
         const preflightPostsCount = parseInt(preflightData.affected_posts_count || 0, 10);
         let progressMessage = st_admin_localize.merge_in_progress;
 
@@ -2793,7 +2788,7 @@
         $.post(st_admin_localize.ajaxurl, {
           action: 'taxopress_merge_terms_preflight',
           taxonomy: taxonomy,
-          old_terms: oldTerms,
+          old_terms: oldTermsRaw,
           merge_type: mergeType,
           nonce: st_admin_localize.check_nonce
         }, function(response) {
