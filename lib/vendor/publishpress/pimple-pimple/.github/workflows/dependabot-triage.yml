@@ -1,0 +1,24 @@
+name: Dependabot Alert Triage
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Log matching alerts without dismissing them
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  dependabot_triage:
+    name: Auto-dismiss dev-only Dependabot alerts
+    uses: publishpress/github-workflows/.github/workflows/dependabot-triage.yml@v3
+    with:
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets: inherit

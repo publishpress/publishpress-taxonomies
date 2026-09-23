@@ -3,7 +3,7 @@
 /*
  * This file is part of Pimple.
  *
- * Copyright (c) 2009 Fabien Potencier
+ * Copyright (c) 2009-2017 Fabien Potencier
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,71 +22,34 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
-namespace PublishPress\Pimple;
+namespace PublishPress\Pimple\Psr11;
+
+use PublishPress\Pimple\Container as PimpleContainer;
+use PublishPress\Psr\Container\ContainerInterface;
 
 /**
- * Lazy service iterator.
+ * PSR-11 compliant wrapper.
  *
  * @author Pascal Luna <skalpa@zetareticuli.org>
  */
-final class ServiceIterator implements \Iterator
+final class Container implements ContainerInterface
 {
-    private $container;
-    private $ids;
+    private $pimple;
 
-    public function __construct(Container $container, array $ids)
+    public function __construct(PimpleContainer $pimple)
     {
-        $this->container = $container;
-        $this->ids = $ids;
+        $this->pimple = $pimple;
     }
 
-    /**
-     * @return void
-     */
-    #[\ReturnTypeWillChange]
-    public function rewind()
+    public function get(string $id)
     {
-        \reset($this->ids);
+        return $this->pimple[$id];
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function has(string $id): bool
     {
-        return $this->container[\current($this->ids)];
-    }
-
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
-    {
-        return \current($this->ids);
-    }
-
-    /**
-     * @return void
-     */
-    #[\ReturnTypeWillChange]
-    public function next()
-    {
-        \next($this->ids);
-    }
-
-    /**
-     * @return bool
-     */
-    #[\ReturnTypeWillChange]
-    public function valid()
-    {
-        return null !== \key($this->ids);
+        return isset($this->pimple[$id]);
     }
 }
