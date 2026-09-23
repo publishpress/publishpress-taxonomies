@@ -3,7 +3,7 @@ Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojop
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 3.53.0
+Stable tag: 3.54.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -258,6 +258,14 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 
 == Changelog ==
+
+## [3.54.0] - 22 September, 2026
+* Security: Prevent reflected XSS in Terms row-action URLs
+* Fixed: Prevent creation of a destination term when merging terms and no source terms exist
+* Fixed: Preserve the destination term when it is included among the terms being merged
+* Fixed: Fix Auto Links excluded-term matching
+* Update: Add per-post Auto Terms status controls
+* Update: Add per-post Auto Links status controls and enable overrides
 
 ## [3.53.0] - 01 September, 2026
 * Fixed: Mass Edit pagination is broken, #3014
