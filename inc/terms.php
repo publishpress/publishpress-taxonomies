@@ -338,7 +338,7 @@ class SimpleTags_Terms
 
                     $(document).ready(function() {
                         // -------------------------------------------------------------
-                        //   PublishPress Taxonomies terms quick edit
+                        //   TaxoPress terms quick edit
                         // -------------------------------------------------------------
                         $(document).on('click', 'a.editinline, button.editinline', function(e) {
                             var term_id = $(this).attr('data-term-id');
