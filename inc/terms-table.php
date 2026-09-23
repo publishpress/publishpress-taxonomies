@@ -1171,14 +1171,14 @@ class Taxopress_Terms_List extends WP_List_Table
             if (current_user_can('edit_term', $item->term_id)) {
                 $actions['remove_posts'] = sprintf(
                     '<a href="%s">%s</a>',
-                    add_query_arg(
+                    esc_url(add_query_arg(
                         taxopress_get_terms_screen_query_args([
                             'action'                 => 'taxopress-remove-from-posts',
                             'taxopress_terms'        => esc_attr($item->term_id),
                             '_wpnonce'               => wp_create_nonce('terms-action-request-nonce')
                         ]),
                         admin_url('admin.php')
-                    ),
+                    )),
                     esc_html__('Remove From All Posts', 'simple-tags')
                 );
             }
@@ -1186,14 +1186,14 @@ class Taxopress_Terms_List extends WP_List_Table
             if (current_user_can('delete_term', $item->term_id)) {
                 $actions['delete'] = sprintf(
                     '<a href="%s" class="delete-terms">%s</a>',
-                    add_query_arg(
+                    esc_url(add_query_arg(
                         taxopress_get_terms_screen_query_args([
                             'action'                 => 'taxopress-delete-terms',
                             'taxopress_terms'        => esc_attr($item->term_id),
                             '_wpnonce'               => wp_create_nonce('terms-action-request-nonce')
                         ]),
                         admin_url('admin.php')
-                    ),
+                    )),
                     esc_html__('Delete', 'simple-tags')
                 );
             }
@@ -1208,14 +1208,14 @@ class Taxopress_Terms_List extends WP_List_Table
 
             $actions['copy_term'] = sprintf(
                 '<a href="%s">%s</a>',
-                add_query_arg(
+                esc_url(add_query_arg(
                     taxopress_get_terms_screen_query_args([
                         'action'                 => 'taxopress-copy-term',
                         'taxopress_terms'        => esc_attr($item->term_id),
                         '_wpnonce'               => wp_create_nonce('terms-action-request-nonce')
                     ]),
                     admin_url('admin.php')
-                ),
+                )),
                 esc_html__('Copy', 'simple-tags')
             );
             $actions = apply_filters('taxopress_terms_row_actions', $actions, $item);
