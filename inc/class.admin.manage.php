@@ -655,31 +655,18 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                $new_term = self::getExistingMergeTerm($taxonomy, $new_tag);
-                if (!$new_term && !empty($new_term_inputs[0])) {
-                    $new_term = self::getExistingMergeTerm($taxonomy, $new_term_inputs[0]);
-                }
-                if (!$new_term) {
-                    add_settings_error(__CLASS__, __CLASS__, esc_html__('The term to merge into must be an existing term.', 'simple-tags'), 'error taxopress-notice');
-                    return false;
-                }
-
-                $new_term_id = $new_term->term_id;
-                $new_term_slug = $new_term->slug;
-
-                // Get terms ID from old terms names
-                $terms_id = array();
-                $found_terms = array();
-                $missing_terms = array();
+                // Resolve and validate the source terms before resolving the destination.
+                $source_terms = [];
+                $missing_terms = [];
                 foreach ((array) $old_term_inputs as $index => $old_tag_input) {
                     $old_tag = isset($old_terms[$index]) ? $old_terms[$index] : $extractTermName($old_tag_input);
                     $term = self::getExistingMergeTerm($taxonomy, $old_tag_input);
                     if (!$term) {
                         $term = self::getExistingMergeTerm($taxonomy, $old_tag);
                     }
+
                     if ($term) {
-                        $terms_id[] = (int) $term->term_id;
-                        $found_terms[] = $term->name;
+                        $source_terms[(int) $term->term_id] = $term;
                     } else {
                         $missing_terms[] = $old_tag;
                     }
@@ -699,10 +686,34 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                if (empty($terms_id)) {
+                if (empty($source_terms)) {
                     add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
                     return false;
                 }
+
+                // The destination must already exist, and autocomplete labels may include its slug.
+                $new_term = self::getExistingMergeTerm($taxonomy, $new_tag);
+                if (!$new_term && !empty($new_term_inputs[0])) {
+                    $new_term = self::getExistingMergeTerm($taxonomy, $new_term_inputs[0]);
+                }
+                if (!$new_term) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('The term to merge into must be an existing term.', 'simple-tags'), 'error taxopress-notice');
+                    return false;
+                }
+
+                $new_term_id = $new_term->term_id;
+                $new_term_slug = $new_term->slug;
+
+                // Never delete the destination when it was also selected as a source term.
+                unset($source_terms[$new_term_id]);
+
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No other matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
+                    return false;
+                }
+
+                $terms_id = array_keys($source_terms);
+                $found_terms = wp_list_pluck(array_values($source_terms), 'name');
 
                 // Get objects from terms ID
                 $objects_id = get_objects_in_term($terms_id, $taxonomy, ['fields' => 'ids']);
@@ -718,7 +729,7 @@ class SimpleTags_Admin_Manage
                     // Check if the object already has the term assigned
                     $current_terms = wp_get_object_terms($object_id, $taxonomy, ['fields' => 'ids']);
                     if (!in_array($new_term_id, $current_terms)) {
-                        wp_set_object_terms($object_id, $new_term_slug, $taxonomy, true);
+                        wp_set_object_terms($object_id, $new_term_id, $taxonomy, true);
                     }
                     $unique_objects[$object_id] = true; // Add to unique set
                 }
