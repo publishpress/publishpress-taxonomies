@@ -1141,12 +1141,14 @@ class SimpleTags_Admin_Manage
         $term_ids = self::get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type, $missing_terms);
         if (!empty($missing_terms)) {
             wp_send_json_error([
+                'code' => 'missing_terms',
+                'missing_terms' => $missing_terms,
                 'message' => sprintf(
                     /* translators: %s: comma-separated term names. */
                     __('These terms do not exist and cannot be merged: %s', 'simple-tags'),
                     implode(', ', $missing_terms)
                 )
-            ], 400);
+            ]);
             wp_die();
         }
 
@@ -1208,9 +1210,12 @@ class SimpleTags_Admin_Manage
         }
 
         $old_terms = array_values(array_unique($old_terms));
+        $missing_terms = array_values(array_unique($missing_terms));
 
         if (!empty($missing_terms)) {
             wp_send_json_error([
+                'code' => 'missing_terms',
+                'missing_terms' => $missing_terms,
                 'message' => sprintf(
                     /* translators: %s: comma-separated term names. */
                     __('These terms do not exist and cannot be merged: %s', 'simple-tags'),

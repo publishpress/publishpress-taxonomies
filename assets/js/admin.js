@@ -2484,7 +2484,9 @@
         let totalTermsModified = 0;
         let totalPostsAffected = 0;
         const uniquePosts = new Set();
+        let mergedIntoTerm = '';
         let lastErrorMessage = '';
+        const skippedMissingTermBatches = [];
         let firstBatchSucceeded = false;
         let preflightData = {};
 
@@ -2641,6 +2643,10 @@
           if (response.data.terms_merged) {
             totalTermsModified += parseInt(response.data.terms_merged);
           }
+
+          if (response.data.merged_into) {
+            mergedIntoTerm = response.data.merged_into;
+          }
       
           // Track unique post IDs instead of counting blindly
           if (response.data.post_ids) {
@@ -2661,12 +2667,27 @@
             process_merge_batch(index + 1);
           }
         } else {
-          if (mergeType === 'same_name' && firstBatchSucceeded) {
+          const isMissingTermsBatch = response.data && response.data.code === 'missing_terms';
+
+          if (isMissingTermsBatch) {
+            const missingTerms = Array.isArray(response.data.missing_terms) ? response.data.missing_terms : [];
+            const missingTermsText = missingTerms.map(escape_merge_text).join(', ');
+            const batchMessage = st_admin_localize.batch_missing_terms
+              .replace('%1$s', (index + 1))
+              .replace('%2$s', missingTermsText);
+
+            skippedMissingTermBatches.push({
+              batchNumber: index + 1,
+              message: batchMessage
+            });
+            lastErrorMessage = batchMessage;
+            show_merge_message('red', '<strong>' + batchMessage + '</strong>');
+          } else if (mergeType === 'same_name' && firstBatchSucceeded) {
             completedBatches++;
             show_merge_message('yellow', st_admin_localize.batch_merge_progress.replace('%1$s', (index + 1)).replace('%2$s', batches.length));
           } else {
             if (typeof response.data === 'object' && response.data.message) {
-              var errorMsg = response.data.message;
+              var errorMsg = escape_merge_text(response.data.message);
               lastErrorMessage = errorMsg;
               show_merge_message('red', '<strong>' + st_admin_localize.batch_error_text.replace('%1$s', (index + 1)) + '</strong> ' + errorMsg);
             }
@@ -2701,7 +2722,7 @@
             if (finalResponse.success && finalResponse.data.retained_slug) {
               retainedSlugs = [finalResponse.data.retained_slug];
             } else if (finalResponse.data && finalResponse.data.message) {
-              lastErrorMessage = finalResponse.data.message;
+              lastErrorMessage = escape_merge_text(finalResponse.data.message);
             }
           }).fail(function() {
             lastErrorMessage = st_admin_localize.ajax_merge_terms_error;
@@ -2723,9 +2744,20 @@
           }
           show_merge_message('final-error', finalMsg);
         } else {
-          var finalTermName = (mergeType === 'same_name') ? retainedSlugs.join(', ') : newTerm;
-          var finalMsg = st_admin_localize.merge_success_update.replace('%s', finalTermName) + ', ' + uniquePosts.size + ' ' + st_admin_localize.posts_updated_text;
-          show_merge_message('final', '<strong>' + finalMsg + '</strong>');
+          var finalTermName = escape_merge_text((mergeType === 'same_name') ? retainedSlugs.join(', ') : (mergedIntoTerm || newTerm));
+          var finalMessageTemplate = skippedMissingTermBatches.length > 0 ? st_admin_localize.merge_partial_update : st_admin_localize.merge_success_update;
+          var finalMsg = finalMessageTemplate.replace('%s', finalTermName) + ', ' + uniquePosts.size + ' ' + st_admin_localize.posts_updated_text;
+          if (skippedMissingTermBatches.length > 0) {
+            const skippedBatchDetails = skippedMissingTermBatches.map(function(batch) {
+              return batch.message;
+            }).join('<br>');
+
+            finalMsg += '<br><em>' + st_admin_localize.merge_partial_missing_terms + '</em>';
+            finalMsg += '<br>' + skippedBatchDetails;
+            show_merge_message('final-partial', '<strong>' + finalMsg + '</strong>');
+          } else {
+            show_merge_message('final', '<strong>' + finalMsg + '</strong>');
+          }
         }
 
         restore_merge_submit_buttons();
@@ -2738,9 +2770,13 @@
       
 
       // Show merge message
+      function escape_merge_text(value) {
+        return $('<div>').text(String(value)).html();
+      }
+
       function show_merge_message(type, message) {
-        if (type === 'final' || type === 'final-error') {
-          var noticeClass = type === 'final' ? 'green' : 'red';
+        if (type === 'final' || type === 'final-error' || type === 'final-partial') {
+          var noticeClass = type === 'final' ? 'green' : (type === 'final-partial' ? 'yellow' : 'red');
           $('#merge-progress').html(
             '<div class="taxopress-response-css ' + noticeClass + '"><p>' + message + '</p>' +
             '<button type="button" class="taxopress-dismiss-merge-message notice-dismiss" style="float: right;"></button></div>'
@@ -2765,8 +2801,9 @@
       }
 
       function show_preflight_error(message) {
+        const safeMessage = escape_merge_text(message);
         $('#merge-progress').html(
-          '<div class="taxopress-response-css red"><p><strong>' + message + '</strong></p>' +
+          '<div class="taxopress-response-css red"><p><strong>' + safeMessage + '</strong></p>' +
           '<button type="button" class="taxopress-dismiss-merge-message notice-dismiss" style="float: right;"></button></div>'
         );
         schedule_merge_message_dismiss($('#merge-progress .taxopress-response-css'));
