@@ -735,7 +735,7 @@ class Taxopress_Terms_List extends WP_List_Table
             ];
         }
         $columns = [
-            'cb'      => '<input type="checkbox" />',
+            'cb'      => '<input type="checkbox" aria-label="' . esc_attr__('Select all terms', 'simple-tags') . '" />',
             'name'     => esc_html__('Title', 'simple-tags'),
             'slug'     => esc_html__('Slug', 'simple-tags'),
             'description'     => esc_html__('Description', 'simple-tags'),
@@ -786,7 +786,16 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'taxopress_terms', $item->term_id);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'taxopress_terms',
+            $item->term_id,
+            sprintf(
+                /* translators: %s: term ID. */
+                esc_attr__('Select term %s', 'simple-tags'),
+                (string) $item->term_id
+            )
+        );
     }
 
     /**
