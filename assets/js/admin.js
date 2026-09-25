@@ -9,6 +9,14 @@
   $(document).ready(function () {
     
     var autoTermProcessingPaused = false;
+
+    function taxopressDecodeHtmlEntities(str) {
+      var parser = new DOMParser();
+      var safeString = String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      var parsed = parser.parseFromString(safeString, 'text/html');
+
+      return parsed.documentElement.textContent || '';
+    }
     
     // -------------------------------------------------------------
     //   Expand textarea height based on lines
@@ -3143,11 +3151,9 @@
                     processResults: function (data, params) {
                         params.page = params.page || 1;
                         const decodedResults = data.results.map(function(item) {
-                            const txt = document.createElement("textarea");
-                            txt.innerHTML = item.text;
                             return {
                                 ...item,
-                                text: txt.value
+                                text: taxopressDecodeHtmlEntities(item.text)
                             };
                         });
                         return {
@@ -3161,9 +3167,7 @@
                 },
                 templateSelection: function (data) {
                     if (data.text) {
-                        const txt = document.createElement("textarea");
-                        txt.innerHTML = data.text;
-                        return txt.value;
+                        return taxopressDecodeHtmlEntities(data.text);
                     }
                     return data.id;
                 },
