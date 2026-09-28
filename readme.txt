@@ -267,6 +267,9 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 == Changelog ==
 
+= [4.0.0] - 28 September, 2026
+* Rebrand: Move TaxoPress to PublishPress
+
 = [3.54.0] - 22 September, 2026 =
 * Security: Prevent reflected XSS in Terms row-action URLs
 * Fixed: Prevent creation of a destination term when merging terms and no source terms exist
