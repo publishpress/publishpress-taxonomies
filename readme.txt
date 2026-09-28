@@ -256,10 +256,18 @@ OpenAI / OpenAI / ChatGPT is the most popular AI tool available today. The Publi
 
 IBW Watson is one of the most powerful AI tools available today. The PublishPress Taxonomies AI feature has an integration with the  Natural Language Understanding service from IBM. [This IBM Watson guide](https://publishpress.com/docs/register-ibm/) will help you register for an account at IBM Cloud and get an API Key and URL to use with PublishPress Taxonomies.
 
+== Screenshots ==
+
+1. You can create new taxonomies and edit all the settings for each taxonomy.
+2. With PublishPress Taxonomies you can show all the terms in one taxonomy. You can build dynamic tag clouds and lists with many configuration options.
+3. PublishPress Taxonomies has tools to help you manage terms on a busy site. You can quickly add, rename, remove, delete and even merge terms.
+4. PublishPress Taxonomies can analyze your posts and automatically create relevant Tags and Categories.
+5. PublishPress Taxonomies can use the Dandelion API and OpenCalais APIs to analyze your WordPress content and suggest terms that you can add to your post.
+6. If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add a link to the archive page for that tag.
 
 == Changelog ==
 
-## [3.54.0] - 22 September, 2026
+= [3.54.0] - 22 September, 2026 =
 * Security: Prevent reflected XSS in Terms row-action URLs
 * Fixed: Prevent creation of a destination term when merging terms and no source terms exist
 * Fixed: Preserve the destination term when it is included among the terms being merged
@@ -267,7 +275,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Update: Add per-post Auto Terms status controls
 * Update: Add per-post Auto Links status controls and enable overrides
 
-## [3.53.0] - 01 September, 2026
+= [3.53.0] - 01 September, 2026 =
 * Fixed: Mass Edit pagination is broken, #3014
 * Update: Enforce native taxonomy capabilities for term actions, #3013
 * Update: Bound Auto Terms existing-content processing, #3012
@@ -275,7 +283,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Update: Harden AI integrations and metabox mutations, #3010
 * Add a loco.xml file, #3009
 
-## [3.52.0] - 19 August, 2026 =
+= [3.52.0] - 19 August, 2026 =
 * Update: Normalize Auto Terms specific-term values, #3001
 * Update: Add permission checks to Pro configuration copy actions, #3000
 * Update: Restrict synonym validation to TaxoPress managers, #2999
@@ -286,7 +294,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Add request validation to legacy tag creation, #2991
 * Harden TaxoPress AI term result rendering, #2989
 
-## [3.51.0] - 22 July, 2026 =
+= [3.51.0] - 22 July, 2026 =
 * Fixed: Fatal memory exhaustion on Terms screen (st_terms) with hierarchical taxonomy — not related to term count, #2967
 * Fixed: Related Posts thumbnail image resolution setting is ignored, #2964
 * Fixed: Terms screen causes memory exhaustion on large sites, #2962
@@ -296,12 +304,3 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Update: Include changelog in readme.txt for plugin update dialog box, #2959
 
 The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-taxonomies/blob/master/CHANGELOG.md).
-
-== Screenshots ==
-
-1. You can create new taxonomies and edit all the settings for each taxonomy.
-2. With PublishPress Taxonomies you can show all the terms in one taxonomy. You can build dynamic tag clouds and lists with many configuration options.
-3. PublishPress Taxonomies has tools to help you manage terms on a busy site. You can quickly add, rename, remove, delete and even merge terms.
-4. PublishPress Taxonomies can analyze your posts and automatically create relevant Tags and Categories.
-5. PublishPress Taxonomies can use the Dandelion API and OpenCalais APIs to analyze your WordPress content and suggest terms that you can add to your post.
-6. If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add a link to the archive page for that tag.
