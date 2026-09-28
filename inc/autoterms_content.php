@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Autoterms_Content
 {

@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Generic.WhiteSpace.DisallowTabIndent.TabsUsed,Generic.WhiteSpace.ScopeIndent.Incorrect,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Generic.WhiteSpace.DisallowTabIndent.TabsUsed,Generic.WhiteSpace.ScopeIndent.Incorrect,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Autocomplete
 {
@@ -9,7 +9,7 @@ class SimpleTags_Admin_Autocomplete
         // Ajax action, JS Helper and admin action
         add_action('wp_ajax_simpletags_autocomplete', array( __CLASS__, 'ajax_check' ));
 
-        // TaxoPress hook
+        // PublishPress Taxonomies hook
         add_action('simpletags-auto_terms', array( __CLASS__, 'auto_terms_js' ));
         add_action('simpletags-manage_terms', array( __CLASS__, 'manage_terms_js' ));
         add_action('simpletags-mass_terms', array( __CLASS__, 'mass_terms_js' ));
@@ -161,7 +161,7 @@ class SimpleTags_Admin_Autocomplete
     }
 
     /**
-     * Content of custom meta box of TaxoPress
+     * Content of custom meta box of PublishPress Taxonomies
      *
      * @param object $post
      *

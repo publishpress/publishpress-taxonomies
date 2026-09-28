@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Dashboard
 {
@@ -75,7 +75,7 @@ class SimpleTags_Dashboard
             <div class="banner-wrap">
                 <div class="banner-inner">
                     <a>
-                        <img src="<?php echo esc_url(STAGS_URL . '/assets/images/tp-email-logo.png'); ?>"  alt="TaxoPress Logo"/>
+                        <img src="<?php echo esc_url(STAGS_URL . '/assets/images/publishpress-taxonomies-email-logo.png'); ?>"  alt="PublishPress Taxonomies Logo"/>
                     </a>
                 </div>
             </div>
@@ -85,7 +85,7 @@ class SimpleTags_Dashboard
             <div class="content-wrap">
                 <div class="taxopress-welcome">
                     <div class="welcome-panel-content">
-                        <h2><?php esc_html_e('Welcome to TaxoPress, the WordPress taxonomy plugin', 'simple-tags'); ?></h2>
+                        <h2><?php esc_html_e('Welcome to PublishPress Taxonomies, the WordPress taxonomy plugin', 'simple-tags'); ?></h2>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@ class SimpleTags_Dashboard
         <div class="wrap st_wrap tagcloudui st_dashboard-page admin-settings">
             <h1 class="wp-heading-inline"><?php esc_html_e('Dashboard', 'simple-tags'); ?></h1>
             <div class="taxopress-description">
-                <?php esc_html_e('This screen allows you to enable or disable TaxoPress features.', 'simple-tags'); ?>
+                <?php esc_html_e('This screen allows you to enable or disable PublishPress Taxonomies features.', 'simple-tags'); ?>
             </div>
 
             <form id="taxopress-capabilities-dashboard-form">

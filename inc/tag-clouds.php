@@ -318,10 +318,10 @@ class SimpleTags_Tag_Clouds
 
                                         <?php if ($tag_cloud_limit) {
                                             echo '<div class="st-taxonomy-content promo-box-area"><div class="taxopress-warning upgrade-pro">
-                                            <h2 style="margin-bottom: 5px;">' . esc_html__('To create more Terms Display, please upgrade to TaxoPress Pro.', 'simple-tags') . '</h2>
+                                            <h2 style="margin-bottom: 5px;">' . esc_html__('To create more Terms Display, please upgrade to PublishPress Taxonomies Pro.', 'simple-tags') . '</h2>
                                             <p>
 
-                                            ' . esc_html__('With TaxoPress Pro, you can create unlimited Terms Display. You can create Terms Display for any taxonomy and then display those Terms Display anywhere on your site.', 'simple-tags') . '
+                                            ' . esc_html__('With PublishPress Taxonomies Pro, you can create unlimited Terms Display. You can create Terms Display for any taxonomy and then display those Terms Display anywhere on your site.', 'simple-tags') . '
 
                                             </p>
                                             </div></div>';
@@ -963,7 +963,7 @@ class SimpleTags_Tag_Clouds
 
                             <?php if ($tag_cloud_limit) { ?>
                                 <div class="pp-version-notice-bold-purple" style="margin-left:0px;">
-                                    <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using TaxoPress Free.
+                                    <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                     </div>
                                     <div class="pp-version-notice-bold-purple-button">

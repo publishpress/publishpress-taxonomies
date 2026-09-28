@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.ControlStructures.ControlStructureSpacing.CloseParenthesisLine,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR12.ControlStructures.ControlStructureSpacing.LineIndent,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.ControlStructures.ControlStructureSpacing.CloseParenthesisLine,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR12.ControlStructures.ControlStructureSpacing.LineIndent,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Autolink
 {
@@ -273,12 +273,12 @@ class SimpleTags_Autolink
                                                     echo '<div class="st-taxonomy-content promo-box-area"><div class="taxopress-warning upgrade-pro">
 
                                             <h2 style="margin-bottom: 5px;">' . esc_html__(
-                                                        'To create more Auto Links, please upgrade to TaxoPress Pro.',
+                                                        'To create more Auto Links, please upgrade to PublishPress Taxonomies Pro.',
                                                         'simple-tags'
                                                     ) . '</h2>
                                                     <p>
                                             ' . esc_html__(
-                                                        'With TaxoPress Pro, you can create unlimited Auto Links. You can create Auto Links for any taxonomy.',
+                                                        'With PublishPress Taxonomies Pro, you can create unlimited Auto Links. You can create Auto Links for any taxonomy.',
                                                         'simple-tags'
                                                     ) . '
 
@@ -544,7 +544,7 @@ class SimpleTags_Autolink
                                                         'Enable this Auto Links instance for:',
                                                         'simple-tags'
                                                     ) . '</label><br /><small style=" color: #646970;">' . esc_html__(
-                                                        'TaxoPress will attempt to automatically insert Auto Links in this content. It may not be successful for all post types and layouts.',
+                                                        'PublishPress Taxonomies will attempt to automatically insert Auto Links in this content. It may not be successful for all post types and layouts.',
                                                         'simple-tags'
                                                     ) . '</small></th><td>
                                                     <table class="visbile-table">';
@@ -868,7 +868,7 @@ class SimpleTags_Autolink
                                                             'simple-tags'
                                                         ),
                                                         'aftertext'  => esc_html__(
-                                                            'By default, TaxoPress will add links for all terms. If this box is unchecked, Auto Links will only add links for terms that are attached to the post.',
+                                                            'By default, PublishPress Taxonomies will add links for all terms. If this box is unchecked, Auto Links will only add links for terms that are attached to the post.',
                                                             'simple-tags'
                                                         ),
                                                         'selections' => $select, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -901,7 +901,7 @@ class SimpleTags_Autolink
                                                             'simple-tags'
                                                         ),
                                                         'aftertext'  => esc_html__(
-                                                            'The new Auto Links engine uses the DOMDocument PHP class and may offer better performance. If your server does not support this functionality, TaxoPress will use the usual engine.',
+                                                            'The new Auto Links engine uses the DOMDocument PHP class and may offer better performance. If your server does not support this functionality, PublishPress Taxonomies will use the usual engine.',
                                                             'simple-tags'
                                                         ),
                                                         'selections' => $select, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -1063,7 +1063,7 @@ class SimpleTags_Autolink
                                     <?php if ($autolink_limit) { ?>
 
                                         <div class="pp-version-notice-bold-purple" style="margin-left:0px;">
-                                            <div class="pp-version-notice-bold-purple-message"><?php esc_html_e('You\'re using TaxoPress Free.
+                                            <div class="pp-version-notice-bold-purple-message"><?php esc_html_e('You\'re using PublishPress Taxonomies Free.
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                             </div>
                                             <div class="pp-version-notice-bold-purple-button"><a href="https://taxopress.com/taxopress/" target="_blank"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
@@ -1129,7 +1129,7 @@ class SimpleTags_Autolink
                                         <div class="advertisement-box-content postbox">
                                             <div class="postbox-header">
                                                 <h3 class="advertisement-box-header hndle is-non-sortable">
-                                                    <span><?php echo esc_html__('TaxoPress and Languages', 'simple-tags'); ?></span>
+                                                    <span><?php echo esc_html__('PublishPress Taxonomies and Languages', 'simple-tags'); ?></span>
                                                 </h3>
                                             </div>
                                             <div class="inside">

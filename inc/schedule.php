@@ -200,7 +200,7 @@ if (!class_exists('SimpleTags_Autoterms_Schedule')) {
             <div class="wrap taxopress-split-wrap taxopress-autoterm-schedule">
                 <h1><?php echo esc_html__('Auto Terms Schedule', 'simple-tags'); ?> </h1>
                 <div class="taxopress-description">
-                    <?php esc_html_e('This feature allows you to run the Auto Terms feature on a schedule. This is helpful if you regularly import content into WordPress. TaxoPress can run on a schedule and add terms to your imported content.', 'simple-tags'); ?>
+                    <?php esc_html_e('This feature allows you to run the Auto Terms feature on a schedule. This is helpful if you regularly import content into WordPress. PublishPress Taxonomies can run on a schedule and add terms to your imported content.', 'simple-tags'); ?>
                 </div>
                 <div class="wp-clearfix"></div>
                 <form method="post" id="auto_term_schedule_form" action="">

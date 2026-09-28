@@ -4,7 +4,7 @@ if (!class_exists('TaxoPressAiFields')) {
     class TaxoPressAiFields
     {
         /**
-         * Get the fields tabs to be rendered on taxopress ai screen
+         * Get the fields tabs to be rendered on PublishPress Taxonomies ai screen
          *
          * @return array
          */
@@ -52,7 +52,7 @@ if (!class_exists('TaxoPressAiFields')) {
             ];
 
             /**
-             * Customize fields tabs presented on taxopress ai screen.
+             * Customize fields tabs presented on PublishPress Taxonomies ai screen.
              *
              * @param array $fields_tabs Existing fields tabs to display.
              */

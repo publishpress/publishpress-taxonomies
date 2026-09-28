@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_tax_query,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_tax_query,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Manage
 {
@@ -66,7 +66,7 @@ class SimpleTags_Admin_Manage
     {
         $hook = add_submenu_page(
             self::MENU_SLUG,
-            __('TaxoPress: Manage Terms', 'simple-tags'),
+            __('PublishPress Taxonomies: Manage Terms', 'simple-tags'),
             __('Manage Terms', 'simple-tags'),
             'simple_tags',
             'st_manage',
@@ -367,7 +367,7 @@ class SimpleTags_Admin_Manage
                             <?php SimpleTags_Admin::tabSelectorTaxonomy('delete-unuused-terms', 'st_manage'); ?>
                                 <h2><?php esc_html_e('Remove rarely used terms', 'simple-tags'); ?></h2>
                                 <p><?php esc_html_e('This feature allows you to remove rarely used terms.', 'simple-tags'); ?></p>
-                                <p><?php printf(esc_html__('If you choose 5, Taxopress will delete all terms attached to less than 5 %s.', 'simple-tags'), esc_html(SimpleTags_Admin::$post_type_name)); ?></p>
+                                <p><?php printf(esc_html__('If you choose 5, PublishPress Taxonomies will delete all terms attached to less than 5 %s.', 'simple-tags'), esc_html(SimpleTags_Admin::$post_type_name)); ?></p>
 
                                 <fieldset>
                                     <form action="" method="post">

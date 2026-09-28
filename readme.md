@@ -1,12 +1,14 @@
-TaxoPress allows you to create and manage Tags, Categories, and all your WordPress taxonomy terms. TaxoPress can help with all your WordPress content, from adding Tags and Categories to Pages, to managing WooCommerce Product Categories and bbPress Topic Tags. 
+# PublishPress Taxonomies
 
-With TaxoPress, you can organize, optimize, and showcase all your WordPress content:
+PublishPress Taxonomies allows you to create and manage Tags, Categories, and all your WordPress taxonomy terms. PublishPress Taxonomies can help with all your WordPress content, from adding Tags and Categories to Pages, to managing WooCommerce Product Categories and bbPress Topic Tags. 
 
-* **Organize**: In TaxoPress, you can manage taxonomies, and also terms. There are tools for you to add, rename, remove, delete and even merge terms. You can add any term or taxonomy to any post type.
-* **Optimize**: TaxoPress can improve your SEO with automatic term management. TaxoPress can automatically suggest relevant terms for your content and link those terms to the correct archive pages.
-* **Showcase**: TaxoPress allows you to use your terms for advanced features such as Related Posts and Tag Clouds.
+With PublishPress Taxonomies, you can organize, optimize, and showcase all your WordPress content:
 
-## Key Features in TaxoPress ##
+* **Organize**: In PublishPress Taxonomies, you can manage taxonomies, and also terms. There are tools for you to add, rename, remove, delete and even merge terms. You can add any term or taxonomy to any post type.
+* **Optimize**: PublishPress Taxonomies can improve your SEO with automatic term management. PublishPress Taxonomies can automatically suggest relevant terms for your content and link those terms to the correct archive pages.
+* **Showcase**: PublishPress Taxonomies allows you to use your terms for advanced features such as Related Posts and Tag Clouds.
+
+## Key Features in PublishPress Taxonomies ##
 
 1. **Manage Terms and Taxonomies**: You can create new taxonomies and edit all the settings for each taxonomy.
 2. **Terms Display**: This feature allows you to create a customizable display of all the terms in one taxonomy.
