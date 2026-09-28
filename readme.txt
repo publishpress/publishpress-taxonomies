@@ -167,7 +167,7 @@ Yes, you can. Both Categories and Tags are “taxonomies” and they can help yo
 * When you are editing a Page, you will see the “Categories” box in the right sidebar.
 * You will also be able to add and remove Categories using the “Quick Edit” and “Bulk Edit” features.
 
-[Click here to see how to Add Categories and Tags to WordPress Pages](https://taxopress.com/add-categories-wordpress-pages/).
+[Click here to see how to Add Categories and Tags to WordPress Pages](https://publishpress.com/publishpress-taxonomies/add-categories-wordpress-pages/).
 
 = How Many Levels of Sub-Categories Does WordPress Support? =
 
@@ -177,7 +177,7 @@ The main limitation to consider will be the WordPress admin area which will star
 
 Finally, I’ll note that you can add multiple levels to any WordPress taxonomy. Go to the “Taxonomies” screen in PublishPress Taxonomies. When you click “Edit”, you’ll be able to change the settings for each taxonomy. You can control whether the taxonomy is organized in parent-child relationships.
 
-[Click here to see about category levels in WordPress](https://taxopress.com/how-many-levels-sub-categories/).
+[Click here to see about category levels in WordPress](https://publishpress.com/publishpress-taxonomies/how-many-levels-sub-categories/).
 
 = How Do I Create WordPress Taxonomies for Internal Use? =
 
@@ -197,7 +197,7 @@ Inside the “Taxonomies” screen, you can click the “Admin Area” tab and c
 * Show admin menu: Should this taxonomy appear on screens such as “Posts” and “Pages”?
 * Show in “Quick Edit” and “Bulk Edit”: Should this taxonomy be available in editing tools on screens such as “Posts” and “Pages”?
 
-[Click here to see more about private taxonomies](https://taxopress.com/how-to-create-wordpress-taxonomies-for-internal-use/).
+[Click here to see more about private taxonomies](https://publishpress.com/publishpress-taxonomies/how-to-create-wordpress-taxonomies-for-internal-use/).
 
 = How Do I Display Taxonomy Terms in a Widget? =
 
@@ -222,7 +222,7 @@ If you have a busy WordPress site, it can be difficult to organize all your cont
 * Click “Save Auto Terms”.
 * You are now ready to automatically add terms! One approach is to use the “Existing content” option to retroactively add Tags to your content. For new content, PublishPress Taxonomies can automatically scanned the post text and added the correct Tags.
 
-[Click here to see more about automatically adding WordPress Tags](https://taxopress.com/automatically-add-tags-wordpress/).
+[Click here to see more about automatically adding WordPress Tags](https://publishpress.com/publishpress-taxonomies/automatically-add-tags-wordpress/).
 
 = How Do I Automatically Add WooCommerce Product Tags and Categories? =
 
@@ -234,19 +234,19 @@ If you have a busy WooCommerce site, it can be difficult to organize all your pr
 * The other required setting is in “Terms to Use”. You need to choose whether to use all the terms in your “Product Tags” taxonomy, or only a select group. If you choose to use all the terms, test carefully as this process may slow your site if you have 10,000’s of terms, or if you have a slow server.
 * You are now ready to automatically add terms! One approach is to use the “Existing content” option to retroactively add Product Tags to your WooCommerce products. For new content, PublishPress Taxonomies can automatically scanned the product text and added the correct WooCommerce Tag or WooCommerce Category.
 
-[Click here to see more about automatically adding WooCoomerce Product Tags](https://taxopress.com/automatically-add-woocommerce-product-tags-and-categories/).
+[Click here to see more about automatically adding WooCoomerce Product Tags](https://publishpress.com/publishpress-taxonomies/automatically-add-woocommerce-product-tags-and-categories/).
 
 = What’s the Difference Between WordPress Categories and Tags? = 
 
 The main difference between Categories and Tags is the ability to create levels of Categories. Categories are hierarchical, which means terms can be organized into a parent-child relationship. For example, you could have a Category called “Fruit”, and under this Category you could have categories called “Apples”, “Bananas”, “Grapes”, and “Peaches”. Tags are not hierarchical, which means there’s no relationship between them. You can still add the same words as Tags, but by default they can not have relationships. You can modify this using [the Taxonomies screen in PublishPress Taxonomies](https://publishpress.com/docs/introduction-taxonomies-screen/).
 
-[Click here to see the difference between Tags and Categories](https://taxopress.com/difference-categories-tags/)
+[Click here to see the difference between Tags and Categories](https://publishpress.com/publishpress-taxonomies/difference-categories-tags/)
 
 = Can I Build WordPress Tag Generator With PublishPress Taxonomies? =
 
 Yes, this is possible with the PublishPress Taxonomies plugin. PublishPress Taxonomies has a feature that can analyze your content and automatically add new terms. This tag generator will be very useful for anyone who creates a lot of content. This feature is called “Auto Terms” and it works by integrating with the OpenAI, IBM Watson, Dandelion or LSEF systems to scan content and create terms.
 
-[Click here to see how to build a tag generator](https://taxopress.com/wordpress-tag-generator/)
+[Click here to see how to build a tag generator](https://publishpress.com/publishpress-taxonomies/wordpress-tag-generator/)
 
 = How Do I Integrate OpenAI with PublishPress Taxonomies? =
 
