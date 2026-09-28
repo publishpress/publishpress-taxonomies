@@ -1,9 +1,9 @@
 <?php
 
-// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
- * PublishPress Taxonomies widget class
+ * TaxoPress widget class
  *
  */
 class SimpleTags_Shortcode_Widget extends WP_Widget
@@ -18,10 +18,10 @@ class SimpleTags_Shortcode_Widget extends WP_Widget
     {
         parent::__construct(
             'simpletags-shortcode',
-            esc_html__('Terms Display (Taxonomies Shortcode)', 'simple-tags'),
+            esc_html__('Terms Display (TaxoPress Shortcode)', 'simple-tags'),
             array(
                 'classname'   => 'widget-simpletags-shortcode',
-                'description' => esc_html__('Taxonomies Terms Display Shortcode', 'simple-tags')
+                'description' => esc_html__('Taxopress Terms Display Shortcode', 'simple-tags')
             )
         );
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bundle name="PublishPress Taxonomies">
+<bundle name="TaxoPress">
   <domain name="simple-tags">
-    <project name="PublishPress Taxonomies">
+    <project name="TaxoPress">
       <source>
         <directory>inc</directory>
         <directory>includes-core</directory>
