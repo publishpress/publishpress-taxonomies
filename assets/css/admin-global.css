@@ -6,6 +6,24 @@
     width: 100%;
 }
 
+#adminmenu #toplevel_page_st_options > a.menu-top {
+    position: relative;
+}
+
+#adminmenu #toplevel_page_st_options > a.menu-top > .wp-menu-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+#adminmenu #toplevel_page_st_options > a.menu-top > .wp-menu-image::before {
+    padding: 0;
+}
+
 .taxopress-menu-separator:after {
     border-bottom: 1px solid hsla(0, 0%, 100%, .2);
     display: block;

@@ -193,7 +193,7 @@ function taxopress_delete_taxonomy($data = [])
 }
 
 /**
- * Add to or update our TAXOPRESS option with new data.
+ * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
  * @param array $data Array of taxonomy data to update. Optional.
@@ -323,7 +323,7 @@ function taxopress_update_taxonomy($data = [])
          *
          * @param bool $value Assume we have no conflict by default.
          * @param string $value Post type slug being saved.
-         * @param array $post_types Array of existing post types from TAXOPRESS.
+         * @param array $post_types Array of existing post types from PublishPress Taxonomies.
          */
         $slug_exists = apply_filters(
             'taxopress_taxonomy_slug_exists',
@@ -653,7 +653,7 @@ function taxopress_convert_taxonomy_terms($original_slug = '', $new_slug = '')
  *
  * @param bool $slug_exists Whether or not the post type slug exists. Optional. Default false.
  * @param string $taxonomy_slug The post type slug being saved. Optional. Default empty string.
- * @param array $taxonomies Array of TAXOPRESS-registered post types. Optional.
+ * @param array $taxonomies Array of plugin-registered post types. Optional.
  *
  * @return bool
  */
@@ -665,7 +665,7 @@ function taxopress_check_existing_taxonomy_slugs($slug_exists = false, $taxonomy
         return $slug_exists;
     }
 
-    // Check if TAXOPRESS has already registered this slug.
+    // Check if PublishPress Taxonomies has already registered this slug.
     if (array_key_exists(strtolower($taxonomy_slug), $taxonomies)) {
         return true;
     }
@@ -836,7 +836,7 @@ function taxopress_do_convert_taxonomy_terms()
  *
  * @param bool $slug_exists Current status for exist checks.
  * @param string $taxonomy_slug Taxonomy slug being processed.
- * @param array $taxonomies TAXOPRESS taxonomies.
+ * @param array $taxonomies PublishPress Taxonomies taxonomies.
  * @return bool
  */
 function taxopress_updated_taxonomy_slug_exists($slug_exists, $taxonomy_slug = '', $taxonomies = [])
@@ -915,9 +915,9 @@ function taxopress_flush_rewrite_rules()
 }
 
 /**
- * Return the current action being done within TAXOPRESS context.
+ * Return the current action being done within PublishPress Taxonomies context.
  *
- * @return string Current action being done by TAXOPRESS
+ * @return string Current action being done by PublishPress Taxonomies
  */
 function taxopress_get_current_action()
 {
@@ -934,7 +934,7 @@ function taxopress_get_current_action()
 /**
  * Return an array of all taxonomy slugs from Custom Post Type UI.
  *
- * @return array TAXOPRESS taxonomy slugs.
+ * @return array PublishPress Taxonomies taxonomy slugs.
  */
 function taxopress_get_taxonomy_slugs()
 {
@@ -964,7 +964,7 @@ function taxopress_admin_url($path)
 /**
  * Construct action tag for `<form>` tag.
  *
- * @param object|string $ui TAXOPRESS Admin UI instance. Optional. Default empty string.
+ * @param object|string $ui PublishPress Taxonomies Admin UI instance. Optional. Default empty string.
  * @return string
  */
 function taxopress_get_post_form_action($ui = '')
@@ -978,7 +978,7 @@ function taxopress_get_post_form_action($ui = '')
 /**
  * Display action tag for `<form>` tag.
  *
- * @param object $ui TAXOPRESS Admin UI instance.
+ * @param object $ui PublishPress Taxonomies Admin UI instance.
  */
 function taxopress_post_form_action($ui)
 {
@@ -986,7 +986,7 @@ function taxopress_post_form_action($ui)
 }
 
 /**
- * Fetch our TAXOPRESS taxonomies option.
+ * Fetch our PublishPress Taxonomies taxonomies option.
  *
  * @return mixed
  */
@@ -997,7 +997,7 @@ function taxopress_get_taxonomy_data()
 }
 
 /**
- * Fetch both internal and external edited taxopress taxonomies
+ * Fetch both internal and external edited PublishPress Taxonomies taxonomies
  *
  * @return mixed
  */
@@ -1015,7 +1015,7 @@ function taxopress_get_all_edited_taxonomy_data()
 
 
 /**
- * Fetch our TAXOPRESS taxonomies option.
+ * Fetch our PublishPress Taxonomies taxonomies option.
  *
  * @return mixed
  */
@@ -1072,7 +1072,7 @@ function taxopress_admin_notices_helper($message = '', $success = true)
     $action = '';
 
     /**
-     * Filters the custom admin notice for TAXOPRESS.
+     * Filters the custom admin notice for PublishPress Taxonomies.
      *
      *
      * @param string $value Complete HTML output for notice.
@@ -1315,9 +1315,9 @@ function taxopress_error_admin_notice()
 }
 
 /**
- * Returns saved values for single taxonomy from TAXOPRESS settings.
+ * Returns saved values for single taxonomy from PublishPress Taxonomies settings.
  *
- * @param string $taxonomy Taxonomy to retrieve TAXOPRESS object for.
+ * @param string $taxonomy Taxonomy to retrieve PublishPress Taxonomies object for.
  * @return string
  */
 function taxopress_get_taxopress_taxonomy_object($taxonomy = '')
@@ -1588,7 +1588,7 @@ function taxopress_admin_notices($action = '', $object_type = '', $success = tru
     if ($message) {
 
         /**
-         * Filters the custom admin notice for TAXOPRESS.
+         * Filters the custom admin notice for PublishPress Taxonomies.
          *
          * @param string $value Complete HTML output for notice.
          * @param string $action Action whose message is being generated.
@@ -1792,7 +1792,7 @@ function get_all_taxopress_public_taxonomies()
 /**
  * Return an array of all deactivated taxonomy.
  *
- * @return array TAXOPRESS taxonomy.
+ * @return array PublishPress Taxonomies taxonomy.
  */
 function taxopress_get_deactivated_taxonomy()
 {
@@ -1858,7 +1858,7 @@ function taxopress_taxdeleted_admin_notice()
 /**
  * Deactivated taxonomy.
  *
- * @return array TAXOPRESS taxonomy.
+ * @return array PublishPress Taxonomies taxonomy.
  */
 function taxopress_deactivate_taxonomy($term_object)
 {
@@ -1871,7 +1871,7 @@ function taxopress_deactivate_taxonomy($term_object)
 /**
  * Activate taxonomy.
  *
- * @return array TAXOPRESS taxonomy.
+ * @return array PublishPress Taxonomies taxonomy.
  */
 function taxopress_activate_taxonomy($term_object)
 {
@@ -1884,7 +1884,7 @@ function taxopress_activate_taxonomy($term_object)
 
 
 /**
- * Fetch our TAXOPRESS disabled taxonomies option.
+ * Fetch our PublishPress Taxonomies disabled taxonomies option.
  *
  * @return mixed
  */
@@ -2403,7 +2403,7 @@ function taxopress_show_all_cpt_in_archive_result($request_tax)
 
 /**
  * Filter the dropdown cats to remove the value="0" to solve issue with filter when
- * tag=0 https://github.com/TaxoPress/TaxoPress/issues/2372
+ * tag=0 https://github.com/publishpress/publishpress-taxonomies/issues/2372
  * @param string $output
  * @return string
  */
@@ -2499,7 +2499,7 @@ function taxopress_get_dropdown()
 }
 
 /**
- * Helper to sort terms based on TaxoPress settings.
+ * Helper to sort terms based on PublishPress Taxonomies settings.
  */
 function taxopress_sort_terms_by_settings($terms, $taxonomy, $settings = [], $is_admin = false)
 {

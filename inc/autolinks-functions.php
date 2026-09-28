@@ -1,9 +1,9 @@
 <?php
 
-// phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
- * Fetch our TAXOPRESS Autolinks option.
+ * Fetch our PublishPress Taxonomies Autolinks option.
  *
  * @return mixed
  */
@@ -210,7 +210,7 @@ add_action('admin_init', 'taxopress_create_default_autolink', 8);
 
 
 /**
- * Add to or update our TAXOPRESS option with new data.
+ * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
  * @param array $data Array of autolink data to update. Optional.

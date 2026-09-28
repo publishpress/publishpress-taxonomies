@@ -81,7 +81,7 @@ function st_related_posts_block_init()
     );
 
     $select_label = __('Select related post', 'simple-tags');
-    $panel_title  = __('Related Posts (TaxoPress)', 'simple-tags');
+    $panel_title  = __('Related Posts (PublishPress Taxonomies)', 'simple-tags');
 
     wp_localize_script('st-block-related-posts', 'ST_RELATED_POST', [
         'options'      => $options,

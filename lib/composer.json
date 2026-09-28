@@ -7,7 +7,7 @@
             "*": "dist"
         },
         "platform-check": false,
-        "autoloader-suffix": "TaxoPress"
+        "autoloader-suffix": "PublishPressTaxonomies"
     },
     "require": {
         "php": ">=7.2.5",

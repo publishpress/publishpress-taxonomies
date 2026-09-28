@@ -1,0 +1,15 @@
+name: Sync Changelog
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync_changelog:
+    uses: publishpress/github-workflows/.github/workflows/sync-changelog.yml@v3
+    secrets: inherit
+    
