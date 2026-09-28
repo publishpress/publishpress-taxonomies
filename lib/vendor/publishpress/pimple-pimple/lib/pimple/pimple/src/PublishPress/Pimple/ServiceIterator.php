@@ -22,57 +22,68 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
-namespace PublishPress\Pimple\Psr11;
-
-use PublishPress\Pimple\Container as PimpleContainer;
-use PublishPress\Pimple\Exception\UnknownIdentifierException;
-use PublishPress\Psr\Container\ContainerInterface;
+namespace PublishPress\Pimple;
 
 /**
- * Pimple PSR-11 service locator.
+ * Lazy service iterator.
  *
  * @author Pascal Luna <skalpa@zetareticuli.org>
  */
-class ServiceLocator implements ContainerInterface
+final class ServiceIterator implements \Iterator
 {
     private $container;
-    private $aliases = [];
+    private $ids;
 
-    /**
-     * @param PimpleContainer $container The Container instance used to locate services
-     * @param array           $ids       Array of service ids that can be located. String keys can be used to define aliases
-     */
-    public function __construct(PimpleContainer $container, array $ids)
+    public function __construct(Container $container, array $ids)
     {
         $this->container = $container;
-
-        foreach ($ids as $key => $id) {
-            $this->aliases[\is_int($key) ? $id : $key] = $id;
-        }
+        $this->ids = $ids;
     }
 
     /**
-     * {@inheritdoc}
+     * @return void
      */
-    public function get(string $id)
+    #[\ReturnTypeWillChange]
+    public function rewind()
     {
-        if (!isset($this->aliases[$id])) {
-            throw new UnknownIdentifierException($id);
-        }
-
-        return $this->container[$this->aliases[$id]];
+        \reset($this->ids);
     }
 
     /**
-     * {@inheritdoc}
+     * @return mixed
      */
-    public function has(string $id): bool
+    #[\ReturnTypeWillChange]
+    public function current()
     {
-        return isset($this->aliases[$id]) && isset($this->container[$this->aliases[$id]]);
+        return $this->container[\current($this->ids)];
+    }
+
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function key()
+    {
+        return \current($this->ids);
+    }
+
+    /**
+     * @return void
+     */
+    #[\ReturnTypeWillChange]
+    public function next()
+    {
+        \next($this->ids);
+    }
+
+    /**
+     * @return bool
+     */
+    #[\ReturnTypeWillChange]
+    public function valid()
+    {
+        return null !== \key($this->ids);
     }
 }
