@@ -484,8 +484,60 @@ body.taxopress_page_st_terms tr.inline-edit-row td {
     padding-left: 20px !important;
 }
 
-/* Footer admin   */
-.footer_st{text-align:center;font-size:14px !important;}
+.taxopress-admin-footer {
+    clear: both;
+    width: 100%;
+}
+
+.taxopress-admin-footer > footer {
+    text-align: center;
+}
+
+.taxopress-admin-footer > footer > .taxopress-rating {
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.taxopress-admin-footer > footer * {
+    color: #777;
+}
+
+.taxopress-admin-footer > footer > nav ul {
+    list-style: none;
+    margin: 12px 0;
+    padding: 0;
+}
+
+.taxopress-admin-footer > footer > nav ul > li {
+    display: inline-block;
+}
+
+.taxopress-admin-footer > footer > nav ul > li:not(:first-child) {
+    margin-left: 15px;
+}
+
+.taxopress-admin-footer > footer > nav ul > li > a {
+    font-weight: bold;
+}
+
+.taxopress-admin-footer > footer .dashicons-star-filled {
+    color: #ffb300;
+    font-size: 12px;
+    height: 12px;
+    line-height: 18px;
+    transition: color 200ms ease-in-out;
+    width: 12px;
+}
+
+.taxopress-admin-footer .taxopress-publishpress-logo {
+    margin-top: 10px;
+}
+
+.taxopress-admin-footer .taxopress-publishpress-logo img {
+    max-width: 100%;
+    width: 170px;
+}
 
 /* Block taxonomy  */
 .box-selector-taxonomy{border:1px solid;color:#9F6000;background-color:#FEEFB3;margin:10px 0 0;padding:15px 10px;width:100%;max-width:600px;box-sizing:border-box;display:inline-block;}
