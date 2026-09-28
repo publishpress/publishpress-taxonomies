@@ -6,7 +6,7 @@
 .taxopress-select-icon {
     cursor: pointer;
     position: relative;
-    background: #ffb200;
+    background: #FCB223;
     color: #000;
     border-radius: 100%;
     width: 24px;
@@ -35,11 +35,6 @@
 
 .taxopress-stpexplan{
     margin-top: -15px !important;
-}
-
-tr.taxopress-select-with-icon .taxopress-stpexplan {
-    clear: both;
-    margin-top: 4px !important;
 }
 
 .taxopress.tooltip-text{
@@ -71,7 +66,7 @@ tr.taxopress-select-with-icon .taxopress-stpexplan {
 }
 
 .taxopress-pro-feature-btn {
-    background: #ffb200;
+    background: #FCB223;
     color: #000;
     border: none;
     border-radius: 4px;

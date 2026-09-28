@@ -21,7 +21,7 @@
     });
     
     // -------------------------------------------------------------
-    //   PublishPress Taxonomies term quick edit save
+    //   TaxoPress term quick edit save
     // -------------------------------------------------------------
     $('.taxopress-save', $('#inline-edit') ).on( 'click', function() {
 			return save_taxopress_qe_term(this);
@@ -132,7 +132,7 @@
       });
       
       // -------------------------------------------------------------
-      //   Settings PublishPress Taxonomies AI sub tab click
+      //   Settings TaxoPress AI sub tab click
       // -------------------------------------------------------------
       $(document).on('click', '.st-taxopress-ai-subtab span', function (e) {
         e.preventDefault();
@@ -157,7 +157,7 @@
       });
       
       // -------------------------------------------------------------
-      //   Settings PublishPress Taxonomies AI checkbox changed
+      //   Settings TaxoPress AI checkbox changed
       // -------------------------------------------------------------
        $(document).on('change', '.taxopress-ai-tab-content input, .taxopress-ai-tab-content-sub input', function (e) {
               var $checkbox = $(this);
@@ -649,7 +649,7 @@
 
 
     // -------------------------------------------------------------
-    //   PublishPress Taxonomies tab
+    //   Taxopress tab
     // -------------------------------------------------------------
     $('ul.taxopress-tab li').on('click', function (e) {
       e.preventDefault();
@@ -1323,7 +1323,7 @@
     }
 
     /**
-     * PublishPress Taxonomies posts select2
+     * TaxoPress posts select2
      */
     if ($('.taxopress-custom-fields-search').length > 0) {
       
@@ -1357,7 +1357,7 @@
   }
 
     /**
-     * PublishPress Taxonomies term select2
+     * TaxoPress term select2
      */
     if ($('.taxopress-term-search').length > 0) {
         taxopressTermSelect2($('.taxopress-term-search'));
@@ -1756,7 +1756,7 @@
       
       var frame;
       // Select Media
-      var defaultImagePath = st_admin_localize.plugin_url + '/assets/images/publishpress-taxonomies-logo.png';
+      var defaultImagePath = st_admin_localize.plugin_url + '/assets/images/taxopress-white-logo.png';
 
       function refreshLabels() {
           var currentVal = $('#default_featured_media').val();
