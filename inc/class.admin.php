@@ -1086,18 +1086,46 @@ class SimpleTags_Admin
      */
     public static function taxopress_admin_footer()
     {
-
         $taxopress_pages = taxopress_admin_pages();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used only to determine whether to render the footer.
+        $current_page = isset($_GET['page']) && is_string($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
-        if (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages)) {
-            ?>
-            <p class="footer_st">
-                <?php
-                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                            printf(__('Thanks for using PublishPress Taxonomies | %1sPublishPress.com%2s | Version %3s', 'simple-tags'), '<a href="https://publishpress.com/">', '</a>', esc_html(STAGS_VERSION)); ?>
-            </p>
-            <?php
+        if (! in_array($current_page, $taxopress_pages, true)) {
+            return;
         }
+
+        $rating_stars = str_repeat('<span class="dashicons dashicons-star-filled"></span>', 5);
+        ?>
+        <div class="pressshack-admin-wrapper taxopress-admin-footer">
+            <footer>
+                <div class="taxopress-rating">
+                    <a href="https://wordpress.org/support/plugin/simple-tags/reviews/#new-post" target="_blank" rel="noopener noreferrer">
+                        <?php
+                        printf(
+                            /* translators: %1$s: plugin name, %2$s: five-star rating icons. */
+                            esc_html__('If you like %1$s please leave us a %2$s rating. Thank you!', 'simple-tags'),
+                            '<strong>' . esc_html__('PublishPress Taxonomies', 'simple-tags') . '</strong>',
+                            $rating_stars // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted dashicon markup generated above.
+                        );
+                        ?>
+                    </a>
+                </div>
+                <hr>
+                <nav aria-label="<?php echo esc_attr__('PublishPress Taxonomies resources', 'simple-tags'); ?>">
+                    <ul>
+                        <li><a href="https://publishpress.com/taxonomies/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('About', 'simple-tags'); ?></a></li>
+                        <li><a href="https://publishpress.com/knowledge-base/start-publishpress-taxonomies/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Documentation', 'simple-tags'); ?></a></li>
+                        <li><a href="https://publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Contact', 'simple-tags'); ?></a></li>
+                    </ul>
+                </nav>
+                <div class="taxopress-publishpress-logo">
+                    <a href="https://publishpress.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="<?php echo esc_url(STAGS_URL . '/assets/images/publishpress-logo.png'); ?>" alt="<?php echo esc_attr__('PublishPress', 'simple-tags'); ?>">
+                    </a>
+                </div>
+            </footer>
+        </div>
+        <?php
     }
 
     /**
