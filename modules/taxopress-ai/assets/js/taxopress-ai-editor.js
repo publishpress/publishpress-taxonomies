@@ -78,6 +78,7 @@
       var taxonomy_rest = preview_wrapper.find('.taxopress-ai-fetch-taxonomy-select :selected').data("rest_base");
       var post_content = getContentFromEditor();
       var post_title = getTitleFromEditor();
+      var needs_content = ['autoterms', 'suggest_local_terms'].includes(preview_ai);
       var preview_post = preview_wrapper.attr('data-post_id');
       var current_tags = (typeof wp.data !== 'undefined' && typeof wp.data.select('core/editor') !== 'undefined') ? wp.data.select('core/editor').getEditedPostAttribute(taxonomy_rest) : [];
       preview_wrapper.find('.taxopress-ai-fetch-result').html('');
@@ -103,8 +104,6 @@
         existing_terms_maximum_terms: existing_terms_maximum_terms,
         selected_autoterms: selected_autoterms,
         preview_post: preview_post,
-        post_content: post_content,
-        post_title: post_title,
         current_tags: current_tags,
         screen_source: current_screen,
         nonce: taxoPressAIRequestAction.nonce,
@@ -112,14 +111,21 @@
         post_type: $('.preview-post-types-select').val()
       };
 
-      $.post(ajaxurl, data, function (response) {
+      if (needs_content) {
+        data.post_content = post_content;
+        data.post_title = post_title;
+      }
+
+      $.post(ajaxurl, data).done(function (response) {
         if (response.status === 'error') {
           showResponseMessage(preview_wrapper, response.content, 'error');
         } else {
           preview_wrapper.find('.taxopress-ai-fetch-result').html(response.content);
           autoterm_option_select2();
         }
-
+      }).fail(function () {
+        showResponseMessage(preview_wrapper, taxoPressAIRequestAction.request_error || 'Request failed. Please try again.', 'error');
+      }).always(function () {
         button.prop('disabled', false);
         preview_wrapper.find('.spinner').removeClass('is-active');
       });
@@ -777,7 +783,19 @@
      * @returns {*}
      */
     function strip_tags(str) {
-      return str.replace(/&lt;\/?[^&gt;]+&gt;/gi, '');
+      if (!str) {
+        return '';
+      }
+
+      return String(str)
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ' ')
+        .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, ' ')
+        .replace(/&lt;script\b[\s\S]*?&lt;\/script&gt;/gi, ' ')
+        .replace(/&lt;style\b[\s\S]*?&lt;\/style&gt;/gi, ' ')
+        .replace(/<\/?[^>]+>/gi, ' ')
+        .replace(/&lt;\/?[^&]+?&gt;/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
     }
 
 
