@@ -53,21 +53,21 @@ add_action('init', function () {
 }, 0);
 
 /**
- * TaxoPress log post types
+ * PublishPress Taxonomies log post types
  */
 add_action('init', function () {
 
     // set up labels
     $labels = array(
-        'name' => __('TaxoPress Logs', 'simple-tags'),
-        'singular_name' => __('TaxoPress Logs', 'simple-tags'),
-        'search_items' => __('Search TaxoPress Logs', 'simple-tags'),
-        'all_items' => __('TaxoPress Logs', 'simple-tags'),
-        'edit_item' => __('Edit TaxoPress Logs', 'simple-tags'),
-        'update_item' => __('Update TaxoPress Logs', 'simple-tags'),
-        'add_new_item' => __('Add New TaxoPress Logs', 'simple-tags'),
-        'new_item_name' => __('New TaxoPress Logs', 'simple-tags'),
-        'menu_name' => __('TaxoPress Logs', 'simple-tags')
+        'name' => __('PublishPress Taxonomies Logs', 'simple-tags'),
+        'singular_name' => __('PublishPress Taxonomies Logs', 'simple-tags'),
+        'search_items' => __('Search PublishPress Taxonomies Logs', 'simple-tags'),
+        'all_items' => __('PublishPress Taxonomies Logs', 'simple-tags'),
+        'edit_item' => __('Edit PublishPress Taxonomies Logs', 'simple-tags'),
+        'update_item' => __('Update PublishPress Taxonomies Logs', 'simple-tags'),
+        'add_new_item' => __('Add New PublishPress Taxonomies Logs', 'simple-tags'),
+        'new_item_name' => __('New PublishPress Taxonomies Logs', 'simple-tags'),
+        'menu_name' => __('PublishPress Taxonomies Logs', 'simple-tags')
     );
 
     register_post_type('taxopress_logs', array(

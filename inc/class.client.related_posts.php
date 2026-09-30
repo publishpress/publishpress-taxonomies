@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_RelatedPosts
 {
@@ -543,7 +543,7 @@ class SimpleTags_Client_RelatedPosts
 
             if (empty($post_thumbnail_url)) {
                 if ($default_featured_media === 'default') {
-                    $post_thumbnail_url = STAGS_URL . '/assets/images/taxopress-white-logo.png';
+                    $post_thumbnail_url = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
                 } elseif (!empty($default_featured_media)) {
                     $post_thumbnail_url = $default_featured_media;
                 }

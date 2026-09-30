@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
  * trim and remove empty element
@@ -64,7 +64,7 @@ function taxopress_menu_separator($identifier, $parent)
 }
 
 /**
- * Method for adding default hidden columns to the TaxoPress Terms screen.
+ * Method for adding default hidden columns to the PublishPress Taxonomies Terms screen.
  */
 add_filter('default_hidden_columns', 'taxopress_terms_default_hidden_columns', 10, 2);
 function taxopress_terms_default_hidden_columns($hidden, $screen)
@@ -292,7 +292,7 @@ function taxopress_add_at_menu_index($key_options, $new_menu, $existing_menus)
     return $existing_menus;
 }
 
-// Init TaxoPress
+// Init PublishPress Taxonomies
 function init_simple_tags()
 {
     new SimpleTags_Client();
@@ -501,7 +501,7 @@ function taxopress_html_character_and_entity($enity_code_as_key = false)
 }
 
 /**
- * Sanitize taxopress text field
+ * Sanitize PublishPress Taxonomies text field
  *
  * @param string $content
  * @return string
@@ -615,14 +615,15 @@ function taxopress_dashboard_options()
 }
 
 /**
- * Check if current version of taxopress is
+ * Check if current version of PublishPress Taxonomies is
  * pro version
  *
  * @return void
  */
 function taxopress_is_pro_version()
 {
-    return defined('TAXOPRESS_PRO_VERSION');
+    // Keep the legacy constant as a fallback for existing TaxoPress Pro integrations.
+    return defined('PUBLISHPRESS_TAXONOMIES_PRO_VERSION') || defined('TAXOPRESS_PRO_VERSION');
 }
 
 /**
@@ -831,7 +832,7 @@ function taxopress_add_linked_term_options($lists, $term, $taxonomy, $linked = f
 }
 
 /**
- * Fetch our TAXOPRESS SuggestTerms option.
+ * Fetch our PublishPress Taxonomies SuggestTerms option.
  * SuggestTerms screen has been removed but we need this function
  * to migrate the needed settings.
  *
@@ -858,7 +859,7 @@ function taxopress_get_all_wp_roles()
 }
 
 /**
- * Check if current user can manage taxopress metabox
+ * Check if current user can manage PublishPress Taxonomies metabox
  */
 function can_manage_taxopress_metabox($user_id = false)
 {
@@ -913,7 +914,7 @@ function can_manage_taxopress_metabox_taxonomy($taxonomy, $user_id = false, $pre
 }
 
 /**
- * Check if current user can edit (rename) TaxoPress metabox labels.
+ * Check if current user can edit (rename) PublishPress Taxonomies metabox labels.
  * Only administrators can edit labels.
  *
  * @param int|false $user_id

@@ -1,6 +1,6 @@
 <?php
 
-// TaxoPress AI Module
+// PublishPress Taxonomies AI Module
 require_once STAGS_DIR . '/modules/taxopress-ai/taxopress-ai.php';
 
 require STAGS_DIR . '/inc/hidden-terms.php';

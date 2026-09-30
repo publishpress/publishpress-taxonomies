@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.ControlStructures.ControlStructureSpacing.CloseParenthesisLine,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR12.ControlStructures.ControlStructureSpacing.LineIndent,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.ControlStructures.ControlStructureSpacing.CloseParenthesisLine,PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine,PSR12.ControlStructures.ControlStructureSpacing.LineIndent,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Post_Tags
 {
@@ -325,13 +325,13 @@ class SimpleTags_Post_Tags
                                                 <?php if ($post_tags_limit) {
                                                     echo '<div class="st-taxonomy-content promo-box-area"><div class="taxopress-warning upgrade-pro">
                         <h2 style="margin-bottom: 5px;">' . esc_html__(
-                                                        'To create more Terms for Current Post, please upgrade to TaxoPress Pro.',
+                                                        'To create more Terms for Current Post, please upgrade to PublishPress Taxonomies Pro.',
                                                         'simple-tags'
                                                     ) . '</h2>
                                         <p>
                 
                         ' . esc_html__(
-                                                        'With TaxoPress Pro, you can create unlimited Terms for Current Post. You can create Terms for Current Post for any taxonomy and then display those Terms for Current Post anywhere on your site.',
+                                                        'With PublishPress Taxonomies Pro, you can create unlimited Terms for Current Post. You can create Terms for Current Post for any taxonomy and then display those Terms for Current Post anywhere on your site.',
                                                         'simple-tags'
                                                     ) . '
 
@@ -664,7 +664,7 @@ class SimpleTags_Post_Tags
                                                         'Attempt to automatically display terms',
                                                         'simple-tags'
                                                     ) . '</label><br /><small style=" color: #646970;">' . esc_html__(
-                                                        'TaxoPress will attempt to automatically display terms in this content. It may not be successful for all post types and layouts.',
+                                                        'PublishPress Taxonomies will attempt to automatically display terms in this content. It may not be successful for all post types and layouts.',
                                                         'simple-tags'
                                                     ) . '</small></th><td>
                                                                 <table class="visbile-table">';
@@ -914,7 +914,7 @@ class SimpleTags_Post_Tags
                                     <?php if ($post_tags_limit) { ?>
 
                                         <div class="pp-version-notice-bold-purple" style="margin-left:0px;">
-                                            <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using TaxoPress Free.
+                                            <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                             The Pro version has more features and support.', 'simple-tags'); ?>
                                             </div>
                                             <div class="pp-version-notice-bold-purple-button"><a href="https://taxopress.com/taxopress/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>

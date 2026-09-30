@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 // Include modules
 require_once(TAXOPRESS_ABSPATH . '/modules/taxopress-ai/taxopress-ai.php');
@@ -645,7 +645,7 @@ class SimpleTags_Admin
         wp_enqueue_style('taxopress-frontend-css');
     }
     /**
-     * Init somes JS and CSS need for TaxoPress.
+     * Init somes JS and CSS need for PublishPress Taxonomies.
      *
      * @return void
      * @author WebFactory Ltd
@@ -664,7 +664,7 @@ class SimpleTags_Admin
         //color picker style
         wp_enqueue_style('wp-color-picker');
 
-        // Helper TaxoPress
+        // Helper PublishPress Taxonomies
         wp_register_script('st-helper-add-tags', STAGS_URL . '/assets/js/helper-add-tags.js', array('jquery'), STAGS_VERSION);
         wp_localize_script('st-helper-add-tags', 'stHelperAddTagsL10n', [
             'nonce' => wp_create_nonce('st-admin-js'),
@@ -765,7 +765,10 @@ class SimpleTags_Admin
             'batch_merge_progress'     => esc_html__('Batch %1$s of %2$s merged.', 'simple-tags'),
             'terms_merged_text'       => esc_html__('terms merged', 'simple-tags'),
             'posts_updated_text'      => esc_html__('posts updated', 'simple-tags'),
-            'merge_success_update' => esc_html__('All terms merged into %s', 'simple-tags'),
+            'merge_success_update'       => esc_html__('All terms merged into "%s"', 'simple-tags'),
+            'merge_partial_update'       => esc_html__('Terms merged into "%s"', 'simple-tags'),
+            'merge_partial_missing_terms' => esc_html__('Some batches were skipped because they contained non-existent terms.', 'simple-tags'),
+            'batch_missing_terms'        => esc_html__('Batch %1$s failed because it contained non-existent terms: %2$s', 'simple-tags'),
             'ajax_merge_terms_error'  => esc_html__('AJAX error on batch', 'simple-tags'),
             'batch_error_text'        => esc_html__('Error on batch %1$s:', 'simple-tags'),
             'enable_merge_terms_slug' => SimpleTags_Plugin::get_option_value('enable_merge_terms_slug'),
@@ -780,7 +783,7 @@ class SimpleTags_Admin
             'enable_dandelion_ai_source' => SimpleTags_Plugin::get_option_value('enable_dandelion_ai_source'),
             'enable_lseg_ai_source'    => SimpleTags_Plugin::get_option_value('enable_lseg_ai_source'),
             'plugin_url' => STAGS_URL,
-            'using_default_text' => __('Using default TaxoPress image', 'simple-tags'),
+            'using_default_text' => __('Using default PublishPress Taxonomies image', 'simple-tags'),
             'select_image_label' => esc_html__('Select Media', 'simple-tags'),
             'change_image_label' => esc_html__('Change Media', 'simple-tags'),
             'use_default_label' => esc_html__('Use Default', 'simple-tags'),
@@ -847,8 +850,8 @@ class SimpleTags_Admin
         self::$admin_url = admin_url('admin.php?page=' . self::MENU_SLUG);
 
         add_menu_page(
-            __('TaxoPress: Options', 'simple-tags'),
-            __('TaxoPress', 'simple-tags'),
+            __('PublishPress Taxonomies: Options', 'simple-tags'),
+            __('Taxonomies', 'simple-tags'),
             'admin_simple_tags',
             self::MENU_SLUG,
             array(
@@ -860,7 +863,7 @@ class SimpleTags_Admin
         );
         add_submenu_page(
             self::MENU_SLUG,
-            __('TaxoPress: Options', 'simple-tags'),
+            __('PublishPress Taxonomies: Options', 'simple-tags'),
             __('Settings', 'simple-tags'),
             'admin_simple_tags',
             self::MENU_SLUG,
@@ -896,7 +899,7 @@ class SimpleTags_Admin
 
                 // This settings has been migrated to fast update screen so only update from there
                 if ($is_fast_update_submission) {
-                    // add taxopress ai post type and taxonomies options so we can have all post types. TODO: This need to be a filter
+                    // add PublishPress Taxonomies ai post type and taxonomies options so we can have all post types. TODO: This need to be a filter
                     foreach (get_post_types(['public' => true], 'names') as $post_type => $post_type_object) {
                         if ($post_type == 'post') {
                             $opt_default_value = 'post_tag';
@@ -982,7 +985,7 @@ class SimpleTags_Admin
 
                 SimpleTags_Plugin::set_default_option();
 
-                add_settings_error(__CLASS__, __CLASS__, esc_html__('TaxoPress options resetted to default options!', 'simple-tags'), 'updated taxopress-notice');
+                add_settings_error(__CLASS__, __CLASS__, esc_html__('PublishPress Taxonomies options resetted to default options!', 'simple-tags'), 'updated taxopress-notice');
             } else {
                 //add_settings_error(__CLASS__, __CLASS__, esc_html__('Settings updated', 'simple-tags'), 'updated');
             }
@@ -1048,7 +1051,7 @@ class SimpleTags_Admin
     }
 
     /**
-     * Default content for meta box of TaxoPress
+     * Default content for meta box of PublishPress Taxonomies
      *
      * @return string
      * @author WebFactory Ltd
@@ -1071,30 +1074,58 @@ class SimpleTags_Admin
     public static function printAdminFooter()
     {
         /* ?>
-        <p class="footer_st"><?php printf( __( 'Thanks for using TaxoPress | <a href="https://taxopress.com/">TaxoPress.com</a> | Version %s', 'simple-tags' ), STAGS_VERSION ); ?></p>
+        <p class="footer_st"><?php printf( __( 'Thanks for using PublishPress Taxonomies | <a href="https://taxopress.com/">TaxoPress.com</a> | Version %s', 'simple-tags' ), STAGS_VERSION ); ?></p>
         <?php */
     }
 
     /**
-     * A short public static function for display the same copyright on all taxopress admin pages
+     * A short public static function for display the same copyright on all PublishPress Taxonomies admin pages
      *
      * @return void
      * @author Olatechpro
      */
     public static function taxopress_admin_footer()
     {
-
         $taxopress_pages = taxopress_admin_pages();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used only to determine whether to render the footer.
+        $current_page = isset($_GET['page']) && is_string($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
-        if (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages)) {
-            ?>
-            <p class="footer_st">
-                <?php
-                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                            printf(__('Thanks for using TaxoPress | %1sTaxoPress.com%2s | Version %3s', 'simple-tags'), '<a href="https://taxopress.com/">', '</a>', esc_html(STAGS_VERSION)); ?>
-            </p>
-            <?php
+        if (! in_array($current_page, $taxopress_pages, true)) {
+            return;
         }
+
+        $rating_stars = str_repeat('<span class="dashicons dashicons-star-filled"></span>', 5);
+        ?>
+        <div class="pressshack-admin-wrapper taxopress-admin-footer">
+            <footer>
+                <div class="taxopress-rating">
+                    <a href="https://wordpress.org/support/plugin/simple-tags/reviews/#new-post" target="_blank" rel="noopener noreferrer">
+                        <?php
+                        printf(
+                            /* translators: %1$s: plugin name, %2$s: five-star rating icons. */
+                            esc_html__('If you like %1$s please leave us a %2$s rating. Thank you!', 'simple-tags'),
+                            '<strong>' . esc_html__('PublishPress Taxonomies', 'simple-tags') . '</strong>',
+                            $rating_stars // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted dashicon markup generated above.
+                        );
+                        ?>
+                    </a>
+                </div>
+                <hr>
+                <nav aria-label="<?php echo esc_attr__('PublishPress Taxonomies resources', 'simple-tags'); ?>">
+                    <ul>
+                        <li><a href="https://publishpress.com/taxonomies/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('About', 'simple-tags'); ?></a></li>
+                        <li><a href="https://publishpress.com/knowledge-base/start-publishpress-taxonomies/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Documentation', 'simple-tags'); ?></a></li>
+                        <li><a href="https://publishpress.com/publishpress-support/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Contact', 'simple-tags'); ?></a></li>
+                    </ul>
+                </nav>
+                <div class="taxopress-publishpress-logo">
+                    <a href="https://publishpress.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="<?php echo esc_url(STAGS_URL . '/assets/images/publishpress-logo.png'); ?>" alt="<?php echo esc_attr__('PublishPress', 'simple-tags'); ?>">
+                    </a>
+                </div>
+            </footer>
+        </div>
+        <?php
     }
 
     /**
@@ -1389,6 +1420,10 @@ class SimpleTags_Admin
         // Upgrade needed ?
         if ($current_version == false || version_compare($current_version, STAGS_VERSION, '<')) {
             $current_options = get_option(STAGS_OPTIONS_NAME);
+            if (! is_array($current_options)) {
+                $current_options = [];
+            }
+
             $default_options = (array) include(STAGS_DIR . '/inc/helper.options.default.php');
 
             // Add new options

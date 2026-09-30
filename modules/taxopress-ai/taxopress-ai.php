@@ -47,7 +47,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
             add_action('wp_ajax_taxopress_ai_add_new_term', ['TaxoPressAiAjax', 'handle_taxopress_ai_new_term']);
             // Ajax action, JS Helper and admin action
             add_action('wp_ajax_simpletags', [$this, 'ajax_check']);
-            // Taxopress AI metabox default result on page load
+            // PublishPress Taxonomies AI metabox default result on page load
             add_action('load_taxopress_ai_term_results', [$this, 'load_result']);
             // Register metabox for suggest tags, for post, and optionnaly cpt.
             add_action('admin_head', [$this, 'admin_head'], 1);
@@ -408,7 +408,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     'taxopress-ai-editor-js',
                     'taxoPressAIRequestAction',
                     [
-                        'requiredSuffix' => esc_html__('Please choose a post to use with TaxoPress AI.', 'simple-tags'),
+                        'requiredSuffix' => esc_html__('Please choose a post to use with PublishPress Taxonomies AI.', 'simple-tags'),
                         'nonce' => wp_create_nonce('taxopress-ai-ajax-nonce'),
                         // phpcs:ignore Squiz.PHP.CommentedOutCode -- Configuration URL, intentionally commented for future use
                         'apiEditLink' => '',//'<span class="edit-suggest-term-metabox"> <a target="blank" href="' . $manage_link . '"> '. esc_html__('Manage API Configuration', 'simple-tags') .' </a></span>'
@@ -428,7 +428,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
         }
 
         /**
-         * Add WP admin menu for taxopress ai
+         * Add WP admin menu for PublishPress Taxonomies ai
          *
          * @return void
          * @author ojopau;
@@ -519,7 +519,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
         }
 
         /**
-         * Render TaxoPress AI fields
+         * Render PublishPress Taxonomies AI fields
          */
         private function render_taxopress_ai_fields($fields)
         {
@@ -1308,7 +1308,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
             if (in_array($pagenow, ['post-new.php', 'post.php', 'page.php', 'page-new.php', 'edit.php']) && can_manage_taxopress_metabox() && !empty(SimpleTags_Plugin::get_option_value('enable_taxopress_ai_' . get_post_type() . '_metabox'))) {
                 add_meta_box(
                     'taxopress-ai-suggestedtags',
-                    esc_html__('TaxoPress', 'simple-tags'),
+                    esc_html__('PublishPress Taxonomies', 'simple-tags'),
                     [$this, 'editor_metabox'],
                     get_post_type(),
                     'normal',
@@ -1494,11 +1494,11 @@ if (!class_exists('TaxoPress_AI_Module')) {
                         echo '<div style="padding: 15px;">';
                         $metabox_access_link = esc_url(admin_url('admin.php?page=' . self::PAGE_MENU_SLUG . '&tab=metabox_access'));
                         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- printf with esc_html__ and URLs already escaped
-                        printf(esc_html__('This user does not have access to manage any of this post attached taxonomies. Enable Metabox Access Taxonomies for this role in %1sTaxoPress Settings%2s.', 'simple-tags'), '<a target="_blank" href="' . $metabox_access_link . '">', '</a>');
+                        printf(esc_html__('This user does not have access to manage any of this post attached taxonomies. Enable Metabox Access Taxonomies for this role in %1sPublishPress Taxonomies Settings%2s.', 'simple-tags'), '<a target="_blank" href="' . $metabox_access_link . '">', '</a>');
                         echo '</div>';
                     } elseif (empty($content_tabs)) {
                         echo '<div style="padding: 15px;">';
-                        esc_html_e('No TaxoPress Metabox features are enabled for this post type.', 'simple-tags');
+                        esc_html_e('No PublishPress Taxonomies Metabox features are enabled for this post type.', 'simple-tags');
                         echo '</div>';
                     } else {
                         $default_taxonomy = (in_array($post_type_default_taxonomy, $post_type_taxonomy_names) ? $post_type_default_taxonomy : $post_type_taxonomy_names[0]);
