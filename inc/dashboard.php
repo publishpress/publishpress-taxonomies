@@ -75,7 +75,7 @@ class SimpleTags_Dashboard
             <div class="banner-wrap">
                 <div class="banner-inner">
                     <a>
-                        <img src="<?php echo esc_url(STAGS_URL . '/assets/images/publishpress-taxonomies-email-logo.png'); ?>"  alt="PublishPress Taxonomies Logo"/>
+                        <img alt="<?php esc_attr_e('PublishPress Taxonomies Logo', 'simple-tags'); ?>" src="<?php echo esc_url(STAGS_URL . '/assets/images/publishpress-taxonomies-email-logo.png'); ?>" />
                     </a>
                 </div>
             </div>
