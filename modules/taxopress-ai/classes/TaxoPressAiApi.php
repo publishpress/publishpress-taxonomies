@@ -64,6 +64,21 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
+         * Build IBM Watson HTTP Basic authorization header.
+         *
+         * @param string $api_key IBM Watson API key.
+         * @return string
+         */
+        private static function get_ibm_watson_authorization_header($api_key)
+        {
+            if (!function_exists('sodium_bin2base64') || !defined('SODIUM_BASE64_VARIANT_ORIGINAL')) {
+                return '';
+            }
+
+            return 'Basic ' . sodium_bin2base64('apikey:' . $api_key, SODIUM_BASE64_VARIANT_ORIGINAL);
+        }
+
+        /**
          * Get dandelion data
          *
          * @param  array $args
@@ -386,6 +401,18 @@ if (!class_exists('TaxoPressAiApi')) {
                     ];
 
                     $request_timeout = max(1, (int) apply_filters('taxopress_ibm_watson_request_timeout', 3));
+                    $authorization_header = self::get_ibm_watson_authorization_header($ibm_watson_api_key);
+
+                    if (empty($authorization_header)) {
+                        $return['status'] = 'error';
+                        $return['message'] = esc_html__(
+                            'The IBM Watson integration requires the PHP sodium extension.',
+                            'simple-tags'
+                        );
+
+                        return $return;
+                    }
+
                     $response = wp_safe_remote_post($api_endpoint, array(
                         'timeout' => $request_timeout,
                         'redirection' => 0,
@@ -393,7 +420,7 @@ if (!class_exists('TaxoPressAiApi')) {
                         'headers' => array(
                             'Accept' => 'application/json',
                             'Content-Type' => 'application/json',
-                            'Authorization' => 'Basic ' . base64_encode('apikey:' . $ibm_watson_api_key)
+                            'Authorization' => $authorization_header
                         ),
                         'body' => wp_json_encode($request_body)
                     ));

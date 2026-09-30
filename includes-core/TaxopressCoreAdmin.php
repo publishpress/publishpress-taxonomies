@@ -784,7 +784,7 @@ class TaxopressCoreAdmin
         $name = isset($current['name']) ? $current['name'] : '';
         $terms_table_url = esc_url(
             admin_url(
-                'admin.php?page=st_terms&taxopress_terms_taxonomy=' . urlencode($name) . '&taxopress_pro_notice=term_order'
+                'admin.php?page=st_terms&taxopress_terms_taxonomy=' . rawurlencode($name) . '&taxopress_pro_notice=term_order'
             )
         );
         ?>
@@ -874,7 +874,7 @@ class TaxopressCoreAdmin
         // Build the terms table URL
         $terms_table_url = esc_url(
             admin_url(
-                'admin.php?page=st_terms&taxopress_terms_taxonomy=' . urlencode($item->name) . '&taxopress_pro_notice=term_order'
+                'admin.php?page=st_terms&taxopress_terms_taxonomy=' . rawurlencode($item->name) . '&taxopress_pro_notice=term_order'
             )
         );
 
