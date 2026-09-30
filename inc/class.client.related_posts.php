@@ -660,8 +660,16 @@ class SimpleTags_Client_RelatedPosts
     public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55)
     {
         if (! empty($password)) { // if there's a password
+            $password_cookie = 'wp-postpass_' . COOKIEHASH;
+            $password_cookie_value = '';
+
             // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
-            if ($_COOKIE[ 'wp-postpass_' . COOKIEHASH ] != $password) { // and it doesn't match the cookie
+            if (isset($_COOKIE[$password_cookie])) {
+                // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
+                $password_cookie_value = sanitize_text_field(wp_unslash($_COOKIE[$password_cookie]));
+            }
+
+            if (!hash_equals((string) $password, $password_cookie_value)) { // and it doesn't match the cookie
                 return __('There is no excerpt because this is a protected post.', 'simple-tags');
             }
         }
