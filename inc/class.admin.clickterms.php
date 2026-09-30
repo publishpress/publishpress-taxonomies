@@ -153,7 +153,7 @@ class SimpleTags_Admin_ClickTags
                 'state'       => 'show',
                 'search_icon' => STAGS_URL . '/assets/images/indicator.gif',
                 'nonce'       => wp_create_nonce('st-admin-js'),
-                'search_box'  => '<input type="text" class="click-tag-search-box" placeholder="' . __('Start typing to search', 'simple-tags') . '" size="26" autocomplete="off">',
+                'search_box'  => '<input type="text" class="click-tag-search-box" aria-label="' . esc_attr__('Search terms', 'simple-tags') . '" placeholder="' . esc_attr__('Start typing to search', 'simple-tags') . '" size="26" autocomplete="off">',
                 'click_tags_options'  => $click_tags_options,
                 'edit_metabox_link'   => $click_term_edit,
             )
