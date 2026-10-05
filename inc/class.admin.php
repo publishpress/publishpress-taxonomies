@@ -41,6 +41,7 @@ class SimpleTags_Admin
         add_action('admin_menu', array(__CLASS__, 'admin_menu'));
 
         //Admin footer credit
+        add_filter('admin_body_class', array(__CLASS__, 'taxopress_admin_body_class'));
         add_action('in_admin_footer', array(__CLASS__, 'taxopress_admin_footer'));
 
         // Load JavaScript and CSS
@@ -1076,6 +1077,24 @@ class SimpleTags_Admin
         /* ?>
         <p class="footer_st"><?php printf( __( 'Thanks for using PublishPress Taxonomies | <a href="https://taxopress.com/">TaxoPress.com</a> | Version %s', 'simple-tags' ), STAGS_VERSION ); ?></p>
         <?php */
+    }
+
+    /**
+     * Mark PublishPress Taxonomies screens so the expanded footer uses normal flow.
+     *
+     * @param string $classes Existing admin body classes.
+     * @return string
+     */
+    public static function taxopress_admin_body_class($classes)
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used only to identify the current admin page.
+        $current_page = isset($_GET['page']) && is_string($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+
+        if (in_array($current_page, taxopress_admin_pages(), true)) {
+            $classes .= ' taxopress-admin-page';
+        }
+
+        return $classes;
     }
 
     /**

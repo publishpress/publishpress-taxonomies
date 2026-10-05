@@ -539,6 +539,11 @@ body.taxopress_page_st_terms tr.inline-edit-row td {
     width: 170px;
 }
 
+body.taxopress-admin-page #wpfooter {
+    box-sizing: border-box;
+    position: static;
+}
+
 /* Block taxonomy  */
 .box-selector-taxonomy{border:1px solid;color:#9F6000;background-color:#FEEFB3;margin:10px 0 0;padding:15px 10px;width:100%;max-width:600px;box-sizing:border-box;display:inline-block;}
 .box-selector-taxonomy .current-taxonomy{float:right;font-size:16px;font-weight:700;margin:0;}

@@ -1,6 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] - 28 September, 2026
+* Rebrand: Move TaxoPress to PublishPress
+
 ## [3.54.0] - 22 September, 2026
 * Security: Prevent reflected XSS in Terms row-action URLs
 * Fixed: Prevent creation of a destination term when merging terms and no source terms exist
