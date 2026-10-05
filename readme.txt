@@ -3,7 +3,7 @@ Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojop
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 3.54.0
+Stable tag: 4.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -44,7 +44,7 @@ With PublishPress Taxonomies, you can organize, optimize, and showcase all your 
 
 PublishPress Taxonomies can manage all the taxonomies created by WordPress and your plugins and themes. You can change the settings for each taxonomy. For example, you can change the visual labels, and control whether the taxonomy is organized in parent-child relationships. You can also assign your taxonomies to different post types. For example, you can use PublishPress Taxonomies to add Categories to Pages, or WooCommerce Tags to Posts.
 
-[Click here to read about managing taxonomies](https://taxopress.com/docs/introduction-taxonomies-screen/).
+[Click here to read about managing taxonomies](https://publishpress.com/knowledge-base/introduction-taxonomies-screen/).
 
 ## Feature 2. Terms Display ##
 
@@ -52,7 +52,7 @@ The Terms Display feature in PublishPress Taxonomies allows you to show a cloud 
 
 PublishPress Taxonomies makes it easy to customize the format of your terms, and add custom CSS styles. The terms can be shown in a shortcode, a widget, or PublishPress Taxonomies can try and automatically add the terms into your content.
 
-[Click here to read about Terms Display](https://taxopress.com/docs/introduction-to-tag-clouds/).
+[Click here to read about Terms Display](https://publishpress.com/knowledge-base/introduction-to-tag-clouds/).
 
 ## Feature 3. Terms for Current Post ##
 
@@ -60,7 +60,7 @@ The Terms for Current Post feature in PublishPress Taxonomies allows you to cust
 
 PublishPress Taxonomies makes it easy to customize the format of your terms, and add custom CSS styles. The terms can be shown in a shortcode, a widget, or PublishPress Taxonomies can try and automatically add the terms into your content.
 
-[Click here to read about Terms for Current Post](https://taxopress.com/docs/introduction-to-tags-for-current-post/).
+[Click here to read about Terms for Current Post](https://publishpress.com/knowledge-base/introduction-to-tags-for-current-post/).
 
 ## Feature 4. Related Posts ##
 
@@ -68,13 +68,13 @@ PublishPress Taxonomies can display posts that are related to the current post. 
 
 The Related Posts can be shown in a shortcode, a widget, or PublishPress Taxonomies can try and automatically add the related posts into your content.
 
-[Click here to read about Related Posts](https://taxopress.com/docs/introduction-to-related-posts/).
+[Click here to read about Related Posts](https://publishpress.com/knowledge-base/introduction-to-related-posts/).
 
 ## Feature 5. Auto Links ##
 
 The Auto Links feature in PublishPress Taxonomies will automatically add links to your content. If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add a link to the archive page for that tag. So any instances of “WordPress” will link to /tag/wordpress.
 
-[Click here to read about Auto Links](https://taxopress.com/docs/introduction-to-auto-links/).
+[Click here to read about Auto Links](https://publishpress.com/knowledge-base/introduction-to-auto-links/).
 
 ## Feature 6. Auto Terms ##
 
@@ -83,7 +83,7 @@ This feature allows WordPress to examine your post content and title for specifi
 * You add “WordPress” to the keywords list in PublishPress Taxonomies.
 * If your post content or title contains the word “WordPress”, then PublishPress Taxonomies will automatically add “WordPress” as a term for this post.
 
-[Click here to read about automatically adding terms](https://taxopress.com/docs/introduction-to-auto-terms/).
+[Click here to read about automatically adding terms](https://publishpress.com/knowledge-base/introduction-to-auto-terms/).
 
 ## Feature 7. Add Terms with AI (Pro version) ##
 
@@ -94,7 +94,7 @@ This feature makes it easier for you to find or create the best taxonomy terms f
 * **Show All Existing Terms**: This feature allows you to browse all the terms in a taxonomy.
 * **OpenAI**: These integrations allow you to connect to external service. These services will scan your content and suggest relevant terms. They can suggest existing terms and also new terms.
 
-[Click here to read about PublishPress Taxonomies and AI](https://taxopress.com/docs/sources-for-auto-terms/).
+[Click here to read about PublishPress Taxonomies and AI](https://publishpress.com/knowledge-base/automatically-add-new-terms/).
 
 ## Feature 8. Term Synonyms ##
 
@@ -102,7 +102,7 @@ Synonyms is a feature in PublishPress Taxonomies Pro that allows you to have mul
 
 Synonyms will be available on each term screen. For example, if your term is “Apple”, you can create synonyms such as “Apples”, “Golden Delicious”, “Granny Smith”, “Pink Lady”, “Honeycrisp”, “Red Delicious”, “Braeburn” and “Gravenstein”.
 
-[Click here to read about Term Synonyms](https://taxopress.com/docs/synonyms/).
+[Click here to read about Term Synonyms](https://publishpress.com/knowledge-base/synonyms/).
 
 ## Feature 9. Linked Terms ##
 
@@ -110,7 +110,7 @@ Linked Terms is a feature in PublishPress Taxonomies Pro that allows you to conn
 
 For sites with a lot of terms, this feature makes it easier and quicker for your users to add the correct terms. For example, if you add the term “WordPress” to your posts, PublishPress Taxonomies can automatically add Linked Terms that include “CMS”, “website”, and “website design”.
 
-[Click here to read about Linked Terms](https://taxopress.com/docs/linked-terms/).
+[Click here to read about Linked Terms](https://publishpress.com/knowledge-base/linked-terms/).
 
 ## Feature 10. Manage Terms ##
 
@@ -121,7 +121,7 @@ The Manage Terms screen in PublishPress Taxonomies provides you with several use
 * **Merge terms**: Combine existing terms together. This is very useful for fixing typos in your terms.
 * **Delete unused terms**: Delete any terms that are rarely used.
 
-[Click here to read about managing terms](https://taxopress.com/docs/introduction-to-manage-terms/).
+[Click here to read about managing terms](https://publishpress.com/knowledge-base/introduction-to-manage-terms/).
 
 ## PublishPress Taxonomies Pro ##
 
@@ -130,7 +130,7 @@ The Manage Terms screen in PublishPress Taxonomies provides you with several use
 
 ## The PublishPress Taxonomies and Tag Groups plugins ##
 
-PublishPress Taxonomies is developed by the same team that support the popular [Tag Groups plugin](https://wordpress.org/plugins/tag-groups/). Together Tag Groups and PublishPress Taxonomies are an excellent solution for organizing and displaying your site’s content.
+PublishPress Taxonomies is developed by the same team that support the popular [Tag Groups plugin](https://wordpress.org/plugins/tag-groups/). Together PublishPress Tag Groups and PublishPress Taxonomies are an excellent solution for organizing and displaying your site’s content.
 
 ## PublishPress Taxonomies Bug Reports =
 
@@ -167,7 +167,7 @@ Yes, you can. Both Categories and Tags are “taxonomies” and they can help yo
 * When you are editing a Page, you will see the “Categories” box in the right sidebar.
 * You will also be able to add and remove Categories using the “Quick Edit” and “Bulk Edit” features.
 
-[Click here to see how to Add Categories and Tags to WordPress Pages](https://taxopress.com/add-categories-wordpress-pages/).
+[Click here to see how to Add Categories and Tags to WordPress Pages](https://publishpress.com/publishpress-taxonomies/add-categories-wordpress-pages/).
 
 = How Many Levels of Sub-Categories Does WordPress Support? =
 
@@ -177,7 +177,7 @@ The main limitation to consider will be the WordPress admin area which will star
 
 Finally, I’ll note that you can add multiple levels to any WordPress taxonomy. Go to the “Taxonomies” screen in PublishPress Taxonomies. When you click “Edit”, you’ll be able to change the settings for each taxonomy. You can control whether the taxonomy is organized in parent-child relationships.
 
-[Click here to see about category levels in WordPress](https://taxopress.com/how-many-levels-sub-categories/).
+[Click here to see about category levels in WordPress](https://publishpress.com/publishpress-taxonomies/how-many-levels-sub-categories/).
 
 = How Do I Create WordPress Taxonomies for Internal Use? =
 
@@ -197,19 +197,19 @@ Inside the “Taxonomies” screen, you can click the “Admin Area” tab and c
 * Show admin menu: Should this taxonomy appear on screens such as “Posts” and “Pages”?
 * Show in “Quick Edit” and “Bulk Edit”: Should this taxonomy be available in editing tools on screens such as “Posts” and “Pages”?
 
-[Click here to see more about private taxonomies](https://taxopress.com/how-to-create-wordpress-taxonomies-for-internal-use/).
+[Click here to see more about private taxonomies](https://publishpress.com/publishpress-taxonomies/how-to-create-wordpress-taxonomies-for-internal-use/).
 
 = How Do I Display Taxonomy Terms in a Widget? =
 
 It is possible to use PublishPress Taxonomies to show terms in a WordPress widget. Go to Appearance > Widget and look for the “Term Display (Taxonomies Shortcode)” widget. This can be placed into any area that your theme has available.
 
-[Click here to see more about showing terms in a widget](https://taxopress.com/docs/tag-cloud-widget/).
+[Click here to see more about showing terms in a widget](https://publishpress.com/knowledge-base/tag-cloud-widget/).
 
 = How Do I Display Taxonomy Terms with a Shortcode? =
 
 PublishPress Taxonomies allows you to show a cloud or list of the terms in a taxonomy. You can show your terms using the shortcode shown on the “Terms Display” screen. If you are using the block editor in WordPress, you can add shortcodes using the “Shortcode” block.
 
-[Click here to see more about showing terms with a shortcode](https://taxopress.com/docs/tag-cloud-shortcode/).
+[Click here to see more about showing terms with a shortcode](https://publishpress.com/knowledge-base/tag-cloud-shortcode/).
 
 = How Do I Automatically Add Tags in WordPress? =
 
@@ -222,7 +222,7 @@ If you have a busy WordPress site, it can be difficult to organize all your cont
 * Click “Save Auto Terms”.
 * You are now ready to automatically add terms! One approach is to use the “Existing content” option to retroactively add Tags to your content. For new content, PublishPress Taxonomies can automatically scanned the post text and added the correct Tags.
 
-[Click here to see more about automatically adding WordPress Tags](https://taxopress.com/automatically-add-tags-wordpress/).
+[Click here to see more about automatically adding WordPress Tags](https://publishpress.com/publishpress-taxonomies/automatically-add-tags-wordpress/).
 
 = How Do I Automatically Add WooCommerce Product Tags and Categories? =
 
@@ -234,19 +234,19 @@ If you have a busy WooCommerce site, it can be difficult to organize all your pr
 * The other required setting is in “Terms to Use”. You need to choose whether to use all the terms in your “Product Tags” taxonomy, or only a select group. If you choose to use all the terms, test carefully as this process may slow your site if you have 10,000’s of terms, or if you have a slow server.
 * You are now ready to automatically add terms! One approach is to use the “Existing content” option to retroactively add Product Tags to your WooCommerce products. For new content, PublishPress Taxonomies can automatically scanned the product text and added the correct WooCommerce Tag or WooCommerce Category.
 
-[Click here to see more about automatically adding WooCoomerce Product Tags](https://taxopress.com/automatically-add-woocommerce-product-tags-and-categories/).
+[Click here to see more about automatically adding WooCoomerce Product Tags](https://publishpress.com/publishpress-taxonomies/automatically-add-woocommerce-product-tags-and-categories/).
 
 = What’s the Difference Between WordPress Categories and Tags? = 
 
 The main difference between Categories and Tags is the ability to create levels of Categories. Categories are hierarchical, which means terms can be organized into a parent-child relationship. For example, you could have a Category called “Fruit”, and under this Category you could have categories called “Apples”, “Bananas”, “Grapes”, and “Peaches”. Tags are not hierarchical, which means there’s no relationship between them. You can still add the same words as Tags, but by default they can not have relationships. You can modify this using [the Taxonomies screen in PublishPress Taxonomies](https://publishpress.com/docs/introduction-taxonomies-screen/).
 
-[Click here to see the difference between Tags and Categories](https://taxopress.com/difference-categories-tags/)
+[Click here to see the difference between Tags and Categories](https://publishpress.com/publishpress-taxonomies/difference-categories-tags/)
 
 = Can I Build WordPress Tag Generator With PublishPress Taxonomies? =
 
 Yes, this is possible with the PublishPress Taxonomies plugin. PublishPress Taxonomies has a feature that can analyze your content and automatically add new terms. This tag generator will be very useful for anyone who creates a lot of content. This feature is called “Auto Terms” and it works by integrating with the OpenAI, IBM Watson, Dandelion or LSEF systems to scan content and create terms.
 
-[Click here to see how to build a tag generator](https://taxopress.com/wordpress-tag-generator/)
+[Click here to see how to build a tag generator](https://publishpress.com/publishpress-taxonomies/wordpress-tag-generator/)
 
 = How Do I Integrate OpenAI with PublishPress Taxonomies? =
 
@@ -266,6 +266,9 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 6. If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add a link to the archive page for that tag.
 
 == Changelog ==
+
+= [4.0.0] - 28 September, 2026
+* Rebrand: Move TaxoPress to PublishPress
 
 = [3.54.0] - 22 September, 2026 =
 * Security: Prevent reflected XSS in Terms row-action URLs
