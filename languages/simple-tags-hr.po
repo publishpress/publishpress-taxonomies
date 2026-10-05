@@ -1,0 +1,4794 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Taxonomies Free 3.53.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
+"PO-Revision-Date: 2026-09-04 16:00+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: simple-tags\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+
+#: simple-tags.php:4, fuzzy
+#. Plugin Name of the plugin
+msgid "PublishPress Taxonomies Free"
+msgstr "PublishPress Taxonomies Free"
+
+#: simple-tags.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/simple-tags/"
+msgstr "https://wordpress.org/plugins/simple-tags/"
+
+#: simple-tags.php:6
+#. Description of the plugin
+msgid ""
+"PublishPress Taxonomies allows you to create and manage Tags, Categories, "
+"and all your WordPress taxonomy terms."
+msgstr ""
+"PublishPress Taxonomies omogućuje vam da kreirate i upravljate oznakama, "
+"kategorijama i svim vašim WordPress taksonomskim pojmovima."
+
+#: simple-tags.php:8
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: simple-tags.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: blocks/post-tags.php:63
+#: dist/simple-tags/blocks/post-tags.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:141
+#: inc/related-posts-widget.php:141
+msgid "Here"
+msgstr "Ovdje"
+
+#: blocks/post-tags.php:66
+#: dist/simple-tags/blocks/post-tags.php:66
+msgid " Select current post"
+msgstr " Odaberite trenutnu objavu"
+
+#: blocks/post-tags.php:67
+#: dist/simple-tags/blocks/post-tags.php:67
+msgid "Current Posts (PublishPress Taxonomies)"
+msgstr "Trenutne objave (PublishPress Taxonomies)"
+
+#: blocks/related-posts.php:80
+#: blocks/tag-clouds.php:63
+#: dist/simple-tags/blocks/related-posts.php:80
+#: dist/simple-tags/blocks/tag-clouds.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:109
+#: inc/related-posts-widget.php:109
+msgid "this page."
+msgstr "ovoj stranici."
+
+#: blocks/related-posts.php:83
+#: dist/simple-tags/blocks/related-posts.php:83
+msgid "Select related post"
+msgstr "Odaberite povezanu objavu"
+
+#: blocks/related-posts.php:84
+#: dist/simple-tags/blocks/related-posts.php:84
+#: dist/simple-tags/inc/related-posts-widget.php:19
+#: inc/related-posts-widget.php:19
+msgid "Related Posts (PublishPress Taxonomies)"
+msgstr "Povezane objave (PublishPress Taxonomies)"
+
+#: blocks/tag-clouds.php:66
+#: dist/simple-tags/blocks/tag-clouds.php:66
+msgid "Select Terms Display"
+msgstr "Odaberite prikaz pojmova"
+
+#: blocks/tag-clouds.php:67
+#: dist/simple-tags/blocks/tag-clouds.php:67
+msgid "Terms Display (PublishPress Taxonomies)"
+msgstr "Prikaz pojmova (PublishPress Taxonomies)"
+
+#: dist/simple-tags/inc/related-posts-functions.php:167
+#: dist/simple-tags/inc/related-posts-table.php:15
+#: dist/simple-tags/inc/related-posts.php:73
+#: dist/simple-tags/inc/related-posts.php:74
+#: dist/simple-tags/inc/related-posts.php:131
+#: inc/related-posts-functions.php:167
+#: inc/related-posts-table.php:15
+#: inc/related-posts.php:73
+#: inc/related-posts.php:74
+#: inc/related-posts.php:131
+msgid "Related Posts"
+msgstr "Povezane objave"
+
+#: dist/simple-tags/inc/related-posts-functions.php:176
+#: inc/related-posts-functions.php:176
+msgid "No related posts."
+msgstr "Nema povezanih objava."
+
+#: dist/simple-tags/inc/related-posts-functions.php:262
+#: dist/simple-tags/inc/schedule.php:173
+#: dist/simple-tags/inc/tag-clouds-functions.php:245
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:181
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:311
+#: inc/related-posts-functions.php:262
+#: inc/schedule.php:173
+#: inc/tag-clouds-functions.php:245
+#: modules/taxopress-ai/taxopress-ai.php:181
+#: modules/taxopress-ai/taxopress-ai.php:311
+msgid "Settings updated successfully."
+msgstr "Postavke su uspješno ažurirane."
+
+#: dist/simple-tags/inc/related-posts-functions.php:271
+#: inc/related-posts-functions.php:271
+msgid "Related Posts successfully deleted."
+msgstr "Povezane objave su uspješno izbrisane."
+
+#: dist/simple-tags/inc/related-posts-functions.php:366
+#: inc/related-posts-functions.php:366
+msgid "Related Posts not found."
+msgstr "Povezane objave nisu pronađene."
+
+#: dist/simple-tags/inc/related-posts-table.php:14
+#: inc/related-posts-table.php:14
+msgid "Related Post"
+msgstr "Povezana objava"
+
+#: dist/simple-tags/inc/related-posts-table.php:65
+#: dist/simple-tags/inc/related-posts.php:382
+#: dist/simple-tags/inc/tag-clouds-table.php:65
+#: dist/simple-tags/inc/tag-clouds.php:377
+#: dist/simple-tags/inc/terms-table.php:732
+#: dist/simple-tags/inc/terms-table.php:739
+#: inc/related-posts-table.php:65
+#: inc/related-posts.php:382
+#: inc/tag-clouds-table.php:65
+#: inc/tag-clouds.php:377
+#: inc/terms-table.php:732
+#: inc/terms-table.php:739
+msgid "Title"
+msgstr "Naslov"
+
+#: dist/simple-tags/inc/related-posts-table.php:66
+#: dist/simple-tags/inc/related-posts.php:502
+#: dist/simple-tags/inc/schedule-logs-table.php:53
+#: dist/simple-tags/inc/tag-clouds-table.php:66
+#: dist/simple-tags/inc/tag-clouds.php:463
+#: dist/simple-tags/inc/terms-table.php:742
+#: dist/simple-tags/inc/terms-table.php:867
+#: inc/related-posts-table.php:66
+#: inc/related-posts.php:502
+#: inc/schedule-logs-table.php:53
+#: inc/tag-clouds-table.php:66
+#: inc/tag-clouds.php:463
+#: inc/terms-table.php:742
+#: inc/terms-table.php:867
+msgid "Taxonomy"
+msgstr "Taksonomija"
+
+#: dist/simple-tags/inc/related-posts-table.php:67
+#: dist/simple-tags/inc/related-posts.php:341
+#: dist/simple-tags/inc/related-posts.php:788
+#: dist/simple-tags/inc/taxonomies.php:481
+#: dist/simple-tags/inc/terms-table.php:743
+#: inc/related-posts-table.php:67
+#: inc/related-posts.php:341
+#: inc/related-posts.php:788
+#: inc/taxonomies.php:481
+#: inc/terms-table.php:743
+msgid "Post Types"
+msgstr "Post Tipe"
+
+#: dist/simple-tags/inc/related-posts-table.php:68
+#: inc/related-posts-table.php:68
+msgid "Automatic display"
+msgstr "Automatsko prikazivanje"
+
+#: dist/simple-tags/inc/related-posts-table.php:69
+#: dist/simple-tags/inc/tag-clouds-table.php:69
+#: inc/related-posts-table.php:69
+#: inc/tag-clouds-table.php:69
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: dist/simple-tags/inc/related-posts-table.php:91
+#: dist/simple-tags/inc/tag-clouds-table.php:91
+#: inc/related-posts-table.php:91
+#: inc/tag-clouds-table.php:91
+msgid "No item avaliable."
+msgstr "Nema dostupnih stavki."
+
+#: dist/simple-tags/inc/related-posts-table.php:276
+#: dist/simple-tags/inc/tag-clouds-table.php:276
+#: dist/simple-tags/inc/terms-table.php:1155
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1523
+#: inc/related-posts-table.php:276
+#: inc/tag-clouds-table.php:276
+#: inc/terms-table.php:1155
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: modules/taxopress-ai/taxopress-ai.php:1523
+msgid "Edit"
+msgstr "Uredi"
+
+#: dist/simple-tags/inc/related-posts-table.php:289
+#: dist/simple-tags/inc/schedule-logs-table.php:79
+#: dist/simple-tags/inc/tag-clouds-table.php:289
+#: dist/simple-tags/inc/terms-table.php:800
+#: dist/simple-tags/inc/terms-table.php:1197
+#: inc/related-posts-table.php:289
+#: inc/schedule-logs-table.php:79
+#: inc/tag-clouds-table.php:289
+#: inc/terms-table.php:800
+#: inc/terms-table.php:1197
+msgid "Delete"
+msgstr "Izbriši"
+
+#: dist/simple-tags/inc/related-posts-table.php:349
+#: inc/related-posts-table.php:349
+msgid "Current post type"
+msgstr "Trenutni post tip"
+
+#: dist/simple-tags/inc/related-posts-table.php:351
+#: dist/simple-tags/inc/tag-clouds-table.php:359
+#: inc/related-posts-table.php:351
+#: inc/tag-clouds-table.php:359
+msgid "All"
+msgstr "Sve"
+
+#: dist/simple-tags/inc/related-posts-table.php:386
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:616
+#: inc/related-posts-table.php:386
+#: includes-core/TaxopressCoreAdmin.php:616
+msgid "Default"
+msgstr "Zadano"
+
+#: dist/simple-tags/inc/related-posts-table.php:417
+#: dist/simple-tags/inc/related-posts.php:638
+#: inc/related-posts-table.php:417
+#: inc/related-posts.php:638
+msgid "Homepage"
+msgstr "Početna stranica"
+
+#: dist/simple-tags/inc/related-posts-table.php:418
+#: dist/simple-tags/inc/related-posts.php:639
+#: inc/related-posts-table.php:418
+#: inc/related-posts.php:639
+msgid "Blog display"
+msgstr "Prikaz bloga"
+
+#: dist/simple-tags/inc/related-posts-table.php:419
+#: inc/related-posts-table.php:419
+msgid "Single post display"
+msgstr "Prikaz pojedinačnog posta"
+
+#: dist/simple-tags/inc/related-posts-table.php:420
+#: inc/related-posts-table.php:420, fuzzy
+msgid "RSS feed"
+msgstr "RSS feed"
+
+#: dist/simple-tags/inc/related-posts-table.php:430
+#: dist/simple-tags/inc/related-posts.php:1329
+#: dist/simple-tags/inc/tag-clouds.php:1092
+#: dist/simple-tags/inc/taxonomies.php:1986
+#: inc/related-posts-table.php:430
+#: inc/related-posts.php:1329
+#: inc/tag-clouds.php:1092
+#: inc/taxonomies.php:1986
+msgid "No"
+msgstr "Ne"
+
+#: dist/simple-tags/inc/related-posts-widget.php:22
+#: inc/related-posts-widget.php:22
+msgid "PublishPress Taxonomies Related Posts Shortcode"
+msgstr "PublishPress Taxonomies Povezani Postovi Shortcode"
+
+#: dist/simple-tags/inc/related-posts-widget.php:112
+#: inc/related-posts-widget.php:112
+msgid "Related Posts are added on "
+msgstr "Povezani postovi su dodani na "
+
+#: dist/simple-tags/inc/related-posts-widget.php:120
+#: inc/related-posts-widget.php:120
+msgid "Select widget Related Posts."
+msgstr "Odaberi widget Povezani postovi."
+
+#: dist/simple-tags/inc/related-posts-widget.php:144
+#: inc/related-posts-widget.php:144
+msgid "No Related Posts shortcode available. Add new shortcode "
+msgstr "Nema dostupnog shortcod-a za povezane postove. Dodaj novi shortcode "
+
+#: dist/simple-tags/inc/related-posts.php:96
+#: dist/simple-tags/inc/schedule.php:58
+#: dist/simple-tags/inc/tag-clouds.php:96
+#: dist/simple-tags/inc/taxonomies.php:137
+#: dist/simple-tags/inc/terms.php:197
+#: inc/related-posts.php:96
+#: inc/schedule.php:58
+#: inc/tag-clouds.php:96
+#: inc/taxonomies.php:137
+#: inc/terms.php:197
+msgid "Number of items per page"
+msgstr "Broj stavki po stranici"
+
+#: dist/simple-tags/inc/related-posts.php:137
+#: inc/related-posts.php:137
+msgid "Add New Related Post"
+msgstr "Dodaj novu povezanu objavu"
+
+#: dist/simple-tags/inc/related-posts.php:140
+#: inc/related-posts.php:140
+msgid ""
+"The Related Posts feature works by checking for shared taxonomy terms. If "
+"your post has the terms “WordPress” and “Website”, then Related Posts will "
+"display other posts that also have the terms “WordPress” and “Website”."
+msgstr ""
+"Značajka Povezane objave funkcionira provjerom zajedničkih termina "
+"taksonomije. Ako vaša objava ima termine “WordPress” i “Web stranica”, tada "
+"će Povezane objave prikazati druge objave koje također imaju termine "
+"“WordPress” i “Web stranica”."
+
+#: dist/simple-tags/inc/related-posts.php:147
+#: dist/simple-tags/inc/tag-clouds.php:145
+#: dist/simple-tags/inc/taxonomies.php:181
+#: dist/simple-tags/inc/terms.php:291
+#: inc/related-posts.php:147
+#: inc/tag-clouds.php:145
+#: inc/taxonomies.php:181
+#: inc/terms.php:291
+#. translators: %s: search keywords
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Rezultati pretraživanja za &#8220;%s&#8221;"
+
+#: dist/simple-tags/inc/related-posts.php:159
+#: inc/related-posts.php:159
+msgid "Search Related Posts"
+msgstr "Pretraži povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:170
+#: dist/simple-tags/inc/schedule.php:485
+#: dist/simple-tags/inc/tag-clouds.php:172
+#: dist/simple-tags/inc/taxonomies.php:257
+#: dist/simple-tags/inc/terms.php:324
+#: inc/related-posts.php:170
+#: inc/schedule.php:485
+#: inc/tag-clouds.php:172
+#: inc/taxonomies.php:257
+#: inc/terms.php:324
+msgid "Description here."
+msgstr "Opis ovdje."
+
+#: dist/simple-tags/inc/related-posts.php:234
+#: inc/related-posts.php:234
+msgid "Manage Related Posts"
+msgstr "Upravljaj povezanim objavama"
+
+#: dist/simple-tags/inc/related-posts.php:250
+#: inc/related-posts.php:250
+msgid "Preview Related Posts"
+msgstr "Pregled povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:256
+#: dist/simple-tags/inc/tag-clouds.php:270
+#: inc/related-posts.php:256
+#: inc/tag-clouds.php:270
+msgid "Toggle panel"
+msgstr "Prebaci panel"
+
+#: dist/simple-tags/inc/related-posts.php:277
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:465
+#: inc/related-posts.php:277
+#: modules/taxopress-ai/taxopress-ai.php:465
+msgid "Preview"
+msgstr "Pregled"
+
+#: dist/simple-tags/inc/related-posts.php:300
+#: inc/related-posts.php:300
+msgid "Edit Related Posts"
+msgstr "Uredi povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:307
+#: inc/related-posts.php:307
+msgid "Add new Related Posts"
+msgstr "Dodaj nove povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:318
+#: inc/related-posts.php:318
+msgid "To create more Related Posts, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"Da biste stvorili više povezanih objava, nadogradite na PublishPress "
+"Taxonomies Pro."
+
+#: dist/simple-tags/inc/related-posts.php:324
+#: inc/related-posts.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Related Posts. "
+"You can create Related Posts for any taxonomy and then display those "
+"Related Posts anywhere on your site."
+msgstr ""
+"S PublishPress Taxonomies Pro možete stvoriti neograničene povezane objave. "
+"Možete stvoriti povezane objave za bilo koju taksonomiju i zatim prikazati "
+"te povezane objave bilo gdje na vašoj stranici."
+
+#: dist/simple-tags/inc/related-posts.php:337
+#: dist/simple-tags/inc/tag-clouds.php:334
+#: dist/simple-tags/inc/taxonomies.php:475
+#: inc/related-posts.php:337
+#: inc/tag-clouds.php:334
+#: inc/taxonomies.php:475
+msgid "General"
+msgstr "Općenito"
+
+#: dist/simple-tags/inc/related-posts.php:345
+#: inc/related-posts.php:345
+msgid "Display"
+msgstr "Prikaz"
+
+#: dist/simple-tags/inc/related-posts.php:349
+#: dist/simple-tags/inc/tag-clouds.php:354
+#: inc/related-posts.php:349
+#: inc/tag-clouds.php:354
+msgid "Design"
+msgstr "Dizajn"
+
+#: dist/simple-tags/inc/related-posts.php:353
+#: dist/simple-tags/inc/tag-clouds.php:346
+#: inc/related-posts.php:353
+#: inc/tag-clouds.php:346
+msgid "Layout"
+msgstr "Izgled"
+
+#: dist/simple-tags/inc/related-posts.php:357
+#: dist/simple-tags/inc/related-posts.php:724
+#: dist/simple-tags/inc/tag-clouds-table.php:68
+#: dist/simple-tags/inc/tag-clouds.php:670
+#: inc/related-posts.php:357
+#: inc/related-posts.php:724
+#: inc/tag-clouds-table.php:68
+#: inc/tag-clouds.php:670
+msgid "Display format"
+msgstr "Format prikaza"
+
+#: dist/simple-tags/inc/related-posts.php:361
+#: dist/simple-tags/inc/tag-clouds.php:342
+#: inc/related-posts.php:361
+#: inc/tag-clouds.php:342
+msgid "Options"
+msgstr "Opcije"
+
+#: dist/simple-tags/inc/related-posts.php:365
+#: dist/simple-tags/inc/taxonomies.php:504
+#: inc/related-posts.php:365
+#: inc/taxonomies.php:504
+msgid "Advanced"
+msgstr "Napredno"
+
+#: dist/simple-tags/inc/related-posts.php:401
+#: dist/simple-tags/inc/related-posts.php:558
+#: dist/simple-tags/inc/related-posts.php:992
+#: dist/simple-tags/inc/schedule.php:322
+#: dist/simple-tags/inc/tag-clouds.php:397
+#: dist/simple-tags/inc/tag-clouds.php:741
+#: dist/simple-tags/inc/tag-clouds.php:779
+#: dist/simple-tags/inc/tag-clouds.php:852
+#: dist/simple-tags/inc/taxonomies.php:632
+#: dist/simple-tags/inc/taxonomies.php:762
+#: dist/simple-tags/inc/taxonomies.php:776
+#: dist/simple-tags/inc/taxonomies.php:890
+#: dist/simple-tags/inc/taxonomies.php:930
+#: dist/simple-tags/inc/taxonomies.php:957
+#: dist/simple-tags/inc/taxonomies.php:994
+#: dist/simple-tags/inc/taxonomies.php:1018
+#: dist/simple-tags/inc/taxonomies.php:1042
+#: dist/simple-tags/inc/taxonomies.php:1067
+#: dist/simple-tags/inc/taxonomies.php:1091
+#: dist/simple-tags/inc/taxonomies.php:1118
+#: dist/simple-tags/inc/taxonomies.php:1585
+#: dist/simple-tags/inc/taxonomies.php:1656
+#: dist/simple-tags/inc/taxonomies.php:1683
+#: dist/simple-tags/inc/taxonomies.php:1710
+#: inc/related-posts.php:401
+#: inc/related-posts.php:558
+#: inc/related-posts.php:992
+#: inc/schedule.php:322
+#: inc/tag-clouds.php:397
+#: inc/tag-clouds.php:741
+#: inc/tag-clouds.php:779
+#: inc/tag-clouds.php:852
+#: inc/taxonomies.php:632
+#: inc/taxonomies.php:762
+#: inc/taxonomies.php:776
+#: inc/taxonomies.php:890
+#: inc/taxonomies.php:930
+#: inc/taxonomies.php:957
+#: inc/taxonomies.php:994
+#: inc/taxonomies.php:1018
+#: inc/taxonomies.php:1042
+#: inc/taxonomies.php:1067
+#: inc/taxonomies.php:1091
+#: inc/taxonomies.php:1118
+#: inc/taxonomies.php:1585
+#: inc/taxonomies.php:1656
+#: inc/taxonomies.php:1683
+#: inc/taxonomies.php:1710
+msgid "False"
+msgstr "Lažno"
+
+#: dist/simple-tags/inc/related-posts.php:406
+#: dist/simple-tags/inc/related-posts.php:563
+#: dist/simple-tags/inc/related-posts.php:997
+#: dist/simple-tags/inc/schedule.php:327
+#: dist/simple-tags/inc/tag-clouds.php:402
+#: dist/simple-tags/inc/tag-clouds.php:746
+#: dist/simple-tags/inc/tag-clouds.php:784
+#: dist/simple-tags/inc/tag-clouds.php:856
+#: dist/simple-tags/inc/taxonomies.php:637
+#: dist/simple-tags/inc/taxonomies.php:767
+#: dist/simple-tags/inc/taxonomies.php:780
+#: dist/simple-tags/inc/taxonomies.php:894
+#: dist/simple-tags/inc/taxonomies.php:934
+#: dist/simple-tags/inc/taxonomies.php:962
+#: dist/simple-tags/inc/taxonomies.php:998
+#: dist/simple-tags/inc/taxonomies.php:1022
+#: dist/simple-tags/inc/taxonomies.php:1046
+#: dist/simple-tags/inc/taxonomies.php:1072
+#: dist/simple-tags/inc/taxonomies.php:1096
+#: dist/simple-tags/inc/taxonomies.php:1123
+#: dist/simple-tags/inc/taxonomies.php:1589
+#: dist/simple-tags/inc/taxonomies.php:1660
+#: dist/simple-tags/inc/taxonomies.php:1687
+#: dist/simple-tags/inc/taxonomies.php:1714
+#: inc/related-posts.php:406
+#: inc/related-posts.php:563
+#: inc/related-posts.php:997
+#: inc/schedule.php:327
+#: inc/tag-clouds.php:402
+#: inc/tag-clouds.php:746
+#: inc/tag-clouds.php:784
+#: inc/tag-clouds.php:856
+#: inc/taxonomies.php:637
+#: inc/taxonomies.php:767
+#: inc/taxonomies.php:780
+#: inc/taxonomies.php:894
+#: inc/taxonomies.php:934
+#: inc/taxonomies.php:962
+#: inc/taxonomies.php:998
+#: inc/taxonomies.php:1022
+#: inc/taxonomies.php:1046
+#: inc/taxonomies.php:1072
+#: inc/taxonomies.php:1096
+#: inc/taxonomies.php:1123
+#: inc/taxonomies.php:1589
+#: inc/taxonomies.php:1660
+#: inc/taxonomies.php:1687
+#: inc/taxonomies.php:1714
+msgid "True"
+msgstr "Točno"
+
+#: dist/simple-tags/inc/related-posts.php:416
+#: inc/related-posts.php:416
+msgid "Hide title in output ?"
+msgstr "Sakrij naslov u izlazu?"
+
+#: dist/simple-tags/inc/related-posts.php:428
+#: dist/simple-tags/inc/schedule-logs-table.php:192
+#: inc/related-posts.php:428
+#: inc/schedule-logs-table.php:192
+msgid "None"
+msgstr "Nema"
+
+#: dist/simple-tags/inc/related-posts.php:432
+#: inc/related-posts.php:432, fuzzy
+msgid "H1"
+msgstr "H1"
+
+#: dist/simple-tags/inc/related-posts.php:436
+#: inc/related-posts.php:436, fuzzy
+msgid "H2"
+msgstr "H2"
+
+#: dist/simple-tags/inc/related-posts.php:440
+#: inc/related-posts.php:440, fuzzy
+msgid "H3"
+msgstr "H3"
+
+#: dist/simple-tags/inc/related-posts.php:444
+#: inc/related-posts.php:444, fuzzy
+msgid "H4"
+msgstr "H4"
+
+#: dist/simple-tags/inc/related-posts.php:449
+#: inc/related-posts.php:449, fuzzy
+msgid "H5"
+msgstr "H5"
+
+#: dist/simple-tags/inc/related-posts.php:453
+#: inc/related-posts.php:453, fuzzy
+msgid "H6"
+msgstr "H6"
+
+#: dist/simple-tags/inc/related-posts.php:467
+#: inc/related-posts.php:467
+msgid "Title header"
+msgstr "Naslovni zaglavlje"
+
+#: dist/simple-tags/inc/related-posts.php:521
+#: dist/simple-tags/inc/tag-clouds.php:813
+#: inc/related-posts.php:521
+#: inc/tag-clouds.php:813
+msgid "Font size minimum"
+msgstr "Minimalna veličina fonta"
+
+#: dist/simple-tags/inc/related-posts.php:531
+#: dist/simple-tags/inc/tag-clouds.php:823
+#: inc/related-posts.php:531
+#: inc/tag-clouds.php:823
+msgid "Font size maximum"
+msgstr "Maksimalna veličina fonta"
+
+#: dist/simple-tags/inc/related-posts.php:538
+#: dist/simple-tags/inc/tag-clouds.php:830
+#: inc/related-posts.php:538
+#: inc/tag-clouds.php:830
+msgid "Point"
+msgstr "Točka"
+
+#: dist/simple-tags/inc/related-posts.php:539
+#: dist/simple-tags/inc/tag-clouds.php:831
+#: inc/related-posts.php:539
+#: inc/tag-clouds.php:831
+msgid "Pixel"
+msgstr "Piksel"
+
+#: dist/simple-tags/inc/related-posts.php:540
+#: dist/simple-tags/inc/tag-clouds.php:832
+#: inc/related-posts.php:540
+#: inc/tag-clouds.php:832, fuzzy
+msgid "Em"
+msgstr "Em"
+
+#: dist/simple-tags/inc/related-posts.php:541
+#: dist/simple-tags/inc/tag-clouds.php:833
+#: inc/related-posts.php:541
+#: inc/tag-clouds.php:833
+msgid "Percent"
+msgstr "Postotak"
+
+#: dist/simple-tags/inc/related-posts.php:550
+#: dist/simple-tags/inc/tag-clouds.php:842
+#: inc/related-posts.php:550
+#: inc/tag-clouds.php:842
+msgid "Unit font size"
+msgstr "Jedinica veličine fonta"
+
+#: dist/simple-tags/inc/related-posts.php:574
+#: dist/simple-tags/inc/tag-clouds.php:873
+#: inc/related-posts.php:574
+#: inc/tag-clouds.php:873
+msgid "Enable colors for terms"
+msgstr "Omogući boje za pojmove"
+
+#: dist/simple-tags/inc/related-posts.php:584
+#: dist/simple-tags/inc/tag-clouds.php:883
+#: inc/related-posts.php:584
+#: inc/tag-clouds.php:883
+msgid "Font color minimum"
+msgstr "Minimalna boja fonta"
+
+#: dist/simple-tags/inc/related-posts.php:585
+#: inc/related-posts.php:585
+msgid "This is the color of the least popular term."
+msgstr "Ovo je boja najmanje popularnog pojma."
+
+#: dist/simple-tags/inc/related-posts.php:595
+#: dist/simple-tags/inc/tag-clouds.php:894
+#: inc/related-posts.php:595
+#: inc/tag-clouds.php:894
+msgid "Font color maximum"
+msgstr "Maksimalna boja fonta"
+
+#: dist/simple-tags/inc/related-posts.php:596
+#: inc/related-posts.php:596
+msgid "This is the color of the most popular term."
+msgstr "Ovo je boja najpopularnijeg pojma."
+
+#: dist/simple-tags/inc/related-posts.php:640
+#: inc/related-posts.php:640
+msgid "Posts"
+msgstr "Objave"
+
+#: dist/simple-tags/inc/related-posts.php:653
+#: inc/related-posts.php:653
+msgid "Maximum related posts to display"
+msgstr "Maksimalan broj povezanih objava za prikaz"
+
+#: dist/simple-tags/inc/related-posts.php:657
+#: inc/related-posts.php:657
+msgid "Specify the number of related posts to display."
+msgstr "Odredite broj povezanih objava za prikaz."
+
+#: dist/simple-tags/inc/related-posts.php:661
+#: inc/related-posts.php:661
+msgid "Attempt to automatically display related posts"
+msgstr "Pokušajte automatski prikazati povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:664
+#: inc/related-posts.php:664
+msgid ""
+"PublishPress Taxonomies will attempt to automatically display related posts "
+"in this content. It may not be successful for all post types and layouts."
+msgstr ""
+"PublishPress taxonomies će pokušati automatski prikazati povezane objave u "
+"ovom sadržaju. Možda neće biti uspješan za sve tipove objava i rasporede."
+
+#: dist/simple-tags/inc/related-posts.php:713
+#: inc/related-posts.php:713
+msgid "Box List"
+msgstr "Popis okvira"
+
+#: dist/simple-tags/inc/related-posts.php:714
+#: dist/simple-tags/inc/tag-clouds-table.php:377
+#: dist/simple-tags/inc/tag-clouds.php:656
+#: inc/related-posts.php:714
+#: inc/tag-clouds-table.php:377
+#: inc/tag-clouds.php:656
+msgid "Unordered List (UL/LI)"
+msgstr "Neuređeni popis (UL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:715
+#: dist/simple-tags/inc/tag-clouds-table.php:378
+#: dist/simple-tags/inc/tag-clouds.php:657
+#: inc/related-posts.php:715
+#: inc/tag-clouds-table.php:378
+#: inc/tag-clouds.php:657
+msgid "Ordered List (OL/LI)"
+msgstr "Uređeni popis (OL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:744
+#: dist/simple-tags/inc/tag-clouds.php:939
+#: inc/related-posts.php:744
+#: inc/tag-clouds.php:939
+msgid "Term link format"
+msgstr "Format veze pojma"
+
+#: dist/simple-tags/inc/related-posts.php:745
+#: inc/related-posts.php:745
+#, php-format
+msgid ""
+"This settings allows to customize the appearance of Related Post links. You "
+"can find tokens and explanations in the sidebar and %1sin the "
+"documentation%2s."
+msgstr ""
+"Ova postavka omogućava prilagodbu izgleda veza povezanih objava. Možete "
+"pronaći oznake i objašnjenja u bočnoj traci i %1$s u dokumentaciji%2$s."
+
+#: dist/simple-tags/inc/related-posts.php:791
+#: inc/related-posts.php:791
+msgid "PublishPress Taxonomies will display related posts from selected post types."
+msgstr ""
+"PublishPress taxonomies će prikazati povezane objave iz odabranih tipova "
+"objava."
+
+#: dist/simple-tags/inc/related-posts.php:845
+#: inc/related-posts.php:845
+msgid "Text to display before posts list"
+msgstr "Tekst za prikaz prije popisa objava"
+
+#: dist/simple-tags/inc/related-posts.php:849
+#: inc/related-posts.php:849
+msgid "Enter the text that should be displayed before the posts list."
+msgstr "Unesite tekst koji treba biti prikazan prije popisa objava."
+
+#: dist/simple-tags/inc/related-posts.php:861
+#: inc/related-posts.php:861
+msgid "Text to display after posts list"
+msgstr "Tekst za prikaz nakon popisa objava"
+
+#: dist/simple-tags/inc/related-posts.php:865
+#: inc/related-posts.php:865
+msgid "Enter the text that should be display after the posts list."
+msgstr "Unesite tekst koji treba biti prikazan nakon popisa objava."
+
+#: dist/simple-tags/inc/related-posts.php:876
+#: dist/simple-tags/inc/tag-clouds.php:605
+#: inc/related-posts.php:876
+#: inc/tag-clouds.php:605
+msgid "24 hours"
+msgstr "24 sata"
+
+#: dist/simple-tags/inc/related-posts.php:880
+#: dist/simple-tags/inc/tag-clouds.php:606
+#: inc/related-posts.php:880
+#: inc/tag-clouds.php:606
+msgid "7 days"
+msgstr "7 dana"
+
+#: dist/simple-tags/inc/related-posts.php:884
+#: dist/simple-tags/inc/tag-clouds.php:607
+#: inc/related-posts.php:884
+#: inc/tag-clouds.php:607
+msgid "2 weeks"
+msgstr "2 tjedna"
+
+#: dist/simple-tags/inc/related-posts.php:888
+#: dist/simple-tags/inc/tag-clouds.php:608
+#: dist/simple-tags/review-request/review.php:298
+#: inc/related-posts.php:888
+#: inc/tag-clouds.php:608
+#: review-request/review.php:298
+msgid "1 month"
+msgstr "1 mjesec"
+
+#: dist/simple-tags/inc/related-posts.php:892
+#: dist/simple-tags/inc/tag-clouds.php:609
+#: inc/related-posts.php:892
+#: inc/tag-clouds.php:609
+msgid "6 months"
+msgstr "6 mjeseci"
+
+#: dist/simple-tags/inc/related-posts.php:896
+#: dist/simple-tags/inc/tag-clouds.php:610
+#: inc/related-posts.php:896
+#: inc/tag-clouds.php:610
+msgid "1 year"
+msgstr "1 godina"
+
+#: dist/simple-tags/inc/related-posts.php:900
+#: dist/simple-tags/inc/schedule.php:396
+#: dist/simple-tags/inc/schedule.php:430
+#: dist/simple-tags/inc/tag-clouds.php:611
+#: inc/related-posts.php:900
+#: inc/schedule.php:396
+#: inc/schedule.php:430
+#: inc/tag-clouds.php:611
+msgid "No limit"
+msgstr "Bez ograničenja"
+
+#: dist/simple-tags/inc/related-posts.php:911
+#: inc/related-posts.php:911
+msgid "Limit related posts based on timeframe"
+msgstr "Ograniči povezane objave prema vremenskom okviru"
+
+#: dist/simple-tags/inc/related-posts.php:923
+#: inc/related-posts.php:923
+msgid "Least common tags between posts"
+msgstr "Najmanje zajedničke oznake između objava"
+
+#: dist/simple-tags/inc/related-posts.php:930
+#: inc/related-posts.php:930
+msgid "Most common tags between posts"
+msgstr "Najčešće oznake između objava"
+
+#: dist/simple-tags/inc/related-posts.php:938
+#: inc/related-posts.php:938
+msgid "Older Entries"
+msgstr "Stariji unosi"
+
+#: dist/simple-tags/inc/related-posts.php:942
+#: inc/related-posts.php:942
+msgid "Newer Entries"
+msgstr "Noviji unosi"
+
+#: dist/simple-tags/inc/related-posts.php:946
+#: inc/related-posts.php:946
+msgid "Alphabetical"
+msgstr "Abecedno"
+
+#: dist/simple-tags/inc/related-posts.php:950
+#: inc/related-posts.php:950
+msgid "Inverse Alphabetical"
+msgstr "Obrnuto abecedno"
+
+#: dist/simple-tags/inc/related-posts.php:957
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:870
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:930
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:974
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+#: inc/related-posts.php:957
+#: includes-core/TaxopressCoreAdmin.php:870
+#: includes-core/TaxopressCoreAdmin.php:930
+#: includes-core/TaxopressCoreAdmin.php:974
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+msgid "Random"
+msgstr "Nasumično"
+
+#: dist/simple-tags/inc/related-posts.php:967
+#: inc/related-posts.php:967
+msgid "Related Posts Order"
+msgstr "Redoslijed povezanih objava"
+
+#: dist/simple-tags/inc/related-posts.php:979
+#: inc/related-posts.php:979
+msgid "Text to show when there is no related post"
+msgstr "Tekst koji će se prikazati kada nema povezanih objava"
+
+#: dist/simple-tags/inc/related-posts.php:1007
+#: inc/related-posts.php:1007
+msgid "Hide output if no related post is found ?"
+msgstr "Sakrij izlaz ako nema pronađene povezane objave?"
+
+#: dist/simple-tags/inc/related-posts.php:1029
+#: inc/related-posts.php:1029
+msgid "Related Posts div class"
+msgstr "Klasa div-a povezanih objava"
+
+#: dist/simple-tags/inc/related-posts.php:1040
+#: dist/simple-tags/inc/tag-clouds.php:926
+#: inc/related-posts.php:1040
+#: inc/tag-clouds.php:926
+msgid "Term link class"
+msgstr "Klasa linka termina"
+
+#: dist/simple-tags/inc/related-posts.php:1047
+#: inc/related-posts.php:1047
+msgid "d.m.Y (e.g., 09.10.2024)"
+msgstr "d.m.Y (npr., 09.10.2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1048
+#: inc/related-posts.php:1048
+msgid "F j, Y (e.g., October 9, 2024)"
+msgstr "F j, Y (npr., 9. listopada 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1049
+#: inc/related-posts.php:1049
+msgid "Y-m-d (e.g., 2024-10-09)"
+msgstr "Y-m-d (npr., 2024-10-09)"
+
+#: dist/simple-tags/inc/related-posts.php:1050
+#: inc/related-posts.php:1050
+msgid "m/d/Y (e.g., 10/09/2024)"
+msgstr "m/d/Y (npr., 10/09/2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1051
+#: inc/related-posts.php:1051
+msgid "d M, Y (e.g., 09 Oct, 2024)"
+msgstr "d M, Y (npr., 09 Okt, 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1060
+#: inc/related-posts.php:1060
+msgid "Post date format"
+msgstr "Format datuma objave"
+
+#: dist/simple-tags/inc/related-posts.php:1069
+#: inc/related-posts.php:1069
+msgid "Maximum characters of post content to display"
+msgstr "Maksimalan broj znakova sadržaja objave za prikaz"
+
+#: dist/simple-tags/inc/related-posts.php:1082
+#: inc/related-posts.php:1082
+msgid "Maximum number of categories"
+msgstr "Maksimalan broj kategorija"
+
+#: dist/simple-tags/inc/related-posts.php:1086
+#: inc/related-posts.php:1086
+msgid "You must set zero (0) to display all post categories."
+msgstr "Morate postaviti nulu (0) za prikaz svih kategorija objava."
+
+#: dist/simple-tags/inc/related-posts.php:1096
+#: inc/related-posts.php:1096
+msgid "Maximum number of tags"
+msgstr "Maksimalan broj oznaka"
+
+#: dist/simple-tags/inc/related-posts.php:1100
+#: inc/related-posts.php:1100
+msgid "You must set zero (0) to display all post tags."
+msgstr "Morate postaviti nulu (0) za prikaz svih oznaka objava."
+
+#: dist/simple-tags/inc/related-posts.php:1107
+#: inc/related-posts.php:1107
+msgid "Thumbnail (150x150)"
+msgstr "Miniatura (150x150)"
+
+#: dist/simple-tags/inc/related-posts.php:1108
+#: inc/related-posts.php:1108
+msgid "Medium (300x300)"
+msgstr "Srednja (300x300)"
+
+#: dist/simple-tags/inc/related-posts.php:1109
+#: inc/related-posts.php:1109
+msgid "Large (1024x1024)"
+msgstr "Velika (1024x1024)"
+
+#: dist/simple-tags/inc/related-posts.php:1110
+#: inc/related-posts.php:1110
+msgid "1536x1536 (High Res)"
+msgstr "1536x1536 (Visoka Rezolucija)"
+
+#: dist/simple-tags/inc/related-posts.php:1111
+#: inc/related-posts.php:1111
+msgid "2048x2048 (Ultra High Res)"
+msgstr "2048x2048 (Ultra Visoka Rezolucija)"
+
+#: dist/simple-tags/inc/related-posts.php:1122
+#: inc/related-posts.php:1122
+msgid "Thumbnail image resolution"
+msgstr "Rezolucija slike miniaturе"
+
+#: dist/simple-tags/inc/related-posts.php:1133
+#: inc/related-posts.php:1133
+msgid "Default post thumbnail"
+msgstr "Zadana miniatura objave"
+
+#: dist/simple-tags/inc/related-posts.php:1144
+#: inc/related-posts.php:1144
+msgid "Using default PublishPress Taxonomies image"
+msgstr "Koristeći zadanu sliku za PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/related-posts.php:1153
+#: inc/related-posts.php:1153
+msgid "Select Media"
+msgstr "Odaberite Medije"
+
+#: dist/simple-tags/inc/related-posts.php:1156
+#: inc/related-posts.php:1156
+msgid "Use Default Image"
+msgstr "Koristite Zadanu Sliku"
+
+#: dist/simple-tags/inc/related-posts.php:1159
+#: inc/related-posts.php:1159
+msgid "Remove Image"
+msgstr "Uklonite Sliku"
+
+#: dist/simple-tags/inc/related-posts.php:1166
+#: inc/related-posts.php:1166
+msgid ""
+"Select the default %post_thumb_url% to be used when a post doesn't have a "
+"featured image."
+msgstr ""
+"Odaberite zadani %post_thumb_url% koji će se koristiti kada post ne sadrži "
+"istaknutu sliku."
+
+#: dist/simple-tags/inc/related-posts.php:1194
+#: inc/related-posts.php:1194
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                            The Pro version has more "
+"features and support."
+msgstr ""
+"Koristite PublishPress Taxonomies Free. Pro verzija ima više značajki i "
+"podršku."
+
+#: dist/simple-tags/inc/related-posts.php:1198
+#: dist/simple-tags/inc/tag-clouds.php:970
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:19
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:77
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:125
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:178
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:202
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:226
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:250
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:277
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:295
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:394
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:412
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:430
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:448
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:472
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:496
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:520
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:566
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:604
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:678
+#: inc/related-posts.php:1198
+#: inc/tag-clouds.php:970
+#: includes-core/TaxopressCoreAdmin.php:19
+#: includes-core/TaxopressCoreAdmin.php:77
+#: includes-core/TaxopressCoreAdmin.php:125
+#: includes-core/TaxopressCoreAdmin.php:178
+#: includes-core/TaxopressCoreAdmin.php:202
+#: includes-core/TaxopressCoreAdmin.php:226
+#: includes-core/TaxopressCoreAdmin.php:250
+#: includes-core/TaxopressCoreAdmin.php:277
+#: includes-core/TaxopressCoreAdmin.php:295
+#: includes-core/TaxopressCoreAdmin.php:394
+#: includes-core/TaxopressCoreAdmin.php:412
+#: includes-core/TaxopressCoreAdmin.php:430
+#: includes-core/TaxopressCoreAdmin.php:448
+#: includes-core/TaxopressCoreAdmin.php:472
+#: includes-core/TaxopressCoreAdmin.php:496
+#: includes-core/TaxopressCoreAdmin.php:520
+#: includes-core/TaxopressCoreAdmin.php:566
+#: includes-core/TaxopressCoreAdmin.php:604
+#: includes-core/TaxopressCoreAdmin.php:678
+msgid "Upgrade to Pro"
+msgstr "Nadogradi na Pro"
+
+#: dist/simple-tags/inc/related-posts.php:1235
+#: inc/related-posts.php:1235
+msgid "Save Related Posts"
+msgstr "Spremi povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:1243
+#: inc/related-posts.php:1243
+msgid "Add Related Posts"
+msgstr "Dodaj povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:1256
+#: dist/simple-tags/inc/tag-clouds.php:1021
+#: inc/related-posts.php:1256
+#: inc/tag-clouds.php:1021, fuzzy
+msgid "Shortcode: "
+msgstr "Shortcode: "
+
+#: dist/simple-tags/inc/related-posts.php:1278
+#: inc/related-posts.php:1278
+msgid "Related Posts format"
+msgstr "Format povezanih objava"
+
+#: dist/simple-tags/inc/related-posts.php:1283
+#: inc/related-posts.php:1283
+msgid "Here are the tokens you can use for related posts format"
+msgstr "Evo tokena koje možete koristiti za format povezanih objava"
+
+#: dist/simple-tags/inc/related-posts.php:1285
+#: inc/related-posts.php:1285
+msgid "The URL of the post"
+msgstr "URL objave"
+
+#: dist/simple-tags/inc/related-posts.php:1286
+#: inc/related-posts.php:1286
+msgid "The title of the post"
+msgstr "Naslov objave"
+
+#: dist/simple-tags/inc/related-posts.php:1287
+#: inc/related-posts.php:1287
+msgid "The date of the post (this shows inside a tooltip)"
+msgstr "Datum objave (ovo se prikazuje unutar savjeta)"
+
+#: dist/simple-tags/inc/related-posts.php:1288
+#: inc/related-posts.php:1288
+msgid "The number of tags used by both posts"
+msgstr "Broj oznaka koje koriste obje objave"
+
+#: dist/simple-tags/inc/related-posts.php:1289
+#: inc/related-posts.php:1289
+msgid "The number of comments on the post"
+msgstr "Broj komentara na objavu"
+
+#: dist/simple-tags/inc/related-posts.php:1290
+#: inc/related-posts.php:1290
+msgid "The ID of the post"
+msgstr "ID objave"
+
+#: dist/simple-tags/inc/related-posts.php:1291
+#: inc/related-posts.php:1291
+msgid "A list of tags used by both the current post and the related post"
+msgstr "Popis oznaka koje koriste trenutna objava i povezane objave"
+
+#: dist/simple-tags/inc/related-posts.php:1292
+#: inc/related-posts.php:1292
+msgid "The post excerpt"
+msgstr "Izvadak objave"
+
+#: dist/simple-tags/inc/related-posts.php:1293
+#: inc/related-posts.php:1293
+msgid "The post featured image url"
+msgstr "URL istaknute slike objave"
+
+#: dist/simple-tags/inc/related-posts.php:1294
+#: inc/related-posts.php:1294
+msgid "The post content"
+msgstr "Sadržaj objave"
+
+#: dist/simple-tags/inc/related-posts.php:1295
+#: inc/related-posts.php:1295
+msgid "The post category"
+msgstr "Kategorija objave"
+
+#: dist/simple-tags/inc/related-posts.php:1296
+#: inc/related-posts.php:1296
+msgid "The font size of the post"
+msgstr "Veličina fonta objave"
+
+#: dist/simple-tags/inc/related-posts.php:1297
+#: inc/related-posts.php:1297
+msgid "The color of the post title"
+msgstr "Boja naslova posta"
+
+#: dist/simple-tags/inc/related-posts.php:1319
+#: dist/simple-tags/inc/tag-clouds.php:1082
+#: dist/simple-tags/inc/taxonomies.php:1976
+#: inc/related-posts.php:1319
+#: inc/tag-clouds.php:1082
+#: inc/taxonomies.php:1976
+msgid "Please complete the following required fields to save your changes:"
+msgstr "Molimo ispunite sljedeća obavezna polja kako biste spremili svoje promjene:"
+
+#: dist/simple-tags/inc/related-posts.php:1322
+#: dist/simple-tags/inc/tag-clouds.php:1085
+#: dist/simple-tags/inc/taxonomies.php:1979
+#: inc/related-posts.php:1322
+#: inc/tag-clouds.php:1085
+#: inc/taxonomies.php:1979
+msgid "Okay"
+msgstr "U redu"
+
+#: dist/simple-tags/inc/related-posts.php:1331
+#: dist/simple-tags/inc/tag-clouds.php:1094
+#: dist/simple-tags/inc/taxonomies.php:1988
+#: inc/related-posts.php:1331
+#: inc/tag-clouds.php:1094
+#: inc/taxonomies.php:1988
+msgid "Yes"
+msgstr "Da"
+
+#: dist/simple-tags/inc/related-posts.php:1343
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1141
+#: inc/related-posts.php:1343
+#: modules/taxopress-ai/taxopress-ai.php:1141
+msgid "Security check failed."
+msgstr "Provjera sigurnosti nije uspjela."
+
+#: dist/simple-tags/inc/related-posts.php:1347
+#: dist/simple-tags/inc/tag-clouds.php:1113
+#: dist/simple-tags/inc/terms-functions.php:200
+#: dist/simple-tags/inc/terms-functions.php:217
+#: dist/simple-tags/inc/terms-functions.php:261
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1164
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1735
+#: inc/related-posts.php:1347
+#: inc/tag-clouds.php:1113
+#: inc/terms-functions.php:200
+#: inc/terms-functions.php:217
+#: inc/terms-functions.php:261
+#: modules/taxopress-ai/taxopress-ai.php:1164
+#: modules/taxopress-ai/taxopress-ai.php:1735
+msgid "Permission denied."
+msgstr "Dopuštenje odbijeno."
+
+#: dist/simple-tags/inc/related-posts.php:1354
+#: inc/related-posts.php:1354
+msgid "Select a post to see a preview."
+msgstr "Odaberite post za pregled."
+
+#: dist/simple-tags/inc/related-posts.php:1422
+#: inc/related-posts.php:1422
+msgid "No related posts found."
+msgstr "Nema povezanih postova."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:13
+#: inc/schedule-logs-table.php:13, fuzzy
+msgid "autotermsschedulelog"
+msgstr "autotermsschedulelog"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:14
+#: inc/schedule-logs-table.php:14, fuzzy
+msgid "autotermsschedulelogs"
+msgstr "autotermsschedulelogs"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:51
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
+#: inc/schedule-logs-table.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:816, fuzzy
+msgid "Post"
+msgstr "Post"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:52
+#: dist/simple-tags/inc/terms-table.php:858
+#: inc/schedule-logs-table.php:52
+#: inc/terms-table.php:858
+msgid "Post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:54
+#: inc/schedule-logs-table.php:54
+msgid "Terms added"
+msgstr "Dodani uvjeti"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:55
+#: inc/schedule-logs-table.php:55
+msgid "Date"
+msgstr "Datum"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:68
+#: inc/schedule-logs-table.php:68
+msgid "Schedule log is empty."
+msgstr "Dnevnik rasporeda je prazan."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:130
+#: inc/schedule-logs-table.php:130
+msgid "Edit Main Post"
+msgstr "Uredi glavni post"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:143
+#: inc/schedule-logs-table.php:143
+msgid "Delete Log"
+msgstr "Izbriši dnevnik"
+
+#: dist/simple-tags/inc/schedule.php:40
+#: dist/simple-tags/inc/schedule.php:41
+#: dist/simple-tags/inc/schedule.php:201
+#: inc/schedule.php:40
+#: inc/schedule.php:41
+#: inc/schedule.php:201
+msgid "Auto Terms Schedule"
+msgstr "Automatski raspored uvjeta"
+
+#: dist/simple-tags/inc/schedule.php:83
+#: inc/schedule.php:83
+msgid "Schedule is disabled. Please enable a schedule frequency to run a test."
+msgstr ""
+"Raspored je onemogućen. Molimo omogućite učestalost rasporeda za pokretanje "
+"testa."
+
+#: dist/simple-tags/inc/schedule.php:99
+#: inc/schedule.php:99
+#, php-format
+msgid ""
+"Scheduled the cron event %s to run now. The original event will not be "
+"affected."
+msgstr ""
+"Zakazao cron događaj %s za pokretanje sada. Izvorni događaj neće biti "
+"pogođen."
+
+#: dist/simple-tags/inc/schedule.php:123
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+#: inc/schedule.php:123
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+msgid "An error occured."
+msgstr "Došlo je do pogreške."
+
+#: dist/simple-tags/inc/schedule.php:126
+#: inc/schedule.php:126
+msgid "Limit per batches is required."
+msgstr "Ograničenje po serijama je obavezno."
+
+#: dist/simple-tags/inc/schedule.php:128
+#: inc/schedule.php:128
+msgid "Batches wait time is required."
+msgstr "Vrijeme čekanja po serijama je obavezno."
+
+#: dist/simple-tags/inc/schedule.php:170
+#: inc/schedule.php:170
+msgid "Schedule is not enabled for selected Auto Terms."
+msgstr "Raspored nije omogućen za odabrane Automatske termine."
+
+#: dist/simple-tags/inc/schedule.php:203
+#: inc/schedule.php:203
+msgid ""
+"This feature allows you to run the Auto Terms feature on a schedule. This "
+"is helpful if you regularly import content into WordPress. PublishPress "
+"Taxonomies can run on a schedule and add terms to your imported content."
+msgstr ""
+"Ova značajka vam omogućuje da pokrenete značajku Automatski termini prema "
+"rasporedu. Ovo je korisno ako redovito uvozite sadržaj u WordPress. "
+"PublishPress Taxonomies može raditi prema rasporedu i dodavati termine "
+"vašem uvezenom sadržaju."
+
+#: dist/simple-tags/inc/schedule.php:213
+#: inc/schedule.php:213
+msgid "Settings"
+msgstr "Postavke"
+
+#: dist/simple-tags/inc/schedule.php:225
+#: inc/schedule.php:225
+msgid "Select an option..."
+msgstr "Odaberite opciju..."
+
+#: dist/simple-tags/inc/schedule.php:249
+#: inc/schedule.php:249
+msgid "Auto Terms setting"
+msgstr "Postavka Automatskih termina"
+
+#: dist/simple-tags/inc/schedule.php:253
+#: inc/schedule.php:253
+msgid "Select Auto Terms settings to use when running the \"Schedule\" feature."
+msgstr ""
+"Odaberite postavke Automatskih termina koje želite koristiti prilikom "
+"pokretanja značajke \"Raspored\"."
+
+#: dist/simple-tags/inc/schedule.php:259
+#: inc/schedule.php:259
+msgid "Do not run on a schedule"
+msgstr "Ne pokreći prema rasporedu"
+
+#: dist/simple-tags/inc/schedule.php:260
+#: inc/schedule.php:260
+msgid "Weekly"
+msgstr "Tjedno"
+
+#: dist/simple-tags/inc/schedule.php:264
+#: inc/schedule.php:264
+msgid "Schedule Frequency"
+msgstr "Učestalost rasporeda"
+
+#: dist/simple-tags/inc/schedule.php:290
+#: inc/schedule.php:290
+msgid "Disable 'Do not run on a schedule' to select schedule frequency."
+msgstr ""
+"Onemogućite 'Ne pokreći prema rasporedu' da biste odabrali učestalost "
+"rasporeda."
+
+#: dist/simple-tags/inc/schedule.php:338
+#: inc/schedule.php:338
+msgid "Exclude previously analyzed content"
+msgstr "Isključi prethodno analizirani sadržaj"
+
+#: dist/simple-tags/inc/schedule.php:339
+#: inc/schedule.php:339
+msgid ""
+"This enables you to skip posts that have already been analyzed by the "
+"Schedule feature."
+msgstr ""
+"Ovo vam omogućuje da preskočite objave koje su već analizirane značajkom "
+"Raspored."
+
+#: dist/simple-tags/inc/schedule.php:347
+#: inc/schedule.php:347
+msgid "Limit per batches"
+msgstr "Ograničenje po serijama"
+
+#: dist/simple-tags/inc/schedule.php:351
+#: inc/schedule.php:351
+msgid ""
+"This enables your scheduled Auto Terms to run in batches. If you have a lot "
+"of content, set this to a lower number to avoid timeouts."
+msgstr ""
+"Ovo omogućuje vašim zakazanim Automatskim terminima da se pokreću u "
+"serijama. Ako imate puno sadržaja, postavite ovo na niži broj kako biste "
+"izbjegli isteke vremena."
+
+#: dist/simple-tags/inc/schedule.php:361
+#: inc/schedule.php:361
+msgid "Batches wait time"
+msgstr "Vrijeme čekanja po serijama"
+
+#: dist/simple-tags/inc/schedule.php:362
+#: inc/schedule.php:362
+msgid ""
+"This is the wait time (in seconds) between processing batches of Auto "
+"Terms. If you have a lot of existing content, set this to a higher number "
+"to avoid timeouts."
+msgstr ""
+"Ovo je vrijeme čekanja (u sekundama) između obrade serija Automatskih "
+"termina. Ako imate puno postojećeg sadržaja, postavite ovo na viši broj "
+"kako biste izbjegli isteke vremena."
+
+#: dist/simple-tags/inc/schedule.php:371
+#: dist/simple-tags/inc/schedule.php:406
+#: inc/schedule.php:371
+#: inc/schedule.php:406
+msgid "24 hours ago"
+msgstr "Prije 24 sata"
+
+#: dist/simple-tags/inc/schedule.php:375
+#: dist/simple-tags/inc/schedule.php:410
+#: inc/schedule.php:375
+#: inc/schedule.php:410
+msgid "7 days ago"
+msgstr "prije 7 dana"
+
+#: dist/simple-tags/inc/schedule.php:379
+#: dist/simple-tags/inc/schedule.php:414
+#: inc/schedule.php:379
+#: inc/schedule.php:414
+msgid "2 weeks ago"
+msgstr "prije 2 tjedna"
+
+#: dist/simple-tags/inc/schedule.php:383
+#: dist/simple-tags/inc/schedule.php:418
+#: inc/schedule.php:383
+#: inc/schedule.php:418
+msgid "1 month ago"
+msgstr "prije 1 mjesec"
+
+#: dist/simple-tags/inc/schedule.php:388
+#: dist/simple-tags/inc/schedule.php:422
+#: inc/schedule.php:388
+#: inc/schedule.php:422
+msgid "6 months ago"
+msgstr "prije 6 mjeseci"
+
+#: dist/simple-tags/inc/schedule.php:392
+#: dist/simple-tags/inc/schedule.php:426
+#: inc/schedule.php:392
+#: inc/schedule.php:426
+msgid "1 year ago"
+msgstr "prije 1 godinu"
+
+#: dist/simple-tags/inc/schedule.php:443
+#: inc/schedule.php:443
+msgid "Limit Auto Terms, based on published date"
+msgstr "Ograniči Auto Uvjete, na temelju datum objave"
+
+#: dist/simple-tags/inc/schedule.php:447
+#: inc/schedule.php:447
+msgid ""
+"This setting can limit your scheduled Auto Terms query to only recent "
+"content. We recommend using this feature to avoid timeouts on large sites."
+msgstr ""
+"Ova postavka može ograničiti vašu zakazanu Auto Uvjete upit samo na nedavni "
+"sadržaj. Preporučujemo korištenje ove značajke kako biste izbjegli isteke "
+"vremena na velikim stranicama."
+
+#: dist/simple-tags/inc/schedule.php:457
+#: inc/schedule.php:457
+msgid "Save Settings"
+msgstr "Spremi postavke"
+
+#: dist/simple-tags/inc/schedule.php:458
+#: inc/schedule.php:458
+msgid "Test Run"
+msgstr "Testna izvedba"
+
+#: dist/simple-tags/inc/schedule.php:467
+#: inc/schedule.php:467
+msgid "Recent Schedule Runs"
+msgstr "Nedavne zakazane izvedbe"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+#, php-format
+msgid "You can see full log details on the %1s screen"
+msgstr "Možete vidjeti potpune detalje zapisnika na %1s ekranu"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+msgid "Auto Terms Logs"
+msgstr "Zapisnici Auto Uvjeta"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:153
+#: dist/simple-tags/inc/tag-clouds-table.php:14
+#: dist/simple-tags/inc/tag-clouds-table.php:15
+#: dist/simple-tags/inc/tag-clouds.php:73
+#: dist/simple-tags/inc/tag-clouds.php:74
+#: dist/simple-tags/inc/tag-clouds.php:129
+#: inc/tag-clouds-functions.php:153
+#: inc/tag-clouds-table.php:14
+#: inc/tag-clouds-table.php:15
+#: inc/tag-clouds.php:73
+#: inc/tag-clouds.php:74
+#: inc/tag-clouds.php:129
+msgid "Terms Display"
+msgstr "Prikaz Uvjeta"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:254
+#: inc/tag-clouds-functions.php:254
+msgid "Terms Display successfully deleted."
+msgstr "Prikaz Uvjeta uspješno izbrisan."
+
+#: dist/simple-tags/inc/tag-clouds-table.php:67
+#: dist/simple-tags/inc/tag-clouds.php:435
+#: inc/tag-clouds-table.php:67
+#: inc/tag-clouds.php:435
+msgid "Post Type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:376
+#: dist/simple-tags/inc/tag-clouds.php:655
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:694
+#: inc/tag-clouds-table.php:376
+#: inc/tag-clouds.php:655
+#: includes-core/TaxopressCoreAdmin.php:694
+msgid "Cloud"
+msgstr "Oblak"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:379
+#: dist/simple-tags/inc/tag-clouds.php:658
+#: inc/tag-clouds-table.php:379
+#: inc/tag-clouds.php:658
+msgid "WordPress Default"
+msgstr "Zadano WordPress"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:380
+#: dist/simple-tags/inc/tag-clouds.php:659
+#: inc/tag-clouds-table.php:380
+#: inc/tag-clouds.php:659
+msgid "Table List"
+msgstr "Popis tablica"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:381
+#: dist/simple-tags/inc/tag-clouds.php:660
+#: inc/tag-clouds-table.php:381
+#: inc/tag-clouds.php:660
+msgid "Border Cloud"
+msgstr "Oblaku granica"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:382
+#: dist/simple-tags/inc/tag-clouds.php:661
+#: inc/tag-clouds-table.php:382
+#: inc/tag-clouds.php:661
+msgid "Parent / Child"
+msgstr "Roditelj / Dijete"
+
+#: dist/simple-tags/inc/tag-clouds.php:135
+#: inc/tag-clouds.php:135
+msgid "Add New Terms Display"
+msgstr "Dodaj novu prikaz termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:138
+#: inc/tag-clouds.php:138
+msgid ""
+"This feature allows you to create a customizable display of all the terms "
+"in one taxonomy."
+msgstr ""
+"Ova funkcija vam omogućuje da kreirate prilagodljiv prikaz svih termina u "
+"jednoj taxonomy."
+
+#: dist/simple-tags/inc/tag-clouds.php:161
+#: inc/tag-clouds.php:161
+msgid "Search Terms Display"
+msgstr "Prikaz termina pretraživanja"
+
+#: dist/simple-tags/inc/tag-clouds.php:242
+#: inc/tag-clouds.php:242
+msgid "Manage Terms Display"
+msgstr "Upravljanje prikazom termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:258
+#: inc/tag-clouds.php:258
+msgid "Preview Terms Display"
+msgstr "Pregled prikaza termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:263
+#: inc/tag-clouds.php:263
+msgid "Move up"
+msgstr "Pomakni gore"
+
+#: dist/simple-tags/inc/tag-clouds.php:266
+#: inc/tag-clouds.php:266
+msgid "Move down"
+msgstr "Pomakni dolje"
+
+#: dist/simple-tags/inc/tag-clouds.php:303
+#: inc/tag-clouds.php:303
+msgid "Edit Terms Display"
+msgstr "Uredi prikaz termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:310
+#: inc/tag-clouds.php:310
+msgid "Add new Terms Display"
+msgstr "Dodaj novi prikaz termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:321
+#: inc/tag-clouds.php:321
+msgid "To create more Terms Display, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"Da biste kreirali više prikaza termina, molimo nadogradite na PublishPress "
+"Taxonomies Pro."
+
+#: dist/simple-tags/inc/tag-clouds.php:324
+#: inc/tag-clouds.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Terms Display. "
+"You can create Terms Display for any taxonomy and then display those Terms "
+"Display anywhere on your site."
+msgstr ""
+"S PublishPress Taxonomies Pro možete kreirati neograničene prikaze termina. "
+"Možete kreirati prikaze termina za bilo koju taxonomy i zatim prikazati te "
+"prikaze termina bilo gdje na vašoj stranici."
+
+#: dist/simple-tags/inc/tag-clouds.php:338
+#: inc/tag-clouds.php:338
+msgid "Choose Terms"
+msgstr "Odaberite termine"
+
+#: dist/simple-tags/inc/tag-clouds.php:350
+#: inc/tag-clouds.php:350
+msgid "Exceptions"
+msgstr "Izuzeci"
+
+#: dist/simple-tags/inc/tag-clouds.php:358
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:700
+#: inc/tag-clouds.php:358
+#: includes-core/TaxopressCoreAdmin.php:700
+msgid "Display Format"
+msgstr "Format prikaza"
+
+#: dist/simple-tags/inc/tag-clouds.php:412
+#: inc/tag-clouds.php:412
+msgid "Hide title in output?"
+msgstr "Sakrivati naslov u izlazu?"
+
+#: dist/simple-tags/inc/tag-clouds.php:418
+#: inc/tag-clouds.php:418
+msgid "All post types"
+msgstr "Svi tipovi objava"
+
+#: dist/simple-tags/inc/tag-clouds.php:469
+#: inc/tag-clouds.php:469
+msgid "All Parent Terms"
+msgstr "Svi roditeljski termini"
+
+#: dist/simple-tags/inc/tag-clouds.php:519
+#: inc/tag-clouds.php:519
+msgid "Parent Term"
+msgstr "Roditeljski termin"
+
+#: dist/simple-tags/inc/tag-clouds.php:525
+#: inc/tag-clouds.php:525
+msgid "Display only Parent Terms"
+msgstr "Prikaži samo roditeljske termine"
+
+#: dist/simple-tags/inc/tag-clouds.php:526
+#: inc/tag-clouds.php:526
+msgid "Display only Sub-Terms"
+msgstr "Prikaži samo podtermine"
+
+#: dist/simple-tags/inc/tag-clouds.php:527
+#: inc/tag-clouds.php:527
+msgid "Display Parents and Sub-Terms"
+msgstr "Prikaži roditelje i podizraz"
+
+#: dist/simple-tags/inc/tag-clouds.php:537
+#: inc/tag-clouds.php:537
+msgid "Display Mode"
+msgstr "Način prikaza"
+
+#: dist/simple-tags/inc/tag-clouds.php:554
+#: inc/tag-clouds.php:554
+msgid "Term selection mode"
+msgstr "Način odabira izraza"
+
+#: dist/simple-tags/inc/tag-clouds.php:562
+#: inc/tag-clouds.php:562
+msgid "Automatic"
+msgstr "Automatski"
+
+#: dist/simple-tags/inc/tag-clouds.php:565
+#: inc/tag-clouds.php:565
+msgid "Display terms based on settings in the \"General\" tab."
+msgstr "Prikaži izraze na temelju postavki u kartici \"Općenito\"."
+
+#: dist/simple-tags/inc/tag-clouds.php:571
+#: inc/tag-clouds.php:571
+msgid "Custom"
+msgstr "Prilagođeno"
+
+#: dist/simple-tags/inc/tag-clouds.php:574
+#: inc/tag-clouds.php:574
+msgid ""
+"Display only the specific terms entered in the \"Custom terms to display\" "
+"field below."
+msgstr ""
+"Prikaži samo specifične izraze unesene u polje \"Prilagođeni izrazi za "
+"prikaz\" ispod."
+
+#: dist/simple-tags/inc/tag-clouds.php:580
+#: inc/tag-clouds.php:580
+msgid "Combined"
+msgstr "Kombinirano"
+
+#: dist/simple-tags/inc/tag-clouds.php:583
+#: inc/tag-clouds.php:583
+msgid "Display automatic terms plus any additional custom terms specified below."
+msgstr ""
+"Prikaži automatske izraze plus sve dodatne prilagođene izraze navedene "
+"ispod."
+
+#: dist/simple-tags/inc/tag-clouds.php:598
+#: inc/tag-clouds.php:598
+msgid "Custom terms to display"
+msgstr "Prilagođeni izrazi za prikaz"
+
+#: dist/simple-tags/inc/tag-clouds.php:599
+#: inc/tag-clouds.php:599
+msgid "Enter terms (comma-separated) to display. Used in Custom and Combined modes."
+msgstr ""
+"Unesite izraze (odvojene zarezom) za prikaz. Koristi se u prilagođenim i "
+"kombiniranim načinima."
+
+#: dist/simple-tags/inc/tag-clouds.php:620
+#: inc/tag-clouds.php:620
+msgid "Limit terms based on timeframe"
+msgstr "Ograniči izraze prema vremenskom okviru"
+
+#: dist/simple-tags/inc/tag-clouds.php:629
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:826
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+#: inc/tag-clouds.php:629
+#: includes-core/TaxopressCoreAdmin.php:826
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+msgid "Ascending"
+msgstr "Uzlazno"
+
+#: dist/simple-tags/inc/tag-clouds.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:827
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+#: inc/tag-clouds.php:630
+#: includes-core/TaxopressCoreAdmin.php:827
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+msgid "Descending"
+msgstr "Silazno"
+
+#: dist/simple-tags/inc/tag-clouds.php:639
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:832
+#: inc/tag-clouds.php:639
+#: includes-core/TaxopressCoreAdmin.php:832
+msgid "Ordering for choosing terms for display"
+msgstr "Redoslijed za odabir izraza za prikaz"
+
+#: dist/simple-tags/inc/tag-clouds.php:688
+#: inc/tag-clouds.php:688
+msgid "Text to display before terms list"
+msgstr "Tekst za prikaz prije popisa izraza"
+
+#: dist/simple-tags/inc/tag-clouds.php:692
+#: inc/tag-clouds.php:692
+msgid ""
+"Enter the text that should be display before terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Unesite tekst koji treba biti prikazan prije popisa izraza. Ovo polje "
+"prihvaća osnovni HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:704
+#: inc/tag-clouds.php:704
+msgid "Text to display after terms list"
+msgstr "Tekst za prikaz nakon popisa izraza"
+
+#: dist/simple-tags/inc/tag-clouds.php:708
+#: inc/tag-clouds.php:708
+msgid ""
+"Enter the text that should be display after terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Unesite tekst koji treba biti prikazan nakon popisa izraza. Ovo polje "
+"prihvaća osnovni HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:729
+#: inc/tag-clouds.php:729
+msgid "Exclude terms from terms display"
+msgstr "Isključi izraze iz prikaza izraza"
+
+#: dist/simple-tags/inc/tag-clouds.php:730
+#: inc/tag-clouds.php:730
+msgid "Enter terms (comma-separated) to exclude from the terms display."
+msgstr ""
+"Unesite pojmove (odvojene zarezima) koje želite isključiti iz prikaza "
+"pojmova."
+
+#: dist/simple-tags/inc/tag-clouds.php:758
+#: inc/tag-clouds.php:758
+msgid "Exclude hidden terms from Terms Display?"
+msgstr "Isključiti skrivene pojmove iz prikaza pojmova?"
+
+#: dist/simple-tags/inc/tag-clouds.php:794
+#: inc/tag-clouds.php:794
+msgid "Hide display output if no terms?"
+msgstr "Sakrij prikaz ako nema pojmova?"
+
+#: dist/simple-tags/inc/tag-clouds.php:803
+#: inc/tag-clouds.php:803
+msgid "Maximum terms to display"
+msgstr "Maksimalni broj pojmova za prikaz"
+
+#: dist/simple-tags/inc/tag-clouds.php:884
+#: inc/tag-clouds.php:884
+msgid "This is the color of the least popular term"
+msgstr "Ovo je boja najmanje popularnog pojma"
+
+#: dist/simple-tags/inc/tag-clouds.php:895
+#: inc/tag-clouds.php:895
+msgid "This is the color of the most popular term"
+msgstr "Ovo je boja najpopularnijeg pojma"
+
+#: dist/simple-tags/inc/tag-clouds.php:915
+#: inc/tag-clouds.php:915
+msgid "Term display div class"
+msgstr "Div klasa prikaza pojmova"
+
+#: dist/simple-tags/inc/tag-clouds.php:940
+#: inc/tag-clouds.php:940
+#, php-format
+msgid ""
+"This option allows you to change the format of your terms. You can use any "
+"of the tokens in the \"Terms Display format\" sidebar\". Find more details "
+"%1sin the documentation%2s."
+msgstr ""
+"Ova opcija vam omogućuje da promijenite format vaših pojmova. Možete "
+"koristiti bilo koji od tokena u \"formatu prikaza pojmova\" bočne trake\". "
+"Pronađite više detalja %1sin dokumentaciji%2s."
+
+#: dist/simple-tags/inc/tag-clouds.php:966
+#: inc/tag-clouds.php:966
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                        The Pro version has more features "
+"and support."
+msgstr ""
+"Koristite PublishPress Taxonomies Free.\n"
+"                                        Pro verzija ima više funkcija i "
+"podrške."
+
+#: dist/simple-tags/inc/tag-clouds.php:975
+#: inc/tag-clouds.php:975
+msgid "Font size minimum must not be greater than Font size maximum value."
+msgstr ""
+"Minimalna veličina fonta ne smije biti veća od maksimalne vrijednosti "
+"veličine fonta."
+
+#: dist/simple-tags/inc/tag-clouds.php:1007
+#: inc/tag-clouds.php:1007
+msgid "Save Terms Display"
+msgstr "Spremi prikaz pojmova"
+
+#: dist/simple-tags/inc/tag-clouds.php:1011
+#: inc/tag-clouds.php:1011
+msgid "Add Terms Display"
+msgstr "Dodaj prikaz pojmova"
+
+#: dist/simple-tags/inc/tag-clouds.php:1039
+#: inc/tag-clouds.php:1039
+msgid "Terms Display format"
+msgstr "Format prikaza pojmova"
+
+#: dist/simple-tags/inc/tag-clouds.php:1044
+#: inc/tag-clouds.php:1044
+msgid "Here are the tokens you can use for Term link format"
+msgstr "Evo tokena koje možete koristiti za format linka pojma"
+
+#: dist/simple-tags/inc/tag-clouds.php:1046
+#: inc/tag-clouds.php:1046
+msgid "The URL of the term"
+msgstr "URL pojma"
+
+#: dist/simple-tags/inc/tag-clouds.php:1047
+#: inc/tag-clouds.php:1047
+msgid "The ID of the term"
+msgstr "ID pojma"
+
+#: dist/simple-tags/inc/tag-clouds.php:1048
+#: inc/tag-clouds.php:1048
+msgid "The weighted size of the term in the display"
+msgstr "Težinska veličina pojma u prikazu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1049
+#: inc/tag-clouds.php:1049
+msgid "The number of times the term is used"
+msgstr "Broj puta kada se pojam koristi"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "This provides rel tag markup"
+msgstr "Ovo pruža rel tag markup"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "it creates"
+msgstr "stvara"
+
+#: dist/simple-tags/inc/tag-clouds.php:1051
+#: inc/tag-clouds.php:1051
+msgid "The font size for the term"
+msgstr "Veličina fonta za termin"
+
+#: dist/simple-tags/inc/tag-clouds.php:1052
+#: inc/tag-clouds.php:1052
+msgid "The font color for the term"
+msgstr "Boja fonta za termin"
+
+#: dist/simple-tags/inc/tag-clouds.php:1053
+#: inc/tag-clouds.php:1053
+msgid "The name of the term"
+msgstr "Naziv termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:1054
+#: inc/tag-clouds.php:1054
+msgid "The name of the term with any HTML stripped out"
+msgstr "Naziv termina bez HTML oznaka"
+
+#: dist/simple-tags/inc/tag-clouds.php:1055
+#: inc/tag-clouds.php:1055
+msgid "The description of the term"
+msgstr "Opis termina"
+
+#: dist/simple-tags/inc/tag-clouds.php:1109
+#: inc/tag-clouds.php:1109
+msgid "Invalid nonce"
+msgstr "Nevažeći nonce"
+
+#: dist/simple-tags/inc/tag-clouds.php:1117
+#: inc/tag-clouds.php:1117
+msgid "Missing display ID."
+msgstr "Nedostaje ID za prikaz."
+
+#: dist/simple-tags/inc/tag-clouds.php:1125
+#: inc/tag-clouds.php:1125
+msgid "Invalid terms display configuration."
+msgstr "Nevažeća konfiguracija prikaza termina."
+
+#: dist/simple-tags/inc/tag-clouds.php:1175
+#: inc/tag-clouds.php:1175
+msgid "There are no terms in this taxonomy."
+msgstr "Nema termina u ovoj taxonomy."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:124
+#: dist/simple-tags/inc/taxonomies-functions.php:1969
+#: inc/taxonomies-functions.php:124
+#: inc/taxonomies-functions.php:1969
+msgid "Please provide a taxonomy to delete"
+msgstr "Molimo navedite taxonomy za brisanje"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:274
+#: inc/taxonomies-functions.php:274
+msgid "Please provide a taxonomy name"
+msgstr "Molimo navedite naziv taxonomy"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1115
+#: inc/taxonomies-functions.php:1115
+msgid "Object"
+msgstr "Objekt"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1149
+#: dist/simple-tags/inc/taxonomies-functions.php:1560
+#: inc/taxonomies-functions.php:1149
+#: inc/taxonomies-functions.php:1560
+#, php-format
+msgid "%s has been successfully added"
+msgstr "%s je uspješno dodan"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1164
+#: dist/simple-tags/inc/taxonomies-functions.php:1562
+#: inc/taxonomies-functions.php:1164
+#: inc/taxonomies-functions.php:1562
+#, php-format
+msgid "%s has failed to be added"
+msgstr "%s nije uspjelo dodati"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1179
+#: dist/simple-tags/inc/taxonomies-functions.php:1566
+#: inc/taxonomies-functions.php:1179
+#: inc/taxonomies-functions.php:1566
+#, php-format
+msgid "%s has been successfully updated"
+msgstr "%s je uspješno ažuriran"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1193
+#: dist/simple-tags/inc/taxonomies-functions.php:1568
+#: inc/taxonomies-functions.php:1193
+#: inc/taxonomies-functions.php:1568
+#, php-format
+msgid "%s has failed to be updated"
+msgstr "%s nije uspjelo ažurirati"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1208
+#: dist/simple-tags/inc/taxonomies-functions.php:1572
+#: inc/taxonomies-functions.php:1208
+#: inc/taxonomies-functions.php:1572
+#, php-format
+msgid "%s has been successfully deleted"
+msgstr "%s je uspješno obrisan"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1222
+#: dist/simple-tags/inc/taxonomies-functions.php:1574
+#: inc/taxonomies-functions.php:1222
+#: inc/taxonomies-functions.php:1574
+#, php-format
+msgid "%s has failed to be deleted"
+msgstr "%s nije uspjelo obrisati"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1234
+#: inc/taxonomies-functions.php:1234
+msgid "Nonce failed verification"
+msgstr "Nonce nije prošao provjeru"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1248
+#: inc/taxonomies-functions.php:1248
+#, php-format
+msgid "Please choose a different taxonomy name. %s is already registered."
+msgstr "Molimo odaberite drugi naziv taxonomy. %s je već registriran."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1261
+#: inc/taxonomies-functions.php:1261
+msgid "Please provide a post type to attach to."
+msgstr "Molimo vas da navedete post type kojemu želite priložiti."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1284
+#: inc/taxonomies-functions.php:1284
+#, php-format
+msgid ""
+"Please choose a different post type name. %s matches an existing page slug, "
+"which can cause conflicts."
+msgstr ""
+"Molimo odaberite drugo ime post type-a. %s odgovara postojećem slug-u "
+"stranice, što može uzrokovati sukobe."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1300
+#: inc/taxonomies-functions.php:1300
+msgid "Please do not use quotes in post type/taxonomy names or rewrite slugs"
+msgstr ""
+"Molimo vas da ne koristite navodnike u imenima post type-a/taxonomy ili "
+"prepisanim slug-ovima"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1578
+#: inc/taxonomies-functions.php:1578
+#, php-format
+msgid "%s has been successfully imported"
+msgstr "%s je uspješno uvezen"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1580
+#: inc/taxonomies-functions.php:1580
+#, php-format
+msgid "%s has failed to be imported"
+msgstr "%s nije uspio biti uvezen"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1666
+#: dist/simple-tags/inc/taxonomies-functions.php:1684
+#: dist/simple-tags/inc/taxonomies-functions.php:1707
+#: dist/simple-tags/inc/taxonomies-functions.php:1726
+#: dist/simple-tags/inc/taxonomies.php:1271
+#: inc/taxonomies-functions.php:1666
+#: inc/taxonomies-functions.php:1684
+#: inc/taxonomies-functions.php:1707
+#: inc/taxonomies-functions.php:1726
+#: inc/taxonomies.php:1271
+#, php-format
+msgid "Add new %s"
+msgstr "Dodaj novi %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1667
+#: dist/simple-tags/inc/taxonomies-functions.php:1682
+#: dist/simple-tags/inc/taxonomies-functions.php:1708
+#: dist/simple-tags/inc/taxonomies-functions.php:1724
+#: dist/simple-tags/inc/taxonomies.php:1205
+#: inc/taxonomies-functions.php:1667
+#: inc/taxonomies-functions.php:1682
+#: inc/taxonomies-functions.php:1708
+#: inc/taxonomies-functions.php:1724
+#: inc/taxonomies.php:1205
+#, php-format
+msgid "Edit %s"
+msgstr "Uredi %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1668
+#: dist/simple-tags/inc/taxonomies-functions.php:1709
+#: inc/taxonomies-functions.php:1668
+#: inc/taxonomies-functions.php:1709
+#, php-format
+msgid "New %s"
+msgstr "Novi %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1669
+#: dist/simple-tags/inc/taxonomies-functions.php:1670
+#: dist/simple-tags/inc/taxonomies-functions.php:1710
+#: dist/simple-tags/inc/taxonomies-functions.php:1713
+#: dist/simple-tags/inc/taxonomies.php:1226
+#: inc/taxonomies-functions.php:1669
+#: inc/taxonomies-functions.php:1670
+#: inc/taxonomies-functions.php:1710
+#: inc/taxonomies-functions.php:1713
+#: inc/taxonomies.php:1226
+#, php-format
+msgid "View %s"
+msgstr "Pogledaj %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1671
+#: dist/simple-tags/inc/taxonomies-functions.php:1679
+#: dist/simple-tags/inc/taxonomies-functions.php:1714
+#: dist/simple-tags/inc/taxonomies-functions.php:1732
+#: dist/simple-tags/inc/taxonomies-functions.php:2429
+#: dist/simple-tags/inc/taxonomies.php:1184
+#: dist/simple-tags/inc/terms-table.php:852
+#: inc/taxonomies-functions.php:1671
+#: inc/taxonomies-functions.php:1679
+#: inc/taxonomies-functions.php:1714
+#: inc/taxonomies-functions.php:1732
+#: inc/taxonomies-functions.php:2429
+#: inc/taxonomies.php:1184
+#: inc/terms-table.php:852
+#, php-format
+msgid "All %s"
+msgstr "Svi %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1672
+#: dist/simple-tags/inc/taxonomies-functions.php:1677
+#: dist/simple-tags/inc/taxonomies-functions.php:1715
+#: dist/simple-tags/inc/taxonomies-functions.php:1730
+#: dist/simple-tags/inc/taxonomies.php:1355
+#: inc/taxonomies-functions.php:1672
+#: inc/taxonomies-functions.php:1677
+#: inc/taxonomies-functions.php:1715
+#: inc/taxonomies-functions.php:1730
+#: inc/taxonomies.php:1355
+#, php-format
+msgid "Search %s"
+msgstr "Pretraži %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1673
+#: dist/simple-tags/inc/taxonomies-functions.php:1716
+#: inc/taxonomies-functions.php:1673
+#: inc/taxonomies-functions.php:1716
+#, php-format
+msgid "No %s found."
+msgstr "Nema %s pronađenih."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1674
+#: dist/simple-tags/inc/taxonomies-functions.php:1717
+#: inc/taxonomies-functions.php:1674
+#: inc/taxonomies-functions.php:1717
+#, php-format
+msgid "No %s found in trash."
+msgstr "Nema %s pronađenih u smeću."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1678
+#: dist/simple-tags/inc/taxonomies-functions.php:1731
+#: dist/simple-tags/inc/taxonomies.php:1376
+#: inc/taxonomies-functions.php:1678
+#: inc/taxonomies-functions.php:1731
+#: inc/taxonomies.php:1376
+#, php-format
+msgid "Popular %s"
+msgstr "Popularni %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1680
+#: dist/simple-tags/inc/taxonomies-functions.php:1722
+#: dist/simple-tags/inc/taxonomies.php:1313
+#: inc/taxonomies-functions.php:1680
+#: inc/taxonomies-functions.php:1722
+#: inc/taxonomies.php:1313
+#, php-format
+msgid "Parent %s"
+msgstr "Roditeljski %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1681
+#: dist/simple-tags/inc/taxonomies-functions.php:1723
+#: dist/simple-tags/inc/taxonomies.php:1334
+#: inc/taxonomies-functions.php:1681
+#: inc/taxonomies-functions.php:1723
+#: inc/taxonomies.php:1334
+#, php-format
+msgid "Parent %s:"
+msgstr "Roditeljski %s:"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1683
+#: dist/simple-tags/inc/taxonomies-functions.php:1725
+#: inc/taxonomies-functions.php:1683
+#: inc/taxonomies-functions.php:1725
+#, php-format
+msgid "Update %s"
+msgstr "Ažuriraj %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1685
+#: dist/simple-tags/inc/taxonomies-functions.php:1727
+#: dist/simple-tags/inc/taxonomies.php:1292
+#: inc/taxonomies-functions.php:1685
+#: inc/taxonomies-functions.php:1727
+#: inc/taxonomies.php:1292
+#, php-format
+msgid "New %s name"
+msgstr "Novo ime %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1686
+#: dist/simple-tags/inc/taxonomies-functions.php:1733
+#: dist/simple-tags/inc/taxonomies.php:1402
+#: inc/taxonomies-functions.php:1686
+#: inc/taxonomies-functions.php:1733
+#: inc/taxonomies.php:1402
+#. translators: Used for autofill
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Odvojite %s zarezima"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1687
+#: dist/simple-tags/inc/taxonomies-functions.php:1734
+#: dist/simple-tags/inc/taxonomies.php:1427
+#: inc/taxonomies-functions.php:1687
+#: inc/taxonomies-functions.php:1734
+#: inc/taxonomies.php:1427
+#, php-format
+msgid "Add or remove %s"
+msgstr "Dodaj ili ukloni %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1688
+#: dist/simple-tags/inc/taxonomies-functions.php:1735
+#: dist/simple-tags/inc/taxonomies.php:1453
+#: inc/taxonomies-functions.php:1688
+#: inc/taxonomies-functions.php:1735
+#: inc/taxonomies.php:1453
+#. translators: Used for autofill
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "Odaberite iz najčešće korištenih %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1814
+#: inc/taxonomies-functions.php:1814
+msgid "Kindly select an action in bulk action dropdown!"
+msgstr "Molimo odaberite radnju u padajućem izborniku za grupne radnje!"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1826
+#: inc/taxonomies-functions.php:1826
+msgid "Kindly select atleast one taxonomy to proceed"
+msgstr "Molimo odaberite barem jednu taxonomy za nastavak"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1837
+#: inc/taxonomies-functions.php:1837
+msgid "Taxonomy has been successfully deactivated"
+msgstr "Taxonomy je uspješno deaktivirana"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1846
+#: inc/taxonomies-functions.php:1846
+msgid "Taxonomy has been successfully activated"
+msgstr "Taxonomy je uspješno aktivirana"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1855
+#: inc/taxonomies-functions.php:1855
+msgid "Taxonomy has been successfully deleted"
+msgstr "Taxonomy je uspješno izbrisana"
+
+#: dist/simple-tags/inc/taxonomies.php:77
+#: inc/taxonomies.php:77
+msgid ""
+"Are you sure you want to delete this? Deleting will NOT remove created "
+"content."
+msgstr ""
+"Jeste li sigurni da želite izbrisati ovo? Brisanje NEĆE ukloniti stvoreni "
+"sadržaj."
+
+#: dist/simple-tags/inc/taxonomies.php:81
+#: inc/taxonomies.php:81
+msgid "Please select at least one post type."
+msgstr "Molimo odaberite barem jedan post type."
+
+#: dist/simple-tags/inc/taxonomies.php:83
+#: inc/taxonomies.php:83
+msgid "Taxonomy slug cannot be numbers only."
+msgstr "Taxonomy slug ne može biti samo brojevi."
+
+#: dist/simple-tags/inc/taxonomies.php:114
+#: dist/simple-tags/inc/taxonomies.php:115
+#: dist/simple-tags/inc/taxonomies.php:170
+#: inc/taxonomies.php:114
+#: inc/taxonomies.php:115
+#: inc/taxonomies.php:170
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:172
+#: inc/taxonomies.php:172
+msgid "Add New"
+msgstr "Dodaj novo"
+
+#: dist/simple-tags/inc/taxonomies.php:174
+#: inc/taxonomies.php:174
+msgid ""
+"This feature allows you to create new taxonomies and edit all the settings "
+"for each taxonomy."
+msgstr ""
+"Ova funkcija vam omogućuje da kreirate nove taxonomies i uredite sve "
+"postavke za svaku taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:197
+#: inc/taxonomies.php:197
+msgid "Search Taxonomies"
+msgstr "Pretraži taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:215
+#: dist/simple-tags/inc/terms-table.php:876
+#: inc/taxonomies.php:215
+#: inc/terms-table.php:876
+msgid "All Taxonomies"
+msgstr "Sve taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:216
+#: dist/simple-tags/inc/terms-table.php:877
+#: inc/taxonomies.php:216
+#: inc/terms-table.php:877
+msgid "Public Taxonomies"
+msgstr "Javne taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:217
+#: dist/simple-tags/inc/terms-table.php:878
+#: inc/taxonomies.php:217
+#: inc/terms-table.php:878
+msgid "Private Taxonomies"
+msgstr "Privatne taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:237
+#: inc/taxonomies.php:237
+msgid "All Post Types"
+msgstr "Svi post types"
+
+#: dist/simple-tags/inc/taxonomies.php:297
+#: inc/taxonomies.php:297
+msgid "Invalid nonce. Request is not authorized."
+msgstr "Nevažeći nonce. Zahtjev nije autoriziran."
+
+#: dist/simple-tags/inc/taxonomies.php:307
+#: inc/taxonomies.php:307
+msgid "You do not have permission to view terms in this taxonomy."
+msgstr "Nemate dopuštenje za pregled termina u ovoj taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:322
+#: inc/taxonomies.php:322
+msgid "Unable to retrieve terms for this taxonomy."
+msgstr "Nije moguće dohvatiti termine za ovu taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:440
+#: inc/taxonomies.php:440
+msgid "Manage Taxonomy"
+msgstr "Upravljanje Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:462
+#: inc/taxonomies.php:462
+msgid "Edit Taxonomy"
+msgstr "Uredi Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:464
+#: inc/taxonomies.php:464
+msgid "Add new Taxonomy"
+msgstr "Dodaj novu Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:487
+#: inc/taxonomies.php:487, fuzzy
+msgid "Permalinks"
+msgstr "Permalinks"
+
+#: dist/simple-tags/inc/taxonomies.php:492
+#: inc/taxonomies.php:492
+msgid "Admin Area"
+msgstr "Admin područje"
+
+#: dist/simple-tags/inc/taxonomies.php:496
+#: inc/taxonomies.php:496
+msgid "Other Labels"
+msgstr "Ostale oznake"
+
+#: dist/simple-tags/inc/taxonomies.php:500
+#: inc/taxonomies.php:500, fuzzy
+msgid "REST API"
+msgstr "REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:508
+#: inc/taxonomies.php:508
+msgid "Order"
+msgstr "Redoslijed"
+
+#: dist/simple-tags/inc/taxonomies.php:513
+#: dist/simple-tags/inc/terms-table.php:740
+#: dist/simple-tags/inc/terms-table.php:1442
+#: inc/taxonomies.php:513
+#: inc/terms-table.php:740
+#: inc/terms-table.php:1442, fuzzy
+msgid "Slug"
+msgstr "Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:522
+#: inc/taxonomies.php:522
+msgid "Deactivate or Delete"
+msgstr "Deaktiviraj ili izbriši"
+
+#: dist/simple-tags/inc/taxonomies.php:540
+#: dist/simple-tags/inc/taxonomies.php:818
+#: inc/taxonomies.php:540
+#: inc/taxonomies.php:818, fuzzy
+msgid "Taxonomy Slug"
+msgstr "Taxonomy Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:543
+#: dist/simple-tags/inc/taxonomies.php:821
+#: inc/taxonomies.php:543
+#: inc/taxonomies.php:821
+msgid "Slug has changed"
+msgstr "Slug je promijenjen"
+
+#: dist/simple-tags/inc/taxonomies.php:548
+#: dist/simple-tags/inc/taxonomies.php:826
+#: inc/taxonomies.php:548
+#: inc/taxonomies.php:826
+msgid "Slug already exists"
+msgstr "Slug već postoji"
+
+#: dist/simple-tags/inc/taxonomies.php:552
+#: dist/simple-tags/inc/taxonomies.php:831
+#: inc/taxonomies.php:552
+#: inc/taxonomies.php:831
+msgid "Special character not allowed in slug."
+msgstr "Posebni znakovi nisu dopušteni u slugu."
+
+#: dist/simple-tags/inc/taxonomies.php:563
+#: inc/taxonomies.php:563
+msgid ""
+"The “slug” is the URL-friendly version of the name. It is usually all "
+"lowercase and contains only letters, numbers, and underscores."
+msgstr ""
+"“Slug” je verzija imena koja je prilagođena URL-u. Obično je sve napisano "
+"malim slovima i sadrži samo slova, brojeve i donje crte."
+
+#: dist/simple-tags/inc/taxonomies.php:575
+#: dist/simple-tags/inc/taxonomies.php:851
+#: inc/taxonomies.php:575
+#: inc/taxonomies.php:851
+msgid ""
+"DO NOT EDIT the taxonomy slug unless also planning to migrate terms. "
+"Changing the slug registers a new taxonomy entry."
+msgstr ""
+"NE UREĐUJTE slug taxonomy osim ako ne planirate migrirati pojmove. Promjena "
+"sluga registrira novi unos taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:588
+#: dist/simple-tags/inc/taxonomies.php:864
+#: inc/taxonomies.php:588
+#: inc/taxonomies.php:864
+msgid "Migrate terms to newly renamed taxonomy?"
+msgstr "Migrirati pojmove u novo preimenovanu taxonomy?"
+
+#: dist/simple-tags/inc/taxonomies.php:607
+#: dist/simple-tags/inc/taxonomies.php:1157
+#: inc/taxonomies.php:607
+#: inc/taxonomies.php:1157
+msgid "(e.g. Jobs)"
+msgstr "(npr. Poslovi)"
+
+#: dist/simple-tags/inc/taxonomies.php:608
+#: inc/taxonomies.php:608, fuzzy
+msgid "Plural Label"
+msgstr "Plural Label"
+
+#: dist/simple-tags/inc/taxonomies.php:619
+#: inc/taxonomies.php:619
+msgid "(e.g. Job)"
+msgstr "(npr. Posao)"
+
+#: dist/simple-tags/inc/taxonomies.php:620
+#: inc/taxonomies.php:620
+msgid "Singular Label"
+msgstr "Jedinstvena oznaka"
+
+#: dist/simple-tags/inc/taxonomies.php:647
+#: inc/taxonomies.php:647
+msgid "Parent-Child Relationships"
+msgstr "Odnosi roditelj-dijete"
+
+#: dist/simple-tags/inc/taxonomies.php:648
+#: inc/taxonomies.php:648
+msgid "Can terms in this taxonomy be organized into hierarchical relationships?"
+msgstr "Mogu li se pojmovi u ovoj taxonomy organizirati u hijerarhijske odnose?"
+
+#: dist/simple-tags/inc/taxonomies.php:667
+#: dist/simple-tags/inc/terms-table.php:733
+#: dist/simple-tags/inc/terms-table.php:741
+#: inc/taxonomies.php:667
+#: inc/terms-table.php:733
+#: inc/terms-table.php:741
+msgid "Description"
+msgstr "Opis"
+
+#: dist/simple-tags/inc/taxonomies.php:668
+#: inc/taxonomies.php:668
+msgid "Describe what your taxonomy is used for."
+msgstr "Opišite za što se koristi vaša taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:679
+#: inc/taxonomies.php:679
+msgid "Default Terms"
+msgstr "Zadani pojmovi"
+
+#: dist/simple-tags/inc/taxonomies.php:680
+#: inc/taxonomies.php:680
+msgid ""
+"Set the default terms for this taxonomy. These will be automatically added "
+"to all new posts. Enter the term names or slugs. Separate multiple terms "
+"with by comma."
+msgstr ""
+"Postavite zadane pojmove za ovu taxonomy. Ovi će se automatski dodati svim "
+"novim postovima. Unesite nazive ili slugove pojmova. Odvojite više pojmova "
+"zarezom."
+
+#: dist/simple-tags/inc/taxonomies.php:795
+#: inc/taxonomies.php:795
+msgid "Archive page result"
+msgstr "Rezultat arhivske stranice"
+
+#: dist/simple-tags/inc/taxonomies.php:796
+#: inc/taxonomies.php:796
+msgid ""
+"Normally, WordPress will only show one post type on taxonomy archive pages. "
+"Enable this feature to show content from all selected posts types."
+msgstr ""
+"Obično, WordPress će prikazati samo jedan post type na arhivskim stranicama "
+"taxonomy. Omogućite ovu opciju da biste prikazali sadržaj iz svih odabranih "
+"post typeova."
+
+#: dist/simple-tags/inc/taxonomies.php:905
+#: inc/taxonomies.php:905
+msgid "Rewrite"
+msgstr "Prepisivanje"
+
+#: dist/simple-tags/inc/taxonomies.php:906
+#: inc/taxonomies.php:906
+msgid ""
+"WordPress can use a custom permalink for this taxonomy. It does not have to "
+"match the slug."
+msgstr ""
+"WordPress može koristiti prilagođeni permalink za ovu taxonomy. Ne mora se "
+"podudarati s slugom."
+
+#: dist/simple-tags/inc/taxonomies.php:918
+#: inc/taxonomies.php:918
+msgid "(default: taxonomy name)"
+msgstr "(zadano: naziv taxonomy)"
+
+#: dist/simple-tags/inc/taxonomies.php:919
+#: inc/taxonomies.php:919
+msgid "Custom Rewrite Slug"
+msgstr "Prilagođeni slug za prepisivanje"
+
+#: dist/simple-tags/inc/taxonomies.php:920
+#: inc/taxonomies.php:920
+msgid "Custom taxonomy rewrite slug."
+msgstr "Prilagođeni slug za prepisivanje taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:945
+#: inc/taxonomies.php:945
+msgid "Rewrite With Front"
+msgstr "Prepisivanje s prednjim dijelom"
+
+#: dist/simple-tags/inc/taxonomies.php:946
+#: inc/taxonomies.php:946
+msgid "Should the permastruct be prepended with the front base."
+msgstr "Treba li se permastruktura dodati s osnovom prednje strane."
+
+#: dist/simple-tags/inc/taxonomies.php:972
+#: inc/taxonomies.php:972
+msgid "Rewrite Hierarchical"
+msgstr "Prepisivanje hijerarhijski"
+
+#: dist/simple-tags/inc/taxonomies.php:973
+#: inc/taxonomies.php:973
+msgid "Should the permastruct allow hierarchical urls."
+msgstr "Treba li permastruktura omogućiti hijerarhijske URL-ove."
+
+#: dist/simple-tags/inc/taxonomies.php:1009
+#: inc/taxonomies.php:1009
+msgid "Show user interface"
+msgstr "Prikaži korisničko sučelje"
+
+#: dist/simple-tags/inc/taxonomies.php:1010
+#: inc/taxonomies.php:1010
+msgid ""
+"Should there be a visible interface in the WordPress admin area to manage "
+"these terms?"
+msgstr ""
+"Treba li postojati vidljivo sučelje u WordPress admin području za "
+"upravljanje ovim pojmovima?"
+
+#: dist/simple-tags/inc/taxonomies.php:1033
+#: inc/taxonomies.php:1033
+msgid "Show in admin menus"
+msgstr "Prikaži u admin izbornicima"
+
+#: dist/simple-tags/inc/taxonomies.php:1034
+#: inc/taxonomies.php:1034
+msgid "Should there be links to this taxonomy in the WordPress admin menus?"
+msgstr "Treba li biti poveznica na ovu taxonomy u WordPress admin izbornicima?"
+
+#: dist/simple-tags/inc/taxonomies.php:1057
+#: inc/taxonomies.php:1057
+msgid "Show in frontend menus"
+msgstr "Prikaži u izbornicima na frontend-u"
+
+#: dist/simple-tags/inc/taxonomies.php:1058
+#: inc/taxonomies.php:1058
+msgid ""
+"Should this taxonomy be available for the frontend “Menus” and “Navigation” "
+"options?"
+msgstr ""
+"Treba li ova taxonomy biti dostupna za opcije “Izbornici” i “Navigacija” na "
+"frontend-u?"
+
+#: dist/simple-tags/inc/taxonomies.php:1082
+#: inc/taxonomies.php:1082
+msgid "Show admin column"
+msgstr "Prikaži admin kolonu"
+
+#: dist/simple-tags/inc/taxonomies.php:1083
+#: inc/taxonomies.php:1083
+msgid ""
+"Should a column for this taxonomy appear on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Treba li se kolona za ovu taxonomy pojaviti na ekranima kao što su “Objave” "
+"i “Stranice”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1106
+#: inc/taxonomies.php:1106
+msgid "Show in \"Quick Edit\" and \"Bulk Edit\""
+msgstr "Prikaži u \"Brza izmjena\" i \"Masovna izmjena\""
+
+#: dist/simple-tags/inc/taxonomies.php:1110
+#: inc/taxonomies.php:1110
+msgid ""
+"Should this taxonomy be available in editing tools on screens such as "
+"“Posts” and “Pages”?"
+msgstr ""
+"Treba li ova taxonomy biti dostupna u alatima za uređivanje na ekranima kao "
+"što su “Objave” i “Stranice”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1134
+#: inc/taxonomies.php:1134
+msgid "Show in Filter"
+msgstr "Prikaži u Filtru"
+
+#: dist/simple-tags/inc/taxonomies.php:1138
+#: inc/taxonomies.php:1138
+msgid ""
+"Should this taxonomy be available in filters on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Treba li ova taxonomy biti dostupna u filtrima na ekranima kao što su "
+"“Objave” i “Stranice”?"
+
+#: dist/simple-tags/inc/taxonomies.php:1158
+#: inc/taxonomies.php:1158
+msgid "Menu Name"
+msgstr "Ime izbornika"
+
+#: dist/simple-tags/inc/taxonomies.php:1159
+#: inc/taxonomies.php:1159
+msgid "Custom admin menu name for your taxonomy."
+msgstr "Prilagođeno ime admin izbornika za vašu taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1175
+#: inc/taxonomies.php:1175
+msgid "(e.g. All Jobs)"
+msgstr "(npr. Sve Poslove)"
+
+#: dist/simple-tags/inc/taxonomies.php:1176
+#: inc/taxonomies.php:1176
+msgid "All Items"
+msgstr "Sve Stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1177
+#: inc/taxonomies.php:1177
+msgid ""
+"Used as tab text when showing all terms for hierarchical taxonomy while "
+"editing post."
+msgstr ""
+"Koristi se kao tekst kartice prilikom prikazivanja svih pojmova za "
+"hijerarhijsku taxonomy tijekom uređivanja objave."
+
+#: dist/simple-tags/inc/taxonomies.php:1196
+#: inc/taxonomies.php:1196
+msgid "(e.g. Edit Job)"
+msgstr "(npr. Uredi Posao)"
+
+#: dist/simple-tags/inc/taxonomies.php:1197
+#: inc/taxonomies.php:1197
+msgid "Edit Item"
+msgstr "Uredi Stavku"
+
+#: dist/simple-tags/inc/taxonomies.php:1198
+#: inc/taxonomies.php:1198
+msgid "Used at the top of the term editor screen for an existing taxonomy term."
+msgstr "Koristi se na vrhu ekrana uređivača pojma za postojeći pojam taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1217
+#: inc/taxonomies.php:1217
+msgid "(e.g. View Job)"
+msgstr "(npr. Pogledu Posla)"
+
+#: dist/simple-tags/inc/taxonomies.php:1218
+#: inc/taxonomies.php:1218
+msgid "View Item"
+msgstr "Pogledaj Stavku"
+
+#: dist/simple-tags/inc/taxonomies.php:1219
+#: inc/taxonomies.php:1219
+msgid ""
+"Used in the admin bar when viewing editor screen for an existing taxonomy "
+"term."
+msgstr ""
+"Koristi se u admin traci prilikom pregleda uredničkog zaslona za postojeći "
+"taxonomy pojam."
+
+#: dist/simple-tags/inc/taxonomies.php:1238
+#: inc/taxonomies.php:1238
+msgid "(e.g. Update Job Name)"
+msgstr "(npr. Ažuriraj naziv posla)"
+
+#: dist/simple-tags/inc/taxonomies.php:1239
+#: inc/taxonomies.php:1239
+msgid "Update Item Name"
+msgstr "Ažuriraj naziv stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1240
+#: dist/simple-tags/inc/taxonomies.php:1285
+#: dist/simple-tags/inc/taxonomies.php:1306
+#: dist/simple-tags/inc/taxonomies.php:1327
+#: dist/simple-tags/inc/taxonomies.php:1348
+#: dist/simple-tags/inc/taxonomies.php:1369
+#: dist/simple-tags/inc/taxonomies.php:1396
+#: dist/simple-tags/inc/taxonomies.php:1420
+#: dist/simple-tags/inc/taxonomies.php:1447
+#: inc/taxonomies.php:1240
+#: inc/taxonomies.php:1285
+#: inc/taxonomies.php:1306
+#: inc/taxonomies.php:1327
+#: inc/taxonomies.php:1348
+#: inc/taxonomies.php:1369
+#: inc/taxonomies.php:1396
+#: inc/taxonomies.php:1420
+#: inc/taxonomies.php:1447
+msgid "Custom taxonomy label. Used in the admin menu for displaying taxonomies."
+msgstr ""
+"Prilagođena oznaka taxonomy. Koristi se u admin izborniku za prikazivanje "
+"taxonomies."
+
+#: dist/simple-tags/inc/taxonomies.php:1247
+#: inc/taxonomies.php:1247
+#, php-format
+msgid "Update %s name"
+msgstr "Ažuriraj naziv %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1262
+#: inc/taxonomies.php:1262
+msgid "(e.g. Add New Job)"
+msgstr "(npr. Dodaj novi posao)"
+
+#: dist/simple-tags/inc/taxonomies.php:1263
+#: inc/taxonomies.php:1263
+msgid "Add New Item"
+msgstr "Dodaj novu stavku"
+
+#: dist/simple-tags/inc/taxonomies.php:1264
+#: inc/taxonomies.php:1264
+msgid ""
+"Used at the top of the term editor screen and button text for a new "
+"taxonomy term."
+msgstr ""
+"Koristi se na vrhu zaslona urednika pojma i tekstu gumba za novi taxonomy "
+"pojam."
+
+#: dist/simple-tags/inc/taxonomies.php:1283
+#: inc/taxonomies.php:1283
+msgid "(e.g. New Job Name)"
+msgstr "(npr. Novi naziv posla)"
+
+#: dist/simple-tags/inc/taxonomies.php:1284
+#: inc/taxonomies.php:1284
+msgid "New Item Name"
+msgstr "Novi naziv stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1304
+#: inc/taxonomies.php:1304
+msgid "(e.g. Parent Job)"
+msgstr "(npr. Roditeljski posao)"
+
+#: dist/simple-tags/inc/taxonomies.php:1305
+#: inc/taxonomies.php:1305
+msgid "Parent Item"
+msgstr "Roditeljska stavka"
+
+#: dist/simple-tags/inc/taxonomies.php:1325
+#: inc/taxonomies.php:1325
+msgid "(e.g. Parent Job:)"
+msgstr "(npr. Roditeljski posao:)"
+
+#: dist/simple-tags/inc/taxonomies.php:1326
+#: inc/taxonomies.php:1326
+msgid "Parent Item Colon"
+msgstr "Dvotočka roditeljske stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1346
+#: inc/taxonomies.php:1346
+msgid "(e.g. Search Jobs)"
+msgstr "(npr. Pretraži poslove)"
+
+#: dist/simple-tags/inc/taxonomies.php:1347
+#: inc/taxonomies.php:1347
+msgid "Search Items"
+msgstr "Pretraži stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1367
+#: inc/taxonomies.php:1367
+msgid "(e.g. Popular Jobs)"
+msgstr "(npr. Popularni poslovi)"
+
+#: dist/simple-tags/inc/taxonomies.php:1368
+#: inc/taxonomies.php:1368
+msgid "Popular Items"
+msgstr "Popularne stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1388
+#: inc/taxonomies.php:1388
+msgid "(e.g. Separate Jobs with commas)"
+msgstr "(npr. Odvojite poslove zarezima)"
+
+#: dist/simple-tags/inc/taxonomies.php:1392
+#: inc/taxonomies.php:1392
+msgid "Separate Items with Commas"
+msgstr "Odvojite stavke zarezima"
+
+#: dist/simple-tags/inc/taxonomies.php:1415
+#: inc/taxonomies.php:1415
+msgid "(e.g. Add or remove Jobs)"
+msgstr "(npr. Dodajte ili uklonite poslove)"
+
+#: dist/simple-tags/inc/taxonomies.php:1419
+#: inc/taxonomies.php:1419
+msgid "Add or Remove Items"
+msgstr "Dodajte ili uklonite stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1442
+#: inc/taxonomies.php:1442
+msgid "(e.g. Choose from the most used Jobs)"
+msgstr "(npr. Odaberite iz najčešće korištenih poslova)"
+
+#: dist/simple-tags/inc/taxonomies.php:1446
+#: inc/taxonomies.php:1446
+msgid "Choose From Most Used"
+msgstr "Odaberite iz najčešće korištenih"
+
+#: dist/simple-tags/inc/taxonomies.php:1466
+#: inc/taxonomies.php:1466
+msgid "(e.g. No jobs)"
+msgstr "(npr. Nema poslova)"
+
+#: dist/simple-tags/inc/taxonomies.php:1467
+#: inc/taxonomies.php:1467
+msgid "No terms"
+msgstr "Nema pojmova"
+
+#: dist/simple-tags/inc/taxonomies.php:1468
+#: inc/taxonomies.php:1468
+msgid ""
+"Used when indicating that there are no terms in the given taxonomy "
+"associated with an object."
+msgstr ""
+"Koristi se kada se ukazuje na to da u određenoj taksonomiji nema pojmova "
+"povezanih s objektom."
+
+#: dist/simple-tags/inc/taxonomies.php:1475
+#: inc/taxonomies.php:1475
+#, php-format
+msgid "No %s"
+msgstr "Nema %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1487
+#: inc/taxonomies.php:1487
+msgid "(e.g. Jobs list navigation)"
+msgstr "(npr. Navigacija popisom poslova)"
+
+#: dist/simple-tags/inc/taxonomies.php:1491
+#: inc/taxonomies.php:1491
+msgid "Items List Navigation"
+msgstr "Navigacija popisom stavki"
+
+#: dist/simple-tags/inc/taxonomies.php:1492
+#: inc/taxonomies.php:1492
+msgid "Screen reader text for the pagination heading on the term listing screen."
+msgstr "Tekst za čitač ekrana za naslov paginacije na ekranu popisa pojmova."
+
+#: dist/simple-tags/inc/taxonomies.php:1499
+#: inc/taxonomies.php:1499
+#, php-format
+msgid "%s list navigation"
+msgstr "%s navigacija popisom"
+
+#: dist/simple-tags/inc/taxonomies.php:1514
+#: inc/taxonomies.php:1514
+msgid "(e.g. Jobs list)"
+msgstr "(npr. Popis poslova)"
+
+#: dist/simple-tags/inc/taxonomies.php:1515
+#: inc/taxonomies.php:1515
+msgid "Items List"
+msgstr "Popis stavki"
+
+#: dist/simple-tags/inc/taxonomies.php:1516
+#: inc/taxonomies.php:1516
+msgid "Screen reader text for the items list heading on the term listing screen."
+msgstr "Tekst za čitač ekrana za naslov popisa stavki na ekranu popisa pojmova."
+
+#: dist/simple-tags/inc/taxonomies.php:1523
+#: inc/taxonomies.php:1523
+#, php-format
+msgid "%s list"
+msgstr "%s popis"
+
+#: dist/simple-tags/inc/taxonomies.php:1535
+#: inc/taxonomies.php:1535
+msgid "(e.g. No jobs found)"
+msgstr "(npr. Nema pronađenih poslova)"
+
+#: dist/simple-tags/inc/taxonomies.php:1536
+#: inc/taxonomies.php:1536
+msgid "Not Found"
+msgstr "Nije pronađeno"
+
+#: dist/simple-tags/inc/taxonomies.php:1537
+#: inc/taxonomies.php:1537
+msgid ""
+"The text displayed via clicking ‘Choose from the most used items’ in the "
+"taxonomy meta box when no items are available."
+msgstr ""
+"Tekst prikazan klikom na ‘Odaberite iz najčešće korištenih stavki’ u meta "
+"okviru taksonomije kada nema dostupnih stavki."
+
+#: dist/simple-tags/inc/taxonomies.php:1544
+#: inc/taxonomies.php:1544
+#, php-format
+msgid "No %s found"
+msgstr "Nema %s pronađenih"
+
+#: dist/simple-tags/inc/taxonomies.php:1556
+#: inc/taxonomies.php:1556
+msgid "(e.g. &larr; Back to jobs"
+msgstr "(npr. &larr; Natrag na poslove"
+
+#: dist/simple-tags/inc/taxonomies.php:1560
+#: inc/taxonomies.php:1560
+msgid "Back to Items"
+msgstr "Natrag na stavke"
+
+#: dist/simple-tags/inc/taxonomies.php:1561
+#: inc/taxonomies.php:1561
+msgid ""
+"The text displayed after a term has been updated for a link back to main "
+"index."
+msgstr ""
+"Tekst prikazan nakon termina je ažuriran za poveznicu natrag na glavni "
+"indeks."
+
+#: dist/simple-tags/inc/taxonomies.php:1568
+#: inc/taxonomies.php:1568
+#, php-format
+msgid "Back to %s"
+msgstr "Natrag na %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1600
+#: inc/taxonomies.php:1600
+msgid "Show in REST API"
+msgstr "Prikaži u REST API-ju"
+
+#: dist/simple-tags/inc/taxonomies.php:1601
+#: inc/taxonomies.php:1601
+msgid "Add the taxonomy to the WordPress wp-json API."
+msgstr "Dodaj taxonomy u WordPress wp-json API."
+
+#: dist/simple-tags/inc/taxonomies.php:1621
+#: inc/taxonomies.php:1621
+msgid "REST API base slug"
+msgstr "Osnovni slug REST API-ja"
+
+#: dist/simple-tags/inc/taxonomies.php:1622
+#: inc/taxonomies.php:1622
+msgid "The base slug that this taxonomy will use in the REST API."
+msgstr "Osnovni slug koji će ova taxonomy koristiti u REST API-ju."
+
+#: dist/simple-tags/inc/taxonomies.php:1630
+#: inc/taxonomies.php:1630
+msgid "REST API controller class"
+msgstr "Kontroler klase REST API-ja"
+
+#: dist/simple-tags/inc/taxonomies.php:1634
+#: inc/taxonomies.php:1634
+msgid ""
+"The name of a custom Rest Controller class instead of "
+"WP_REST_Terms_Controller."
+msgstr "Ime prilagođene klase Rest kontrolera umjesto WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1635
+#: inc/taxonomies.php:1635
+msgid "Custom controller to use instead of WP_REST_Terms_Controller."
+msgstr "Prilagođeni kontroler za korištenje umjesto WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1671
+#: inc/taxonomies.php:1671
+msgid "Public"
+msgstr "Javno"
+
+#: dist/simple-tags/inc/taxonomies.php:1672
+#: inc/taxonomies.php:1672
+msgid "The taxonomy is for public use. It can be seen by frontend users."
+msgstr "Taxonomy je za javnu upotrebu. Može ga vidjeti korisnici na frontend-u."
+
+#: dist/simple-tags/inc/taxonomies.php:1698
+#: inc/taxonomies.php:1698
+msgid "Public Queryable"
+msgstr "Javno upitno"
+
+#: dist/simple-tags/inc/taxonomies.php:1699
+#: inc/taxonomies.php:1699
+msgid "The taxonomy is publicly queryable."
+msgstr "Taxonomy je javno upitno."
+
+#: dist/simple-tags/inc/taxonomies.php:1725
+#: inc/taxonomies.php:1725
+msgid "Query Var"
+msgstr "Varijabla upita"
+
+#: dist/simple-tags/inc/taxonomies.php:1726
+#: inc/taxonomies.php:1726
+msgid "Enable a custom query_var key for this taxonomy."
+msgstr "Omogući prilagođeni query_var ključ za ovu taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1739
+#: inc/taxonomies.php:1739
+msgid "Custom Query Var String"
+msgstr "Prilagođena Query Var String"
+
+#: dist/simple-tags/inc/taxonomies.php:1740
+#: inc/taxonomies.php:1740
+msgid "Sets a custom query_var slug for this taxonomy."
+msgstr "Postavlja prilagođeni query_var slug za ovu taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1751
+#: inc/taxonomies.php:1751
+msgid "Metabox callback"
+msgstr "Povratni poziv metaboxa"
+
+#: dist/simple-tags/inc/taxonomies.php:1752
+#: inc/taxonomies.php:1752
+msgid ""
+"Sets a callback function name for the meta box display. Hierarchical "
+"default: post_categories_meta_box, non-hierarchical default: "
+"post_tags_meta_box. To remove the metabox completely, use \"false\"."
+msgstr ""
+"Postavlja ime funkcije povratnog poziva za prikaz meta okvira. "
+"Hijerarhijski zadano: post_categories_meta_box, ne-hijerarhijski zadano: "
+"post_tags_meta_box. Da biste potpuno uklonili metabox, koristite \"false\"."
+
+#: dist/simple-tags/inc/taxonomies.php:1763
+#: inc/taxonomies.php:1763
+msgid "Categories"
+msgstr "Kategorije"
+
+#: dist/simple-tags/inc/taxonomies.php:1771
+#: inc/taxonomies.php:1771
+#, php-format
+msgid ""
+"This feature controls the order of %s when you're editing posts, and in "
+"frontend displays."
+msgstr ""
+"Ova funkcija kontrolira redoslijed %s kada uređujete objave, i u prikazima "
+"na frontendu."
+
+#: dist/simple-tags/inc/taxonomies.php:1781
+#: inc/taxonomies.php:1781
+msgid "Enable PublishPress Taxonomies ordering"
+msgstr "Omogući redoslijed PublishPress taxonomija"
+
+#: dist/simple-tags/inc/taxonomies.php:1786
+#: inc/taxonomies.php:1786
+msgid ""
+"Enable PublishPress Taxonomies ordering for this taxonomy in the frontend "
+"and admin area."
+msgstr ""
+"Omogući redoslijed PublishPress taxonomija za ovu taxonomiju u frontend i "
+"admin području."
+
+#: dist/simple-tags/inc/taxonomies.php:1836
+#: inc/taxonomies.php:1836
+msgid "Re-activate Taxonomy"
+msgstr "Ponovno aktiviraj taxonomiju"
+
+#: dist/simple-tags/inc/taxonomies.php:1839
+#: inc/taxonomies.php:1839
+msgid "Deactivate Taxonomy"
+msgstr "Deaktiviraj taxonomiju"
+
+#: dist/simple-tags/inc/taxonomies.php:1853
+#: inc/taxonomies.php:1853
+msgid "Delete Taxonomy"
+msgstr "Izbriši taxonomiju"
+
+#: dist/simple-tags/inc/taxonomies.php:1861
+#: inc/taxonomies.php:1861
+msgid "Delete PublishPress Taxonomies Edit Data"
+msgstr "Izbriši podatke o uređivanju PublishPress taxonomija"
+
+#: dist/simple-tags/inc/taxonomies.php:1864
+#: inc/taxonomies.php:1864
+msgid ""
+"You can only delete taxonomies created with PublishPress Taxonomies. "
+"However, you can delete any changes or edit made from PublishPress "
+"Taxonomies which will remove PublishPress Taxonomies version edit restoring "
+"original taxonomies data or removing it if already deleted"
+msgstr ""
+"Možete izbrisati samo taxonomije koje je izradio PublishPress Taxonomies. "
+"Međutim, možete izbrisati sve promjene ili uređivanja koja su napravljena "
+"iz PublishPress Taxonomies, što će ukloniti verziju uređivanja PublishPress "
+"Taxonomies vraćajući izvorne podatke taxonomija ili ih uklanjajući ako su "
+"već izbrisani"
+
+#: dist/simple-tags/inc/taxonomies.php:1931
+#: inc/taxonomies.php:1931
+msgid "Save Taxonomy"
+msgstr "Spremi taxonomiju"
+
+#: dist/simple-tags/inc/taxonomies.php:1946
+#: inc/taxonomies.php:1946
+msgid "Add Taxonomy"
+msgstr "Dodaj taxonomiju"
+
+#: dist/simple-tags/inc/terms-functions.php:313
+#: inc/terms-functions.php:313
+msgid "Term copied successfully."
+msgstr "Pojam je uspješno kopiran."
+
+#: dist/simple-tags/inc/terms-functions.php:322
+#: dist/simple-tags/inc/terms-table.php:926
+#: inc/terms-functions.php:322
+#: inc/terms-table.php:926
+msgid "Term deleted successfully."
+msgstr "Pojam je uspješno izbrisan."
+
+#: dist/simple-tags/inc/terms-functions.php:331
+#: inc/terms-functions.php:331
+msgid "Term removed from all posts successfully."
+msgstr "Pojam je uspješno uklonjen iz svih objava."
+
+#: dist/simple-tags/inc/terms-table.php:734
+#: dist/simple-tags/inc/terms-table.php:748
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1652
+#: inc/terms-table.php:734
+#: inc/terms-table.php:748
+#: modules/taxopress-ai/taxopress-ai.php:1652
+msgid "Count"
+msgstr "Broj"
+
+#: dist/simple-tags/inc/terms-table.php:744
+#: inc/terms-table.php:744
+msgid "Custom URL"
+msgstr "Prilagođeni URL"
+
+#: dist/simple-tags/inc/terms-table.php:745
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:581
+#: inc/terms-table.php:745
+#: includes-core/TaxopressCoreAdmin.php:581
+msgid "Synonyms"
+msgstr "Sinonimi"
+
+#: dist/simple-tags/inc/terms-table.php:746
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:539
+#: inc/terms-table.php:746
+#: includes-core/TaxopressCoreAdmin.php:539
+msgid "Linked Terms"
+msgstr "Povezani pojmovi"
+
+#: dist/simple-tags/inc/terms-table.php:747
+#: inc/terms-table.php:747, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: dist/simple-tags/inc/terms-table.php:801
+#: dist/simple-tags/inc/terms-table.php:1219
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:318
+#: inc/terms-table.php:801
+#: inc/terms-table.php:1219
+#: includes-core/TaxopressCoreAdmin.php:318
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: dist/simple-tags/inc/terms-table.php:841
+#: inc/terms-table.php:841
+msgid "Select Destination Taxonomy"
+msgstr "Odaberi odredišnu taksonomiju"
+
+#: dist/simple-tags/inc/terms-table.php:847
+#: inc/terms-table.php:847
+msgid "Search posts"
+msgstr "Pretraži objave"
+
+#: dist/simple-tags/inc/terms-table.php:849
+#: inc/terms-table.php:849
+msgid "post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/terms-table.php:851
+#: inc/terms-table.php:851
+#, php-format
+msgid "Select Destination %s"
+msgstr "Odaberi odredište %s"
+
+#: dist/simple-tags/inc/terms-table.php:881
+#: inc/terms-table.php:881
+msgid "Filter"
+msgstr "Filtriraj"
+
+#: dist/simple-tags/inc/terms-table.php:923
+#: inc/terms-table.php:923
+msgid "Terms deleted successfully."
+msgstr "Pojmovi su uspješno obrisani."
+
+#: dist/simple-tags/inc/terms-table.php:987
+#: inc/terms-table.php:987
+msgid "Term(s) copied successfully."
+msgstr "Pojam(i) su uspješno kopirani."
+
+#: dist/simple-tags/inc/terms-table.php:1005
+#: inc/terms-table.php:1005
+msgid "Hidden"
+msgstr "Skriveno"
+
+#: dist/simple-tags/inc/terms-table.php:1008
+#: inc/terms-table.php:1008
+msgid "Live"
+msgstr "Uživo"
+
+#: dist/simple-tags/inc/terms-table.php:1027
+#: inc/terms-table.php:1027
+msgid "No terms found."
+msgstr "Nema pronađenih pojmova."
+
+#: dist/simple-tags/inc/terms-table.php:1166
+#: inc/terms-table.php:1166
+#. translators: %s: Taxonomy term name.
+#, php-format
+msgid "Quick edit &#8220;%s&#8221; inline"
+msgstr "Brza izmjena &#8220;%s&#8221; u retku"
+
+#: dist/simple-tags/inc/terms-table.php:1167
+#: inc/terms-table.php:1167
+msgid "Quick&nbsp;Edit"
+msgstr "Brza&nbsp;izmjena"
+
+#: dist/simple-tags/inc/terms-table.php:1182
+#: inc/terms-table.php:1182
+msgid "Remove From All Posts"
+msgstr "Ukloni iz svih objava"
+
+#: dist/simple-tags/inc/terms-table.php:1205
+#: inc/terms-table.php:1205
+msgid "View"
+msgstr "Pogledaj"
+
+#: dist/simple-tags/inc/terms-table.php:1434
+#: inc/terms-table.php:1434
+msgid "Quick Edit"
+msgstr "Brza izmjena"
+
+#: dist/simple-tags/inc/terms-table.php:1461
+#: inc/terms-table.php:1461
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: dist/simple-tags/inc/terms-table.php:1462
+#: inc/terms-table.php:1462
+msgid "Update"
+msgstr "Ažuriraj"
+
+#: dist/simple-tags/inc/terms.php:172
+#: dist/simple-tags/inc/terms.php:173
+#: dist/simple-tags/inc/terms.php:239
+#: dist/simple-tags/inc/terms.php:273
+#: inc/terms.php:172
+#: inc/terms.php:173
+#: inc/terms.php:239
+#: inc/terms.php:273
+msgid "Terms"
+msgstr "Pojmovi"
+
+#: dist/simple-tags/inc/terms.php:241
+#: dist/simple-tags/inc/terms.php:282
+#: inc/terms.php:241
+#: inc/terms.php:282
+msgid "This screen allows you to search and edit all the terms on your site."
+msgstr ""
+"Ova stranica vam omogućuje pretraživanje i uređivanje svih pojmova na vašoj "
+"stranici."
+
+#: dist/simple-tags/inc/terms.php:280
+#: inc/terms.php:280
+msgid "This screen allows you to order terms via drag and drop."
+msgstr "Ova zaslona vam omogućuje naručivanje pojmova povlačenjem i ispuštanjem."
+
+#: dist/simple-tags/inc/terms.php:309
+#: inc/terms.php:309
+msgid "Search Terms"
+msgstr "Pojmovi za pretraživanje"
+
+#: dist/simple-tags/inc/utilities.php:10
+#: dist/simple-tags/inc/utilities.php:12
+#: dist/simple-tags/inc/utilities.php:34
+#: inc/utilities.php:10
+#: inc/utilities.php:12
+#: inc/utilities.php:34
+msgid "Media Tags"
+msgstr "Medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:11
+#: inc/utilities.php:11
+msgid "Media Tag"
+msgstr "Medijska oznaka"
+
+#: dist/simple-tags/inc/utilities.php:13
+#: inc/utilities.php:13
+msgid "All Media Tags"
+msgstr "Sve medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:14
+#: inc/utilities.php:14
+msgid "Edit Media Tag"
+msgstr "Uredi medijsku oznaku"
+
+#: dist/simple-tags/inc/utilities.php:15
+#: inc/utilities.php:15
+msgid "View Media Tag"
+msgstr "Pogledaj medijsku oznaku"
+
+#: dist/simple-tags/inc/utilities.php:16
+#: inc/utilities.php:16
+msgid "Update Media Tag name"
+msgstr "Ažuriraj naziv medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:17
+#: inc/utilities.php:17
+msgid "Add new Media Tag"
+msgstr "Dodaj novu medijsku oznaku"
+
+#: dist/simple-tags/inc/utilities.php:18
+#: inc/utilities.php:18
+msgid "New Media Tag name"
+msgstr "Naziv nove medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:19
+#: inc/utilities.php:19
+msgid "Parent Media Tag"
+msgstr "Roditeljska medijska oznaka"
+
+#: dist/simple-tags/inc/utilities.php:20
+#: inc/utilities.php:20
+msgid "Parent Media Tag:"
+msgstr "Roditeljska medijska oznaka:"
+
+#: dist/simple-tags/inc/utilities.php:21
+#: inc/utilities.php:21
+msgid "Search Media Tags"
+msgstr "Pretraži medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:22
+#: inc/utilities.php:22
+msgid "Popular Media Tags"
+msgstr "Popularne medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:23
+#: inc/utilities.php:23
+msgid "Separate Media Tags with commas"
+msgstr "Odvojite medijske oznake z zarezima"
+
+#: dist/simple-tags/inc/utilities.php:24
+#: inc/utilities.php:24
+msgid "Add or remove Media Tags"
+msgstr "Dodajte ili uklonite medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:25
+#: inc/utilities.php:25
+msgid "Choose from the most used Media Tags"
+msgstr "Odaberite iz najčešće korištenih medijskih oznaka"
+
+#: dist/simple-tags/inc/utilities.php:26
+#: inc/utilities.php:26
+msgid "No Media Tags found"
+msgstr "Nema pronađenih medijskih oznaka"
+
+#: dist/simple-tags/inc/utilities.php:27
+#: inc/utilities.php:27
+msgid "No Media Tags"
+msgstr "Nema medijskih oznaka"
+
+#: dist/simple-tags/inc/utilities.php:28
+#: inc/utilities.php:28
+msgid "Media Tags list navigation"
+msgstr "Navigacija popisom medijskih oznaka"
+
+#: dist/simple-tags/inc/utilities.php:29
+#: inc/utilities.php:29
+msgid "Media Tags list"
+msgstr "Popis medijskih oznaka"
+
+#: dist/simple-tags/inc/utilities.php:30
+#: inc/utilities.php:30
+msgid "Back to Media Tags"
+msgstr "Povratak na medijske oznake"
+
+#: dist/simple-tags/inc/utilities.php:62
+#: dist/simple-tags/inc/utilities.php:63
+#: dist/simple-tags/inc/utilities.php:65
+#: dist/simple-tags/inc/utilities.php:70
+#: inc/utilities.php:62
+#: inc/utilities.php:63
+#: inc/utilities.php:65
+#: inc/utilities.php:70
+msgid "PublishPress Taxonomies Logs"
+msgstr "PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/inc/utilities.php:64
+#: inc/utilities.php:64
+msgid "Search PublishPress Taxonomies Logs"
+msgstr "Pretraži PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/inc/utilities.php:66
+#: inc/utilities.php:66
+msgid "Edit PublishPress Taxonomies Logs"
+msgstr "Uredi PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/inc/utilities.php:67
+#: inc/utilities.php:67
+msgid "Update PublishPress Taxonomies Logs"
+msgstr "Ažuriraj PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/inc/utilities.php:68
+#: inc/utilities.php:68
+msgid "Add New PublishPress Taxonomies Logs"
+msgstr "Dodaj nove PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/inc/utilities.php:69
+#: inc/utilities.php:69
+msgid "New PublishPress Taxonomies Logs"
+msgstr "Nove PublishPress evidencije taksonomija"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:74
+#: includes-core/TaxopressCoreAdmin.php:74
+msgid ""
+"You're using PublishPress Taxonomies Free. The Pro version has more "
+"features and support."
+msgstr ""
+"Koristite besplatnu verziju PublishPress taksonomija. Pro verzija ima više "
+"značajki i podrške."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:103
+#: includes-core/TaxopressCoreAdmin.php:103
+msgid "Upgrade to PublishPress Taxonomies Pro"
+msgstr "Nadogradite na PublishPress taksonomije Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:108
+#: includes-core/TaxopressCoreAdmin.php:108
+msgid "Enhance the power of PublishPress Taxonomies with the Pro version:"
+msgstr "Povećajte moć PublishPress taksonomija s Pro verzijom:"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:111
+#: includes-core/TaxopressCoreAdmin.php:111
+msgid "Unlimited “Term Display”"
+msgstr "Neograničeno “Prikaz pojmova”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:112
+#: includes-core/TaxopressCoreAdmin.php:112
+msgid "Unlimited “Terms for Current Posts”"
+msgstr "Neograničeno “Pojmovi za trenutne postove”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:113
+#: includes-core/TaxopressCoreAdmin.php:113
+msgid "Unlimited “Related Posts”"
+msgstr "Neograničeno “Povezani postovi”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:114
+#: includes-core/TaxopressCoreAdmin.php:114
+msgid "Unlimited “Auto Links”"
+msgstr "Neograničeno “Automatske poveznice”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:115
+#: includes-core/TaxopressCoreAdmin.php:115
+msgid "Unlimited “Auto Terms”"
+msgstr "Neograničeno “Automatski pojmovi”"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:116
+#: includes-core/TaxopressCoreAdmin.php:116
+msgid "Create new terms using OpenAI and other sources"
+msgstr "Kreirajte nove pojmove koristeći OpenAI i druge izvore"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:117
+#: includes-core/TaxopressCoreAdmin.php:117
+msgid "Use Linked Terms"
+msgstr "Koristite povezane pojmove"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:118
+#: includes-core/TaxopressCoreAdmin.php:118
+msgid "Use Synonyms"
+msgstr "Koristite sinonime"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:119
+#: includes-core/TaxopressCoreAdmin.php:119
+msgid "Schedule Auto Terms to run automatically"
+msgstr "Zakazivanje automatskih pojmova da se izvode automatski"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:120
+#: includes-core/TaxopressCoreAdmin.php:120
+msgid "Control the display of term metaboxes"
+msgstr "Kontrolirajte prikaz metaboxova termina"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:121
+#: includes-core/TaxopressCoreAdmin.php:121
+msgid "Fast, professional support"
+msgstr "Brza, profesionalna podrška"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:122
+#: includes-core/TaxopressCoreAdmin.php:122
+msgid "No ads inside the plugin"
+msgstr "Nema oglasa unutar dodatka"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:132
+#: includes-core/TaxopressCoreAdmin.php:132
+msgid "Need PublishPress Taxonomies Support?"
+msgstr "Trebate podršku za PublishPress Taxonomies?"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:137
+#: includes-core/TaxopressCoreAdmin.php:137
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Ako trebate pomoć ili imate zahtjev za novu značajku, javite nam."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:139
+#: includes-core/TaxopressCoreAdmin.php:139
+msgid "Request Support"
+msgstr "Zatražite podršku"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:146
+#: includes-core/TaxopressCoreAdmin.php:146
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Detaljna dokumentacija također je dostupna na web stranici dodatka."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:148
+#: includes-core/TaxopressCoreAdmin.php:148
+msgid "View Knowledge Base"
+msgstr "Pogledajte Bazu Znanja"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:171
+#: includes-core/TaxopressCoreAdmin.php:171
+msgid "OpenAI Integration"
+msgstr "OpenAI integracija"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:176
+#: includes-core/TaxopressCoreAdmin.php:176
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate OpenAI to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam integraciju OpenAI za analizu "
+"vašeg sadržaja i sugeriranje termina."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:195
+#: includes-core/TaxopressCoreAdmin.php:195
+msgid "IBM Watson Integration"
+msgstr "IBM Watson integracija"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:200
+#: includes-core/TaxopressCoreAdmin.php:200
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Watson to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam integraciju Watsona za analizu "
+"vašeg sadržaja i sugeriranje termina."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:219
+#: includes-core/TaxopressCoreAdmin.php:219
+msgid "Dandelion Integration"
+msgstr "Dandelion integracija"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:224
+#: includes-core/TaxopressCoreAdmin.php:224
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Dandelion to analyze "
+"your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam integraciju Dandeliona za analizu "
+"vašeg sadržaja i sugeriranje termina."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:243
+#: includes-core/TaxopressCoreAdmin.php:243
+msgid "LSEG / Refinitiv Integration"
+msgstr "LSEG / Refinitiv integracija"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:248
+#: includes-core/TaxopressCoreAdmin.php:248
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate LSEG / Refinitiv to "
+"analyze your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam integraciju LSEG / Refinitiv za "
+"analizu vašeg sadržaja i sugeriranje termina."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:271
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:288
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:465
+#: includes-core/TaxopressCoreAdmin.php:271
+#: includes-core/TaxopressCoreAdmin.php:288
+#: includes-core/TaxopressCoreAdmin.php:465
+msgid "Suggest terms using AI"
+msgstr "Predložite termine koristeći AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:275
+#: includes-core/TaxopressCoreAdmin.php:275
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI. This service can analyze your content and suggest "
+"new terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam da predložite nove termine za vaš "
+"sadržaj koristeći OpenAI. Ova usluga može analizirati vaš sadržaj i "
+"sugerirati nove termine."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:293
+#: includes-core/TaxopressCoreAdmin.php:293
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the IBM Watson. This service can analyze your content and "
+"suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam da predložite nove termine za vaš "
+"sadržaj koristeći IBM Watson. Ova usluga može analizirati vaš sadržaj i "
+"sugerirati nove termine."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:357
+#: includes-core/TaxopressCoreAdmin.php:357
+msgid "Copy with Metadata"
+msgstr "Kopiraj s metapodacima"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:387
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:405
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:423
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:441
+#: includes-core/TaxopressCoreAdmin.php:387
+#: includes-core/TaxopressCoreAdmin.php:405
+#: includes-core/TaxopressCoreAdmin.php:423
+#: includes-core/TaxopressCoreAdmin.php:441
+msgid "Auto terms using AI"
+msgstr "Automatski pojmovi koristeći AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:392
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:410
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:428
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:446
+#: includes-core/TaxopressCoreAdmin.php:392
+#: includes-core/TaxopressCoreAdmin.php:410
+#: includes-core/TaxopressCoreAdmin.php:428
+#: includes-core/TaxopressCoreAdmin.php:446
+msgid ""
+"PublishPress Taxonomies Pro allows you to generate new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and add new terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam generiranje novih pojmova za vaš "
+"sadržaj koristeći usluge OpenAI, IBM Watson, Dandelion i Open Calais. Ove "
+"usluge mogu analizirati vaš sadržaj i dodati nove pojmove."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:470
+#: includes-core/TaxopressCoreAdmin.php:470
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam predlaganje novih pojmova za vaš "
+"sadržaj koristeći usluge OpenAI, IBM Watson, Dandelion i Open Calais. Ove "
+"usluge mogu analizirati vaš sadržaj i predložiti nove pojmove."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:489
+#: includes-core/TaxopressCoreAdmin.php:489
+msgid "Add Custom Elements"
+msgstr "Dodaj prilagođene elemente"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:494
+#: includes-core/TaxopressCoreAdmin.php:494
+msgid ""
+"PublishPress Taxonomies Pro allows you complete control over where Auto "
+"Links are added. You can choose to skip any HTML elements that appear in "
+"your content."
+msgstr ""
+"PublishPress Taxonomies Pro vam omogućuje potpunu kontrolu nad mjestima "
+"gdje se dodaju automatske veze. Možete odabrati preskočiti bilo koje HTML "
+"elemente koji se pojavljuju u vašem sadržaju."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:513
+#: includes-core/TaxopressCoreAdmin.php:513
+msgid "Use Regular Expressions to modify Auto Terms"
+msgstr "Koristite regularne izraze za modificiranje automatskih pojmova"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:518
+#: includes-core/TaxopressCoreAdmin.php:518
+msgid ""
+"PublishPress Taxonomies Pro allows you to change how Auto Terms analyzes "
+"your posts. You will need to know how to write Regular Expressions to use "
+"this feature."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam promjenu načina na koji "
+"automatski pojmovi analiziraju vaše objave. Trebat ćete znati kako napisati "
+"regularne izraze kako biste koristili ovu značajku."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:540
+#: includes-core/TaxopressCoreAdmin.php:540
+msgid ""
+"This feature allows you to connect terms. When the main term or any of "
+"these terms are added to the post, all the other terms will be added also."
+msgstr ""
+"Ova značajka vam omogućuje povezivanje pojmova. Kada se glavni pojam ili "
+"bilo koji od ovih pojmova doda u objavu, svi ostali pojmovi će također biti "
+"dodani."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:560
+#: includes-core/TaxopressCoreAdmin.php:560
+msgid "Linked Terms Feature"
+msgstr "Značajka povezani pojmovi"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:564
+#: includes-core/TaxopressCoreAdmin.php:564
+msgid ""
+"PublishPress Taxonomies Pro allows you to create powerful connections "
+"between your terms. When one term is added to a post, its linked terms can "
+"be automatically added too. This helps maintain consistent organization "
+"across your content."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam stvaranje snažnih veza između "
+"vaših pojmova. Kada se jedan pojam doda u objavu, njegovi povezani pojmovi "
+"također se mogu automatski dodati. To pomaže održavanju dosljedne "
+"organizacije vašeg sadržaja."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:582
+#: includes-core/TaxopressCoreAdmin.php:582
+msgid ""
+"This feature allows you to associate additional words with each term. For "
+"example, \"website\" can have synonyms such as \"websites\", \"web site\", "
+"and \"web pages\"."
+msgstr ""
+"Ova značajka vam omogućuje da povežete dodatne riječi s svakim pojmom. Na "
+"primjer, \"web stranica\" može imati sinonime poput \"web stranice\", \"web "
+"site\" i \"web stranice\"."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:598
+#: includes-core/TaxopressCoreAdmin.php:598
+msgid "Synonyms Terms Feature"
+msgstr "Značajka sinonimi pojmova"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:602
+#: includes-core/TaxopressCoreAdmin.php:602
+msgid ""
+"PublishPress Taxonomies Pro allows you to have multiple words associated "
+"with a single term. If PublishPress Taxonomies scans your content and finds "
+"a synonym, it will act as if it has found the main term."
+msgstr ""
+"PublishPress Taxonomies Pro omogućuje vam da imate više riječi povezanih s "
+"jednim pojmom. Ako PublishPress Taxonomies skenira vaš sadržaj i pronađe "
+"sinonim, ponašat će se kao da je pronašao glavni pojam."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:622
+#: includes-core/TaxopressCoreAdmin.php:622
+msgid "Taxonomy Display"
+msgstr "Prikaz taksonomije"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:719
+#: includes-core/TaxopressCoreAdmin.php:630
+#: includes-core/TaxopressCoreAdmin.php:719
+msgid "This feature is available in PublishPress Taxonomies Pro"
+msgstr "Ova značajka je dostupna u PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:635
+#: includes-core/TaxopressCoreAdmin.php:635
+msgid "Customize the display of terms in the PublishPress Taxonomies metabox."
+msgstr "Prilagodite prikaz pojmova u PublishPress Taxonomies metaboxu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:636
+#: includes-core/TaxopressCoreAdmin.php:636
+msgid "Options include checkboxes and a dropdown list."
+msgstr "Opcije uključuju potvrdne okvire i padajući popis."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:670
+#: includes-core/TaxopressCoreAdmin.php:670
+msgid "Copy Term with Metadata"
+msgstr "Kopiraj pojam s metapodacima"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:675
+#: includes-core/TaxopressCoreAdmin.php:675
+msgid "To Copy terms with their metadata, please upgrade to pro."
+msgstr "Za kopiranje pojmova s njihovim metapodacima, molimo nadogradite na pro."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:676
+#: includes-core/TaxopressCoreAdmin.php:676
+msgid ""
+"With PublishPress Taxonomies Pro, you can duplicate taxonomy terms along "
+"with all their metadata. This includes term descriptions, images, and "
+"custom fields. You can copy terms between taxonomies to maintain consistent "
+"organization across your site."
+msgstr ""
+"S PublishPress Taxonomies Pro, možete duplicirati taksonomske pojmove "
+"zajedno sa svim njihovim metapodacima. To uključuje opise pojmova, slike i "
+"prilagođena polja. Možete kopirati pojmove između taksonomija kako biste "
+"održali dosljednu organizaciju na vašem sajtu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:723
+#: includes-core/TaxopressCoreAdmin.php:723
+msgid ""
+"Choose the display formats of your terms, options include table list, "
+"ordered list, border-cloud and lots more."
+msgstr ""
+"Odaberite formate prikaza svojih pojmova, opcije uključuju tablični popis, "
+"uređeni popis, oblačnu granicu i još mnogo toga."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:743
+#: includes-core/TaxopressCoreAdmin.php:743
+msgid "Hourly"
+msgstr "Svake sate"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:756
+#: includes-core/TaxopressCoreAdmin.php:756
+msgid "Daily"
+msgstr "Svakodnevno"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:764
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:816
+#: includes-core/TaxopressCoreAdmin.php:764
+#: includes-core/TaxopressCoreAdmin.php:816
+msgid "Pro Feature"
+msgstr "Pro značajka"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:766
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:818
+#: includes-core/TaxopressCoreAdmin.php:766
+#: includes-core/TaxopressCoreAdmin.php:818
+msgid "Some of these features are available in PublishPress Taxonomies Pro"
+msgstr "Neke od ovih značajki dostupne su u PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:776
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:868
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:893
+#: includes-core/TaxopressCoreAdmin.php:776
+#: includes-core/TaxopressCoreAdmin.php:868
+#: includes-core/TaxopressCoreAdmin.php:893, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:777
+#: includes-core/TaxopressCoreAdmin.php:777
+msgid "Name (Pro)"
+msgstr "Ime (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:778
+#: includes-core/TaxopressCoreAdmin.php:778
+msgid "Counter (Pro)"
+msgstr "Brojač (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:779
+#: includes-core/TaxopressCoreAdmin.php:779
+msgid "Random (Pro)"
+msgstr "Nasumično (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:780
+#: includes-core/TaxopressCoreAdmin.php:780
+msgid "Term Order (Pro)"
+msgstr "Redoslijed pojmova (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:792
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:939
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:983
+#: includes-core/TaxopressCoreAdmin.php:792
+#: includes-core/TaxopressCoreAdmin.php:939
+#: includes-core/TaxopressCoreAdmin.php:983
+msgid "Method for choosing terms for display"
+msgstr "Metoda za odabir pojmova za prikaz"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:867
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:928
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:972
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+#: includes-core/TaxopressCoreAdmin.php:867
+#: includes-core/TaxopressCoreAdmin.php:928
+#: includes-core/TaxopressCoreAdmin.php:972
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+msgid "Name"
+msgstr "Ime"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:869
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:929
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:973
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+#: includes-core/TaxopressCoreAdmin.php:869
+#: includes-core/TaxopressCoreAdmin.php:929
+#: includes-core/TaxopressCoreAdmin.php:973
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+msgid "Counter"
+msgstr "Brojač"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:871
+#: includes-core/TaxopressCoreAdmin.php:871
+msgid "Term Order"
+msgstr "Redoslijed pojmova"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:888
+#: includes-core/TaxopressCoreAdmin.php:888
+msgid "Disabled"
+msgstr "Onemogućeno"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:889
+#: includes-core/TaxopressCoreAdmin.php:889
+msgid "You have disabled PublishPress Taxonomies ordering"
+msgstr "Onemogućili ste redoslijed PublishPress Taxonomies"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:895
+#: includes-core/TaxopressCoreAdmin.php:895
+#, php-format
+msgid "Terms in this taxonomy are ordered by %s"
+msgstr "Pojmovi u ovoj taxonomiji su poredani prema %s"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:931
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:975
+#: includes-core/TaxopressCoreAdmin.php:931
+#: includes-core/TaxopressCoreAdmin.php:975
+msgid "Term Order(Pro)"
+msgstr "Redoslijed pojmova (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:959
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:1003
+#: includes-core/TaxopressCoreAdmin.php:959
+#: includes-core/TaxopressCoreAdmin.php:1003
+msgid ""
+"Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order "
+"Terms"
+msgstr ""
+"Nadogradite na PublishPress Taxonomies Pro kako biste koristili Redoslijed "
+"pojmova za ručno poredanje pojmova"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+msgid "Request completed."
+msgstr "Zahtev je dovršen."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+msgid "Security error. Kindly reload this page and try again"
+msgstr "Greška u sigurnosti. Molimo ponovo učitajte ovu stranicu i pokušajte ponovo"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+msgid ""
+"Permission error. You do not have permission to manage PublishPress "
+"Taxonomies"
+msgstr "Greška u dozvolama. Nemate dozvolu za upravljanje PublishPress Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+msgid "Posts content and title is empty."
+msgstr "Sadržaj i naslov objave su prazni."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+msgid "Permission error. You do not have permission to preview this post."
+msgstr "Greška u dozvolama. Nemate dozvolu za pregled ove objave."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#, php-format
+msgid ""
+"You do not have permission to manage this taxonomy. Enable Metabox Access "
+"Taxonomies for this role in %1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Nemate dozvolu za upravljanje ovom taxonomijom. Omogućite Metabox Access "
+"Taxonomies za ovu ulogu u %1sPublishPress Taxonomies Settings%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+msgid "Too many AI preview requests. Please wait a minute and try again."
+msgstr "Previše zahtjeva za AI pregled. Molimo pričekajte minutu i pokušajte ponovo."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+msgid "Term Results"
+msgstr "Rezultati pojmova"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+msgid "No results found for this post with this taxonomy."
+msgstr "Nema pronađenih rezultata za ovu objavu s ovom taxonomijom."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+msgid "Invalid Auto Term ID. Please save the settings before using preview."
+msgstr "Nevažeći Auto Term ID. Molimo spremite postavke prije korištenja pregleda."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+msgid "You must enable at least one AI integration source to use auto term preview."
+msgstr ""
+"Morate omogućiti barem jedan izvor AI integracije da biste koristili auto "
+"term pregled."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+msgid ""
+"This Auto Terms option is not enabled for metaboxes. Please enable it in "
+"the Auto Terms settings."
+msgstr ""
+"Ova opcija Auto Terms nije omogućena za metaboxove. Molimo omogućite je u "
+"postavkama Auto Terms."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#, php-format
+msgid "Click %1s to select or deselect them from this %2s."
+msgstr "Kliknite %1s za odabir ili poništavanje odabira s ovog %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+msgid "Suggest Existing Terms"
+msgstr "Predloži postojeće pojmove"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:341, fuzzy
+msgid "OpenAI"
+msgstr "OpenAI"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:356
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:356, fuzzy
+msgid "IBM Watson"
+msgstr "IBM Watson"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:371, fuzzy
+msgid "Dandelion"
+msgstr "Dandelion"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:386
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:386, fuzzy
+msgid "LSEG / Refinitiv"
+msgstr "LSEG / Refinitiv"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#, php-format
+msgid "Update %1s on this %2s"
+msgstr "Ažurirajte %1s na ovom %2s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+msgid "Existing Terms not found for the selected post type and taxonomies"
+msgstr "Postojeći pojmovi nisu pronađeni za odabrani post type i taxonomije"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+msgid ""
+"Existing Terms taxonomy is required. Kindly select taxonomies and save the "
+"settings before running preview."
+msgstr ""
+"Postojeća taxonomy je obavezna. Molimo odaberite taxonomije i spremite "
+"postavke prije pokretanja pregleda."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+msgid "Result from ajax request."
+msgstr "Rezultat iz ajax zahtjeva."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+msgid "The selected taxonomy is not associated with the selected post type."
+msgstr "Odabrana taxonomy nije povezana s odabranim post type."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+msgid "No results found for this taxonomy."
+msgstr "Nema pronađenih rezultata za ovu taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+msgid "You do not have permission to edit this post."
+msgstr "Nemate dopuštenje za uređivanje ovog posta."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+msgid "You do not have permission to assign terms from this taxonomy."
+msgstr "Nemate dopuštenje za dodjeljivanje pojmova iz ove taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#, php-format
+msgid "Click Term to select or deselect from this %1s"
+msgstr "Kliknite na Pojam za odabir ili poništavanje odabira iz ovog %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+msgid "Both Taxonomy and Post are required."
+msgstr "Oba, Taxonomy i Post, su obavezna."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+msgid "No new terms were selected or deselected."
+msgstr "Nisu odabrani niti poništeni novi pojmovi."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#, php-format
+msgid "%1s terms added to this %2s."
+msgstr "%1s pojmova dodano ovom %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#, php-format
+msgid "%1s terms removed from this %2s."
+msgstr "%1s pojmova uklonjeno iz ovog %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+msgid "You do not have capability to manage this taxonomy."
+msgstr "Nemate mogućnost upravljanja ovom taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+msgid "You do not have permission to edit this post with this taxonomy."
+msgstr "Nemate dopuštenje za uređivanje ovog posta s ovom taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#, php-format
+msgid "Terms cannot contain the following characters: %s"
+msgstr "Pojmovi ne mogu sadržavati sljedeće znakove: %s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#, php-format
+msgid "Terms must be at least %d characters long."
+msgstr "Pojmovi moraju imati najmanje %d znakova."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#, php-format
+msgid "Terms cannot exceed %d characters."
+msgstr "Pojmovi ne mogu prelaziti %d znakova."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+msgid "The Dandelion integration is disabled in the Legacy AI Sources settings."
+msgstr "Dandelion integracija je onemogućena u Legacy AI Sources postavkama."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+msgid "No matched result from the API Server."
+msgstr "Nema odgovarajućeg rezultata s API poslužitelja."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+msgid ""
+"The Dandelion integration requires an API Key. Please add your API Key in "
+"the Auto Term settings."
+msgstr ""
+"Dandelion integracija zahtijeva API ključ. Molimo dodajte svoj API ključ u "
+"Auto Term postavkama."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+msgid "Selected content is empty."
+msgstr "Odabrani sadržaj je prazan."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+msgid "Result from cache."
+msgstr "Rezultat iz predmemorije."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#, php-format
+msgid "API Error: %1s."
+msgstr "API Greška: %1s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+msgid "Result from api."
+msgstr "Rezultat iz api."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+msgid "Error establishing connection with the API server. Try again."
+msgstr "Greška pri uspostavljanju veze s API poslužiteljem. Pokušajte ponovo."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+msgid ""
+"The LSEG / Refinitiv integration is disabled in the Legacy AI Sources "
+"settings."
+msgstr "LSEG / Refinitiv integracija je onemogućena u postavkama Legacy AI Sources."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+msgid ""
+"The LSEG / Refinitiv integration requires an API Key. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"LSEG / Refinitiv integracija zahtijeva API ključ. Molimo dodajte svoj API "
+"ključ u postavke Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+msgid "API Error: No matched result for content."
+msgstr "API Greška: Nema odgovarajućeg rezultata za sadržaj."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+msgid "The IBM Watson integration is disabled in the Legacy AI Sources settings."
+msgstr "IBM Watson integracija je onemogućena u postavkama Legacy AI Sources."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+msgid ""
+"The IBM Watson integration requires an API Key and URL. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"IBM Watson integracija zahtijeva API ključ i URL. Molimo dodajte svoj API "
+"ključ u postavke Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+msgid ""
+"The IBM Watson API URL must use HTTPS and an official Natural Language "
+"Understanding service hostname."
+msgstr ""
+"IBM Watson API URL mora koristiti HTTPS i službeni naziv domene za uslugu "
+"Natural Language Understanding."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+msgid ""
+"The OpenAI integration requires an API Key. Please add your API Key in the "
+"Auto Term settings."
+msgstr ""
+"OpenAI integracija zahtijeva API ključ. Molimo dodajte svoj API ključ u "
+"postavke Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#, php-format
+msgid ""
+"Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
+"{post_terms}, {site_terms}"
+msgstr ""
+"Neispravni placeholder(i) otkriveni: {%s}. Valjani placeholderi su: "
+"{content}, {post_terms}, {site_terms}"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+msgid ""
+"You added {post_terms} in the prompt but your post does not contain any "
+"terms."
+msgstr "Dodali ste {post_terms} u upit, ali vaš post ne sadrži nijednu termin."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+msgid ""
+"You added {site_terms} in the prompt but your site does not contain any "
+"terms for this taxonomy."
+msgstr ""
+"Dodali ste {site_terms} u upit, ali vaša stranica ne sadrži nijednu termin "
+"za ovu taksonomiju."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+msgid ""
+"Error: OpenAI says there is an issue with this API key. Please check your "
+"plan or billing details."
+msgstr ""
+"Greška: OpenAI kaže da postoji problem s ovim API ključem. Molimo "
+"provjerite svoj plan ili podatke o naplati."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1373
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1695
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: modules/taxopress-ai/taxopress-ai.php:1373
+#: modules/taxopress-ai/taxopress-ai.php:1695
+msgid "Show All Existing Terms"
+msgstr "Prikaži sve postojeće termine"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1381
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1696
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: modules/taxopress-ai/taxopress-ai.php:1381
+#: modules/taxopress-ai/taxopress-ai.php:1696
+msgid "Manage Post Terms"
+msgstr "Upravljajte post terminima"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1697
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: modules/taxopress-ai/taxopress-ai.php:1697
+msgid "Auto Terms"
+msgstr "Automatski termini"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1394
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1698
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: modules/taxopress-ai/taxopress-ai.php:1394
+#: modules/taxopress-ai/taxopress-ai.php:1698
+msgid "Create Terms"
+msgstr "Kreirajte termine"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+msgid "View Existing Terms"
+msgstr "Pogledajte postojeće termine"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+msgid "This feature allows you to browse all the terms in a taxonomy."
+msgstr "Ova funkcija vam omogućuje pregled svih termina u taksonomiji."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+msgid "View Current Post Terms"
+msgstr "Pogledajte trenutne uvjete objave"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+msgid ""
+"This feature allows you to manage all the terms that are currently attached "
+"to a post."
+msgstr ""
+"Ova funkcija vam omogućuje upravljanje svim uvjetima koji su trenutno "
+"priloženi objavi."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1555
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: modules/taxopress-ai/taxopress-ai.php:1555
+msgid "View Terms"
+msgstr "Pogledajte uvjete"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+msgid ""
+"This feature allows you to browse based on selected auto terms settings and "
+"sources."
+msgstr ""
+"Ova funkcija vam omogućuje pregledavanje na temelju odabranih postavki "
+"automatskih uvjeta i izvora."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+msgid "Suggest Terms"
+msgstr "Predložite uvjete"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Select all %1s"
+msgstr "Odaberite sve %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Deselect all %1s"
+msgstr "Poništite odabir svih %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#, php-format
+msgid "Select %1s"
+msgstr "Odaberite %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:411
+#: modules/taxopress-ai/taxopress-ai.php:411
+msgid "Please choose a post to use with PublishPress Taxonomies AI."
+msgstr "Molimo odaberite objavu za korištenje s PublishPress Taxonomies AI."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:420
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1747
+#: modules/taxopress-ai/taxopress-ai.php:420
+#: modules/taxopress-ai/taxopress-ai.php:1747
+msgid "Label can't be empty."
+msgstr "Oznaka ne može biti prazna."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:421
+#: modules/taxopress-ai/taxopress-ai.php:421
+msgid "Label can't exceed 30 characters."
+msgstr "Oznaka ne može sadržavati više od 30 znakova."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:422
+#: modules/taxopress-ai/taxopress-ai.php:422
+msgid "Unknown tab type."
+msgstr "Nepoznata vrsta kartice."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:423
+#: modules/taxopress-ai/taxopress-ai.php:423
+msgid "Error saving label."
+msgstr "Greška pri spremanju oznake."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:424
+#: modules/taxopress-ai/taxopress-ai.php:424
+msgid "Please choose a post to preview."
+msgstr "Molimo odaberite objavu za pregled."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:441
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:473
+#: modules/taxopress-ai/taxopress-ai.php:440
+#: modules/taxopress-ai/taxopress-ai.php:441
+#: modules/taxopress-ai/taxopress-ai.php:473, fuzzy
+msgid "Metaboxes"
+msgstr "Metaboxes"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:466
+#: modules/taxopress-ai/taxopress-ai.php:466
+msgid "Metabox Settings"
+msgstr "Postavke metaboxa"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:467
+#: modules/taxopress-ai/taxopress-ai.php:467
+msgid "Metabox Access"
+msgstr "Pristup metaboxu"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:476
+#: modules/taxopress-ai/taxopress-ai.php:476
+msgid ""
+"This feature allows you to customize the metabox interface you see when "
+"adding terms to posts."
+msgstr ""
+"Ova funkcija vam omogućuje prilagodbu sučelja metaboxa koje vidite prilikom "
+"dodavanja uvjeta objavama."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:825
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:870
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:952
+#: dist/simple-tags/views/admin/page-settings.php:53
+#: modules/taxopress-ai/taxopress-ai.php:825
+#: modules/taxopress-ai/taxopress-ai.php:870
+#: modules/taxopress-ai/taxopress-ai.php:952
+#: views/admin/page-settings.php:53
+msgid "Save Changes"
+msgstr "Spremi promjene"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:941
+#: modules/taxopress-ai/taxopress-ai.php:941
+msgid "Select..."
+msgstr "Odaberite..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1067
+#: modules/taxopress-ai/taxopress-ai.php:1067
+#, php-format
+msgid "Select %s"
+msgstr "Odaberite %s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1129
+#: modules/taxopress-ai/taxopress-ai.php:1129
+msgid "Invalid request."
+msgstr "Neispravni zahtjev."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1171
+#: modules/taxopress-ai/taxopress-ai.php:1171
+msgid "No terms in your WordPress database."
+msgstr "Nema pojmova u vašoj WordPress bazi podataka."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1180
+#: modules/taxopress-ai/taxopress-ai.php:1180
+msgid "There's no content to scan."
+msgstr "Nema sadržaja za skeniranje."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1187
+#: modules/taxopress-ai/taxopress-ai.php:1187
+msgid "No results from your WordPress database."
+msgstr "Nema rezultata iz vaše WordPress baze podataka."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1229
+#: modules/taxopress-ai/taxopress-ai.php:1229
+msgid "There are no terms that are relevant to your content."
+msgstr "Nema pojmova koji su relevantni za vaš sadržaj."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1279
+#: modules/taxopress-ai/taxopress-ai.php:1279
+msgid "Tags"
+msgstr "Oznake"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1311
+#: modules/taxopress-ai/taxopress-ai.php:1311, fuzzy
+msgid "PublishPress Taxonomies"
+msgstr "PublishPress Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1497
+#: modules/taxopress-ai/taxopress-ai.php:1497
+#, php-format
+msgid ""
+"This user does not have access to manage any of this post attached "
+"taxonomies. Enable Metabox Access Taxonomies for this role in "
+"%1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Ovaj korisnik nema pristup za upravljanje bilo kojim od ovih taksonomija "
+"povezanih s postom. Omogućite Metabox Access Taxonomies za ovu ulogu u "
+"%1sPostavkama PublishPress Taxonomies%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1501
+#: modules/taxopress-ai/taxopress-ai.php:1501
+msgid "No PublishPress Taxonomies Metabox features are enabled for this post type."
+msgstr ""
+"Nema omogućenih značajki Metabox za PublishPress Taxonomies za ovaj post "
+"type."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1529
+#: modules/taxopress-ai/taxopress-ai.php:1529
+msgid "Save, You can also press Enter to save and escape to cancel"
+msgstr "Spremi, također možete pritisnuti Enter za spremanje i Escape za otkazivanje"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1571
+#: modules/taxopress-ai/taxopress-ai.php:1571
+msgid "Search Terms..."
+msgstr "Pretraži pojmove..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1590
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1610
+#: modules/taxopress-ai/taxopress-ai.php:1590
+#: modules/taxopress-ai/taxopress-ai.php:1610
+msgid "Create Term"
+msgstr "Kreiraj pojam"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1670
+#: modules/taxopress-ai/taxopress-ai.php:1670
+msgid ""
+"You do not have the required capabilities to manage any of this post "
+"attached taxonomies."
+msgstr ""
+"Nemate potrebne ovlasti za upravljanje bilo kojim od ovih taksonomija "
+"povezanih s postom."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1738
+#: modules/taxopress-ai/taxopress-ai.php:1738
+msgid "You can not edit this label."
+msgstr "Ne možete urediti ovu oznaku."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1741
+#: modules/taxopress-ai/taxopress-ai.php:1741
+msgid "Invalid nonce token."
+msgstr "Neispravna nonce token."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1750
+#: modules/taxopress-ai/taxopress-ai.php:1750
+msgid "Label is too long."
+msgstr "Oznaka je preduga."
+
+#: dist/simple-tags/review-request/review.php:281
+#: review-request/review.php:281
+#, php-format
+msgid ""
+"Hey, you've been using PublishPress Taxonomies for %s on your site. We hope "
+"the plugin has been useful. Please could you quickly leave a 5-star rating "
+"on WordPress.org? It really does help to keep PublishPress Taxonomies "
+"growing."
+msgstr ""
+"Hej, koristili ste PublishPress Taxonomies za %s na vašem sajtu. Nadamo se "
+"da je dodatak bio koristan. Molimo vas da brzo ostavite ocjenu od 5 "
+"zvjezdica na WordPress.org? To zaista pomaže u održavanju rasta "
+"PublishPress Taxonomies."
+
+#: dist/simple-tags/review-request/review.php:290
+#: review-request/review.php:290
+msgid "1 week"
+msgstr "1 tjedan"
+
+#: dist/simple-tags/review-request/review.php:306
+#: review-request/review.php:306
+msgid "3 months"
+msgstr "3 mjeseca"
+
+#: dist/simple-tags/review-request/review.php:371
+#: review-request/review.php:371
+msgid "Click here to add your rating for PublishPress Taxonomies"
+msgstr "Kliknite ovdje da dodate svoju ocjenu za PublishPress taxonomies"
+
+#: dist/simple-tags/review-request/review.php:373
+#: review-request/review.php:373
+msgid "Maybe later"
+msgstr "Možda kasnije"
+
+#: dist/simple-tags/review-request/review.php:375
+#: review-request/review.php:375
+msgid "I already did"
+msgstr "Već sam to učinio"
+
+#: dist/simple-tags/simple-tags.php:97
+#: simple-tags.php:97
+msgid "This plugin can be deleted."
+msgstr "Ovaj dodatak se može izbrisati."
+
+#: dist/simple-tags/simple-tags.php:125
+#: simple-tags.php:125
+msgid ""
+"PublishPress Taxonomies was not activated because PublishPress Taxonomies "
+"Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
+msgstr ""
+"PublishPress taxonomies nije aktiviran jer je PublishPress taxonomies Pro "
+"već aktivan. Molimo vas da zadržite samo PublishPress taxonomies Pro "
+"omogućen."
+
+#: dist/simple-tags/views/admin/page-settings.php:4
+#: views/admin/page-settings.php:4
+msgid "PublishPress Taxonomies: Options"
+msgstr "PublishPress taxonomies: Opcije"
+
+#: dist/simple-tags/inc/terms-table.php:1437
+#: inc/terms-table.php:1437
+msgctxt "term name"
+msgid "Name"
+msgstr "Ime"
+
+#: dist/simple-tags/inc/terms-table.php:1446
+#: inc/terms-table.php:1446
+msgctxt "term name"
+msgid "Taxonomy"
+msgstr "Taxonomy"

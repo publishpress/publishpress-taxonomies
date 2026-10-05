@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fetch our TAXOPRESS Terms Display option.
+ * Fetch our PublishPress Taxonomies Terms Display option.
  *
  * @return mixed
  */
@@ -179,7 +179,7 @@ function taxopress_create_default_tag_cloud()
 
 
 /**
- * Add to or update our TAXOPRESS option with new data.
+ * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
  * @param array $data Array of tagcloud data to update. Optional.

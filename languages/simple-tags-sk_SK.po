@@ -1,0 +1,4802 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Taxonomies Free 3.53.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
+"PO-Revision-Date: 2026-09-04 16:07+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: simple-tags\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : (n >= 2 && n <= 4) ? 1 : 2;\n"
+
+#: simple-tags.php:4, fuzzy
+#. Plugin Name of the plugin
+msgid "PublishPress Taxonomies Free"
+msgstr "PublishPress Taxonomies Free"
+
+#: simple-tags.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/simple-tags/"
+msgstr "https://wordpress.org/plugins/simple-tags/"
+
+#: simple-tags.php:6
+#. Description of the plugin
+msgid ""
+"PublishPress Taxonomies allows you to create and manage Tags, Categories, "
+"and all your WordPress taxonomy terms."
+msgstr ""
+"PublishPress Taxonomies umožňuje vytvárať a spravovať značky, kategórie a "
+"všetky vaše termíny taxonómie WordPress."
+
+#: simple-tags.php:8
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: simple-tags.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: blocks/post-tags.php:63
+#: dist/simple-tags/blocks/post-tags.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:141
+#: inc/related-posts-widget.php:141
+msgid "Here"
+msgstr "Tu"
+
+#: blocks/post-tags.php:66
+#: dist/simple-tags/blocks/post-tags.php:66
+msgid " Select current post"
+msgstr " Vyberte aktuálny príspevok"
+
+#: blocks/post-tags.php:67
+#: dist/simple-tags/blocks/post-tags.php:67
+msgid "Current Posts (PublishPress Taxonomies)"
+msgstr "Aktuálne príspevky (PublishPress Taxonomies)"
+
+#: blocks/related-posts.php:80
+#: blocks/tag-clouds.php:63
+#: dist/simple-tags/blocks/related-posts.php:80
+#: dist/simple-tags/blocks/tag-clouds.php:63
+#: dist/simple-tags/inc/related-posts-widget.php:109
+#: inc/related-posts-widget.php:109
+msgid "this page."
+msgstr "túto stránku."
+
+#: blocks/related-posts.php:83
+#: dist/simple-tags/blocks/related-posts.php:83
+msgid "Select related post"
+msgstr "Vyberte súvisiaci príspevok"
+
+#: blocks/related-posts.php:84
+#: dist/simple-tags/blocks/related-posts.php:84
+#: dist/simple-tags/inc/related-posts-widget.php:19
+#: inc/related-posts-widget.php:19
+msgid "Related Posts (PublishPress Taxonomies)"
+msgstr "Súvisiace príspevky (PublishPress Taxonomies)"
+
+#: blocks/tag-clouds.php:66
+#: dist/simple-tags/blocks/tag-clouds.php:66
+msgid "Select Terms Display"
+msgstr "Vyberte zobrazenie termínov"
+
+#: blocks/tag-clouds.php:67
+#: dist/simple-tags/blocks/tag-clouds.php:67
+msgid "Terms Display (PublishPress Taxonomies)"
+msgstr "Zobrazenie termínov (PublishPress Taxonomies)"
+
+#: dist/simple-tags/inc/related-posts-functions.php:167
+#: dist/simple-tags/inc/related-posts-table.php:15
+#: dist/simple-tags/inc/related-posts.php:73
+#: dist/simple-tags/inc/related-posts.php:74
+#: dist/simple-tags/inc/related-posts.php:131
+#: inc/related-posts-functions.php:167
+#: inc/related-posts-table.php:15
+#: inc/related-posts.php:73
+#: inc/related-posts.php:74
+#: inc/related-posts.php:131
+msgid "Related Posts"
+msgstr "Súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts-functions.php:176
+#: inc/related-posts-functions.php:176
+msgid "No related posts."
+msgstr "Žiadne súvisiace príspevky."
+
+#: dist/simple-tags/inc/related-posts-functions.php:262
+#: dist/simple-tags/inc/schedule.php:173
+#: dist/simple-tags/inc/tag-clouds-functions.php:245
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:181
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:311
+#: inc/related-posts-functions.php:262
+#: inc/schedule.php:173
+#: inc/tag-clouds-functions.php:245
+#: modules/taxopress-ai/taxopress-ai.php:181
+#: modules/taxopress-ai/taxopress-ai.php:311
+msgid "Settings updated successfully."
+msgstr "Nastavenia boli úspešne aktualizované."
+
+#: dist/simple-tags/inc/related-posts-functions.php:271
+#: inc/related-posts-functions.php:271
+msgid "Related Posts successfully deleted."
+msgstr "Súvisiace príspevky boli úspešne vymazané."
+
+#: dist/simple-tags/inc/related-posts-functions.php:366
+#: inc/related-posts-functions.php:366
+msgid "Related Posts not found."
+msgstr "Súvisiace príspevky neboli nájdené."
+
+#: dist/simple-tags/inc/related-posts-table.php:14
+#: inc/related-posts-table.php:14
+msgid "Related Post"
+msgstr "Súvisiaci príspevok"
+
+#: dist/simple-tags/inc/related-posts-table.php:65
+#: dist/simple-tags/inc/related-posts.php:382
+#: dist/simple-tags/inc/tag-clouds-table.php:65
+#: dist/simple-tags/inc/tag-clouds.php:377
+#: dist/simple-tags/inc/terms-table.php:732
+#: dist/simple-tags/inc/terms-table.php:739
+#: inc/related-posts-table.php:65
+#: inc/related-posts.php:382
+#: inc/tag-clouds-table.php:65
+#: inc/tag-clouds.php:377
+#: inc/terms-table.php:732
+#: inc/terms-table.php:739
+msgid "Title"
+msgstr "Názov"
+
+#: dist/simple-tags/inc/related-posts-table.php:66
+#: dist/simple-tags/inc/related-posts.php:502
+#: dist/simple-tags/inc/schedule-logs-table.php:53
+#: dist/simple-tags/inc/tag-clouds-table.php:66
+#: dist/simple-tags/inc/tag-clouds.php:463
+#: dist/simple-tags/inc/terms-table.php:742
+#: dist/simple-tags/inc/terms-table.php:867
+#: inc/related-posts-table.php:66
+#: inc/related-posts.php:502
+#: inc/schedule-logs-table.php:53
+#: inc/tag-clouds-table.php:66
+#: inc/tag-clouds.php:463
+#: inc/terms-table.php:742
+#: inc/terms-table.php:867
+msgid "Taxonomy"
+msgstr "Taxonomy"
+
+#: dist/simple-tags/inc/related-posts-table.php:67
+#: dist/simple-tags/inc/related-posts.php:341
+#: dist/simple-tags/inc/related-posts.php:788
+#: dist/simple-tags/inc/taxonomies.php:481
+#: dist/simple-tags/inc/terms-table.php:743
+#: inc/related-posts-table.php:67
+#: inc/related-posts.php:341
+#: inc/related-posts.php:788
+#: inc/taxonomies.php:481
+#: inc/terms-table.php:743, fuzzy
+msgid "Post Types"
+msgstr "Post Types"
+
+#: dist/simple-tags/inc/related-posts-table.php:68
+#: inc/related-posts-table.php:68
+msgid "Automatic display"
+msgstr "Automatické zobrazenie"
+
+#: dist/simple-tags/inc/related-posts-table.php:69
+#: dist/simple-tags/inc/tag-clouds-table.php:69
+#: inc/related-posts-table.php:69
+#: inc/tag-clouds-table.php:69
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: dist/simple-tags/inc/related-posts-table.php:91
+#: dist/simple-tags/inc/tag-clouds-table.php:91
+#: inc/related-posts-table.php:91
+#: inc/tag-clouds-table.php:91
+msgid "No item avaliable."
+msgstr "Žiadny položka nie je k dispozícii."
+
+#: dist/simple-tags/inc/related-posts-table.php:276
+#: dist/simple-tags/inc/tag-clouds-table.php:276
+#: dist/simple-tags/inc/terms-table.php:1155
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1523
+#: inc/related-posts-table.php:276
+#: inc/tag-clouds-table.php:276
+#: inc/terms-table.php:1155
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
+#: modules/taxopress-ai/taxopress-ai.php:1523
+msgid "Edit"
+msgstr "Upraviť"
+
+#: dist/simple-tags/inc/related-posts-table.php:289
+#: dist/simple-tags/inc/schedule-logs-table.php:79
+#: dist/simple-tags/inc/tag-clouds-table.php:289
+#: dist/simple-tags/inc/terms-table.php:800
+#: dist/simple-tags/inc/terms-table.php:1197
+#: inc/related-posts-table.php:289
+#: inc/schedule-logs-table.php:79
+#: inc/tag-clouds-table.php:289
+#: inc/terms-table.php:800
+#: inc/terms-table.php:1197
+msgid "Delete"
+msgstr "Odstrániť"
+
+#: dist/simple-tags/inc/related-posts-table.php:349
+#: inc/related-posts-table.php:349
+msgid "Current post type"
+msgstr "Aktuálny typ príspevku"
+
+#: dist/simple-tags/inc/related-posts-table.php:351
+#: dist/simple-tags/inc/tag-clouds-table.php:359
+#: inc/related-posts-table.php:351
+#: inc/tag-clouds-table.php:359
+msgid "All"
+msgstr "Všetky"
+
+#: dist/simple-tags/inc/related-posts-table.php:386
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:616
+#: inc/related-posts-table.php:386
+#: includes-core/TaxopressCoreAdmin.php:616
+msgid "Default"
+msgstr "Predvolené"
+
+#: dist/simple-tags/inc/related-posts-table.php:417
+#: dist/simple-tags/inc/related-posts.php:638
+#: inc/related-posts-table.php:417
+#: inc/related-posts.php:638
+msgid "Homepage"
+msgstr "Domovská stránka"
+
+#: dist/simple-tags/inc/related-posts-table.php:418
+#: dist/simple-tags/inc/related-posts.php:639
+#: inc/related-posts-table.php:418
+#: inc/related-posts.php:639
+msgid "Blog display"
+msgstr "Zobrazenie blogu"
+
+#: dist/simple-tags/inc/related-posts-table.php:419
+#: inc/related-posts-table.php:419
+msgid "Single post display"
+msgstr "Zobrazenie jednotlivého príspevku"
+
+#: dist/simple-tags/inc/related-posts-table.php:420
+#: inc/related-posts-table.php:420
+msgid "RSS feed"
+msgstr "RSS kanál"
+
+#: dist/simple-tags/inc/related-posts-table.php:430
+#: dist/simple-tags/inc/related-posts.php:1329
+#: dist/simple-tags/inc/tag-clouds.php:1092
+#: dist/simple-tags/inc/taxonomies.php:1986
+#: inc/related-posts-table.php:430
+#: inc/related-posts.php:1329
+#: inc/tag-clouds.php:1092
+#: inc/taxonomies.php:1986
+msgid "No"
+msgstr "Nie"
+
+#: dist/simple-tags/inc/related-posts-widget.php:22
+#: inc/related-posts-widget.php:22
+msgid "PublishPress Taxonomies Related Posts Shortcode"
+msgstr "Shortcode súvisiace príspevky PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/related-posts-widget.php:112
+#: inc/related-posts-widget.php:112
+msgid "Related Posts are added on "
+msgstr "Súvisiace príspevky sú pridané na "
+
+#: dist/simple-tags/inc/related-posts-widget.php:120
+#: inc/related-posts-widget.php:120
+msgid "Select widget Related Posts."
+msgstr "Vyberte widget Súvisiace príspevky."
+
+#: dist/simple-tags/inc/related-posts-widget.php:144
+#: inc/related-posts-widget.php:144
+msgid "No Related Posts shortcode available. Add new shortcode "
+msgstr ""
+"Žiadny shortcode súvisiacich príspevkov nie je k dispozícii. Pridajte nový "
+"shortcode "
+
+#: dist/simple-tags/inc/related-posts.php:96
+#: dist/simple-tags/inc/schedule.php:58
+#: dist/simple-tags/inc/tag-clouds.php:96
+#: dist/simple-tags/inc/taxonomies.php:137
+#: dist/simple-tags/inc/terms.php:197
+#: inc/related-posts.php:96
+#: inc/schedule.php:58
+#: inc/tag-clouds.php:96
+#: inc/taxonomies.php:137
+#: inc/terms.php:197
+msgid "Number of items per page"
+msgstr "Počet položiek na stránku"
+
+#: dist/simple-tags/inc/related-posts.php:137
+#: inc/related-posts.php:137
+msgid "Add New Related Post"
+msgstr "Pridať nový súvisiaci príspevok"
+
+#: dist/simple-tags/inc/related-posts.php:140
+#: inc/related-posts.php:140
+msgid ""
+"The Related Posts feature works by checking for shared taxonomy terms. If "
+"your post has the terms “WordPress” and “Website”, then Related Posts will "
+"display other posts that also have the terms “WordPress” and “Website”."
+msgstr ""
+"Funkcia súvisiacich príspevkov funguje tak, že kontroluje zdieľané termíny "
+"taxonómie. Ak váš príspevok obsahuje termíny „WordPress“ a „Webová "
+"stránka“, potom sa v súvisiacich príspevkoch zobrazia aj iné príspevky, "
+"ktoré majú termíny „WordPress“ a „Webová stránka“."
+
+#: dist/simple-tags/inc/related-posts.php:147
+#: dist/simple-tags/inc/tag-clouds.php:145
+#: dist/simple-tags/inc/taxonomies.php:181
+#: dist/simple-tags/inc/terms.php:291
+#: inc/related-posts.php:147
+#: inc/tag-clouds.php:145
+#: inc/taxonomies.php:181
+#: inc/terms.php:291
+#. translators: %s: search keywords
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Výsledky vyhľadávania pre &#8220;%s&#8221;"
+
+#: dist/simple-tags/inc/related-posts.php:159
+#: inc/related-posts.php:159
+msgid "Search Related Posts"
+msgstr "Hľadať súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:170
+#: dist/simple-tags/inc/schedule.php:485
+#: dist/simple-tags/inc/tag-clouds.php:172
+#: dist/simple-tags/inc/taxonomies.php:257
+#: dist/simple-tags/inc/terms.php:324
+#: inc/related-posts.php:170
+#: inc/schedule.php:485
+#: inc/tag-clouds.php:172
+#: inc/taxonomies.php:257
+#: inc/terms.php:324
+msgid "Description here."
+msgstr "Popis tu."
+
+#: dist/simple-tags/inc/related-posts.php:234
+#: inc/related-posts.php:234
+msgid "Manage Related Posts"
+msgstr "Spravovať súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:250
+#: inc/related-posts.php:250
+msgid "Preview Related Posts"
+msgstr "Náhľad súvisiacich príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:256
+#: dist/simple-tags/inc/tag-clouds.php:270
+#: inc/related-posts.php:256
+#: inc/tag-clouds.php:270
+msgid "Toggle panel"
+msgstr "Prepnúť panel"
+
+#: dist/simple-tags/inc/related-posts.php:277
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:465
+#: inc/related-posts.php:277
+#: modules/taxopress-ai/taxopress-ai.php:465
+msgid "Preview"
+msgstr "Náhľad"
+
+#: dist/simple-tags/inc/related-posts.php:300
+#: inc/related-posts.php:300
+msgid "Edit Related Posts"
+msgstr "Upraviť súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:307
+#: inc/related-posts.php:307
+msgid "Add new Related Posts"
+msgstr "Pridať nové súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:318
+#: inc/related-posts.php:318
+msgid "To create more Related Posts, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"Ak chcete vytvoriť viac súvisiacich príspevkov, aktualizujte na "
+"PublishPress Taxonomies Pro."
+
+#: dist/simple-tags/inc/related-posts.php:324
+#: inc/related-posts.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Related Posts. "
+"You can create Related Posts for any taxonomy and then display those "
+"Related Posts anywhere on your site."
+msgstr ""
+"S PublishPress Taxonomies Pro môžete vytvárať neobmedzené súvisiace "
+"príspevky. Môžete vytvárať súvisiace príspevky pre akúkoľvek taxonómiu a "
+"potom ich zobraziť kdekoľvek na svojom webe."
+
+#: dist/simple-tags/inc/related-posts.php:337
+#: dist/simple-tags/inc/tag-clouds.php:334
+#: dist/simple-tags/inc/taxonomies.php:475
+#: inc/related-posts.php:337
+#: inc/tag-clouds.php:334
+#: inc/taxonomies.php:475
+msgid "General"
+msgstr "Všeobecné"
+
+#: dist/simple-tags/inc/related-posts.php:345
+#: inc/related-posts.php:345
+msgid "Display"
+msgstr "Zobraziť"
+
+#: dist/simple-tags/inc/related-posts.php:349
+#: dist/simple-tags/inc/tag-clouds.php:354
+#: inc/related-posts.php:349
+#: inc/tag-clouds.php:354
+msgid "Design"
+msgstr "Dizajn"
+
+#: dist/simple-tags/inc/related-posts.php:353
+#: dist/simple-tags/inc/tag-clouds.php:346
+#: inc/related-posts.php:353
+#: inc/tag-clouds.php:346
+msgid "Layout"
+msgstr "Rozloženie"
+
+#: dist/simple-tags/inc/related-posts.php:357
+#: dist/simple-tags/inc/related-posts.php:724
+#: dist/simple-tags/inc/tag-clouds-table.php:68
+#: dist/simple-tags/inc/tag-clouds.php:670
+#: inc/related-posts.php:357
+#: inc/related-posts.php:724
+#: inc/tag-clouds-table.php:68
+#: inc/tag-clouds.php:670
+msgid "Display format"
+msgstr "Formát zobrazenia"
+
+#: dist/simple-tags/inc/related-posts.php:361
+#: dist/simple-tags/inc/tag-clouds.php:342
+#: inc/related-posts.php:361
+#: inc/tag-clouds.php:342
+msgid "Options"
+msgstr "Možnosti"
+
+#: dist/simple-tags/inc/related-posts.php:365
+#: dist/simple-tags/inc/taxonomies.php:504
+#: inc/related-posts.php:365
+#: inc/taxonomies.php:504
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: dist/simple-tags/inc/related-posts.php:401
+#: dist/simple-tags/inc/related-posts.php:558
+#: dist/simple-tags/inc/related-posts.php:992
+#: dist/simple-tags/inc/schedule.php:322
+#: dist/simple-tags/inc/tag-clouds.php:397
+#: dist/simple-tags/inc/tag-clouds.php:741
+#: dist/simple-tags/inc/tag-clouds.php:779
+#: dist/simple-tags/inc/tag-clouds.php:852
+#: dist/simple-tags/inc/taxonomies.php:632
+#: dist/simple-tags/inc/taxonomies.php:762
+#: dist/simple-tags/inc/taxonomies.php:776
+#: dist/simple-tags/inc/taxonomies.php:890
+#: dist/simple-tags/inc/taxonomies.php:930
+#: dist/simple-tags/inc/taxonomies.php:957
+#: dist/simple-tags/inc/taxonomies.php:994
+#: dist/simple-tags/inc/taxonomies.php:1018
+#: dist/simple-tags/inc/taxonomies.php:1042
+#: dist/simple-tags/inc/taxonomies.php:1067
+#: dist/simple-tags/inc/taxonomies.php:1091
+#: dist/simple-tags/inc/taxonomies.php:1118
+#: dist/simple-tags/inc/taxonomies.php:1585
+#: dist/simple-tags/inc/taxonomies.php:1656
+#: dist/simple-tags/inc/taxonomies.php:1683
+#: dist/simple-tags/inc/taxonomies.php:1710
+#: inc/related-posts.php:401
+#: inc/related-posts.php:558
+#: inc/related-posts.php:992
+#: inc/schedule.php:322
+#: inc/tag-clouds.php:397
+#: inc/tag-clouds.php:741
+#: inc/tag-clouds.php:779
+#: inc/tag-clouds.php:852
+#: inc/taxonomies.php:632
+#: inc/taxonomies.php:762
+#: inc/taxonomies.php:776
+#: inc/taxonomies.php:890
+#: inc/taxonomies.php:930
+#: inc/taxonomies.php:957
+#: inc/taxonomies.php:994
+#: inc/taxonomies.php:1018
+#: inc/taxonomies.php:1042
+#: inc/taxonomies.php:1067
+#: inc/taxonomies.php:1091
+#: inc/taxonomies.php:1118
+#: inc/taxonomies.php:1585
+#: inc/taxonomies.php:1656
+#: inc/taxonomies.php:1683
+#: inc/taxonomies.php:1710
+msgid "False"
+msgstr "Nepravda"
+
+#: dist/simple-tags/inc/related-posts.php:406
+#: dist/simple-tags/inc/related-posts.php:563
+#: dist/simple-tags/inc/related-posts.php:997
+#: dist/simple-tags/inc/schedule.php:327
+#: dist/simple-tags/inc/tag-clouds.php:402
+#: dist/simple-tags/inc/tag-clouds.php:746
+#: dist/simple-tags/inc/tag-clouds.php:784
+#: dist/simple-tags/inc/tag-clouds.php:856
+#: dist/simple-tags/inc/taxonomies.php:637
+#: dist/simple-tags/inc/taxonomies.php:767
+#: dist/simple-tags/inc/taxonomies.php:780
+#: dist/simple-tags/inc/taxonomies.php:894
+#: dist/simple-tags/inc/taxonomies.php:934
+#: dist/simple-tags/inc/taxonomies.php:962
+#: dist/simple-tags/inc/taxonomies.php:998
+#: dist/simple-tags/inc/taxonomies.php:1022
+#: dist/simple-tags/inc/taxonomies.php:1046
+#: dist/simple-tags/inc/taxonomies.php:1072
+#: dist/simple-tags/inc/taxonomies.php:1096
+#: dist/simple-tags/inc/taxonomies.php:1123
+#: dist/simple-tags/inc/taxonomies.php:1589
+#: dist/simple-tags/inc/taxonomies.php:1660
+#: dist/simple-tags/inc/taxonomies.php:1687
+#: dist/simple-tags/inc/taxonomies.php:1714
+#: inc/related-posts.php:406
+#: inc/related-posts.php:563
+#: inc/related-posts.php:997
+#: inc/schedule.php:327
+#: inc/tag-clouds.php:402
+#: inc/tag-clouds.php:746
+#: inc/tag-clouds.php:784
+#: inc/tag-clouds.php:856
+#: inc/taxonomies.php:637
+#: inc/taxonomies.php:767
+#: inc/taxonomies.php:780
+#: inc/taxonomies.php:894
+#: inc/taxonomies.php:934
+#: inc/taxonomies.php:962
+#: inc/taxonomies.php:998
+#: inc/taxonomies.php:1022
+#: inc/taxonomies.php:1046
+#: inc/taxonomies.php:1072
+#: inc/taxonomies.php:1096
+#: inc/taxonomies.php:1123
+#: inc/taxonomies.php:1589
+#: inc/taxonomies.php:1660
+#: inc/taxonomies.php:1687
+#: inc/taxonomies.php:1714
+msgid "True"
+msgstr "Pravda"
+
+#: dist/simple-tags/inc/related-posts.php:416
+#: inc/related-posts.php:416
+msgid "Hide title in output ?"
+msgstr "Skryť názov vo výstupe ?"
+
+#: dist/simple-tags/inc/related-posts.php:428
+#: dist/simple-tags/inc/schedule-logs-table.php:192
+#: inc/related-posts.php:428
+#: inc/schedule-logs-table.php:192
+msgid "None"
+msgstr "Žiadny"
+
+#: dist/simple-tags/inc/related-posts.php:432
+#: inc/related-posts.php:432, fuzzy
+msgid "H1"
+msgstr "H1"
+
+#: dist/simple-tags/inc/related-posts.php:436
+#: inc/related-posts.php:436, fuzzy
+msgid "H2"
+msgstr "H2"
+
+#: dist/simple-tags/inc/related-posts.php:440
+#: inc/related-posts.php:440, fuzzy
+msgid "H3"
+msgstr "H3"
+
+#: dist/simple-tags/inc/related-posts.php:444
+#: inc/related-posts.php:444, fuzzy
+msgid "H4"
+msgstr "H4"
+
+#: dist/simple-tags/inc/related-posts.php:449
+#: inc/related-posts.php:449, fuzzy
+msgid "H5"
+msgstr "H5"
+
+#: dist/simple-tags/inc/related-posts.php:453
+#: inc/related-posts.php:453, fuzzy
+msgid "H6"
+msgstr "H6"
+
+#: dist/simple-tags/inc/related-posts.php:467
+#: inc/related-posts.php:467
+msgid "Title header"
+msgstr "Názov hlavičky"
+
+#: dist/simple-tags/inc/related-posts.php:521
+#: dist/simple-tags/inc/tag-clouds.php:813
+#: inc/related-posts.php:521
+#: inc/tag-clouds.php:813
+msgid "Font size minimum"
+msgstr "Minimálna veľkosť písma"
+
+#: dist/simple-tags/inc/related-posts.php:531
+#: dist/simple-tags/inc/tag-clouds.php:823
+#: inc/related-posts.php:531
+#: inc/tag-clouds.php:823
+msgid "Font size maximum"
+msgstr "Maximálna veľkosť písma"
+
+#: dist/simple-tags/inc/related-posts.php:538
+#: dist/simple-tags/inc/tag-clouds.php:830
+#: inc/related-posts.php:538
+#: inc/tag-clouds.php:830
+msgid "Point"
+msgstr "Bod"
+
+#: dist/simple-tags/inc/related-posts.php:539
+#: dist/simple-tags/inc/tag-clouds.php:831
+#: inc/related-posts.php:539
+#: inc/tag-clouds.php:831, fuzzy
+msgid "Pixel"
+msgstr "Pixel"
+
+#: dist/simple-tags/inc/related-posts.php:540
+#: dist/simple-tags/inc/tag-clouds.php:832
+#: inc/related-posts.php:540
+#: inc/tag-clouds.php:832, fuzzy
+msgid "Em"
+msgstr "Em"
+
+#: dist/simple-tags/inc/related-posts.php:541
+#: dist/simple-tags/inc/tag-clouds.php:833
+#: inc/related-posts.php:541
+#: inc/tag-clouds.php:833
+msgid "Percent"
+msgstr "Percento"
+
+#: dist/simple-tags/inc/related-posts.php:550
+#: dist/simple-tags/inc/tag-clouds.php:842
+#: inc/related-posts.php:550
+#: inc/tag-clouds.php:842
+msgid "Unit font size"
+msgstr "Jednotka veľkosti písma"
+
+#: dist/simple-tags/inc/related-posts.php:574
+#: dist/simple-tags/inc/tag-clouds.php:873
+#: inc/related-posts.php:574
+#: inc/tag-clouds.php:873
+msgid "Enable colors for terms"
+msgstr "Povoliť farby pre termíny"
+
+#: dist/simple-tags/inc/related-posts.php:584
+#: dist/simple-tags/inc/tag-clouds.php:883
+#: inc/related-posts.php:584
+#: inc/tag-clouds.php:883
+msgid "Font color minimum"
+msgstr "Minimálna farba písma"
+
+#: dist/simple-tags/inc/related-posts.php:585
+#: inc/related-posts.php:585
+msgid "This is the color of the least popular term."
+msgstr "Toto je farba najmenej populárneho výrazu."
+
+#: dist/simple-tags/inc/related-posts.php:595
+#: dist/simple-tags/inc/tag-clouds.php:894
+#: inc/related-posts.php:595
+#: inc/tag-clouds.php:894
+msgid "Font color maximum"
+msgstr "Maximálna farba písma"
+
+#: dist/simple-tags/inc/related-posts.php:596
+#: inc/related-posts.php:596
+msgid "This is the color of the most popular term."
+msgstr "Toto je farba najpopulárnejšieho výrazu."
+
+#: dist/simple-tags/inc/related-posts.php:640
+#: inc/related-posts.php:640
+msgid "Posts"
+msgstr "Príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:653
+#: inc/related-posts.php:653
+msgid "Maximum related posts to display"
+msgstr "Maximálny počet súvisiacich príspevkov na zobrazenie"
+
+#: dist/simple-tags/inc/related-posts.php:657
+#: inc/related-posts.php:657
+msgid "Specify the number of related posts to display."
+msgstr "Určte počet súvisiacich príspevkov na zobrazenie."
+
+#: dist/simple-tags/inc/related-posts.php:661
+#: inc/related-posts.php:661
+msgid "Attempt to automatically display related posts"
+msgstr "Pokúsiť sa automaticky zobraziť súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:664
+#: inc/related-posts.php:664
+msgid ""
+"PublishPress Taxonomies will attempt to automatically display related posts "
+"in this content. It may not be successful for all post types and layouts."
+msgstr ""
+"PublishPress taxonomies sa pokúsi automaticky zobraziť súvisiace príspevky "
+"v tomto obsahu. Môže to byť neúspešné pre všetky typy príspevkov a "
+"rozloženia."
+
+#: dist/simple-tags/inc/related-posts.php:713
+#: inc/related-posts.php:713
+msgid "Box List"
+msgstr "Zoznam políčok"
+
+#: dist/simple-tags/inc/related-posts.php:714
+#: dist/simple-tags/inc/tag-clouds-table.php:377
+#: dist/simple-tags/inc/tag-clouds.php:656
+#: inc/related-posts.php:714
+#: inc/tag-clouds-table.php:377
+#: inc/tag-clouds.php:656
+msgid "Unordered List (UL/LI)"
+msgstr "Neusporiadaný zoznam (UL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:715
+#: dist/simple-tags/inc/tag-clouds-table.php:378
+#: dist/simple-tags/inc/tag-clouds.php:657
+#: inc/related-posts.php:715
+#: inc/tag-clouds-table.php:378
+#: inc/tag-clouds.php:657
+msgid "Ordered List (OL/LI)"
+msgstr "Usporiadaný zoznam (OL/LI)"
+
+#: dist/simple-tags/inc/related-posts.php:744
+#: dist/simple-tags/inc/tag-clouds.php:939
+#: inc/related-posts.php:744
+#: inc/tag-clouds.php:939
+msgid "Term link format"
+msgstr "Formát odkazu na výraz"
+
+#: dist/simple-tags/inc/related-posts.php:745
+#: inc/related-posts.php:745
+#, php-format
+msgid ""
+"This settings allows to customize the appearance of Related Post links. You "
+"can find tokens and explanations in the sidebar and %1sin the "
+"documentation%2s."
+msgstr ""
+"Toto nastavenie umožňuje prispôsobiť vzhľad odkazov na súvisiace príspevky. "
+"Môžete nájsť tokeny a vysvetlenia v bočnom paneli a %1$s v dokumentácii%2$s."
+
+#: dist/simple-tags/inc/related-posts.php:791
+#: inc/related-posts.php:791
+msgid "PublishPress Taxonomies will display related posts from selected post types."
+msgstr ""
+"PublishPress taxonomies zobrazí súvisiace príspevky z vybraných typov "
+"príspevkov."
+
+#: dist/simple-tags/inc/related-posts.php:845
+#: inc/related-posts.php:845
+msgid "Text to display before posts list"
+msgstr "Text na zobrazenie pred zoznamom príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:849
+#: inc/related-posts.php:849
+msgid "Enter the text that should be displayed before the posts list."
+msgstr "Zadajte text, ktorý by sa mal zobraziť pred zoznamom príspevkov."
+
+#: dist/simple-tags/inc/related-posts.php:861
+#: inc/related-posts.php:861
+msgid "Text to display after posts list"
+msgstr "Text na zobrazenie po zozname príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:865
+#: inc/related-posts.php:865
+msgid "Enter the text that should be display after the posts list."
+msgstr "Zadajte text, ktorý by sa mal zobraziť po zozname príspevkov."
+
+#: dist/simple-tags/inc/related-posts.php:876
+#: dist/simple-tags/inc/tag-clouds.php:605
+#: inc/related-posts.php:876
+#: inc/tag-clouds.php:605
+msgid "24 hours"
+msgstr "24 hodín"
+
+#: dist/simple-tags/inc/related-posts.php:880
+#: dist/simple-tags/inc/tag-clouds.php:606
+#: inc/related-posts.php:880
+#: inc/tag-clouds.php:606
+msgid "7 days"
+msgstr "7 dní"
+
+#: dist/simple-tags/inc/related-posts.php:884
+#: dist/simple-tags/inc/tag-clouds.php:607
+#: inc/related-posts.php:884
+#: inc/tag-clouds.php:607
+msgid "2 weeks"
+msgstr "2 týždne"
+
+#: dist/simple-tags/inc/related-posts.php:888
+#: dist/simple-tags/inc/tag-clouds.php:608
+#: dist/simple-tags/review-request/review.php:298
+#: inc/related-posts.php:888
+#: inc/tag-clouds.php:608
+#: review-request/review.php:298
+msgid "1 month"
+msgstr "1 mesiac"
+
+#: dist/simple-tags/inc/related-posts.php:892
+#: dist/simple-tags/inc/tag-clouds.php:609
+#: inc/related-posts.php:892
+#: inc/tag-clouds.php:609
+msgid "6 months"
+msgstr "6 mesiacov"
+
+#: dist/simple-tags/inc/related-posts.php:896
+#: dist/simple-tags/inc/tag-clouds.php:610
+#: inc/related-posts.php:896
+#: inc/tag-clouds.php:610
+msgid "1 year"
+msgstr "1 rok"
+
+#: dist/simple-tags/inc/related-posts.php:900
+#: dist/simple-tags/inc/schedule.php:396
+#: dist/simple-tags/inc/schedule.php:430
+#: dist/simple-tags/inc/tag-clouds.php:611
+#: inc/related-posts.php:900
+#: inc/schedule.php:396
+#: inc/schedule.php:430
+#: inc/tag-clouds.php:611
+msgid "No limit"
+msgstr "Bez obmedzenia"
+
+#: dist/simple-tags/inc/related-posts.php:911
+#: inc/related-posts.php:911
+msgid "Limit related posts based on timeframe"
+msgstr "Obmedziť súvisiace príspevky na základe časového rámca"
+
+#: dist/simple-tags/inc/related-posts.php:923
+#: inc/related-posts.php:923
+msgid "Least common tags between posts"
+msgstr "Najmenej bežné tagy medzi príspevkami"
+
+#: dist/simple-tags/inc/related-posts.php:930
+#: inc/related-posts.php:930
+msgid "Most common tags between posts"
+msgstr "Najbežnejšie tagy medzi príspevkami"
+
+#: dist/simple-tags/inc/related-posts.php:938
+#: inc/related-posts.php:938
+msgid "Older Entries"
+msgstr "Staršie záznamy"
+
+#: dist/simple-tags/inc/related-posts.php:942
+#: inc/related-posts.php:942
+msgid "Newer Entries"
+msgstr "Novšie záznamy"
+
+#: dist/simple-tags/inc/related-posts.php:946
+#: inc/related-posts.php:946
+msgid "Alphabetical"
+msgstr "Abecedne"
+
+#: dist/simple-tags/inc/related-posts.php:950
+#: inc/related-posts.php:950
+msgid "Inverse Alphabetical"
+msgstr "Inverzne abecedne"
+
+#: dist/simple-tags/inc/related-posts.php:957
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:870
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:930
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:974
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+#: inc/related-posts.php:957
+#: includes-core/TaxopressCoreAdmin.php:870
+#: includes-core/TaxopressCoreAdmin.php:930
+#: includes-core/TaxopressCoreAdmin.php:974
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
+msgid "Random"
+msgstr "Náhodne"
+
+#: dist/simple-tags/inc/related-posts.php:967
+#: inc/related-posts.php:967
+msgid "Related Posts Order"
+msgstr "Poradie súvisiacich príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:979
+#: inc/related-posts.php:979
+msgid "Text to show when there is no related post"
+msgstr "Text, ktorý sa zobrazí, ak nie sú žiadne súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:1007
+#: inc/related-posts.php:1007
+msgid "Hide output if no related post is found ?"
+msgstr "Skryť výstup, ak sa nenájde žiadny súvisiaci príspevok?"
+
+#: dist/simple-tags/inc/related-posts.php:1029
+#: inc/related-posts.php:1029
+msgid "Related Posts div class"
+msgstr "Div trieda súvisiacich príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:1040
+#: dist/simple-tags/inc/tag-clouds.php:926
+#: inc/related-posts.php:1040
+#: inc/tag-clouds.php:926
+msgid "Term link class"
+msgstr "Trieda odkazu na termín"
+
+#: dist/simple-tags/inc/related-posts.php:1047
+#: inc/related-posts.php:1047
+msgid "d.m.Y (e.g., 09.10.2024)"
+msgstr "d.m.Y (napr. 09.10.2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1048
+#: inc/related-posts.php:1048
+msgid "F j, Y (e.g., October 9, 2024)"
+msgstr "F j, Y (napr. 9. október 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1049
+#: inc/related-posts.php:1049
+msgid "Y-m-d (e.g., 2024-10-09)"
+msgstr "Y-m-d (napr. 2024-10-09)"
+
+#: dist/simple-tags/inc/related-posts.php:1050
+#: inc/related-posts.php:1050
+msgid "m/d/Y (e.g., 10/09/2024)"
+msgstr "m/d/Y (napr. 10/09/2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1051
+#: inc/related-posts.php:1051
+msgid "d M, Y (e.g., 09 Oct, 2024)"
+msgstr "d M, Y (napr. 09 Okt, 2024)"
+
+#: dist/simple-tags/inc/related-posts.php:1060
+#: inc/related-posts.php:1060
+msgid "Post date format"
+msgstr "Formát dátumu príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1069
+#: inc/related-posts.php:1069
+msgid "Maximum characters of post content to display"
+msgstr "Maximálny počet znakov obsahu príspevku na zobrazenie"
+
+#: dist/simple-tags/inc/related-posts.php:1082
+#: inc/related-posts.php:1082
+msgid "Maximum number of categories"
+msgstr "Maximálny počet kategórií"
+
+#: dist/simple-tags/inc/related-posts.php:1086
+#: inc/related-posts.php:1086
+msgid "You must set zero (0) to display all post categories."
+msgstr "Musíte nastaviť nulu (0), aby ste zobrazili všetky kategórie príspevkov."
+
+#: dist/simple-tags/inc/related-posts.php:1096
+#: inc/related-posts.php:1096
+msgid "Maximum number of tags"
+msgstr "Maximálny počet tagov"
+
+#: dist/simple-tags/inc/related-posts.php:1100
+#: inc/related-posts.php:1100
+msgid "You must set zero (0) to display all post tags."
+msgstr "Musíte nastaviť nulu (0), aby ste zobrazili všetky tagy príspevkov."
+
+#: dist/simple-tags/inc/related-posts.php:1107
+#: inc/related-posts.php:1107
+msgid "Thumbnail (150x150)"
+msgstr "Miniatúra (150x150)"
+
+#: dist/simple-tags/inc/related-posts.php:1108
+#: inc/related-posts.php:1108
+msgid "Medium (300x300)"
+msgstr "Stredná (300x300)"
+
+#: dist/simple-tags/inc/related-posts.php:1109
+#: inc/related-posts.php:1109
+msgid "Large (1024x1024)"
+msgstr "Veľká (1024x1024)"
+
+#: dist/simple-tags/inc/related-posts.php:1110
+#: inc/related-posts.php:1110
+msgid "1536x1536 (High Res)"
+msgstr "1536x1536 (Vysoké rozlíšenie)"
+
+#: dist/simple-tags/inc/related-posts.php:1111
+#: inc/related-posts.php:1111
+msgid "2048x2048 (Ultra High Res)"
+msgstr "2048x2048 (Ultra vysoké rozlíšenie)"
+
+#: dist/simple-tags/inc/related-posts.php:1122
+#: inc/related-posts.php:1122
+msgid "Thumbnail image resolution"
+msgstr "Rozlíšenie obrázka miniatúry"
+
+#: dist/simple-tags/inc/related-posts.php:1133
+#: inc/related-posts.php:1133
+msgid "Default post thumbnail"
+msgstr "Predvolená miniatúra príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1144
+#: inc/related-posts.php:1144
+msgid "Using default PublishPress Taxonomies image"
+msgstr "Použitie predvoleného obrázka PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/related-posts.php:1153
+#: inc/related-posts.php:1153
+msgid "Select Media"
+msgstr "Vybrať médiá"
+
+#: dist/simple-tags/inc/related-posts.php:1156
+#: inc/related-posts.php:1156
+msgid "Use Default Image"
+msgstr "Použiť predvolený obrázok"
+
+#: dist/simple-tags/inc/related-posts.php:1159
+#: inc/related-posts.php:1159
+msgid "Remove Image"
+msgstr "Odstrániť obrázok"
+
+#: dist/simple-tags/inc/related-posts.php:1166
+#: inc/related-posts.php:1166
+msgid ""
+"Select the default %post_thumb_url% to be used when a post doesn't have a "
+"featured image."
+msgstr ""
+"Vyberte predvolenú %post_thumb_url%, ktorá sa použije, keď príspevok nemá "
+"reprezentatívny obrázok."
+
+#: dist/simple-tags/inc/related-posts.php:1194
+#: inc/related-posts.php:1194
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                            The Pro version has more "
+"features and support."
+msgstr ""
+"Používate PublishPress Taxonomies Free. Pro verzia má viac funkcií a "
+"podporu."
+
+#: dist/simple-tags/inc/related-posts.php:1198
+#: dist/simple-tags/inc/tag-clouds.php:970
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:19
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:77
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:125
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:178
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:202
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:226
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:250
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:277
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:295
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:394
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:412
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:430
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:448
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:472
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:496
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:520
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:566
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:604
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:678
+#: inc/related-posts.php:1198
+#: inc/tag-clouds.php:970
+#: includes-core/TaxopressCoreAdmin.php:19
+#: includes-core/TaxopressCoreAdmin.php:77
+#: includes-core/TaxopressCoreAdmin.php:125
+#: includes-core/TaxopressCoreAdmin.php:178
+#: includes-core/TaxopressCoreAdmin.php:202
+#: includes-core/TaxopressCoreAdmin.php:226
+#: includes-core/TaxopressCoreAdmin.php:250
+#: includes-core/TaxopressCoreAdmin.php:277
+#: includes-core/TaxopressCoreAdmin.php:295
+#: includes-core/TaxopressCoreAdmin.php:394
+#: includes-core/TaxopressCoreAdmin.php:412
+#: includes-core/TaxopressCoreAdmin.php:430
+#: includes-core/TaxopressCoreAdmin.php:448
+#: includes-core/TaxopressCoreAdmin.php:472
+#: includes-core/TaxopressCoreAdmin.php:496
+#: includes-core/TaxopressCoreAdmin.php:520
+#: includes-core/TaxopressCoreAdmin.php:566
+#: includes-core/TaxopressCoreAdmin.php:604
+#: includes-core/TaxopressCoreAdmin.php:678
+msgid "Upgrade to Pro"
+msgstr "Prejsť na Pro"
+
+#: dist/simple-tags/inc/related-posts.php:1235
+#: inc/related-posts.php:1235
+msgid "Save Related Posts"
+msgstr "Uložiť súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:1243
+#: inc/related-posts.php:1243
+msgid "Add Related Posts"
+msgstr "Pridať súvisiace príspevky"
+
+#: dist/simple-tags/inc/related-posts.php:1256
+#: dist/simple-tags/inc/tag-clouds.php:1021
+#: inc/related-posts.php:1256
+#: inc/tag-clouds.php:1021, fuzzy
+msgid "Shortcode: "
+msgstr "Shortcode: "
+
+#: dist/simple-tags/inc/related-posts.php:1278
+#: inc/related-posts.php:1278
+msgid "Related Posts format"
+msgstr "Formát súvisiacich príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:1283
+#: inc/related-posts.php:1283
+msgid "Here are the tokens you can use for related posts format"
+msgstr "Tu sú tokeny, ktoré môžete použiť pre formát súvisiacich príspevkov"
+
+#: dist/simple-tags/inc/related-posts.php:1285
+#: inc/related-posts.php:1285
+msgid "The URL of the post"
+msgstr "URL príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1286
+#: inc/related-posts.php:1286
+msgid "The title of the post"
+msgstr "Názov príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1287
+#: inc/related-posts.php:1287
+msgid "The date of the post (this shows inside a tooltip)"
+msgstr "Dátum príspevku (toto sa zobrazuje v tooltip-e)"
+
+#: dist/simple-tags/inc/related-posts.php:1288
+#: inc/related-posts.php:1288
+msgid "The number of tags used by both posts"
+msgstr "Počet tagov použitých oboma príspevkami"
+
+#: dist/simple-tags/inc/related-posts.php:1289
+#: inc/related-posts.php:1289
+msgid "The number of comments on the post"
+msgstr "Počet komentárov k príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1290
+#: inc/related-posts.php:1290
+msgid "The ID of the post"
+msgstr "ID príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1291
+#: inc/related-posts.php:1291
+msgid "A list of tags used by both the current post and the related post"
+msgstr "Zoznam tagov použitých aktuálnym príspevkom a súvisiacim príspevkom"
+
+#: dist/simple-tags/inc/related-posts.php:1292
+#: inc/related-posts.php:1292
+msgid "The post excerpt"
+msgstr "Úryvok príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1293
+#: inc/related-posts.php:1293
+msgid "The post featured image url"
+msgstr "URL reprezentatívneho obrázku príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1294
+#: inc/related-posts.php:1294
+msgid "The post content"
+msgstr "Obsah príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1295
+#: inc/related-posts.php:1295
+msgid "The post category"
+msgstr "Kategória príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1296
+#: inc/related-posts.php:1296
+msgid "The font size of the post"
+msgstr "Veľkosť písma príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1297
+#: inc/related-posts.php:1297
+msgid "The color of the post title"
+msgstr "Farba názvu príspevku"
+
+#: dist/simple-tags/inc/related-posts.php:1319
+#: dist/simple-tags/inc/tag-clouds.php:1082
+#: dist/simple-tags/inc/taxonomies.php:1976
+#: inc/related-posts.php:1319
+#: inc/tag-clouds.php:1082
+#: inc/taxonomies.php:1976
+msgid "Please complete the following required fields to save your changes:"
+msgstr "Prosím, vyplňte nasledujúce povinné polia, aby ste uložili svoje zmeny:"
+
+#: dist/simple-tags/inc/related-posts.php:1322
+#: dist/simple-tags/inc/tag-clouds.php:1085
+#: dist/simple-tags/inc/taxonomies.php:1979
+#: inc/related-posts.php:1322
+#: inc/tag-clouds.php:1085
+#: inc/taxonomies.php:1979
+msgid "Okay"
+msgstr "Dobre"
+
+#: dist/simple-tags/inc/related-posts.php:1331
+#: dist/simple-tags/inc/tag-clouds.php:1094
+#: dist/simple-tags/inc/taxonomies.php:1988
+#: inc/related-posts.php:1331
+#: inc/tag-clouds.php:1094
+#: inc/taxonomies.php:1988
+msgid "Yes"
+msgstr "Áno"
+
+#: dist/simple-tags/inc/related-posts.php:1343
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1141
+#: inc/related-posts.php:1343
+#: modules/taxopress-ai/taxopress-ai.php:1141
+msgid "Security check failed."
+msgstr "Bezpečnostná kontrola zlyhala."
+
+#: dist/simple-tags/inc/related-posts.php:1347
+#: dist/simple-tags/inc/tag-clouds.php:1113
+#: dist/simple-tags/inc/terms-functions.php:200
+#: dist/simple-tags/inc/terms-functions.php:217
+#: dist/simple-tags/inc/terms-functions.php:261
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1164
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1735
+#: inc/related-posts.php:1347
+#: inc/tag-clouds.php:1113
+#: inc/terms-functions.php:200
+#: inc/terms-functions.php:217
+#: inc/terms-functions.php:261
+#: modules/taxopress-ai/taxopress-ai.php:1164
+#: modules/taxopress-ai/taxopress-ai.php:1735
+msgid "Permission denied."
+msgstr "Prístup zamietnutý."
+
+#: dist/simple-tags/inc/related-posts.php:1354
+#: inc/related-posts.php:1354
+msgid "Select a post to see a preview."
+msgstr "Vyberte príspevok, aby ste videli náhľad."
+
+#: dist/simple-tags/inc/related-posts.php:1422
+#: inc/related-posts.php:1422
+msgid "No related posts found."
+msgstr "Nenašli sa žiadne súvisiace príspevky."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:13
+#: inc/schedule-logs-table.php:13, fuzzy
+msgid "autotermsschedulelog"
+msgstr "autotermsschedulelog"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:14
+#: inc/schedule-logs-table.php:14, fuzzy
+msgid "autotermsschedulelogs"
+msgstr "autotermsschedulelogs"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:51
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
+#: inc/schedule-logs-table.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
+msgid "Post"
+msgstr "Príspevok"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:52
+#: dist/simple-tags/inc/terms-table.php:858
+#: inc/schedule-logs-table.php:52
+#: inc/terms-table.php:858
+msgid "Post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:54
+#: inc/schedule-logs-table.php:54
+msgid "Terms added"
+msgstr "Podmienky pridané"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:55
+#: inc/schedule-logs-table.php:55
+msgid "Date"
+msgstr "Dátum"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:68
+#: inc/schedule-logs-table.php:68
+msgid "Schedule log is empty."
+msgstr "Záznam plánu je prázdny."
+
+#: dist/simple-tags/inc/schedule-logs-table.php:130
+#: inc/schedule-logs-table.php:130
+msgid "Edit Main Post"
+msgstr "Upraviť hlavný príspevok"
+
+#: dist/simple-tags/inc/schedule-logs-table.php:143
+#: inc/schedule-logs-table.php:143
+msgid "Delete Log"
+msgstr "Vymazať záznam"
+
+#: dist/simple-tags/inc/schedule.php:40
+#: dist/simple-tags/inc/schedule.php:41
+#: dist/simple-tags/inc/schedule.php:201
+#: inc/schedule.php:40
+#: inc/schedule.php:41
+#: inc/schedule.php:201
+msgid "Auto Terms Schedule"
+msgstr "Automatické podmienky plánu"
+
+#: dist/simple-tags/inc/schedule.php:83
+#: inc/schedule.php:83
+msgid "Schedule is disabled. Please enable a schedule frequency to run a test."
+msgstr "Plán je zakázaný. Prosím, povolte frekvenciu plánu na vykonanie testu."
+
+#: dist/simple-tags/inc/schedule.php:99
+#: inc/schedule.php:99
+#, php-format
+msgid ""
+"Scheduled the cron event %s to run now. The original event will not be "
+"affected."
+msgstr ""
+"Naplánoval cron udalosť %s na vykonanie teraz. Pôvodná udalosť nebude "
+"ovplyvnená."
+
+#: dist/simple-tags/inc/schedule.php:123
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+#: inc/schedule.php:123
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+msgid "An error occured."
+msgstr "Vyskytla sa chyba."
+
+#: dist/simple-tags/inc/schedule.php:126
+#: inc/schedule.php:126
+msgid "Limit per batches is required."
+msgstr "Obmedzenie na dávky je povinné."
+
+#: dist/simple-tags/inc/schedule.php:128
+#: inc/schedule.php:128
+msgid "Batches wait time is required."
+msgstr "Čas čakania na dávky je povinný."
+
+#: dist/simple-tags/inc/schedule.php:170
+#: inc/schedule.php:170
+msgid "Schedule is not enabled for selected Auto Terms."
+msgstr "Plánovanie nie je povolené pre vybrané Automatické termíny."
+
+#: dist/simple-tags/inc/schedule.php:203
+#: inc/schedule.php:203
+msgid ""
+"This feature allows you to run the Auto Terms feature on a schedule. This "
+"is helpful if you regularly import content into WordPress. PublishPress "
+"Taxonomies can run on a schedule and add terms to your imported content."
+msgstr ""
+"Táto funkcia vám umožňuje spustiť funkciu Automatické termíny podľa plánu. "
+"Toto je užitočné, ak pravidelne importujete obsah do WordPress. "
+"PublishPress Taxonomies môžu bežať podľa plánu a pridávať termíny do vášho "
+"importovaného obsahu."
+
+#: dist/simple-tags/inc/schedule.php:213
+#: inc/schedule.php:213
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: dist/simple-tags/inc/schedule.php:225
+#: inc/schedule.php:225
+msgid "Select an option..."
+msgstr "Vyberte možnosť..."
+
+#: dist/simple-tags/inc/schedule.php:249
+#: inc/schedule.php:249
+msgid "Auto Terms setting"
+msgstr "Nastavenie Automatických termínov"
+
+#: dist/simple-tags/inc/schedule.php:253
+#: inc/schedule.php:253
+msgid "Select Auto Terms settings to use when running the \"Schedule\" feature."
+msgstr ""
+"Vyberte nastavenia Automatických termínov, ktoré sa majú použiť pri "
+"spúšťaní funkcie \"Plánovať\"."
+
+#: dist/simple-tags/inc/schedule.php:259
+#: inc/schedule.php:259
+msgid "Do not run on a schedule"
+msgstr "Nespúšťať podľa plánu"
+
+#: dist/simple-tags/inc/schedule.php:260
+#: inc/schedule.php:260
+msgid "Weekly"
+msgstr "Týždenne"
+
+#: dist/simple-tags/inc/schedule.php:264
+#: inc/schedule.php:264
+msgid "Schedule Frequency"
+msgstr "Frekvencia plánu"
+
+#: dist/simple-tags/inc/schedule.php:290
+#: inc/schedule.php:290
+msgid "Disable 'Do not run on a schedule' to select schedule frequency."
+msgstr "Deaktivujte 'Nespúšťať podľa plánu' na výber frekvencie plánu."
+
+#: dist/simple-tags/inc/schedule.php:338
+#: inc/schedule.php:338
+msgid "Exclude previously analyzed content"
+msgstr "Vylúčiť predtým analyzovaný obsah"
+
+#: dist/simple-tags/inc/schedule.php:339
+#: inc/schedule.php:339
+msgid ""
+"This enables you to skip posts that have already been analyzed by the "
+"Schedule feature."
+msgstr ""
+"Toto vám umožňuje preskočiť príspevky, ktoré už boli analyzované funkciou "
+"Plánovať."
+
+#: dist/simple-tags/inc/schedule.php:347
+#: inc/schedule.php:347
+msgid "Limit per batches"
+msgstr "Obmedzenie na dávky"
+
+#: dist/simple-tags/inc/schedule.php:351
+#: inc/schedule.php:351
+msgid ""
+"This enables your scheduled Auto Terms to run in batches. If you have a lot "
+"of content, set this to a lower number to avoid timeouts."
+msgstr ""
+"Toto umožňuje vašim naplánovaným Automatickým termínom bežať v dávkach. Ak "
+"máte veľa obsahu, nastavte to na nižšie číslo, aby ste predišli časovým "
+"limitom."
+
+#: dist/simple-tags/inc/schedule.php:361
+#: inc/schedule.php:361
+msgid "Batches wait time"
+msgstr "Čas čakania na dávky"
+
+#: dist/simple-tags/inc/schedule.php:362
+#: inc/schedule.php:362
+msgid ""
+"This is the wait time (in seconds) between processing batches of Auto "
+"Terms. If you have a lot of existing content, set this to a higher number "
+"to avoid timeouts."
+msgstr ""
+"Toto je čas čakania (v sekundách) medzi spracovaním dávok Automatických "
+"termínov. Ak máte veľa existujúceho obsahu, nastavte to na vyššie číslo, "
+"aby ste predišli časovým limitom."
+
+#: dist/simple-tags/inc/schedule.php:371
+#: dist/simple-tags/inc/schedule.php:406
+#: inc/schedule.php:371
+#: inc/schedule.php:406
+msgid "24 hours ago"
+msgstr "Pred 24 hodinami"
+
+#: dist/simple-tags/inc/schedule.php:375
+#: dist/simple-tags/inc/schedule.php:410
+#: inc/schedule.php:375
+#: inc/schedule.php:410
+msgid "7 days ago"
+msgstr "pred 7 dňami"
+
+#: dist/simple-tags/inc/schedule.php:379
+#: dist/simple-tags/inc/schedule.php:414
+#: inc/schedule.php:379
+#: inc/schedule.php:414
+msgid "2 weeks ago"
+msgstr "pred 2 týždňami"
+
+#: dist/simple-tags/inc/schedule.php:383
+#: dist/simple-tags/inc/schedule.php:418
+#: inc/schedule.php:383
+#: inc/schedule.php:418
+msgid "1 month ago"
+msgstr "pred 1 mesiacom"
+
+#: dist/simple-tags/inc/schedule.php:388
+#: dist/simple-tags/inc/schedule.php:422
+#: inc/schedule.php:388
+#: inc/schedule.php:422
+msgid "6 months ago"
+msgstr "pred 6 mesiacmi"
+
+#: dist/simple-tags/inc/schedule.php:392
+#: dist/simple-tags/inc/schedule.php:426
+#: inc/schedule.php:392
+#: inc/schedule.php:426
+msgid "1 year ago"
+msgstr "pred 1 rokom"
+
+#: dist/simple-tags/inc/schedule.php:443
+#: inc/schedule.php:443
+msgid "Limit Auto Terms, based on published date"
+msgstr "Obmedziť Auto podmienky na základe dátumu publikovania"
+
+#: dist/simple-tags/inc/schedule.php:447
+#: inc/schedule.php:447
+msgid ""
+"This setting can limit your scheduled Auto Terms query to only recent "
+"content. We recommend using this feature to avoid timeouts on large sites."
+msgstr ""
+"Toto nastavenie môže obmedziť vašu naplánovanú požiadavku na Auto podmienky "
+"len na nedávny obsah. Odporúčame používať túto funkciu, aby ste predišli "
+"vypršaniu času na veľkých stránkach."
+
+#: dist/simple-tags/inc/schedule.php:457
+#: inc/schedule.php:457
+msgid "Save Settings"
+msgstr "Uložiť nastavenia"
+
+#: dist/simple-tags/inc/schedule.php:458
+#: inc/schedule.php:458
+msgid "Test Run"
+msgstr "Testovací beh"
+
+#: dist/simple-tags/inc/schedule.php:467
+#: inc/schedule.php:467
+msgid "Recent Schedule Runs"
+msgstr "Nedávne plánované behy"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+#, php-format
+msgid "You can see full log details on the %1s screen"
+msgstr "Úplné podrobnosti protokolu môžete vidieť na obrazovke %1s"
+
+#: dist/simple-tags/inc/schedule.php:473
+#: inc/schedule.php:473
+msgid "Auto Terms Logs"
+msgstr "Protokoly Auto podmienok"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:153
+#: dist/simple-tags/inc/tag-clouds-table.php:14
+#: dist/simple-tags/inc/tag-clouds-table.php:15
+#: dist/simple-tags/inc/tag-clouds.php:73
+#: dist/simple-tags/inc/tag-clouds.php:74
+#: dist/simple-tags/inc/tag-clouds.php:129
+#: inc/tag-clouds-functions.php:153
+#: inc/tag-clouds-table.php:14
+#: inc/tag-clouds-table.php:15
+#: inc/tag-clouds.php:73
+#: inc/tag-clouds.php:74
+#: inc/tag-clouds.php:129
+msgid "Terms Display"
+msgstr "Zobrazenie podmienok"
+
+#: dist/simple-tags/inc/tag-clouds-functions.php:254
+#: inc/tag-clouds-functions.php:254
+msgid "Terms Display successfully deleted."
+msgstr "Zobrazenie podmienok bolo úspešne vymazané."
+
+#: dist/simple-tags/inc/tag-clouds-table.php:67
+#: dist/simple-tags/inc/tag-clouds.php:435
+#: inc/tag-clouds-table.php:67
+#: inc/tag-clouds.php:435
+msgid "Post Type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:376
+#: dist/simple-tags/inc/tag-clouds.php:655
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:694
+#: inc/tag-clouds-table.php:376
+#: inc/tag-clouds.php:655
+#: includes-core/TaxopressCoreAdmin.php:694, fuzzy
+msgid "Cloud"
+msgstr "Cloud"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:379
+#: dist/simple-tags/inc/tag-clouds.php:658
+#: inc/tag-clouds-table.php:379
+#: inc/tag-clouds.php:658, fuzzy
+msgid "WordPress Default"
+msgstr "WordPress Default"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:380
+#: dist/simple-tags/inc/tag-clouds.php:659
+#: inc/tag-clouds-table.php:380
+#: inc/tag-clouds.php:659
+msgid "Table List"
+msgstr "Zoznam tabuliek"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:381
+#: dist/simple-tags/inc/tag-clouds.php:660
+#: inc/tag-clouds-table.php:381
+#: inc/tag-clouds.php:660
+msgid "Border Cloud"
+msgstr "Ohraničený Cloud"
+
+#: dist/simple-tags/inc/tag-clouds-table.php:382
+#: dist/simple-tags/inc/tag-clouds.php:661
+#: inc/tag-clouds-table.php:382
+#: inc/tag-clouds.php:661
+msgid "Parent / Child"
+msgstr "Rodič / Dieťa"
+
+#: dist/simple-tags/inc/tag-clouds.php:135
+#: inc/tag-clouds.php:135
+msgid "Add New Terms Display"
+msgstr "Pridať novú výstavu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:138
+#: inc/tag-clouds.php:138
+msgid ""
+"This feature allows you to create a customizable display of all the terms "
+"in one taxonomy."
+msgstr ""
+"Táto funkcia vám umožňuje vytvoriť prispôsobiteľnú výstavu všetkých "
+"termínov v jednej taxonomy."
+
+#: dist/simple-tags/inc/tag-clouds.php:161
+#: inc/tag-clouds.php:161
+msgid "Search Terms Display"
+msgstr "Hľadať výstavu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:242
+#: inc/tag-clouds.php:242
+msgid "Manage Terms Display"
+msgstr "Spravovať výstavu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:258
+#: inc/tag-clouds.php:258
+msgid "Preview Terms Display"
+msgstr "Náhľad výstavy termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:263
+#: inc/tag-clouds.php:263
+msgid "Move up"
+msgstr "Posunúť nahor"
+
+#: dist/simple-tags/inc/tag-clouds.php:266
+#: inc/tag-clouds.php:266
+msgid "Move down"
+msgstr "Posunúť nadol"
+
+#: dist/simple-tags/inc/tag-clouds.php:303
+#: inc/tag-clouds.php:303
+msgid "Edit Terms Display"
+msgstr "Upraviť výstavu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:310
+#: inc/tag-clouds.php:310
+msgid "Add new Terms Display"
+msgstr "Pridať novú výstavu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:321
+#: inc/tag-clouds.php:321
+msgid "To create more Terms Display, please upgrade to PublishPress Taxonomies Pro."
+msgstr ""
+"Ak chcete vytvoriť viac výstav termínov, prosím, prejdite na PublishPress "
+"Taxonomies Pro."
+
+#: dist/simple-tags/inc/tag-clouds.php:324
+#: inc/tag-clouds.php:324
+msgid ""
+"With PublishPress Taxonomies Pro, you can create unlimited Terms Display. "
+"You can create Terms Display for any taxonomy and then display those Terms "
+"Display anywhere on your site."
+msgstr ""
+"S PublishPress Taxonomies Pro môžete vytvoriť neobmedzené výstavy termínov. "
+"Môžete vytvárať výstavy termínov pre akúkoľvek taxonomy a potom tieto "
+"výstavy termínov zobraziť kdekoľvek na vašej stránke."
+
+#: dist/simple-tags/inc/tag-clouds.php:338
+#: inc/tag-clouds.php:338
+msgid "Choose Terms"
+msgstr "Vybrať termíny"
+
+#: dist/simple-tags/inc/tag-clouds.php:350
+#: inc/tag-clouds.php:350
+msgid "Exceptions"
+msgstr "Výnimky"
+
+#: dist/simple-tags/inc/tag-clouds.php:358
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:700
+#: inc/tag-clouds.php:358
+#: includes-core/TaxopressCoreAdmin.php:700
+msgid "Display Format"
+msgstr "Formát zobrazenia"
+
+#: dist/simple-tags/inc/tag-clouds.php:412
+#: inc/tag-clouds.php:412
+msgid "Hide title in output?"
+msgstr "Skryť názov vo výstupe?"
+
+#: dist/simple-tags/inc/tag-clouds.php:418
+#: inc/tag-clouds.php:418
+msgid "All post types"
+msgstr "Všetky typy príspevkov"
+
+#: dist/simple-tags/inc/tag-clouds.php:469
+#: inc/tag-clouds.php:469
+msgid "All Parent Terms"
+msgstr "Všetky nadradené termíny"
+
+#: dist/simple-tags/inc/tag-clouds.php:519
+#: inc/tag-clouds.php:519
+msgid "Parent Term"
+msgstr "Nadradený termín"
+
+#: dist/simple-tags/inc/tag-clouds.php:525
+#: inc/tag-clouds.php:525
+msgid "Display only Parent Terms"
+msgstr "Zobraziť len nadradené termíny"
+
+#: dist/simple-tags/inc/tag-clouds.php:526
+#: inc/tag-clouds.php:526
+msgid "Display only Sub-Terms"
+msgstr "Zobraziť len podtermíny"
+
+#: dist/simple-tags/inc/tag-clouds.php:527
+#: inc/tag-clouds.php:527
+msgid "Display Parents and Sub-Terms"
+msgstr "Zobraziť rodičov a podtermíny"
+
+#: dist/simple-tags/inc/tag-clouds.php:537
+#: inc/tag-clouds.php:537
+msgid "Display Mode"
+msgstr "Režim zobrazenia"
+
+#: dist/simple-tags/inc/tag-clouds.php:554
+#: inc/tag-clouds.php:554
+msgid "Term selection mode"
+msgstr "Režim výberu termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:562
+#: inc/tag-clouds.php:562
+msgid "Automatic"
+msgstr "Automatické"
+
+#: dist/simple-tags/inc/tag-clouds.php:565
+#: inc/tag-clouds.php:565
+msgid "Display terms based on settings in the \"General\" tab."
+msgstr "Zobrazte termíny na základe nastavení na karte \"Všeobecné\"."
+
+#: dist/simple-tags/inc/tag-clouds.php:571
+#: inc/tag-clouds.php:571
+msgid "Custom"
+msgstr "Vlastné"
+
+#: dist/simple-tags/inc/tag-clouds.php:574
+#: inc/tag-clouds.php:574
+msgid ""
+"Display only the specific terms entered in the \"Custom terms to display\" "
+"field below."
+msgstr ""
+"Zobrazte iba konkrétne termíny zadané v poli \"Vlastné termíny na "
+"zobrazenie\" nižšie."
+
+#: dist/simple-tags/inc/tag-clouds.php:580
+#: inc/tag-clouds.php:580
+msgid "Combined"
+msgstr "Kombinované"
+
+#: dist/simple-tags/inc/tag-clouds.php:583
+#: inc/tag-clouds.php:583
+msgid "Display automatic terms plus any additional custom terms specified below."
+msgstr ""
+"Zobrazte automatické termíny plus akékoľvek ďalšie vlastné termíny "
+"špecifikované nižšie."
+
+#: dist/simple-tags/inc/tag-clouds.php:598
+#: inc/tag-clouds.php:598
+msgid "Custom terms to display"
+msgstr "Vlastné termíny na zobrazenie"
+
+#: dist/simple-tags/inc/tag-clouds.php:599
+#: inc/tag-clouds.php:599
+msgid "Enter terms (comma-separated) to display. Used in Custom and Combined modes."
+msgstr ""
+"Zadajte termíny (oddelené čiarkou) na zobrazenie. Používa sa v režimoch "
+"Vlastné a Kombinované."
+
+#: dist/simple-tags/inc/tag-clouds.php:620
+#: inc/tag-clouds.php:620
+msgid "Limit terms based on timeframe"
+msgstr "Obmedziť termíny na základe časového rámca"
+
+#: dist/simple-tags/inc/tag-clouds.php:629
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:826
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+#: inc/tag-clouds.php:629
+#: includes-core/TaxopressCoreAdmin.php:826
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
+msgid "Ascending"
+msgstr "Vzostupne"
+
+#: dist/simple-tags/inc/tag-clouds.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:827
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+#: inc/tag-clouds.php:630
+#: includes-core/TaxopressCoreAdmin.php:827
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
+msgid "Descending"
+msgstr "Zostupne"
+
+#: dist/simple-tags/inc/tag-clouds.php:639
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:832
+#: inc/tag-clouds.php:639
+#: includes-core/TaxopressCoreAdmin.php:832
+msgid "Ordering for choosing terms for display"
+msgstr "Poradie pre výber termínov na zobrazenie"
+
+#: dist/simple-tags/inc/tag-clouds.php:688
+#: inc/tag-clouds.php:688
+msgid "Text to display before terms list"
+msgstr "Text na zobrazenie pred zoznamom termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:692
+#: inc/tag-clouds.php:692
+msgid ""
+"Enter the text that should be display before terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Zadajte text, ktorý by sa mal zobraziť pred zoznamom termínov. Toto pole "
+"akceptuje základný HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:704
+#: inc/tag-clouds.php:704
+msgid "Text to display after terms list"
+msgstr "Text na zobrazenie po zozname termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:708
+#: inc/tag-clouds.php:708
+msgid ""
+"Enter the text that should be display after terms list. This field accepts "
+"basic HTML."
+msgstr ""
+"Zadajte text, ktorý by sa mal zobraziť po zozname termínov. Toto pole "
+"akceptuje základný HTML."
+
+#: dist/simple-tags/inc/tag-clouds.php:729
+#: inc/tag-clouds.php:729
+msgid "Exclude terms from terms display"
+msgstr "Vylúčiť termíny zo zobrazenia termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:730
+#: inc/tag-clouds.php:730
+msgid "Enter terms (comma-separated) to exclude from the terms display."
+msgstr ""
+"Zadajte termíny (oddelené čiarkou), ktoré chcete vylúčiť zobrazenia "
+"termínov."
+
+#: dist/simple-tags/inc/tag-clouds.php:758
+#: inc/tag-clouds.php:758
+msgid "Exclude hidden terms from Terms Display?"
+msgstr "Vylúčiť skryté termíny zo zobrazenia termínov?"
+
+#: dist/simple-tags/inc/tag-clouds.php:794
+#: inc/tag-clouds.php:794
+msgid "Hide display output if no terms?"
+msgstr "Skryť výstup zobrazenia, ak nie sú termíny?"
+
+#: dist/simple-tags/inc/tag-clouds.php:803
+#: inc/tag-clouds.php:803
+msgid "Maximum terms to display"
+msgstr "Maximálny počet termínov na zobrazenie"
+
+#: dist/simple-tags/inc/tag-clouds.php:884
+#: inc/tag-clouds.php:884
+msgid "This is the color of the least popular term"
+msgstr "Toto je farba najmenej populárneho termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:895
+#: inc/tag-clouds.php:895
+msgid "This is the color of the most popular term"
+msgstr "Toto je farba najpopulárnejšieho termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:915
+#: inc/tag-clouds.php:915
+msgid "Term display div class"
+msgstr "Div triedy zobrazenia termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:940
+#: inc/tag-clouds.php:940
+#, php-format
+msgid ""
+"This option allows you to change the format of your terms. You can use any "
+"of the tokens in the \"Terms Display format\" sidebar\". Find more details "
+"%1sin the documentation%2s."
+msgstr ""
+"Táto možnosť vám umožňuje zmeniť formát vašich termínov. Môžete použiť "
+"akýkoľvek z tokenov v bočnom paneli \"Formát zobrazenia termínov\". Nájdite "
+"viac podrobností %1sin dokumentácii%2s."
+
+#: dist/simple-tags/inc/tag-clouds.php:966
+#: inc/tag-clouds.php:966
+msgid ""
+"You're using PublishPress Taxonomies Free.\n"
+"                                        The Pro version has more features "
+"and support."
+msgstr ""
+"Používate PublishPress Taxonomies Free.\n"
+"                                        Pro verzia má viac funkcií a "
+"podporu."
+
+#: dist/simple-tags/inc/tag-clouds.php:975
+#: inc/tag-clouds.php:975
+msgid "Font size minimum must not be greater than Font size maximum value."
+msgstr ""
+"Minimálna veľkosť písma nesmie byť väčšia ako maximálna hodnota veľkosti "
+"písma."
+
+#: dist/simple-tags/inc/tag-clouds.php:1007
+#: inc/tag-clouds.php:1007
+msgid "Save Terms Display"
+msgstr "Uložiť zobrazenie termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:1011
+#: inc/tag-clouds.php:1011
+msgid "Add Terms Display"
+msgstr "Pridať zobrazenie termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:1039
+#: inc/tag-clouds.php:1039
+msgid "Terms Display format"
+msgstr "Formát zobrazenia termínov"
+
+#: dist/simple-tags/inc/tag-clouds.php:1044
+#: inc/tag-clouds.php:1044
+msgid "Here are the tokens you can use for Term link format"
+msgstr "Tu sú tokeny, ktoré môžete použiť pre formát odkazu termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1046
+#: inc/tag-clouds.php:1046
+msgid "The URL of the term"
+msgstr "URL termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1047
+#: inc/tag-clouds.php:1047
+msgid "The ID of the term"
+msgstr "ID termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1048
+#: inc/tag-clouds.php:1048
+msgid "The weighted size of the term in the display"
+msgstr "Vážená veľkosť termínu v zobrazení"
+
+#: dist/simple-tags/inc/tag-clouds.php:1049
+#: inc/tag-clouds.php:1049
+msgid "The number of times the term is used"
+msgstr "Počet použití termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "This provides rel tag markup"
+msgstr "Toto poskytuje značkovanie rel tagu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1050
+#: inc/tag-clouds.php:1050
+msgid "it creates"
+msgstr "vytvára"
+
+#: dist/simple-tags/inc/tag-clouds.php:1051
+#: inc/tag-clouds.php:1051
+msgid "The font size for the term"
+msgstr "Veľkosť písma pre termín"
+
+#: dist/simple-tags/inc/tag-clouds.php:1052
+#: inc/tag-clouds.php:1052
+msgid "The font color for the term"
+msgstr "Farba písma pre termín"
+
+#: dist/simple-tags/inc/tag-clouds.php:1053
+#: inc/tag-clouds.php:1053
+msgid "The name of the term"
+msgstr "Názov termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1054
+#: inc/tag-clouds.php:1054
+msgid "The name of the term with any HTML stripped out"
+msgstr "Názov termínu bez HTML značiek"
+
+#: dist/simple-tags/inc/tag-clouds.php:1055
+#: inc/tag-clouds.php:1055
+msgid "The description of the term"
+msgstr "Popis termínu"
+
+#: dist/simple-tags/inc/tag-clouds.php:1109
+#: inc/tag-clouds.php:1109
+msgid "Invalid nonce"
+msgstr "Neplatný nonce"
+
+#: dist/simple-tags/inc/tag-clouds.php:1117
+#: inc/tag-clouds.php:1117
+msgid "Missing display ID."
+msgstr "Chýbajúce ID zobrazenia."
+
+#: dist/simple-tags/inc/tag-clouds.php:1125
+#: inc/tag-clouds.php:1125
+msgid "Invalid terms display configuration."
+msgstr "Neplatná konfigurácia zobrazenia termínov."
+
+#: dist/simple-tags/inc/tag-clouds.php:1175
+#: inc/tag-clouds.php:1175
+msgid "There are no terms in this taxonomy."
+msgstr "V tejto taxonómii nie sú žiadne termíny."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:124
+#: dist/simple-tags/inc/taxonomies-functions.php:1969
+#: inc/taxonomies-functions.php:124
+#: inc/taxonomies-functions.php:1969
+msgid "Please provide a taxonomy to delete"
+msgstr "Prosím, poskytnite taxonómiu na odstránenie"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:274
+#: inc/taxonomies-functions.php:274
+msgid "Please provide a taxonomy name"
+msgstr "Prosím, poskytnite názov taxonómie"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1115
+#: inc/taxonomies-functions.php:1115
+msgid "Object"
+msgstr "Objekt"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1149
+#: dist/simple-tags/inc/taxonomies-functions.php:1560
+#: inc/taxonomies-functions.php:1149
+#: inc/taxonomies-functions.php:1560
+#, php-format
+msgid "%s has been successfully added"
+msgstr "%s bol úspešne pridaný"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1164
+#: dist/simple-tags/inc/taxonomies-functions.php:1562
+#: inc/taxonomies-functions.php:1164
+#: inc/taxonomies-functions.php:1562
+#, php-format
+msgid "%s has failed to be added"
+msgstr "%s sa nepodarilo pridať"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1179
+#: dist/simple-tags/inc/taxonomies-functions.php:1566
+#: inc/taxonomies-functions.php:1179
+#: inc/taxonomies-functions.php:1566
+#, php-format
+msgid "%s has been successfully updated"
+msgstr "%s bol úspešne aktualizovaný"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1193
+#: dist/simple-tags/inc/taxonomies-functions.php:1568
+#: inc/taxonomies-functions.php:1193
+#: inc/taxonomies-functions.php:1568
+#, php-format
+msgid "%s has failed to be updated"
+msgstr "%s sa nepodarilo aktualizovať"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1208
+#: dist/simple-tags/inc/taxonomies-functions.php:1572
+#: inc/taxonomies-functions.php:1208
+#: inc/taxonomies-functions.php:1572
+#, php-format
+msgid "%s has been successfully deleted"
+msgstr "%s bol úspešne odstránený"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1222
+#: dist/simple-tags/inc/taxonomies-functions.php:1574
+#: inc/taxonomies-functions.php:1222
+#: inc/taxonomies-functions.php:1574
+#, php-format
+msgid "%s has failed to be deleted"
+msgstr "%s sa nepodarilo odstrániť"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1234
+#: inc/taxonomies-functions.php:1234
+msgid "Nonce failed verification"
+msgstr "Overenie nonce zlyhalo"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1248
+#: inc/taxonomies-functions.php:1248
+#, php-format
+msgid "Please choose a different taxonomy name. %s is already registered."
+msgstr "Prosím, vyberte iný názov taxonómie. %s je už zaregistrovaný."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1261
+#: inc/taxonomies-functions.php:1261
+msgid "Please provide a post type to attach to."
+msgstr "Prosím, poskytnite post type, ku ktorému sa pripojiť."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1284
+#: inc/taxonomies-functions.php:1284
+#, php-format
+msgid ""
+"Please choose a different post type name. %s matches an existing page slug, "
+"which can cause conflicts."
+msgstr ""
+"Prosím, vyberte iný názov post type. %s sa zhoduje s existujúcim slugom "
+"stránky, čo môže spôsobiť konflikty."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1300
+#: inc/taxonomies-functions.php:1300
+msgid "Please do not use quotes in post type/taxonomy names or rewrite slugs"
+msgstr ""
+"Prosím, nepoužívajte úvodzovky v názvoch post type/taxonomy alebo "
+"prepisujte slugs"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1578
+#: inc/taxonomies-functions.php:1578
+#, php-format
+msgid "%s has been successfully imported"
+msgstr "%s bol úspešne importovaný"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1580
+#: inc/taxonomies-functions.php:1580
+#, php-format
+msgid "%s has failed to be imported"
+msgstr "%s sa nepodarilo importovať"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1666
+#: dist/simple-tags/inc/taxonomies-functions.php:1684
+#: dist/simple-tags/inc/taxonomies-functions.php:1707
+#: dist/simple-tags/inc/taxonomies-functions.php:1726
+#: dist/simple-tags/inc/taxonomies.php:1271
+#: inc/taxonomies-functions.php:1666
+#: inc/taxonomies-functions.php:1684
+#: inc/taxonomies-functions.php:1707
+#: inc/taxonomies-functions.php:1726
+#: inc/taxonomies.php:1271
+#, php-format
+msgid "Add new %s"
+msgstr "Pridať nový %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1667
+#: dist/simple-tags/inc/taxonomies-functions.php:1682
+#: dist/simple-tags/inc/taxonomies-functions.php:1708
+#: dist/simple-tags/inc/taxonomies-functions.php:1724
+#: dist/simple-tags/inc/taxonomies.php:1205
+#: inc/taxonomies-functions.php:1667
+#: inc/taxonomies-functions.php:1682
+#: inc/taxonomies-functions.php:1708
+#: inc/taxonomies-functions.php:1724
+#: inc/taxonomies.php:1205
+#, php-format
+msgid "Edit %s"
+msgstr "Upraviť %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1668
+#: dist/simple-tags/inc/taxonomies-functions.php:1709
+#: inc/taxonomies-functions.php:1668
+#: inc/taxonomies-functions.php:1709
+#, php-format
+msgid "New %s"
+msgstr "Nový %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1669
+#: dist/simple-tags/inc/taxonomies-functions.php:1670
+#: dist/simple-tags/inc/taxonomies-functions.php:1710
+#: dist/simple-tags/inc/taxonomies-functions.php:1713
+#: dist/simple-tags/inc/taxonomies.php:1226
+#: inc/taxonomies-functions.php:1669
+#: inc/taxonomies-functions.php:1670
+#: inc/taxonomies-functions.php:1710
+#: inc/taxonomies-functions.php:1713
+#: inc/taxonomies.php:1226
+#, php-format
+msgid "View %s"
+msgstr "Zobraziť %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1671
+#: dist/simple-tags/inc/taxonomies-functions.php:1679
+#: dist/simple-tags/inc/taxonomies-functions.php:1714
+#: dist/simple-tags/inc/taxonomies-functions.php:1732
+#: dist/simple-tags/inc/taxonomies-functions.php:2429
+#: dist/simple-tags/inc/taxonomies.php:1184
+#: dist/simple-tags/inc/terms-table.php:852
+#: inc/taxonomies-functions.php:1671
+#: inc/taxonomies-functions.php:1679
+#: inc/taxonomies-functions.php:1714
+#: inc/taxonomies-functions.php:1732
+#: inc/taxonomies-functions.php:2429
+#: inc/taxonomies.php:1184
+#: inc/terms-table.php:852
+#, php-format
+msgid "All %s"
+msgstr "Všetky %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1672
+#: dist/simple-tags/inc/taxonomies-functions.php:1677
+#: dist/simple-tags/inc/taxonomies-functions.php:1715
+#: dist/simple-tags/inc/taxonomies-functions.php:1730
+#: dist/simple-tags/inc/taxonomies.php:1355
+#: inc/taxonomies-functions.php:1672
+#: inc/taxonomies-functions.php:1677
+#: inc/taxonomies-functions.php:1715
+#: inc/taxonomies-functions.php:1730
+#: inc/taxonomies.php:1355
+#, php-format
+msgid "Search %s"
+msgstr "Hľadať %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1673
+#: dist/simple-tags/inc/taxonomies-functions.php:1716
+#: inc/taxonomies-functions.php:1673
+#: inc/taxonomies-functions.php:1716
+#, php-format
+msgid "No %s found."
+msgstr "Žiadne %s nenájdené."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1674
+#: dist/simple-tags/inc/taxonomies-functions.php:1717
+#: inc/taxonomies-functions.php:1674
+#: inc/taxonomies-functions.php:1717
+#, php-format
+msgid "No %s found in trash."
+msgstr "Žiadne %s nenájdené v koši."
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1678
+#: dist/simple-tags/inc/taxonomies-functions.php:1731
+#: dist/simple-tags/inc/taxonomies.php:1376
+#: inc/taxonomies-functions.php:1678
+#: inc/taxonomies-functions.php:1731
+#: inc/taxonomies.php:1376
+#, php-format
+msgid "Popular %s"
+msgstr "Populárne %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1680
+#: dist/simple-tags/inc/taxonomies-functions.php:1722
+#: dist/simple-tags/inc/taxonomies.php:1313
+#: inc/taxonomies-functions.php:1680
+#: inc/taxonomies-functions.php:1722
+#: inc/taxonomies.php:1313
+#, php-format
+msgid "Parent %s"
+msgstr "Rodičovský %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1681
+#: dist/simple-tags/inc/taxonomies-functions.php:1723
+#: dist/simple-tags/inc/taxonomies.php:1334
+#: inc/taxonomies-functions.php:1681
+#: inc/taxonomies-functions.php:1723
+#: inc/taxonomies.php:1334
+#, php-format
+msgid "Parent %s:"
+msgstr "Rodičovský %s:"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1683
+#: dist/simple-tags/inc/taxonomies-functions.php:1725
+#: inc/taxonomies-functions.php:1683
+#: inc/taxonomies-functions.php:1725
+#, php-format
+msgid "Update %s"
+msgstr "Aktualizovať %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1685
+#: dist/simple-tags/inc/taxonomies-functions.php:1727
+#: dist/simple-tags/inc/taxonomies.php:1292
+#: inc/taxonomies-functions.php:1685
+#: inc/taxonomies-functions.php:1727
+#: inc/taxonomies.php:1292
+#, php-format
+msgid "New %s name"
+msgstr "Nový názov %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1686
+#: dist/simple-tags/inc/taxonomies-functions.php:1733
+#: dist/simple-tags/inc/taxonomies.php:1402
+#: inc/taxonomies-functions.php:1686
+#: inc/taxonomies-functions.php:1733
+#: inc/taxonomies.php:1402
+#. translators: Used for autofill
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Oddel'te %s čiarkami"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1687
+#: dist/simple-tags/inc/taxonomies-functions.php:1734
+#: dist/simple-tags/inc/taxonomies.php:1427
+#: inc/taxonomies-functions.php:1687
+#: inc/taxonomies-functions.php:1734
+#: inc/taxonomies.php:1427
+#, php-format
+msgid "Add or remove %s"
+msgstr "Pridať alebo odstrániť %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1688
+#: dist/simple-tags/inc/taxonomies-functions.php:1735
+#: dist/simple-tags/inc/taxonomies.php:1453
+#: inc/taxonomies-functions.php:1688
+#: inc/taxonomies-functions.php:1735
+#: inc/taxonomies.php:1453
+#. translators: Used for autofill
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "Vyberte z najpoužívanejších %s"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1814
+#: inc/taxonomies-functions.php:1814
+msgid "Kindly select an action in bulk action dropdown!"
+msgstr "Prosím, vyberte akciu v rozbaľovacej ponuke hromadných akcií!"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1826
+#: inc/taxonomies-functions.php:1826
+msgid "Kindly select atleast one taxonomy to proceed"
+msgstr "Prosím, vyberte aspoň jednu taxonomy, aby ste mohli pokračovať"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1837
+#: inc/taxonomies-functions.php:1837
+msgid "Taxonomy has been successfully deactivated"
+msgstr "Taxonomy bola úspešne deaktivovaná"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1846
+#: inc/taxonomies-functions.php:1846
+msgid "Taxonomy has been successfully activated"
+msgstr "Taxonomy bola úspešne aktivovaná"
+
+#: dist/simple-tags/inc/taxonomies-functions.php:1855
+#: inc/taxonomies-functions.php:1855
+msgid "Taxonomy has been successfully deleted"
+msgstr "Taxonomy bola úspešne odstránená"
+
+#: dist/simple-tags/inc/taxonomies.php:77
+#: inc/taxonomies.php:77
+msgid ""
+"Are you sure you want to delete this? Deleting will NOT remove created "
+"content."
+msgstr "Ste si istý, že chcete toto odstrániť? Odstránenie NEVYMAŽE vytvorený obsah."
+
+#: dist/simple-tags/inc/taxonomies.php:81
+#: inc/taxonomies.php:81
+msgid "Please select at least one post type."
+msgstr "Prosím, vyberte aspoň jeden post type."
+
+#: dist/simple-tags/inc/taxonomies.php:83
+#: inc/taxonomies.php:83
+msgid "Taxonomy slug cannot be numbers only."
+msgstr "Taxonomy slug nemôže byť len čísla."
+
+#: dist/simple-tags/inc/taxonomies.php:114
+#: dist/simple-tags/inc/taxonomies.php:115
+#: dist/simple-tags/inc/taxonomies.php:170
+#: inc/taxonomies.php:114
+#: inc/taxonomies.php:115
+#: inc/taxonomies.php:170
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:172
+#: inc/taxonomies.php:172
+msgid "Add New"
+msgstr "Pridať novú"
+
+#: dist/simple-tags/inc/taxonomies.php:174
+#: inc/taxonomies.php:174
+msgid ""
+"This feature allows you to create new taxonomies and edit all the settings "
+"for each taxonomy."
+msgstr ""
+"Táto funkcia vám umožňuje vytvárať nové taxonomies a upravovať všetky "
+"nastavenia pre každú taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:197
+#: inc/taxonomies.php:197
+msgid "Search Taxonomies"
+msgstr "Vyhľadávať taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:215
+#: dist/simple-tags/inc/terms-table.php:876
+#: inc/taxonomies.php:215
+#: inc/terms-table.php:876
+msgid "All Taxonomies"
+msgstr "Všetky taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:216
+#: dist/simple-tags/inc/terms-table.php:877
+#: inc/taxonomies.php:216
+#: inc/terms-table.php:877
+msgid "Public Taxonomies"
+msgstr "Verejné taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:217
+#: dist/simple-tags/inc/terms-table.php:878
+#: inc/taxonomies.php:217
+#: inc/terms-table.php:878
+msgid "Private Taxonomies"
+msgstr "Súkromné taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:237
+#: inc/taxonomies.php:237
+msgid "All Post Types"
+msgstr "Všetky post types"
+
+#: dist/simple-tags/inc/taxonomies.php:297
+#: inc/taxonomies.php:297
+msgid "Invalid nonce. Request is not authorized."
+msgstr "Neplatný nonce. Žiadosť nie je autorizovaná."
+
+#: dist/simple-tags/inc/taxonomies.php:307
+#: inc/taxonomies.php:307
+msgid "You do not have permission to view terms in this taxonomy."
+msgstr "Nemáte povolenie zobraziť termíny v tejto taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:322
+#: inc/taxonomies.php:322
+msgid "Unable to retrieve terms for this taxonomy."
+msgstr "Nemožno načítať termíny pre túto taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:440
+#: inc/taxonomies.php:440
+msgid "Manage Taxonomy"
+msgstr "Spravovať Taxonómiu"
+
+#: dist/simple-tags/inc/taxonomies.php:462
+#: inc/taxonomies.php:462
+msgid "Edit Taxonomy"
+msgstr "Upraviť Taxonómiu"
+
+#: dist/simple-tags/inc/taxonomies.php:464
+#: inc/taxonomies.php:464
+msgid "Add new Taxonomy"
+msgstr "Pridať novú Taxonómiu"
+
+#: dist/simple-tags/inc/taxonomies.php:487
+#: inc/taxonomies.php:487
+msgid "Permalinks"
+msgstr "Permalinky"
+
+#: dist/simple-tags/inc/taxonomies.php:492
+#: inc/taxonomies.php:492
+msgid "Admin Area"
+msgstr "Admin Oblasť"
+
+#: dist/simple-tags/inc/taxonomies.php:496
+#: inc/taxonomies.php:496
+msgid "Other Labels"
+msgstr "Iné Označenia"
+
+#: dist/simple-tags/inc/taxonomies.php:500
+#: inc/taxonomies.php:500, fuzzy
+msgid "REST API"
+msgstr "REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:508
+#: inc/taxonomies.php:508
+msgid "Order"
+msgstr "Poradie"
+
+#: dist/simple-tags/inc/taxonomies.php:513
+#: dist/simple-tags/inc/terms-table.php:740
+#: dist/simple-tags/inc/terms-table.php:1442
+#: inc/taxonomies.php:513
+#: inc/terms-table.php:740
+#: inc/terms-table.php:1442, fuzzy
+msgid "Slug"
+msgstr "Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:522
+#: inc/taxonomies.php:522
+msgid "Deactivate or Delete"
+msgstr "Deaktivovať alebo Zmazať"
+
+#: dist/simple-tags/inc/taxonomies.php:540
+#: dist/simple-tags/inc/taxonomies.php:818
+#: inc/taxonomies.php:540
+#: inc/taxonomies.php:818
+msgid "Taxonomy Slug"
+msgstr "Taxonomický Slug"
+
+#: dist/simple-tags/inc/taxonomies.php:543
+#: dist/simple-tags/inc/taxonomies.php:821
+#: inc/taxonomies.php:543
+#: inc/taxonomies.php:821
+msgid "Slug has changed"
+msgstr "Slug sa zmenil"
+
+#: dist/simple-tags/inc/taxonomies.php:548
+#: dist/simple-tags/inc/taxonomies.php:826
+#: inc/taxonomies.php:548
+#: inc/taxonomies.php:826
+msgid "Slug already exists"
+msgstr "Slug už existuje"
+
+#: dist/simple-tags/inc/taxonomies.php:552
+#: dist/simple-tags/inc/taxonomies.php:831
+#: inc/taxonomies.php:552
+#: inc/taxonomies.php:831
+msgid "Special character not allowed in slug."
+msgstr "Špeciálny znak nie je povolený v slugu."
+
+#: dist/simple-tags/inc/taxonomies.php:563
+#: inc/taxonomies.php:563
+msgid ""
+"The “slug” is the URL-friendly version of the name. It is usually all "
+"lowercase and contains only letters, numbers, and underscores."
+msgstr ""
+"„Slug“ je verzia názvu priateľská k URL. Zvyčajne je celý malými písmenami "
+"a obsahuje iba písmená, čísla a podčiarkovníky."
+
+#: dist/simple-tags/inc/taxonomies.php:575
+#: dist/simple-tags/inc/taxonomies.php:851
+#: inc/taxonomies.php:575
+#: inc/taxonomies.php:851
+msgid ""
+"DO NOT EDIT the taxonomy slug unless also planning to migrate terms. "
+"Changing the slug registers a new taxonomy entry."
+msgstr ""
+"NEMENIŤ slug taxonómie, pokiaľ nemáte v pláne migráciu pojmov. Zmena slugu "
+"registruje nový záznam taxonómie."
+
+#: dist/simple-tags/inc/taxonomies.php:588
+#: dist/simple-tags/inc/taxonomies.php:864
+#: inc/taxonomies.php:588
+#: inc/taxonomies.php:864
+msgid "Migrate terms to newly renamed taxonomy?"
+msgstr "Migrovať pojmy do novo premenovanej taxonómie?"
+
+#: dist/simple-tags/inc/taxonomies.php:607
+#: dist/simple-tags/inc/taxonomies.php:1157
+#: inc/taxonomies.php:607
+#: inc/taxonomies.php:1157
+msgid "(e.g. Jobs)"
+msgstr "(napr. Práce)"
+
+#: dist/simple-tags/inc/taxonomies.php:608
+#: inc/taxonomies.php:608
+msgid "Plural Label"
+msgstr "Množné Označenie"
+
+#: dist/simple-tags/inc/taxonomies.php:619
+#: inc/taxonomies.php:619
+msgid "(e.g. Job)"
+msgstr "(napr. Práca)"
+
+#: dist/simple-tags/inc/taxonomies.php:620
+#: inc/taxonomies.php:620
+msgid "Singular Label"
+msgstr "Jednotné označenie"
+
+#: dist/simple-tags/inc/taxonomies.php:647
+#: inc/taxonomies.php:647
+msgid "Parent-Child Relationships"
+msgstr "Vzťahy rodič-dieťa"
+
+#: dist/simple-tags/inc/taxonomies.php:648
+#: inc/taxonomies.php:648
+msgid "Can terms in this taxonomy be organized into hierarchical relationships?"
+msgstr "Môžu byť podmienky v tejto taxonomy usporiadané do hierarchických vzťahov?"
+
+#: dist/simple-tags/inc/taxonomies.php:667
+#: dist/simple-tags/inc/terms-table.php:733
+#: dist/simple-tags/inc/terms-table.php:741
+#: inc/taxonomies.php:667
+#: inc/terms-table.php:733
+#: inc/terms-table.php:741
+msgid "Description"
+msgstr "Popis"
+
+#: dist/simple-tags/inc/taxonomies.php:668
+#: inc/taxonomies.php:668
+msgid "Describe what your taxonomy is used for."
+msgstr "Popíšte, na čo sa vaša taxonomy používa."
+
+#: dist/simple-tags/inc/taxonomies.php:679
+#: inc/taxonomies.php:679
+msgid "Default Terms"
+msgstr "Predvolené podmienky"
+
+#: dist/simple-tags/inc/taxonomies.php:680
+#: inc/taxonomies.php:680
+msgid ""
+"Set the default terms for this taxonomy. These will be automatically added "
+"to all new posts. Enter the term names or slugs. Separate multiple terms "
+"with by comma."
+msgstr ""
+"Nastavte predvolené podmienky pre túto taxonomy. Tieto budú automaticky "
+"pridané ku všetkým novým príspevkom. Zadajte názvy alebo slugs podmienok. "
+"Oddelte viacero podmienok čiarkou."
+
+#: dist/simple-tags/inc/taxonomies.php:795
+#: inc/taxonomies.php:795
+msgid "Archive page result"
+msgstr "Výsledok archívnej stránky"
+
+#: dist/simple-tags/inc/taxonomies.php:796
+#: inc/taxonomies.php:796
+msgid ""
+"Normally, WordPress will only show one post type on taxonomy archive pages. "
+"Enable this feature to show content from all selected posts types."
+msgstr ""
+"Normálne WordPress zobrazí iba jeden typ príspevku na archívnych stránkach "
+"taxonomy. Aktivujte túto funkciu, aby ste zobrazili obsah zo všetkých "
+"vybraných typov príspevkov."
+
+#: dist/simple-tags/inc/taxonomies.php:905
+#: inc/taxonomies.php:905
+msgid "Rewrite"
+msgstr "Prepis"
+
+#: dist/simple-tags/inc/taxonomies.php:906
+#: inc/taxonomies.php:906
+msgid ""
+"WordPress can use a custom permalink for this taxonomy. It does not have to "
+"match the slug."
+msgstr ""
+"WordPress môže použiť vlastný permalink pre túto taxonomy. Nemusí sa "
+"zhodovať so slugom."
+
+#: dist/simple-tags/inc/taxonomies.php:918
+#: inc/taxonomies.php:918
+msgid "(default: taxonomy name)"
+msgstr "(predvolené: názov taxonomy)"
+
+#: dist/simple-tags/inc/taxonomies.php:919
+#: inc/taxonomies.php:919
+msgid "Custom Rewrite Slug"
+msgstr "Vlastný prepis slug"
+
+#: dist/simple-tags/inc/taxonomies.php:920
+#: inc/taxonomies.php:920
+msgid "Custom taxonomy rewrite slug."
+msgstr "Vlastný prepis slug pre taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:945
+#: inc/taxonomies.php:945
+msgid "Rewrite With Front"
+msgstr "Prepis s predponou"
+
+#: dist/simple-tags/inc/taxonomies.php:946
+#: inc/taxonomies.php:946
+msgid "Should the permastruct be prepended with the front base."
+msgstr "Malo by byť predponou pridané základné URL."
+
+#: dist/simple-tags/inc/taxonomies.php:972
+#: inc/taxonomies.php:972
+msgid "Rewrite Hierarchical"
+msgstr "Hierarchický prepis"
+
+#: dist/simple-tags/inc/taxonomies.php:973
+#: inc/taxonomies.php:973
+msgid "Should the permastruct allow hierarchical urls."
+msgstr "Malo by byť povolené hierarchické URL v permastruktúre."
+
+#: dist/simple-tags/inc/taxonomies.php:1009
+#: inc/taxonomies.php:1009
+msgid "Show user interface"
+msgstr "Zobraziť užívateľské rozhranie"
+
+#: dist/simple-tags/inc/taxonomies.php:1010
+#: inc/taxonomies.php:1010
+msgid ""
+"Should there be a visible interface in the WordPress admin area to manage "
+"these terms?"
+msgstr ""
+"Malo by byť viditeľné rozhranie v administratívnej oblasti WordPress na "
+"správu týchto podmienok?"
+
+#: dist/simple-tags/inc/taxonomies.php:1033
+#: inc/taxonomies.php:1033
+msgid "Show in admin menus"
+msgstr "Zobraziť v administračných ponukách"
+
+#: dist/simple-tags/inc/taxonomies.php:1034
+#: inc/taxonomies.php:1034
+msgid "Should there be links to this taxonomy in the WordPress admin menus?"
+msgstr "Mali by byť odkazy na túto taxonomy v administračných ponukách WordPress?"
+
+#: dist/simple-tags/inc/taxonomies.php:1057
+#: inc/taxonomies.php:1057
+msgid "Show in frontend menus"
+msgstr "Zobraziť v predných ponukách"
+
+#: dist/simple-tags/inc/taxonomies.php:1058
+#: inc/taxonomies.php:1058
+msgid ""
+"Should this taxonomy be available for the frontend “Menus” and “Navigation” "
+"options?"
+msgstr ""
+"Mala by byť táto taxonomy dostupná pre možnosti „Ponuky“ a „Navigácia“ na "
+"prednej strane?"
+
+#: dist/simple-tags/inc/taxonomies.php:1082
+#: inc/taxonomies.php:1082
+msgid "Show admin column"
+msgstr "Zobraziť administračný stĺpec"
+
+#: dist/simple-tags/inc/taxonomies.php:1083
+#: inc/taxonomies.php:1083
+msgid ""
+"Should a column for this taxonomy appear on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Mala by sa zobraziť kolóna pre túto taxonomy na obrazovkách ako „Príspevky“ "
+"a „Strany“?"
+
+#: dist/simple-tags/inc/taxonomies.php:1106
+#: inc/taxonomies.php:1106
+msgid "Show in \"Quick Edit\" and \"Bulk Edit\""
+msgstr "Zobraziť v \"Rýchlej úprave\" a \"Hromadnej úprave\""
+
+#: dist/simple-tags/inc/taxonomies.php:1110
+#: inc/taxonomies.php:1110
+msgid ""
+"Should this taxonomy be available in editing tools on screens such as "
+"“Posts” and “Pages”?"
+msgstr ""
+"Mala by byť táto taxonomy dostupná v nástrojoch na úpravu na obrazovkách "
+"ako „Príspevky“ a „Strany“?"
+
+#: dist/simple-tags/inc/taxonomies.php:1134
+#: inc/taxonomies.php:1134
+msgid "Show in Filter"
+msgstr "Zobraziť vo filtri"
+
+#: dist/simple-tags/inc/taxonomies.php:1138
+#: inc/taxonomies.php:1138
+msgid ""
+"Should this taxonomy be available in filters on screens such as “Posts” and "
+"“Pages”?"
+msgstr ""
+"Mala by byť táto taxonomy dostupná vo filtroch na obrazovkách ako "
+"„Príspevky“ a „Strany“?"
+
+#: dist/simple-tags/inc/taxonomies.php:1158
+#: inc/taxonomies.php:1158
+msgid "Menu Name"
+msgstr "Názov ponuky"
+
+#: dist/simple-tags/inc/taxonomies.php:1159
+#: inc/taxonomies.php:1159
+msgid "Custom admin menu name for your taxonomy."
+msgstr "Vlastný názov administračnej ponuky pre vašu taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1175
+#: inc/taxonomies.php:1175
+msgid "(e.g. All Jobs)"
+msgstr "(napr. Všetky pracovné miesta)"
+
+#: dist/simple-tags/inc/taxonomies.php:1176
+#: inc/taxonomies.php:1176
+msgid "All Items"
+msgstr "Všetky položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1177
+#: inc/taxonomies.php:1177
+msgid ""
+"Used as tab text when showing all terms for hierarchical taxonomy while "
+"editing post."
+msgstr ""
+"Používa sa ako text tabuliek pri zobrazovaní všetkých podmienok pre "
+"hierarchickú taxonomy pri úprave príspevku."
+
+#: dist/simple-tags/inc/taxonomies.php:1196
+#: inc/taxonomies.php:1196
+msgid "(e.g. Edit Job)"
+msgstr "(napr. Upraviť pracovné miesto)"
+
+#: dist/simple-tags/inc/taxonomies.php:1197
+#: inc/taxonomies.php:1197
+msgid "Edit Item"
+msgstr "Upraviť položku"
+
+#: dist/simple-tags/inc/taxonomies.php:1198
+#: inc/taxonomies.php:1198
+msgid "Used at the top of the term editor screen for an existing taxonomy term."
+msgstr ""
+"Používa sa na vrchu obrazovky editora podmienok pre existujúcu podmienku "
+"taxonomy."
+
+#: dist/simple-tags/inc/taxonomies.php:1217
+#: inc/taxonomies.php:1217
+msgid "(e.g. View Job)"
+msgstr "(napr. Zobraziť pracovné miesto)"
+
+#: dist/simple-tags/inc/taxonomies.php:1218
+#: inc/taxonomies.php:1218
+msgid "View Item"
+msgstr "Zobraziť položku"
+
+#: dist/simple-tags/inc/taxonomies.php:1219
+#: inc/taxonomies.php:1219
+msgid ""
+"Used in the admin bar when viewing editor screen for an existing taxonomy "
+"term."
+msgstr ""
+"Používa sa v administrátorskom paneli pri zobrazení obrazovky editora pre "
+"existujúci termín taxonómie."
+
+#: dist/simple-tags/inc/taxonomies.php:1238
+#: inc/taxonomies.php:1238
+msgid "(e.g. Update Job Name)"
+msgstr "(napr. Aktualizovať názov úlohy)"
+
+#: dist/simple-tags/inc/taxonomies.php:1239
+#: inc/taxonomies.php:1239
+msgid "Update Item Name"
+msgstr "Aktualizovať názov položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1240
+#: dist/simple-tags/inc/taxonomies.php:1285
+#: dist/simple-tags/inc/taxonomies.php:1306
+#: dist/simple-tags/inc/taxonomies.php:1327
+#: dist/simple-tags/inc/taxonomies.php:1348
+#: dist/simple-tags/inc/taxonomies.php:1369
+#: dist/simple-tags/inc/taxonomies.php:1396
+#: dist/simple-tags/inc/taxonomies.php:1420
+#: dist/simple-tags/inc/taxonomies.php:1447
+#: inc/taxonomies.php:1240
+#: inc/taxonomies.php:1285
+#: inc/taxonomies.php:1306
+#: inc/taxonomies.php:1327
+#: inc/taxonomies.php:1348
+#: inc/taxonomies.php:1369
+#: inc/taxonomies.php:1396
+#: inc/taxonomies.php:1420
+#: inc/taxonomies.php:1447
+msgid "Custom taxonomy label. Used in the admin menu for displaying taxonomies."
+msgstr ""
+"Vlastný štítok taxonómie. Používa sa v administrátorskom menu na zobrazenie "
+"taxonómií."
+
+#: dist/simple-tags/inc/taxonomies.php:1247
+#: inc/taxonomies.php:1247
+#, php-format
+msgid "Update %s name"
+msgstr "Aktualizovať názov %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1262
+#: inc/taxonomies.php:1262
+msgid "(e.g. Add New Job)"
+msgstr "(napr. Pridať novú úlohu)"
+
+#: dist/simple-tags/inc/taxonomies.php:1263
+#: inc/taxonomies.php:1263
+msgid "Add New Item"
+msgstr "Pridať novú položku"
+
+#: dist/simple-tags/inc/taxonomies.php:1264
+#: inc/taxonomies.php:1264
+msgid ""
+"Used at the top of the term editor screen and button text for a new "
+"taxonomy term."
+msgstr ""
+"Používa sa na vrchu obrazovky editora termínov a textu tlačidla pre nový "
+"termín taxonómie."
+
+#: dist/simple-tags/inc/taxonomies.php:1283
+#: inc/taxonomies.php:1283
+msgid "(e.g. New Job Name)"
+msgstr "(napr. Nový názov úlohy)"
+
+#: dist/simple-tags/inc/taxonomies.php:1284
+#: inc/taxonomies.php:1284
+msgid "New Item Name"
+msgstr "Nový názov položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1304
+#: inc/taxonomies.php:1304
+msgid "(e.g. Parent Job)"
+msgstr "(napr. Rodičovská úloha)"
+
+#: dist/simple-tags/inc/taxonomies.php:1305
+#: inc/taxonomies.php:1305
+msgid "Parent Item"
+msgstr "Rodičovská položka"
+
+#: dist/simple-tags/inc/taxonomies.php:1325
+#: inc/taxonomies.php:1325
+msgid "(e.g. Parent Job:)"
+msgstr "(napr. Rodičovská úloha:)"
+
+#: dist/simple-tags/inc/taxonomies.php:1326
+#: inc/taxonomies.php:1326
+msgid "Parent Item Colon"
+msgstr "Rodičovská položka dvojbodka"
+
+#: dist/simple-tags/inc/taxonomies.php:1346
+#: inc/taxonomies.php:1346
+msgid "(e.g. Search Jobs)"
+msgstr "(napr. Hľadať úlohy)"
+
+#: dist/simple-tags/inc/taxonomies.php:1347
+#: inc/taxonomies.php:1347
+msgid "Search Items"
+msgstr "Hľadať položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1367
+#: inc/taxonomies.php:1367
+msgid "(e.g. Popular Jobs)"
+msgstr "(napr. Populárne úlohy)"
+
+#: dist/simple-tags/inc/taxonomies.php:1368
+#: inc/taxonomies.php:1368
+msgid "Popular Items"
+msgstr "Populárne položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1388
+#: inc/taxonomies.php:1388
+msgid "(e.g. Separate Jobs with commas)"
+msgstr "(napr. Oddeliť úlohy čiarkami)"
+
+#: dist/simple-tags/inc/taxonomies.php:1392
+#: inc/taxonomies.php:1392
+msgid "Separate Items with Commas"
+msgstr "Oddeliť položky čiarkami"
+
+#: dist/simple-tags/inc/taxonomies.php:1415
+#: inc/taxonomies.php:1415
+msgid "(e.g. Add or remove Jobs)"
+msgstr "(napr. Pridať alebo odstrániť pracovné miesta)"
+
+#: dist/simple-tags/inc/taxonomies.php:1419
+#: inc/taxonomies.php:1419
+msgid "Add or Remove Items"
+msgstr "Pridať alebo odstrániť položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1442
+#: inc/taxonomies.php:1442
+msgid "(e.g. Choose from the most used Jobs)"
+msgstr "(napr. Vyberte z najpoužívanejších pracovných miest)"
+
+#: dist/simple-tags/inc/taxonomies.php:1446
+#: inc/taxonomies.php:1446
+msgid "Choose From Most Used"
+msgstr "Vyberte z najpoužívanejších"
+
+#: dist/simple-tags/inc/taxonomies.php:1466
+#: inc/taxonomies.php:1466
+msgid "(e.g. No jobs)"
+msgstr "(napr. Žiadne pracovné miesta)"
+
+#: dist/simple-tags/inc/taxonomies.php:1467
+#: inc/taxonomies.php:1467
+msgid "No terms"
+msgstr "Žiadne termíny"
+
+#: dist/simple-tags/inc/taxonomies.php:1468
+#: inc/taxonomies.php:1468
+msgid ""
+"Used when indicating that there are no terms in the given taxonomy "
+"associated with an object."
+msgstr ""
+"Používa sa pri označovaní, že v danej taxonómii nie sú žiadne termíny "
+"spojené s objektom."
+
+#: dist/simple-tags/inc/taxonomies.php:1475
+#: inc/taxonomies.php:1475
+#, php-format
+msgid "No %s"
+msgstr "Žiadne %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1487
+#: inc/taxonomies.php:1487
+msgid "(e.g. Jobs list navigation)"
+msgstr "(napr. Navigácia v zozname pracovných miest)"
+
+#: dist/simple-tags/inc/taxonomies.php:1491
+#: inc/taxonomies.php:1491
+msgid "Items List Navigation"
+msgstr "Navigácia v zozname položiek"
+
+#: dist/simple-tags/inc/taxonomies.php:1492
+#: inc/taxonomies.php:1492
+msgid "Screen reader text for the pagination heading on the term listing screen."
+msgstr ""
+"Text pre čítačku obrazovky pre nadpis stránkovania na obrazovke so zoznamom "
+"termínov."
+
+#: dist/simple-tags/inc/taxonomies.php:1499
+#: inc/taxonomies.php:1499
+#, php-format
+msgid "%s list navigation"
+msgstr "%s navigácia v zozname"
+
+#: dist/simple-tags/inc/taxonomies.php:1514
+#: inc/taxonomies.php:1514
+msgid "(e.g. Jobs list)"
+msgstr "(napr. Zoznam pracovných miest)"
+
+#: dist/simple-tags/inc/taxonomies.php:1515
+#: inc/taxonomies.php:1515
+msgid "Items List"
+msgstr "Zoznam položiek"
+
+#: dist/simple-tags/inc/taxonomies.php:1516
+#: inc/taxonomies.php:1516
+msgid "Screen reader text for the items list heading on the term listing screen."
+msgstr ""
+"Text pre čítačku obrazovky pre nadpis zoznamu položiek na obrazovke so "
+"zoznamom termínov."
+
+#: dist/simple-tags/inc/taxonomies.php:1523
+#: inc/taxonomies.php:1523
+#, php-format
+msgid "%s list"
+msgstr "%s zoznam"
+
+#: dist/simple-tags/inc/taxonomies.php:1535
+#: inc/taxonomies.php:1535
+msgid "(e.g. No jobs found)"
+msgstr "(napr. Nenájdené pracovné miesta)"
+
+#: dist/simple-tags/inc/taxonomies.php:1536
+#: inc/taxonomies.php:1536
+msgid "Not Found"
+msgstr "Nenájdené"
+
+#: dist/simple-tags/inc/taxonomies.php:1537
+#: inc/taxonomies.php:1537
+msgid ""
+"The text displayed via clicking ‘Choose from the most used items’ in the "
+"taxonomy meta box when no items are available."
+msgstr ""
+"Text zobrazený po kliknutí na ‘Vybrať z najpoužívanejších položiek’ v meta "
+"boxe taxonómie, keď nie sú dostupné žiadne položky."
+
+#: dist/simple-tags/inc/taxonomies.php:1544
+#: inc/taxonomies.php:1544
+#, php-format
+msgid "No %s found"
+msgstr "Žiadne %s nenájdené"
+
+#: dist/simple-tags/inc/taxonomies.php:1556
+#: inc/taxonomies.php:1556
+msgid "(e.g. &larr; Back to jobs"
+msgstr "(napr. &larr; Späť na pracovné miesta"
+
+#: dist/simple-tags/inc/taxonomies.php:1560
+#: inc/taxonomies.php:1560
+msgid "Back to Items"
+msgstr "Späť na položky"
+
+#: dist/simple-tags/inc/taxonomies.php:1561
+#: inc/taxonomies.php:1561
+msgid ""
+"The text displayed after a term has been updated for a link back to main "
+"index."
+msgstr "Text zobrazený po termíne bol aktualizovaný pre odkaz späť na hlavný index."
+
+#: dist/simple-tags/inc/taxonomies.php:1568
+#: inc/taxonomies.php:1568
+#, php-format
+msgid "Back to %s"
+msgstr "Späť na %s"
+
+#: dist/simple-tags/inc/taxonomies.php:1600
+#: inc/taxonomies.php:1600
+msgid "Show in REST API"
+msgstr "Zobraziť v REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:1601
+#: inc/taxonomies.php:1601
+msgid "Add the taxonomy to the WordPress wp-json API."
+msgstr "Pridať taxonómiu do WordPress wp-json API."
+
+#: dist/simple-tags/inc/taxonomies.php:1621
+#: inc/taxonomies.php:1621
+msgid "REST API base slug"
+msgstr "Základný slug REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:1622
+#: inc/taxonomies.php:1622
+msgid "The base slug that this taxonomy will use in the REST API."
+msgstr "Základný slug, ktorý táto taxonómia použije v REST API."
+
+#: dist/simple-tags/inc/taxonomies.php:1630
+#: inc/taxonomies.php:1630
+msgid "REST API controller class"
+msgstr "Trieda ovládača REST API"
+
+#: dist/simple-tags/inc/taxonomies.php:1634
+#: inc/taxonomies.php:1634
+msgid ""
+"The name of a custom Rest Controller class instead of "
+"WP_REST_Terms_Controller."
+msgstr "Názov vlastnej triedy ovládača Rest namiesto WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1635
+#: inc/taxonomies.php:1635
+msgid "Custom controller to use instead of WP_REST_Terms_Controller."
+msgstr "Vlastný ovládač na použitie namiesto WP_REST_Terms_Controller."
+
+#: dist/simple-tags/inc/taxonomies.php:1671
+#: inc/taxonomies.php:1671
+msgid "Public"
+msgstr "Verejné"
+
+#: dist/simple-tags/inc/taxonomies.php:1672
+#: inc/taxonomies.php:1672
+msgid "The taxonomy is for public use. It can be seen by frontend users."
+msgstr ""
+"Taxonómia je určená na verejné použitie. Môže ju vidieť používateľ na "
+"frontende."
+
+#: dist/simple-tags/inc/taxonomies.php:1698
+#: inc/taxonomies.php:1698
+msgid "Public Queryable"
+msgstr "Verejne dotazovateľné"
+
+#: dist/simple-tags/inc/taxonomies.php:1699
+#: inc/taxonomies.php:1699
+msgid "The taxonomy is publicly queryable."
+msgstr "Taxonómia je verejne dotazovateľná."
+
+#: dist/simple-tags/inc/taxonomies.php:1725
+#: inc/taxonomies.php:1725
+msgid "Query Var"
+msgstr "Dotazová premenná"
+
+#: dist/simple-tags/inc/taxonomies.php:1726
+#: inc/taxonomies.php:1726
+msgid "Enable a custom query_var key for this taxonomy."
+msgstr "Povoliť vlastný kľúč query_var pre túto taxonómiu."
+
+#: dist/simple-tags/inc/taxonomies.php:1739
+#: inc/taxonomies.php:1739
+msgid "Custom Query Var String"
+msgstr "Vlastný reťazec query_var"
+
+#: dist/simple-tags/inc/taxonomies.php:1740
+#: inc/taxonomies.php:1740
+msgid "Sets a custom query_var slug for this taxonomy."
+msgstr "Nastavuje vlastný slug query_var pre túto taxonómiu."
+
+#: dist/simple-tags/inc/taxonomies.php:1751
+#: inc/taxonomies.php:1751
+msgid "Metabox callback"
+msgstr "Callback pre metabox"
+
+#: dist/simple-tags/inc/taxonomies.php:1752
+#: inc/taxonomies.php:1752
+msgid ""
+"Sets a callback function name for the meta box display. Hierarchical "
+"default: post_categories_meta_box, non-hierarchical default: "
+"post_tags_meta_box. To remove the metabox completely, use \"false\"."
+msgstr ""
+"Nastavuje názov funkcie spätného volania pre zobrazenie meta boxu. "
+"Hierarchický predvolený: post_categories_meta_box, nehierarchický "
+"predvolený: post_tags_meta_box. Ak chcete úplne odstrániť meta box, použite "
+"\"false\"."
+
+#: dist/simple-tags/inc/taxonomies.php:1763
+#: inc/taxonomies.php:1763
+msgid "Categories"
+msgstr "Kategórie"
+
+#: dist/simple-tags/inc/taxonomies.php:1771
+#: inc/taxonomies.php:1771
+#, php-format
+msgid ""
+"This feature controls the order of %s when you're editing posts, and in "
+"frontend displays."
+msgstr ""
+"Tato funkcia ovláda poradie %s, keď upravujete príspevky, a na "
+"frontendových zobrazeniach."
+
+#: dist/simple-tags/inc/taxonomies.php:1781
+#: inc/taxonomies.php:1781
+msgid "Enable PublishPress Taxonomies ordering"
+msgstr "Povoliť poradie PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:1786
+#: inc/taxonomies.php:1786
+msgid ""
+"Enable PublishPress Taxonomies ordering for this taxonomy in the frontend "
+"and admin area."
+msgstr ""
+"Povoliť poradie PublishPress Taxonomies pre túto taxonomy na frontend a v "
+"administračnej oblasti."
+
+#: dist/simple-tags/inc/taxonomies.php:1836
+#: inc/taxonomies.php:1836
+msgid "Re-activate Taxonomy"
+msgstr "Reaktivovať Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1839
+#: inc/taxonomies.php:1839
+msgid "Deactivate Taxonomy"
+msgstr "Deaktivovať Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1853
+#: inc/taxonomies.php:1853
+msgid "Delete Taxonomy"
+msgstr "Odstrániť Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1861
+#: inc/taxonomies.php:1861
+msgid "Delete PublishPress Taxonomies Edit Data"
+msgstr "Odstrániť údaje o úprave PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/taxonomies.php:1864
+#: inc/taxonomies.php:1864
+msgid ""
+"You can only delete taxonomies created with PublishPress Taxonomies. "
+"However, you can delete any changes or edit made from PublishPress "
+"Taxonomies which will remove PublishPress Taxonomies version edit restoring "
+"original taxonomies data or removing it if already deleted"
+msgstr ""
+"Môžete odstrániť iba taxonomie vytvorené pomocou PublishPress Taxonomies. "
+"Avšak môžete odstrániť akékoľvek zmeny alebo úpravy vykonané z PublishPress "
+"Taxonomies, čo odstráni verziu úpravy PublishPress Taxonomies a obnoví "
+"pôvodné údaje taxonomií alebo ich odstráni, ak boli už odstránené."
+
+#: dist/simple-tags/inc/taxonomies.php:1931
+#: inc/taxonomies.php:1931
+msgid "Save Taxonomy"
+msgstr "Uložiť Taxonomy"
+
+#: dist/simple-tags/inc/taxonomies.php:1946
+#: inc/taxonomies.php:1946
+msgid "Add Taxonomy"
+msgstr "Pridať Taxonomy"
+
+#: dist/simple-tags/inc/terms-functions.php:313
+#: inc/terms-functions.php:313
+msgid "Term copied successfully."
+msgstr "Termín bol úspešne skopírovaný."
+
+#: dist/simple-tags/inc/terms-functions.php:322
+#: dist/simple-tags/inc/terms-table.php:926
+#: inc/terms-functions.php:322
+#: inc/terms-table.php:926
+msgid "Term deleted successfully."
+msgstr "Termín bol úspešne odstránený."
+
+#: dist/simple-tags/inc/terms-functions.php:331
+#: inc/terms-functions.php:331
+msgid "Term removed from all posts successfully."
+msgstr "Termín bol úspešne odstránený zo všetkých príspevkov."
+
+#: dist/simple-tags/inc/terms-table.php:734
+#: dist/simple-tags/inc/terms-table.php:748
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1652
+#: inc/terms-table.php:734
+#: inc/terms-table.php:748
+#: modules/taxopress-ai/taxopress-ai.php:1652
+msgid "Count"
+msgstr "Počet"
+
+#: dist/simple-tags/inc/terms-table.php:744
+#: inc/terms-table.php:744
+msgid "Custom URL"
+msgstr "Vlastná URL"
+
+#: dist/simple-tags/inc/terms-table.php:745
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:581
+#: inc/terms-table.php:745
+#: includes-core/TaxopressCoreAdmin.php:581
+msgid "Synonyms"
+msgstr "Synonymá"
+
+#: dist/simple-tags/inc/terms-table.php:746
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:539
+#: inc/terms-table.php:746
+#: includes-core/TaxopressCoreAdmin.php:539
+msgid "Linked Terms"
+msgstr "Prepojené termíny"
+
+#: dist/simple-tags/inc/terms-table.php:747
+#: inc/terms-table.php:747
+msgid "Status"
+msgstr "Stav"
+
+#: dist/simple-tags/inc/terms-table.php:801
+#: dist/simple-tags/inc/terms-table.php:1219
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:318
+#: inc/terms-table.php:801
+#: inc/terms-table.php:1219
+#: includes-core/TaxopressCoreAdmin.php:318
+msgid "Copy"
+msgstr "Kopírovať"
+
+#: dist/simple-tags/inc/terms-table.php:841
+#: inc/terms-table.php:841
+msgid "Select Destination Taxonomy"
+msgstr "Vybrať cieľovú taxonómiu"
+
+#: dist/simple-tags/inc/terms-table.php:847
+#: inc/terms-table.php:847
+msgid "Search posts"
+msgstr "Vyhľadávať príspevky"
+
+#: dist/simple-tags/inc/terms-table.php:849
+#: inc/terms-table.php:849
+msgid "post type"
+msgstr "post type"
+
+#: dist/simple-tags/inc/terms-table.php:851
+#: inc/terms-table.php:851
+#, php-format
+msgid "Select Destination %s"
+msgstr "Vybrať cieľ %s"
+
+#: dist/simple-tags/inc/terms-table.php:881
+#: inc/terms-table.php:881, fuzzy
+msgid "Filter"
+msgstr "Filter"
+
+#: dist/simple-tags/inc/terms-table.php:923
+#: inc/terms-table.php:923
+msgid "Terms deleted successfully."
+msgstr "Podmienky boli úspešne odstránené."
+
+#: dist/simple-tags/inc/terms-table.php:987
+#: inc/terms-table.php:987
+msgid "Term(s) copied successfully."
+msgstr "Podmienka(y) boli úspešne skopírované."
+
+#: dist/simple-tags/inc/terms-table.php:1005
+#: inc/terms-table.php:1005
+msgid "Hidden"
+msgstr "Skryté"
+
+#: dist/simple-tags/inc/terms-table.php:1008
+#: inc/terms-table.php:1008
+msgid "Live"
+msgstr "Živé"
+
+#: dist/simple-tags/inc/terms-table.php:1027
+#: inc/terms-table.php:1027
+msgid "No terms found."
+msgstr "Žiadne podmienky nenájdené."
+
+#: dist/simple-tags/inc/terms-table.php:1166
+#: inc/terms-table.php:1166
+#. translators: %s: Taxonomy term name.
+#, php-format
+msgid "Quick edit &#8220;%s&#8221; inline"
+msgstr "Rýchla úprava &#8220;%s&#8221; inline"
+
+#: dist/simple-tags/inc/terms-table.php:1167
+#: inc/terms-table.php:1167
+msgid "Quick&nbsp;Edit"
+msgstr "Rýchla&nbsp;úprava"
+
+#: dist/simple-tags/inc/terms-table.php:1182
+#: inc/terms-table.php:1182
+msgid "Remove From All Posts"
+msgstr "Odstrániť zo všetkých príspevkov"
+
+#: dist/simple-tags/inc/terms-table.php:1205
+#: inc/terms-table.php:1205
+msgid "View"
+msgstr "Zobraziť"
+
+#: dist/simple-tags/inc/terms-table.php:1434
+#: inc/terms-table.php:1434
+msgid "Quick Edit"
+msgstr "Rýchla úprava"
+
+#: dist/simple-tags/inc/terms-table.php:1461
+#: inc/terms-table.php:1461
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: dist/simple-tags/inc/terms-table.php:1462
+#: inc/terms-table.php:1462
+msgid "Update"
+msgstr "Aktualizovať"
+
+#: dist/simple-tags/inc/terms.php:172
+#: dist/simple-tags/inc/terms.php:173
+#: dist/simple-tags/inc/terms.php:239
+#: dist/simple-tags/inc/terms.php:273
+#: inc/terms.php:172
+#: inc/terms.php:173
+#: inc/terms.php:239
+#: inc/terms.php:273
+msgid "Terms"
+msgstr "Podmienky"
+
+#: dist/simple-tags/inc/terms.php:241
+#: dist/simple-tags/inc/terms.php:282
+#: inc/terms.php:241
+#: inc/terms.php:282
+msgid "This screen allows you to search and edit all the terms on your site."
+msgstr ""
+"Táto obrazovka vám umožňuje vyhľadávať a upravovať všetky podmienky na "
+"vašej stránke."
+
+#: dist/simple-tags/inc/terms.php:280
+#: inc/terms.php:280
+msgid "This screen allows you to order terms via drag and drop."
+msgstr ""
+"Táto obrazovka vám umožňuje objednávať termíny pomocou pretiahnutia a "
+"pustenia."
+
+#: dist/simple-tags/inc/terms.php:309
+#: inc/terms.php:309
+msgid "Search Terms"
+msgstr "Hľadať termíny"
+
+#: dist/simple-tags/inc/utilities.php:10
+#: dist/simple-tags/inc/utilities.php:12
+#: dist/simple-tags/inc/utilities.php:34
+#: inc/utilities.php:10
+#: inc/utilities.php:12
+#: inc/utilities.php:34
+msgid "Media Tags"
+msgstr "Mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:11
+#: inc/utilities.php:11
+msgid "Media Tag"
+msgstr "Mediálny tag"
+
+#: dist/simple-tags/inc/utilities.php:13
+#: inc/utilities.php:13
+msgid "All Media Tags"
+msgstr "Všetky mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:14
+#: inc/utilities.php:14
+msgid "Edit Media Tag"
+msgstr "Upraviť mediálny tag"
+
+#: dist/simple-tags/inc/utilities.php:15
+#: inc/utilities.php:15
+msgid "View Media Tag"
+msgstr "Zobraziť mediálny tag"
+
+#: dist/simple-tags/inc/utilities.php:16
+#: inc/utilities.php:16
+msgid "Update Media Tag name"
+msgstr "Aktualizovať názov mediálneho tagu"
+
+#: dist/simple-tags/inc/utilities.php:17
+#: inc/utilities.php:17
+msgid "Add new Media Tag"
+msgstr "Pridať nový mediálny tag"
+
+#: dist/simple-tags/inc/utilities.php:18
+#: inc/utilities.php:18
+msgid "New Media Tag name"
+msgstr "Názov nového mediálneho tagu"
+
+#: dist/simple-tags/inc/utilities.php:19
+#: inc/utilities.php:19
+msgid "Parent Media Tag"
+msgstr "Rodičovský mediálny tag"
+
+#: dist/simple-tags/inc/utilities.php:20
+#: inc/utilities.php:20
+msgid "Parent Media Tag:"
+msgstr "Rodičovský mediálny tag:"
+
+#: dist/simple-tags/inc/utilities.php:21
+#: inc/utilities.php:21
+msgid "Search Media Tags"
+msgstr "Hľadať mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:22
+#: inc/utilities.php:22
+msgid "Popular Media Tags"
+msgstr "Populárne mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:23
+#: inc/utilities.php:23
+msgid "Separate Media Tags with commas"
+msgstr "Oddelené mediálne tagy čiarkami"
+
+#: dist/simple-tags/inc/utilities.php:24
+#: inc/utilities.php:24
+msgid "Add or remove Media Tags"
+msgstr "Pridať alebo odstrániť mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:25
+#: inc/utilities.php:25
+msgid "Choose from the most used Media Tags"
+msgstr "Vyberte z najpoužívanejších mediálnych tagov"
+
+#: dist/simple-tags/inc/utilities.php:26
+#: inc/utilities.php:26
+msgid "No Media Tags found"
+msgstr "Nenašli sa žiadne mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:27
+#: inc/utilities.php:27
+msgid "No Media Tags"
+msgstr "Žiadne mediálne tagy"
+
+#: dist/simple-tags/inc/utilities.php:28
+#: inc/utilities.php:28
+msgid "Media Tags list navigation"
+msgstr "Navigácia v zozname mediálnych tagov"
+
+#: dist/simple-tags/inc/utilities.php:29
+#: inc/utilities.php:29
+msgid "Media Tags list"
+msgstr "Zoznam médií značiek"
+
+#: dist/simple-tags/inc/utilities.php:30
+#: inc/utilities.php:30
+msgid "Back to Media Tags"
+msgstr "Späť na médiá značiek"
+
+#: dist/simple-tags/inc/utilities.php:62
+#: dist/simple-tags/inc/utilities.php:63
+#: dist/simple-tags/inc/utilities.php:65
+#: dist/simple-tags/inc/utilities.php:70
+#: inc/utilities.php:62
+#: inc/utilities.php:63
+#: inc/utilities.php:65
+#: inc/utilities.php:70
+msgid "PublishPress Taxonomies Logs"
+msgstr "Záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/utilities.php:64
+#: inc/utilities.php:64
+msgid "Search PublishPress Taxonomies Logs"
+msgstr "Vyhľadávať záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/utilities.php:66
+#: inc/utilities.php:66
+msgid "Edit PublishPress Taxonomies Logs"
+msgstr "Upraviť záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/utilities.php:67
+#: inc/utilities.php:67
+msgid "Update PublishPress Taxonomies Logs"
+msgstr "Aktualizovať záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/utilities.php:68
+#: inc/utilities.php:68
+msgid "Add New PublishPress Taxonomies Logs"
+msgstr "Pridať nové záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/inc/utilities.php:69
+#: inc/utilities.php:69
+msgid "New PublishPress Taxonomies Logs"
+msgstr "Nové záznamy PublishPress Taxonomies"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:74
+#: includes-core/TaxopressCoreAdmin.php:74
+msgid ""
+"You're using PublishPress Taxonomies Free. The Pro version has more "
+"features and support."
+msgstr ""
+"Používate PublishPress Taxonomies Free. Pro verzia má viac funkcií a "
+"podporu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:103
+#: includes-core/TaxopressCoreAdmin.php:103
+msgid "Upgrade to PublishPress Taxonomies Pro"
+msgstr "Upgradujte na PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:108
+#: includes-core/TaxopressCoreAdmin.php:108
+msgid "Enhance the power of PublishPress Taxonomies with the Pro version:"
+msgstr "Zvýšte výkon PublishPress Taxonomies s Pro verziou:"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:111
+#: includes-core/TaxopressCoreAdmin.php:111
+msgid "Unlimited “Term Display”"
+msgstr "Neobmedzené „Zobrazenie termínov“"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:112
+#: includes-core/TaxopressCoreAdmin.php:112
+msgid "Unlimited “Terms for Current Posts”"
+msgstr "Neobmedzené „Termíny pre aktuálne príspevky“"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:113
+#: includes-core/TaxopressCoreAdmin.php:113
+msgid "Unlimited “Related Posts”"
+msgstr "Neobmedzené „Súvisiace príspevky“"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:114
+#: includes-core/TaxopressCoreAdmin.php:114
+msgid "Unlimited “Auto Links”"
+msgstr "Neobmedzené „Automatické odkazy“"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:115
+#: includes-core/TaxopressCoreAdmin.php:115
+msgid "Unlimited “Auto Terms”"
+msgstr "Neobmedzené „Automatické termíny“"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:116
+#: includes-core/TaxopressCoreAdmin.php:116
+msgid "Create new terms using OpenAI and other sources"
+msgstr "Vytvorte nové termíny pomocou OpenAI a iných zdrojov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:117
+#: includes-core/TaxopressCoreAdmin.php:117
+msgid "Use Linked Terms"
+msgstr "Použiť prepojené termíny"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:118
+#: includes-core/TaxopressCoreAdmin.php:118
+msgid "Use Synonyms"
+msgstr "Použiť synonymá"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:119
+#: includes-core/TaxopressCoreAdmin.php:119
+msgid "Schedule Auto Terms to run automatically"
+msgstr "Naplánovať automatické termíny na automatické spúšťanie"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:120
+#: includes-core/TaxopressCoreAdmin.php:120
+msgid "Control the display of term metaboxes"
+msgstr "Ovládajte zobrazenie metaboxov termínov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:121
+#: includes-core/TaxopressCoreAdmin.php:121
+msgid "Fast, professional support"
+msgstr "Rýchla, profesionálna podpora"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:122
+#: includes-core/TaxopressCoreAdmin.php:122
+msgid "No ads inside the plugin"
+msgstr "Žiadne reklamy vo vnútri pluginu"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:132
+#: includes-core/TaxopressCoreAdmin.php:132
+msgid "Need PublishPress Taxonomies Support?"
+msgstr "Potrebujete podporu PublishPress Taxonomies?"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:137
+#: includes-core/TaxopressCoreAdmin.php:137
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Ak potrebujete pomoc alebo máte nový návrh funkcie, dajte nám vedieť."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:139
+#: includes-core/TaxopressCoreAdmin.php:139
+msgid "Request Support"
+msgstr "Požiadať o podporu"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:146
+#: includes-core/TaxopressCoreAdmin.php:146
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Podrobné dokumentácie sú tiež k dispozícii na webovej stránke pluginu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:148
+#: includes-core/TaxopressCoreAdmin.php:148
+msgid "View Knowledge Base"
+msgstr "Zobraziť Znalostnú bázu"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:171
+#: includes-core/TaxopressCoreAdmin.php:171
+msgid "OpenAI Integration"
+msgstr "Integrácia OpenAI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:176
+#: includes-core/TaxopressCoreAdmin.php:176
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate OpenAI to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje integrovať OpenAI na analýzu vášho "
+"obsahu a navrhovanie termínov."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:195
+#: includes-core/TaxopressCoreAdmin.php:195
+msgid "IBM Watson Integration"
+msgstr "Integrácia IBM Watson"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:200
+#: includes-core/TaxopressCoreAdmin.php:200
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Watson to analyze your "
+"content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje integrovať Watson na analýzu vášho "
+"obsahu a navrhovanie termínov."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:219
+#: includes-core/TaxopressCoreAdmin.php:219
+msgid "Dandelion Integration"
+msgstr "Integrácia Dandelion"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:224
+#: includes-core/TaxopressCoreAdmin.php:224
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate Dandelion to analyze "
+"your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje integrovať Dandelion na analýzu "
+"vášho obsahu a navrhovanie termínov."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:243
+#: includes-core/TaxopressCoreAdmin.php:243
+msgid "LSEG / Refinitiv Integration"
+msgstr "Integrácia LSEG / Refinitiv"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:248
+#: includes-core/TaxopressCoreAdmin.php:248
+msgid ""
+"PublishPress Taxonomies Pro allows you to integrate LSEG / Refinitiv to "
+"analyze your content and suggest terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje integrovať LSEG / Refinitiv na "
+"analýzu vášho obsahu a navrhovanie termínov."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:271
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:288
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:465
+#: includes-core/TaxopressCoreAdmin.php:271
+#: includes-core/TaxopressCoreAdmin.php:288
+#: includes-core/TaxopressCoreAdmin.php:465
+msgid "Suggest terms using AI"
+msgstr "Navrhnúť termíny pomocou AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:275
+#: includes-core/TaxopressCoreAdmin.php:275
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI. This service can analyze your content and suggest "
+"new terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje navrhnúť nové termíny pre váš "
+"obsah pomocou OpenAI. Táto služba dokáže analyzovať váš obsah a navrhnúť "
+"nové termíny."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:293
+#: includes-core/TaxopressCoreAdmin.php:293
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the IBM Watson. This service can analyze your content and "
+"suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje navrhnúť nové termíny pre váš "
+"obsah pomocou IBM Watson. Táto služba dokáže analyzovať váš obsah a "
+"navrhnúť nové termíny."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:357
+#: includes-core/TaxopressCoreAdmin.php:357
+msgid "Copy with Metadata"
+msgstr "Kopírovať s metadátami"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:387
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:405
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:423
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:441
+#: includes-core/TaxopressCoreAdmin.php:387
+#: includes-core/TaxopressCoreAdmin.php:405
+#: includes-core/TaxopressCoreAdmin.php:423
+#: includes-core/TaxopressCoreAdmin.php:441
+msgid "Auto terms using AI"
+msgstr "Automatické termíny pomocou AI"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:392
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:410
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:428
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:446
+#: includes-core/TaxopressCoreAdmin.php:392
+#: includes-core/TaxopressCoreAdmin.php:410
+#: includes-core/TaxopressCoreAdmin.php:428
+#: includes-core/TaxopressCoreAdmin.php:446
+msgid ""
+"PublishPress Taxonomies Pro allows you to generate new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and add new terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje generovať nové termíny pre obsah "
+"pomocou služieb OpenAI, IBM Watson, Dandelion a Open Calais. Tieto služby "
+"môžu analyzovať váš obsah a pridať nové termíny."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:470
+#: includes-core/TaxopressCoreAdmin.php:470
+msgid ""
+"PublishPress Taxonomies Pro allows you to suggest new terms for your "
+"content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
+"These services can analyze your content and suggest new terms."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje navrhovať nové termíny pre váš "
+"obsah pomocou služieb OpenAI, IBM Watson, Dandelion a Open Calais. Tieto "
+"služby môžu analyzovať váš obsah a navrhovať nové termíny."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:489
+#: includes-core/TaxopressCoreAdmin.php:489
+msgid "Add Custom Elements"
+msgstr "Pridať vlastné prvky"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:494
+#: includes-core/TaxopressCoreAdmin.php:494
+msgid ""
+"PublishPress Taxonomies Pro allows you complete control over where Auto "
+"Links are added. You can choose to skip any HTML elements that appear in "
+"your content."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje úplnú kontrolu nad tým, kde sa "
+"pridávajú automatické odkazy. Môžete sa rozhodnúť vynechať akékoľvek HTML "
+"prvky, ktoré sa objavujú vo vašom obsahu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:513
+#: includes-core/TaxopressCoreAdmin.php:513
+msgid "Use Regular Expressions to modify Auto Terms"
+msgstr "Používajte regulárne výrazy na úpravu automatických termínov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:518
+#: includes-core/TaxopressCoreAdmin.php:518
+msgid ""
+"PublishPress Taxonomies Pro allows you to change how Auto Terms analyzes "
+"your posts. You will need to know how to write Regular Expressions to use "
+"this feature."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje zmeniť spôsob, akým Automatické "
+"termíny analyzujú vaše príspevky. Musíte vedieť, ako písať regulárne "
+"výrazy, aby ste mohli túto funkciu využiť."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:540
+#: includes-core/TaxopressCoreAdmin.php:540
+msgid ""
+"This feature allows you to connect terms. When the main term or any of "
+"these terms are added to the post, all the other terms will be added also."
+msgstr ""
+"Táto funkcia vám umožňuje prepojiť termíny. Keď je hlavný termín alebo "
+"ktorýkoľvek z týchto termínov pridaný do príspevku, všetky ostatné termíny "
+"sa taktiež pridajú."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:560
+#: includes-core/TaxopressCoreAdmin.php:560
+msgid "Linked Terms Feature"
+msgstr "Funkcia prepojených termínov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:564
+#: includes-core/TaxopressCoreAdmin.php:564
+msgid ""
+"PublishPress Taxonomies Pro allows you to create powerful connections "
+"between your terms. When one term is added to a post, its linked terms can "
+"be automatically added too. This helps maintain consistent organization "
+"across your content."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje vytvárať silné spojenia medzi "
+"vašimi termínmi. Keď je jeden termín pridaný do príspevku, jeho prepojené "
+"termíny môžu byť taktiež automaticky pridané. To pomáha udržiavať "
+"konzistentnú organizáciu vo vašom obsahu."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:582
+#: includes-core/TaxopressCoreAdmin.php:582
+msgid ""
+"This feature allows you to associate additional words with each term. For "
+"example, \"website\" can have synonyms such as \"websites\", \"web site\", "
+"and \"web pages\"."
+msgstr ""
+"Táto funkcia vám umožňuje priradiť ďalšie slová k každému termínu. "
+"Napríklad \"webová stránka\" môže mať synonymá ako \"webové stránky\", "
+"\"web site\" a \"webové stránky\"."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:598
+#: includes-core/TaxopressCoreAdmin.php:598
+msgid "Synonyms Terms Feature"
+msgstr "Funkcia synonymných termínov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:602
+#: includes-core/TaxopressCoreAdmin.php:602
+msgid ""
+"PublishPress Taxonomies Pro allows you to have multiple words associated "
+"with a single term. If PublishPress Taxonomies scans your content and finds "
+"a synonym, it will act as if it has found the main term."
+msgstr ""
+"PublishPress Taxonomies Pro vám umožňuje mať viacero slov priradených k "
+"jednému termínu. Ak PublishPress Taxonomies skenuje váš obsah a nájde "
+"synonymum, bude sa správať, akoby našiel hlavný termín."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:622
+#: includes-core/TaxopressCoreAdmin.php:622
+msgid "Taxonomy Display"
+msgstr "Zobrazenie taxonómie"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:630
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:719
+#: includes-core/TaxopressCoreAdmin.php:630
+#: includes-core/TaxopressCoreAdmin.php:719
+msgid "This feature is available in PublishPress Taxonomies Pro"
+msgstr "Táto funkcia je k dispozícii v PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:635
+#: includes-core/TaxopressCoreAdmin.php:635
+msgid "Customize the display of terms in the PublishPress Taxonomies metabox."
+msgstr "Prispôsobte zobrazenie termínov v metaboxe PublishPress Taxonomies."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:636
+#: includes-core/TaxopressCoreAdmin.php:636
+msgid "Options include checkboxes and a dropdown list."
+msgstr "Možnosti zahŕňajú zaškrtávacie políčka a rozbaľovací zoznam."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:670
+#: includes-core/TaxopressCoreAdmin.php:670
+msgid "Copy Term with Metadata"
+msgstr "Kopírovať termín s metadátami"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:675
+#: includes-core/TaxopressCoreAdmin.php:675
+msgid "To Copy terms with their metadata, please upgrade to pro."
+msgstr "Na kopírovanie termínov s ich metadátami, prosím, prejdite na verziu pro."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:676
+#: includes-core/TaxopressCoreAdmin.php:676
+msgid ""
+"With PublishPress Taxonomies Pro, you can duplicate taxonomy terms along "
+"with all their metadata. This includes term descriptions, images, and "
+"custom fields. You can copy terms between taxonomies to maintain consistent "
+"organization across your site."
+msgstr ""
+"S PublishPress Taxonomies Pro môžete duplikovať termíny taxonómie spolu so "
+"všetkými ich metadátami. To zahŕňa popisy termínov, obrázky a vlastné "
+"polia. Môžete kopírovať termíny medzi taxonómiami, aby ste udržali "
+"konzistentnú organizáciu na vašej stránke."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:723
+#: includes-core/TaxopressCoreAdmin.php:723
+msgid ""
+"Choose the display formats of your terms, options include table list, "
+"ordered list, border-cloud and lots more."
+msgstr ""
+"Vyberte formáty zobrazenia vašich termínov, možnosti zahŕňajú tabuľkový "
+"zoznam, usporiadaný zoznam, cloud s okrajmi a mnohé ďalšie."
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:743
+#: includes-core/TaxopressCoreAdmin.php:743
+msgid "Hourly"
+msgstr "Hodinu"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:756
+#: includes-core/TaxopressCoreAdmin.php:756
+msgid "Daily"
+msgstr "Deň"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:764
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:816
+#: includes-core/TaxopressCoreAdmin.php:764
+#: includes-core/TaxopressCoreAdmin.php:816
+msgid "Pro Feature"
+msgstr "Pro funkcia"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:766
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:818
+#: includes-core/TaxopressCoreAdmin.php:766
+#: includes-core/TaxopressCoreAdmin.php:818
+msgid "Some of these features are available in PublishPress Taxonomies Pro"
+msgstr "Niektoré z týchto funkcií sú k dispozícii v PublishPress Taxonomies Pro"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:776
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:868
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:893
+#: includes-core/TaxopressCoreAdmin.php:776
+#: includes-core/TaxopressCoreAdmin.php:868
+#: includes-core/TaxopressCoreAdmin.php:893, fuzzy
+msgid "ID"
+msgstr "ID"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:777
+#: includes-core/TaxopressCoreAdmin.php:777
+msgid "Name (Pro)"
+msgstr "Názov (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:778
+#: includes-core/TaxopressCoreAdmin.php:778
+msgid "Counter (Pro)"
+msgstr "Počítadlo (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:779
+#: includes-core/TaxopressCoreAdmin.php:779
+msgid "Random (Pro)"
+msgstr "Náhodný (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:780
+#: includes-core/TaxopressCoreAdmin.php:780
+msgid "Term Order (Pro)"
+msgstr "Poradie termínov (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:792
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:939
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:983
+#: includes-core/TaxopressCoreAdmin.php:792
+#: includes-core/TaxopressCoreAdmin.php:939
+#: includes-core/TaxopressCoreAdmin.php:983
+msgid "Method for choosing terms for display"
+msgstr "Metóda výberu termínov na zobrazenie"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:867
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:928
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:972
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+#: includes-core/TaxopressCoreAdmin.php:867
+#: includes-core/TaxopressCoreAdmin.php:928
+#: includes-core/TaxopressCoreAdmin.php:972
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
+msgid "Name"
+msgstr "Názov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:869
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:929
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:973
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+#: includes-core/TaxopressCoreAdmin.php:869
+#: includes-core/TaxopressCoreAdmin.php:929
+#: includes-core/TaxopressCoreAdmin.php:973
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
+msgid "Counter"
+msgstr "Počítadlo"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:871
+#: includes-core/TaxopressCoreAdmin.php:871
+msgid "Term Order"
+msgstr "Poradie termínov"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:888
+#: includes-core/TaxopressCoreAdmin.php:888
+msgid "Disabled"
+msgstr "Zakázané"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:889
+#: includes-core/TaxopressCoreAdmin.php:889
+msgid "You have disabled PublishPress Taxonomies ordering"
+msgstr "Zakázali ste usporiadanie PublishPress Taxonomies"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:895
+#: includes-core/TaxopressCoreAdmin.php:895
+#, php-format
+msgid "Terms in this taxonomy are ordered by %s"
+msgstr "Termíny v tejto taxonómii sú usporiadané podľa %s"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:931
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:975
+#: includes-core/TaxopressCoreAdmin.php:931
+#: includes-core/TaxopressCoreAdmin.php:975
+msgid "Term Order(Pro)"
+msgstr "Poradie termínov (Pro)"
+
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:959
+#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:1003
+#: includes-core/TaxopressCoreAdmin.php:959
+#: includes-core/TaxopressCoreAdmin.php:1003
+msgid ""
+"Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order "
+"Terms"
+msgstr ""
+"Aktualizujte na PublishPress Taxonomies Pro, aby ste mohli manuálne "
+"usporiadať termíny pomocou Poradia termínov"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+msgid "Request completed."
+msgstr "Žiadosť bola dokončená."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+msgid "Security error. Kindly reload this page and try again"
+msgstr "Chyba zabezpečenia. Prosím, znovu načítajte túto stránku a skúste to znova"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+msgid ""
+"Permission error. You do not have permission to manage PublishPress "
+"Taxonomies"
+msgstr "Chyba oprávnenia. Nemáte oprávnenie spravovať PublishPress Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+msgid "Posts content and title is empty."
+msgstr "Obsah príspevku a názov sú prázdne."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+msgid "Permission error. You do not have permission to preview this post."
+msgstr "Chyba oprávnenia. Nemáte oprávnenie na náhľad tohto príspevku."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#, php-format
+msgid ""
+"You do not have permission to manage this taxonomy. Enable Metabox Access "
+"Taxonomies for this role in %1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Nemáte oprávnenie spravovať túto taxonomy. Povoliť prístup k Metabox "
+"Taxonomies pre túto rolu v %1sNastavenia PublishPress Taxonomies%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+msgid "Too many AI preview requests. Please wait a minute and try again."
+msgstr ""
+"Príliš veľa požiadaviek na náhľad AI. Prosím, počkajte minútu a skúste to "
+"znova."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+msgid "Term Results"
+msgstr "Výsledky termínov"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+msgid "No results found for this post with this taxonomy."
+msgstr "Pre tento príspevok s touto taxonomy neboli nájdené žiadne výsledky."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+msgid "Invalid Auto Term ID. Please save the settings before using preview."
+msgstr ""
+"Neplatné ID automatického termínu. Pred použitím náhľadu prosím uložte "
+"nastavenia."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+msgid "You must enable at least one AI integration source to use auto term preview."
+msgstr ""
+"Musíte povoliť aspoň jeden zdroj integrácie AI na použitie náhľadu "
+"automatického termínu."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+msgid ""
+"This Auto Terms option is not enabled for metaboxes. Please enable it in "
+"the Auto Terms settings."
+msgstr ""
+"Táto možnosť automatických termínov nie je povolená pre metaboxy. Prosím, "
+"povoľte ju v nastaveniach automatických termínov."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
+#, php-format
+msgid "Click %1s to select or deselect them from this %2s."
+msgstr "Kliknite na %1s, aby ste ich vybrali alebo zrušili výber z tohto %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+msgid "Suggest Existing Terms"
+msgstr "Navrhnúť existujúce termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:341, fuzzy
+msgid "OpenAI"
+msgstr "OpenAI"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:356
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:356, fuzzy
+msgid "IBM Watson"
+msgstr "IBM Watson"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
+msgid "Dandelion"
+msgstr "Púpava"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:386
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:386, fuzzy
+msgid "LSEG / Refinitiv"
+msgstr "LSEG / Refinitiv"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
+#, php-format
+msgid "Update %1s on this %2s"
+msgstr "Aktualizovať %1s na tomto %2s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+msgid "Existing Terms not found for the selected post type and taxonomies"
+msgstr "Existujúce termíny neboli nájdené pre vybraný typ príspevku a taxonomie"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+msgid ""
+"Existing Terms taxonomy is required. Kindly select taxonomies and save the "
+"settings before running preview."
+msgstr ""
+"Existujúca taxonomy termínov je povinná. Prosím, vyberte taxonomie a uložte "
+"nastavenia pred spustením náhľadu."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+msgid "Result from ajax request."
+msgstr "Výsledok z ajax požiadavky."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+msgid "The selected taxonomy is not associated with the selected post type."
+msgstr "Vybraná taxonomy nie je spojená s vybraným post type."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+msgid "No results found for this taxonomy."
+msgstr "Pre túto taxonomy neboli nájdené žiadne výsledky."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+msgid "You do not have permission to edit this post."
+msgstr "Nemáte oprávnenie upravovať tento príspevok."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+msgid "You do not have permission to assign terms from this taxonomy."
+msgstr "Nemáte oprávnenie priraďovať termíny z tejto taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#, php-format
+msgid "Click Term to select or deselect from this %1s"
+msgstr "Kliknite na termín, aby ste ho vybrali alebo zrušili jeho výber z tejto %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+msgid "Both Taxonomy and Post are required."
+msgstr "Obe taxonomy a post sú povinné."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+msgid "No new terms were selected or deselected."
+msgstr "Neboli vybrané ani zrušené žiadne nové termíny."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#, php-format
+msgid "%1s terms added to this %2s."
+msgstr "%1s termíny pridané do tejto %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#, php-format
+msgid "%1s terms removed from this %2s."
+msgstr "%1s termíny odstránené z tejto %2s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+msgid "You do not have capability to manage this taxonomy."
+msgstr "Nemáte oprávnenie spravovať túto taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+msgid "You do not have permission to edit this post with this taxonomy."
+msgstr "Nemáte oprávnenie upravovať tento príspevok s touto taxonomy."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#, php-format
+msgid "Terms cannot contain the following characters: %s"
+msgstr "Termíny nemôžu obsahovať nasledujúce znaky: %s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#, php-format
+msgid "Terms must be at least %d characters long."
+msgstr "Termíny musia mať aspoň %d znakov."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#, php-format
+msgid "Terms cannot exceed %d characters."
+msgstr "Termíny nemôžu presiahnuť %d znakov."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+msgid "The Dandelion integration is disabled in the Legacy AI Sources settings."
+msgstr "Integrácia Dandelion je zakázaná v nastaveniach Legacy AI Sources."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:84
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:166
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:199
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:323
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:489
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+msgid "No matched result from the API Server."
+msgstr "Žiadny zhodný výsledok z API servera."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+msgid ""
+"The Dandelion integration requires an API Key. Please add your API Key in "
+"the Auto Term settings."
+msgstr ""
+"Integrácia Dandelion vyžaduje API kľúč. Prosím, pridajte svoj API kľúč v "
+"nastaveniach Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:108
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:222
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+msgid "Selected content is empty."
+msgstr "Vybraný obsah je prázdny."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:124
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:238
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:369
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+msgid "Result from cache."
+msgstr "Výsledok z cache."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:148
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:264
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#, php-format
+msgid "API Error: %1s."
+msgstr "API chyba: %1s."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:157
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:419
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:675
+msgid "Result from api."
+msgstr "Výsledok z api."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:171
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:294
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:434
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+msgid "Error establishing connection with the API server. Try again."
+msgstr "Chyba pri nadväzovaní spojenia so serverom API. Skúste to znova."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+msgid ""
+"The LSEG / Refinitiv integration is disabled in the Legacy AI Sources "
+"settings."
+msgstr ""
+"Integrácia LSEG / Refinitiv je deaktivovaná v nastaveniach Legacy AI "
+"Sources."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+msgid ""
+"The LSEG / Refinitiv integration requires an API Key. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"Integrácia LSEG / Refinitiv vyžaduje API kľúč. Prosím, pridajte svoj API "
+"kľúč v nastaveniach Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+msgid "API Error: No matched result for content."
+msgstr "API chyba: Žiadny zhodujúci sa výsledok pre obsah."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+msgid "The IBM Watson integration is disabled in the Legacy AI Sources settings."
+msgstr "Integrácia IBM Watson je deaktivovaná v nastaveniach Legacy AI Sources."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+msgid ""
+"The IBM Watson integration requires an API Key and URL. Please add your API "
+"Key in the Auto Term settings."
+msgstr ""
+"Integrácia IBM Watson vyžaduje API kľúč a URL. Prosím, pridajte svoj API "
+"kľúč v nastaveniach Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+msgid ""
+"The IBM Watson API URL must use HTTPS and an official Natural Language "
+"Understanding service hostname."
+msgstr ""
+"URL API IBM Watson musí používať HTTPS a oficiálny názov hostiteľa služby "
+"Natural Language Understanding."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:509
+msgid ""
+"The OpenAI integration requires an API Key. Please add your API Key in the "
+"Auto Term settings."
+msgstr ""
+"Integrácia OpenAI vyžaduje API kľúč. Prosím, pridajte svoj API kľúč v "
+"nastaveniach Auto Term."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#, php-format
+msgid ""
+"Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
+"{post_terms}, {site_terms}"
+msgstr ""
+"Nesprávne zistené zástupné znaky: {%s}. Platné zástupné znaky sú: "
+"{content}, {post_terms}, {site_terms}"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+msgid ""
+"You added {post_terms} in the prompt but your post does not contain any "
+"terms."
+msgstr ""
+"Pridali ste {post_terms} v pokyne, ale váš príspevok neobsahuje žiadne "
+"termíny."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+msgid ""
+"You added {site_terms} in the prompt but your site does not contain any "
+"terms for this taxonomy."
+msgstr ""
+"Pridali ste {site_terms} v pokyne, ale váš web neobsahuje žiadne termíny "
+"pre túto taxonómiu."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+msgid ""
+"Error: OpenAI says there is an issue with this API key. Please check your "
+"plan or billing details."
+msgstr ""
+"Chyba: OpenAI hovorí, že s týmto API kľúčom je problém. Skontrolujte svoj "
+"plán alebo fakturačné údaje."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1373
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1695
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:18
+#: modules/taxopress-ai/taxopress-ai.php:1373
+#: modules/taxopress-ai/taxopress-ai.php:1695
+msgid "Show All Existing Terms"
+msgstr "Zobraziť všetky existujúce termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1381
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1696
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:23
+#: modules/taxopress-ai/taxopress-ai.php:1381
+#: modules/taxopress-ai/taxopress-ai.php:1696
+msgid "Manage Post Terms"
+msgstr "Spravovať termíny príspevku"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1697
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:28
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
+#: modules/taxopress-ai/taxopress-ai.php:1697
+msgid "Auto Terms"
+msgstr "Automatické termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1394
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1698
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:33
+#: modules/taxopress-ai/taxopress-ai.php:1394
+#: modules/taxopress-ai/taxopress-ai.php:1698
+msgid "Create Terms"
+msgstr "Vytvoriť termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:38
+msgid "View Existing Terms"
+msgstr "Zobraziť existujúce termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:39
+msgid "This feature allows you to browse all the terms in a taxonomy."
+msgstr "Táto funkcia vám umožňuje prehliadať všetky termíny v taxonómii."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:44
+msgid "View Current Post Terms"
+msgstr "Zobraziť aktuálne termíny príspevku"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:45
+msgid ""
+"This feature allows you to manage all the terms that are currently attached "
+"to a post."
+msgstr ""
+"Táto funkcia vám umožňuje spravovať všetky termíny, ktoré sú aktuálne "
+"pripojené k príspevku."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1555
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:50
+#: modules/taxopress-ai/taxopress-ai.php:1555
+msgid "View Terms"
+msgstr "Zobraziť termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+#: modules/taxopress-ai/classes/TaxoPressAiFields.php:51
+msgid ""
+"This feature allows you to browse based on selected auto terms settings and "
+"sources."
+msgstr ""
+"Táto funkcia vám umožňuje prehliadať na základe vybraných nastavení "
+"automatických termínov a zdrojov."
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
+msgid "Suggest Terms"
+msgstr "Navrhnúť termíny"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Select all %1s"
+msgstr "Vybrať všetky %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
+#, php-format
+msgid "Deselect all %1s"
+msgstr "Zrušiť výber všetkých %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
+#: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
+#, php-format
+msgid "Select %1s"
+msgstr "Vybrať %1s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:411
+#: modules/taxopress-ai/taxopress-ai.php:411
+msgid "Please choose a post to use with PublishPress Taxonomies AI."
+msgstr "Prosím, vyberte príspevok na použitie s PublishPress Taxonomies AI."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:420
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1747
+#: modules/taxopress-ai/taxopress-ai.php:420
+#: modules/taxopress-ai/taxopress-ai.php:1747
+msgid "Label can't be empty."
+msgstr "Názov nemôže byť prázdny."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:421
+#: modules/taxopress-ai/taxopress-ai.php:421
+msgid "Label can't exceed 30 characters."
+msgstr "Názov nemôže presiahnuť 30 znakov."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:422
+#: modules/taxopress-ai/taxopress-ai.php:422
+msgid "Unknown tab type."
+msgstr "Neznámy typ karty."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:423
+#: modules/taxopress-ai/taxopress-ai.php:423
+msgid "Error saving label."
+msgstr "Chyba pri ukladaní názvu."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:424
+#: modules/taxopress-ai/taxopress-ai.php:424
+msgid "Please choose a post to preview."
+msgstr "Prosím, vyberte príspevok na náhľad."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:440
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:441
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:473
+#: modules/taxopress-ai/taxopress-ai.php:440
+#: modules/taxopress-ai/taxopress-ai.php:441
+#: modules/taxopress-ai/taxopress-ai.php:473
+msgid "Metaboxes"
+msgstr "Metaboxy"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:466
+#: modules/taxopress-ai/taxopress-ai.php:466
+msgid "Metabox Settings"
+msgstr "Nastavenia metaboxu"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:467
+#: modules/taxopress-ai/taxopress-ai.php:467
+msgid "Metabox Access"
+msgstr "Prístup k metaboxu"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:476
+#: modules/taxopress-ai/taxopress-ai.php:476
+msgid ""
+"This feature allows you to customize the metabox interface you see when "
+"adding terms to posts."
+msgstr ""
+"Táto funkcia vám umožňuje prispôsobiť rozhranie metaboxu, ktoré vidíte pri "
+"pridávaní termínov k príspevkom."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:825
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:870
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:952
+#: dist/simple-tags/views/admin/page-settings.php:53
+#: modules/taxopress-ai/taxopress-ai.php:825
+#: modules/taxopress-ai/taxopress-ai.php:870
+#: modules/taxopress-ai/taxopress-ai.php:952
+#: views/admin/page-settings.php:53
+msgid "Save Changes"
+msgstr "Uložiť zmeny"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:941
+#: modules/taxopress-ai/taxopress-ai.php:941
+msgid "Select..."
+msgstr "Vybrať..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1067
+#: modules/taxopress-ai/taxopress-ai.php:1067
+#, php-format
+msgid "Select %s"
+msgstr "Vyberte %s"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1129
+#: modules/taxopress-ai/taxopress-ai.php:1129
+msgid "Invalid request."
+msgstr "Neplatný požiadavok."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1171
+#: modules/taxopress-ai/taxopress-ai.php:1171
+msgid "No terms in your WordPress database."
+msgstr "Vo vašej databáze WordPress nie sú žiadne termíny."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1180
+#: modules/taxopress-ai/taxopress-ai.php:1180
+msgid "There's no content to scan."
+msgstr "Nie je obsah na skenovanie."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1187
+#: modules/taxopress-ai/taxopress-ai.php:1187
+msgid "No results from your WordPress database."
+msgstr "Žiadne výsledky z vašej databázy WordPress."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1229
+#: modules/taxopress-ai/taxopress-ai.php:1229
+msgid "There are no terms that are relevant to your content."
+msgstr "Neexistujú žiadne termíny, ktoré sú relevantné pre váš obsah."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1279
+#: modules/taxopress-ai/taxopress-ai.php:1279
+msgid "Tags"
+msgstr "Tagy"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1311
+#: modules/taxopress-ai/taxopress-ai.php:1311, fuzzy
+msgid "PublishPress Taxonomies"
+msgstr "PublishPress Taxonomies"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1497
+#: modules/taxopress-ai/taxopress-ai.php:1497
+#, php-format
+msgid ""
+"This user does not have access to manage any of this post attached "
+"taxonomies. Enable Metabox Access Taxonomies for this role in "
+"%1sPublishPress Taxonomies Settings%2s."
+msgstr ""
+"Tento používateľ nemá prístup na správu žiadnych taxonómií pripojených k "
+"tomuto príspevku. Povoliť prístup k taxonómiám Metabox pre túto rolu v "
+"%1sNastavenia taxonómií PublishPress%2s."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1501
+#: modules/taxopress-ai/taxopress-ai.php:1501
+msgid "No PublishPress Taxonomies Metabox features are enabled for this post type."
+msgstr ""
+"Pre tento typ príspevku nie sú povolené žiadne funkcie Metabox taxonómií "
+"PublishPress."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1529
+#: modules/taxopress-ai/taxopress-ai.php:1529
+msgid "Save, You can also press Enter to save and escape to cancel"
+msgstr "Uložiť, môžete tiež stlačiť Enter na uloženie a Esc na zrušenie"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1571
+#: modules/taxopress-ai/taxopress-ai.php:1571
+msgid "Search Terms..."
+msgstr "Hľadať termíny..."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1590
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1610
+#: modules/taxopress-ai/taxopress-ai.php:1590
+#: modules/taxopress-ai/taxopress-ai.php:1610
+msgid "Create Term"
+msgstr "Vytvoriť termín"
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1670
+#: modules/taxopress-ai/taxopress-ai.php:1670
+msgid ""
+"You do not have the required capabilities to manage any of this post "
+"attached taxonomies."
+msgstr ""
+"Nemáte požadované oprávnenia na správu žiadnych taxonómií pripojených k "
+"tomuto príspevku."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1738
+#: modules/taxopress-ai/taxopress-ai.php:1738
+msgid "You can not edit this label."
+msgstr "Tento názov nemôžete upraviť."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1741
+#: modules/taxopress-ai/taxopress-ai.php:1741
+msgid "Invalid nonce token."
+msgstr "Neplatný nonce token."
+
+#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1750
+#: modules/taxopress-ai/taxopress-ai.php:1750
+msgid "Label is too long."
+msgstr "Názov je príliš dlhý."
+
+#: dist/simple-tags/review-request/review.php:281
+#: review-request/review.php:281
+#, php-format
+msgid ""
+"Hey, you've been using PublishPress Taxonomies for %s on your site. We hope "
+"the plugin has been useful. Please could you quickly leave a 5-star rating "
+"on WordPress.org? It really does help to keep PublishPress Taxonomies "
+"growing."
+msgstr ""
+"Ahoj, používate PublishPress Taxonomies pre %s na vašej stránke. Dúfame, že "
+"plugin bol užitočný. Mohli by ste rýchlo zanechať hodnotenie 5 hviezdičiek "
+"na WordPress.org? Skutočne to pomáha udržať PublishPress Taxonomies v raste."
+
+#: dist/simple-tags/review-request/review.php:290
+#: review-request/review.php:290
+msgid "1 week"
+msgstr "1 týždeň"
+
+#: dist/simple-tags/review-request/review.php:306
+#: review-request/review.php:306
+msgid "3 months"
+msgstr "3 mesiace"
+
+#: dist/simple-tags/review-request/review.php:371
+#: review-request/review.php:371
+msgid "Click here to add your rating for PublishPress Taxonomies"
+msgstr "Kliknite sem, aby ste pridali svoje hodnotenie pre PublishPress taxonomies"
+
+#: dist/simple-tags/review-request/review.php:373
+#: review-request/review.php:373
+msgid "Maybe later"
+msgstr "Možno neskôr"
+
+#: dist/simple-tags/review-request/review.php:375
+#: review-request/review.php:375
+msgid "I already did"
+msgstr "Už som to urobil"
+
+#: dist/simple-tags/simple-tags.php:97
+#: simple-tags.php:97
+msgid "This plugin can be deleted."
+msgstr "Tento plugin môže byť odstránený."
+
+#: dist/simple-tags/simple-tags.php:125
+#: simple-tags.php:125
+msgid ""
+"PublishPress Taxonomies was not activated because PublishPress Taxonomies "
+"Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
+msgstr ""
+"PublishPress taxonomies nebol aktivovaný, pretože PublishPress taxonomies "
+"Pro je už aktívny. Prosím, majte zapnutý iba PublishPress taxonomies Pro."
+
+#: dist/simple-tags/views/admin/page-settings.php:4
+#: views/admin/page-settings.php:4
+msgid "PublishPress Taxonomies: Options"
+msgstr "PublishPress taxonomies: Možnosti"
+
+#: dist/simple-tags/inc/terms-table.php:1437
+#: inc/terms-table.php:1437
+msgctxt "term name"
+msgid "Name"
+msgstr "Názov"
+
+#: dist/simple-tags/inc/terms-table.php:1446
+#: inc/terms-table.php:1446
+msgctxt "term name"
+msgid "Taxonomy"
+msgstr "taxonomy"

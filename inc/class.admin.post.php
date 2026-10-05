@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable WordPress.Security.NonceVerification.Missing -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable WordPress.Security.NonceVerification.Missing -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Post_Settings
 {
@@ -26,7 +26,7 @@ class SimpleTags_Admin_Post_Settings
     }
 
     /**
-     * Register a new box for TaxoPress settings
+     * Register a new box for PublishPress Taxonomies settings
      *
      * @param string $post_type
      *
@@ -44,7 +44,7 @@ class SimpleTags_Admin_Post_Settings
         }
 
         // Auto terms for this CPT ?
-        add_meta_box('simpletags-settings', __('TaxoPress', 'simple-tags'), array(
+        add_meta_box('simpletags-settings', __('PublishPress Taxonomies', 'simple-tags'), array(
             __CLASS__,
             'metabox'
         ), $post_type, 'side', 'low');

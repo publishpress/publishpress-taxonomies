@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedUnsetVariable,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize,WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedUnsetVariable,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize,WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_TagCloud
 {
@@ -821,7 +821,7 @@ class SimpleTags_Client_TagCloud
     }
 
     /**
-     * Helper public static function for keep compatibility with old options TaxoPress widgets
+     * Helper public static function for keep compatibility with old options PublishPress Taxonomies widgets
      *
      * @param string $old_value
      * @param string $key
@@ -910,7 +910,7 @@ class SimpleTags_Client_TagCloud
             'pad_counts'    => false,
             'offset'        => '',
             'search'        => '',
-            // TaxoPress added
+            // PublishPress Taxonomies added
             'limit_days'    => 0,
             'category'      => 0,
             'min_usage'     => 0,

@@ -1,6 +1,6 @@
 <?php
 
-// phpcs:disable Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.Security.NonceVerification.Missing,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy TaxoPress file: keep behavior unchanged while documenting existing PHPCS exceptions.
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.Security.NonceVerification.Missing,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_Autoterms
 {
@@ -973,7 +973,7 @@ class SimpleTags_Client_Autoterms
     }
 
     /**
-     * Update taxopress logs
+     * Update PublishPress Taxonomies logs
      *
      * Known possible values
      *

@@ -46,7 +46,7 @@ return array(
     'enable_merge_terms_slug' => 1,
     'enable_mass-edit_terms_slug' => 0,
 
-    // taxopress ai
+    // PublishPress Taxonomies ai
     'enable_taxopress_ai_post_metabox' => 1,
     'enable_taxopress_ai_post_post_terms_tab' => 1,
     'taxopress_ai_post_metabox_filters' => 1,
@@ -54,7 +54,7 @@ return array(
     'enable_taxopress_ai_post_existing_terms_tab' => 1,
     'taxopress_ai_post_metabox_default_taxonomy' => 'post_tag',
 
-    // taxopress ai tab labels
+    // PublishPress Taxonomies ai tab labels
     'taxopress_ai_post_terms_tab_label' => __('Manage Post Terms', 'simple-tags'),
     'taxopress_ai_existing_terms_tab_label' => __('Show All Existing Terms', 'simple-tags'),
     'taxopress_ai_suggest_local_terms_tab_label' => __('Auto Terms', 'simple-tags'),

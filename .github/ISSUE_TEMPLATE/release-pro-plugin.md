@@ -1,31 +1,110 @@
 ---
 name: Release the Pro version (team only)
-about: Describes default checklist for releasing the Pro plugin;
-title: Release TaxoPress Pro v[VERSION]
+about: Step-by-step checklist for releasing the Pro plugin version.
+title: Release PublishPress Taxonomies Pro v[VERSION]
 labels: release
 assignees: ''
-
+type: task
 ---
 
-To release the Pro plugin please make sure to check all the checkboxes below.
+Before releasing the Pro plugin, ensure every step in this checklist is completed.
 
-### Pre-release Checklist
+> **Release principle:** Prioritize quality over velocity for all standard releases.
+> For urgent/security releases, maintain essential quality and security checks while balancing delivery speed responsibly.
 
-- [ ] Create the release branch as `release-<version>` based on the development branch
-- [ ] Make sure to directly merge or use Pull Requests to merge hotfixes or features branches into the release branch
-- [ ] Start a dev-workspace session.
-- [ ] Update the `composer.json` file changing the version constraint to the Free plugin to use the most recent stable release tag
-- [ ] Run `composer update` and check if there is any relevant update. Check if you need to lock the current version for any dependency. The `--no-dev` argument is optional here, since the build script will make sure to run the build with that argument.
-- [ ] Update the changelog - make sure all the changes are there with a user-friendly description and that the release date is correct
-- [ ] Update the version number to the next stable version.
-- [ ] Commit the changes to the release branch
-- [ ] Build the zip package with `composer build`, creating a new package in the `./dist` directory.
-- [ ] Send to the team for testing
+> **Versioning:** Follow [Semantic Versioning](http://semver.org/) for release and prerelease numbers. Use full version strings with three numeric segments—**MAJOR.MINOR.PATCH** (e.g. `2.14.1`), not shortened forms. Optional prerelease identifiers follow that base (e.g. `-beta.N` or `-rc.N`).
 
-### Release Checklist
+### Pre-Release Preparation Checklist
 
-- [ ] Create a Pull Request and merge the release branch it into the `master` branch
-- [ ] Merge the `master` branch into the `development` branch
-- [ ] Create the Github release (make sure it is based on the `master` branch and correct tag)
-- [ ] Update EDD registry and upload the new package
-- [ ] Make the final test updating the plugin in a staging site
+**GitHub Milestone**
+
+- [ ] Verify the GitHub milestone for `<version>` exists and all associated issues and pull requests are closed — resolve or defer any open items before proceeding
+
+**Branch Setup**
+
+- [ ] Create a new branch named `release-<version>` from the latest `development` branch
+- [ ] Integrate all required hotfixes and new features into the release branch (via direct merge or pull request), ensuring all code has undergone code review (self-review or review by another team member)
+
+**Dependencies**
+
+- [ ] Run `composer update --no-dev --dry-run` and review the output for dependencies needing updates
+- [ ] Update any required dependencies with `composer update <vendor/package>:"<version-constraint>"`
+- [ ] List all dependency changes (with versions) in `CHANGELOG.md`
+- [ ] Review and resolve open Dependabot pull requests and alerts
+- [ ] Update the reference for the Free plugin package in the `lib/composer.json` file to use the recently released version tag (e.g., `4.7.0`) instead of a branch reference. This ensures the Pro plugin uses the stable release of the Free plugin.
+
+**Build Assets**
+
+- [ ] Build JS/CSS files by running `composer build:js` (if applicable)
+
+**Code Quality**
+
+- [ ] Run `composer check:all` to verify the codebase has no warnings or errors
+- [ ] Run `composer test Unit` to execute Unit tests and confirm all tests pass (if applicable)
+- [ ] Run `composer test Integration` to execute Integration tests and confirm all tests pass (if applicable)
+
+**RC Package & Pre-Release Team Review**
+
+> **Repeat anytime:** You may repeat this entire block (build → share → collect feedback → fix → rebuild) as often as needed and **at any stage** of the release process—not only here—whenever the team needs an installable package for testing.
+>
+> **Prerelease naming:** Use **beta** builds when sharing packages during active development or early testing (e.g. `<version>-beta.1`, `<version>-beta.2`). Use **release candidate** (RC) builds for final acceptance testing before localization and the official release (e.g. `<version>-rc.1`, `<version>-rc.2`). Increment the prerelease number for each new package you share.
+>
+> ⚠️ This step must be completed **before** starting the Localization phase. Text changes from team feedback directly affect translatable strings, so translations should only be updated after all copy is finalized.
+
+- [ ] Build a package with `composer build` and share it with the team via the `#testing` Slack channel — use a **beta** or **rc** suffix per [Semantic Versioning](http://semver.org/) (e.g. `2.14.1-beta.1` during development, `2.14.1-rc.1` for final pre-release testing), incrementing the number for each new build sent to the team
+- [ ] Collect and address feedback from the team (functional issues, copy/text changes, UI wording, etc.)
+- [ ] Apply any required fixes or text changes to the release branch — revisit earlier steps (Branch Setup, Dependencies, Build Assets, Code Quality) as needed before re-building the package
+- [ ] Re-build and re-share the package (incrementing the beta or rc number) if any changes were made
+- [ ] Confirm with the team that the **rc** build is approved and no further text changes are expected before proceeding to Localization (betas are for earlier cycles; localization should follow the final **rc** sign-off)
+
+**Localization**
+
+> **Localization (only if needed):** If no translatable strings or text have changed in this release, you can skip this section.
+
+- [ ] Run `composer translate:pot` to update the .pot file
+- [ ] Commit the updated .pot file if changes are detected
+- [ ] Run `composer translate` to update AI-assisted translations
+- [ ] Commit all translation/i18n updates together
+- [ ] Create translation review issues:
+    - [ ] For ES, FR, and IT: Open a GitHub issue titled `Translate and Review ES, FR, and IT for Release v<version>` and assign it to `@wocmultimedia`.
+    - [ ] For PT-BR: Open a GitHub issue titled `Translate and Review PT-BR for Release v<version>` and assign it to `@ValdemirMaran`.
+      **Do not** append any ZIP package, .pot file, or translation files in the issue — just provide the issue and description.
+- [ ] Follow up on translation issues (Expect this may take 1–2 days per language. Quality is better than velocity for regular releases. For urgent/security releases, proceed without updated translations when needed, but communicate clearly with the translator and team. Do **not** disclose sensitive vulnerability details until the security release is published.):
+    - [ ] Wait for `@wocmultimedia` (ES, FR, IT) to review and confirm/close the translation issue(s).
+    - [ ] Wait for `@ValdemirMaran` (PT-BR) to review and confirm/close the translation issue(s).
+- [ ] After the translator responds, run `composer translate:download` to fetch the latest translations
+  - Skip this step for urgent or security releases
+- [ ] If you make any manual edits to language files, run `composer translate:upload` to synchronize your changes with the translation system before proceeding.
+- [ ] Run `composer translate:compile` to generate language files (MO, JSON, PHP)
+- [ ] Add a summary of translation changes to `CHANGELOG.md`
+- [ ] Commit compiled translation files and `CHANGELOG.md` updates to the release branch
+
+**Version & Documentation**
+
+- [ ] Review `CHANGELOG.md` and refine user-facing descriptions as needed
+- [ ] Verify the release date in `CHANGELOG.md` is correct
+- [ ] Run `composer set:version <version>` to update plugin version numbers in all required files
+- [ ] Commit the version and changelog updates to the release branch
+
+**Build & Test**
+
+- [ ] Build the release package with `composer build` (generates the package in `./dist`)
+- [ ] Review the `composer build` output and confirm the package file list is correct
+  - Ensure configuration and development-only files are excluded from the final package
+  - If needed, update `.rsync-filters-pre-build`, `.rsync-filters-post-build`, `.distignore`, and `.gitattributes`
+  - Shared pack excludes live in `vendor/puublishpress/dev-workspace/.rsync-filters-pre-build.default` and related files; use `composer run pack:dir:with-debug` only when the package must include source maps or JSX sources
+- [ ] Share the generated package with the team for testing via the `#testing` Slack channel
+
+### Release & Deployment
+
+- [ ] Open a PR and merge `release-<version>` into `master`
+- [ ] Merge `master` back into `development`
+- [ ] Create the GitHub release using a tag from `master`
+  - This triggers the automatic deployment via the package server
+
+### Post-Release Validation
+
+- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-taxonomies-pro/actions) and confirm all release and deployment workflows complete successfully
+- [ ] Monitor the Slack channel `#package-server` and confirm the deployment completes successfully
+- [ ] Test updating to the new version on a staging site and run a basic smoke test of core functionality
+- [ ] Close the GitHub milestone for `<version>`
