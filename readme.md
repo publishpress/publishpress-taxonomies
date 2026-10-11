@@ -18,6 +18,35 @@ With PublishPress Taxonomies, you can organize, optimize, and showcase all your 
 6. **Auto Terms**: If you have a term called "WordPress", Auto Terms can analyze your posts, and when it finds the word "WordPress", it can add that term to your post. 
 7. **Suggest Terms**: This feature can show a metabox where you can browse all your existing terms. A second metabox can analyze your content and find new ideas for terms. 
 8. **Mass Edit Terms**: Quickly add or remove taxonomy terms from any content in WordPress.
-9. **Manage Terms**: Add, rename, merge, remove, delete and even delete unused terms.
+9. **Manage Terms**: Import/export standard tags, add, rename, merge, remove, delete and even delete unused terms.
 
+### Tags Import/Export
+
+The first Manage Terms tab exports all standard WordPress tags (`post_tag`),
+including unused tags, as UTF-8 CSV with `slug,name,description,post_ids`.
+`post_ids` lists existing compatible posts as pipe-delimited IDs. Legacy
+three-column CSV files import tags only. Categories, product tags, Tag Groups,
+metadata, post content, and new posts are not transferred.
+
+Back up the destination database first. The same post IDs must identify the same
+intended posts on both sites; the tool cannot verify migration identity. Imports
+add associations without replacing unrelated tags. Existing tag names and
+descriptions are skipped unless updating is selected. Missing or unsupported
+posts block import by default; an explicit opt-in skips those targets and reports
+unique skipped IDs and relationship counts. Malformed IDs and permission denials
+are never skipped. Validation precedes writes, but runtime failures may leave
+partial results; there is no transaction or automatic rollback.
+
+Import limits: 5 MiB, 5,000 tags, and 25,000 associations per file, including
+skipped targets. Name/slug limits are 200 bytes each; descriptions 10,000 bytes.
+Export is uncapped; split large CSV files with a CSV-aware tool and retain headers.
+Preserve the original CSV to retain Unicode, multiline descriptions, backslashes,
+and reversible spreadsheet-formula escaping.
+
+The Manage Terms feature must be enabled. Transfer requires `simple_tags` and
+the standard tag taxonomy's management capability; import also requires its
+editing capability. Associations require assignment permission and permission to
+edit every compatible target post. Export checks permission to read every
+associated compatible post before delivering any attachment. Results appear
+inside the tab, scoped to the current user/site, and expire after five minutes.
 
