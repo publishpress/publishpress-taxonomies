@@ -495,4 +495,3 @@ taxopress_transfer_test_guard_runtime();
         throw new RuntimeException('Association integration test failed: ' . $fail . ' checks.');
     }
 })();
-
