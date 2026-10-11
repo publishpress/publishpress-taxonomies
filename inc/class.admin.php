@@ -150,6 +150,9 @@ class SimpleTags_Admin
 
         // Manage terms
         if ($dashboard_screen || 1 === (int) SimpleTags_Plugin::get_option_value('active_manage')) {
+            require_once STAGS_DIR . '/inc/class-taxopress-tag-csv-service.php';
+            require_once STAGS_DIR . '/inc/class-taxopress-tag-transfer.php';
+            TaxoPress_Tag_Transfer::register();
             require STAGS_DIR . '/inc/class-tag-table.php';
             require STAGS_DIR . '/inc/class.admin.manage.php';
             SimpleTags_Admin_Manage::get_instance();
