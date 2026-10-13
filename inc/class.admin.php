@@ -150,6 +150,9 @@ class SimpleTags_Admin
 
         // Manage terms
         if ($dashboard_screen || 1 === (int) SimpleTags_Plugin::get_option_value('active_manage')) {
+            require_once STAGS_DIR . '/inc/class-taxopress-tag-csv-service.php';
+            require_once STAGS_DIR . '/inc/class-taxopress-tag-transfer.php';
+            TaxoPress_Tag_Transfer::register();
             require STAGS_DIR . '/inc/class-tag-table.php';
             require STAGS_DIR . '/inc/class.admin.manage.php';
             SimpleTags_Admin_Manage::get_instance();
@@ -510,10 +513,10 @@ class SimpleTags_Admin
         echo '</div>' . PHP_EOL;
     }
 
-    public static function tabSelectorTaxonomy($tab_slug = '', $page_slug = '')
+    public static function tabSelectorTaxonomy($tab_slug = '', $page_slug = '', $default_taxo = '', $default_cpt = '')
     {
-        $current_taxo = isset($_GET["{$tab_slug}_taxo"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_taxo"])) : get_option("{$tab_slug}_taxo", '');
-        $current_cpt  = isset($_GET["{$tab_slug}_cpt"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_cpt"])) : get_option("{$tab_slug}_cpt", '');
+        $current_taxo = isset($_GET["{$tab_slug}_taxo"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_taxo"])) : get_option("{$tab_slug}_taxo", $default_taxo);
+        $current_cpt  = isset($_GET["{$tab_slug}_cpt"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_cpt"])) : get_option("{$tab_slug}_cpt", $default_cpt);
 
         // Fallbacks if not yet set
         if (empty($current_cpt)) {
