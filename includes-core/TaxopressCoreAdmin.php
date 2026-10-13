@@ -17,7 +17,7 @@ class TaxopressCoreAdmin
                         $settings['publishpress-taxopress'] = [
                             'parent' => 'st_options',
                             'label'  => __('Upgrade to Pro', 'simple-tags'),
-                            'link'   => 'https://taxopress.com/taxopress/',
+                            'link'   => 'https://publishpress.com/links/taxonomies-sidebar',
                         ];
 
                         return $settings;
@@ -74,7 +74,7 @@ class TaxopressCoreAdmin
                 <?php esc_html_e("You're using PublishPress Taxonomies Free. The Pro version has more features and support.", 'simple-tags'); ?>
             </div>
             <div class="pp-version-notice-bold-purple-button">
-                <a href="https://taxopress.com/taxopress/" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
+                <a href="https://publishpress.com/links/taxonomies-banner" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
             </div>
         </div>
         <?php
@@ -122,7 +122,7 @@ class TaxopressCoreAdmin
                                 <li><?php echo esc_html__('No ads inside the plugin', 'simple-tags'); ?></li>
                             </ul>
                             <div class="upgrade-btn">
-                                <a href="https://taxopress.com/taxopress/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                                <a href="https://publishpress.com/links/taxonomies-banner" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ class TaxopressCoreAdmin
 
                         <div class="inside">
                             <p><?php echo esc_html__('If you need help or have a new feature request, let us know.', 'simple-tags'); ?>
-                                <a class="advert-link" href="https://wordpress.org/support/plugin/simple-tags/" target="_blank">
+                                <a class="advert-link" href="https://wordpress.org/support/plugin/publishpress/" target="_blank" rel="noopener noreferrer">
                                     <?php echo esc_html__('Request Support', 'simple-tags'); ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                         <path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path>
@@ -144,7 +144,7 @@ class TaxopressCoreAdmin
                             </p>
                             <p>
                                 <?php echo esc_html__('Detailed documentation is also available on the plugin website.', 'simple-tags'); ?>
-                                <a class="advert-link" href="https://taxopress.com/docs/taxopress/" target="_blank">
+                                <a class="advert-link" href="https://publishpress.com/knowledge-base/start-publishpress-taxonomies/" target="_blank" rel="noopener noreferrer">
                                     <?php echo esc_html__('View Knowledge Base', 'simple-tags'); ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                         <path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path>

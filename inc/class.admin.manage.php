@@ -345,12 +345,12 @@ class SimpleTags_Admin_Manage
                                         </p>
 
                                         <p>
-                                            <label for="renameterm_old"><?php _e('Term(s) to merge.', 'simple-tags'); ?></label><br />
+                                            <label for="renameterm_old"><?php esc_html_e('Existing term(s) to merge.', 'simple-tags'); ?></label><br />
                                             <textarea type="text" class="autocomplete-input tag-cloud-input taxopress-expandable-textarea merge-feature-autocomplete" id="mergeterm_old" name="renameterm_old" size="80" data-taxo="<?php echo esc_attr(get_option('merge-terms_taxo')); ?>"></textarea>
                                         </p>
 
                                         <p class="new_name_input">
-                                            <label for="renameterm_new"><?php _e('New term. The Old terms will be deleted and any posts assigned to the old terms will be re-assigned to this term.', 'simple-tags'); ?></label><br />
+                                            <label for="renameterm_new"><?php esc_html_e('New term. The old terms will be deleted and any posts assigned to the old terms will be re-assigned to this term.', 'simple-tags'); ?></label><br />
                                             <textarea type="text" class="autocomplete-input taxopress-expandable-textarea merge-feature-autocomplete" id="mergeterm_new" name="renameterm_new" size="80" data-taxo="<?php echo esc_attr(get_option('merge-terms_taxo')); ?>"></textarea>
                                         </p>
 
@@ -616,17 +616,18 @@ class SimpleTags_Admin_Manage
             }
 
             // String to array
-            $old_terms = explode(',', $old);
-            $new_terms = explode(',', $new);
-
-            $old_terms = array_map($extractTermName, $old_terms);
-            $new_terms = array_map($extractTermName, $new_terms);
+            $old_term_inputs = explode(',', $old);
+            $new_term_inputs = explode(',', $new);
 
             // Remove empty element and trim
-            $old_terms = array_filter($old_terms, '_delete_empty_element');
-            $new_terms = array_filter($new_terms, '_delete_empty_element');
+            $old_term_inputs = array_filter(array_map('trim', $old_term_inputs), '_delete_empty_element');
+            $new_term_inputs = array_filter(array_map('trim', $new_term_inputs), '_delete_empty_element');
+            $old_terms = array_map($extractTermName, $old_term_inputs);
+            $new_terms = array_map($extractTermName, $new_term_inputs);
             $old_terms = array_values(array_unique(array_map('sanitize_text_field', $old_terms)));
             $new_terms = array_values(array_unique(array_map('sanitize_text_field', $new_terms)));
+            $old_term_inputs = array_values(array_unique(array_map('sanitize_text_field', $old_term_inputs)));
+            $new_term_inputs = array_values(array_unique(array_map('sanitize_text_field', $new_term_inputs)));
             $common_elements = array_intersect($old_terms, $new_terms);
 
             // If old/new tag are empty => exit !
@@ -654,36 +655,65 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                // Ensure the new term exists or create it
-                $new_term = get_term_by('name', $new_tag, $taxonomy);
+                // Resolve and validate all source terms before processing the destination.
+                $source_terms = [];
+                $missing_terms = [];
+                foreach ((array) $old_term_inputs as $old_term_input) {
+                    $term = self::getExistingMergeTerm($taxonomy, $old_term_input);
+                    if ($term) {
+                        $source_terms[(int) $term->term_id] = $term;
+                    } else {
+                        $missing_term = sanitize_text_field($extractTermName($old_term_input));
+                        if (!empty($missing_term)) {
+                            $missing_terms[] = $missing_term;
+                        }
+                    }
+                }
+
+                if (!empty($missing_terms)) {
+                    add_settings_error(
+                        __CLASS__,
+                        __CLASS__,
+                        sprintf(
+                            /* translators: %s: comma-separated term names. */
+                            esc_html__('These terms do not exist and cannot be merged: %s', 'simple-tags'),
+                            esc_html(implode(', ', $missing_terms))
+                        ),
+                        'error taxopress-notice'
+                    );
+                    return false;
+                }
+
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
+                    return false;
+                }
+
+                // Resolve or create the destination only after validating all source terms.
+                $new_term_input = !empty($new_term_inputs[0]) ? $new_term_inputs[0] : $new_tag;
+                $new_term = self::getExistingMergeTerm($taxonomy, $new_term_input);
+
                 if (!$new_term) {
                     $new_term_info = wp_insert_term($new_tag, $taxonomy);
                     if (is_wp_error($new_term_info)) {
                         add_settings_error(__CLASS__, __CLASS__, esc_html__('Failed to create the new term.', 'simple-tags'), 'error taxopress-notice');
                         return false;
                     }
-                    $new_term_id = $new_term_info['term_id'];
-                    $new_term_slug = isset($new_term_info['slug']) ? $new_term_info['slug'] : sanitize_title($new_tag);
+                    $new_term_id = (int) $new_term_info['term_id'];
                 } else {
-                    $new_term_id = $new_term->term_id;
-                    $new_term_slug = $new_term->slug;
+                    $new_term_id = (int) $new_term->term_id;
                 }
 
-                // Get terms ID from old terms names
-                $terms_id = array();
-                $found_terms = array();
-                foreach ((array) $old_terms as $old_tag) {
-                    $term       = get_term_by('name', addslashes(sanitize_text_field($old_tag)), $taxonomy);
-                    if ($term) {
-                        $terms_id[] = (int) $term->term_id;
-                        $found_terms[] = $term->name;
-                    }
-                }
+                // Never delete the destination when it was also selected as a source term.
+                unset($source_terms[$new_term_id]);
 
-                if (empty($terms_id)) {
-                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No other matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
                     return false;
                 }
+
+                $terms_id = array_keys($source_terms);
+                $found_terms = wp_list_pluck(array_values($source_terms), 'name');
 
                 // Get objects from terms ID
                 $objects_id = get_objects_in_term($terms_id, $taxonomy, ['fields' => 'ids']);
@@ -699,7 +729,7 @@ class SimpleTags_Admin_Manage
                     // Check if the object already has the term assigned
                     $current_terms = wp_get_object_terms($object_id, $taxonomy, ['fields' => 'ids']);
                     if (!in_array($new_term_id, $current_terms)) {
-                        wp_set_object_terms($object_id, $new_term_slug, $taxonomy, true);
+                        wp_set_object_terms($object_id, $new_term_id, $taxonomy, true);
                     }
                     $unique_objects[$object_id] = true; // Add to unique set
                 }
@@ -750,6 +780,62 @@ class SimpleTags_Admin_Manage
                 'terms_merged' => count($terms_id) + 1,
             ];
         }
+    }
+
+    /**
+     * Resolve a merge term input to an existing term.
+     *
+     * Supports autocomplete values formatted as "Name (slug)" and plain names.
+     *
+     * @param string $taxonomy Taxonomy slug.
+     * @param string $term_input Term name or autocomplete label.
+     *
+     * @return WP_Term|false
+     */
+    private static function getExistingMergeTerm($taxonomy, $term_input)
+    {
+        $term_parts = self::parseMergeTermInput($term_input);
+
+        if (!empty($term_parts['slug'])) {
+            $term = get_term_by('slug', sanitize_title($term_parts['slug']), $taxonomy);
+            if ($term && !is_wp_error($term)) {
+                return $term;
+            }
+        }
+
+        if (empty($term_parts['name'])) {
+            return false;
+        }
+
+        $term = get_term_by('name', sanitize_text_field($term_parts['name']), $taxonomy);
+        if (!$term || is_wp_error($term)) {
+            $term = get_term_by('slug', sanitize_title($term_parts['name']), $taxonomy);
+        }
+
+        return ($term && !is_wp_error($term)) ? $term : false;
+    }
+
+    /**
+     * Parse a merge term input string.
+     *
+     * @param string $term_input Term name or "Name (slug)" autocomplete label.
+     *
+     * @return array{name:string,slug:string}
+     */
+    private static function parseMergeTermInput($term_input)
+    {
+        $term_input = trim((string) $term_input);
+        $term_parts = [
+            'name' => $term_input,
+            'slug' => '',
+        ];
+
+        if (preg_match('/^(.*?)\s*\(([^()]*)\)\s*$/', $term_input, $matches)) {
+            $term_parts['name'] = trim($matches[1]);
+            $term_parts['slug'] = trim($matches[2]);
+        }
+
+        return $term_parts;
     }
 
     /**
@@ -959,15 +1045,16 @@ class SimpleTags_Admin_Manage
                 }
             }
 
-            $term = get_term_by('name', $term_name_clean, $taxonomy);
-            if (!$term || is_wp_error($term)) {
-                $term = get_term_by('slug', sanitize_title($term_name_clean), $taxonomy);
-            }
+            $term = self::getExistingMergeTerm($taxonomy, $term_name);
 
-            if ($term && !is_wp_error($term)) {
+            if ($term) {
                 $term_ids[] = (int) $term->term_id;
+            } else {
+                $missing_terms[] = $term_name_clean;
             }
         }
+
+        $missing_terms = array_values(array_unique(array_filter($missing_terms)));
 
         return array_values(array_unique(array_filter($term_ids)));
     }
@@ -1051,7 +1138,21 @@ class SimpleTags_Admin_Manage
         $merge_type = isset($_POST['merge_type']) ? sanitize_text_field(wp_unslash($_POST['merge_type'])) : 'different_name';
         $old_terms_input = isset($_POST['old_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['old_terms'])) : [];
 
-        $term_ids = self::get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type);
+        $missing_terms = [];
+        $term_ids = self::get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type, $missing_terms);
+        if (!empty($missing_terms)) {
+            wp_send_json_error([
+                'code' => 'missing_terms',
+                'missing_terms' => $missing_terms,
+                'message' => sprintf(
+                    /* translators: %s: comma-separated term names. */
+                    __('These terms do not exist and cannot be merged: %s', 'simple-tags'),
+                    implode(', ', $missing_terms)
+                )
+            ]);
+            wp_die();
+        }
+
         $affected_posts_count = self::count_objects_for_merge_terms($taxonomy, $term_ids);
         $workload = count($term_ids) * $affected_posts_count;
         $ajax_workload_threshold = (int) apply_filters('taxopress_merge_terms_ajax_workload_threshold', 20);
@@ -1093,6 +1194,7 @@ class SimpleTags_Admin_Manage
         }
 
         $old_terms = [];
+        $missing_terms = [];
 
         foreach ($old_terms_input as $term_name) {
             $term_name_clean = self::extract_merge_term_name($term_name);
@@ -1101,11 +1203,27 @@ class SimpleTags_Admin_Manage
                 $term = get_term_by('slug', sanitize_title($term_name_clean), $taxonomy);
             }
             if ($term && !is_wp_error($term)) {
-                $old_terms[] = $term->name;
+                $old_terms[] = $term_name;
+            } elseif (!empty($term_name_clean)) {
+                $missing_terms[] = $term_name_clean;
             }
         }
 
         $old_terms = array_values(array_unique($old_terms));
+        $missing_terms = array_values(array_unique($missing_terms));
+
+        if (!empty($missing_terms)) {
+            wp_send_json_error([
+                'code' => 'missing_terms',
+                'missing_terms' => $missing_terms,
+                'message' => sprintf(
+                    /* translators: %s: comma-separated term names. */
+                    __('These terms do not exist and cannot be merged: %s', 'simple-tags'),
+                    implode(', ', $missing_terms)
+                )
+            ]);
+            wp_die();
+        }
 
         if (empty($old_terms)) {
             wp_send_json_error([
@@ -1113,13 +1231,6 @@ class SimpleTags_Admin_Manage
             ]);
             wp_die();
         }
-
-        if ($merge_type === 'different_name' && !empty($new_term)) {
-            $old_terms = array_values(array_filter($old_terms, function ($term_name) use ($new_term) {
-                return strtolower(trim($term_name)) !== strtolower(trim($new_term));
-            }));
-        }
-
 
         // Execute the merge
         $result = SimpleTags_Admin_Manage::mergeTerms($taxonomy, implode(',', $old_terms), $new_term, $merge_type);

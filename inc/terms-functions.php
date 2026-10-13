@@ -111,9 +111,17 @@ function taxopress_get_terms_screen_query_args($extra = [])
 
     foreach ($preserve_keys as $key) {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preserving current non-state-changing table filters.
-        if (isset($_REQUEST[$key]) && $_REQUEST[$key] !== '') {
+        if (isset($_REQUEST[$key]) && is_scalar($_REQUEST[$key]) && $_REQUEST[$key] !== '') {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preserving current non-state-changing table filters.
-            $query_args[$key] = sanitize_text_field(wp_unslash($_REQUEST[$key]));
+            $value = sanitize_text_field(wp_unslash($_REQUEST[$key]));
+
+            if (in_array($key, ['taxopress_show_all', 'paged'], true)) {
+                $query_args[$key] = absint($value);
+            } elseif (in_array($key, ['terms_filter_post_type', 'terms_filter_taxonomy', 'taxonomy_type', 'taxopress_terms_taxonomy', 'orderby', 'order'], true)) {
+                $query_args[$key] = sanitize_key($value);
+            } else {
+                $query_args[$key] = sanitize_text_field($value);
+            }
         }
     }
 

@@ -22,26 +22,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
-namespace PublishPress\Pimple;
+namespace PublishPress\Pimple\Exception;
+
+use PublishPress\Psr\Container\ContainerExceptionInterface;
 
 /**
- * Pimple service provider interface.
+ * A closure or invokable object was expected.
  *
- * @author  Fabien Potencier
- * @author  Dominik Zogg
+ * @author Pascal Luna <skalpa@zetareticuli.org>
  */
-interface ServiceProviderInterface
+class ExpectedInvokableException extends \InvalidArgumentException implements ContainerExceptionInterface
 {
-    /**
-     * Registers services on the given container.
-     *
-     * This method should only be used to configure services and parameters.
-     * It should not get services.
-     */
-    public function register(Container $pimple);
 }

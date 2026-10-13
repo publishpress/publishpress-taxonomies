@@ -22,20 +22,24 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fabien Potencier on 21-April-2023 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace PublishPress\Pimple\Exception;
 
-use PublishPress\Psr\Container\ContainerExceptionInterface;
+use PublishPress\Psr\Container\NotFoundExceptionInterface;
 
 /**
- * A closure or invokable object was expected.
+ * The identifier of a valid service or parameter was expected.
  *
  * @author Pascal Luna <skalpa@zetareticuli.org>
  */
-class ExpectedInvokableException extends \InvalidArgumentException implements ContainerExceptionInterface
+class UnknownIdentifierException extends \InvalidArgumentException implements NotFoundExceptionInterface
 {
+    /**
+     * @param string $id The unknown identifier
+     */
+    public function __construct($id)
+    {
+        parent::__construct(\sprintf('Identifier "%s" is not defined.', $id));
+    }
 }

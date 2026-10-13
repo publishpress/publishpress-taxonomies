@@ -50,6 +50,8 @@ if (class_exists('PublishPress\\WordPressReviews\\ReviewsController')) {
  */
 class ReviewsController
 {
+    const VERSION = '1.2.1';
+
     /**
      * @var string
      */
@@ -353,7 +355,7 @@ class ReviewsController
 
         if (! array_key_exists($this->pluginSlug, $triggers)) {
             $timeMessage = __(
-                'Hey, you\'ve been using %1$s for %2$s on your site. We hope the plugin has been useful. Please could you quickly leave a 5-star rating on WordPress.org? It really does help to keep %1$s growing.',
+                'Hey, you\'ve been using %1$s for %2$s on your site. We hope the plugin has been useful. Please could you quickly leave a review on WordPress.org? It really does help to keep %1$s growing.',
                 'publishpress-wordpress-reviews'
             );
 
@@ -367,7 +369,7 @@ class ReviewsController
                                 'conditions' => [
                                     strtotime($this->installationPath() . ' +1 week') < time(),
                                 ],
-                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/?rate=5#rate-response",
+                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/",
                                 'priority' => 10,
                             ],
                             'one_month' => [
@@ -375,7 +377,7 @@ class ReviewsController
                                 'conditions' => [
                                     strtotime($this->installationPath() . ' +1 month') < time(),
                                 ],
-                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/?rate=5#rate-response",
+                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/",
                                 'priority' => 20,
                             ],
                             'three_months' => [
@@ -387,7 +389,7 @@ class ReviewsController
                                 'conditions' => [
                                     strtotime($this->installationPath() . ' +3 months') < time(),
                                 ],
-                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/?rate=5#rate-response",
+                                'link' => "https://wordpress.org/support/plugin/{$this->pluginSlug}/reviews/",
                                 'priority' => 30,
                             ],
                         ],
@@ -548,6 +550,19 @@ class ReviewsController
         );
     }
 
+    private function enqueueScript()
+    {
+        $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+
+        wp_enqueue_script(
+            'publishpress-wordpress-reviews',
+            plugins_url("assets/js/reviews{$suffix}.js", __FILE__),
+            ['jquery'],
+            self::VERSION,
+            true
+        );
+    }
+
     /**
      * Render admin notices if available.
      */
@@ -562,61 +577,15 @@ class ReviewsController
         $priority = $this->getCurrentTrigger('priority');
         $trigger = $this->getCurrentTrigger();
 
-        // Used to anonymously distinguish unique site+user combinations in terms of effectiveness of each trigger.
-        $uuid = wp_hash(home_url() . '-' . get_current_user_id());
-
+        $this->enqueueScript();
         ?>
-
-        <script type="text/javascript">
-            (function ($) {
-                var trigger = {
-                    group: '<?php echo $group; ?>',
-                    code: '<?php echo $code; ?>',
-                    priority: '<?php echo $priority; ?>'
-                };
-
-                function dismiss(reason) {
-                    $.ajax({
-                        method: "POST",
-                        dataType: "json",
-                        url: ajaxurl,
-                        data: {
-                            action: '<?php echo $this->metaMap['action_ajax_handler']; ?>',
-                            nonce: '<?php echo wp_create_nonce($this->metaMap['nonce_action']); ?>',
-                            group: trigger.group,
-                            code: trigger.code,
-                            priority: trigger.priority,
-                            reason: reason
-                        }
-                    });
-                }
-
-                $(document)
-                    .on('click', '.<?php echo $this->pluginSlug; ?>-wp-reviews-notice .<?php echo "$this->pluginSlug-dismiss"; ?>', function (event) {
-                        var $this = $(this),
-                            reason = $this.data('reason'),
-                            notice = $this.parents('.<?php echo $this->pluginSlug; ?>-wp-reviews-notice');
-
-                        notice.fadeTo(100, 0, function () {
-                            notice.slideUp(100, function () {
-                                notice.remove();
-                            });
-                        });
-
-                        dismiss(reason);
-                    })
-                    .ready(function () {
-                        setTimeout(function () {
-                            $('.<?php echo $this->pluginSlug; ?>-wp-reviews-notice button.notice-dismiss').click(function (event) {
-                                dismiss('maybe_later');
-                            });
-                        }, 1000);
-                    });
-            }(jQuery));
-        </script>
-
-        <div class="notice notice-success is-dismissible <?php
-        echo "$this->pluginSlug-wp-reviews-notice"; ?>">
+        <div class="notice notice-success is-dismissible pp-wordpress-review-config <?php
+        echo esc_attr("$this->pluginSlug-wp-reviews-notice"); ?>"
+            data-action="<?php echo esc_attr($this->metaMap['action_ajax_handler']); ?>"
+            data-nonce="<?php echo esc_attr(wp_create_nonce($this->metaMap['nonce_action'])); ?>"
+            data-group="<?php echo esc_attr($group); ?>"
+            data-code="<?php echo esc_attr($code); ?>"
+            data-priority="<?php echo esc_attr($priority); ?>">
             <?php
             if (! empty($this->iconUrl)) : ?>
                 <img src="<?php
@@ -628,7 +597,7 @@ class ReviewsController
             <p><?php
                 echo $trigger['message']; ?></p>
             <p>
-                <a class="button button-primary <?php
+                <a class="button button-primary pp-wordpress-review-dismiss <?php
                 echo "$this->pluginSlug-dismiss"; ?>"
                    target="_blank"
                    href="<?php
@@ -639,12 +608,12 @@ class ReviewsController
                         $message = __('Click here to add your rating for %s', 'publishpress-wordpress-reviews');
                         echo sprintf($message, $this->pluginName); ?></strong>
                 </a>
-                <a href="#" class="button <?php
+                <a href="#" class="button pp-wordpress-review-dismiss <?php
                 echo "$this->pluginSlug-dismiss"; ?>" data-reason="maybe_later">
                     <?php
                     _e('Maybe later', 'publishpress-wordpress-reviews'); ?>
                 </a>
-                <a href="#" class="button <?php
+                <a href="#" class="button pp-wordpress-review-dismiss <?php
                 echo "$this->pluginSlug-dismiss"; ?>" data-reason="already_did">
                     <?php
                     _e('I already did', 'publishpress-wordpress-reviews'); ?>
