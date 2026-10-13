@@ -1,5 +1,5 @@
 <?php
-/** WP-CLI association/fidelity/strict/skip regression; disposable local fixtures only. */
+/** WP-CLI association/fidelity/resilient-assignment regression; disposable local fixtures only. */
 require_once __DIR__ . '/bootstrap.php';
 if (!defined('WP_CLI') || !WP_CLI) {
     throw new RuntimeException('Run service-runtime.php through wp eval-file.');
@@ -115,7 +115,7 @@ taxopress_transfer_test_guard_runtime();
             $require(strpos($row['slug'], $prefix . '-') === 0 && strpos($row['name'], $prefix) !== false, 'Import only disposable tag row');
             if (!$expect_failure && isset($row['post_ids'])) {
                 foreach ($ids($row['post_ids']) as $id) {
-                    $require(isset($owned_posts[$id]) || ($skip_missing && !get_post($id)), 'Successful import targets only owned posts or truly absent skipped IDs');
+                    $require(isset($owned_posts[$id]) || !get_post($id), 'Successful import targets only owned posts or truly absent skipped IDs');
                 }
             }
         }
@@ -190,10 +190,12 @@ taxopress_transfer_test_guard_runtime();
             $export_count = TaxoPress_Tag_CSV_Service::write_csv($stream);
             $require(is_int($export_count), 'Export returns tag count');
             rewind($stream);
-            $header = fgetcsv($stream);
-            if (isset($header[0])) {
-                $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', $header[0]);
+            $context = fgetcsv($stream);
+            if (isset($context[0])) {
+                $context[0] = preg_replace('/^\xEF\xBB\xBF/', '', $context[0]);
             }
+            $require($context === array('taxopress_terms_csv', '1', 'post_tag', 'post'), 'Export records selected taxonomy and post type');
+            $header = fgetcsv($stream);
             $require($header === $headers, 'Exact four export columns; no post content columns');
             $raw_csv_rows = array();
             while (($record = fgetcsv($stream)) !== false) {
@@ -210,7 +212,7 @@ taxopress_transfer_test_guard_runtime();
             }
             rewind($stream);
             $export_rows = TaxoPress_Tag_CSV_Service::parse_csv($stream);
-            $require(is_array($export_rows), 'Four-column export parses');
+            $require(is_array($export_rows), 'Contextual four-column export parses');
         } finally {
             fclose($stream);
         }
@@ -240,7 +242,7 @@ taxopress_transfer_test_guard_runtime();
             $denied = TaxoPress_Tag_CSV_Service::validate_assignments(array_values($filtered), true);
             $check(is_wp_error($denied)
                 && $denied->get_error_code() !== ''
-                && strpos($denied->get_error_message(), __('You do not have permission to assign standard post tags. No tags or assignments were written.', 'simple-tags')) !== false,
+                && strpos($denied->get_error_message(), __('You do not have permission to assign terms in the selected taxonomy. No terms or assignments were written.', 'simple-tags')) !== false,
                 'User 0 denied by opt-in assignment permission helper with row-specific permission error');
             $check(TaxoPress_Tag_CSV_Service::validate_assignments(array_values($filtered), false) === true, 'Trusted structural preflight does not invent service authorization');
             $permission_stream = fopen('php://temp', 'w+');
@@ -344,12 +346,12 @@ taxopress_transfer_test_guard_runtime();
                 array($good['slug'], $good['name'], $good['description'], $good['post_ids']),
                 array($bad['slug'], $bad['name'], $bad['description'], $bad['post_ids']),
             ), $headers);
-            $check(is_wp_error($csv_bad), 'CSV parser preflights later ' . $label . ' post ID without writes');
+            $check(is_array($csv_bad), 'CSV parser retains terms with a later ' . $label . ' content ID');
             $before = $state();
-            $result = $import(array($good, $bad), false, true);
-            $check($result['created'] === 0 && $result['updated'] === 0 && $result['skipped'] === 0, 'Whole-file ' . $label . ' preflight has no tag writes');
-            $check($result['relationships_added'] === 0 && $result['relationships_unchanged'] === 0, 'Whole-file ' . $label . ' preflight has no assignment writes');
-            $check($state() === $before, 'First valid row not created before later ' . $label . ' ID rejection');
+            $result = $import(array($good, $bad));
+            $check($result['created'] === 2 && $result['updated'] === 0 && $result['skipped'] === 0, 'A later ' . $label . ' content ID does not block either term');
+            $check($result['relationships_added'] > 0 && $result['relationships_skipped'] === 1, 'Valid assignments continue while the ' . $label . ' assignment is skipped');
+            $check($state() !== $before, 'Resilient import writes the valid term and assignment data');
         }
 
         // Same missing/unsupported IDs recur across rows: four skipped relations,
@@ -358,15 +360,11 @@ taxopress_transfer_test_guard_runtime();
             array($prefix . '-skip-x', $prefix . ' skip X', 'Skip fixture X', $drafts[0] . '|' . $missing_id . '|' . $revision),
             array($prefix . '-skip-y', $prefix . ' skip Y', 'Skip fixture Y', $drafts[1] . '|' . $missing_id . '|' . $revision),
         );
-        $strict_before = $state();
-        $strict_parse = $parse_cells($skip_cells, $headers);
-        $check(is_wp_error($strict_parse), 'Default strict parser still rejects missing/unsupported targets');
-        $skip_rows = $parse_cells($skip_cells, $headers, true);
-        $require(is_array($skip_rows) && count($skip_rows) === 2, 'Opt-in skip parser accepts mixed valid/missing/unsupported targets');
-        $check($skip_rows[0]['post_ids'] === $skip_cells[0][3] && $skip_rows[1]['post_ids'] === $skip_cells[1][3], 'Skip parser preserves IDs for honest skipped reporting');
-        $strict_result = $import($skip_rows, false, true);
-        $check($strict_result['created'] === 0 && $strict_result['relationships_added'] === 0, 'Strict importer atomically rejects rows parsed with skip enabled');
-        $check($state() === $strict_before, 'Strict preflight creates no earlier tags/relationships');
+        $parse_before = $state();
+        $skip_rows = $parse_cells($skip_cells, $headers);
+        $require(is_array($skip_rows) && count($skip_rows) === 2, 'Default parser accepts mixed valid/missing/unsupported targets');
+        $check($skip_rows[0]['post_ids'] === $skip_cells[0][3] && $skip_rows[1]['post_ids'] === $skip_cells[1][3], 'Parser preserves IDs for accurate skipped counts');
+        $check($state() === $parse_before, 'Resilient assignment preflight remains read-only');
 
         $permission_before = $state();
         $check(TaxoPress_Tag_CSV_Service::validate_assignments($skip_rows, true, true) === true, 'Admin permission preflight accepts skip mode');
@@ -374,7 +372,7 @@ taxopress_transfer_test_guard_runtime();
             wp_set_current_user(0);
             $denied = TaxoPress_Tag_CSV_Service::validate_assignments($skip_rows, true, true);
             $check(is_wp_error($denied) && $denied->get_error_code() !== ''
-                && strpos($denied->get_error_message(), __('You do not have permission to assign standard post tags. No tags or assignments were written.', 'simple-tags')) !== false,
+                && strpos($denied->get_error_message(), __('You do not have permission to assign terms in the selected taxonomy. No terms or assignments were written.', 'simple-tags')) !== false,
                 'Skip NEVER suppresses assign_terms permission denial');
             // Same gate as request handler; trusted importer is not an auth layer.
             if (!is_wp_error($denied)) {
@@ -394,7 +392,7 @@ taxopress_transfer_test_guard_runtime();
             $check(current_user_can(get_taxonomy('post_tag')->cap->assign_terms), 'Edit-denial test retains assign_terms permission');
             $denied = TaxoPress_Tag_CSV_Service::validate_assignments($skip_rows, true, true);
             $check(is_wp_error($denied) && $denied->get_error_code() !== ''
-                && strpos($denied->get_error_message(), sprintf(__('You do not have permission to edit post ID %d. No tags or assignments were written.', 'simple-tags'), $drafts[1])) !== false,
+                && strpos($denied->get_error_message(), sprintf(__('You do not have permission to edit content ID %d. No terms or assignments were written.', 'simple-tags'), $drafts[1])) !== false,
                 'Skip NEVER suppresses later edit_post permission denial');
         } finally {
             remove_filter('map_meta_cap', $deny_edit, 999);
@@ -402,15 +400,16 @@ taxopress_transfer_test_guard_runtime();
         $check($state() === $permission_before, 'Both permission failures preflight with zero tags/posts/assignment writes');
 
         $relations_before_skip = $relations();
-        $result = $import($skip_rows, false, false, true);
+        $result = $import($skip_rows, false, true);
         $require(isset($result['relationships_skipped'], $result['skipped_post_ids']), 'Actual 1.2.0 skip result API');
-        $check($result['created'] === 2 && $result['updated'] === 0 && $result['skipped'] === 0, 'Skip mode creates both tags');
-        $check($result['relationships_added'] === 2 && $result['relationships_unchanged'] === 0 && $result['relationships_skipped'] === 4, 'Skip mode adds two valid and skips four missing/unsupported relations');
+        $check($result['created'] === 2 && $result['updated'] === 0 && $result['skipped'] === 0, 'Unchecked skip option still creates both tags');
+        $check($result['relationships_added'] === 2 && $result['relationships_unchanged'] === 0 && $result['relationships_skipped'] === 4, 'Unchecked skip option adds two valid and skips four missing/unsupported relations');
+        $check($result['errors'] === 1 && count($result['error_messages']) === 1, 'Unchecked skip option reports one aggregate error without aborting the import');
         $expected_skipped = array($missing_id, (int) $revision);
         sort($expected_skipped, SORT_NUMERIC);
         $reported_skipped = $result['skipped_post_ids'];
         sort($reported_skipped, SORT_NUMERIC);
-        $check($reported_skipped === $expected_skipped && count($result['skipped_post_ids']) === 2, 'Unique numeric skipped IDs contain missing and unsupported targets exactly once');
+        $check($reported_skipped === $expected_skipped && count($result['skipped_post_ids']) === 2, 'Internal skipped IDs contain missing and unsupported targets exactly once');
         $check($post_ids_for_tag($prefix . '-skip-x') === array($drafts[0])
             && $post_ids_for_tag($prefix . '-skip-y') === array($drafts[1]), 'Only valid unchanged draft IDs attached');
         $relations_after_skip = $relations();
