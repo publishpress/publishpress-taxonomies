@@ -626,7 +626,7 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (isset($result->post_excerpt) || isset($result->post_content)) {
-                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap), $element_loop);
+                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap, $result), $element_loop);
             }
 
 
@@ -653,25 +653,15 @@ class SimpleTags_Client_RelatedPosts
      * @param string $content
      * @param string $password
      * @param integer $excerpt_length
+     * @param WP_Post|object|null $post
      *
      * @return string
      * @author WebFactory Ltd
      */
-    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55)
+    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55, $post = null)
     {
-        if (! empty($password)) { // if there's a password
-            $password_cookie = 'wp-postpass_' . COOKIEHASH;
-            $password_cookie_value = '';
-
-            // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
-            if (isset($_COOKIE[$password_cookie])) {
-                // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
-                $password_cookie_value = sanitize_text_field(wp_unslash($_COOKIE[$password_cookie]));
-            }
-
-            if (!hash_equals((string) $password, $password_cookie_value)) { // and it doesn't match the cookie
-                return __('There is no excerpt because this is a protected post.', 'simple-tags');
-            }
+        if (! empty($password) && (null === $post || post_password_required($post))) {
+            return __('There is no excerpt because this is a protected post.', 'simple-tags');
         }
 
         if (! empty($excerpt)) {
