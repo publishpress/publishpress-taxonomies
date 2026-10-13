@@ -740,7 +740,7 @@ class SimpleTags_Related_Post
                                                         'class'     => 'st-full-width',
                                                         'rows'      => '4',
                                                         'cols'      => '40',
-                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" height="200" width="200" class="custom-image-class"/><br>%post_title%<br>%post_category%</a>'),
+                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>'),
                                                         'labeltext' => esc_html__('Term link format', 'simple-tags'),
                                                         'helptext'  => sprintf(esc_html__('This settings allows to customize the appearance of Related Post links. You can find tokens and explanations in the sidebar and %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-related-posts/">', '</a>'),
                                                         'required'  => false,

@@ -876,7 +876,7 @@ class taxopress_admin_ui
     {
         $content = '';
         if (!empty($menu_icon)) {
-            $content = '<img src="' . $menu_icon . '">';
+            $content = '<img alt="" src="' . esc_url($menu_icon) . '">';
             if (0 === strpos($menu_icon, 'dashicons-')) {
                 $content = '<div class="dashicons-before ' . $menu_icon . '"></div>';
             }
