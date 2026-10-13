@@ -139,11 +139,8 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         private static function get_ibm_watson_authorization_header($api_key)
         {
-            if (!function_exists('sodium_bin2base64') || !defined('SODIUM_BASE64_VARIANT_ORIGINAL')) {
-                return '';
-            }
-
-            return 'Basic ' . sodium_bin2base64('apikey:' . $api_key, SODIUM_BASE64_VARIANT_ORIGINAL);
+            // Base64 encoding is required by HTTP Basic authentication; it is not used for obfuscation.
+            return 'Basic ' . base64_encode('apikey:' . $api_key); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
         }
 
         /**
@@ -525,16 +522,6 @@ if (!class_exists('TaxoPressAiApi')) {
                         'body'      => $request_body,
                     ];
                     $authorization_header = self::get_ibm_watson_authorization_header($ibm_watson_api_key);
-
-                    if (empty($authorization_header)) {
-                        $return['status'] = 'error';
-                        $return['message'] = esc_html__(
-                            'The IBM Watson integration requires the PHP sodium extension.',
-                            'simple-tags'
-                        );
-
-                        return $return;
-                    }
 
                     $response = wp_safe_remote_post($api_endpoint, array(
                         'timeout' => $request_timeout,
