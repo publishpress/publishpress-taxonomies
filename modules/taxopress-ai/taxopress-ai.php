@@ -421,6 +421,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                         'label_too_long_error' => esc_html__('Label can\'t exceed 30 characters.', 'simple-tags'),
                         'unknown_tab_error' => esc_html__('Unknown tab type.', 'simple-tags'),
                         'save_error' => esc_html__('Error saving label.', 'simple-tags'),
+                        'request_error' => esc_html__('The request could not be completed. Please try again.', 'simple-tags'),
                         'requiredSuffix' => esc_html__('Please choose a post to preview.', 'simple-tags'),
                     ]
                 );
