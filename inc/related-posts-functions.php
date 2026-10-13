@@ -174,7 +174,7 @@ function taxopress_create_default_related_post()
     $default['taxopress_related_post']['limit_days']   = 0;
     $default['taxopress_related_post']['order']        = 'count-desc';
     $default['taxopress_related_post']['nopoststext']  = __('No related posts.', 'simple-tags');
-    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" height="200" width="200" class="custom-image-class"/><br>%post_title%<br>%post_category%</a>';
+    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>';
     $default['taxopress_related_post']['format']       = 'box';
     $default['taxopress_related_post']['default_featured_media'] = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
     $default['taxopress_related_post']['imageresolution'] = '1536x1536';
