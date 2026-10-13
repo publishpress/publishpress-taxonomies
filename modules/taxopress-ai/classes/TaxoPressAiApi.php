@@ -64,6 +64,18 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
+         * Build IBM Watson HTTP Basic authorization header.
+         *
+         * @param string $api_key IBM Watson API key.
+         * @return string
+         */
+        private static function get_ibm_watson_authorization_header($api_key)
+        {
+            // Base64 encoding is required by HTTP Basic authentication; it is not used for obfuscation.
+            return 'Basic ' . base64_encode('apikey:' . $api_key); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+        }
+
+        /**
          * Get dandelion data
          *
          * @param  array $args
@@ -386,6 +398,8 @@ if (!class_exists('TaxoPressAiApi')) {
                     ];
 
                     $request_timeout = max(1, (int) apply_filters('taxopress_ibm_watson_request_timeout', 3));
+                    $authorization_header = self::get_ibm_watson_authorization_header($ibm_watson_api_key);
+
                     $response = wp_safe_remote_post($api_endpoint, array(
                         'timeout' => $request_timeout,
                         'redirection' => 0,
@@ -393,7 +407,7 @@ if (!class_exists('TaxoPressAiApi')) {
                         'headers' => array(
                             'Accept' => 'application/json',
                             'Content-Type' => 'application/json',
-                            'Authorization' => 'Basic ' . base64_encode('apikey:' . $ibm_watson_api_key)
+                            'Authorization' => $authorization_header
                         ),
                         'body' => wp_json_encode($request_body)
                     ));
