@@ -161,16 +161,20 @@ class SimpleTags_Admin_Manage
             //trigger default tab click on load
             echo '<div class="load-st-default-tab" data-page="' . esc_attr($default_tab) . '"></div>';
         }
-        $manage_tabs = array('import-export-tags', 'add-terms', 'remove-terms', 'rename-terms', 'merge-terms', 'delete-unuused-terms');
+        $manage_tabs = array('import-export-terms', 'add-terms', 'remove-terms', 'rename-terms', 'merge-terms', 'delete-unuused-terms');
         $requested_tab = isset($_GET['tab']) && is_string($_GET['tab']) ? sanitize_key(wp_unslash($_GET['tab'])) : '';
-        $active_tab_slug = in_array($requested_tab, $manage_tabs, true) ? $requested_tab : 'import-export-tags';
+        // Keep old links working after renaming the Tags Import/Export tab.
+        if ('import-export-tags' === $requested_tab) {
+            $requested_tab = 'import-export-terms';
+        }
+        $active_tab_slug = in_array($requested_tab, $manage_tabs, true) ? $requested_tab : 'import-export-terms';
         if ($default_tab) {
             // Legacy form submissions reopen their original tool, including without JavaScript.
             $active_tab_slug = substr($default_tab, 4);
         }
         if (isset($_GET['tab']) && !in_array($requested_tab, $manage_tabs, true) && !$default_tab) {
             // Existing JS also reads the URL; use its loader to restore the allowed default.
-            echo '<div class="load-st-default-tab" data-page=".st-import-export-tags"></div>';
+            echo '<div class="load-st-default-tab" data-page=".st-import-export-terms"></div>';
         }
 
         // Default order
@@ -178,6 +182,7 @@ class SimpleTags_Admin_Manage
             $_GET['order'] = 'name-asc';
         }
 
+        TaxoPress_Tag_Transfer::render_notice('import-export-terms' === $active_tab_slug);
         settings_errors(__CLASS__); ?>
 <div class="clear"></div>
 <div class="taxopress-block-wrap">
@@ -185,7 +190,7 @@ class SimpleTags_Admin_Manage
 
     <h1><?php _e('Manage Terms', 'simple-tags'); ?>
     </h1>
-    <div class="taxopress-description"><?php esc_html_e('This feature allows you to import and export tags, and manage your content terms by adding, renaming, merging and deleting unused terms.', 'simple-tags'); ?></div>
+    <div class="taxopress-description"><?php esc_html_e('This feature allows you to import and export terms, and manage your content terms by adding, renaming, merging and deleting unused terms.', 'simple-tags'); ?></div>
 
     <div class="clear"></div>
 
@@ -196,8 +201,8 @@ class SimpleTags_Admin_Manage
             <div class="col-wrap">
                 <div class="form-wrap">
                     <ul class="simple-tags-nav-tab-wrapper">
-                        <li class="nav-tab <?php echo $active_tab_slug === 'import-export-tags' ? 'nav-tab-active' : ''; ?>" data-page=".st-import-export-tags">
-                            <?php echo esc_html__('Tags Import/Export', 'simple-tags'); ?>
+                        <li class="nav-tab <?php echo $active_tab_slug === 'import-export-terms' ? 'nav-tab-active' : ''; ?>" data-page=".st-import-export-terms">
+                            <?php echo esc_html__('Import/Export Terms', 'simple-tags'); ?>
                         </li>
                         <li class="nav-tab <?php echo $active_tab_slug === 'add-terms' ? 'nav-tab-active' : ''; ?>" data-page=".st-add-terms">
                             <?php echo esc_html__('Add terms', 'simple-tags'); ?>
@@ -221,8 +226,11 @@ class SimpleTags_Admin_Manage
 
                     <table class="form-table">
 
-                    <tr valign="top" class="auto-terms-content st-import-export-tags" style="<?php echo $active_tab_slug === 'import-export-tags' ? '' : 'display:none;'; ?>">
-                        <td><?php TaxoPress_Tag_Transfer::render($active_tab_slug === 'import-export-tags'); ?></td>
+                    <tr valign="top" class="auto-terms-content st-import-export-terms" style="<?php echo $active_tab_slug === 'import-export-terms' ? '' : 'display:none;'; ?>">
+                        <td>
+                            <?php SimpleTags_Admin::tabSelectorTaxonomy('import-export-terms', 'st_manage', 'post_tag', 'post'); ?>
+                            <?php TaxoPress_Tag_Transfer::render(false, SimpleTags_Admin::$taxonomy, SimpleTags_Admin::$post_type); ?>
+                        </td>
                     </tr>
 
                     <tr valign="top" class="auto-terms-content st-add-terms" style="<?php echo $active_tab_slug === 'add-terms' ? '' : 'display:none;'; ?>">

@@ -513,10 +513,10 @@ class SimpleTags_Admin
         echo '</div>' . PHP_EOL;
     }
 
-    public static function tabSelectorTaxonomy($tab_slug = '', $page_slug = '')
+    public static function tabSelectorTaxonomy($tab_slug = '', $page_slug = '', $default_taxo = '', $default_cpt = '')
     {
-        $current_taxo = isset($_GET["{$tab_slug}_taxo"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_taxo"])) : get_option("{$tab_slug}_taxo", '');
-        $current_cpt  = isset($_GET["{$tab_slug}_cpt"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_cpt"])) : get_option("{$tab_slug}_cpt", '');
+        $current_taxo = isset($_GET["{$tab_slug}_taxo"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_taxo"])) : get_option("{$tab_slug}_taxo", $default_taxo);
+        $current_cpt  = isset($_GET["{$tab_slug}_cpt"]) ? sanitize_text_field(wp_unslash($_GET["{$tab_slug}_cpt"])) : get_option("{$tab_slug}_cpt", $default_cpt);
 
         // Fallbacks if not yet set
         if (empty($current_cpt)) {

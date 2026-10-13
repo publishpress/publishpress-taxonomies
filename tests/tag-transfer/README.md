@@ -1,4 +1,4 @@
-# Tag Transfer Regression Tests
+# Term Transfer Regression Tests
 
 Local-only, opt-in tests. Use a disposable database or take a database backup
 first. Never point these scripts at production. No real user CSV is included.
@@ -57,8 +57,8 @@ each session. No server is needed for the first two suites.
 Service tests load only `TaxoPress_Tag_CSV_Service`, not the new plugin bootstrap.
 They verify CSV fidelity against raw WordPress term storage, unused tags, exact
 same-ID assignments, default skip/update behavior, unrelated relationship
-preservation, strict atomic rejection, opt-in missing/unsupported skips, unique
-skip counts, authorization failures, legacy CSV, idempotence, unchanged post
+preservation, resilient missing/unsupported assignment skips, unique skip counts,
+authorization failures, legacy CSV, idempotence, unchanged post
 records and published-post term counts. Fixture posts are drafts.
 
 CSV mocks never bootstrap WordPress or access a database. They generate 159 tags,
@@ -79,10 +79,10 @@ use an isolated database if they have bootstrap side effects.
 
 HTTP tests dispatch real registered export/import callbacks with real multipart
 uploads. They test POST, nonces, feature toggle, `simple_tags` and taxonomy
-capabilities, strict/skip propagation through parse/preflight/import, permission
+capabilities, resilient assignment handling through parse/preflight/import, permission
 failures, post preservation, idempotence, all six real Manage Terms tabs and
-their default/order, `render(false)` notice preservation, active `render(true)`
-consumption, checkbox markup and escaped result details. SQL snapshots compare
+their default/order, page-level `render_notice()` placement and consumption,
+`render(false)` compatibility, checkbox markup and escaped result details. SQL snapshots compare
 all options (except the tested result transient), posts, post-tag terms and
 relationships before/after render and after fixture cleanup. Existing result
 transient contents/timeout are restored. A mode-0600 option snapshot is printed
@@ -96,20 +96,27 @@ Post/term auto-increment sequences advance while creating disposable fixtures.
 
 ## Verified Source And Results
 
-WP 6.8.2 / PHP 7.4.33 local run: service **331 PASS, 0 FAIL**;
-CSV mocks **184 PASS, 0 FAIL**; HTTP **55 PASS, 0 FAIL**.
-Source and container hashes matched:
+The standalone CSV suite was rerun on 13 October 2026: **189 PASS, 0 FAIL**,
+including matching/mismatched CSV context and hierarchical-parent validation. The
+database-backed service and HTTP suites still require the disposable WordPress
+environment described above before release. Current source hashes are:
 
 | File | SHA-256 |
 | --- | --- |
-| `inc/class-taxopress-tag-csv-service.php` | `f2aa362e63de1c118b2f24b888c71a84132c39e20e5663eceada27b83cbc6eac` |
-| `inc/class-taxopress-tag-transfer.php` | `ba4941de19a7645c3d9b7548cab38f8e2e57a5dc04490d7167a4076bb67a825d` |
-| `inc/class.admin.manage.php` | `49e76a287093f66f45be81cd62fb6d10fc0159b083213eeb26c362c653f12ff3` |
+| `inc/class-taxopress-tag-csv-service.php` | `038599f4ed633ac0bd3f3a4bb1ba15c617ba6a89949b1afe1789231e877721ed` |
+| `inc/class-taxopress-tag-transfer.php` | `33ac89ffb5cab2deec53e3f26fffed31b31b07c743ac2e5ee1eb6d8c71aaff9a` |
+| `inc/class.admin.manage.php` | `a7487b369772f40f088601a8d811b8147bca02a04d917a6483b6afa18b401ba1` |
 
-Service APIs: `parse_csv($stream, $skip_missing_posts=false)`,
-`validate_assignments($rows, $check_permissions=false, $skip_missing_posts=false)`,
-`import_rows($rows, $update_existing=false, $skip_missing_posts=false)`,
-`write_csv($stream, $check_permissions=false)`.
-Adapter: `TaxoPress_Tag_Transfer::render($show_results=true)`;
+Service APIs accept optional taxonomy and post-type arguments after the existing
+parameters: `parse_csv()`, `validate_assignments()`, `import_rows()`, and
+`write_csv()`. Adapter: `TaxoPress_Tag_Transfer::render($show_results=true,
+$taxonomy='post_tag', $post_type='post')`;
 `admin_post_taxopress_import_tags` / `admin_post_taxopress_export_tags`.
-Header: `slug,name,description,post_ids`; legacy three-column input is supported.
+Exports start with `taxopress_terms_csv,1,{taxonomy},{post_type}`, followed by
+the `slug,name,description,post_ids` header. Hierarchical taxonomies add
+`parent_slug` before `post_ids`. Context mismatches are rejected; legacy files
+without context and legacy three-column input remain supported.
+Downloads use `publishpress-taxonomies-{taxonomy}-{post-type}.csv`.
+Missing or incompatible content assignments never abort otherwise valid terms.
+The legacy skip argument controls whether those skips are warning-only or also
+produce one aggregate import error; raw skipped IDs are not rendered.
