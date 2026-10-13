@@ -38,7 +38,7 @@ taxopress_transfer_test_guard_runtime();
     };
     $request = function ($query = '', $fields = null) use ($base) {
         $curl = curl_init($base . $query);
-        curl_setopt_array($curl, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_FOLLOWLOCATION => false,
+        curl_setopt_array($curl, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_FOLLOWLOCATION => false, CURLOPT_HEADER => true,
             CURLOPT_HTTPHEADER => array('X-Taxopress-Test-Token: ' . getenv('TAXOPRESS_TEST_HTTP_TOKEN')), CURLOPT_CONNECTTIMEOUT => 5, CURLOPT_TIMEOUT => 20, CURLOPT_PROXY => ''));
         if ($fields !== null) {
             curl_setopt($curl, CURLOPT_POST, true);
@@ -47,7 +47,8 @@ taxopress_transfer_test_guard_runtime();
         try {
             $body = curl_exec($curl);
             if ($body === false) { throw new RuntimeException(curl_error($curl)); }
-            return array((int) curl_getinfo($curl, CURLINFO_HTTP_CODE), $body);
+            $header_size = (int) curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+            return array((int) curl_getinfo($curl, CURLINFO_HTTP_CODE), substr($body, $header_size), substr($body, 0, $header_size));
         } finally { curl_close($curl); }
     };
     $metadata = function () use ($request) {
@@ -114,16 +115,26 @@ taxopress_transfer_test_guard_runtime();
         };
         $view = $request('?view=1');
         $nav = $navigation($view[1]);
-        $expected_tabs = array('.st-import-export-tags', '.st-add-terms', '.st-remove-terms', '.st-rename-terms', '.st-merge-terms', '.st-delete-unuused-terms');
-        $check($view[0] === 200 && $nav[0] === $expected_tabs && $nav[1] === array('.st-import-export-tags'), 'Import/Export first and default; all existing tabs retained in order');
+        $expected_tabs = array('.st-import-export-terms', '.st-add-terms', '.st-remove-terms', '.st-rename-terms', '.st-merge-terms', '.st-delete-unuused-terms');
+        $check($view[0] === 200 && $nav[0] === $expected_tabs && $nav[1] === array('.st-import-export-terms'), 'Import/Export first and default; all existing tabs retained in order');
+        $check(strpos($view[1], 'Import/Export Terms') !== false
+            && strpos($view[1], 'value="Export Terms"') !== false
+            && strpos($view[1], 'value="Import Terms"') !== false,
+            'Term-transfer tab and action labels match the Manage Terms interface');
+        $check(strpos($view[1], 'name="taxopress_terms_taxonomy" value="post_tag"') !== false
+            && strpos($view[1], 'name="taxopress_terms_post_type" value="post"') !== false,
+            'Default selector context is submitted by both transfer forms');
         foreach (array('add-terms', 'remove-terms', 'rename-terms', 'merge-terms', 'delete-unuused-terms') as $tab) {
             $view = $request('?view=1&tab=' . $tab);
             $nav = $navigation($view[1]);
             $check($view[0] === 200 && $nav[1] === array('.st-' . $tab), 'Existing explicit tab preserved: ' . $tab);
         }
+        $view = $request('?view=1&tab=import-export-tags');
+        $nav = $navigation($view[1]);
+        $check($nav[1] === array('.st-import-export-terms'), 'Legacy Tags Import/Export URL opens the renamed tab');
         $view = $request('?view=1&tab=not-a-tool');
         $nav = $navigation($view[1]);
-        $check($nav[1] === array('.st-import-export-tags'), 'Unknown tab safely defaults to first tab');
+        $check($nav[1] === array('.st-import-export-terms'), 'Unknown tab safely defaults to first tab');
         $check($state() === $fixture_state, 'Full bootstrap and page renders leave persisted options/posts/tags/relationships unchanged');
         $fields = array('action' => 'taxopress_import_tags', 'taxopress_tags_nonce' => $meta['nonce'], 'taxopress_tags_csv' => new CURLFile($csv_path, 'text/csv', 'fixture.csv'));
         foreach (array('simple_tags', 'manage_terms', 'edit_terms') as $cap) {
@@ -150,37 +161,35 @@ taxopress_transfer_test_guard_runtime();
         $check($request('?deny_cap=simple_tags', $export_fields)[0] === 403, 'Export requires simple_tags');
         $check($request('?deny_cap=manage_terms', $export_fields)[0] === 403, 'Export requires taxonomy manage_terms');
         $export_response = $request('', $export_fields);
-        $check($export_response[0] === 200 && strpos($export_response[1], "\xEF\xBB\xBFslug,name,description,post_ids") === 0, 'Real export hook downloads four-column CSV');
-        $response = $request('', $fields);
-        $check($response[0] === 303, 'Strict genuine multipart upload redirects to validation result');
-        $result = $metadata()['result'];
-        $check(is_array($result) && $result['errors'] === 1, 'Unchecked checkbox strictly rejects missing/unsupported targets');
-        $check($state() === $fixture_state, 'Strict HTTP rejection creates no earlier tags or associations');
+        $check($export_response[0] === 200 && strpos($export_response[1], "\xEF\xBB\xBFtaxopress_terms_csv,1,post_tag,post\r\nslug,name,description,post_ids") === 0, 'Real export hook records context before four-column CSV');
+        $check(stripos($export_response[2], 'Content-Disposition: attachment; filename="publishpress-taxonomies-post_tag-post.csv"') !== false, 'Export download uses a recognizable PublishPress Taxonomies filename');
         $fields['taxopress_tags_skip_missing_posts'] = '1';
         $response = $request('?deny_edit=' . $post, $fields);
         $check($response[0] === 303, 'Permission failure uses real handler result redirect');
         $result = $metadata()['result'];
         $check(is_array($result) && $result['errors'] === 1
-            && strpos(implode(' ', $result['error_messages']), 'permission to edit post ID') !== false,
+            && strpos(implode(' ', $result['error_messages']), 'permission to edit content ID') !== false,
             'Checked skip mode NEVER skips HTTP edit_post permission failure');
         $check($state() === $fixture_state, 'HTTP permission preflight has zero writes');
         $response = $request('?deny=1', $fields);
         $check($response[0] === 403, 'Checked skip mode still denies anonymous request');
         $check($state() === $fixture_state, 'Anonymous HTTP denial has zero writes');
+        unset($fields['taxopress_tags_skip_missing_posts']);
         $response = $request('', $fields);
-        $check($response[0] === 303, 'Checked genuine upload reaches successful real handler import');
+        $check($response[0] === 303, 'Unchecked genuine upload reaches resilient real handler import');
         $result = $metadata()['result'];
-        $check($result['created'] === 2 && $result['errors'] === 0 && $result['relationships_added'] === 2
+        $check($result['created'] === 2 && $result['errors'] === 1 && $result['relationships_added'] === 2
             && $result['relationships_skipped'] === 2 && count($result['skipped_post_ids']) === 2,
-            'Checkbox reaches parse/preflight/import: two tags, two valid associations, two skips');
+            'Unchecked missing targets report one aggregate error without blocking valid import data');
         $after_skip = $state();
         $check($after_skip[0] === $fixture_state[0], 'HTTP importer leaves all post rows unchanged');
         $check(is_object_in_term($post, 'post_tag', $extra_id) === true, 'HTTP import preserves unrelated assignment');
+        $fields['taxopress_tags_skip_missing_posts'] = '1';
         $response = $request('', $fields);
         $result = $metadata()['result'];
         $check($response[0] === 303 && $result['created'] === 0 && $result['skipped'] === 2
-            && $result['relationships_unchanged'] === 2 && $result['relationships_skipped'] === 2,
-            'Checked HTTP repeat idempotent with accurate skip counts');
+            && $result['errors'] === 0 && $result['relationships_unchanged'] === 2 && $result['relationships_skipped'] === 2,
+            'Checked HTTP repeat is idempotent with warning-only skip counts');
         $check($state() === $after_skip, 'HTTP repeat adds no duplicate data');
         $notice_before = $metadata()['result'];
         $inactive = $request('?adapter_view=inactive');
@@ -190,13 +199,22 @@ taxopress_transfer_test_guard_runtime();
         $check($inactive[0] === 200 && strpos($inactive[1], 'taxopress-tags-results') === false
             && $metadata()['result'] === $notice_before, 'Real inactive Manage Terms tab preserves summary');
         $view = $request('?view=1');
-        $check($view[0] === 200 && strpos($view[1], 'name="taxopress_tags_skip_missing_posts" value="1"') !== false, 'Actual render contains opt-in skip checkbox');
-        $check(strpos($view[1], 'Relationships skipped (missing or unsupported posts): 2. Unique skipped post IDs: 2.') !== false,
-            'Actual render shows correct escaped skipping summary');
+        $check($view[0] === 200
+            && strpos($view[1], 'name="taxopress_tags_update_existing" value="1" checked="checked"') !== false
+            && strpos($view[1], 'name="taxopress_tags_skip_missing_posts" value="1" checked="checked"') !== false,
+            'Actual render checks both import options by default');
+        $notice_position = strpos($view[1], 'taxopress-tags-results');
+        $tabs_position = strpos($view[1], 'simple-tags-nav-tab-wrapper');
+        $check($notice_position !== false && $tabs_position !== false && $notice_position < $tabs_position
+            && strpos($view[1], 'notice-warning is-dismissible taxopress-notice') !== false,
+            'Transfer feedback uses the dismissible page-level notice position');
+        $check(strpos($view[1], 'Content assignments skipped: 2 because 2 content items were missing or incompatible.') !== false
+            && strpos($view[1], 'Skipped content IDs:') === false,
+            'Actual render shows a compact skipped-count summary without raw IDs');
         $check($metadata()['result'] === false, 'Active real Manage Terms render(true) consumes summary exactly once');
         set_transient($result_key, array('relationships_skipped' => 1, 'skipped_post_ids' => array('<script>ttt-xss</script>'), 'error_messages' => array('<img src=x onerror=ttt>')), 60);
         $view = $request('?view=1');
-        $check(strpos($view[1], '&lt;script&gt;ttt-xss&lt;/script&gt;') !== false
+        $check(strpos($view[1], '&lt;script&gt;ttt-xss&lt;/script&gt;') === false
             && strpos($view[1], '<script>ttt-xss</script>') === false
             && strpos($view[1], '&lt;img src=x onerror=ttt&gt;') !== false, 'Render escapes skipped ID and error details, not executable HTML');
     } catch (Throwable $error) {

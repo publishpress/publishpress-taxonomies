@@ -1,7 +1,7 @@
 <?php
 
 /**
- * CSV parsing and tag transfer, independent of HTTP handlers.
+ * CSV parsing and term transfer, independent of HTTP handlers.
  *
  * @package TaxoPress
  */
@@ -10,7 +10,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-/** Trusted-call service for validated standard-tag CSV transfers. */
+/** Trusted-call service for validated taxonomy-term CSV transfers. */
 class TaxoPress_Tag_CSV_Service
 {
     public const MAX_BYTES        = 5242880;
@@ -22,10 +22,12 @@ class TaxoPress_Tag_CSV_Service
      * Parse from the stream's current position. No database mutations.
      *
      * @param resource $stream Readable stream containing UTF-8 CSV.
-     * @param bool     $skip_missing_posts Allow missing or taxonomy-incompatible targets.
-     * @return array|WP_Error Rows with slug/name/description/row and optional pipe-delimited post_ids.
+     * @param bool     $skip_missing_posts Retained for backward compatibility; missing or incompatible targets are always skipped.
+     * @param string   $taxonomy Taxonomy name.
+     * @param string   $post_type Post type whose term relationships are transferred.
+     * @return array|WP_Error Rows with term fields and optional pipe-delimited post_ids.
      */
-    public static function parse_csv($stream, $skip_missing_posts = false)
+    public static function parse_csv($stream, $skip_missing_posts = false, $taxonomy = 'post_tag', $post_type = 'post')
     {
         if (! is_resource($stream) || 'stream' !== get_resource_type($stream)) {
             return new WP_Error('taxopress_tag_csv_stream', __('A readable CSV stream is required.', 'simple-tags'));
@@ -44,14 +46,29 @@ class TaxoPress_Tag_CSV_Service
         if (is_wp_error($records)) {
             return $records;
         }
+        $first_data_record = 2;
+        if (isset($records[0][0]) && 'taxopress_terms_csv' === $records[0][0]) {
+            $context = array_shift($records);
+            if (4 !== count($context) || '1' !== $context[1]) {
+                return new WP_Error('taxopress_tag_csv_context', __('CSV record 1 contains invalid TaxoPress transfer metadata.', 'simple-tags'));
+            }
+            if ($taxonomy !== $context[2] || $post_type !== $context[3]) {
+                /* translators: 1: Taxonomy slug from CSV, 2: Post type slug from CSV. */
+                return new WP_Error('taxopress_tag_csv_context', sprintf(__('This CSV was exported for taxonomy "%1$s" and post type "%2$s". Change the selection to match before importing.', 'simple-tags'), $context[2], $context[3]));
+            }
+            $first_data_record = 3;
+        }
         $header = empty($records) ? array() : array_shift($records);
-        if (array( 'slug', 'name', 'description' ) !== $header && array( 'slug', 'name', 'description', 'post_ids' ) !== $header) {
-            return new WP_Error('taxopress_tag_csv_header', __('CSV record 1 must contain exactly slug,name,description,post_ids or the legacy slug,name,description header.', 'simple-tags'));
+        $term_header         = array( 'slug', 'name', 'description', 'post_ids' );
+        $hierarchical_header = array( 'slug', 'name', 'description', 'parent_slug', 'post_ids' );
+        if (array( 'slug', 'name', 'description' ) !== $header && $term_header !== $header && $hierarchical_header !== $header) {
+            /* translators: %d: CSV header record number. */
+            return new WP_Error('taxopress_tag_csv_header', sprintf(__('CSV record %d must contain slug,name,description and may also contain post_ids or parent_slug,post_ids.', 'simple-tags'), $first_data_record - 1));
         }
         $width = count($header);
         $rows  = array();
         foreach ($records as $index => $record) {
-            $number = $index + 2;
+            $number = $index + $first_data_record;
             if (count($record) !== $width) {
                 return self::row_error($number, __('Column count must match the header exactly.', 'simple-tags'));
             }
@@ -61,12 +78,15 @@ class TaxoPress_Tag_CSV_Service
                 'description' => self::unescape_cell($record[2]),
                 'row'         => $number,
             );
-            if (4 === $width) {
+            if (5 === $width) {
+                $row['parent_slug'] = self::unescape_cell($record[3]);
+                $row['post_ids']    = self::unescape_cell($record[4]);
+            } elseif (4 === $width) {
                 $row['post_ids'] = self::unescape_cell($record[3]);
             }
             $rows[] = $row;
         }
-        $valid = self::validate_rows($rows, $skip_missing_posts);
+        $valid = self::validate_rows($rows, $taxonomy, $post_type);
         return is_wp_error($valid) ? $valid : $rows;
     }
 
@@ -106,16 +126,16 @@ class TaxoPress_Tag_CSV_Service
                 $field    = '';
                 $state    = 'start';
                 if (',' === $char) {
-                    if (count($record) > 3) {
-                        return self::row_error(count($records) + 1, __('CSV records cannot contain more than four columns.', 'simple-tags'));
+                    if (count($record) > 4) {
+                        return self::row_error(count($records) + 1, __('CSV records cannot contain more than five columns.', 'simple-tags'));
                     }
                     continue;
                 }
                 $records[] = $record;
                 $record    = array();
                 $pending   = false;
-                if (count($records) > self::MAX_ROWS + 1) {
-                    return self::row_error(count($records), __('The CSV file exceeds the 5,000-tag import limit.', 'simple-tags'));
+                if (count($records) > self::MAX_ROWS + 2) {
+                    return self::row_error(count($records), __('The CSV file exceeds the 5,000-term import limit.', 'simple-tags'));
                 }
                 if ("\r" === $char && $i + 1 < $length && "\n" === $data[ $i + 1 ]) {
                     ++$i;
@@ -145,22 +165,27 @@ class TaxoPress_Tag_CSV_Service
     /**
      * Validate all rows again so direct service callers cannot bypass preflight.
      *
-     * @param array $rows Raw associative tag records.
-     * @param bool  $skip_missing_posts Allow missing or taxonomy-incompatible targets.
+     * @param array $rows Raw associative term records.
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type whose term relationships are transferred.
      * @return array|WP_Error Map of target IDs to skip, or a validation failure.
      */
-    private static function validate_rows($rows, $skip_missing_posts = false)
+    private static function validate_rows($rows, $taxonomy = 'post_tag', $post_type = 'post')
     {
         if (! is_array($rows) || count($rows) > self::MAX_ROWS) {
-            return new WP_Error('taxopress_tag_csv_rows', __('Import requires an array of no more than 5,000 tags.', 'simple-tags'));
+            return new WP_Error('taxopress_tag_csv_rows', __('Import requires an array of no more than 5,000 terms.', 'simple-tags'));
+        }
+        $taxonomy_object = self::validate_context($taxonomy, $post_type);
+        if (is_wp_error($taxonomy_object)) {
+            return $taxonomy_object;
         }
         $seen   = array();
         $number = 1;
         foreach ($rows as $row) {
-            ++$number;
+            $number = self::row_number($row, $number + 1);
             foreach (array( 'slug', 'name', 'description' ) as $key) {
                 if (! is_array($row) || ! isset($row[ $key ]) || ! is_string($row[ $key ])) {
-                    return self::row_error($number, __('Each tag must have string slug, name, and description fields.', 'simple-tags'));
+                    return self::row_error($number, __('Each term must have string slug, name, and description fields.', 'simple-tags'));
                 }
                 if (1 !== preg_match('//u', $row[ $key ]) || false !== strpos($row[ $key ], "\0")) {
                     return self::row_error($number, __('Fields must contain valid UTF-8 without null bytes.', 'simple-tags'));
@@ -185,72 +210,104 @@ class TaxoPress_Tag_CSV_Service
             }
             $seen[ $row['slug'] ] = $number;
         }
-        return self::assignment_plan($rows, false, $skip_missing_posts);
+
+        $parents = array();
+        $number  = 1;
+        foreach ($rows as $row) {
+            $number      = self::row_number($row, $number + 1);
+            $parent_slug = isset($row['parent_slug']) ? $row['parent_slug'] : '';
+            if (! is_string($parent_slug)) {
+                return self::row_error($number, __('parent_slug must be a string.', 'simple-tags'));
+            }
+            if ('' === $parent_slug) {
+                continue;
+            }
+            if (! $taxonomy_object->hierarchical) {
+                return self::row_error($number, __('parent_slug can only be used with a hierarchical taxonomy.', 'simple-tags'));
+            }
+            if ($parent_slug === $row['slug'] || sanitize_title($parent_slug) !== $parent_slug) {
+                return self::row_error($number, __('parent_slug must be a different canonical WordPress slug.', 'simple-tags'));
+            }
+            if (! isset($seen[ $parent_slug ]) && ! get_term_by('slug', $parent_slug, $taxonomy, OBJECT, 'raw')) {
+                return self::row_error($number, __('parent_slug must identify a term in this CSV file or an existing term in the selected taxonomy.', 'simple-tags'));
+            }
+            $parents[ $row['slug'] ] = $parent_slug;
+        }
+        foreach ($parents as $slug => $parent_slug) {
+            $path = array( $slug => true );
+            while (isset($parents[ $parent_slug ])) {
+                if (isset($path[ $parent_slug ])) {
+                    return self::row_error($seen[ $slug ], __('Term parent relationships cannot contain a cycle.', 'simple-tags'));
+                }
+                $path[ $parent_slug ] = true;
+                $parent_slug          = $parents[ $parent_slug ];
+            }
+        }
+        return self::assignment_plan($rows, false, $taxonomy, $post_type);
     }
 
     /**
      * Preflight every assignment without writes, caching repeated post lookups.
      *
-     * @param array $rows Tag records; omitted post_ids means legacy tags-only import.
+     * @param array  $rows Term records; omitted post_ids means terms-only import.
      * @param bool  $check_permissions Require assign_terms and edit_post for every ID.
-     * @param bool  $skip_missing_posts Skip only missing or taxonomy-incompatible targets.
+     * @param bool  $skip_missing_posts Retained for backward compatibility; missing or incompatible targets are always skipped.
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type whose term relationships are transferred.
      * @return true|WP_Error
      */
-    public static function validate_assignments($rows, $check_permissions = false, $skip_missing_posts = false)
+    public static function validate_assignments($rows, $check_permissions = false, $skip_missing_posts = false, $taxonomy = 'post_tag', $post_type = 'post')
     {
-        $plan = self::assignment_plan($rows, $check_permissions, $skip_missing_posts);
+        $plan = self::assignment_plan($rows, $check_permissions, $taxonomy, $post_type);
         return is_wp_error($plan) ? $plan : true;
     }
 
     /**
      * Snapshot skipped targets before writes so recreated IDs are not attached.
      *
-     * @param array $rows Tag records to preflight.
+     * @param array  $rows Term records to preflight.
      * @param bool  $check_permissions Check assignment permissions for usable posts.
-     * @param bool  $skip_missing_posts Allow missing or unsupported targets.
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type whose term relationships are transferred.
      * @return array|WP_Error Map of skipped IDs to true; syntax/auth failures are never skipped.
      */
-    private static function assignment_plan($rows, $check_permissions, $skip_missing_posts)
+    private static function assignment_plan($rows, $check_permissions, $taxonomy, $post_type)
     {
         if (! is_array($rows) || count($rows) > self::MAX_ROWS) {
-            return new WP_Error('taxopress_tag_csv_rows', __('Import requires an array of no more than 5,000 tags.', 'simple-tags'));
+            return new WP_Error('taxopress_tag_csv_rows', __('Import requires an array of no more than 5,000 terms.', 'simple-tags'));
         }
-        $taxonomy = get_taxonomy('post_tag');
-        if (! $taxonomy) {
-            return new WP_Error('taxopress_tag_csv_taxonomy', __('The standard post_tag taxonomy is unavailable.', 'simple-tags'));
+        $taxonomy_object = self::validate_context($taxonomy, $post_type);
+        if (is_wp_error($taxonomy_object)) {
+            return $taxonomy_object;
         }
         $posts       = array();
         $skipped_ids = array();
         $total       = 0;
         $number      = 1;
         foreach ($rows as $row) {
-            ++$number;
+            $number = self::row_number($row, $number + 1);
             $ids = self::assignment_ids($row, $number);
             if (is_wp_error($ids)) {
                 return $ids;
             }
-            if (! empty($ids) && $check_permissions && ! current_user_can($taxonomy->cap->assign_terms)) {
-                return self::row_error($number, __('You do not have permission to assign standard post tags. No tags or assignments were written.', 'simple-tags'));
+            if (! empty($ids) && $check_permissions && ! current_user_can($taxonomy_object->cap->assign_terms)) {
+                return self::row_error($number, __('You do not have permission to assign terms in the selected taxonomy. No terms or assignments were written.', 'simple-tags'));
             }
             $total += count($ids);
             if ($total > self::MAX_ASSOCIATIONS) {
-                return self::row_error($number, __('The file exceeds the 25,000 tag-to-post assignment import limit.', 'simple-tags'));
+                return self::row_error($number, __('The file exceeds the 25,000 term-to-content assignment import limit.', 'simple-tags'));
             }
             foreach ($ids as $id) {
                 if (! isset($posts[ $id ])) {
                     $post = get_post($id);
-                    if (! $post || ! is_object_in_taxonomy($post->post_type, 'post_tag')) {
-                        if ($skip_missing_posts) {
-                            $skipped_ids[ $id ] = true;
-                            $posts[ $id ]       = true;
-                            continue;
-                        }
-                        /* translators: %d: Destination post ID. */
-                        return self::row_error($number, sprintf(__('Post ID %d is missing or its post type does not support post_tag.', 'simple-tags'), $id));
+                    if (! $post || $post_type !== $post->post_type || ! is_object_in_taxonomy($post->post_type, $taxonomy)) {
+                        $skipped_ids[ $id ] = true;
+                        $posts[ $id ]       = true;
+                        continue;
                     }
                     if ($check_permissions && ! current_user_can('edit_post', $id)) {
                         /* translators: %d: Destination post ID. */
-                        return self::row_error($number, sprintf(__('You do not have permission to edit post ID %d. No tags or assignments were written.', 'simple-tags'), $id));
+                        return self::row_error($number, sprintf(__('You do not have permission to edit content ID %d. No terms or assignments were written.', 'simple-tags'), $id));
                     }
                     $posts[ $id ] = true;
                 }
@@ -260,9 +317,40 @@ class TaxoPress_Tag_CSV_Service
     }
 
     /**
+     * Validate a selected taxonomy and post type.
+     *
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type name.
+     * @return WP_Taxonomy|WP_Error
+     */
+    private static function validate_context($taxonomy, $post_type)
+    {
+        $taxonomy_object = get_taxonomy($taxonomy);
+        if (! $taxonomy_object) {
+            return new WP_Error('taxopress_tag_csv_taxonomy', __('The selected taxonomy is unavailable.', 'simple-tags'));
+        }
+        if (! post_type_exists($post_type) || ! is_object_in_taxonomy($post_type, $taxonomy)) {
+            return new WP_Error('taxopress_tag_csv_post_type', __('The selected post type is unavailable or does not support the selected taxonomy.', 'simple-tags'));
+        }
+        return $taxonomy_object;
+    }
+
+    /**
+     * Use the original CSV record number when parsing supplied it.
+     *
+     * @param array $row Parsed or direct-call row.
+     * @param int   $fallback Sequential fallback record number.
+     * @return int
+     */
+    private static function row_number($row, $fallback)
+    {
+        return is_array($row) && isset($row['row']) && is_int($row['row']) ? $row['row'] : $fallback;
+    }
+
+    /**
      * Decode bounded, canonical positive decimal IDs without overflow casts.
      *
-     * @param array $row Tag record with optional string post_ids.
+     * @param array $row Term record with optional string post_ids.
      * @param int   $number CSV record number.
      * @return array|WP_Error Integer IDs, never names or floats.
      */
@@ -280,7 +368,7 @@ class TaxoPress_Tag_CSV_Service
         }
         $values = explode('|', $row['post_ids'], self::MAX_ASSOCIATIONS + 1);
         if (count($values) > self::MAX_ASSOCIATIONS) {
-            return self::row_error($number, __('The file exceeds the 25,000 tag-to-post assignment import limit.', 'simple-tags'));
+            return self::row_error($number, __('The file exceeds the 25,000 term-to-content assignment import limit.', 'simple-tags'));
         }
         $ids  = array();
         $seen = array();
@@ -290,7 +378,7 @@ class TaxoPress_Tag_CSV_Service
                 return self::row_error($number, __('Post IDs must be canonical positive decimal integers within the PHP integer range (no spaces, signs, leading zeros, or empty IDs).', 'simple-tags'));
             }
             if (isset($seen[ $value ])) {
-                return self::row_error($number, __('Duplicate post ID within this tag record.', 'simple-tags'));
+                return self::row_error($number, __('Duplicate post ID within this term record.', 'simple-tags'));
             }
             $seen[ $value ] = true;
             $ids[]          = (int) $value;
@@ -301,12 +389,14 @@ class TaxoPress_Tag_CSV_Service
     /**
      * Import preflighted rows. Caller owns authorization; no HTTP/output side effects.
      *
-     * @param array $rows Rows returned by parse_csv(), or equivalent associative rows.
-     * @param bool  $update_existing Update name/description for matching slugs.
-     * @param bool  $skip_missing_posts Skip only missing or unsupported assignment targets.
+     * @param array  $rows Rows returned by parse_csv(), or equivalent associative rows.
+     * @param bool   $update_existing Update matching terms by slug.
+     * @param bool   $skip_missing_posts Retained for backward compatibility; missing or incompatible targets are always skipped.
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type whose term relationships are transferred.
      * @return array Counts created, updated, skipped, errors; error_messages contains details.
      */
-    public static function import_rows($rows, $update_existing = false, $skip_missing_posts = false)
+    public static function import_rows($rows, $update_existing = false, $skip_missing_posts = false, $taxonomy = 'post_tag', $post_type = 'post')
     {
         $result = array(
             'created'                 => 0,
@@ -319,57 +409,106 @@ class TaxoPress_Tag_CSV_Service
             'skipped_post_ids'        => array(),
             'error_messages'          => array(),
         );
-        $valid  = self::validate_rows($rows, $skip_missing_posts);
-        if (! taxonomy_exists('post_tag')) {
-            $valid = new WP_Error('taxopress_tag_csv_taxonomy', __('The standard post_tag taxonomy is unavailable.', 'simple-tags'));
-        }
+        $valid = self::validate_rows($rows, $taxonomy, $post_type);
         if (is_wp_error($valid)) {
             $result['errors']         = 1;
             $result['error_messages'] = $valid->get_error_messages();
             return $result;
         }
-        $number = 1;
-        foreach ($rows as $row) {
-            ++$number;
-            // Count planned skips even if this tag's later write fails.
+        foreach (self::parent_first_rows($rows) as $entry) {
+            $row    = $entry['row'];
+            $number = $entry['number'];
+            // Count planned skips even if this term's later write fails.
             foreach (self::assignment_ids($row, $number) as $id) {
                 if (isset($valid[ $id ])) {
                     self::record_skipped_post($id, $result);
                 }
             }
-            $existing = get_term_by('slug', $row['slug'], 'post_tag', OBJECT, 'raw');
+            $existing = get_term_by('slug', $row['slug'], $taxonomy, OBJECT, 'raw');
             if ($existing && ! $update_existing) {
                 ++$result['skipped'];
-                self::attach_posts($row, (int) $existing->term_id, $number, $result, $skip_missing_posts, $valid);
+                self::attach_posts($row, (int) $existing->term_id, $number, $result, $valid, $taxonomy, $post_type);
                 continue;
             }
-            // Core term APIs expect slashed name/description; CSV values stay raw in memory.
-            $args = wp_slash(
-                array(
-                    'name'        => $row['name'],
-                    'description' => $row['description'],
-                    'slug'        => $row['slug'],
-                )
+            $parent_id = 0;
+            if (! empty($row['parent_slug'])) {
+                $parent = get_term_by('slug', $row['parent_slug'], $taxonomy, OBJECT, 'raw');
+                if (! $parent) {
+                    ++$result['errors'];
+                    $result['error_messages'][] = self::row_error($number, __('The parent term could not be found after processing its CSV record.', 'simple-tags'))->get_error_message();
+                    continue;
+                }
+                $parent_id = (int) $parent->term_id;
+            }
+            // Core term APIs expect slashed values; CSV values stay raw in memory.
+            $args = array(
+                'name'        => $row['name'],
+                'description' => $row['description'],
+                'slug'        => $row['slug'],
             );
+            // A legacy CSV without parent_slug must not flatten existing hierarchy.
+            if (array_key_exists('parent_slug', $row)) {
+                $args['parent'] = $parent_id;
+            }
+            $args = wp_slash($args);
             if ($existing) {
-                $written = wp_update_term($existing->term_id, 'post_tag', $args);
+                $written = wp_update_term($existing->term_id, $taxonomy, $args);
             } else {
-                $written = wp_insert_term($args['name'], 'post_tag', $args);
+                $written = wp_insert_term($args['name'], $taxonomy, $args);
             }
             if (is_wp_error($written)) {
                 ++$result['errors'];
                 $result['error_messages'][] = self::row_error($number, $written->get_error_message())->get_error_message();
             } else {
                 ++$result[ $existing ? 'updated' : 'created' ];
-                self::attach_posts($row, (int) $written['term_id'], $number, $result, $skip_missing_posts, $valid);
+                self::attach_posts($row, (int) $written['term_id'], $number, $result, $valid, $taxonomy, $post_type);
             }
+        }
+        if (! $skip_missing_posts && $result['relationships_skipped'] > 0) {
+            ++$result['errors'];
+            $result['error_messages'][] = __('Some content assignments were skipped because the content was missing or incompatible. All valid terms and assignments were still imported.', 'simple-tags');
         }
         $result['skipped_post_ids'] = array_values($result['skipped_post_ids']);
         return $result;
     }
 
     /**
-     * Count skipped relationships while retaining unique numeric post IDs.
+     * Order CSV records so parent terms are written before their children.
+     *
+     * @param array $rows Validated term rows.
+     * @return array Rows paired with their original CSV record numbers.
+     */
+    private static function parent_first_rows($rows)
+    {
+        $entries = array();
+        $by_slug = array();
+        foreach ($rows as $index => $row) {
+            $by_slug[ $row['slug'] ] = array(
+                'row'    => $row,
+                'number' => self::row_number($row, $index + 2),
+            );
+        }
+        $added = array();
+        $add   = function ($entry) use (&$add, &$added, &$entries, $by_slug) {
+            $slug        = $entry['row']['slug'];
+            $parent_slug = isset($entry['row']['parent_slug']) ? $entry['row']['parent_slug'] : '';
+            if (isset($added[ $slug ])) {
+                return;
+            }
+            if (isset($by_slug[ $parent_slug ])) {
+                $add($by_slug[ $parent_slug ]);
+            }
+            $added[ $slug ] = true;
+            $entries[]      = $entry;
+        };
+        foreach ($by_slug as $entry) {
+            $add($entry);
+        }
+        return $entries;
+    }
+
+    /**
+     * Count skipped relationships while retaining unique numeric content IDs.
      *
      * @param int   $id Skipped target post ID.
      * @param array $result Import counts and unique IDs, updated by reference.
@@ -381,44 +520,42 @@ class TaxoPress_Tag_CSV_Service
     }
 
     /**
-     * Add assignments without replacing other tags; count repeat imports unchanged.
+     * Add assignments without replacing other terms; count repeat imports unchanged.
      *
-     * @param array $row Preflighted tag record.
+     * @param array $row Preflighted term record.
      * @param int   $term_id Destination integer term ID.
      * @param int   $number CSV record number.
      * @param array $result Counts and messages, updated by reference.
-     * @param bool  $skip_missing_posts Skip targets lost at runtime, not other failures.
-     * @param array $skipped_ids Targets excluded during preflight.
+     * @param array  $skipped_ids Targets excluded during preflight.
+     * @param string $taxonomy Taxonomy name.
+     * @param string $post_type Post type whose term relationships are transferred.
      */
-    private static function attach_posts($row, $term_id, $number, &$result, $skip_missing_posts, $skipped_ids)
+    private static function attach_posts($row, $term_id, $number, &$result, $skipped_ids, $taxonomy, $post_type)
     {
         $ids = self::assignment_ids($row, $number);
         foreach ($ids as $id) {
             if (isset($skipped_ids[ $id ])) {
                 continue;
             }
-            // Recheck after tag writes in case hooks or another request removed a post.
+            // Recheck after term writes in case hooks or another request removed content.
             $post  = get_post($id);
             $error = null;
-            if (! $post || ! is_object_in_taxonomy($post->post_type, 'post_tag')) {
-                if ($skip_missing_posts) {
-                    self::record_skipped_post($id, $result);
-                    continue;
-                }
-                $error = __('Post disappeared or no longer supports post_tag.', 'simple-tags');
+            if (! $post || $post_type !== $post->post_type || ! is_object_in_taxonomy($post->post_type, $taxonomy)) {
+                self::record_skipped_post($id, $result);
+                continue;
             } else {
-                $has_tag = is_object_in_term($id, 'post_tag', $term_id);
-                if (is_wp_error($has_tag)) {
-                    $error = $has_tag->get_error_message();
-                } elseif ($has_tag) {
+                $has_term = is_object_in_term($id, $taxonomy, $term_id);
+                if (is_wp_error($has_term)) {
+                    $error = $has_term->get_error_message();
+                } elseif ($has_term) {
                     ++$result['relationships_unchanged'];
                     continue;
                 } else {
-                    $written = wp_set_object_terms($id, array( $term_id ), 'post_tag', true);
+                    $written = wp_set_object_terms($id, array( $term_id ), $taxonomy, true);
                     if (is_wp_error($written)) {
                         $error = $written->get_error_message();
                     } else {
-                        $verified = is_object_in_term($id, 'post_tag', $term_id);
+                        $verified = is_object_in_term($id, $taxonomy, $term_id);
                         if (is_wp_error($verified) || ! $verified) {
                             $error = __('The assignment could not be verified after saving.', 'simple-tags');
                         } else {
@@ -429,29 +566,34 @@ class TaxoPress_Tag_CSV_Service
             }
             if (null !== $error) {
                 ++$result['errors'];
-                /* translators: 1: Post ID, 2: Runtime assignment failure. */
-                $result['error_messages'][] = self::row_error($number, sprintf(__('Assignment to post ID %1$d failed: %2$s', 'simple-tags'), $id, $error))->get_error_message();
+                /* translators: 1: Content ID, 2: Runtime assignment failure. */
+                $result['error_messages'][] = self::row_error($number, sprintf(__('Assignment to content ID %1$d failed: %2$s', 'simple-tags'), $id, $error))->get_error_message();
             }
         }
     }
 
     /**
-     * Write all current post_tag terms, including unused tags, in paginated batches.
+     * Write selected taxonomy terms in paginated batches, including unused terms.
      * Does not close the caller's stream or emit HTTP headers. Export has no import cap.
      *
      * @param resource $stream Writable destination positioned where CSV should begin.
      * @param bool     $check_permissions Require read_post for every exported post ID.
-     * @return int|WP_Error Number of exported tags or an error (stream may be partial).
+     * @param string   $taxonomy Taxonomy name.
+     * @param string   $post_type Post type whose term relationships are transferred.
+     * @return int|WP_Error Number of exported terms or an error (stream may be partial).
      */
-    public static function write_csv($stream, $check_permissions = false)
+    public static function write_csv($stream, $check_permissions = false, $taxonomy = 'post_tag', $post_type = 'post')
     {
         if (! is_resource($stream) || 'stream' !== get_resource_type($stream)) {
             return new WP_Error('taxopress_tag_csv_stream', __('A writable CSV stream is required.', 'simple-tags'));
         }
-        if (! taxonomy_exists('post_tag')) {
-            return new WP_Error('taxopress_tag_csv_taxonomy', __('The standard post_tag taxonomy is unavailable.', 'simple-tags'));
+        $taxonomy_object = self::validate_context($taxonomy, $post_type);
+        if (is_wp_error($taxonomy_object)) {
+            return $taxonomy_object;
         }
-        if (! self::write_bytes($stream, "\xEF\xBB\xBFslug,name,description,post_ids\r\n")) {
+        $header  = $taxonomy_object->hierarchical ? 'slug,name,description,parent_slug,post_ids' : 'slug,name,description,post_ids';
+        $context = 'taxopress_terms_csv,1,' . $taxonomy . ',' . $post_type;
+        if (! self::write_bytes($stream, "\xEF\xBB\xBF" . $context . "\r\n" . $header . "\r\n")) {
             return new WP_Error('taxopress_tag_csv_write', __('The CSV output could not be written.', 'simple-tags'));
         }
         $count    = 0;
@@ -459,7 +601,7 @@ class TaxoPress_Tag_CSV_Service
         do {
             $terms = get_terms(
                 array(
-                    'taxonomy'               => 'post_tag',
+                    'taxonomy'               => $taxonomy,
                     'hide_empty'             => false,
                     'orderby'                => 'term_id',
                     'order'                  => 'ASC',
@@ -473,29 +615,42 @@ class TaxoPress_Tag_CSV_Service
             }
             $batch_count = count($terms);
             foreach ($terms as $term) {
-                $term = get_term($term, 'post_tag', OBJECT, 'raw');
+                $term = get_term($term, $taxonomy, OBJECT, 'raw');
                 if (is_wp_error($term) || ! $term) {
-                    return new WP_Error('taxopress_tag_csv_term', __('A tag could not be read during export. Please try again.', 'simple-tags'));
+                    return new WP_Error('taxopress_tag_csv_term', __('A term could not be read during export. Please try again.', 'simple-tags'));
                 }
-                $objects = get_objects_in_term((int) $term->term_id, 'post_tag', array( 'order' => 'ASC' ));
+                $objects = get_objects_in_term((int) $term->term_id, $taxonomy, array( 'order' => 'ASC' ));
                 if (is_wp_error($objects)) {
                     return $objects;
                 }
                 $post_ids = array();
                 foreach ($objects as $object_id) {
                     $post = get_post($object_id);
-                    if ($post && is_object_in_taxonomy($post->post_type, 'post_tag')) {
+                    if ($post && $post_type === $post->post_type && is_object_in_taxonomy($post->post_type, $taxonomy)) {
                         if ($check_permissions && ! isset($readable[ $post->ID ])) {
                             if (! current_user_can('read_post', (int) $post->ID)) {
-                                return new WP_Error('taxopress_tag_csv_read_permission', __('You cannot read every associated post. Export was cancelled without downloading a partial file.', 'simple-tags'));
+                                return new WP_Error('taxopress_tag_csv_read_permission', __('You cannot read every associated content item. Export was cancelled without downloading a partial file.', 'simple-tags'));
                             }
                             $readable[ $post->ID ] = true;
                         }
                         $post_ids[] = (string) $post->ID;
                     }
                 }
-                $cells = array();
-                foreach (array( $term->slug, $term->name, $term->description, implode('|', $post_ids) ) as $value) {
+                $values = array( $term->slug, $term->name, $term->description );
+                if ($taxonomy_object->hierarchical) {
+                    $parent_slug = '';
+                    if ($term->parent) {
+                        $parent = get_term((int) $term->parent, $taxonomy, OBJECT, 'raw');
+                        if (is_wp_error($parent) || ! $parent) {
+                            return new WP_Error('taxopress_tag_csv_parent', __('A parent term could not be read during export. Please try again.', 'simple-tags'));
+                        }
+                        $parent_slug = $parent->slug;
+                    }
+                    $values[] = $parent_slug;
+                }
+                $values[] = implode('|', $post_ids);
+                $cells    = array();
+                foreach ($values as $value) {
                     $cells[] = '"' . str_replace('"', '""', self::escape_cell($value)) . '"';
                 }
                 // Explicit RFC quoting avoids PHP 7.2 fputcsv() backslash-escape ambiguity.
