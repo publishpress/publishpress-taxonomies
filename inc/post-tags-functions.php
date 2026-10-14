@@ -191,6 +191,7 @@ function taxopress_create_default_post_tags()
     $post_tags_default['taxopress_post_tags']['title']     = esc_html__('Terms for Current Post', 'simple-tags');
     $post_tags_default['taxopress_post_tags']['taxonomy']  = 'post_tag';
     $post_tags_default['taxopress_post_tags']['embedded']  = [];
+    $post_tags_default['taxopress_post_tags']['display_position'] = 'below';
     $post_tags_default['taxopress_post_tags']['number']    = $defaults['number'];
     $post_tags_default['taxopress_post_tags']['separator'] = $defaults['separator'];
     $post_tags_default['taxopress_post_tags']['after']     = $defaults['after'];
@@ -308,6 +309,11 @@ function taxopress_update_posttags($data = [])
     }
     $data = $sanitized_data;
 
+    $data['taxopress_post_tags']['display_position'] = isset($data['taxopress_post_tags']['display_position'])
+        && 'above' === $data['taxopress_post_tags']['display_position']
+        ? 'above'
+        : 'below';
+
     $posttagss = taxopress_get_posttags_data();
 
     $title                                = $data['taxopress_post_tags']['title'];
@@ -402,6 +408,8 @@ function taxopress_posttags_the_content($content = '')
 {
 
     $post_tags = taxopress_get_posttags_data();
+    $above_content = '';
+    $below_content = '';
 
     if (count($post_tags) > 0) {
         foreach ($post_tags as $post_tag) {
@@ -426,10 +434,16 @@ function taxopress_posttags_the_content($content = '')
             }
             if (true === $marker) {
                 $posttags_arg = build_query($post_tag);
-                $content      .= SimpleTags_Client_PostTags::extendedPostTags($posttags_arg);
+                $posttags_output = SimpleTags_Client_PostTags::extendedPostTags($posttags_arg);
+
+                if (isset($post_tag['display_position']) && 'above' === $post_tag['display_position']) {
+                    $above_content .= $posttags_output;
+                } else {
+                    $below_content .= $posttags_output;
+                }
             }
         }
     }
 
-    return $content;
+    return $above_content . $content . $below_content;
 }
