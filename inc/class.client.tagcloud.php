@@ -171,6 +171,13 @@ class SimpleTags_Client_TagCloud
             $terms = self::getTags($args, $taxonomy);
         }
 
+        $min_usage = isset($args['min_usage']) ? max(0, (int) $args['min_usage']) : 0;
+        if ($min_usage > 0 && is_array($terms)) {
+            $terms = array_filter($terms, static function ($term) use ($min_usage) {
+                return is_object($term) && isset($term->count) && (int) $term->count >= $min_usage;
+            });
+        }
+
         // Remove hidden terms if enabled
         if ($enable_hidden_terms && !empty($args['hide_terms'])) {
             $hidden_terms = get_transient('taxopress_hidden_terms_' . $args['taxonomy']);
