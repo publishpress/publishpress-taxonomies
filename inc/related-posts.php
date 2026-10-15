@@ -742,10 +742,41 @@ class SimpleTags_Related_Post
                                                         'cols'      => '40',
                                                         'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" height="200" width="200" class="custom-image-class"/><br>%post_title%<br>%post_category%</a>'),
                                                         'labeltext' => esc_html__('Term link format', 'simple-tags'),
-                                                        'helptext'  => sprintf(esc_html__('This settings allows to customize the appearance of Related Post links. You can find tokens and explanations in the sidebar and %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-related-posts/">', '</a>'),
+                                                        'helptext'  => sprintf(esc_html__('This setting allows you to customize the appearance of Related Post links. You can use any of the tokens shown below or find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-related-posts/">', '</a>'),
                                                         'required'  => false,
                                                     ]);
                                                     ?>
+
+                                                    <tr valign="top">
+                                                        <td colspan="2">
+                                                            <div class="postbox taxopress-related-posts-format-box">
+                                                                <div class="postbox-header">
+                                                                    <h2 class="hndle is-non-sortable">
+                                                                        <span><?php echo esc_html__('Related Posts format', 'simple-tags'); ?></span>
+                                                                    </h2>
+                                                                </div>
+
+                                                                <div class="inside">
+                                                                    <p><?php echo esc_html__('Here are the tokens you can use for related posts format', 'simple-tags'); ?>:</p>
+                                                                    <ul>
+                                                                        <li><code>%post_permalink%</code> <?php echo esc_html__('The URL of the post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_title%</code> <?php echo esc_html__('The title of the post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_date% </code><?php echo esc_html__('The date of the post (this shows inside a tooltip)', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_tagcount%</code> <?php echo esc_html__('The number of tags used by both posts', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_comment%</code> <?php echo esc_html__('The number of comments on the post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_id%</code> <?php echo esc_html__('The ID of the post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_relatedtags%</code> <?php echo esc_html__('A list of tags used by both the current post and the related post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_excerpt%</code> <?php echo esc_html__('The post excerpt', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_thumb_url%</code> <?php echo esc_html__('The post featured image URL', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_content%</code> <?php echo esc_html__('The post content', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_category%</code> <?php echo esc_html__('The post category', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_size%</code> <?php echo esc_html__('The font size of the post', 'simple-tags'); ?></li>
+                                                                        <li><code>%post_color%</code> <?php echo esc_html__('The color of the post title', 'simple-tags'); ?></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
 
                                                 </table>
 
@@ -1267,39 +1298,6 @@ class SimpleTags_Related_Post
                             }
                             ?>
 
-                    </div>
-
-                    <div class="taxopress-token-right-sidebar">
-                            <div id="postbox-container-1" class="postbox-container">
-                            <div class="meta-box-sortables">
-                                <div class="postbox">
-                                    <div class="postbox-header">
-                                        <h3 class="hndle is-non-sortable">
-                                            <span><?php echo esc_html__('Related Posts format', 'simple-tags'); ?></span>
-                                        </h3>
-                                    </div>
-                        
-                                    <div class="inside">
-                                        <p><?php echo esc_html__('Here are the tokens you can use for related posts format', 'simple-tags'); ?>:</p>
-                                        <ul>
-                                            <li><code>%post_permalink%</code> <?php echo esc_html__('The URL of the post', 'simple-tags'); ?></li>
-                                            <li><code>%post_title%</code> <?php echo esc_html__('The title of the post', 'simple-tags'); ?></li>
-                                            <li><code>%post_date% </code><?php echo esc_html__('The date of the post (this shows inside a tooltip)', 'simple-tags'); ?></li>
-                                            <li><code>%post_tagcount%</code> <?php echo esc_html__('The number of tags used by both posts', 'simple-tags'); ?></li>
-                                            <li><code>%post_comment%</code> <?php echo esc_html__('The number of comments on the post', 'simple-tags'); ?></li>
-                                            <li><code>%post_id%</code> <?php echo esc_html__('The ID of the post', 'simple-tags'); ?></li>
-                                            <li><code>%post_relatedtags%</code> <?php echo esc_html__('A list of tags used by both the current post and the related post', 'simple-tags'); ?></li>
-                                            <li><code>%post_excerpt%</code> <?php echo esc_html__('The post excerpt', 'simple-tags'); ?></li>
-                                            <li><code>%post_thumb_url%</code> <?php echo esc_html__('The post featured image url', 'simple-tags'); ?></li>
-                                            <li><code>%post_content%</code> <?php echo esc_html__('The post content', 'simple-tags'); ?></li>
-                                            <li><code>%post_category%</code> <?php echo esc_html__('The post category', 'simple-tags'); ?></li>
-                                            <li><code>%post_size%</code> <?php echo esc_html__('The font size of the post', 'simple-tags'); ?></li>
-                                            <li><code>%post_color%</code> <?php echo esc_html__('The color of the post title', 'simple-tags'); ?></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
                     </div>
 
                     <?php do_action('taxopress_admin_after_sidebar'); ?>
