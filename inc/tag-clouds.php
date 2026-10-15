@@ -948,12 +948,37 @@ class SimpleTags_Tag_Clouds
                                                        'cols'      => '40',
                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>'),
                                                        'labeltext' => esc_html__('Term link format', 'simple-tags'),
-                                                       'helptext'  => sprintf(esc_html__('This option allows you to change the format of your terms. You can use any of the tokens in the "Terms Display format" sidebar". Find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-tag-clouds/">', '</a>'),
+                                                       'helptext'  => sprintf(esc_html__('This option allows you to change the format of your terms. You can use any of the tokens shown below. Find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-tag-clouds/">', '</a>'),
                                                        'required'  => false,
                                                        ]);
 
-
                                                         ?>
+                                                    <tr valign="top">
+                                                        <td colspan="2">
+                                                            <div class="postbox taxopress-terms-display-format-box">
+                                                                <div class="postbox-header">
+                                                                    <h2 class="hndle is-non-sortable">
+                                                                        <span><?php echo esc_html__('Terms Display format', 'simple-tags'); ?></span>
+                                                                    </h2>
+                                                                </div>
+                                                                <div class="inside">
+                                                                    <p><?php echo esc_html__('Here are the tokens you can use for Term link format', 'simple-tags'); ?>:</p>
+                                                                    <ul>
+                                                                        <li><code>%tag_link%</code> – <?php echo esc_html__('The URL of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_id%</code> – <?php echo esc_html__('The ID of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>t%tag_scale%</code> – <?php echo esc_html__('The weighted size of the term in the display', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_count%</code> – <?php echo esc_html__('The number of times the term is used', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_rel%</code> – <?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (<?php echo esc_html__('it creates', 'simple-tags'); ?> <code>rel="tag"</code>)</li>
+                                                                        <li><code>%tag_size%</code> – <?php echo esc_html__('The font size for the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_color%</code> – <?php echo esc_html__('The font color for the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_name%</code> – <?php echo esc_html__('The name of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_name_attribute%</code> – <?php echo esc_html__('The name of the term with any HTML stripped out', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the term', 'simple-tags'); ?></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </table>
 
 
@@ -1040,37 +1065,6 @@ class SimpleTags_Tag_Clouds
                     ?>
 
                     </div>
-
-                    <div class="taxopress-token-right-sidebar">
-            <div id="postbox-container-1" class="postbox-container">
-            <div class="meta-box-sortables">
-                <div class="postbox">
-                    <div class="postbox-header">
-                        <h3 class="hndle is-non-sortable">
-                            <span><?php echo esc_html__('Terms Display format', 'simple-tags'); ?></span>
-                        </h3>
-                    </div>
-        
-                    <div class="inside">
-                        <p><?php echo esc_html__('Here are the tokens you can use for Term link format', 'simple-tags'); ?>:</p>
-                        <ul>
-                            <li><code>%tag_link%</code> – <?php echo esc_html__('The URL of the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_id%</code> – <?php echo esc_html__('The ID of the term', 'simple-tags'); ?></li>
-                            <li><code>t%tag_scale%</code> – <?php echo esc_html__('The weighted size of the term in the display', 'simple-tags'); ?></li>
-                            <li><code>%tag_count%</code> – <?php echo esc_html__('The number of times the term is used', 'simple-tags'); ?></li>
-                            <li><code>%tag_rel%</code> – <?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (<?php echo esc_html__('it creates', 'simple-tags'); ?> <code>rel="tag"</code>)</li>
-                            <li><code>%tag_size%</code> – <?php echo esc_html__('The font size for the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_color%</code> – <?php echo esc_html__('The font color for the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_name%</code> – <?php echo esc_html__('The name of the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_name_attribute%</code> – <?php echo esc_html__('The name of the term with any HTML stripped out', 'simple-tags'); ?></li>
-                            <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the term', 'simple-tags'); ?></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>
-
 
                                                     <?php do_action('taxopress_admin_after_sidebar'); ?>
                 </div>
