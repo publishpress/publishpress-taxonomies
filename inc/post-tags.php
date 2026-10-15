@@ -696,6 +696,34 @@ class SimpleTags_Post_Tags
                                                     }
                                                     echo '</table></td></tr>';
 
+                                                    $display_position_options = [
+                                                        'options' => [
+                                                            [
+                                                                'attr' => 'above',
+                                                                'text' => esc_attr__('Above post content', 'simple-tags'),
+                                                            ],
+                                                            [
+                                                                'attr'    => 'below',
+                                                                'text'    => esc_attr__('Below post content', 'simple-tags'),
+                                                                'default' => 'true',
+                                                            ],
+                                                        ],
+                                                    ];
+                                                    $display_position = isset($current['display_position']) && in_array($current['display_position'], ['above', 'below'], true)
+                                                        ? $current['display_position']
+                                                        : 'below';
+                                                    $display_position_options['selected'] = $display_position;
+
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_select_checkbox_input_main([
+                                                        'namearray'  => 'taxopress_post_tags',
+                                                        'name'       => 'display_position',
+                                                        'class'      => 'taxopress-posttags-display-position',
+                                                        'labeltext'  => esc_html__('Automatic display position', 'simple-tags'),
+                                                        'aftertext'  => esc_html__('Choose whether automatically displayed terms appear above or below the post content.', 'simple-tags'),
+                                                        'selections' => $display_position_options,
+                                                    ]);
+
 
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     echo $ui->get_number_input([
