@@ -27,8 +27,9 @@ if (!class_exists('SimpleTags_Hidden_Terms')) {
 
             add_action('taxopress_settings_saved', [$this, 'taxopress_schedule_hidden_terms_cron']);
             add_action('taxopress_update_hidden_terms_event', [$this, 'taxopress_set_hidden_terms']);
-            add_filter('term_link', [$this, 'taxopress_modify_hidden_term_links'], 10, 3);
+            add_action('template_redirect', [$this, 'taxopress_redirect_hidden_term_archive'], 1);
             add_filter('get_the_terms', [$this,'taxopress_remove_hidden_terms'], 10, 3);
+            add_filter('wp_sitemaps_taxonomies_query_args', [$this, 'taxopress_exclude_hidden_terms_from_core_sitemap'], 10, 2);
             add_action('taxopress_settings_saved', [$this, 'taxopress_update_hidden_terms_immediately']);
         }
 
@@ -92,23 +93,60 @@ if (!class_exists('SimpleTags_Hidden_Terms')) {
             return true;
         }
 
-        public static function taxopress_modify_hidden_term_links($term_link, $term, $taxonomy)
+        /**
+         * Redirect a hidden term only when its archive is directly requested.
+         *
+         * Term permalinks must remain unchanged so canonical tags, admin links,
+         * sitemaps, and third-party integrations receive the real archive URL.
+         */
+        public static function taxopress_redirect_hidden_term_archive()
         {
             if (!(int) SimpleTags_Plugin::get_option_value('enable_hidden_terms')) {
-                return $term_link;
+                return;
             }
 
-            static $hidden_terms_cache = [];
-
-            if (!isset($hidden_terms_cache[$taxonomy])) {
-                $hidden_terms_cache[$taxonomy] = get_transient('taxopress_hidden_terms_' . $taxonomy);
+            if (!is_category() && !is_tag() && !is_tax()) {
+                return;
             }
 
-            if (!empty($hidden_terms_cache[$taxonomy]) && in_array($term->term_id, $hidden_terms_cache[$taxonomy])) {
-                return home_url();
+            $term = get_queried_object();
+            if (!($term instanceof WP_Term)) {
+                return;
             }
 
-            return $term_link;
+            $hidden_terms = wp_parse_id_list(get_transient('taxopress_hidden_terms_' . $term->taxonomy));
+            if (!in_array((int) $term->term_id, $hidden_terms, true)) {
+                return;
+            }
+
+            if (wp_safe_redirect(home_url('/'), 302, 'PublishPress Taxonomies')) {
+                exit;
+            }
+        }
+
+        /**
+         * Exclude hidden term archives from the WordPress core XML sitemap.
+         *
+         * @param array  $args     Taxonomy term query arguments.
+         * @param string $taxonomy Taxonomy slug.
+         * @return array Modified taxonomy term query arguments.
+         */
+        public static function taxopress_exclude_hidden_terms_from_core_sitemap($args, $taxonomy)
+        {
+            if (!(int) SimpleTags_Plugin::get_option_value('enable_hidden_terms')) {
+                return $args;
+            }
+
+            $hidden_terms = wp_parse_id_list(get_transient('taxopress_hidden_terms_' . $taxonomy));
+            if (empty($hidden_terms)) {
+                return $args;
+            }
+
+            $excluded_terms  = isset($args['exclude']) ? wp_parse_id_list($args['exclude']) : [];
+            // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Core sitemap term queries require the exclude argument.
+            $args['exclude'] = array_values(array_unique(array_merge($excluded_terms, $hidden_terms)));
+
+            return $args;
         }
 
         /**
