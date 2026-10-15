@@ -806,6 +806,23 @@
 
 
     // -------------------------------------------------------------
+    //   Show automatic display position when an automatic location is selected
+    // -------------------------------------------------------------
+    function checkPostTagsDisplayPosition() {
+      var displayPosition = $('.taxopress-posttags-display-position');
+
+      if (!displayPosition.length) {
+        return;
+      }
+
+      var hasAutomaticDisplayLocation = $('.posttags_display input[name="embedded[]"]:checked').length > 0;
+      displayPosition.closest('tr').toggle(hasAutomaticDisplayLocation);
+    }
+
+    $(document).on('change', '.posttags_display input[name="embedded[]"]', checkPostTagsDisplayPosition);
+    checkPostTagsDisplayPosition();
+
+    // -------------------------------------------------------------
     //   Post tags submit error
     // -------------------------------------------------------------
     $('.taxopress-posttags-submit').on('click', function (e) {
