@@ -1360,6 +1360,11 @@ ul.taxopress-tab li.active a {
     padding-left: 0 !important;
 }
 
+#poststuff .taxopress-section.postbox .taxopress-terms-display-format-box .inside {
+    margin: 6px 0 0 !important;
+    padding: 0 12px 12px !important;
+}
+
 ul.taxopress-tab li.autolink_advanced_tab a::before {
     content: "\f111";
 }
