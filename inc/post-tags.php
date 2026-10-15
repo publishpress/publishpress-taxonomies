@@ -718,6 +718,7 @@ class SimpleTags_Post_Tags
                                                     echo $ui->get_select_checkbox_input_main([
                                                         'namearray'  => 'taxopress_post_tags',
                                                         'name'       => 'display_position',
+                                                        'class'      => 'taxopress-posttags-display-position',
                                                         'labeltext'  => esc_html__('Automatic display position', 'simple-tags'),
                                                         'aftertext'  => esc_html__('Choose whether automatically displayed terms appear above or below the post content.', 'simple-tags'),
                                                         'selections' => $display_position_options,
