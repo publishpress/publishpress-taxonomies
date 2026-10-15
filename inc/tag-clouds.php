@@ -600,6 +600,17 @@ class SimpleTags_Tag_Clouds
                                                         'required'  => false,
                                                     ]);
 
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_number_input([
+                                                        'namearray' => 'taxopress_tag_cloud',
+                                                        'name'      => 'min_usage',
+                                                        'textvalue' => isset($current['min_usage']) ? esc_attr($current['min_usage']) : '0',
+                                                        'labeltext' => esc_html__('Minimum term usage', 'simple-tags'),
+                                                        'helptext'  => esc_html__('Only display terms used by at least this many content items. Set to 0 for no minimum.', 'simple-tags'),
+                                                        'min'       => '0',
+                                                        'required'  => true,
+                                                    ]);
+
                                                     $select = [
                                                     'options' => [
                                                     [ 'attr' => '1', 'text' => esc_attr__('24 hours', 'simple-tags') ],
@@ -1163,6 +1174,7 @@ class SimpleTags_Tag_Clouds
             'display_mode' => $config['display_mode'] ?? 'parents_and_sub',
             'max'         => $config['max'] ?? 20,
             'limit_days' => $config['limit_days'] ?? '',
+            'min_usage'  => $config['min_usage'] ?? 0,
         ]);
 
         // Get the tag cloud output
