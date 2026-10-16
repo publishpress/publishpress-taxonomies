@@ -896,6 +896,100 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
     display: none;
 }
 
+.taxopress-autoterm-debug-option {
+    margin: 16px 10px 0 0;
+    text-align: right;
+}
+
+.taxopress-autoterm-debug-option label {
+    font-weight: 600;
+}
+
+.taxopress-autoterm-debug-option .description {
+    margin: 4px 0 0;
+}
+
+.taxopress-autoterm-debug-log {
+    margin: 16px 10px 0 0;
+    padding: 12px;
+    border: 1px solid #c3c4c7;
+    background: #f6f7f7;
+    text-align: left;
+}
+
+.taxopress-autoterm-debug-log h3 {
+    margin: 0;
+}
+
+.taxopress-autoterm-debug-header,
+.taxopress-autoterm-debug-block-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.taxopress-autoterm-debug-header {
+    margin-bottom: 10px;
+}
+
+.taxopress-autoterm-debug-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.taxopress-autoterm-debug-status {
+    min-height: 20px;
+    margin: 0 0 8px;
+    color: #2271b1;
+}
+
+.taxopress-autoterm-debug-status.error {
+    color: #d63638;
+}
+
+.taxopress-autoterm-debug-source + .taxopress-autoterm-debug-source {
+    margin-top: 10px;
+}
+
+.taxopress-autoterm-debug-source summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.taxopress-autoterm-debug-block-heading {
+    margin: 12px 0 4px;
+}
+
+.taxopress-autoterm-debug-source h4 {
+    margin: 0;
+}
+
+.taxopress-autoterm-debug-copy {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px;
+    text-decoration: none;
+}
+
+.taxopress-autoterm-debug-copy .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+
+.taxopress-autoterm-debug-source pre {
+    max-height: 320px;
+    margin: 0;
+    padding: 10px;
+    overflow: auto;
+    border: 1px solid #dcdcde;
+    background: #fff;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .previewed-tag-fieldset {
     padding-left: 10px;
     padding-top: 5px;

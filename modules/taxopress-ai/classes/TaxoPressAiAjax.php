@@ -79,6 +79,71 @@ if (!class_exists('TaxoPressAiAjax')) {
         }
 
         /**
+         * Add a source result to the opt-in Auto Terms preview debug log.
+         *
+         * @param array  $debug_log       Debug log passed by reference.
+         * @param string $source          Human-readable source name.
+         * @param array  $source_result   Source result.
+         * @param array  $default_request Request data used when the source has no detailed trace.
+         */
+        private static function add_preview_debug_entry(&$debug_log, $source, $source_result, $default_request = [])
+        {
+            $source_debug = !empty($source_result['debug']) && is_array($source_result['debug'])
+                ? $source_result['debug']
+                : [];
+            $status = !empty($source_result['status']) ? $source_result['status'] : 'error';
+            $message = isset($source_debug['message'])
+                ? wp_strip_all_tags($source_debug['message'])
+                : (!empty($source_result['message'])
+                    ? wp_strip_all_tags($source_result['message'])
+                    : '');
+            $request_data = isset($source_debug['request']) && $source_debug['request'] !== []
+                ? $source_debug['request']
+                : $default_request;
+            $provider_response = array_key_exists('response', $source_debug)
+                ? $source_debug['response']
+                : null;
+
+            if ($request_data === [] && $status === 'error') {
+                $request_data = [
+                    'transport' => 'not_sent',
+                    'reason'    => $message !== ''
+                        ? $message
+                        : esc_html__('The provider request was not sent.', 'simple-tags'),
+                ];
+
+                if ($provider_response === []) {
+                    $provider_response = null;
+                }
+            }
+
+            $response_data = [
+                'provider' => $provider_response,
+                'status'   => $status,
+            ];
+
+            if (
+                $message !== ''
+                && !($status === 'success' && $message === esc_html__('Result from api.', 'simple-tags'))
+            ) {
+                $response_data['message'] = $message;
+            }
+
+            // Remote parsed terms are already rendered in the preview above the debug log.
+            if (empty($source_debug)) {
+                $response_data['terms'] = !empty($source_result['results'])
+                    ? array_values((array) $source_result['results'])
+                    : [];
+            }
+
+            $debug_log[] = [
+                'source'   => $source,
+                'request'  => $request_data,
+                'response' => $response_data,
+            ];
+        }
+
+        /**
          * Handle AI preview ajax request.
          */
         public static function handle_taxopress_ai_preview_feature()
@@ -110,6 +175,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                 $search_text = !empty($_POST['search_text']) ? sanitize_text_field(wp_unslash($_POST['search_text'])) : '';
                 $selected_autoterms = !empty($_POST['selected_autoterms']) ? sanitize_text_field(wp_unslash($_POST['selected_autoterms'])) : '';
                 $screen_source = !empty($_POST['screen_source']) ? sanitize_text_field(wp_unslash($_POST['screen_source'])) : 'st_autoterms';
+                $include_debug_request = isset($_POST['include_debug'])
+                    ? sanitize_text_field(wp_unslash($_POST['include_debug'])) === '1'
+                    : null;
+                $include_debug = false;
                 $preview_post = !empty($_POST['preview_post']) ? (int) $_POST['preview_post'] : 0;
                 $preview_feature = 'data';
                 $post_data = get_post($preview_post);
@@ -133,6 +202,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Using custom taxopress_sanitize_text_field() for sanitization
                 $post_title = isset($_POST['post_title']) ? taxopress_sanitize_text_field(wp_unslash($_POST['post_title'])) : $post_data->post_title;
                 $term_results = [];
+                $debug_log = [];
 
                 if ($screen_source == 'st_taxopress_ai') {
                     $post_content = $post_data->post_content;
@@ -162,6 +232,12 @@ if (!class_exists('TaxoPressAiAjax')) {
                     $autoterm_use_ibm_watson    = !empty($settings_data['autoterm_use_ibm_watson']);
                     $autoterm_use_dandelion     = !empty($settings_data['autoterm_use_dandelion']);
                     $autoterm_use_opencalais    = !empty($settings_data['autoterm_use_opencalais']);
+
+                    if ($screen_source === 'st_autoterms') {
+                        $include_debug = $include_debug_request !== null
+                            ? $include_debug_request
+                            : !empty($settings_data['autoterm_preview_debug']);
+                    }
 
                     $uses_remote_provider = $autoterm_use_open_ai
                         || $autoterm_use_ibm_watson
@@ -294,6 +370,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                         $request_args  = $args;
                         $request_args['settings_data'] = $settings_data;
                         $request_args['return_tags'] = true;
+                        $request_args['include_debug'] = $include_debug;
                         $terms_found = false;
 
                         $metabox_display_option = SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_data->post_type . '_metabox_display_option');
@@ -312,6 +389,19 @@ if (!class_exists('TaxoPressAiAjax')) {
                             $request_args['settings_data'] = $settings_data;
 
                             $suggest_local_terms_results = TaxoPressAiAjax::get_existing_terms_results($request_args);
+
+                            if ($include_debug) {
+                                self::add_preview_debug_entry(
+                                    $debug_log,
+                                    esc_html__('Suggest Existing Terms', 'simple-tags'),
+                                    $suggest_local_terms_results,
+                                    [
+                                        'transport' => 'local',
+                                        'taxonomy'  => $preview_taxonomy,
+                                        'content'   => $clean_content,
+                                    ]
+                                );
+                            }
 
                             if (!empty($suggest_local_terms_results['results'])) {
                                 $terms_found = true;
@@ -332,6 +422,9 @@ if (!class_exists('TaxoPressAiAjax')) {
 
                                     $request_args['show_counts'] = isset($settings_data['open_ai_show_post_count']) ? $settings_data['open_ai_show_post_count'] : 0;
                                     $open_ai_results = TaxoPressAiApi::get_open_ai_results($request_args);
+                                if ($include_debug) {
+                                    self::add_preview_debug_entry($debug_log, esc_html__('OpenAI', 'simple-tags'), $open_ai_results);
+                                }
                                 if (!empty($open_ai_results['results'])) {
                                     $terms_found = true;
                                     $request_args['results']        = $open_ai_results['results'];
@@ -347,6 +440,9 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ##https://cloud.ibm.com/apidocs/natural-language-understanding
                                 $request_args['show_counts'] = isset($settings_data['ibm_watson_show_post_count']) ? $settings_data['ibm_watson_show_post_count'] : 0;
                                 $ibm_watson_results = TaxoPressAiApi::get_ibm_watson_results($request_args);
+                                if ($include_debug) {
+                                    self::add_preview_debug_entry($debug_log, esc_html__('IBM Watson', 'simple-tags'), $ibm_watson_results);
+                                }
                                 if (!empty($ibm_watson_results['results'])) {
                                     $terms_found = true;
                                     $request_args['results']        = $ibm_watson_results['results'];
@@ -362,6 +458,9 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ##https://dandelion.eu/docs/api/datatxt/nex/v1/#response
                                 $request_args['show_counts'] = isset($settings_data['dandelion_show_post_count']) ? $settings_data['dandelion_show_post_count'] : 0;
                                 $dandelion_results = TaxoPressAiApi::get_dandelion_results($request_args);
+                                if ($include_debug) {
+                                    self::add_preview_debug_entry($debug_log, esc_html__('Dandelion', 'simple-tags'), $dandelion_results);
+                                }
                                 if (!empty($dandelion_results['results'])) {
                                     $terms_found = true;
                                     $request_args['results']        = $dandelion_results['results'];
@@ -377,6 +476,9 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ## https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
                                 $request_args['show_counts'] = isset($settings_data['open_calais_show_post_count']) ? $settings_data['open_calais_show_post_count'] : 0;
                                 $open_calais_results = TaxoPressAiApi::get_open_calais_results($request_args);
+                                if ($include_debug) {
+                                    self::add_preview_debug_entry($debug_log, esc_html__('LSEG / Refinitiv', 'simple-tags'), $open_calais_results);
+                                }
                                 if (!empty($open_calais_results['results'])) {
                                     $terms_found = true;
                                     $request_args['results']        = $open_calais_results['results'];
@@ -445,6 +547,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                         $response_content = $term_results;
                     }
                     $response['content'] = $response_content;
+                }
+
+                if ($include_debug && $preview_ai === 'autoterms') {
+                    $response['debug'] = $debug_log;
                 }
             }
 
