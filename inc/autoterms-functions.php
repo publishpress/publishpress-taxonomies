@@ -492,6 +492,9 @@ function taxopress_update_autoterm($data = [])
     if (!isset($data['taxopress_autoterm']['autoterm_for_metaboxes'])) {
         $data['taxopress_autoterm']['autoterm_for_metaboxes'] = 0;
     }
+    if (!isset($data['taxopress_autoterm']['autoterm_preview_debug'])) {
+        $data['taxopress_autoterm']['autoterm_preview_debug'] = 0;
+    }
     if (!isset($data['taxopress_autoterm']['schedule_autoterm_target'])) {
         $data['taxopress_autoterm']['schedule_autoterm_target'] = 0;
     }
