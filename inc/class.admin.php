@@ -676,7 +676,12 @@ class SimpleTags_Admin
         wp_register_script('st-helper-options', STAGS_URL . '/assets/js/helper-options.js', array('jquery', 'wp-color-picker'), STAGS_VERSION);
 
         // Register CSS
-        wp_register_style('st-admin', STAGS_URL . '/assets/css/admin.css', array(), STAGS_VERSION, 'all');
+        $admin_style_path = STAGS_DIR . '/assets/css/admin.css';
+        $admin_style_version = file_exists($admin_style_path)
+            ? STAGS_VERSION . '.' . filemtime($admin_style_path)
+            : STAGS_VERSION;
+
+        wp_register_style('st-admin', STAGS_URL . '/assets/css/admin.css', array(), $admin_style_version, 'all');
         wp_register_style('st-admin-global', STAGS_URL . '/assets/css/admin-global.css', array(), STAGS_VERSION, 'all');
 
         // Register tooltip
@@ -731,7 +736,12 @@ class SimpleTags_Admin
             wp_enqueue_media();
         }
 
-        wp_register_script('st-admin-js', STAGS_URL . '/assets/js/admin.js', $script_dependencies, STAGS_VERSION);
+        $admin_script_path = STAGS_DIR . '/assets/js/admin.js';
+        $admin_script_version = file_exists($admin_script_path)
+            ? STAGS_VERSION . '.' . filemtime($admin_script_path)
+            : STAGS_VERSION;
+
+        wp_register_script('st-admin-js', STAGS_URL . '/assets/js/admin.js', $script_dependencies, $admin_script_version);
         wp_enqueue_script('st-admin-js');
         //localize script
         wp_localize_script('st-admin-js', 'st_admin_localize', [
