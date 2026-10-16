@@ -190,9 +190,9 @@ function registerClickTags() {
     var taxonomy = jQuery(this).attr('data-taxonomy');
     var term_id = jQuery(this).attr('data-term_id');
     if (term_id > 0) {
-      addTag(this.innerHTML, taxonomy, term_id);
+      addTag(this.textContent, taxonomy, term_id);
     } else {
-      addTag(this.innerHTML);
+      addTag(this.textContent);
     }
 
     jQuery(this).addClass('used_term');
@@ -220,11 +220,11 @@ function registerClickTags() {
  * @returns {string | *}
  */
 function html_entity_decode(str) {
-  var ta = document.createElement('textarea');
-  ta.innerHTML = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  toReturn = ta.value;
-  ta = null;
-  return toReturn;
+  var parser = new DOMParser();
+  var safeString = String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  var parsed = parser.parseFromString(safeString, 'text/html');
+
+  return parsed.documentElement.textContent || '';
 }
 
 /**

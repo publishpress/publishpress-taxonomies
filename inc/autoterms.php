@@ -1210,7 +1210,7 @@ class SimpleTags_Autoterms
                                             echo '<div class="auto-terms-to-use-error" style="display:none;"> '.esc_html__('Please choose an option for "Sources"', 'simple-tags').' </div>';
 
                                             echo '<div class="st-autoterms-single-specific-term autoterm-terms-use-existing">
-                                                            <input autocomplete="off" type="text" class="st-full-width specific_terms_input" name="specific_terms_search" maxlength="32" placeholder="'. esc_attr(__('Choose the terms to use.', 'simple-tags')) .'" value="">
+                                                            <input autocomplete="off" type="text" class="st-full-width specific_terms_input" name="specific_terms_search" maxlength="32" aria-label="'. esc_attr__('Choose the terms to use', 'simple-tags') .'" placeholder="'. esc_attr(__('Choose the terms to use.', 'simple-tags')) .'" value="">
                                                         </div>';
                                             echo '<ul class="taxopress-term-list-style">';
                                             if (!empty($specific_terms)) {
@@ -1315,7 +1315,7 @@ class SimpleTags_Autoterms
                                             $autoterms_post_status = (!empty($current['post_status'])) ? (array)$current['post_status'] : ['publish'];
                                             foreach ($post_status_options as $key => $value) {
                                                 $checked_status = (in_array($key, $autoterms_post_status)) ? 'checked' : '';
-                                                echo '<input class="autoterm_post_status_'.esc_attr($key).'" type="checkbox" name="post_status[]" value="'.esc_attr($key).'" '.esc_attr($checked_status).'> ' . esc_html($value) . ' <br /><br />';
+                                                echo '<input class="autoterm_post_status_'.esc_attr($key).'" type="checkbox" name="post_status[]" value="'.esc_attr($key).'" aria-label="'.esc_attr($value).'" '.esc_attr($checked_status).'> ' . esc_html($value) . ' <br /><br />';
 
                                             }
                                             echo '</td></tr>';
