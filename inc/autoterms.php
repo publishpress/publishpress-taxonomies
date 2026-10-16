@@ -1630,6 +1630,33 @@ class SimpleTags_Autoterms
                                                                 </button>
                                                             </div>
 
+                                                            <div class="taxopress-autoterm-debug-option">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        name="taxopress_autoterm[autoterm_preview_debug]"
+                                                                        class="taxopress-autoterm-include-debug"
+                                                                        value="1"
+                                                                        <?php checked(!empty($current['autoterm_preview_debug'])); ?>>
+                                                                    <?php esc_html_e('Show debug information', 'simple-tags'); ?>
+                                                                </label>
+                                                                <p class="description">
+                                                                    <?php esc_html_e('Display sanitized request and response data for each enabled source.', 'simple-tags'); ?>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="taxopress-autoterm-debug-log"
+                                                                data-title="<?php echo esc_attr__('Debug information', 'simple-tags'); ?>"
+                                                                data-request-title="<?php echo esc_attr__('Request', 'simple-tags'); ?>"
+                                                                data-response-title="<?php echo esc_attr__('Response', 'simple-tags'); ?>"
+                                                                data-empty-message="<?php echo esc_attr__('No source debug data was returned for this preview request.', 'simple-tags'); ?>"
+                                                                data-copy-request-label="<?php echo esc_attr__('Copy request', 'simple-tags'); ?>"
+                                                                data-copy-response-label="<?php echo esc_attr__('Copy response', 'simple-tags'); ?>"
+                                                                data-copy-all-label="<?php echo esc_attr__('Copy all', 'simple-tags'); ?>"
+                                                                data-download-label="<?php echo esc_attr__('Download JSON', 'simple-tags'); ?>"
+                                                                data-copied-message="<?php echo esc_attr__('Debug information copied to the clipboard.', 'simple-tags'); ?>"
+                                                                data-copy-error-message="<?php echo esc_attr__('The debug information could not be copied. Please try again.', 'simple-tags'); ?>"
+                                                                data-download-filename="publishpress-taxonomies-auto-terms-debug"
+                                                                hidden></div>
                                                             <div class="taxopress-autoterm-result">
                                                                 <div class="output"></div>
                                                                 <div class="response"></div>
