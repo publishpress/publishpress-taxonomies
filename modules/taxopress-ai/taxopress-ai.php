@@ -421,6 +421,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                         'label_too_long_error' => esc_html__('Label can\'t exceed 30 characters.', 'simple-tags'),
                         'unknown_tab_error' => esc_html__('Unknown tab type.', 'simple-tags'),
                         'save_error' => esc_html__('Error saving label.', 'simple-tags'),
+                        'request_error' => esc_html__('The request could not be completed. Please try again.', 'simple-tags'),
                         'requiredSuffix' => esc_html__('Please choose a post to preview.', 'simple-tags'),
                     ]
                 );
@@ -992,12 +993,14 @@ if (!class_exists('TaxoPress_AI_Module')) {
                         <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
                             id="<?php echo esc_attr($args['key']); ?>"
                             type="checkbox" 
+                            aria-label="<?php echo esc_attr($args['label']); ?>"
                             value="1" 
                             <?php checked(1, (int) $args['value']); ?> />
                     <?php else : ?>
                         <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
                             id="<?php echo esc_attr($args['key']); ?>"
                             type="<?php echo esc_attr($args['type']); ?>" 
+                            aria-label="<?php echo esc_attr($args['label']); ?>"
                             value="<?php echo esc_attr($args['value']); ?>" />
                     <?php endif; ?>
                     
@@ -1052,6 +1055,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                 ?>
                                 <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
                                     type="<?php echo esc_attr($args['type']); ?>" value="1" <?php checked(1, (int) $args['value']); ?>
+                                    aria-label="<?php echo esc_attr($args['label']); ?>"
                                     <?php echo($args['required'] ? 'required="true"' : ''); ?> />
                                 <?php if (!empty($args['description'])) : ?>
                                                     <span class="description">
@@ -1102,7 +1106,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                 $required_attr = ($args['required'] ? 'required="true"' : '');
                                 ?>
                                 <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
-                                    type="<?php echo esc_attr($args['type']); ?>" value="<?php echo esc_attr($args['value']); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?> />
+                                    type="<?php echo esc_attr($args['type']); ?>" value="<?php echo esc_attr($args['value']); ?>" aria-label="<?php echo esc_attr($args['label']); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?> />
                                 <?php if (isset($args['description'])) : ?>
                                     <p class="description">
                                         <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
@@ -1523,7 +1527,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                         <div class="taxopress tooltip-text taxopress-ai"><?php echo esc_html__('Edit', 'simple-tags'); ?></div>
                                     </div>
                                     <span class="tp-rename-inline-controls" style="display:none;">
-                                        <input type="text" class="tp-rename-tab-input" value="<?php echo esc_attr($label); ?>">
+                                        <input type="text" class="tp-rename-tab-input" aria-label="<?php echo esc_attr__('Rename tab', 'simple-tags'); ?>" value="<?php echo esc_attr($label); ?>">
                                         <div class="pp-tooltips-library" data-toggle="tooltip">
                                             <span class="dashicons dashicons-yes tp-rename-tab-save"></span>
                                             <div class="taxopress tooltip-text"><?php echo esc_html__('Save, You can also press Enter to save and escape to cancel', 'simple-tags'); ?></div>
@@ -1567,6 +1571,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                     <input 
                                                         class="taxopress-taxonomy-search existing-term-item" 
                                                         type="search" 
+                                                        aria-label="<?php echo esc_attr__('Search existing terms', 'simple-tags'); ?>"
                                                         value="" 
                                                         placeholder="<?php echo esc_attr__('Search Terms...', 'simple-tags'); ?>"
                                                         style="<?php echo esc_attr($hide_filters); ?>"
@@ -1586,6 +1591,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                     <input 
                                                         class="taxopress-taxonomy-term-input create-term-item" 
                                                         type="text" 
+                                                        aria-label="<?php echo esc_attr__('Create term', 'simple-tags'); ?>"
                                                         value="" 
                                                         placeholder="<?php echo esc_attr__('Create Term', 'simple-tags'); ?>"
                                                         style="display: none; "
