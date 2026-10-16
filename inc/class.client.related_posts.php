@@ -76,7 +76,7 @@ class SimpleTags_Client_RelatedPosts
             'dateformat'    => get_option('date_format'),
             'xformat' => sprintf(
                 '<a href="%%post_permalink%%" title="%%post_title%% (%%post_date%%)" style="font-size:%%post_size%%;color:%%post_color%%">' .
-                '<img src="%%post_thumb_url%%" height="%d" width="%d" class="custom-image-class"/>' .
+                '<img src="%%post_thumb_url%%" alt="" height="%d" width="%d" class="custom-image-class"/>' .
                 '<br>%%post_title%%<br>%%post_category%%</a>' .
                 '(%%post_comment%%)',
                 $width,
@@ -346,7 +346,7 @@ class SimpleTags_Client_RelatedPosts
             if ($format == 'box') {
                 $defaults['number']    = 3;
                 $defaults['xformat']   = __('<a href="%post_permalink%" title="%post_title% (%post_date%)"> 
-			                       <img src="%post_thumb_url%" height="200" width="200" class="custom-image-class" />
+			                       <img src="%post_thumb_url%" alt="" height="200" width="200" class="custom-image-class" />
 								   <br>
 								   %post_title%
 								   <br>
@@ -571,7 +571,7 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (empty($post_thumbnail_url)) {
-                $element_loop = preg_replace('/<img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
+                $element_loop = preg_replace('/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
             }
 
             $element_loop = str_replace('%post_thumb_url%', $post_thumbnail_url, $element_loop);
@@ -626,7 +626,7 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (isset($result->post_excerpt) || isset($result->post_content)) {
-                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap), $element_loop);
+                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap, $result), $element_loop);
             }
 
 
@@ -653,17 +653,15 @@ class SimpleTags_Client_RelatedPosts
      * @param string $content
      * @param string $password
      * @param integer $excerpt_length
+     * @param WP_Post|object|null $post
      *
      * @return string
      * @author WebFactory Ltd
      */
-    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55)
+    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55, $post = null)
     {
-        if (! empty($password)) { // if there's a password
-            // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
-            if ($_COOKIE[ 'wp-postpass_' . COOKIEHASH ] != $password) { // and it doesn't match the cookie
-                return __('There is no excerpt because this is a protected post.', 'simple-tags');
-            }
+        if (! empty($password) && (null === $post || post_password_required($post))) {
+            return __('There is no excerpt because this is a protected post.', 'simple-tags');
         }
 
         if (! empty($excerpt)) {
