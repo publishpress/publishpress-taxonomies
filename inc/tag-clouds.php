@@ -300,6 +300,9 @@ class SimpleTags_Tag_Clouds
                                         <?php
                                         if ($tag_cloud_edit) {
                                             $active_tab = (isset($current['active_tab']) && !empty(trim($current['active_tab']))) ? $current['active_tab'] : 'tagcloud_general';
+                                            if ($active_tab === 'tagcloud_options') {
+                                                $active_tab = 'tagcloud_layout';
+                                            }
                                             echo esc_html__('Edit Terms Display', 'simple-tags');
                                             echo '<input type="hidden" name="edited_tagcloud" value="' . esc_attr($current['ID']) . '" />';
                                             echo '<input type="hidden" name="taxopress_tag_cloud[ID]" value="' . esc_attr($current['ID']) . '" />';
@@ -336,10 +339,6 @@ class SimpleTags_Tag_Clouds
 
                                                 <li aria-current="<?php echo $active_tab === 'tagcloud_terms' ? 'true' : 'false'; ?>" class="tagcloud_terms_tab <?php echo $active_tab === 'tagcloud_terms' ? 'active' : ''; ?>" data-content="tagcloud_terms">
                                                     <a href="#tagcloud_terms"><span><?php esc_html_e('Choose Terms', 'simple-tags'); ?></span></a>
-                                                </li>
-
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_options' ? 'true' : 'false'; ?>" class="tagcloud_options_tab <?php echo $active_tab === 'tagcloud_options' ? 'active' : ''; ?>" data-content="tagcloud_options">
-                                                    <a href="#tagcloud_options"><span><?php esc_html_e('Options', 'simple-tags'); ?></span></a>
                                                 </li>
 
                                                 <li aria-current="<?php echo $active_tab === 'tagcloud_layout' ? 'true' : 'false'; ?>" class="tagcloud_layout_tab <?php echo $active_tab === 'tagcloud_layout' ? 'active' : ''; ?>" data-content="tagcloud_layout">
@@ -681,15 +680,6 @@ class SimpleTags_Tag_Clouds
                                                         'labeltext'  => esc_html__('Display format', 'simple-tags'),
                                                         'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         ]);
-                                                        ?>
-
-                                                </table>  
-                                                     
-
-
-                                                <table class="form-table taxopress-table tagcloud_options"
-                                                       style="<?php echo $active_tab === 'tagcloud_options' ? '' : 'display:none;'; ?>">
-                                                       <?php
 
                                                  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         echo $ui->get_text_input([
@@ -723,6 +713,7 @@ class SimpleTags_Tag_Clouds
                                                        'required'  => false,
                                                        ]);
                                                         ?>
+
                                                 </table>
 
                                                 <table class="form-table taxopress-table tagcloud_exceptions"
