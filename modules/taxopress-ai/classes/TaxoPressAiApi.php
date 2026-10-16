@@ -15,6 +15,74 @@ if (!class_exists('TaxoPressAiApi')) {
         public const OPEN_AI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
         /**
+         * Add sanitized request and response data to preview results when requested.
+         *
+         * @param array $return   Source result.
+         * @param array $args     Source arguments.
+         * @param array $request  Sanitized request data.
+         * @param mixed $response Sanitized response data.
+         * @return array
+         */
+        private static function add_preview_debug_data($return, $args, $request, $response)
+        {
+            if (!empty($args['include_debug'])) {
+                $secrets = [];
+                if (!empty($args['settings_data']) && is_array($args['settings_data'])) {
+                    foreach ($args['settings_data'] as $setting_key => $setting_value) {
+                        if (
+                            is_string($setting_value)
+                            && $setting_value !== ''
+                            && preg_match('/(?:api[_-]?(?:key|token)|authorization)/i', (string) $setting_key)
+                        ) {
+                            $secrets[] = $setting_value;
+                        }
+                    }
+                }
+
+                $return['debug'] = [
+                    'request'  => self::sanitize_preview_debug_data($request, $secrets),
+                    'response' => self::sanitize_preview_debug_data($response, $secrets),
+                    'message'  => self::sanitize_preview_debug_data($return['message'], $secrets),
+                ];
+            }
+
+            return $return;
+        }
+
+        /**
+         * Recursively remove credentials from preview debug data.
+         *
+         * @param mixed $value   Debug value.
+         * @param array $secrets Credential values to redact.
+         * @return mixed
+         */
+        private static function sanitize_preview_debug_data($value, $secrets)
+        {
+            if (is_object($value)) {
+                $value = get_object_vars($value);
+            }
+
+            if (is_array($value)) {
+                $sanitized = [];
+                foreach ($value as $key => $item) {
+                    if (preg_match('/(?:api[_-]?(?:key|token)|authorization)/i', (string) $key)) {
+                        $sanitized[$key] = '[redacted]';
+                    } else {
+                        $sanitized[$key] = self::sanitize_preview_debug_data($item, $secrets);
+                    }
+                }
+
+                return $sanitized;
+            }
+
+            if (is_string($value) && !empty($secrets)) {
+                return str_replace($secrets, '[redacted]', $value);
+            }
+
+            return $value;
+        }
+
+        /**
          * Validate a configured IBM Watson Natural Language Understanding endpoint.
          *
          * @param string $url Configured service URL.
@@ -83,6 +151,8 @@ if (!class_exists('TaxoPressAiApi')) {
             $return['status'] = 'error';
             $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
             $return['results'] = [];
+            $debug_request = [];
+            $debug_response = [];
 
             $settings_data = $args['settings_data'];
             $content = $args['content'];
@@ -125,11 +195,22 @@ if (!class_exists('TaxoPressAiApi')) {
                         'Result from cache.',
                         'simple-tags'
                     );
+                    $debug_request = ['transport' => 'cache'];
+                    $debug_response = $existing_dandelion_result;
                 } else {
                     $request_ws_args = [];
                     $request_ws_args['text'] = $clean_content;
                     $request_ws_args['min_confidence'] = $dandelion_api_confidence_value;
                     $request_ws_args['token'] = $dandelion_api_token;
+                    $debug_request = [
+                        'transport' => 'remote',
+                        'method'    => 'POST',
+                        'url'       => self::DANDELION_API_URL,
+                        'body'      => [
+                            'text'           => $clean_content,
+                            'min_confidence' => $dandelion_api_confidence_value,
+                        ],
+                    ];
                     $response = wp_remote_post(
                         self::DANDELION_API_URL,
                         array(
@@ -141,6 +222,10 @@ if (!class_exists('TaxoPressAiApi')) {
                     if (!is_wp_error($response) && $response != null) {
                         $status_code = wp_remote_retrieve_response_code($response);
                         $body_data = json_decode(wp_remote_retrieve_body($response));
+                        $debug_response = [
+                            'status_code' => $status_code,
+                            'body'        => $body_data,
+                        ];
 
                         if ($status_code !== 200) {
                             $error_message = (is_object($body_data) && isset($body_data->message)) ? $body_data->message : $status_code;
@@ -167,6 +252,9 @@ if (!class_exists('TaxoPressAiApi')) {
                             }
                         }
                     } else {
+                        $debug_response = [
+                            'error' => is_wp_error($response) ? $response->get_error_message() : esc_html__('Empty response.', 'simple-tags'),
+                        ];
                         $return['status'] = 'error';
                         $return['message'] = esc_html__(
                             'Error establishing connection with the API server. Try again.',
@@ -176,7 +264,7 @@ if (!class_exists('TaxoPressAiApi')) {
                 }
             }
 
-            return $return;
+            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
         }
 
         /**
@@ -198,6 +286,8 @@ if (!class_exists('TaxoPressAiApi')) {
             $return['status'] = 'error';
             $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
             $return['results'] = [];
+            $debug_request = [];
+            $debug_response = [];
 
             $settings_data = $args['settings_data'];
             $content = $args['content'];
@@ -239,7 +329,19 @@ if (!class_exists('TaxoPressAiApi')) {
                         'Result from cache.',
                         'simple-tags'
                     );
+                    $debug_request = ['transport' => 'cache'];
+                    $debug_response = $existing_open_calais_result;
                 } else {
+                    $debug_request = [
+                        'transport' => 'remote',
+                        'method'    => 'POST',
+                        'url'       => self::OPEN_CALAIS_API_URL,
+                        'headers'   => [
+                            'Content-Type' => 'text/html',
+                            'outputFormat' => 'application/json',
+                        ],
+                        'body'      => $clean_content,
+                    ];
                     $response = wp_remote_post(
                         self::OPEN_CALAIS_API_URL,
                         array(
@@ -257,6 +359,10 @@ if (!class_exists('TaxoPressAiApi')) {
                     if (!is_wp_error($response) && $response != null) {
                         $status_code = wp_remote_retrieve_response_code($response);
                         $body_data = json_decode(wp_remote_retrieve_body($response), true);
+                        $debug_response = [
+                            'status_code' => $status_code,
+                            'body'        => $body_data,
+                        ];
 
                         if ($status_code !== 200) {
                             $error_message = (is_object($body_data) && isset($body_data->message)) ? $body_data->message : $status_code;
@@ -290,6 +396,9 @@ if (!class_exists('TaxoPressAiApi')) {
                             }
                         }
                     } else {
+                        $debug_response = [
+                            'error' => is_wp_error($response) ? $response->get_error_message() : esc_html__('Empty response.', 'simple-tags'),
+                        ];
                         $return['status'] = 'error';
                         $return['message'] = esc_html__(
                             'Error establishing connection with the API server. Try again.',
@@ -299,7 +408,7 @@ if (!class_exists('TaxoPressAiApi')) {
                 }
             }
 
-            return $return;
+            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
         }
 
         /**
@@ -322,6 +431,8 @@ if (!class_exists('TaxoPressAiApi')) {
             $return['status'] = 'error';
             $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
             $return['results'] = [];
+            $debug_request = [];
+            $debug_response = [];
 
             $settings_data = $args['settings_data'];
             $content = $args['content'];
@@ -370,6 +481,8 @@ if (!class_exists('TaxoPressAiApi')) {
                         'Result from cache.',
                         'simple-tags'
                     );
+                    $debug_request = ['transport' => 'cache'];
+                    $debug_response = $existing_ibm_watson_result;
                 } else {
                     $endpoint_base_url = trailingslashit(esc_url_raw($ibm_watson_api_url)) . 'v1/analyze';
                     $api_endpoint = esc_url_raw(add_query_arg(['version' => self::IBM_WATSON_API_VERSION], $endpoint_base_url));
@@ -386,6 +499,16 @@ if (!class_exists('TaxoPressAiApi')) {
                     ];
 
                     $request_timeout = max(1, (int) apply_filters('taxopress_ibm_watson_request_timeout', 3));
+                    $debug_request = [
+                        'transport' => 'remote',
+                        'method'    => 'POST',
+                        'url'       => $api_endpoint,
+                        'headers'   => [
+                            'Accept'       => 'application/json',
+                            'Content-Type' => 'application/json',
+                        ],
+                        'body'      => $request_body,
+                    ];
                     $response = wp_safe_remote_post($api_endpoint, array(
                         'timeout' => $request_timeout,
                         'redirection' => 0,
@@ -401,6 +524,10 @@ if (!class_exists('TaxoPressAiApi')) {
                     if (!is_wp_error($response) && $response != null) {
                         $status_code = wp_remote_retrieve_response_code($response);
                         $body_data = json_decode(wp_remote_retrieve_body($response));
+                        $debug_response = [
+                            'status_code' => $status_code,
+                            'body'        => $body_data,
+                        ];
 
                         if ($status_code !== 200) {
                             $error_message = (is_object($body_data) && isset($body_data->error)) ? $body_data->error : $status_code;
@@ -430,6 +557,9 @@ if (!class_exists('TaxoPressAiApi')) {
                             }
                         }
                     } else {
+                        $debug_response = [
+                            'error' => is_wp_error($response) ? $response->get_error_message() : esc_html__('Empty response.', 'simple-tags'),
+                        ];
                         $return['status'] = 'error';
                         $return['message'] = esc_html__(
                             'Error establishing connection with the API server. Try again.',
@@ -439,7 +569,7 @@ if (!class_exists('TaxoPressAiApi')) {
                 }
             }
 
-            return $return;
+            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
         }
 
         /**
@@ -488,6 +618,8 @@ if (!class_exists('TaxoPressAiApi')) {
             $return['status'] = 'error';
             $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
             $return['results'] = [];
+            $debug_request = [];
+            $debug_response = [];
 
             $settings_data  = $args['settings_data'];
             $content        = $args['content'];
@@ -574,6 +706,8 @@ if (!class_exists('TaxoPressAiApi')) {
                         'Result from cache.',
                         'simple-tags'
                     );
+                    $debug_request = ['transport' => 'cache'];
+                    $debug_response = $existing_open_ai_result;
                 } else {
                     preg_match_all('/\{([^}]+)\}/', $custom_prompt, $matches);
                     if (!empty($matches[1])) {
@@ -585,7 +719,7 @@ if (!class_exists('TaxoPressAiApi')) {
                                 esc_html__('Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, {post_terms}, {site_terms}', 'simple-tags'),
                                 implode('}, {', $invalid_placeholders)
                             );
-                            return $return;
+                            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
                         }
                     }
 
@@ -640,6 +774,16 @@ if (!class_exists('TaxoPressAiApi')) {
                             'Authorization' => 'Bearer ' . $open_ai_api_key,
                         ];
 
+                        $debug_request = [
+                            'transport' => 'remote',
+                            'method'    => 'POST',
+                            'url'       => self::OPEN_AI_API_URL,
+                            'headers'   => [
+                                'Content-Type' => 'application/json',
+                            ],
+                            'body'      => $body_data,
+                        ];
+
                         $response = wp_remote_post(self::OPEN_AI_API_URL, array(
                             // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout
                             'timeout' => 60,
@@ -650,6 +794,10 @@ if (!class_exists('TaxoPressAiApi')) {
                         if (!is_wp_error($response) && $response != null) {
                             $status_code = wp_remote_retrieve_response_code($response);
                             $body_data = json_decode(wp_remote_retrieve_body($response), true);
+                            $debug_response = [
+                                'status_code' => $status_code,
+                                'body'        => $body_data,
+                            ];
 
                             if ($status_code !== 200) {
                                 $error_message = (is_array($body_data) && !empty($body_data['error']['message'])) ? $body_data['error']['message'] : $status_code;
@@ -715,6 +863,9 @@ if (!class_exists('TaxoPressAiApi')) {
                                 }
                             }
                         } else {
+                            $debug_response = [
+                                'error' => is_wp_error($response) ? $response->get_error_message() : esc_html__('Empty response.', 'simple-tags'),
+                            ];
                             $return['status'] = 'error';
                             $return['message'] = esc_html__(
                                 'Error establishing connection with the API server. Try again.',
@@ -725,7 +876,7 @@ if (!class_exists('TaxoPressAiApi')) {
                 }
             }
 
-            return $return;
+            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
         }
     }
 }
