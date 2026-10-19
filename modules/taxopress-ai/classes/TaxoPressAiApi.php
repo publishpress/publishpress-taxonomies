@@ -606,7 +606,6 @@ if (!class_exists('TaxoPressAiApi')) {
             return $cleaned_content;
         }
 
-
         /**
          * Get open data
          *
@@ -615,6 +614,11 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_open_ai_results($args)
         {
+            $preprocessed_result = apply_filters('taxopress_open_ai_results_pre', null, $args);
+            if (is_array($preprocessed_result)) {
+                return $preprocessed_result;
+            }
+
             $return['status'] = 'error';
             $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
             $return['results'] = [];
