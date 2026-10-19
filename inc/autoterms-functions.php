@@ -373,6 +373,77 @@ function taxopress_sanitize_specific_terms($terms)
 }
 
 /**
+ * Normalize terms and keywords excluded from Auto Terms.
+ *
+ * Exclusions are intentionally not checked against the term database. This
+ * allows a value to prevent a new term from being suggested or created even
+ * when that value is not an existing term yet.
+ *
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return array
+ */
+function taxopress_get_autoterm_exclusions($exclusions)
+{
+    return taxopress_sanitize_specific_terms($exclusions);
+}
+
+/**
+ * Check whether a suggested term or keyword is excluded from Auto Terms.
+ *
+ * @param mixed $value      Suggested term or keyword.
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return bool
+ */
+function taxopress_autoterm_is_excluded($value, $exclusions)
+{
+    if (!is_scalar($value)) {
+        return false;
+    }
+
+    $value = trim(wp_unslash((string) $value));
+    if ($value === '') {
+        return false;
+    }
+
+    foreach (taxopress_get_autoterm_exclusions($exclusions) as $excluded_value) {
+        if (strcasecmp($value, $excluded_value) === 0) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Remove excluded terms and keywords from a source result.
+ *
+ * Supports both flat source results and taxonomy-keyed multi-taxonomy results.
+ *
+ * @param mixed $results    Source results.
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return mixed
+ */
+function taxopress_filter_autoterm_excluded_results($results, $exclusions)
+{
+    if (!is_array($results)) {
+        return $results;
+    }
+
+    $filtered_results = [];
+    foreach ($results as $key => $result) {
+        if (is_array($result)) {
+            $filtered_results[$key] = taxopress_filter_autoterm_excluded_results($result, $exclusions);
+        } elseif (!taxopress_autoterm_is_excluded($result, $exclusions)) {
+            $filtered_results[$key] = $result;
+        }
+    }
+
+    $is_list = empty($results) || array_keys($results) === range(0, count($results) - 1);
+
+    return $is_list ? array_values($filtered_results) : $filtered_results;
+}
+
+/**
  * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
