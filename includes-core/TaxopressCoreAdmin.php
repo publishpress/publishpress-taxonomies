@@ -28,6 +28,8 @@ class TaxopressCoreAdmin
         add_action('taxopress_admin_class_before_assets_register', [$this, 'taxopress_load_admin_core_assets']);
         add_action('taxopress_admin_class_after_styles_enqueue', [$this, 'taxopress_load_admin_core_styles']);
         add_action('taxopress_admin_after_sidebar', [$this, 'taxopress_admin_advertising_sidebar_banner']);
+        add_action('taxopress_autoterms_after_taxonomy_field', [$this, 'taxopress_core_autoterm_additional_taxonomies_field']);
+        add_filter('taxopress_prepare_autoterm_data', [$this, 'taxopress_core_preserve_pro_autoterm_data'], 10, 2);
         add_action('taxopress_autoterms_after_autoterm_terms_to_use', [$this, 'taxopress_core_autoterm_terms_to_use_field']);
         add_action('taxopress_suggestterm_after_api_fields', [$this, 'taxopress_core_suggestterm_after_api_fields']);
         add_action('taxopress_autoterms_after_autoterm_advanced', [$this, 'taxopress_core_autoterm_advanced_field']);
@@ -452,6 +454,58 @@ class TaxopressCoreAdmin
             </td>
         </tr>
         <?php
+    }
+
+    public function taxopress_core_autoterm_additional_taxonomies_field($options)
+    {
+        $sample_options = array_slice(array_values((array) $options), 0, 4);
+        ?>
+        <tr class="taxopress-select-with-icon">
+            <th scope="row">
+                <label for="taxopress-autoterm-additional-taxonomies-promo">
+                    <?php echo esc_html__('Additional taxonomies', 'simple-tags'); ?>
+                </label>
+            </th>
+            <td>
+                <div class="taxopress-select-with-icon-wrapper taxopress-autoterm-additional-taxonomies-promo">
+                    <select
+                        id="taxopress-autoterm-additional-taxonomies-promo"
+                        class="taxopress-multi-select2 taxopress-autoterm-additional-taxonomies"
+                        multiple="multiple"
+                        disabled="disabled"
+                        data-placeholder="<?php echo esc_attr__('Select additional taxonomies...', 'simple-tags'); ?>"
+                    >
+                        <?php foreach ($sample_options as $option) : ?>
+                            <option value="<?php echo esc_attr($option['attr']); ?>" selected="selected">
+                                <?php echo esc_html($option['text']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <span class="pp-tooltips-library" data-toggle="tooltip">
+                        <span class="dashicons dashicons-lock taxopress-select-icon"></span>
+                        <span class="taxopress tooltip-text">
+                            <?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to generate separate terms for multiple taxonomies in one OpenAI request.', 'simple-tags'); ?>
+                        </span>
+                    </span>
+                </div>
+                <div class="taxopress-stpexplan">
+                    <?php echo esc_html__('Generate separate terms for multiple taxonomies in one OpenAI request.', 'simple-tags'); ?>
+                </div>
+            </td>
+        </tr>
+        <?php
+    }
+
+    public function taxopress_core_preserve_pro_autoterm_data($data, $existing_autoterm)
+    {
+        if (
+            !isset($data['taxopress_autoterm']['additional_taxonomies'])
+            && isset($existing_autoterm['additional_taxonomies'])
+        ) {
+            $data['taxopress_autoterm']['additional_taxonomies'] = $existing_autoterm['additional_taxonomies'];
+        }
+
+        return $data;
     }
 
     public function taxopress_core_suggestterm_after_api_fields($current)
