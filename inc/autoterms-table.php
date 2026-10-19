@@ -328,7 +328,7 @@ class Autoterms_List extends WP_List_Table
             $return = '&mdash;';
         }
 
-        return $return;
+        return apply_filters('taxopress_autoterm_taxonomy_column', $return, $item);
     }
 
     /**
