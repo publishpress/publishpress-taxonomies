@@ -1338,11 +1338,11 @@ class SimpleTags_Autoterms
                                                         'class'     => 'autocomplete-input auto-terms-stopwords',
                                                         'textvalue' => isset($current['autoterm_exclude']) ? esc_attr($current['autoterm_exclude']) : '',
                                                         'labeltext' => esc_html__(
-                                                            'Exclude terms from Auto Term',
+                                                            'Exclude terms and keywords from Auto Terms',
                                                             'simple-tags'
                                                         ),
                                                         'helptext'  => esc_html__(
-                                                            'Choose terms to be excluded from auto terms.',
+                                                            'Enter comma-separated terms or keywords to exclude.',
                                                             'simple-tags'
                                                         ),
                                                         'required'  => false,

@@ -435,6 +435,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                                     $terms_found = $terms_found || !empty($open_ai_preview['terms_found']);
                                 } else {
                                     $open_ai_results = TaxoPressAiApi::get_open_ai_results($request_args);
+                                    $open_ai_results['results'] = taxopress_filter_autoterm_excluded_results(
+                                        isset($open_ai_results['results']) ? $open_ai_results['results'] : [],
+                                        isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
+                                    );
                                     if (!empty($open_ai_results['results'])) {
                                         $terms_found = true;
                                         $request_args['results'] = $open_ai_results['results'];
@@ -455,6 +459,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ##https://cloud.ibm.com/apidocs/natural-language-understanding
                                 $request_args['show_counts'] = isset($settings_data['ibm_watson_show_post_count']) ? $settings_data['ibm_watson_show_post_count'] : 0;
                                 $ibm_watson_results = TaxoPressAiApi::get_ibm_watson_results($request_args);
+                                $ibm_watson_results['results'] = taxopress_filter_autoterm_excluded_results(
+                                    isset($ibm_watson_results['results']) ? $ibm_watson_results['results'] : [],
+                                    isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
+                                );
                                 if ($include_debug) {
                                     self::add_preview_debug_entry($debug_log, esc_html__('IBM Watson', 'simple-tags'), $ibm_watson_results);
                                 }
@@ -473,6 +481,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ##https://dandelion.eu/docs/api/datatxt/nex/v1/#response
                                 $request_args['show_counts'] = isset($settings_data['dandelion_show_post_count']) ? $settings_data['dandelion_show_post_count'] : 0;
                                 $dandelion_results = TaxoPressAiApi::get_dandelion_results($request_args);
+                                $dandelion_results['results'] = taxopress_filter_autoterm_excluded_results(
+                                    isset($dandelion_results['results']) ? $dandelion_results['results'] : [],
+                                    isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
+                                );
                                 if ($include_debug) {
                                     self::add_preview_debug_entry($debug_log, esc_html__('Dandelion', 'simple-tags'), $dandelion_results);
                                 }
@@ -491,6 +503,10 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 ## https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
                                 $request_args['show_counts'] = isset($settings_data['open_calais_show_post_count']) ? $settings_data['open_calais_show_post_count'] : 0;
                                 $open_calais_results = TaxoPressAiApi::get_open_calais_results($request_args);
+                                $open_calais_results['results'] = taxopress_filter_autoterm_excluded_results(
+                                    isset($open_calais_results['results']) ? $open_calais_results['results'] : [],
+                                    isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
+                                );
                                 if ($include_debug) {
                                     self::add_preview_debug_entry($debug_log, esc_html__('LSEG / Refinitiv', 'simple-tags'), $open_calais_results);
                                 }
@@ -754,13 +770,15 @@ if (!class_exists('TaxoPressAiAjax')) {
                             $autoterm_hash       = !empty($settings_data['autoterm_hash']) ? (int) $settings_data['autoterm_hash'] : 0;
                             $autoterm_regex_code = !empty($settings_data['autoterm_use_regex']) && !empty($settings_data['terms_regex_code']) ? stripslashes($settings_data['terms_regex_code']) : '';
 
-                            $autoterm_exclude = !empty($settings_data['autoterm_exclude']) ? (array) $settings_data['autoterm_exclude'] : [];
+                            $autoterm_exclude = !empty($settings_data['autoterm_exclude'])
+                                ? taxopress_get_autoterm_exclusions($settings_data['autoterm_exclude'])
+                                : [];
                             $autoterm_useonly = !empty($settings_data['autoterm_useonly']) && !empty($settings_data['specific_terms']);
                             $specific_terms   = $autoterm_useonly ? (array) $settings_data['specific_terms'] : [];
 
                             $terms = array_filter((array) $terms, function ($term_obj) use ($autoterm_exclude, $autoterm_useonly, $specific_terms) {
                                 $name = stripslashes($term_obj->name);
-                                if (!empty($autoterm_exclude) && in_array($name, $autoterm_exclude, true)) {
+                                if (taxopress_autoterm_is_excluded($name, $autoterm_exclude)) {
                                     return false;
                                 }
                                 if ($autoterm_useonly && !in_array($name, $specific_terms, true)) {
