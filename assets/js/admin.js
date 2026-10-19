@@ -1510,10 +1510,77 @@
         .toggleClass('error', Boolean(isError));
     }
 
+    function normalizeAutoTermPreviewDebugValue(value) {
+      var trimmedValue;
+      var parsedValue;
+
+      if (typeof value !== 'string') {
+        return value;
+      }
+
+      trimmedValue = value.trim();
+      if (
+        !trimmedValue
+        || !(
+          (trimmedValue.charAt(0) === '{' && trimmedValue.slice(-1) === '}')
+          || (trimmedValue.charAt(0) === '[' && trimmedValue.slice(-1) === ']')
+        )
+      ) {
+        return value;
+      }
+
+      try {
+        parsedValue = JSON.parse(trimmedValue);
+      } catch (error) {
+        return value;
+      }
+
+      return parsedValue && typeof parsedValue === 'object' ? parsedValue : value;
+    }
+
+    function appendAutoTermPreviewDebugValue(container, value) {
+      var normalizedValue = normalizeAutoTermPreviewDebugValue(value);
+      var isArray = Array.isArray(normalizedValue);
+      var keys;
+      var data;
+
+      if (normalizedValue && typeof normalizedValue === 'object') {
+        keys = Object.keys(normalizedValue);
+
+        if (!keys.length) {
+          $('<code class="taxopress-autoterm-debug-empty"></code>')
+            .text(isArray ? '[]' : '{}')
+            .appendTo(container);
+          return;
+        }
+
+        data = $('<div class="taxopress-autoterm-debug-data"></div>');
+        keys.forEach(function (key) {
+          var field = $('<div class="taxopress-autoterm-debug-field"></div>');
+          var fieldValue = $('<div class="taxopress-autoterm-debug-value"></div>');
+
+          $('<div class="taxopress-autoterm-debug-key"></div>')
+            .text(isArray ? '[' + key + ']' : key)
+            .appendTo(field);
+          appendAutoTermPreviewDebugValue(fieldValue, normalizedValue[key]);
+          fieldValue.appendTo(field);
+          field.appendTo(data);
+        });
+        data.appendTo(container);
+        return;
+      }
+
+      $('<div class="taxopress-autoterm-debug-scalar"></div>')
+        .text(normalizedValue === null ? 'null' : String(normalizedValue))
+        .appendTo(container);
+    }
+
     function addAutoTermPreviewDebugCopyButton(debugLog, details, heading, value, label) {
       var headingRow = $('<div class="taxopress-autoterm-debug-block-heading"></div>');
       var copyButton = $('<button type="button" class="button-link taxopress-autoterm-debug-copy"></button>');
-      var serializedValue = JSON.stringify(value || {}, null, 2);
+      var debugValue = typeof value === 'undefined' ? {} : value;
+      var serializedValue = JSON.stringify(debugValue, null, 2);
+      var debugView;
 
       $('<h4></h4>').text(heading).appendTo(headingRow);
       copyButton
@@ -1531,7 +1598,9 @@
         .appendTo(headingRow);
 
       headingRow.appendTo(details);
-      $('<pre></pre>').text(serializedValue).appendTo(details);
+      debugView = $('<div class="taxopress-autoterm-debug-view"></div>');
+      appendAutoTermPreviewDebugValue(debugView, debugValue);
+      debugView.appendTo(details);
     }
 
     function renderAutoTermPreviewDebug(previewSection, debug, includeDebug) {
@@ -1747,6 +1816,12 @@
     $(document).on('click', '.taxopress-autoterm-result .output .taxopress-ai-addtag-button', function (e) {
       e.preventDefault();
       var button = $(this);
+      var updateEvent = $.Event('taxopress:beforeUpdateAutoTerms');
+
+      $(document).trigger(updateEvent, [button]);
+      if (updateEvent.isDefaultPrevented()) {
+        return;
+      }
       var preview_wrapper = button.closest('.taxopress-autoterm-result .output'); 
       var this_result = ''; 
       var this_term_id = ''; 
@@ -1802,7 +1877,7 @@
           } else {
             $('.taxopress-autoterm-result .response').html('<p>' + response.content + ' </p>').removeClass('error').addClass('updated');
           }
-          
+
         button.prop('disabled', false);
         button.find('.spinner').removeClass('is-active');
       });
