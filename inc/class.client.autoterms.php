@@ -197,7 +197,16 @@ class SimpleTags_Client_Autoterms
             return false;
         }
 
-        if ($action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
+        $skip_single_target_check = (bool) apply_filters(
+            'taxopress_autoterms_skip_single_target_check',
+            false,
+            $object,
+            $taxonomy,
+            $options,
+            $action
+        );
+
+        if (!$skip_single_target_check && $action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Only use Auto Terms on posts with no added terms is enabled and this post contain terms.', 'simple-tags');
             //update log
             self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option');
@@ -267,6 +276,22 @@ class SimpleTags_Client_Autoterms
             'content_source' => 'autoterm_' . $content_source
 
         ];
+
+        $preprocessed_result = apply_filters(
+            'taxopress_autoterms_pre_process_sources',
+            null,
+            $object,
+            $taxonomy,
+            $options,
+            $counter,
+            $action,
+            $component,
+            $args
+        );
+
+        if ($preprocessed_result !== null) {
+            return (bool) $preprocessed_result;
+        }
 
         //Autoterm with OpenAI
         if ($autoterm_use_open_ai > 0 && taxopress_is_pro_version()) {
@@ -781,7 +806,10 @@ class SimpleTags_Client_Autoterms
                 $added_post_term = [];
             }
 
-            $added_post_term[$object->ID] = $terms_to_add;
+            $existing_added_terms = !empty($added_post_term[$object->ID]) && is_array($added_post_term[$object->ID])
+                ? $added_post_term[$object->ID]
+                : [];
+            $added_post_term[$object->ID] = array_values(array_unique(array_merge($existing_added_terms, $terms_to_add)));
 
             // Validate taxonomy exists
             if (!taxonomy_exists($taxonomy)) {
