@@ -10,9 +10,205 @@ if (!class_exists('TaxoPressAiApi')) {
         ## https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-release-notes#active-version-dates
         public const IBM_WATSON_API_VERSION = '2022-08-10';
 
-        public const OPEN_AI_MODEL = 'gpt-3.5-turbo';
+        public const OPEN_AI_MODEL = 'gpt-4o-mini';
 
-        public const OPEN_AI_API_URL = 'https://api.openai.com/v1/chat/completions';
+        public const OPEN_AI_API_URL = 'https://api.openai.com/v1/responses';
+
+        /**
+         * Replace removed model aliases while preserving valid saved selections.
+         *
+         * @param string $model Configured OpenAI model name.
+         * @return string
+         */
+        public static function normalize_open_ai_model($model)
+        {
+            $model = sanitize_text_field(trim((string) $model));
+
+            return $model === 'chatgpt-4o-latest' || $model === ''
+                ? self::OPEN_AI_MODEL
+                : $model;
+        }
+
+        /**
+         * Whether a model accepts the temperature request parameter.
+         *
+         * @param string $model OpenAI model name.
+         * @return bool
+         */
+        public static function open_ai_model_supports_temperature($model)
+        {
+            return !in_array($model, ['o3-mini', 'o1-mini', 'o1'], true)
+                && !preg_match('/^gpt-5/', $model);
+        }
+
+        /**
+         * Whether a model supports strict JSON-schema output.
+         *
+         * @param string $model OpenAI model name.
+         * @return bool
+         */
+        public static function open_ai_model_supports_structured_outputs($model)
+        {
+            return preg_match('/^(?:gpt-4o(?:-|$)|gpt-5(?:-|$))/', $model) === 1;
+        }
+
+        /**
+         * Prepare application instructions without embedding user content in them.
+         *
+         * @param string $prompt Configured prompt.
+         * @return string
+         */
+        public static function prepare_open_ai_instructions($prompt)
+        {
+            return str_replace(
+                ["'{content}'", '"{content}"', '{content}', '{post_terms}', '{site_terms}'],
+                [
+                    'the content supplied in the user input',
+                    'the content supplied in the user input',
+                    'the content supplied in the user input',
+                    'the current post terms supplied in the user input',
+                    'the existing site terms supplied in the user input',
+                ],
+                $prompt
+            );
+        }
+
+        /**
+         * Build the user input containing content and optional taxonomy context.
+         *
+         * @param string $content            Post content.
+         * @param mixed  $existing_post_terms Existing post terms.
+         * @param mixed  $existing_site_terms Existing site terms.
+         * @param bool   $include_post_terms  Whether post terms are used by the prompt.
+         * @param bool   $include_site_terms  Whether site terms are used by the prompt.
+         * @return string
+         */
+        public static function prepare_open_ai_input(
+            $content,
+            $existing_post_terms,
+            $existing_site_terms,
+            $include_post_terms,
+            $include_site_terms
+        ) {
+            $input = ["Content:\n" . $content];
+
+            if ($include_post_terms) {
+                $input[] = 'Current post terms:' . "\n" . wp_json_encode(
+                    $existing_post_terms,
+                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+                );
+            }
+
+            if ($include_site_terms) {
+                $input[] = 'Existing site terms:' . "\n" . wp_json_encode(
+                    $existing_site_terms,
+                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+                );
+            }
+
+            return implode("\n\n", $input);
+        }
+
+        /**
+         * Build a strict taxonomy terms response format for the Responses API.
+         *
+         * @param array $property_names Expected JSON property names.
+         * @return array
+         */
+        public static function get_open_ai_terms_response_format($property_names)
+        {
+            $properties = [];
+            $required = [];
+
+            foreach ($property_names as $property_name) {
+                $property_name = sanitize_key($property_name);
+                if ($property_name === '') {
+                    continue;
+                }
+
+                $properties[$property_name] = [
+                    'type'        => 'array',
+                    'description' => 'Relevant plain-text term names for this taxonomy.',
+                    'items'       => ['type' => 'string'],
+                ];
+                $required[] = $property_name;
+            }
+
+            return [
+                'format' => [
+                    'type'   => 'json_schema',
+                    'name'   => 'taxonomy_terms',
+                    'strict' => true,
+                    'schema' => [
+                        'type'                 => 'object',
+                        'properties'           => $properties,
+                        'required'             => $required,
+                        'additionalProperties' => false,
+                    ],
+                ],
+            ];
+        }
+
+        /**
+         * Extract generated text from a Responses API payload.
+         *
+         * @param array $response_body Decoded API response.
+         * @return string
+         */
+        public static function get_open_ai_response_text($response_body)
+        {
+            if (empty($response_body['output']) || !is_array($response_body['output'])) {
+                return '';
+            }
+
+            $text = [];
+            foreach ($response_body['output'] as $output) {
+                if (empty($output['content']) || !is_array($output['content'])) {
+                    continue;
+                }
+
+                foreach ($output['content'] as $content) {
+                    if (
+                        isset($content['type'], $content['text'])
+                        && $content['type'] === 'output_text'
+                    ) {
+                        $text[] = $content['text'];
+                    }
+                }
+            }
+
+            return trim(implode("\n", $text));
+        }
+
+        /**
+         * Extract a refusal message from a Responses API payload.
+         *
+         * @param array $response_body Decoded API response.
+         * @return string
+         */
+        public static function get_open_ai_response_refusal($response_body)
+        {
+            if (empty($response_body['output']) || !is_array($response_body['output'])) {
+                return '';
+            }
+
+            foreach ($response_body['output'] as $output) {
+                if (empty($output['content']) || !is_array($output['content'])) {
+                    continue;
+                }
+
+                foreach ($output['content'] as $content) {
+                    if (
+                        isset($content['type'], $content['refusal'])
+                        && $content['type'] === 'refusal'
+                    ) {
+                        return sanitize_text_field($content['refusal']);
+                    }
+                }
+            }
+
+            return '';
+        }
 
         /**
          * Add sanitized request and response data to preview results when requested.
@@ -634,7 +830,9 @@ if (!class_exists('TaxoPressAiApi')) {
 
             $post_id = !empty($args['post_id']) ? (int) $args['post_id'] : 0;
             $open_ai_api_key = !empty($settings_data['open_ai_api_key']) ? $settings_data['open_ai_api_key'] : '';
-            $open_ai_model = !empty($settings_data['open_ai_model']) ? $settings_data['open_ai_model'] : self::OPEN_AI_MODEL;
+            $open_ai_model = self::normalize_open_ai_model(
+                !empty($settings_data['open_ai_model']) ? $settings_data['open_ai_model'] : self::OPEN_AI_MODEL
+            );
             $open_ai_cache_result = !empty($settings_data['open_ai_cache_result']) ? $settings_data['open_ai_cache_result'] : '';
             $open_ai_existing_terms_only = !empty($settings_data['open_ai_existing_terms_only']);
             $open_ai_tag_prompt = !empty($settings_data['open_ai_tag_prompt'])
@@ -690,6 +888,7 @@ if (!class_exists('TaxoPressAiApi')) {
                     'content'             => $content,
                     'taxonomy'            => $taxonomy,
                     'model'               => $open_ai_model,
+                    'api'                 => 'responses-v1',
                     'prompt'              => $custom_prompt,
                     'existing_terms_only' => $open_ai_existing_terms_only,
                     'post_terms'          => $existing_post_terms,
@@ -727,16 +926,16 @@ if (!class_exists('TaxoPressAiApi')) {
                         }
                     }
 
-                    $prompt = str_replace('{content}', $clean_content, $custom_prompt);
-
-                    if ($post_terms_in_prompt) {
-                        $post_terms_comma_join = !empty($existing_post_terms) ? join(', ', $existing_post_terms) : '';
-                        $prompt = str_replace('{post_terms}', $post_terms_comma_join, $prompt);
-                    }
-
-                    if ($site_terms_in_prompt) {
-                        $site_terms_comma_join = !empty($existing_site_terms) ? join(', ', $existing_site_terms) : '';
-                        $prompt = str_replace('{site_terms}', $site_terms_comma_join, $prompt);
+                    $instructions = self::prepare_open_ai_instructions($custom_prompt);
+                    $user_input = self::prepare_open_ai_input(
+                        $clean_content,
+                        $existing_post_terms,
+                        $existing_site_terms,
+                        $post_terms_in_prompt,
+                        $site_terms_in_prompt
+                    );
+                    if (self::open_ai_model_supports_structured_outputs($open_ai_model)) {
+                        $instructions .= "\n\nReturn every term as a separate string in the terms array required by the response schema.";
                     }
 
                     if ($post_terms_in_prompt && empty($existing_post_terms)) {
@@ -747,30 +946,32 @@ if (!class_exists('TaxoPressAiApi')) {
                         $return['message'] = esc_html__('You added {site_terms} in the prompt but your site does not contain any terms for this taxonomy.', 'simple-tags');
                     } else {
                         $body_data = [
-                            'model'         => $open_ai_model,
-                            'messages'    => [
+                            'model'        => $open_ai_model,
+                            'instructions' => $instructions,
+                            'input'        => [
                                 [
-                                    // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-                                    'role'    => 'system', //'system', 'assistant', 'user', 'function', 'tool', and 'developer'.
-                                    'content' => $prompt,
+                                    'role'    => 'user',
+                                    'content' => [
+                                        [
+                                            'type' => 'input_text',
+                                            'text' => $user_input,
+                                        ],
+                                    ],
                                 ],
-                            ]
+                            ],
+                            'store'        => false,
                         ];
 
-
-                        if (!in_array($open_ai_model, ['o3-mini', 'o1-mini', 'o1']) && !preg_match('/^gpt-5/', $open_ai_model)) {
-                            $token_limit = !empty($settings_data['open_ai_max_tokens']) ? (int)$settings_data['open_ai_max_tokens'] : 50;
-
-                            if (preg_match('/^(gpt-5|gpt-4\.5)/', $open_ai_model)) {
-                                $body_data['max_completion_tokens'] = $token_limit;
-                            } else {
-                                $body_data['max_tokens'] = $token_limit;
-                            }
+                        if (self::open_ai_model_supports_temperature($open_ai_model)) {
+                            $token_limit = !empty($settings_data['open_ai_max_tokens'])
+                                ? (int) $settings_data['open_ai_max_tokens']
+                                : 50;
+                            $body_data['max_output_tokens'] = max(16, $token_limit);
                             $body_data['temperature'] = 0.9;
                         }
 
-                        if (in_array($open_ai_model, ['o1-mini'])) {
-                            $body_data['messages'][0]['role'] = 'user';
+                        if (self::open_ai_model_supports_structured_outputs($open_ai_model)) {
+                            $body_data['text'] = self::get_open_ai_terms_response_format(['terms']);
                         }
 
                         $headers = [
@@ -805,7 +1006,7 @@ if (!class_exists('TaxoPressAiApi')) {
 
                             if ($status_code !== 200) {
                                 $error_message = (is_array($body_data) && !empty($body_data['error']['message'])) ? $body_data['error']['message'] : $status_code;
-                                if (strpos($error_message, 'You exceeded your current quota, please check your plan and billing details') !== false) {
+                                if (strpos((string) $error_message, 'You exceeded your current quota, please check your plan and billing details') !== false) {
                                     // https://github.com/publishpress/publishpress-taxonomies/issues/1951
                                     $error_message = esc_html__('Error: OpenAI says there is an issue with this API key. Please check your plan or billing details.', 'simple-tags');
                                 }
@@ -813,41 +1014,62 @@ if (!class_exists('TaxoPressAiApi')) {
                                 // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                                 $return['message'] = $error_message;//sprintf(esc_html__('API Error: %1s.', 'simple-tags'), $error_message);
                             } else {
+                                $response_text = self::get_open_ai_response_text($body_data);
+                                $refusal = self::get_open_ai_response_refusal($body_data);
                                 $data = [];
-                                if (!empty($body_data['choices'])) {
-                                    foreach ($body_data['choices'] as $choice) {
-                                        if (isset($choice['message'], $choice['message']['content'])) {
-                                            $cleaned_response = self::clean_api_response($choice['message']['content']);
 
-                                            if ($site_terms_in_prompt && !empty($existing_site_terms)) {
-                                                $response_terms = array_map('trim', explode(',', $cleaned_response));
-                                                $site_terms_by_slug = [];
-                                                foreach ($existing_site_terms as $existing_site_term) {
-                                                    $site_terms_by_slug[sanitize_title($existing_site_term)] = $existing_site_term;
-                                                }
-                                                $valid_terms = [];
-                                                foreach ($response_terms as $response_term) {
-                                                    $response_term_slug = sanitize_title($response_term);
-                                                    if (isset($site_terms_by_slug[$response_term_slug])) {
-                                                        $valid_terms[] = $site_terms_by_slug[$response_term_slug];
-                                                    }
-                                                }
-                                                $valid_terms = array_values(array_unique($valid_terms));
-                                                $cleaned_response = implode(', ', $valid_terms);
-                                            }
-
-                                            if (count(array_merge($data, explode(', ', sanitize_text_field(trim($cleaned_response, ' "\''))))) === 1) {
-                                                $data = array_merge($data, [$cleaned_response]);
-                                            } else {
-                                                $data = array_merge($data, explode(', ', sanitize_text_field(trim($cleaned_response, ' "\''))));
-                                            }
+                                if ($refusal !== '') {
+                                    $return['status'] = 'error';
+                                    $return['message'] = $refusal;
+                                } elseif ($response_text !== '') {
+                                    if (self::open_ai_model_supports_structured_outputs($open_ai_model)) {
+                                        $structured_response = json_decode($response_text, true);
+                                        if (!empty($structured_response['terms']) && is_array($structured_response['terms'])) {
+                                            $data = $structured_response['terms'];
                                         }
+                                    } else {
+                                        $cleaned_response = self::clean_api_response($response_text);
+                                        $data = preg_split('/\s*,\s*/', $cleaned_response, -1, PREG_SPLIT_NO_EMPTY);
                                     }
                                 }
 
-                                $terms = [];
+                                $terms = array_values(
+                                    array_unique(
+                                        array_filter(
+                                            array_map(
+                                                static function ($term) {
+                                                    return is_scalar($term)
+                                                        ? sanitize_text_field(trim((string) $term, " \t\n\r\0\x0B\"'"))
+                                                        : '';
+                                                },
+                                                (array) $data
+                                            )
+                                        )
+                                    )
+                                );
+
+                                if ($site_terms_in_prompt && !empty($existing_site_terms)) {
+                                    $site_terms_by_slug = [];
+                                    foreach ($existing_site_terms as $existing_site_term) {
+                                        $site_terms_by_slug[sanitize_title($existing_site_term)] = $existing_site_term;
+                                    }
+
+                                    $terms = array_values(
+                                        array_filter(
+                                            array_map(
+                                                static function ($term) use ($site_terms_by_slug) {
+                                                    $term_slug = sanitize_title($term);
+                                                    return isset($site_terms_by_slug[$term_slug])
+                                                        ? $site_terms_by_slug[$term_slug]
+                                                        : '';
+                                                },
+                                                $terms
+                                            )
+                                        )
+                                    );
+                                }
+
                                 if (!empty($data)) {
-                                    $terms = (array) $data;
                                     if (!empty($terms)) {
                                         $return['status'] = 'success';
                                         $return['results'] = $terms;
@@ -861,7 +1083,7 @@ if (!class_exists('TaxoPressAiApi')) {
                                     }
                                 }
 
-                                if (empty(array_filter($terms))) {
+                                if ($refusal === '' && empty(array_filter($terms))) {
                                     $return['status'] = 'error';
                                     $return['message'] = esc_html__('No matched result from the API Server.', 'simple-tags');
                                 }
