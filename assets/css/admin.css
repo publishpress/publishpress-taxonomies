@@ -980,7 +980,7 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
 }
 
 .taxopress-autoterm-debug-view {
-    max-height: 320px;
+    max-height: 420px;
     margin: 0;
     overflow: auto;
     border: 1px solid #dcdcde;
@@ -989,11 +989,15 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
 
 .taxopress-autoterm-debug-field {
     display: grid;
-    grid-template-columns: minmax(110px, 22%) minmax(0, 1fr);
+    grid-template-columns: minmax(140px, 24%) minmax(0, 1fr);
 }
 
 .taxopress-autoterm-debug-field + .taxopress-autoterm-debug-field {
     border-top: 1px solid #dcdcde;
+}
+
+.taxopress-autoterm-debug-field-collection {
+    display: block;
 }
 
 .taxopress-autoterm-debug-key,
@@ -1010,7 +1014,35 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
     overflow-wrap: anywhere;
 }
 
-.taxopress-autoterm-debug-value > .taxopress-autoterm-debug-data {
+.taxopress-autoterm-debug-collection summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    background: #f6f7f7;
+}
+
+.taxopress-autoterm-debug-collection-key {
+    font-family: Consolas, Monaco, monospace;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.taxopress-autoterm-debug-collection-count {
+    margin-left: auto;
+    color: #646970;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12px;
+}
+
+.taxopress-autoterm-debug-collection-content {
+    padding: 8px;
+    border-top: 1px solid #dcdcde;
+    background: #fff;
+}
+
+.taxopress-autoterm-debug-collection-content > .taxopress-autoterm-debug-data {
     border: 1px solid #dcdcde;
 }
 
@@ -1019,8 +1051,11 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
     display: block;
     margin: 0;
     font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.5;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .taxopress-autoterm-debug-view > .taxopress-autoterm-debug-empty {
