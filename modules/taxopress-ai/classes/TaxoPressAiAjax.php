@@ -420,18 +420,34 @@ if (!class_exists('TaxoPressAiAjax')) {
                                     ##https://platform.openai.com/docs/api-reference/chat/create
                                     ##https://platform.openai.com/docs/models/model-endpoint-compatibility
 
-                                    $request_args['show_counts'] = isset($settings_data['open_ai_show_post_count']) ? $settings_data['open_ai_show_post_count'] : 0;
+                                $request_args['show_counts'] = isset($settings_data['open_ai_show_post_count']) ? $settings_data['open_ai_show_post_count'] : 0;
+                                $open_ai_preview = apply_filters(
+                                    'taxopress_autoterms_open_ai_preview',
+                                    null,
+                                    $request_args,
+                                    $settings_data,
+                                    $preview_taxonomy,
+                                    $post_data
+                                );
+
+                                if (is_array($open_ai_preview) && isset($open_ai_preview['result'], $open_ai_preview['html'])) {
+                                    $open_ai_results = $open_ai_preview['result'];
+                                    $term_results .= $open_ai_preview['html'];
+                                    $terms_found = $terms_found || !empty($open_ai_preview['terms_found']);
+                                } else {
                                     $open_ai_results = TaxoPressAiApi::get_open_ai_results($request_args);
+                                    if (!empty($open_ai_results['results'])) {
+                                        $terms_found = true;
+                                        $request_args['results'] = $open_ai_results['results'];
+                                        $request_args['legend_title'] = esc_html__('OpenAI', 'simple-tags');
+                                        $term_results .= TaxoPressAiUtilities::get_term_fieldset_html($request_args);
+                                    } else {
+                                        $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html__('OpenAI', 'simple-tags') . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . $open_ai_results['message'] . '</p></div></div></fieldset>';
+                                    }
+                                }
+
                                 if ($include_debug) {
                                     self::add_preview_debug_entry($debug_log, esc_html__('OpenAI', 'simple-tags'), $open_ai_results);
-                                }
-                                if (!empty($open_ai_results['results'])) {
-                                    $terms_found = true;
-                                    $request_args['results']        = $open_ai_results['results'];
-                                    $request_args['legend_title']   = esc_html__('OpenAI', 'simple-tags');
-                                    $term_results               .= TaxoPressAiUtilities::get_term_fieldset_html($request_args);
-                                } else {
-                                    $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html__('OpenAI', 'simple-tags') . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . $open_ai_results['message'] . '</p></div></div></fieldset>';
                                 }
                             }
 
@@ -491,11 +507,21 @@ if (!class_exists('TaxoPressAiAjax')) {
                         }
 
                         if ($terms_found) {
+                            $update_button_label = sprintf(
+                                esc_html__('Update %1s on this %2s', 'simple-tags'),
+                                esc_html($preview_taxonomy_details->labels->name),
+                                esc_html($post_type_details->labels->singular_name)
+                            );
+                            $update_button_label = apply_filters(
+                                'taxopress_autoterms_preview_update_button_label',
+                                $update_button_label,
+                                $settings_data,
+                                $preview_taxonomy,
+                                $post_type_details
+                            );
                             $term_results .= '<div class="preview-action-btn-wrap">';
-                            $term_results .= '<button class="button button-primary taxopress-ai-addtag-button">
-                            <div class="spinner"></div>
-                            ' . sprintf(esc_html__('Update %1s on this %2s', 'simple-tags'), esc_html($preview_taxonomy_details->labels->name), esc_html($post_type_details->labels->singular_name)) . ' 
-                            </button>';
+                            $term_results .= '<button class="button button-primary taxopress-ai-addtag-button"><div class="spinner"></div>';
+                            $term_results .= $update_button_label . '</button>';
                             $term_results .= '</div>';
                         }
                     }
