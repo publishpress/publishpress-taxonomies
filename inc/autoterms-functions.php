@@ -388,6 +388,21 @@ function taxopress_get_autoterm_exclusions($exclusions)
 }
 
 /**
+ * Normalize an Auto Terms value for case-insensitive comparison.
+ *
+ * @param string $value Value to normalize.
+ * @return string
+ */
+function taxopress_autoterm_casefold($value)
+{
+    if (function_exists('mb_convert_case') && defined('MB_CASE_FOLD')) {
+        return mb_convert_case($value, MB_CASE_FOLD, 'UTF-8');
+    }
+
+    return strtolower($value);
+}
+
+/**
  * Check whether a suggested term or keyword is excluded from Auto Terms.
  *
  * @param mixed $value      Suggested term or keyword.
@@ -405,8 +420,9 @@ function taxopress_autoterm_is_excluded($value, $exclusions)
         return false;
     }
 
+    $normalized_value = taxopress_autoterm_casefold($value);
     foreach (taxopress_get_autoterm_exclusions($exclusions) as $excluded_value) {
-        if (strcasecmp($value, $excluded_value) === 0) {
+        if ($normalized_value === taxopress_autoterm_casefold($excluded_value)) {
             return true;
         }
     }
