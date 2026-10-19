@@ -392,7 +392,16 @@ function taxopress_update_autoterm($data = [])
         } else {
             $new_value = [];
             foreach ($data[$key] as $option_key => $option_value) {
-                if ($option_key === 'terms_regex_code') {
+                $filtered_value = apply_filters(
+                    'taxopress_sanitize_autoterm_option',
+                    null,
+                    $option_key,
+                    $option_value
+                );
+
+                if ($filtered_value !== null) {
+                    $new_value[$option_key] = $filtered_value;
+                } elseif ($option_key === 'terms_regex_code') {
                     $regex_pattern = sanitize_text_field($option_value);
                     if (!empty($regex_pattern) && preg_match($regex_pattern, '') !== false) {
                         $new_value[$option_key] = $regex_pattern;
@@ -439,6 +448,8 @@ function taxopress_update_autoterm($data = [])
             }
         }
     }
+
+    $data = apply_filters('taxopress_prepare_autoterm_data', $data, $existing_autoterm);
 
     $title                               = $data['taxopress_autoterm']['title'];
     $title                               = str_replace('"', '', htmlspecialchars_decode($title));
