@@ -213,7 +213,7 @@ class SimpleTags_Client_Autoterms
             return false; // Skip post with terms, if term only empty post option is checked
         }
 
-        $autoterm_exclude = isset($options['autoterm_exclude']) ? taxopress_change_to_array($options['autoterm_exclude']) : [];
+        $autoterm_exclude = isset($options['autoterm_exclude']) ? taxopress_get_autoterm_exclusions($options['autoterm_exclude']) : [];
 
 
         $content_source = !empty($options['autoterm_from']) ? $options['autoterm_from'] : 'post_content_title';
@@ -312,7 +312,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by OpenAI but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -392,7 +392,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by IBM Watson but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -473,7 +473,7 @@ class SimpleTags_Client_Autoterms
                         }
 
                         //exclude if name found in exclude terms
-                        if (in_array($term, $autoterm_exclude)) {
+                        if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                             $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Dandelion but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                             continue;
                         }
@@ -553,7 +553,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by OpenCalais but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -629,7 +629,7 @@ class SimpleTags_Client_Autoterms
                 }
 
                 //exclude if name found in exclude terms
-                if (in_array($term, $autoterm_exclude)) {
+                if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                     $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Suggested terms from specific terms but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                     continue;
                 }
@@ -705,7 +705,7 @@ class SimpleTags_Client_Autoterms
                 }
 
                 //exclude if name found in exclude terms
-                if (in_array($term, $autoterm_exclude)) {
+                if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                     $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Suggested terms from taxonomy terms but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                     continue;
                 }
