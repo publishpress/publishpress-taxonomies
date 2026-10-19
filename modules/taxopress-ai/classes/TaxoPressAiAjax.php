@@ -129,12 +129,11 @@ if (!class_exists('TaxoPressAiAjax')) {
                 $response_data['message'] = $message;
             }
 
-            // Remote parsed terms are already rendered in the preview above the debug log.
-            if (empty($source_debug)) {
-                $response_data['terms'] = !empty($source_result['results'])
-                    ? array_values((array) $source_result['results'])
-                    : [];
-            }
+            // Include the parsed suggestions alongside the raw provider response.
+            // Associative taxonomy keys are preserved for multi-taxonomy requests.
+            $response_data['terms'] = !empty($source_result['results'])
+                ? (array) $source_result['results']
+                : [];
 
             $debug_log[] = [
                 'source'   => $source,

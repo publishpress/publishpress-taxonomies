@@ -1538,11 +1538,28 @@
       return parsedValue && typeof parsedValue === 'object' ? parsedValue : value;
     }
 
-    function appendAutoTermPreviewDebugValue(container, value) {
+    function formatAutoTermPreviewDebugScalar(value) {
+      if (value === null) {
+        return 'null';
+      }
+
+      if (typeof value !== 'string') {
+        return String(value);
+      }
+
+      return value
+        .replace(/\r\n/g, '\n')
+        .replace(/\\r\\n|\\n|\\r/g, '\n')
+        .replace(/\\t/g, '\t');
+    }
+
+    function appendAutoTermPreviewDebugValue(container, value, depth) {
       var normalizedValue = normalizeAutoTermPreviewDebugValue(value);
       var isArray = Array.isArray(normalizedValue);
       var keys;
       var data;
+
+      depth = depth || 0;
 
       if (normalizedValue && typeof normalizedValue === 'object') {
         keys = Object.keys(normalizedValue);
@@ -1556,13 +1573,48 @@
 
         data = $('<div class="taxopress-autoterm-debug-data"></div>');
         keys.forEach(function (key) {
-          var field = $('<div class="taxopress-autoterm-debug-field"></div>');
-          var fieldValue = $('<div class="taxopress-autoterm-debug-value"></div>');
+          var childValue = normalizeAutoTermPreviewDebugValue(normalizedValue[key]);
+          var childIsCollection = childValue && typeof childValue === 'object';
+          var childIsArray = Array.isArray(childValue);
+          var displayKey = isArray ? '#' + (parseInt(key, 10) + 1) : key;
+          var field;
+          var fieldValue;
+          var collection;
+          var collectionSummary;
+          var collectionContent;
+
+          if (childIsCollection) {
+            field = $('<div class="taxopress-autoterm-debug-field taxopress-autoterm-debug-field-collection"></div>');
+            collection = $('<details class="taxopress-autoterm-debug-collection"></details>');
+            collectionSummary = $('<summary></summary>');
+
+            if (depth < 1) {
+              collection.prop('open', true);
+            }
+
+            $('<span class="taxopress-autoterm-debug-collection-key"></span>')
+              .text(displayKey)
+              .appendTo(collectionSummary);
+            $('<span class="taxopress-autoterm-debug-collection-count"></span>')
+              .text((childIsArray ? '[' : '{') + Object.keys(childValue).length + (childIsArray ? ']' : '}'))
+              .appendTo(collectionSummary);
+
+            collectionSummary.appendTo(collection);
+            collectionContent = $('<div class="taxopress-autoterm-debug-collection-content"></div>');
+            appendAutoTermPreviewDebugValue(collectionContent, childValue, depth + 1);
+            collectionContent.appendTo(collection);
+            collection.appendTo(field);
+            field.appendTo(data);
+            return;
+          }
+
+          field = $('<div class="taxopress-autoterm-debug-field"></div>');
+          fieldValue = $('<div class="taxopress-autoterm-debug-value"></div>');
 
           $('<div class="taxopress-autoterm-debug-key"></div>')
-            .text(isArray ? '[' + key + ']' : key)
+            .text(displayKey)
             .appendTo(field);
-          appendAutoTermPreviewDebugValue(fieldValue, normalizedValue[key]);
+          appendAutoTermPreviewDebugValue(fieldValue, childValue, depth + 1);
           fieldValue.appendTo(field);
           field.appendTo(data);
         });
@@ -1570,8 +1622,8 @@
         return;
       }
 
-      $('<div class="taxopress-autoterm-debug-scalar"></div>')
-        .text(normalizedValue === null ? 'null' : String(normalizedValue))
+      $('<pre class="taxopress-autoterm-debug-scalar"></pre>')
+        .text(formatAutoTermPreviewDebugScalar(normalizedValue))
         .appendTo(container);
     }
 
