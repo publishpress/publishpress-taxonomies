@@ -547,6 +547,8 @@ class SimpleTags_Autoterms
                                                 'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                             ]);
 
+                                            do_action('taxopress_autoterms_after_taxonomy_field', $options, $current);
+
                                             $selected_option    = (isset($current) && isset($current['autoterm_from'])) ? $current['autoterm_from'] : '';
 
                                             $term_from_options = [
