@@ -1110,7 +1110,7 @@ class SimpleTags_Autolink
                                             <div class="pp-version-notice-bold-purple-message"><?php esc_html_e('You\'re using PublishPress Taxonomies Free.
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                             </div>
-                                            <div class="pp-version-notice-bold-purple-button"><a href="https://taxopress.com/taxopress/" target="_blank"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
+                                            <div class="pp-version-notice-bold-purple-button"><a href="https://publishpress.com/taxonomies/" target="_blank"><?php esc_html_e('Upgrade to Pro', 'simple-tags'); ?></a>
                                             </div>
                                         </div>
 
