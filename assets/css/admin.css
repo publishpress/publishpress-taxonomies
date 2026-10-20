@@ -507,6 +507,10 @@ body.taxopress_page_st_terms tr.inline-edit-row td {
     color: #777;
 }
 
+.taxopress-admin-footer > footer a {
+    text-decoration: none;
+}
+
 .taxopress-admin-footer > footer > nav ul {
     list-style: none;
     margin: 12px 0;
