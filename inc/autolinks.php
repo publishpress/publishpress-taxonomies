@@ -446,11 +446,31 @@ class SimpleTags_Autolink
                                                                 'default' => 'true'
                                                             ],
                                                             [
+                                                                'attr' => 'post_title',
+                                                                'text' => esc_attr__('Post Title', 'simple-tags')
+                                                            ],
+                                                            [
+                                                                'attr' => 'post_excerpt',
+                                                                'text' => esc_attr__('Post Excerpt', 'simple-tags')
+                                                            ],
+                                                            [
                                                                 'attr' => 'posts',
                                                                 'text' => esc_attr__(
                                                                     'Post Content and Title',
                                                                     'simple-tags'
                                                                 )
+                                                            ],
+                                                            [
+                                                                'attr' => 'post_content_excerpt',
+                                                                'text' => esc_attr__('Post Content and Excerpt', 'simple-tags')
+                                                            ],
+                                                            [
+                                                                'attr' => 'post_title_excerpt',
+                                                                'text' => esc_attr__('Post Title and Excerpt', 'simple-tags')
+                                                            ],
+                                                            [
+                                                                'attr' => 'posts_excerpt',
+                                                                'text' => esc_attr__('Post Content, Title and Excerpt', 'simple-tags')
                                                             ],
                                                         ],
                                                     ];
@@ -466,6 +486,30 @@ class SimpleTags_Autolink
                                                         ),
                                                         'selections' => $select, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ]);
+
+                                                    $autolink_custom_fields = (!empty($current['autolink_custom_fields']) && is_array($current['autolink_custom_fields'])) ? $current['autolink_custom_fields'] : [];
+                                                    ?>
+                                                    <tr valign="top">
+                                                        <th scope="row">
+                                                            <label><?php esc_html_e('Add Autolinks in more areas:', 'simple-tags'); ?></label>
+                                                        </th>
+                                                        <td>
+                                                            <div class="taxopress-autolink-custom-fields">
+                                                                <p><strong><?php esc_html_e('Custom Fields', 'simple-tags'); ?></strong></p>
+                                                                <select class="taxopress-autolink-custom-fields-search" name="taxopress_autolink[autolink_custom_fields][]" multiple="multiple" style="width: 100%;"
+                                                                    data-placeholder="<?php echo esc_attr__('Search Custom Field...', 'simple-tags'); ?>"
+                                                                    data-nonce="<?php echo esc_attr(wp_create_nonce('taxopress-custom-fields-search')); ?>">
+                                                                    <?php foreach ($autolink_custom_fields as $custom_field) : ?>
+                                                                        <option value="<?php echo esc_attr($custom_field); ?>" selected="selected"><?php echo esc_html($custom_field); ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+                                                                <p class="description">
+                                                                    <?php esc_html_e('Select text-based custom fields whose single frontend values should receive Auto Links. The theme or plugin displaying the field must retrieve it through the WordPress metadata API and allow HTML links.', 'simple-tags'); ?>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
 
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     echo $ui->get_text_input([
