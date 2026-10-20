@@ -70,6 +70,10 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     margin-right: 10px;
 }
 
+.taxopress-autolink-custom-fields {
+    max-width: 450px;
+}
+
 .form-table.taxopress-table.autoterm_terms .tab-group-tr td {
     padding: 20px 10px 20px 0;
 }
