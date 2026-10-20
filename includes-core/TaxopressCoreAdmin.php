@@ -843,7 +843,7 @@ class TaxopressCoreAdmin
         );
         ?>
             <tr>
-                <th scope="row"><?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?></th>
+                <th scope="row"><?php echo esc_html__('Order terms for display by', 'simple-tags'); ?></th>
                 <td>
                     <?php foreach ($orderby_options as $option) :
                         $is_id = ($option['attr'] === 'term_id');
@@ -883,7 +883,7 @@ class TaxopressCoreAdmin
             $selected_order = isset($current['order']) ? $current['order'] : '';
             ?>
             <tr>
-                <th scope="row"><?php echo esc_html__('Ordering for choosing terms for display', 'simple-tags'); ?></th>
+                <th scope="row"><?php echo esc_html__('Order direction', 'simple-tags'); ?></th>
                 <td>
                 <?php foreach ($order_options as $option) :
                     $is_asc = ($option['attr'] === 'asc');
@@ -990,7 +990,7 @@ class TaxopressCoreAdmin
         <tr>
             <th>
                 <div class="taxopress_tag_cloud[format]">
-                    <?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?>
+                    <?php echo esc_html__('Order terms for display by', 'simple-tags'); ?>
                 </div>
             </th>
             <td>
@@ -1034,7 +1034,7 @@ class TaxopressCoreAdmin
         <tr>
             <th>
                 <div class="taxopress_post_tags[format]">
-                    <?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?>
+                    <?php echo esc_html__('Order terms for display by', 'simple-tags'); ?>
                 </div>
             </th>
             <td>
