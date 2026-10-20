@@ -553,10 +553,6 @@ class SimpleTags_Admin
         // Build list of post types and taxonomies (only CPTs with taxonomies)
         $taxonomies = [];
         echo '<div class="box-selector-taxonomy tab-taxo-filter tab-taxo-filter-' . esc_attr($tab_slug) . '">' . PHP_EOL;
-        echo '<div class="taxopress-manage-context-heading">' . PHP_EOL;
-        echo '<strong>' . esc_html__('Choose content and taxonomy', 'simple-tags') . '</strong>' . PHP_EOL;
-        echo '<span>' . esc_html__('The content type filters the available taxonomies. Term-level changes affect the taxonomy wherever it is used.', 'simple-tags') . '</span>' . PHP_EOL;
-        echo '</div>' . PHP_EOL;
         echo '<div class="change-taxo">' . PHP_EOL;
 
         echo '<form action="' . esc_url(admin_url('admin.php')) . '" method="get">' . PHP_EOL;
@@ -605,7 +601,7 @@ class SimpleTags_Admin
         echo '</select>' . PHP_EOL;
         echo '</label>' . PHP_EOL;
 
-        echo '<input type="submit" class="button button-secondary" value="' . esc_attr__('Apply selection', 'simple-tags') . '" />' . PHP_EOL;
+        echo '<input type="submit" class="button button-secondary" value="' . esc_attr__('Change selection', 'simple-tags') . '" />' . PHP_EOL;
         echo '</form>' . PHP_EOL;
         echo '</div>' . PHP_EOL;
         echo '</div>' . PHP_EOL;
