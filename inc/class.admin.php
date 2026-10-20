@@ -553,18 +553,23 @@ class SimpleTags_Admin
         // Build list of post types and taxonomies (only CPTs with taxonomies)
         $taxonomies = [];
         echo '<div class="box-selector-taxonomy tab-taxo-filter tab-taxo-filter-' . esc_attr($tab_slug) . '">' . PHP_EOL;
+        echo '<div class="taxopress-manage-context-heading">' . PHP_EOL;
+        echo '<strong>' . esc_html__('Choose content and taxonomy', 'simple-tags') . '</strong>' . PHP_EOL;
+        echo '<span>' . esc_html__('The content type filters the available taxonomies. Term-level changes affect the taxonomy wherever it is used.', 'simple-tags') . '</span>' . PHP_EOL;
+        echo '</div>' . PHP_EOL;
         echo '<div class="change-taxo">' . PHP_EOL;
 
         echo '<form action="' . esc_url(admin_url('admin.php')) . '" method="get">' . PHP_EOL;
         $page = !empty($page_slug) ? $page_slug : (isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : 'st_manage');
         echo '<input type="hidden" name="page" value="' . esc_attr($page) . '" />' . PHP_EOL;
-        echo '<input type="hidden" name="page" value="st_manage" />' . PHP_EOL;
 
         if (!empty($tab_slug)) {
             echo '<input type="hidden" name="tab" value="' . esc_attr($tab_slug) . '" />' . PHP_EOL;
         }
 
         // CPT dropdown
+        echo '<label class="taxopress-manage-context-field">' . PHP_EOL;
+        echo '<span>' . esc_html__('Content type', 'simple-tags') . '</span>' . PHP_EOL;
         echo '<select name="' . esc_attr($tab_slug) . '_cpt" class="st-cpt-select st-cpt-select-' . esc_attr($tab_slug) . '">' . PHP_EOL;
         foreach (get_post_types(['show_ui' => true], 'objects') as $post_type) {
             $taxonomies_children = get_object_taxonomies($post_type->name);
@@ -575,8 +580,11 @@ class SimpleTags_Admin
             echo '<option ' . selected($post_type->name, $current_cpt, false) . ' value="' . esc_attr($post_type->name) . '">' . esc_html($post_type->labels->name) . '</option>' . PHP_EOL;
         }
         echo '</select>' . PHP_EOL;
+        echo '</label>' . PHP_EOL;
 
         // Taxonomy dropdown
+        echo '<label class="taxopress-manage-context-field">' . PHP_EOL;
+        echo '<span>' . esc_html__('Taxonomy', 'simple-tags') . '</span>' . PHP_EOL;
         echo '<select name="' . esc_attr($tab_slug) . '_taxo" class="st-taxonomy-select st-taxonomy-select-' . esc_attr($tab_slug) . '">' . PHP_EOL;
         foreach ($taxonomies as $parent_post => $taxonomy_list) {
             foreach ($taxonomy_list as $tax_name) {
@@ -595,8 +603,9 @@ class SimpleTags_Admin
             }
         }
         echo '</select>' . PHP_EOL;
+        echo '</label>' . PHP_EOL;
 
-        echo '<input type="submit" class="button" value="' . esc_attr__('Change selection', 'simple-tags') . '" />' . PHP_EOL;
+        echo '<input type="submit" class="button button-secondary" value="' . esc_attr__('Apply selection', 'simple-tags') . '" />' . PHP_EOL;
         echo '</form>' . PHP_EOL;
         echo '</div>' . PHP_EOL;
         echo '</div>' . PHP_EOL;
@@ -757,6 +766,7 @@ class SimpleTags_Admin
             'terms_count_message' => esc_html__(' terms will be deleted.', 'simple-tags'),
             'checking_terms_message' => esc_html__('Checking terms...', 'simple-tags'),
             'terms_error'            => esc_html__('An error occurred while checking terms.', 'simple-tags'),
+            'confirm_delete_low_use_terms' => esc_html__('Permanently delete the affected terms? This action cannot be undone.', 'simple-tags'),
             'post_required' => esc_html__('Select a post to see a preview.', 'simple-tags'),
             'save_settings' => esc_html__('Auto Term ID missing. Kindly save the auto term before using this feature.', 'simple-tags'),
             'delete_label' => esc_html__('Delete', 'simple-tags'),
