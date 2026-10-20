@@ -2436,3 +2436,255 @@ input#post-search-input {
 .taxopress-merge-meta strong {
     font-weight: 600;
 }
+
+/* Manage Terms screen. */
+.st-manage-terms-page {
+    max-width: 1100px;
+}
+
+.st-manage-terms-page .simple-tags-nav-tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 24px 0 0;
+    padding: 0;
+    border-bottom: 1px solid #c3c4c7;
+}
+
+.st-manage-terms-page .simple-tags-nav-tab-wrapper .nav-tab {
+    float: none;
+    margin: 0 0 -1px;
+    padding: 10px 14px;
+    text-decoration: none;
+}
+
+.taxopress-manage-terms-content {
+    max-width: 960px;
+}
+
+.st-manage-terms-page .box-selector-taxonomy {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 20px 0 16px;
+    padding: 18px 20px;
+    color: #1d2327;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-left: 4px solid #655997;
+    box-sizing: border-box;
+}
+
+.taxopress-manage-context-heading {
+    margin-bottom: 14px;
+}
+
+.taxopress-manage-context-heading strong,
+.taxopress-manage-context-heading span {
+    display: block;
+}
+
+.taxopress-manage-context-heading strong {
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.taxopress-manage-context-heading span {
+    color: #646970;
+}
+
+.st-manage-terms-page .box-selector-taxonomy .change-taxo form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr)) auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.taxopress-manage-context-field,
+.taxopress-manage-context-field > span {
+    display: block;
+}
+
+.taxopress-manage-context-field > span {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.st-manage-terms-page .box-selector-taxonomy .change-taxo select {
+    width: 100%;
+    max-width: none;
+}
+
+.st-manage-terms-page .box-selector-taxonomy .change-taxo input[type="submit"] {
+    width: auto;
+    margin-top: 0;
+}
+
+.taxopress-manage-terms-card {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+.taxopress-manage-terms-card-header {
+    margin: -24px -24px 24px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.taxopress-manage-terms-card-header h2,
+.taxopress-transfer-card > h2:first-child {
+    margin-top: 0;
+}
+
+.taxopress-transfer-card > h2:not(:first-child) {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #dcdcde;
+}
+
+.taxopress-manage-terms-card-header h2 {
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.taxopress-manage-terms-card-header p {
+    margin: 0;
+    color: #50575e;
+    font-size: 14px;
+}
+
+.taxopress-manage-terms-card form:not(.taxopress-button-wrapper) {
+    max-width: 760px;
+}
+
+.taxopress-manage-terms-field {
+    margin: 0 0 22px;
+}
+
+.taxopress-manage-terms-field > label,
+.taxopress-manage-terms-field > legend {
+    display: block;
+    margin-bottom: 7px;
+    padding: 0;
+    font-weight: 600;
+}
+
+.taxopress-manage-terms-field textarea {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    min-height: 84px;
+}
+
+.taxopress-manage-terms-field .description {
+    margin: 6px 0 0;
+}
+
+.taxopress-manage-terms-field.terms-type-options > label {
+    margin: 0 0 9px;
+    font-weight: 400;
+}
+
+.taxopress-manage-terms-field.terms-type-options input[type="radio"] {
+    margin-right: 7px;
+}
+
+.taxopress-manage-terms-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid #dcdcde;
+}
+
+.taxopress-manage-terms-actions input[type="submit"],
+.taxopress-manage-terms-actions input[type="button"],
+.taxopress-manage-terms-actions .suggest-merge-terms {
+    margin: 0;
+}
+
+.taxopress-manage-terms-warning {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 0 0 22px;
+    padding: 12px 14px;
+    background: #fcf9e8;
+    border-left: 4px solid #dba617;
+}
+
+.taxopress-manage-terms-warning p {
+    margin: 1px 0 0;
+}
+
+.taxopress-manage-terms-warning .dashicons {
+    color: #996800;
+}
+
+.taxopress-manage-terms-danger-card {
+    border-top: 3px solid #d63638;
+}
+
+.taxopress-manage-terms-warning-danger {
+    background: #fcf0f1;
+    border-left-color: #d63638;
+}
+
+.taxopress-manage-terms-warning-danger .dashicons {
+    color: #d63638;
+}
+
+.taxopress-manage-terms-threshold {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.taxopress-manage-terms-threshold > label {
+    margin: 0;
+}
+
+.taxopress-manage-terms-threshold select {
+    min-width: 80px;
+}
+
+.st-manage-terms-page .delete-unused-term {
+    color: #b32d2e !important;
+    border-color: #b32d2e !important;
+}
+
+#merge-progress,
+#terms-feedback {
+    margin-top: 12px;
+}
+
+@media screen and (max-width: 782px) {
+    .st-manage-terms-page .box-selector-taxonomy .change-taxo form {
+        grid-template-columns: 1fr;
+    }
+
+    .st-manage-terms-page .box-selector-taxonomy .change-taxo input[type="submit"] {
+        width: 100%;
+    }
+
+    .taxopress-manage-terms-card {
+        padding: 18px;
+    }
+
+    .taxopress-manage-terms-card-header {
+        margin: -18px -18px 20px;
+        padding: 18px;
+    }
+
+    .taxopress-manage-terms-actions .button {
+        width: 100%;
+        text-align: center;
+    }
+}
