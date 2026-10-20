@@ -1382,6 +1382,27 @@
   }
 
     /**
+     * Auto Links custom field selector.
+     */
+    if ($('.taxopress-autolink-custom-fields-search').length > 0) {
+      $('.taxopress-autolink-custom-fields-search').each(function () {
+        $(this).ppma_select2({
+          placeholder: $(this).data('placeholder'),
+          allowClear: true,
+          ajax: {
+            url: window.ajaxurl + '?action=taxopress_custom_fields_search&nonce=' + $(this).data('nonce'),
+            dataType: 'json',
+            data: function (params) {
+              return {
+                q: params.term
+              };
+            }
+          }
+        });
+      });
+    }
+
+    /**
      * PublishPress Taxonomies term select2
      */
     if ($('.taxopress-term-search').length > 0) {

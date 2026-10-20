@@ -174,6 +174,7 @@ function taxopress_create_default_autolink()
     $default['taxopress_autolink']['taxonomy']                 = 'post_tag';
     $default['taxopress_autolink']['autolink_case']            = 'none';
     $default['taxopress_autolink']['autolink_display']         = 'post_content';
+    $default['taxopress_autolink']['autolink_custom_fields']   = [];
     $default['taxopress_autolink']['autolink_title_attribute'] = __('Posts tagged with %s', 'simple-tags');
     $default['taxopress_autolink']['autolink_title_attribute_when_using_custom_url'] = __('Visit this URL for more on %s', 'simple-tags');
     $default['taxopress_autolink']['autolink_usage_min']       = '1';
@@ -252,6 +253,7 @@ function taxopress_update_autolink($data = [])
     $data['taxopress_autolink']['blocks_exclusion'] = isset($data['blocks_exclusion']) ? array_unique($data['blocks_exclusion']) : [];
     $data['taxopress_autolink']['blocks_exclusion_entries'] = isset($data['blocks_exclusion_entries']) ? $data['blocks_exclusion_entries'] : [];
     $data['taxopress_autolink']['enable_customurl_field'] = isset($data['taxopress_autolink']['enable_customurl_field']) ? $data['taxopress_autolink']['enable_customurl_field'] : [];
+    $data['taxopress_autolink']['autolink_custom_fields'] = isset($data['taxopress_autolink']['autolink_custom_fields']) ? array_values(array_unique(array_filter($data['taxopress_autolink']['autolink_custom_fields'], 'strlen'))) : [];
 
     //update our custom checkbox value if not checked
     if (!isset($data['taxopress_autolink']['unattached_terms'])) {

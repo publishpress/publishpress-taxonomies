@@ -7,6 +7,7 @@ class SimpleTags_Client_Autolinks
     public static $posts = array();
     public static $link_tags = array();
     public static $tagged_link_count = 0;
+    private static $processing_custom_fields = array();
 
     /**
      * Constructor
@@ -22,6 +23,8 @@ class SimpleTags_Client_Autolinks
         add_filter('the_posts', array(__CLASS__, 'the_posts'), 10);
         add_filter('the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
         add_filter('the_title', array(__CLASS__, 'taxopress_autolinks_the_title'), 5);
+        add_filter('get_the_excerpt', array(__CLASS__, 'taxopress_autolinks_the_excerpt'), 20, 2);
+        add_filter('get_post_metadata', array(__CLASS__, 'taxopress_autolinks_post_metadata'), 20, 5);
 
         // Elementor compatibility: elementor outputs content through its own filters,
         // so also run our autolinks on those outputs.
@@ -971,6 +974,12 @@ class SimpleTags_Client_Autolinks
     {
         global $post;
 
+        // WordPress applies the_content while generating automatic excerpts.
+        // Let the excerpt callback process the final excerpt so links are not
+        // inserted and then stripped before the excerpt is returned.
+        if (doing_filter('get_the_excerpt')) {
+            return $content;
+        }
 
         // Some Elementor render flows may call filters with no global $post set.
         // Try to recover a post object before bailing out.
@@ -1006,7 +1015,7 @@ class SimpleTags_Client_Autolinks
                     continue;
                 }
 
-                if ($post_tag['autolink_display'] === 'post_title') {
+                if (!self::taxopress_autolinks_area_enabled($post_tag, 'content')) {
                     continue;
                 }
 
@@ -1078,7 +1087,231 @@ class SimpleTags_Client_Autolinks
     }
 
 
+    /**
+     * Replace matching terms with links in post excerpts.
+     *
+     * Runs after WordPress has generated an automatic excerpt so both manual
+     * and generated excerpts can be processed.
+     *
+     * @param string  $excerpt Excerpt text.
+     * @param WP_Post $excerpt_post Post object associated with the excerpt.
+     * @return string
+     */
+    public static function taxopress_autolinks_the_excerpt($excerpt = '', $excerpt_post = null)
+    {
+        global $post;
 
+        $current_post = is_object($excerpt_post) ? $excerpt_post : $post;
+
+        return self::taxopress_autolinks_additional_area($excerpt, $current_post, 'excerpt');
+    }
+
+    /**
+     * Add Auto Links to explicitly selected frontend post metadata.
+     *
+     * The stored metadata is never changed. Only single, public, string values
+     * selected in an Auto Links instance are filtered on frontend requests.
+     *
+     * @param mixed  $value     Existing short-circuit value.
+     * @param int    $object_id Post ID.
+     * @param string $meta_key  Metadata key.
+     * @param bool   $single    Whether a single value was requested.
+     * @param string $meta_type Metadata type.
+     * @return mixed
+     */
+    public static function taxopress_autolinks_post_metadata($value, $object_id, $meta_key, $single, $meta_type = 'post')
+    {
+        if (
+            null !== $value
+            || 'post' !== $meta_type
+            || !$single
+            || empty($meta_key)
+            || is_admin()
+            || wp_doing_ajax()
+            || wp_doing_cron()
+            || (defined('REST_REQUEST') && REST_REQUEST)
+            || is_protected_meta($meta_key, 'post')
+        ) {
+            return $value;
+        }
+
+        $processing_key = (int) $object_id . ':' . $meta_key;
+        if (isset(self::$processing_custom_fields[$processing_key])) {
+            return $value;
+        }
+
+        $is_selected = false;
+        foreach (taxopress_get_autolink_data() as $post_tag) {
+            if (
+                !empty($post_tag['autolink_custom_fields'])
+                && is_array($post_tag['autolink_custom_fields'])
+                && in_array($meta_key, $post_tag['autolink_custom_fields'], true)
+            ) {
+                $is_selected = true;
+                break;
+            }
+        }
+
+        if (!$is_selected) {
+            return $value;
+        }
+
+        $meta_cache = wp_cache_get($object_id, 'post_meta');
+        if (false === $meta_cache) {
+            $updated_cache = update_meta_cache('post', [$object_id]);
+            $meta_cache = (is_array($updated_cache) && isset($updated_cache[$object_id]))
+                ? $updated_cache[$object_id]
+                : [];
+        }
+
+        if (empty($meta_cache[$meta_key]) || !is_array($meta_cache[$meta_key])) {
+            return $value;
+        }
+
+        $field_value = maybe_unserialize($meta_cache[$meta_key][0]);
+        if (!is_string($field_value) || '' === trim($field_value) || filter_var($field_value, FILTER_VALIDATE_URL)) {
+            return $value;
+        }
+
+        $current_post = get_post($object_id);
+        if (!is_object($current_post)) {
+            return $value;
+        }
+
+        self::$processing_custom_fields[$processing_key] = true;
+        $field_value = self::taxopress_autolinks_additional_area($field_value, $current_post, 'custom_field', $meta_key);
+        unset(self::$processing_custom_fields[$processing_key]);
+
+        return $field_value;
+    }
+
+    /**
+     * Apply Auto Links settings to an additional text area.
+     *
+     * @param string  $text         Text to filter.
+     * @param WP_Post $current_post Current post.
+     * @param string  $area         Additional area name.
+     * @param string  $custom_field Custom field key when applicable.
+     * @return string
+     */
+    private static function taxopress_autolinks_additional_area($text, $current_post, $area, $custom_field = '')
+    {
+        if (!is_object($current_post) || is_admin() || empty($text)) {
+            return $text;
+        }
+
+        $post_tags = taxopress_get_autolink_data();
+
+        $feature_status = self::get_post_feature_status($current_post->ID);
+        if (
+            'disabled' === $feature_status
+            || ('default' === $feature_status && 1 !== (int) SimpleTags_Plugin::get_option_value('active_auto_links'))
+        ) {
+            return $text;
+        }
+
+        $force_enabled = 'enabled' === $feature_status;
+
+        if (!in_array((int) $current_post->ID, self::$posts, true)) {
+            self::$posts[] = (int) $current_post->ID;
+        }
+
+        if (count($post_tags) > 0) {
+            $auto_link_replace = [];
+
+            foreach ($post_tags as $post_tag) {
+                $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
+
+                if (!$force_enabled && (!$embedded || !in_array($current_post->post_type, $embedded, true))) {
+                    continue;
+                }
+
+                if ('excerpt' === $area && !self::taxopress_autolinks_area_enabled($post_tag, 'excerpt')) {
+                    continue;
+                }
+
+                if (
+                    'custom_field' === $area
+                    && (
+                        empty($post_tag['autolink_custom_fields'])
+                        || !is_array($post_tag['autolink_custom_fields'])
+                        || !in_array($custom_field, $post_tag['autolink_custom_fields'], true)
+                    )
+                ) {
+                    continue;
+                }
+
+                self::$link_tags = [];
+                self::prepare_auto_link_tags($post_tag);
+                SimpleTags_Client::random_array(self::$link_tags);
+                $rel = SimpleTags_Client::get_rel_attribut();
+
+                if (empty(self::$link_tags) || !is_array(self::$link_tags)) {
+                    continue;
+                }
+
+                $case       = (1 === (int) $post_tag['ignore_case']) ? 'i' : '';
+                $strpos_fnc = ('i' === $case) ? 'stripos' : 'strpos';
+                $excludes_terms = self::prepare_excluded_terms($post_tag['auto_link_exclude']);
+
+                foreach (self::$link_tags as $term_name => $term_link) {
+                    $term_name = (string) $term_name;
+
+                    if (taxopress_in_array_i($term_name, (array) $excludes_terms, true)) {
+                        continue;
+                    }
+
+                    if (false === $strpos_fnc($text, $term_name)) {
+                        continue;
+                    }
+
+                    $auto_link_replace[] = [
+                        'term_name'  => $term_name,
+                        'term_link'  => $term_link,
+                        'case'       => $case,
+                        'rel'        => $rel,
+                        'options'    => $post_tag,
+                        'option_id'  => $post_tag['ID'],
+                        'post_limit' => $post_tag['autolink_usage_max'],
+                        'term_limit' => $post_tag['autolink_same_usage_max'],
+                        'type'       => ('custom_field' === $area) ? 'custom_field_' . md5($custom_field) : $area,
+                    ];
+
+                    if (!class_exists('DOMDocument') || !class_exists('DOMXPath')) {
+                        self::replace_by_links_regexp($text, $term_name, $term_link, $case, $rel, $post_tag);
+                    }
+                }
+            }
+
+            if (class_exists('DOMDocument') && class_exists('DOMXPath')) {
+                self::replace_by_links_dom($text, $auto_link_replace);
+            }
+        }
+
+        return $text;
+    }
+
+    /**
+     * Check whether a built-in post area is enabled for an Auto Links instance.
+     *
+     * The existing post_content and posts values remain unchanged so previously
+     * saved settings continue to behave exactly as before.
+     *
+     * @param array  $settings Auto Links settings.
+     * @param string $area     Built-in area: content, title, or excerpt.
+     * @return bool
+     */
+    private static function taxopress_autolinks_area_enabled($settings, $area)
+    {
+        $display = isset($settings['autolink_display']) ? $settings['autolink_display'] : 'post_content';
+        $areas = [
+            'content' => ['post_content', 'posts', 'post_content_excerpt', 'posts_excerpt'],
+            'title'   => ['post_title', 'posts', 'post_title_excerpt', 'posts_excerpt'],
+            'excerpt' => ['post_excerpt', 'post_content_excerpt', 'post_title_excerpt', 'posts_excerpt'],
+        ];
+
+        return isset($areas[$area]) && in_array($display, $areas[$area], true);
+    }
 
     /**
      * Replace text by link to tag
@@ -1118,7 +1351,7 @@ class SimpleTags_Client_Autolinks
                     continue;
                 }
 
-                if ($post_tag['autolink_display'] === 'post_content') {
+                if (!self::taxopress_autolinks_area_enabled($post_tag, 'title')) {
                     continue;
                 }
                 //reset tags just in case

@@ -379,12 +379,20 @@ class Autolinks_List extends WP_List_Table
     protected function column_autolink_display($item)
     {
         $autolink_display_options = [
-            'post_content'   => esc_attr__('Post Content', 'simple-tags'),
-            'post_title'   => esc_attr__('Post Title', 'simple-tags'),
-            'posts' => esc_attr__('Post Content and Title', 'simple-tags'),
+            'post_content'         => esc_html__('Post Content', 'simple-tags'),
+            'post_title'           => esc_html__('Post Title', 'simple-tags'),
+            'post_excerpt'         => esc_html__('Post Excerpt', 'simple-tags'),
+            'posts'                => esc_html__('Post Content and Title', 'simple-tags'),
+            'post_content_excerpt' => esc_html__('Post Content and Excerpt', 'simple-tags'),
+            'post_title_excerpt'   => esc_html__('Post Title and Excerpt', 'simple-tags'),
+            'posts_excerpt'        => esc_html__('Post Content, Title and Excerpt', 'simple-tags'),
         ];
 
-        return $autolink_display_options[$item['autolink_display']];
+        $display = isset($item['autolink_display']) ? $item['autolink_display'] : 'post_content';
+
+        return isset($autolink_display_options[$display])
+            ? $autolink_display_options[$display]
+            : esc_html($display);
     }
 
     /**
