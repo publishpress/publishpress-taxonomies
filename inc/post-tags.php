@@ -972,7 +972,7 @@ class SimpleTags_Post_Tags
                                             <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                             The Pro version has more features and support.', 'simple-tags'); ?>
                                             </div>
-                                            <div class="pp-version-notice-bold-purple-button"><a href="https://taxopress.com/taxopress/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                                            <div class="pp-version-notice-bold-purple-button"><a href="https://publishpress.com/taxonomies/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                                             </div>
                                         </div>
 
