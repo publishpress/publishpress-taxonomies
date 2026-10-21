@@ -817,6 +817,247 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
+         * Get terms through the provider-agnostic WordPress AI Client.
+         *
+         * @param array $args Request arguments.
+         * @return array
+         */
+        public static function get_wordpress_ai_results($args)
+        {
+            $return = [
+                'status'  => 'error',
+                'message' => esc_html__('No matched result from an AI Connector.', 'simple-tags'),
+                'results' => [],
+            ];
+            $debug_request = [];
+            $debug_response = [];
+
+            if (!function_exists('wp_ai_client_prompt')) {
+                $return['message'] = esc_html__(
+                    'AI Connectors require WordPress 7.0 or newer.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            $settings_data  = !empty($args['settings_data']) && is_array($args['settings_data'])
+                ? $args['settings_data']
+                : [];
+            $content        = isset($args['content']) ? (string) $args['content'] : '';
+            $clean_content  = isset($args['clean_content']) ? (string) $args['clean_content'] : '';
+            $content_source = !empty($args['content_source']) ? sanitize_key($args['content_source']) : 'autoterm';
+            $taxonomy       = !empty($args['taxonomy']) ? sanitize_key($args['taxonomy']) : '';
+            $post_id        = !empty($args['post_id']) ? (int) $args['post_id'] : 0;
+
+            if (trim($content) === '') {
+                $return['message'] = esc_html__('Selected content is empty.', 'simple-tags');
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            $cache_results = !empty($settings_data['wordpress_ai_cache_result']);
+            $existing_terms_only = !empty($settings_data['wordpress_ai_existing_terms_only']);
+            $configured_prompt = !empty($settings_data['wordpress_ai_tag_prompt'])
+                ? $settings_data['wordpress_ai_tag_prompt']
+                : "Extract relevant taxonomy terms from the following content: '{content}'.";
+            $custom_prompt = sanitize_textarea_field(stripslashes_deep($configured_prompt));
+
+            if ($existing_terms_only && strpos($custom_prompt, '{site_terms}') === false) {
+                $custom_prompt .= "\n\nChoose only from these existing terms: {site_terms}. Use the exact term names.";
+            }
+
+            preg_match_all('/\{([^}]+)\}/', $custom_prompt, $matches);
+            if (!empty($matches[1])) {
+                $invalid_placeholders = array_diff($matches[1], ['content', 'post_terms', 'site_terms']);
+                if (!empty($invalid_placeholders)) {
+                    $return['message'] = sprintf(
+                        esc_html__('Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, {post_terms}, {site_terms}', 'simple-tags'),
+                        implode('}, {', $invalid_placeholders)
+                    );
+
+                    return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+                }
+            }
+
+            $post_terms_in_prompt = strpos($custom_prompt, '{post_terms}') !== false;
+            $site_terms_in_prompt = strpos($custom_prompt, '{site_terms}') !== false;
+            $existing_post_terms = [];
+            $existing_site_terms = [];
+
+            if ($post_terms_in_prompt && $taxonomy !== '' && $post_id > 0) {
+                $post_terms_results = wp_get_post_terms($post_id, $taxonomy, ['fields' => 'names']);
+                if (!is_wp_error($post_terms_results)) {
+                    $existing_post_terms = $post_terms_results;
+                }
+            }
+
+            if ($site_terms_in_prompt && $taxonomy !== '') {
+                $site_terms_results = get_terms([
+                    'taxonomy'   => $taxonomy,
+                    'hide_empty' => false,
+                    'fields'     => 'names',
+                    'number'     => 0,
+                ]);
+                if (!is_wp_error($site_terms_results)) {
+                    $existing_site_terms = $site_terms_results;
+                }
+            }
+
+            if ($post_terms_in_prompt && empty($existing_post_terms)) {
+                $return['message'] = esc_html__('You added {post_terms} in the prompt but your post does not contain any terms.', 'simple-tags');
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            if ($site_terms_in_prompt && empty($existing_site_terms)) {
+                $return['message'] = esc_html__('You added {site_terms} in the prompt but your site does not contain any terms for this taxonomy.', 'simple-tags');
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            $instructions = self::prepare_open_ai_instructions($custom_prompt);
+            $instructions .= "\n\nReturn only a valid JSON object with a terms property containing an array of plain term names. Do not include Markdown or explanations.";
+            $user_input = self::prepare_open_ai_input(
+                $clean_content,
+                $existing_post_terms,
+                $existing_site_terms,
+                $post_terms_in_prompt,
+                $site_terms_in_prompt
+            );
+            $max_tokens = !empty($settings_data['wordpress_ai_max_tokens'])
+                ? max(16, (int) $settings_data['wordpress_ai_max_tokens'])
+                : 50;
+            $cache_fingerprint = hash('sha256', wp_json_encode([
+                'content'             => $content,
+                'taxonomy'            => $taxonomy,
+                'api'                 => 'wordpress-ai-client-v1',
+                'prompt'              => $custom_prompt,
+                'max_tokens'          => $max_tokens,
+                'existing_terms_only' => $existing_terms_only,
+                'post_terms'          => $existing_post_terms,
+                'site_terms'          => $existing_site_terms,
+            ]));
+            $result_key = '_taxopress_wordpress_ai_' . $content_source . '_result';
+            $fingerprint_key = '_taxopress_wordpress_ai_saved_' . $content_source . '_content';
+            $provider_key = '_taxopress_wordpress_ai_' . $content_source . '_provider';
+
+            if ($post_id > 0 && $cache_results) {
+                $cached_results = get_post_meta($post_id, $result_key, true);
+                $cached_fingerprint = get_post_meta($post_id, $fingerprint_key, true);
+                if (!empty($cached_results) && hash_equals($cache_fingerprint, (string) $cached_fingerprint)) {
+                    $return['status'] = 'success';
+                    $return['results'] = $cached_results;
+                    $return['message'] = esc_html__('Result from cache.', 'simple-tags');
+                    $cached_provider = get_post_meta($post_id, $provider_key, true);
+                    if ($cached_provider !== '') {
+                        $return['provider_name'] = sanitize_text_field($cached_provider);
+                    }
+
+                    return self::add_preview_debug_data(
+                        $return,
+                        $args,
+                        ['transport' => 'cache'],
+                        $cached_results
+                    );
+                }
+            }
+
+            $debug_request = [
+                'transport'          => 'WordPress AI Client',
+                'system_instruction' => $instructions,
+                'input'              => $user_input,
+                'max_tokens'         => $max_tokens,
+            ];
+            $builder = wp_ai_client_prompt($user_input)
+                ->using_system_instruction($instructions)
+                ->using_max_tokens($max_tokens);
+
+            if (!$builder->is_supported_for_text_generation()) {
+                $return['message'] = esc_html__(
+                    'No compatible AI provider is configured. Install and configure a provider in Settings > Connectors.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            $ai_result = $builder->generate_text_result();
+            if (is_wp_error($ai_result)) {
+                $return['message'] = $ai_result->get_error_message();
+                $debug_response = ['error' => $return['message']];
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+
+            $response_text = method_exists($ai_result, 'toText') ? trim((string) $ai_result->toText()) : '';
+            if (method_exists($ai_result, 'getProviderMetadata')) {
+                $provider_metadata = $ai_result->getProviderMetadata();
+                if (is_object($provider_metadata) && method_exists($provider_metadata, 'getName')) {
+                    $return['provider_name'] = sanitize_text_field($provider_metadata->getName());
+                }
+            }
+            $serialized_result = json_decode(wp_json_encode($ai_result), true);
+            $debug_response = is_array($serialized_result)
+                ? $serialized_result
+                : ['text' => $response_text];
+
+            $json_response = preg_replace('/^```(?:json)?\s*|\s*```$/i', '', $response_text);
+            $decoded_response = json_decode($json_response, true);
+            if (!is_array($decoded_response) && preg_match('/\{.*\}/s', $json_response, $json_match)) {
+                $decoded_response = json_decode($json_match[0], true);
+            }
+            if (!empty($decoded_response['terms']) && is_array($decoded_response['terms'])) {
+                $data = $decoded_response['terms'];
+            } elseif (is_array($decoded_response) && array_keys($decoded_response) === range(0, count($decoded_response) - 1)) {
+                $data = $decoded_response;
+            } else {
+                $cleaned_response = self::clean_api_response($response_text);
+                $data = preg_split('/\s*,\s*/', $cleaned_response, -1, PREG_SPLIT_NO_EMPTY);
+            }
+
+            $terms = array_values(array_unique(array_filter(array_map(
+                static function ($term) {
+                    return is_scalar($term)
+                        ? sanitize_text_field(trim((string) $term, " \t\n\r\0\x0B\"'"))
+                        : '';
+                },
+                (array) $data
+            ))));
+
+            if ($site_terms_in_prompt && !empty($existing_site_terms)) {
+                $site_terms_by_slug = [];
+                foreach ($existing_site_terms as $existing_site_term) {
+                    $site_terms_by_slug[sanitize_title($existing_site_term)] = $existing_site_term;
+                }
+
+                $terms = array_values(array_filter(array_map(
+                    static function ($term) use ($site_terms_by_slug) {
+                        $term_slug = sanitize_title($term);
+                        return isset($site_terms_by_slug[$term_slug]) ? $site_terms_by_slug[$term_slug] : '';
+                    },
+                    $terms
+                )));
+            }
+
+            if (!empty($terms)) {
+                $return['status'] = 'success';
+                $return['results'] = $terms;
+                $return['message'] = esc_html__('Result from an AI Connector.', 'simple-tags');
+
+                if ($post_id > 0) {
+                    update_post_meta($post_id, $result_key, $terms);
+                    update_post_meta($post_id, $fingerprint_key, $cache_fingerprint);
+                    if (!empty($return['provider_name'])) {
+                        update_post_meta($post_id, $provider_key, $return['provider_name']);
+                    }
+                }
+            }
+
+            return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+        }
+
+        /**
          * Get open data
          *
          * @param  array $args
