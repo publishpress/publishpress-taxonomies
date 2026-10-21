@@ -547,6 +547,8 @@ class SimpleTags_Autoterms
                                                 'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                             ]);
 
+                                            do_action('taxopress_autoterms_after_taxonomy_field', $options, $current);
+
                                             $selected_option    = (isset($current) && isset($current['autoterm_from'])) ? $current['autoterm_from'] : '';
 
                                             $term_from_options = [
@@ -1076,6 +1078,10 @@ class SimpleTags_Autoterms
                                                                 <div class="taxopress-button-group">
                                                                     <label class="existing current">
                                                                         <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="existing_terms"><?php esc_html_e('Existing Terms', 'simple-tags'); ?></label>
+                                                                    <?php if (function_exists('wp_ai_client_prompt')) : ?>
+                                                                    <label class="wordpress-ai">
+                                                                        <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="wordpress_ai"><?php esc_html_e('AI Connectors', 'simple-tags'); ?></label>
+                                                                    <?php endif; ?>
                                                                     <label class="openai">
                                                                         <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="open_ai"><?php esc_html_e('OpenAI', 'simple-tags'); ?></label>
                                                                     <label class="ibm-watson">
@@ -1336,11 +1342,11 @@ class SimpleTags_Autoterms
                                                         'class'     => 'autocomplete-input auto-terms-stopwords',
                                                         'textvalue' => isset($current['autoterm_exclude']) ? esc_attr($current['autoterm_exclude']) : '',
                                                         'labeltext' => esc_html__(
-                                                            'Exclude terms from Auto Term',
+                                                            'Exclude terms and keywords from Auto Terms',
                                                             'simple-tags'
                                                         ),
                                                         'helptext'  => esc_html__(
-                                                            'Choose terms to be excluded from auto terms.',
+                                                            'Enter comma-separated terms or keywords to exclude.',
                                                             'simple-tags'
                                                         ),
                                                         'required'  => false,
@@ -1630,6 +1636,33 @@ class SimpleTags_Autoterms
                                                                 </button>
                                                             </div>
 
+                                                            <div class="taxopress-autoterm-debug-option">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        name="taxopress_autoterm[autoterm_preview_debug]"
+                                                                        class="taxopress-autoterm-include-debug"
+                                                                        value="1"
+                                                                        <?php checked(!empty($current['autoterm_preview_debug'])); ?>>
+                                                                    <?php esc_html_e('Show debug information', 'simple-tags'); ?>
+                                                                </label>
+                                                                <p class="description">
+                                                                    <?php esc_html_e('Display sanitized request and response data for each enabled source.', 'simple-tags'); ?>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="taxopress-autoterm-debug-log"
+                                                                data-title="<?php echo esc_attr__('Debug information', 'simple-tags'); ?>"
+                                                                data-request-title="<?php echo esc_attr__('Request', 'simple-tags'); ?>"
+                                                                data-response-title="<?php echo esc_attr__('Response', 'simple-tags'); ?>"
+                                                                data-empty-message="<?php echo esc_attr__('No source debug data was returned for this preview request.', 'simple-tags'); ?>"
+                                                                data-copy-request-label="<?php echo esc_attr__('Copy request', 'simple-tags'); ?>"
+                                                                data-copy-response-label="<?php echo esc_attr__('Copy response', 'simple-tags'); ?>"
+                                                                data-copy-all-label="<?php echo esc_attr__('Copy all', 'simple-tags'); ?>"
+                                                                data-download-label="<?php echo esc_attr__('Download JSON', 'simple-tags'); ?>"
+                                                                data-copied-message="<?php echo esc_attr__('Debug information copied to the clipboard.', 'simple-tags'); ?>"
+                                                                data-copy-error-message="<?php echo esc_attr__('The debug information could not be copied. Please try again.', 'simple-tags'); ?>"
+                                                                data-download-filename="publishpress-taxonomies-auto-terms-debug"
+                                                                hidden></div>
                                                             <div class="taxopress-autoterm-result">
                                                                 <div class="output"></div>
                                                                 <div class="response"></div>
@@ -1662,7 +1695,7 @@ class SimpleTags_Autoterms
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                     </div>
                                     <div class="pp-version-notice-bold-purple-button"><a
-                                            href="https://taxopress.com/taxopress/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                                            href="https://publishpress.com/taxonomies/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                                     </div>
                                 </div>
 

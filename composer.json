@@ -12,7 +12,7 @@
         }
     ],
     "config": {
-        "process-timeout": 6000,
+        "process-timeout": 0,
         "preferred-install": {
             "*": "dist"
         },

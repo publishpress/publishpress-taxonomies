@@ -102,6 +102,32 @@ tr.taxopress-select-with-icon .taxopress-stpexplan {
     top: -10px !important;
 }
 
+.taxopress-autoterm-additional-taxonomies-promo {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 540px;
+}
+
+.taxopress-autoterm-additional-taxonomies-promo > select,
+.taxopress-autoterm-additional-taxonomies-promo > .ppma_select2-container {
+    flex: 1 1 auto;
+    width: auto !important;
+    min-width: 0;
+}
+
+.taxopress-autoterm-additional-taxonomies-promo > .pp-tooltips-library {
+    flex: 0 0 24px;
+    margin-top: 2px;
+}
+
+.taxopress-autoterm-additional-taxonomies-promo .taxopress-select-icon {
+    display: block;
+    float: none !important;
+    top: 0 !important;
+    margin: 0 !important;
+}
+
 .taxopress-order {
     display: flex;
     align-items: flex-start;

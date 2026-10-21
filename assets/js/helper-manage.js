@@ -8,8 +8,7 @@ jQuery(document).ready(function() {
       st_add_term(tag, "addterm_new");
       st_add_term(tag, "renameterm_old");
       st_add_term(tag, "mergeterm_old");
-      st_add_term(tag, "remove_term_input");
-      st_add_term(tag, "deleteterm_name");
+      st_add_term(tag, "remove_term");
       
         return false;
     });
@@ -18,6 +17,10 @@ jQuery(document).ready(function() {
 // Add tag into input
 function st_add_term(tag, name_element) {
     var input_element = document.getElementById(name_element);
+
+    if (!input_element) {
+        return false;
+    }
 
     if (input_element.value.length > 0 && !input_element.value.match(/,\s*$/))
         input_element.value += ", ";

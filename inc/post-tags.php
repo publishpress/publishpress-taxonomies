@@ -384,7 +384,7 @@ class SimpleTags_Post_Tags
 
                                                         <li aria-current="<?php echo $active_tab === 'posttags_advanced' ? 'true' : 'false'; ?>" class="posttags_advanced_tab <?php echo $active_tab === 'posttags_advanced' ? 'active' : ''; ?>" data-content="posttags_advanced">
                                                             <a href="#posttags_advanced"><span><?php esc_html_e(
-                                                                'Advanced',
+                                                                'Display Format',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
@@ -510,7 +510,7 @@ class SimpleTags_Post_Tags
                                                     echo $ui->get_select_checkbox_input_main([
                                                             'namearray'  => 'taxopress_post_tags',
                                                             'name'       => 'order',
-                                                            'labeltext'  => esc_html__('Ordering for choosing terms for display', 'simple-tags'),
+                                                            'labeltext'  => esc_html__('Order direction', 'simple-tags'),
                                                             'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ]);
 
@@ -696,6 +696,34 @@ class SimpleTags_Post_Tags
                                                     }
                                                     echo '</table></td></tr>';
 
+                                                    $display_position_options = [
+                                                        'options' => [
+                                                            [
+                                                                'attr' => 'above',
+                                                                'text' => esc_attr__('Above post content', 'simple-tags'),
+                                                            ],
+                                                            [
+                                                                'attr'    => 'below',
+                                                                'text'    => esc_attr__('Below post content', 'simple-tags'),
+                                                                'default' => 'true',
+                                                            ],
+                                                        ],
+                                                    ];
+                                                    $display_position = isset($current['display_position']) && in_array($current['display_position'], ['above', 'below'], true)
+                                                        ? $current['display_position']
+                                                        : 'below';
+                                                    $display_position_options['selected'] = $display_position;
+
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_select_checkbox_input_main([
+                                                        'namearray'  => 'taxopress_post_tags',
+                                                        'name'       => 'display_position',
+                                                        'class'      => 'taxopress-posttags-display-position',
+                                                        'labeltext'  => esc_html__('Automatic display position', 'simple-tags'),
+                                                        'aftertext'  => esc_html__('Choose whether automatically displayed terms appear above or below the post content.', 'simple-tags'),
+                                                        'selections' => $display_position_options,
+                                                    ]);
+
 
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     echo $ui->get_number_input([
@@ -844,7 +872,7 @@ class SimpleTags_Post_Tags
                                                         'cols'      => '40',
                                                         'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%tag_link%" title="%tag_name%" class="st-post-tags t%tag_scale%" style="%tag_size% %tag_color%" %tag_rel%>%tag_name%</a>'),
                                                         'labeltext' => esc_html__('Term link format', 'simple-tags'),
-                                                        'helptext'  => sprintf(esc_html__('You can find markers and explanations %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-terms-current-post/">', '</a>'),
+                                                        'helptext'  => sprintf(esc_html__('You can use any of the tokens shown below or find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-terms-current-post/">', '</a>'),
                                                         'required'  => false,
                                                     ]);
 
@@ -852,6 +880,33 @@ class SimpleTags_Post_Tags
                                                     echo $ui->get_td_end() . $ui->get_tr_end();
 
                                                     ?>
+                                                            <tr valign="top">
+                                                                <td colspan="2">
+                                                                    <div class="postbox taxopress-current-post-format-box">
+                                                                        <div class="postbox-header">
+                                                                            <h2 class="hndle is-non-sortable">
+                                                                                <span><?php echo esc_html__('Terms for Current Post', 'simple-tags'); ?></span>
+                                                                            </h2>
+                                                                        </div>
+
+                                                                        <div class="inside">
+                                                                            <p><?php echo esc_html__('Here are the tokens you can use for Terms for Current Post format', 'simple-tags'); ?>:</p>
+                                                                            <ul>
+                                                                                <li><code>%tag_link%</code><?php echo esc_html__('The URL of the tag', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_name%</code><?php echo esc_html__('The name of the tag', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_rel% </code><?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (<?php echo esc_html__('it creates', 'simple-tags'); ?> <code>rel="tag"</code>)</li>
+                                                                                <li><code>%tag_feed%</code><?php echo esc_html__('Replaced by the RSS tag link', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_id%</code><?php echo esc_html__('Replaced by the tag ID', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_name_attribute%</code><?php echo esc_html__('Replaced by the tag’s name, formatted for attribute HTML', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the tag', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_size%</code> – <?php echo esc_html__('The font size of the tag', 'simple-tags'); ?></li>
+                                                                                <li><code>%tag_color%</code> – <?php echo esc_html__('The font color of the tag', 'simple-tags'); ?></li>
+                                                                            </ul>
+                                                                            <p><?php echo esc_html__('You can also add HTML elements to the formatting.', 'simple-tags'); ?></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
                                                         </table>
                                                         <?php
                                                         $enable_hidden_terms = SimpleTags_Plugin::get_option_value('enable_hidden_terms');
@@ -917,7 +972,7 @@ class SimpleTags_Post_Tags
                                             <div class="pp-version-notice-bold-purple-message"><?php echo esc_html__('You\'re using PublishPress Taxonomies Free.
                                             The Pro version has more features and support.', 'simple-tags'); ?>
                                             </div>
-                                            <div class="pp-version-notice-bold-purple-button"><a href="https://taxopress.com/taxopress/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                                            <div class="pp-version-notice-bold-purple-button"><a href="https://publishpress.com/taxonomies/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
                                             </div>
                                         </div>
 
@@ -982,36 +1037,6 @@ class SimpleTags_Post_Tags
                                 }
         ?>
 
-                        </div>
-
-                        <div class="taxopress-token-right-sidebar">
-                            <div id="postbox-container-1" class="postbox-container">
-                                <div class="meta-box-sortables">
-                                    <div class="postbox">
-                                        <div class="postbox-header">
-                                            <h3 class="hndle is-non-sortable">
-                                                <span><?php echo esc_html__('Terms for Current Post', 'simple-tags'); ?></span>
-                                            </h3>
-                                        </div>
-
-                                        <div class="inside">
-                                            <p><?php echo esc_html__('Here are the tokens you can use for Terms for Current Post format', 'simple-tags'); ?>:</p>
-                                            <ul>
-                                                <li><code>%tag_link%</code><?php echo esc_html__('The URL of the tag', 'simple-tags'); ?></li>
-                                                <li><code>%tag_name%</code><?php echo esc_html__('The name of the tag', 'simple-tags'); ?></li>
-                                                <li><code>%tag_rel% </code><?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (it creates <code>rel="tag"</code>)</li>
-                                                <li><code>%tag_feed%</code><?php echo esc_html__('Replaced by the RSS tag link', 'simple-tags'); ?></li>
-                                                <li><code>%tag_id%</code><?php echo esc_html__('Replaced by the tag ID', 'simple-tags'); ?></li>
-                                                <li><code>%tag_name_attribute%</code><?php echo esc_html__('Replaced by the tag’s name, formatted for attribute HTML', 'simple-tags'); ?></li>
-                                                <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the tag', 'simple-tags'); ?></li>
-                                                <li><code>%tag_size%</code> – <?php echo esc_html__('The font size of the tag', 'simple-tags'); ?></li>
-                                                <li><code>%tag_color%</code> – <?php echo esc_html__('The font color of the tag', 'simple-tags'); ?></li>
-                                            </ul>
-                                            <p><?php echo esc_html__('You can also add HTML elements to the formatting.', 'simple-tags'); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <?php do_action('taxopress_admin_after_sidebar'); ?>
