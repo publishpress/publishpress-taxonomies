@@ -2196,6 +2196,7 @@
     function hide_show_source_tab_group_fields() {
       var tabs = [
         'existing',
+        'wordpress-ai',
         'openai',
         'ibm-watson',
         'dandelion',
