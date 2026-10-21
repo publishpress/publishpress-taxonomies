@@ -256,6 +256,7 @@ class SimpleTags_Client_Autoterms
             return false;
         }
 
+        $autoterm_use_wordpress_ai = isset($options['autoterm_use_wordpress_ai']) ? (int) $options['autoterm_use_wordpress_ai'] : 0;
         $autoterm_use_open_ai = isset($options['autoterm_use_open_ai']) ? (int) $options['autoterm_use_open_ai'] : 0;
         $autoterm_use_ibm_watson = isset($options['autoterm_use_ibm_watson']) ? (int) $options['autoterm_use_ibm_watson'] : 0;
         $autoterm_use_dandelion = isset($options['autoterm_use_dandelion']) ? (int) $options['autoterm_use_dandelion'] : 0;
@@ -291,6 +292,71 @@ class SimpleTags_Client_Autoterms
 
         if ($preprocessed_result !== null) {
             return (bool) $preprocessed_result;
+        }
+
+        // Auto Terms with the provider-agnostic WordPress AI Client.
+        if ($autoterm_use_wordpress_ai > 0 && taxopress_is_pro_version()) {
+            $wordpress_ai_results = TaxoPressAiApi::get_wordpress_ai_results($args);
+            if (!empty($wordpress_ai_results['results'])) {
+                foreach ((array) $wordpress_ai_results['results'] as $term) {
+                    $term = is_string($term) ? trim(stripslashes($term)) : '';
+                    if ($term === '') {
+                        continue;
+                    }
+
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
+                        $empty_term_messages[$object->ID]['message'][] = sprintf(
+                            esc_html__('%1s was suggested through AI Connectors but excluded by Auto Term Exception settings.', 'simple-tags'),
+                            '<strong>' . $term . '</strong>'
+                        );
+                        continue;
+                    }
+
+                    $add_terms = [$term => $term];
+                    if (is_array($options) && isset($options['synonyms_term']) && (int) $options['synonyms_term'] > 0) {
+                        $term_synonyms = taxopress_get_term_synonyms($term, $taxonomy);
+                        if (!empty($term_synonyms)) {
+                            foreach ($term_synonyms as $term_synonym) {
+                                $add_terms[$term_synonym] = $term;
+                            }
+                        }
+                    }
+
+                    $add_terms = taxopress_add_linked_term_options($add_terms, $term, $taxonomy, false, true);
+                    foreach ($add_terms as $find_term => $original_term) {
+                        $terms_regex_code = !empty($autoterm_regex_code)
+                            ? str_replace('{term}', preg_quote($find_term), $autoterm_regex_code)
+                            : '';
+
+                        if (!in_array($action, ['save_posts', 'hourly_cron_schedule', 'daily_cron_schedule'])) {
+                            $terms_to_add[] = $term;
+                        } elseif (!empty($terms_regex_code)) {
+                            if (preg_match("{$terms_regex_code}", $content)) {
+                                $terms_to_add[] = $term;
+                            }
+                        } elseif (isset($options['autoterm_word']) && (int) $options['autoterm_word'] === 1) {
+                            if (preg_match("#\b" . preg_quote($find_term) . "\b#i", $content)) {
+                                $terms_to_add[] = $term;
+                            }
+
+                            if (substr($find_term, 0, 1) === '#') {
+                                $trim_term = ltrim($find_term, '#');
+                                if (preg_match("/\B(\#+$trim_term\b)(?!;)/i", $content)) {
+                                    $terms_to_add[] = $term;
+                                }
+                            }
+
+                            if (isset($options['autoterm_hash']) && (int) $options['autoterm_hash'] === 1 && stristr($content, '#' . $find_term)) {
+                                $terms_to_add[] = $term;
+                            }
+                        } elseif (stristr($content, $find_term)) {
+                            $terms_to_add[] = $term;
+                        }
+                    }
+                }
+            } else {
+                $empty_term_messages[$object->ID]['message'][] = esc_html__('AI Connectors', 'simple-tags') . ': ' . $wordpress_ai_results['message'];
+            }
         }
 
         //Autoterm with OpenAI
