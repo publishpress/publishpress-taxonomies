@@ -16,35 +16,41 @@ if (! function_exists('add_action')) {
     return;
 }
 
-if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot3')) {
+if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot4')) {
     if (! defined('PUBLISHPRESS_BUNDLED_TRANSLATIONS_INCLUDED')) {
         define('PUBLISHPRESS_BUNDLED_TRANSLATIONS_INCLUDED', __DIR__);
     }
 
-    if (! class_exists('PublishPress\BundledTranslations\Versions')) {
-        require_once __DIR__ . '/Versions.php';
-
-        add_action('plugins_loaded', [Versions::class, 'initializeLatestVersion'], -190, 0);
+    if (! class_exists(__NAMESPACE__ . '\VersionLoader', false)
+        && class_exists(__NAMESPACE__ . '\Versions', false)
+    ) {
+        class_alias(__NAMESPACE__ . '\Versions', __NAMESPACE__ . '\VersionLoader');
     }
 
-    add_action('plugins_loaded', __NAMESPACE__ . '\register1Dot0Dot3', -200, 0);
+    if (! class_exists(__NAMESPACE__ . '\VersionLoader', false)) {
+        require_once __DIR__ . '/VersionLoader.php';
 
-    function register1Dot0Dot3()
+        add_action('plugins_loaded', [VersionLoader::class, 'initializeLatestVersion'], -190, 0);
+    }
+
+    add_action('plugins_loaded', __NAMESPACE__ . '\register1Dot0Dot4', -200, 0);
+
+    function register1Dot0Dot4()
     {
         if (! class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
-            $versions = Versions::getInstance();
-            $versions->register('1.0.3', __NAMESPACE__ . '\initialize1Dot0Dot3');
+            $loader = VersionLoader::getInstance();
+            $loader->register('1.0.4', __NAMESPACE__ . '\initialize1Dot0Dot4');
         }
     }
 
-    function initialize1Dot0Dot3()
+    function initialize1Dot0Dot4()
     {
         require_once __DIR__ . '/autoload.php';
 
         if (! defined('PUBLISHPRESS_BUNDLED_TRANSLATIONS_VERSION')) {
-            define('PUBLISHPRESS_BUNDLED_TRANSLATIONS_VERSION', '1.0.3');
+            define('PUBLISHPRESS_BUNDLED_TRANSLATIONS_VERSION', '1.0.4');
         }
 
-        do_action('publishpress_bundled_translations_1Dot0Dot3_initialized');
+        do_action('publishpress_bundled_translations_1Dot0Dot4_initialized');
     }
 }
