@@ -74,6 +74,7 @@ return array(
     'taxopress_ai_post_exclusions' => '',
 
     // legacy ai settings
+    'enable_openai_ai_source' => 0,
     'enable_ibm_watson_ai_source' => 0,
     'enable_dandelion_ai_source' => 0,
     'enable_lseg_ai_source' => 0,
