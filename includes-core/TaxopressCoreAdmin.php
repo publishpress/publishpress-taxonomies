@@ -381,6 +381,26 @@ class TaxopressCoreAdmin
     public function taxopress_core_autoterm_terms_to_use_field($current)
     {
         ?>
+        <?php if (function_exists('wp_ai_client_prompt')) : ?>
+        <tr>
+            <td colspan="2">
+                <div class="taxopress-content-promo-box advertisement-box-content postbox postbox upgrade-pro autoterm-terms-use-wordpress-ai-notice">
+                    <div class="postbox-header">
+                        <h3 class="advertisement-box-header hndle is-non-sortable">
+                            <span><?php echo esc_html__('Auto Terms using AI Connectors', 'simple-tags'); ?></span>
+                        </h3>
+                    </div>
+
+                    <div class="inside-content">
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro can generate terms using any compatible AI provider configured in Settings > Connectors.', 'simple-tags'); ?></p>
+                        <div class="upgrade-btn">
+                            <a href="https://publishpress.com/taxonomies/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <?php endif; ?>
         <tr>
             <td colspan="2">
                 <div class="taxopress-content-promo-box advertisement-box-content postbox postbox upgrade-pro autoterm-terms-use-openai-notice">
