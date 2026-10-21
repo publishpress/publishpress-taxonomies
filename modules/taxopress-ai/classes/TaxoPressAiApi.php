@@ -1051,6 +1051,14 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_open_ai_results($args)
         {
+            if (empty(SimpleTags_Plugin::get_option_value('enable_openai_ai_source'))) {
+                return [
+                    'status' => 'error',
+                    'message' => esc_html__('The direct OpenAI integration is disabled in the Legacy AI Sources settings.', 'simple-tags'),
+                    'results' => [],
+                ];
+            }
+
             $preprocessed_result = apply_filters('taxopress_open_ai_results_pre', null, $args);
             if (is_array($preprocessed_result)) {
                 return $preprocessed_result;
