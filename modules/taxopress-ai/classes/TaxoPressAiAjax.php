@@ -227,6 +227,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                     $autoterm_data      = taxopress_get_autoterm_data();
                     $settings_data      = array_key_exists($selected_autoterms, $autoterm_data) ? $autoterm_data[$selected_autoterms] : [];
                     $autoterm_use_taxonomy      = !empty($settings_data['autoterm_use_taxonomy']);
+                    $autoterm_use_wordpress_ai  = !empty($settings_data['autoterm_use_wordpress_ai']);
                     $autoterm_use_open_ai       = !empty($settings_data['autoterm_use_open_ai']);
                     $autoterm_use_ibm_watson    = !empty($settings_data['autoterm_use_ibm_watson']);
                     $autoterm_use_dandelion     = !empty($settings_data['autoterm_use_dandelion']);
@@ -238,7 +239,8 @@ if (!class_exists('TaxoPressAiAjax')) {
                             : !empty($settings_data['autoterm_preview_debug']);
                     }
 
-                    $uses_remote_provider = $autoterm_use_open_ai
+                    $uses_remote_provider = $autoterm_use_wordpress_ai
+                        || $autoterm_use_open_ai
                         || $autoterm_use_ibm_watson
                         || $autoterm_use_dandelion
                         || $autoterm_use_opencalais;
@@ -358,7 +360,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                         $response['status'] = 'error';
                         $response['content'] = esc_html__('Invalid Auto Term ID. Please save the settings before using preview.', 'simple-tags');
                     } elseif (
-                        !$autoterm_use_taxonomy && !$autoterm_use_open_ai && !$autoterm_use_ibm_watson && !$autoterm_use_dandelion && !$autoterm_use_opencalais
+                        !$autoterm_use_taxonomy && !$autoterm_use_wordpress_ai && !$autoterm_use_open_ai && !$autoterm_use_ibm_watson && !$autoterm_use_dandelion && !$autoterm_use_opencalais
                     ) {
                         $response['status'] = 'error';
                         $response['content'] = esc_html__('You must enable at least one AI integration source to use auto term preview.', 'simple-tags');
@@ -413,6 +415,42 @@ if (!class_exists('TaxoPressAiAjax')) {
                         }
 
                         if (taxopress_is_pro_version()) {
+                            // Provider-neutral WordPress AI Client.
+                            if ($autoterm_use_wordpress_ai) {
+                                $request_args['show_counts'] = isset($settings_data['wordpress_ai_show_post_count'])
+                                    ? $settings_data['wordpress_ai_show_post_count']
+                                    : 0;
+                                $wordpress_ai_results = TaxoPressAiApi::get_wordpress_ai_results($request_args);
+                                $wordpress_ai_results['results'] = taxopress_filter_autoterm_excluded_results(
+                                    isset($wordpress_ai_results['results']) ? $wordpress_ai_results['results'] : [],
+                                    isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
+                                );
+
+                                if ($include_debug) {
+                                    self::add_preview_debug_entry(
+                                        $debug_log,
+                                        esc_html__('AI Connectors', 'simple-tags'),
+                                        $wordpress_ai_results
+                                    );
+                                }
+
+                                $connected_ai_label = !empty($wordpress_ai_results['provider_name'])
+                                    ? sprintf(
+                                        esc_html__('AI Connectors: %s', 'simple-tags'),
+                                        $wordpress_ai_results['provider_name']
+                                    )
+                                    : esc_html__('AI Connectors', 'simple-tags');
+
+                                if (!empty($wordpress_ai_results['results'])) {
+                                    $terms_found = true;
+                                    $request_args['results'] = $wordpress_ai_results['results'];
+                                    $request_args['legend_title'] = $connected_ai_label;
+                                    $term_results .= TaxoPressAiUtilities::get_term_fieldset_html($request_args);
+                                } else {
+                                    $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html($connected_ai_label) . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . esc_html($wordpress_ai_results['message']) . '</p></div></div></fieldset>';
+                                }
+                            }
+
                             // autoterm_use_open_ai
                             if ($autoterm_use_open_ai) {
                                     ##https://platform.openai.com/docs/guides/gpt

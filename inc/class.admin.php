@@ -799,6 +799,7 @@ class SimpleTags_Admin
             'select_post_label'        => esc_html__('Search Posts...', 'simple-tags'),
             'loading'                  => esc_html__('Loading...', 'simple-tags'),
             'preview_error'            => esc_html__('Error loading preview', 'simple-tags'),
+            'enable_openai_ai_source' => (string) SimpleTags_Plugin::get_option_value('enable_openai_ai_source'),
             'enable_ibm_watson_ai_source' => SimpleTags_Plugin::get_option_value('enable_ibm_watson_ai_source'),
             'enable_dandelion_ai_source' => SimpleTags_Plugin::get_option_value('enable_dandelion_ai_source'),
             'enable_lseg_ai_source'    => SimpleTags_Plugin::get_option_value('enable_lseg_ai_source'),

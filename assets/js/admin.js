@@ -2204,6 +2204,7 @@
     function hide_show_source_tab_group_fields() {
       var tabs = [
         'existing',
+        'wordpress-ai',
         'openai',
         'ibm-watson',
         'dandelion',
@@ -2212,6 +2213,7 @@
 
       tabs.forEach(function(tab) {
         if (
+        (tab === 'openai' && st_admin_localize.enable_openai_ai_source !== '1') ||
         (tab === 'ibm-watson' && st_admin_localize.enable_ibm_watson_ai_source !== '1') ||
         (tab === 'dandelion' && st_admin_localize.enable_dandelion_ai_source !== '1') ||
         (tab === 'lseg-refinitiv' && st_admin_localize.enable_lseg_ai_source !== '1')
