@@ -146,7 +146,7 @@ return array(
     'rp_title'               => __('<h4>Related posts</h4>', 'simple-tags'),
     'rp_xformat'             =>  __('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"> 
 			                       %post_title% <br> 
-			                       <img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" />
+			                       <img src="%post_thumb_url%" alt="" height="200" width="200" class="custom-image-class" />
 			                       </a> 
 			                       (%post_comment%)', 'simple-tags'),
     'rp_default_featured_media' => 'default',
@@ -169,7 +169,7 @@ return array(
     'cloud_notagstext'       => __('No tags.', 'simple-tags'),
     'cloud_title'            => __('<h4>Tag Cloud</h4>', 'simple-tags'),
     'cloud_format'           => 'border',
-    'cloud_xformat'          => __('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>', 'simple-tags'),
+    'cloud_xformat'          => __('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%%tag_count_sr%</a>', 'simple-tags'),
     'cloud_max_color'        => '#000000',
     'cloud_min_color'        => '#353535',
     'cloud_max_size'         => 12,

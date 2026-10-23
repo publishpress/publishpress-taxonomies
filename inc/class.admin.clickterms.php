@@ -45,6 +45,7 @@ class SimpleTags_Admin_ClickTags
             array(
                 'jquery',
                 'st-helper-add-tags',
+                'wp-a11y',
             ),
             STAGS_VERSION,
             true
@@ -57,8 +58,8 @@ class SimpleTags_Admin_ClickTags
         //add taxonomy
         $click_tags_taxonomy = '
         <div class="option">
-        <label>' . esc_html__('Taxonomy', 'simple-tags') . '</label><br />
-        <select class="st-post-taxonomy-select click_tags_taxonomy" name="click_tags_taxonomy">';
+        <label for="click_tags_taxonomy">' . esc_html__('Taxonomy', 'simple-tags') . '</label><br />
+        <select class="st-post-taxonomy-select click_tags_taxonomy" id="click_tags_taxonomy" name="click_tags_taxonomy">';
         foreach ($post_taxonomies as $_taxonomy) {
             $_taxonomy = get_taxonomy($_taxonomy);
             if ($_taxonomy->name === 'author') {
@@ -83,8 +84,8 @@ class SimpleTags_Admin_ClickTags
         $click_tags_methods = ['name' => esc_html__('Name', 'simple-tags'), 'count' => esc_html__('Counter', 'simple-tags'), 'random' => esc_html__('Random', 'simple-tags')];
         $click_tags_method = '
         <div class="option">
-        <label>' . __('Method for choosing terms', 'simple-tags') . '</label><br />
-        <select class="click_tags_method" name="click_tags_method">';
+        <label for="click_tags_method">' . esc_html__('Method for choosing terms', 'simple-tags') . '</label><br />
+        <select class="click_tags_method" id="click_tags_method" name="click_tags_method">';
         foreach ($click_tags_methods as $option => $label) {
             $selected = ($option === $click_terms['orderby']) ? 'selected="selected"' : '';
             $click_tags_method .= '<option value="' . $option . '" ' . $selected . '>' . $label . '</option>';
@@ -96,8 +97,8 @@ class SimpleTags_Admin_ClickTags
         $click_tags_orders = ['asc' =>  esc_html__('Ascending', 'simple-tags'), 'desc' => esc_html__('Descending', 'simple-tags')];
         $click_tags_order = '
         <div class="option">
-        <label>' . __('Ordering for choosing terms', 'simple-tags') . '</label><br />
-        <select class="click_tags_order" name="click_tags_order">';
+        <label for="click_tags_order">' . esc_html__('Ordering for choosing terms', 'simple-tags') . '</label><br />
+        <select class="click_tags_order" id="click_tags_order" name="click_tags_order">';
         foreach ($click_tags_orders as $option => $label) {
             $selected = ($option === $click_terms['order']) ? 'selected="selected"' : '';
             $click_tags_order .= '<option value="' . $option . '" ' . $selected . '>' . $label . '</option>';
@@ -149,6 +150,8 @@ class SimpleTags_Admin_ClickTags
             array(
                 'show_txt'    => esc_html__('Click to display tags', 'simple-tags'),
                 'arial_label' => esc_html__('suggested terms', 'simple-tags'),
+                /* translators: %d: number of terms */
+                'terms_loaded' => esc_html__('%d terms loaded.', 'simple-tags'),
                 'hide_txt'    => sprintf(esc_html__('Click terms to add them to this %s', 'simple-tags'), $post_type_name),
                 'state'       => 'show',
                 'search_icon' => STAGS_URL . '/assets/images/indicator.gif',
@@ -303,7 +306,7 @@ class SimpleTags_Admin_ClickTags
 
         foreach ((array) $terms as $term) {
             $class_current = in_array($term->term_id, $post_terms) ? 'used_term' : '';
-            echo '<span data-term_id="' . esc_attr($term->term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="local ' . esc_attr($taxonomy) . ' ' . esc_attr($class_current) . '" tabindex="0" role="button" aria-pressed="false">' . esc_html(stripslashes($term->name)) . '</span>' . "\n";
+            echo '<span data-term_id="' . esc_attr($term->term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="local ' . esc_attr($taxonomy) . ' ' . esc_attr($class_current) . '" tabindex="0" role="button" aria-pressed="' . (!empty($class_current) ? 'true' : 'false') . '">' . esc_html(stripslashes($term->name)) . '</span>' . "\n";
         }
         echo '<div class="clear"></div>';
 

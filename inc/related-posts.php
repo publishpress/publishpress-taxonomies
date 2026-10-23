@@ -333,36 +333,36 @@ class SimpleTags_Related_Post
 
 
                                             <ul class="taxopress-tab">
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_general' ? 'true' : 'false'; ?>" class="relatedpost_general_tab <?php echo $active_tab === 'relatedpost_general' ? 'active' : ''; ?>" data-content="relatedpost_general">
-                                                    <a href="#relatedpost_general"><span><?php esc_html_e('General', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_general_tab <?php echo $active_tab === 'relatedpost_general' ? 'active' : ''; ?>" data-content="relatedpost_general">
+                                                    <a href="#relatedpost_general"<?php echo $active_tab === 'relatedpost_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('General', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_post_types' ? 'true' : 'false'; ?>" class="relatedpost_post_types_tab <?php echo $active_tab === 'relatedpost_post_types' ? 'active' : ''; ?>" data-content="relatedpost_post_types">
-                                                    <a href="#relatedpost_post_types"><span><?php esc_html_e('Post Types', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_post_types_tab <?php echo $active_tab === 'relatedpost_post_types' ? 'active' : ''; ?>" data-content="relatedpost_post_types">
+                                                    <a href="#relatedpost_post_types"<?php echo $active_tab === 'relatedpost_post_types' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Post Types', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_display' ? 'true' : 'false'; ?>" class="relatedpost_display_tab <?php echo $active_tab === 'relatedpost_display' ? 'active' : ''; ?>" data-content="relatedpost_display">
-                                                    <a href="#relatedpost_display"><span><?php esc_html_e('Display', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_display_tab <?php echo $active_tab === 'relatedpost_display' ? 'active' : ''; ?>" data-content="relatedpost_display">
+                                                    <a href="#relatedpost_display"<?php echo $active_tab === 'relatedpost_display' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Display', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_design' ? 'true' : 'false'; ?>" class="relatedpost_design_tab <?php echo $active_tab === 'relatedpost_design' ? 'active' : ''; ?>" data-content="relatedpost_design">
-                                                    <a href="#relatedpost_design"><span><?php esc_html_e('Design', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_design_tab <?php echo $active_tab === 'relatedpost_design' ? 'active' : ''; ?>" data-content="relatedpost_design">
+                                                    <a href="#relatedpost_design"<?php echo $active_tab === 'relatedpost_design' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Design', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_layout' ? 'true' : 'false'; ?>" class="relatedpost_layout_tab <?php echo $active_tab === 'relatedpost_layout' ? 'active' : ''; ?>" data-content="relatedpost_layout">
-                                                    <a href="#relatedpost_layout"><span><?php esc_html_e('Layout', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_layout_tab <?php echo $active_tab === 'relatedpost_layout' ? 'active' : ''; ?>" data-content="relatedpost_layout">
+                                                    <a href="#relatedpost_layout"<?php echo $active_tab === 'relatedpost_layout' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Layout', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_display_format' ? 'true' : 'false'; ?>" class="relatedpost_display_format_tab <?php echo $active_tab === 'relatedpost_display_format' ? 'active' : ''; ?>" data-content="relatedpost_display_format">
-                                                    <a href="#relatedpost_display_format"><span><?php esc_html_e('Display format', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_display_format_tab <?php echo $active_tab === 'relatedpost_display_format' ? 'active' : ''; ?>" data-content="relatedpost_display_format">
+                                                    <a href="#relatedpost_display_format"<?php echo $active_tab === 'relatedpost_display_format' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Display format', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_option' ? 'true' : 'false'; ?>" class="relatedpost_option_tab <?php echo $active_tab === 'relatedpost_option' ? 'active' : ''; ?>" data-content="relatedpost_option">
-                                                    <a href="#relatedpost_option"><span><?php esc_html_e('Options', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_option_tab <?php echo $active_tab === 'relatedpost_option' ? 'active' : ''; ?>" data-content="relatedpost_option">
+                                                    <a href="#relatedpost_option"<?php echo $active_tab === 'relatedpost_option' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Options', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'relatedpost_advanced' ? 'true' : 'false'; ?>" class="relatedpost_advanced_tab <?php echo $active_tab === 'relatedpost_advanced' ? 'active' : ''; ?>" data-content="relatedpost_advanced">
-                                                    <a href="#relatedpost_advanced"><span><?php esc_html_e('Advanced', 'simple-tags'); ?></span></a>
+                                                <li class="relatedpost_advanced_tab <?php echo $active_tab === 'relatedpost_advanced' ? 'active' : ''; ?>" data-content="relatedpost_advanced">
+                                                    <a href="#relatedpost_advanced"<?php echo $active_tab === 'relatedpost_advanced' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Advanced', 'simple-tags'); ?></span></a>
                                                 </li>
 
                                             </ul>
@@ -740,7 +740,7 @@ class SimpleTags_Related_Post
                                                         'class'     => 'st-full-width',
                                                         'rows'      => '4',
                                                         'cols'      => '40',
-                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>'),
+                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>'),
                                                         'labeltext' => esc_html__('Term link format', 'simple-tags'),
                                                         'helptext'  => sprintf(esc_html__('This setting allows you to customize the appearance of Related Post links. You can use any of the tokens shown below or find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-related-posts/">', '</a>'),
                                                         'required'  => false,
@@ -1312,15 +1312,15 @@ class SimpleTags_Related_Post
         <div class="clear"></div>
 
         <?php # Modal Windows;?>
-<div class="remodal" data-remodal-id="taxopress-modal-alert"
+<div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-     <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+     <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
     <div id="taxopress-modal-alert-content"></div>
     <br>
     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
 </div>
 
-<div class="remodal" data-remodal-id="taxopress-modal-confirm"
+<div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
     <div id="taxopress-modal-confirm-content"></div>
     <br>

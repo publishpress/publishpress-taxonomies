@@ -342,48 +342,48 @@ class SimpleTags_Post_Tags
 
 
                                                     <ul class="taxopress-tab">
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_general' ? 'true' : 'false'; ?>" class="posttags_general_tab <?php echo $active_tab === 'posttags_general' ? 'active' : ''; ?>" data-content="posttags_general">
-                                                            <a href="#posttags_general"><span><?php esc_html_e(
+                                                        <li class="posttags_general_tab <?php echo $active_tab === 'posttags_general' ? 'active' : ''; ?>" data-content="posttags_general">
+                                                            <a href="#posttags_general"<?php echo $active_tab === 'posttags_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'General',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_terms' ? 'true' : 'false'; ?>" class="posttags_terms_tab <?php echo $active_tab === 'posttags_terms' ? 'active' : ''; ?>" data-content="posttags_terms">
-                                                            <a href="#posttags_terms"><span><?php esc_html_e('Choose Terms',
+                                                        <li class="posttags_terms_tab <?php echo $active_tab === 'posttags_terms' ? 'active' : ''; ?>" data-content="posttags_terms">
+                                                            <a href="#posttags_terms"<?php echo $active_tab === 'posttags_terms' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Choose Terms',
                                                                 'simple-tags'); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_display' ? 'true' : 'false'; ?>" class="posttags_display_tab <?php echo $active_tab === 'posttags_display' ? 'active' : ''; ?>" data-content="posttags_display">
-                                                            <a href="#posttags_display"><span><?php esc_html_e(
+                                                        <li class="posttags_display_tab <?php echo $active_tab === 'posttags_display' ? 'active' : ''; ?>" data-content="posttags_display">
+                                                            <a href="#posttags_display"<?php echo $active_tab === 'posttags_display' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Display',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_layout' ? 'true' : 'false'; ?>" class="posttags_layout_tab <?php echo $active_tab === 'posttags_layout' ? 'active' : ''; ?>" data-content="posttags_layout">
-                                                            <a href="#posttags_layout"><span><?php esc_html_e(
+                                                        <li class="posttags_layout_tab <?php echo $active_tab === 'posttags_layout' ? 'active' : ''; ?>" data-content="posttags_layout">
+                                                            <a href="#posttags_layout"<?php echo $active_tab === 'posttags_layout' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Layout',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_design' ? 'true' : 'false'; ?>" class="posttags_design_tab <?php echo $active_tab === 'posttags_design' ? 'active' : ''; ?>" data-content="posttags_design">
-                                                            <a href="#posttags_design"><span><?php esc_html_e(
+                                                        <li class="posttags_design_tab <?php echo $active_tab === 'posttags_design' ? 'active' : ''; ?>" data-content="posttags_design">
+                                                            <a href="#posttags_design"<?php echo $active_tab === 'posttags_design' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Design',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_options' ? 'true' : 'false'; ?>" class="posttags_options_tab <?php echo $active_tab === 'posttags_options' ? 'active' : ''; ?>" data-content="posttags_options">
-                                                            <a href="#posttags_options"><span><?php esc_html_e(
+                                                        <li class="posttags_options_tab <?php echo $active_tab === 'posttags_options' ? 'active' : ''; ?>" data-content="posttags_options">
+                                                            <a href="#posttags_options"<?php echo $active_tab === 'posttags_options' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Options',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_advanced' ? 'true' : 'false'; ?>" class="posttags_advanced_tab <?php echo $active_tab === 'posttags_advanced' ? 'active' : ''; ?>" data-content="posttags_advanced">
-                                                            <a href="#posttags_advanced"><span><?php esc_html_e(
+                                                        <li class="posttags_advanced_tab <?php echo $active_tab === 'posttags_advanced' ? 'active' : ''; ?>" data-content="posttags_advanced">
+                                                            <a href="#posttags_advanced"<?php echo $active_tab === 'posttags_advanced' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Display Format',
                                                                 'simple-tags'
                                                             ); ?></span></a>
@@ -392,8 +392,8 @@ class SimpleTags_Post_Tags
                                                         <?php
                                                         $enable_hidden_terms = SimpleTags_Plugin::get_option_value('enable_hidden_terms');
                                                     if ($enable_hidden_terms) : ?>
-                                                        <li aria-current="<?php echo $active_tab === 'posttags_exceptions' ? 'true' : 'false'; ?>" class="posttags_exceptions_tab <?php echo $active_tab === 'posttags_exceptions' ? 'active' : ''; ?>" data-content="posttags_exceptions">
-                                                            <a href="#posttags_exceptions"><span><?php esc_html_e('Exceptions',
+                                                        <li class="posttags_exceptions_tab <?php echo $active_tab === 'posttags_exceptions' ? 'active' : ''; ?>" data-content="posttags_exceptions">
+                                                            <a href="#posttags_exceptions"<?php echo $active_tab === 'posttags_exceptions' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Exceptions',
                                                                 'simple-tags'); ?></span></a>
                                                         </li>
                                                         <?php endif; ?>
@@ -1054,14 +1054,14 @@ class SimpleTags_Post_Tags
 
             <?php # Modal Windows;
             ?>
-            <div class="remodal" data-remodal-id="taxopress-modal-alert" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-                <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+            <div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+                <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
                 <div id="taxopress-modal-alert-content"></div>
                 <br>
                 <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
             </div>
 
-            <div class="remodal" data-remodal-id="taxopress-modal-confirm" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+            <div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
                 <div id="taxopress-modal-confirm-content"></div>
                 <br>
                 <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('No', 'simple-tags'); ?></button>

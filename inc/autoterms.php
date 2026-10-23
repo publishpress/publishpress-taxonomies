@@ -434,49 +434,49 @@ class SimpleTags_Autoterms
 
 
                                             <ul class="taxopress-tab">
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_general' ? 'true' : 'false'; ?>" class="autoterm_general_tab <?php echo $active_tab === 'autoterm_general' ? 'active' : ''; ?>" data-content="autoterm_general">
-                                                    <a href="#autoterm_general"><span><?php esc_html_e('General',
+                                                <li class="autoterm_general_tab <?php echo $active_tab === 'autoterm_general' ? 'active' : ''; ?>" data-content="autoterm_general">
+                                                    <a href="#autoterm_general"<?php echo $active_tab === 'autoterm_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('General',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_display' ? 'true' : 'false'; ?>" class="autoterm_display_tab <?php echo $active_tab === 'autoterm_display' ? 'active' : ''; ?>" data-content="autoterm_display">
-                                                    <a href="#autoterm_display"><span><?php esc_html_e('Post Types',
-                                                        'simple-tags'); ?></span></a>
-                                                </li>
-
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_terms' ? 'true' : 'false'; ?>" class="autoterm_terms_tab <?php echo $active_tab === 'autoterm_terms' ? 'active' : ''; ?>" data-content="autoterm_terms">
-                                                    <a href="#autoterm_terms"><span><?php esc_html_e('Sources',
+                                                <li class="autoterm_display_tab <?php echo $active_tab === 'autoterm_display' ? 'active' : ''; ?>" data-content="autoterm_display">
+                                                    <a href="#autoterm_display"<?php echo $active_tab === 'autoterm_display' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Post Types',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_when_to_use' ? 'true' : 'false'; ?>" class="autoterm_when_to_use_tab <?php echo $active_tab === 'autoterm_when_to_use' ? 'active' : ''; ?>" data-content="autoterm_when_to_use">
-                                                    <a href="#autoterm_when_to_use"><span><?php esc_html_e('When to Use',
+                                                <li class="autoterm_terms_tab <?php echo $active_tab === 'autoterm_terms' ? 'active' : ''; ?>" data-content="autoterm_terms">
+                                                    <a href="#autoterm_terms"<?php echo $active_tab === 'autoterm_terms' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Sources',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_options' ? 'true' : 'false'; ?>" class="autoterm_options_tab <?php echo $active_tab === 'autoterm_options' ? 'active' : ''; ?>" data-content="autoterm_options">
-                                                    <a href="#autoterm_options"><span><?php esc_html_e('Options',
+                                                <li class="autoterm_when_to_use_tab <?php echo $active_tab === 'autoterm_when_to_use' ? 'active' : ''; ?>" data-content="autoterm_when_to_use">
+                                                    <a href="#autoterm_when_to_use"<?php echo $active_tab === 'autoterm_when_to_use' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('When to Use',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_exceptions' ? 'true' : 'false'; ?>" class="autoterm_exceptions_tab <?php echo $active_tab === 'autoterm_exceptions' ? 'active' : ''; ?>" data-content="autoterm_exceptions">
-                                                    <a href="#autoterm_exceptions"><span><?php esc_html_e(
+                                                <li class="autoterm_options_tab <?php echo $active_tab === 'autoterm_options' ? 'active' : ''; ?>" data-content="autoterm_options">
+                                                    <a href="#autoterm_options"<?php echo $active_tab === 'autoterm_options' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Options',
+                                                        'simple-tags'); ?></span></a>
+                                                </li>
+
+                                                <li class="autoterm_exceptions_tab <?php echo $active_tab === 'autoterm_exceptions' ? 'active' : ''; ?>" data-content="autoterm_exceptions">
+                                                    <a href="#autoterm_exceptions"<?php echo $active_tab === 'autoterm_exceptions' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                         'Exceptions',
                                                         'simple-tags'
                                                     ); ?></span></a>
                                                 </li>
 
-                                                <!--<li aria-current="<?php echo $active_tab === 'autoterm_oldcontent' ? 'true' : 'false'; ?>" class="autoterm_oldcontent_tab <?php echo $active_tab === 'autoterm_oldcontent' ? 'active' : ''; ?>" data-content="autoterm_oldcontent">
-                                                    <a href="#autoterm_oldcontent"><span><?php esc_html_e('Existing Content',
+                                                <!--<li class="autoterm_oldcontent_tab <?php echo $active_tab === 'autoterm_oldcontent' ? 'active' : ''; ?>" data-content="autoterm_oldcontent">
+                                                    <a href="#autoterm_oldcontent"<?php echo $active_tab === 'autoterm_oldcontent' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Existing Content',
                                                         'simple-tags'); ?></span></a>
                                                 </li>-->
 
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_advanced' ? 'true' : 'false'; ?>" class="autoterm_advanced_tab <?php echo $active_tab === 'autoterm_advanced' ? 'active' : ''; ?>" data-content="autoterm_advanced">
-                                                    <a href="#autoterm_advanced"><span><?php esc_html_e('Advanced',
+                                                <li class="autoterm_advanced_tab <?php echo $active_tab === 'autoterm_advanced' ? 'active' : ''; ?>" data-content="autoterm_advanced">
+                                                    <a href="#autoterm_advanced"<?php echo $active_tab === 'autoterm_advanced' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Advanced',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_preview' ? 'true' : 'false'; ?>" class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
-                                                    <a href="#autoterm_preview"><span><?php esc_html_e('Preview',
+                                                <li class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
+                                                    <a href="#autoterm_preview"<?php echo $active_tab === 'autoterm_preview' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Preview',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
@@ -1779,15 +1779,15 @@ class SimpleTags_Autoterms
         <div class="clear"></div>
 
         <?php # Modal Windows;?>
-<div class="remodal" data-remodal-id="taxopress-modal-alert"
+<div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-     <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+     <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
     <div id="taxopress-modal-alert-content"></div>
     <br>
     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
 </div>
 
-<div class="remodal" data-remodal-id="taxopress-modal-confirm"
+<div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
     <div id="taxopress-modal-confirm-content"></div>
     <br>

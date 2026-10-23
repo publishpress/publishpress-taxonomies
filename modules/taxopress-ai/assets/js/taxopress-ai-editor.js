@@ -268,6 +268,8 @@
     // -------------------------------------------------------------
     // In taxopress-ai-editor.js, update the tab click handler:
     $(document).on('click', 'ul.taxopress-tab.ai-integration-tab li', function () {
+        $(this).closest('ul').find('li > a').removeAttr('aria-current');
+        $(this).children('a').attr('aria-current', 'true');
         const tabKey = resolveTabKey($(this));
         setTabUi(tabKey);
         fetchPreviewTab(tabKey);
@@ -863,9 +865,12 @@
         if (resp && resp.success && resp.data && resp.data.label) {
         $tab.find('.tp-tab-label').text(resp.data.label);
         $tab.find('.tp-tab-label').show();
-        $tab.find('.tp-rename-tab').show();
+        $tab.find('.tp-rename-tab').show().trigger('focus');
         $tab.find('.tp-rename-inline-controls').hide();
         $error.hide().text('');
+        if (window.wp && wp.a11y && wp.a11y.speak) {
+            wp.a11y.speak(resp.data.label);
+        }
         } else {
         const msg = (resp && resp.data && resp.data.message) ? resp.data.message : taxoPressAIRequestAction.save_error;
         $error.text(msg).show();
@@ -889,7 +894,7 @@
         const $tab = $(this).closest('li');
         $tab.find('.tp-rename-tab-error').hide().text('');
         $tab.find('.tp-tab-label').show();
-        $tab.find('.tp-rename-tab').show();
+        $tab.find('.tp-rename-tab').show().trigger('focus');
         $tab.find('.tp-rename-inline-controls').hide();
     }
     });

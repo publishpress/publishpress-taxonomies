@@ -847,6 +847,7 @@ class Taxopress_Terms_List extends WP_List_Table
             ?>
 
             <div class="alignleft actions autoterms-terms-table-copy" id="taxopress-copy-selection-boxes" style="display: none;">
+                <label class="screen-reader-text" for="terms_copy_select_destination_taxonomy"><?php esc_html_e('Destination taxonomy', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-copy-select" name="taxopress_destination_taxonomy" id="terms_copy_select_destination_taxonomy">
                     <option value=""><?php esc_html_e('Select Destination Taxonomy', 'simple-tags'); ?></option> <?php
                     foreach ($taxonomies as $taxonomy) {
@@ -854,6 +855,7 @@ class Taxopress_Terms_List extends WP_List_Table
                     } ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_copy_select_destination_post"><?php esc_html_e('Destination post', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-copy-select taxopress-post-search" name="taxopress_destination_post_type" id="terms_copy_select_destination_post" data-placeholder="<?php esc_attr_e('Search posts', 'simple-tags'); ?>" data-allow-clear="true" data-nonce="<?php echo esc_attr(wp_create_nonce('taxopress-post-search')); ?>" data-post-types="<?php echo esc_attr($selected_post_type); ?>">
                     <?php
                         $post_type_label = !empty($selected_post_type) ? esc_html($selected_post_type) : esc_html__('post type', 'simple-tags');
@@ -864,6 +866,7 @@ class Taxopress_Terms_List extends WP_List_Table
             </div>
             <div class="alignleft actions autoterms-terms-table-filter">
 
+                <label class="screen-reader-text" for="terms_filter_select_post_type"><?php esc_html_e('Filter by post type', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_post_type" id="terms_filter_select_post_type">
                     <option value=""><?php esc_html_e('Post type', 'simple-tags'); ?></option>
                     <?php
@@ -873,6 +876,7 @@ class Taxopress_Terms_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_filter_select_taxonomy"><?php esc_html_e('Filter by taxonomy', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_taxonomy" id="terms_filter_select_taxonomy">
                     <option value=""><?php esc_html_e('Taxonomy', 'simple-tags'); ?></option>
                     <?php
@@ -882,13 +886,14 @@ class Taxopress_Terms_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_filter_select_taxonomy_type"><?php esc_html_e('Filter by taxonomy type', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_taxonomy_type" id="terms_filter_select_taxonomy_type">
                     <option value="all" <?php echo($selected_option === 'all' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('All Taxonomies', 'simple-tags'); ?></option>
                     <option value="public" <?php echo($selected_option === 'public' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('Public Taxonomies', 'simple-tags'); ?></option>
                     <option value="private" <?php echo($selected_option === 'private' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('Private Taxonomies', 'simple-tags'); ?></option>
                 </select>
                 
-                <a href="javascript:void(0)" class="taxopress-terms-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></a>
+                <button type="button" class="taxopress-terms-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></button>
 
             </div>
             <?php
@@ -1231,6 +1236,20 @@ class Taxopress_Terms_List extends WP_List_Table
                 esc_html__('Copy', 'simple-tags')
             );
             $actions = apply_filters('taxopress_terms_row_actions', $actions, $item);
+        } elseif (current_user_can('edit_term', $item->term_id)) {
+            // Keyboard/screen-reader alternative to drag-and-drop ordering (sortable is only active in this view).
+            $actions['taxopress_move_up'] = sprintf(
+                '<button type="button" class="button-link taxopress-term-move" data-direction="up" aria-label="%s">%s</button>',
+                /* translators: %s: Taxonomy term name. */
+                esc_attr(sprintf(__('Move %s up', 'simple-tags'), $item->name)),
+                esc_html__('Move up', 'simple-tags')
+            );
+            $actions['taxopress_move_down'] = sprintf(
+                '<button type="button" class="button-link taxopress-term-move" data-direction="down" aria-label="%s">%s</button>',
+                /* translators: %s: Taxonomy term name. */
+                esc_attr(sprintf(__('Move %s down', 'simple-tags'), $item->name)),
+                esc_html__('Move down', 'simple-tags')
+            );
         }
         return $column_name === $primary ? $this->row_actions($actions, false) : '';
     }

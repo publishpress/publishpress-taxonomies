@@ -305,7 +305,26 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
 }
 
 .taxopress-switch-button .switch input {
-    display: none
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    opacity: 0
+}
+
+.taxopress-switch-button .switch input:focus-visible+.slider,
+.taxopress-switch-button .switch input:focus+.slider {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px
+}
+
+.taxopress-switch-button .switch input:focus:not(:focus-visible)+.slider {
+    outline: none
 }
 
 .taxopress-switch-button .switch .slider {
@@ -315,7 +334,7 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #757575;
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
     -ms-transition: 0.4s;
@@ -346,7 +365,7 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
 }
 
 .taxopress-switch-button .switch input:checked+.slider {
-    background-color: #00d084
+    background-color: #007a4d
 }
 
 .taxopress-switch-button .switch input:checked+.slider:before {
@@ -383,7 +402,7 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     color: #00d084;
 }
 .taxopress-floating-status.taxopress-floating-status--error {
-    color: #d63638;
+    color: #f86368;
 }
 
 .taxopress-hide-menu-item {
@@ -1288,26 +1307,54 @@ font-weight: bold;
     font-size: 13px;
     color: #646970;
 }
-.st-legacy-subtab span,
-.st-taxopress-ai-subtab span,
-.st-metabox-subtab span {
+.st-legacy-subtab [data-content],
+.st-taxopress-ai-subtab [data-content],
+.st-metabox-subtab [data-content] {
     margin: 0;
     white-space: nowrap;
     line-height: 2;
     padding: .2em;
 }
-.st-legacy-subtab span.active,
-.st-taxopress-ai-subtab span.active,
-.st-metabox-subtab span.active {
+.st-legacy-subtab [data-content].active,
+.st-taxopress-ai-subtab [data-content].active,
+.st-metabox-subtab [data-content].active {
     color: #000;
     font-weight: 600;
     border: none;
 }
-.st-legacy-subtab span:not(.active),
-.st-taxopress-ai-subtab span:not(.active),
-.st-metabox-subtab span:not(.active) {
+.st-legacy-subtab [data-content]:not(.active),
+.st-taxopress-ai-subtab [data-content]:not(.active),
+.st-metabox-subtab [data-content]:not(.active) {
     color: #2271b1;
     cursor: pointer;
+}
+
+/* Sub-tab buttons: reset native button styles so they look like the former text links */
+button.st-subtab-button {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font: inherit;
+    font-size: 13px;
+    line-height: 2;
+    padding: .2em;
+    margin: 0;
+    white-space: nowrap;
+    color: #2271b1;
+    cursor: pointer;
+}
+
+button.st-subtab-button.active {
+    color: #000;
+    font-weight: 600;
+    cursor: default;
+}
+
+button.st-subtab-button:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+    box-shadow: none;
 }
 
 .taxopress-settings-subtab-title {
@@ -1442,19 +1489,57 @@ select#stb-tag-clouds-select {
     position:absolute;
     z-index:99999999;
     box-sizing:border-box;
-    display:none;
+    display:block;
     border:1px solid #DCA;
 }
 
-.taxopress-help-tooltip:hover .tooltip-text {
-    display:block;
+/* Visually hide (not display:none) so aria-describedby still resolves; show on hover or keyboard focus. */
+.taxopress-help-tooltip:not(:hover):not(:focus-within) .tooltip-text,
+.taxopress-help-tooltip.is-dismissed .tooltip-text {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    min-width: 0;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.taxopress-help-tooltip:before  {
+.taxopress-help-tooltip:before,
+.taxopress-help-tooltip-trigger:before  {
     color: #424242;
-    opacity: 0.5;
     text-decoration: none;
     width: 16px;
+}
+
+button.taxopress-help-tooltip-trigger {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    line-height: inherit;
+    color: inherit;
+    cursor: help;
+    vertical-align: baseline;
+}
+
+button.taxopress-help-tooltip-trigger:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+    border-radius: 2px;
+}
+
+fieldset.taxopress-radio-group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 }
 fieldset .taxopress-help-tooltip  {
     position: relative;
@@ -2435,4 +2520,38 @@ input#post-search-input {
 
 .taxopress-merge-meta strong {
     font-weight: 600;
+}
+
+/* Accessibility: visible focus for term buttons */
+.container_clicktags span[role="button"]:focus-visible,
+.result-terms .term-name[role="button"]:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+fieldset.st-option-group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+/* Settings page heading is an h1 for structure but keeps the former h2 appearance */
+.wrap.st_wrap.admin-settings > h1.taxopress-settings-heading {
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/* Visible keyboard focus on editor vertical tabs */
+ul.taxopress-tab li a:focus-visible,
+ul.st-taxonomy-tab li a:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: inset 0 0 0 2px #2271b1;
+}
+
+.pp-tooltips-library.is-dismissed .tooltip-text {
+    display: none !important;
 }

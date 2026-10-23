@@ -289,50 +289,50 @@ class SimpleTags_Autolink
 
 
                                                     <ul class="taxopress-tab">
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_general' ? 'true' : 'false'; ?>" class="autolink_general_tab <?php echo $active_tab === 'autolink_general' ? 'active' : ''; ?>" data-content="autolink_general">
-                                                            <a href="#autolink_general"><span><?php esc_html_e(
+                                                        <li class="autolink_general_tab <?php echo $active_tab === 'autolink_general' ? 'active' : ''; ?>" data-content="autolink_general">
+                                                            <a href="#autolink_general"<?php echo $active_tab === 'autolink_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'General',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_display' ? 'true' : 'false'; ?>" class="autolink_display_tab <?php echo $active_tab === 'autolink_display' ? 'active' : ''; ?>" data-content="autolink_display">
-                                                            <a href="#autolink_display"><span><?php esc_html_e(
+                                                        <li class="autolink_display_tab <?php echo $active_tab === 'autolink_display' ? 'active' : ''; ?>" data-content="autolink_display">
+                                                            <a href="#autolink_display"<?php echo $active_tab === 'autolink_display' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Post Types',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_control' ? 'true' : 'false'; ?>" class="autolink_control_tab <?php echo $active_tab === 'autolink_control' ? 'active' : ''; ?>" data-content="autolink_control">
-                                                            <a href="#autolink_control"><span><?php esc_html_e(
+                                                        <li class="autolink_control_tab <?php echo $active_tab === 'autolink_control' ? 'active' : ''; ?>" data-content="autolink_control">
+                                                            <a href="#autolink_control"<?php echo $active_tab === 'autolink_control' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Control',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_exceptions' ? 'true' : 'false'; ?>" class="autolink_exceptions_tab <?php echo $active_tab === 'autolink_exceptions' ? 'active' : ''; ?>" data-content="autolink_exceptions">
-                                                            <a href="#autolink_exceptions"><span><?php esc_html_e(
+                                                        <li class="autolink_exceptions_tab <?php echo $active_tab === 'autolink_exceptions' ? 'active' : ''; ?>" data-content="autolink_exceptions">
+                                                            <a href="#autolink_exceptions"<?php echo $active_tab === 'autolink_exceptions' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Exceptions',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_options' ? 'true' : 'false'; ?>" class="autolink_options_tab <?php echo $active_tab === 'autolink_options' ? 'active' : ''; ?>" data-content="autolink_options">
-                                                            <a href="#autolink_options"><span><?php esc_html_e(
+                                                        <li class="autolink_options_tab <?php echo $active_tab === 'autolink_options' ? 'active' : ''; ?>" data-content="autolink_options">
+                                                            <a href="#autolink_options"<?php echo $active_tab === 'autolink_options' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Options',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_advanced' ? 'true' : 'false'; ?>" class="autolink_advanced_tab <?php echo $active_tab === 'autolink_advanced' ? 'active' : ''; ?>" data-content="autolink_advanced">
-                                                            <a href="#autolink_advanced"><span><?php esc_html_e(
+                                                        <li class="autolink_advanced_tab <?php echo $active_tab === 'autolink_advanced' ? 'active' : ''; ?>" data-content="autolink_advanced">
+                                                            <a href="#autolink_advanced"<?php echo $active_tab === 'autolink_advanced' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e(
                                                                 'Advanced',
                                                                 'simple-tags'
                                                             ); ?></span></a>
                                                         </li>
 
-                                                        <li aria-current="<?php echo $active_tab === 'autolink_custom_url' ? 'true' : 'false'; ?>" class="autolink_custom_url_tab <?php echo $active_tab === 'autolink_custom_url' ? 'active' : ''; ?>" data-content="autolink_custom_url">
-                                                            <a href="#autolink_custom_url"><span><?php esc_html_e('Link Types', 'simple-tags'); ?></span></a>
+                                                        <li class="autolink_custom_url_tab <?php echo $active_tab === 'autolink_custom_url' ? 'active' : ''; ?>" data-content="autolink_custom_url">
+                                                            <a href="#autolink_custom_url"<?php echo $active_tab === 'autolink_custom_url' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Link Types', 'simple-tags'); ?></span></a>
                                                         </li>
 
                                                     </ul>
@@ -1200,14 +1200,14 @@ class SimpleTags_Autolink
 
                 <?php # Modal Windows;
                 ?>
-                <div class="remodal" data-remodal-id="taxopress-modal-alert" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-                    <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+                <div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+                    <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
                     <div id="taxopress-modal-alert-content"></div>
                     <br>
                     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
                 </div>
 
-                <div class="remodal" data-remodal-id="taxopress-modal-confirm" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+                <div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
                     <div id="taxopress-modal-confirm-content"></div>
                     <br>
                     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('No', 'simple-tags'); ?></button>

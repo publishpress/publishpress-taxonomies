@@ -724,7 +724,7 @@ class SimpleTags_Admin
         }
 
         //Register and enqueue admin js
-        $script_dependencies = ['jquery'];
+        $script_dependencies = ['jquery', 'wp-a11y', 'wp-i18n'];
         if ($select_2_page) {
             $script_dependencies[] = 'taxopress-admin-select2';
             $script_dependencies[] = 'wp-util';
@@ -760,6 +760,14 @@ class SimpleTags_Admin
             'post_required' => esc_html__('Select a post to see a preview.', 'simple-tags'),
             'save_settings' => esc_html__('Auto Term ID missing. Kindly save the auto term before using this feature.', 'simple-tags'),
             'delete_label' => esc_html__('Delete', 'simple-tags'),
+            /* translators: 1: term name, 2: new position, 3: total rows */
+            'term_moved'     => esc_html__('%1$s moved to position %2$s of %3$s.', 'simple-tags'),
+            /* translators: %s: term name */
+            'term_move_first' => esc_html__('%s is already first.', 'simple-tags'),
+            /* translators: %s: term name */
+            'term_move_last'  => esc_html__('%s is already last.', 'simple-tags'),
+            'term_order_saved' => esc_html__('Term order saved.', 'simple-tags'),
+            'term_order_error' => esc_html__('Term order could not be saved.', 'simple-tags'),
             'ai_nonce' => wp_create_nonce('taxopress-ai-ajax-nonce'),
             'post_title'              => '%post_title%',
             'post_permalink'          => '%post_permalink%',
@@ -1180,10 +1188,10 @@ class SimpleTags_Admin
 
             if ($section === 'legacy') {
                 $table_sub_tab = '<div class="st-legacy-subtab">
-                <span class="active" data-content=".legacy-tag-cloud-content">' . esc_html__("Tag Cloud", "simple-tags") . '</span> |
-                <span data-content=".legacy-post-tags-content">' . esc_html__("Tags for Current Post", "simple-tags") . '</span> |
-                <span data-content=".legacy-related-posts-content">' . esc_html__("Related Posts", "simple-tags") . '</span> |
-                <span data-content=".legacy-auto-link-content">' . esc_html__("Auto Links", "simple-tags") . '</span>
+                <button type="button" class="st-subtab-button active" aria-pressed="true" data-content=".legacy-tag-cloud-content">' . esc_html__("Tag Cloud", "simple-tags") . '</button> |
+                <button type="button" class="st-subtab-button" aria-pressed="false" data-content=".legacy-post-tags-content">' . esc_html__("Tags for Current Post", "simple-tags") . '</button> |
+                <button type="button" class="st-subtab-button" aria-pressed="false" data-content=".legacy-related-posts-content">' . esc_html__("Related Posts", "simple-tags") . '</button> |
+                <button type="button" class="st-subtab-button" aria-pressed="false" data-content=".legacy-auto-link-content">' . esc_html__("Auto Links", "simple-tags") . '</button>
                 </div>' . PHP_EOL;
             } elseif ($section === 'taxopress-ai') {
                 $table_sub_tab_lists = [];
@@ -1191,7 +1199,7 @@ class SimpleTags_Admin
                 foreach (TaxoPressAiUtilities::get_post_types_options() as $post_type => $post_type_object) {
                     if (!in_array($post_type, ['attachment'])) {
                         $active_pt = ($pt_index === 0) ? 'active' : '';
-                        $table_sub_tab_lists[] = '<span class="' . $active_pt . '" data-content=".taxopress-ai-' . $post_type . '-content">' . esc_html($post_type_object->labels->name) . '</span>';
+                        $table_sub_tab_lists[] = '<button type="button" class="st-subtab-button ' . esc_attr($active_pt) . '" aria-pressed="' . ($pt_index === 0 ? 'true' : 'false') . '" data-content="' . esc_attr('.taxopress-ai-' . $post_type . '-content') . '">' . esc_html($post_type_object->labels->name) . '</button>';
                         $pt_index++;
                     }
                 }
@@ -1201,7 +1209,7 @@ class SimpleTags_Admin
                 $pt_index = 0;
                 foreach (taxopress_get_all_wp_roles() as $role_name => $role_info) {
                     $active_pt = ($pt_index === 0) ? 'active' : '';
-                    $table_sub_tab_lists[] = '<span class="' . $active_pt . '" data-content=".metabox-' . $role_name . '-content">' . esc_html(translate_user_role($role_info['name'])) . '</span>';
+                    $table_sub_tab_lists[] = '<button type="button" class="st-subtab-button ' . esc_attr($active_pt) . '" aria-pressed="' . ($pt_index === 0 ? 'true' : 'false') . '" data-content="' . esc_attr('.metabox-' . $role_name . '-content') . '">' . esc_html(translate_user_role($role_info['name'])) . '</button>';
                     $pt_index++;
                 }
                 $table_sub_tab = '<div class="st-metabox-subtab">' . join(' | ', $table_sub_tab_lists) . '</div>' . PHP_EOL;
@@ -1245,7 +1253,7 @@ class SimpleTags_Admin
                     case 'radio':
                         $input_type = array();
                         foreach ($option[3] as $value => $text) {
-                            $input_type[] = '<label><input type="radio" id="' . $option[0] . '" name="' . $option[0] . '" value="' . esc_attr($value) . '" ' . checked($value, $option_actual[$option[0]], false) . ' /> ' . $text . '</label>' . PHP_EOL;
+                            $input_type[] = '<label><input type="radio" id="' . esc_attr($option[0] . '-' . sanitize_html_class($value)) . '" name="' . $option[0] . '" value="' . esc_attr($value) . '" ' . checked($value, $option_actual[$option[0]], false) . ' /> ' . $text . '</label>' . PHP_EOL;
                         }
                         $input_type = implode('<br />', $input_type);
                         break;
@@ -1272,7 +1280,7 @@ class SimpleTags_Admin
                             $checked_option = !empty($option_actual[$field_name]) ? (int) $option_actual[$field_name] : 0;
                             $selected_option = ($checked_option > 0) ? true : false;
                             $field_description = !empty($field_option['description']) ? '<br /><span class="description stpexplan">' . $field_option['description'] . '</span>' : '';
-                            $input_type[] = '<label><input type="checkbox" id="' . $option[0] . '" name="' . $field_name . '" value="1" ' . checked($selected_option, true, false) . ' /> ' . $field_option['label'] . '</label> ' . $field_description . '<br />' . PHP_EOL;
+                            $input_type[] = '<label><input type="checkbox" id="' . esc_attr($field_name) . '" name="' . $field_name . '" value="1" ' . checked($selected_option, true, false) . ' /> ' . $field_option['label'] . '</label> ' . $field_description . '<br />' . PHP_EOL;
                         }
                         $input_type = implode('<br />', $input_type);
                         break;
@@ -1310,10 +1318,15 @@ class SimpleTags_Admin
                         $icon_wrapper_class = isset($option[6]['icon_wrapper_class']) ? esc_attr($option[6]['icon_wrapper_class']) : 'taxopress-select-icon';
                         $modal_wrapper_class = isset($option[6]['modal_wrapper_class']) ? esc_attr($option[6]['modal_wrapper_class']) : 'taxopress-select-icon-modal';
 
+                        // Make the lock icon keyboard reachable only when it carries popover content; otherwise hide it from AT.
+                        $modal_id = 'taxopress-select-icon-modal-' . sanitize_html_class($option[0]);
+                        $icon_a11y_attrs = (trim(wp_strip_all_tags($modal_content)) !== '')
+                            ? ' tabindex="0" role="img" aria-label="' . esc_attr__('Pro feature', 'simple-tags') . '" aria-describedby="' . esc_attr($modal_id) . '"'
+                            : ' aria-hidden="true"';
                         $input_type = '<div class="' . $class_attr . '">
 								<select id="' . $option[0] . '" name="' . $option[0] . '" ' . $disabled . '>' . $seldata . '</select>
-								<span class="' . $icon_wrapper_class . ' dashicons ' . esc_attr($icon_class) . '">
-									<div class="' . $modal_wrapper_class . '">' . $modal_content . '</div>
+								<span class="' . $icon_wrapper_class . ' dashicons ' . esc_attr($icon_class) . '"' . $icon_a11y_attrs . '>
+									<div class="' . $modal_wrapper_class . '" id="' . esc_attr($modal_id) . '" role="tooltip">' . $modal_content . '</div>
 								</span>
 							</div>' . PHP_EOL;
                         break;
@@ -1372,7 +1385,13 @@ class SimpleTags_Admin
                 }
 
                 // Output
-                $output .= '<tr style="vertical-align: top;" class="' . $class . '"><th scope="row"><label for="' . $option[0] . '">' . $option[1] . '</label></th><td>' . $extra_prefix . ' ' . $input_type . ' ' . $extra_suffix . '</td></tr>' . PHP_EOL;
+                if (!is_array($option[2]) && in_array($option[2], ['radio', 'multiselect', 'sub_multiple_checkbox', 'multiselect_with_desc_top'], true)) {
+                    // Groups of radios/checkboxes: name the group with a fieldset instead of a label pointing at a non-existent id.
+                    $group_label_id = 'st-option-group-' . sanitize_html_class($option[0]);
+                    $output .= '<tr style="vertical-align: top;" class="' . $class . '"><th scope="row"><div id="' . esc_attr($group_label_id) . '">' . $option[1] . '</div></th><td>' . $extra_prefix . ' <fieldset class="st-option-group" aria-labelledby="' . esc_attr($group_label_id) . '">' . $input_type . '</fieldset> ' . $extra_suffix . '</td></tr>' . PHP_EOL;
+                } else {
+                    $output .= '<tr style="vertical-align: top;" class="' . $class . '"><th scope="row"><label for="' . $option[0] . '">' . $option[1] . '</label></th><td>' . $extra_prefix . ' ' . $input_type . ' ' . $extra_suffix . '</td></tr>' . PHP_EOL;
+                }
             }
             $output .= '</table>' . PHP_EOL;
             $output .= '</fieldset>' . PHP_EOL;

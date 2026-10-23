@@ -55,6 +55,11 @@ function load_click_tags(search = '') {
         jQuery(this).attr('aria-pressed', 'true');
       });
 
+      if (window.wp && wp.a11y && wp.a11y.speak && stHelperClickTagsL10n.terms_loaded) {
+        var loadedCount = jQuery('#st-clicks-tags .container_clicktags span[role="button"]').length;
+        wp.a11y.speak(stHelperClickTagsL10n.terms_loaded.replace('%d', loadedCount));
+      }
+
       jQuery('#open_clicktags').hide();
       jQuery('#close_clicktags').show();
       jQuery(".click-tag-search-box").css("background", "");
