@@ -105,12 +105,17 @@ class SimpleTags_Dashboard
                         ?>
                         <div class="taxopress-dashboard-settings-box">
                             <h3><?php echo esc_html($option['label']); ?></h3>
-                            <div class="taxopress-dashboard-settings-description"><?php echo esc_html($option['description']); ?></div>
+                            <div class="taxopress-dashboard-settings-description" id="<?php echo esc_attr('taxopress-dashboard-desc-' . $feature); ?>"><?php echo esc_html($option['description']); ?></div>
                             <div class="taxopress-dashboard-settings-control">
                                 <div class="taxopress-switch-button">
                                     <label class="switch">
-                                        <input type="checkbox" value="1" data-option_key="<?php echo esc_attr($feature_option_key); ?>" data-feature="<?php echo esc_attr($feature); ?>" <?php checked((int) SimpleTags_Plugin::get_option_value($feature_option_key), 1); ?> />
-                                        <span class="slider"></span>
+                                        <input type="checkbox" value="1" id="<?php echo esc_attr('taxopress-dashboard-switch-' . $feature); ?>" aria-describedby="<?php echo esc_attr('taxopress-dashboard-desc-' . $feature); ?>" data-option_key="<?php echo esc_attr($feature_option_key); ?>" data-feature="<?php echo esc_attr($feature); ?>" <?php checked((int) SimpleTags_Plugin::get_option_value($feature_option_key), 1); ?> />
+                                        <span class="screen-reader-text"><?php echo esc_html(sprintf(
+                                            /* translators: %s: feature name */
+                                            __('Enable %s', 'simple-tags'),
+                                            $option['label']
+                                        )); ?></span>
+                                        <span class="slider" aria-hidden="true"></span>
                                     </label>
                                 </div>
                             </div>

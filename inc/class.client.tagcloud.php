@@ -74,6 +74,7 @@ class SimpleTags_Client_TagCloud
             'before'      => '',
             'after'       => '',
             'hide_terms' => 0,
+            'title_header' => '', // Empty for instances saved before this setting existed: no wrapper.
         );
 
         // Get options
@@ -216,6 +217,13 @@ class SimpleTags_Client_TagCloud
         //remove title if in settings
         if ((int)$hide_title > 0) {
             $title = '';
+        } else {
+            // Optional title wrapper (Terms Display "Title header" setting), allowlisted.
+            $title_header = SimpleTags_Client::sanitize_title_header($title_header);
+            $plain_title  = trim((string) $title);
+            if ($title_header !== '' && $plain_title !== '' && strtolower($plain_title) !== 'false') {
+                $title = '<' . $title_header . ' class="taxopress-terms-display-title">' . $plain_title . '</' . $title_header . '>';
+            }
         }
 
         if (empty($terms)) {
@@ -399,7 +407,11 @@ class SimpleTags_Client_TagCloud
             }
         }
 
-        return SimpleTags_Client::output_content('st-tag-cloud', $format, $title, $output, $copyright, '', $wrap_class, $link_class, $before, $after, $taxonomy);
+        // WordPress Default (comma) format: separate terms so they are not read as one run-on word.
+        // "\n" matches core wp_tag_cloud(): whitespace between links, no visible comma.
+        $separator = ($format === 'comma') ? "\n" : '';
+
+        return SimpleTags_Client::output_content('st-tag-cloud', $format, $title, $output, $copyright, $separator, $wrap_class, $link_class, $before, $after, $taxonomy);
     }
 
 

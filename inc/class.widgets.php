@@ -64,7 +64,7 @@ class SimpleTags_Widget extends WP_Widget
             'unit'        => 'pt',
             'format'      => 'flat',
             'color'       => 1,
-            'cmini'       => '#CCCCCC',
+            'cmini'       => '#595959',
             'cmax'        => '#000000',
             'xformat'     => '',
             'adv_usage'   => ''
@@ -362,7 +362,7 @@ class SimpleTags_Widget extends WP_Widget
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('cmini')); ?>">
-                <?php esc_html_e('Font color mini: (default: #CCCCCC)', 'simple-tags'); ?>
+                <?php esc_html_e('Font color mini: (default: #595959)', 'simple-tags'); ?>
                 <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id('cmini')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('cmini')); ?>"
                        value="<?php echo esc_attr($instance['cmini']); ?>"/>

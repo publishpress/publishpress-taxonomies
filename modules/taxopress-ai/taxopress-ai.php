@@ -384,7 +384,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 wp_enqueue_script('taxopress-admin-select2');
 
                 wp_enqueue_script('taxopress-ai-editor-js', plugins_url('', __FILE__) . '/assets/js/taxopress-ai-editor.js', array(
-                    'jquery', 'taxopress-admin-select2'
+                    'jquery', 'taxopress-admin-select2', 'wp-a11y'
                 ), STAGS_VERSION);
 
                 wp_enqueue_style('taxopress-ai-editor-css', plugins_url('', __FILE__) . '/assets/css/taxopress-ai-editor.css', [], STAGS_VERSION, 'all');
@@ -1224,7 +1224,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     if (is_string($add_name) && ! empty($add_name) && stristr($content, $add_name) && !in_array($primary_term, $click_terms)) {
                         $click_terms[] = $primary_term;
                         $flag = true;
-                        echo '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="local ' . esc_attr($class_current) . '" tabindex="0" role="button" aria-pressed="false">' . esc_html($primary_term) . '</span>' . "\n";
+                        echo '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="local ' . esc_attr($class_current) . '" tabindex="0" role="button" aria-pressed="' . (!empty($class_current) ? 'true' : 'false') . '">' . esc_html($primary_term) . '</span>' . "\n";
                     }
                 }
             }
@@ -1514,28 +1514,32 @@ if (!class_exists('TaxoPress_AI_Module')) {
                             foreach ($content_tabs as $key => $label) {
                                 $selected_class = ($tab_index === 0) ? ' active' : '';
                                 ?>
-                                <li class="<?php echo esc_attr($key); ?>_tab<?php echo esc_attr($selected_class); ?>"
-                                    data-content="<?php echo esc_attr($key); ?>"
-                                    aria-current="<?php echo $tab_index === 0 ? 'true' : 'false'; ?>">
-                                    <a href="#<?php echo esc_attr($key); ?>" class="<?php echo esc_attr($key); ?>_icon">
+                                <?php $tp_has_rename = ($can_edit_labels && $fast_update_screen); ?>
+                                <li class="<?php echo esc_attr($key); ?>_tab<?php echo esc_attr($selected_class); ?><?php echo $tp_has_rename ? ' tp-has-rename' : ''; ?>"
+                                    data-content="<?php echo esc_attr($key); ?>">
+                                    <a href="#<?php echo esc_attr($key); ?>" class="<?php echo esc_attr($key); ?>_icon"<?php echo $tab_index === 0 ? ' aria-current="true"' : ''; ?>>
                                         <span class="tp-tab-label">
                                             <?php echo esc_html($label); ?>
                                         </span>
-                                <?php if ($can_edit_labels && $fast_update_screen) { ?>
+                                    </a>
+                                <?php if ($tp_has_rename) { ?>
                                     <div class="pp-tooltips-library" data-toggle="tooltip">
-                                        <span class="dashicons dashicons-edit tp-rename-tab" data-tab="<?php echo esc_attr($key); ?>"></span>
-                                        <div class="taxopress tooltip-text taxopress-ai"><?php echo esc_html__('Edit', 'simple-tags'); ?></div>
+                                        <button type="button" class="dashicons dashicons-edit tp-rename-tab" data-tab="<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr(sprintf(
+                                            /* translators: %s: tab label */
+                                            __('Rename tab: %s', 'simple-tags'),
+                                            $label
+                                        )); ?>"></button>
+                                        <div class="taxopress tooltip-text taxopress-ai" aria-hidden="true"><?php echo esc_html__('Edit', 'simple-tags'); ?></div>
                                     </div>
                                     <span class="tp-rename-inline-controls" style="display:none;">
-                                        <input type="text" class="tp-rename-tab-input" aria-label="<?php echo esc_attr__('Rename tab', 'simple-tags'); ?>" value="<?php echo esc_attr($label); ?>">
+                                        <input type="text" class="tp-rename-tab-input" aria-label="<?php echo esc_attr__('Rename tab', 'simple-tags'); ?>" aria-describedby="<?php echo esc_attr('tp-rename-hint-' . $key); ?>" value="<?php echo esc_attr($label); ?>">
                                         <div class="pp-tooltips-library" data-toggle="tooltip">
-                                            <span class="dashicons dashicons-yes tp-rename-tab-save"></span>
-                                            <div class="taxopress tooltip-text"><?php echo esc_html__('Save, You can also press Enter to save and escape to cancel', 'simple-tags'); ?></div>
+                                            <button type="button" class="dashicons dashicons-yes tp-rename-tab-save" aria-label="<?php echo esc_attr__('Save tab name', 'simple-tags'); ?>"></button>
+                                            <div class="taxopress tooltip-text" id="<?php echo esc_attr('tp-rename-hint-' . $key); ?>"><?php echo esc_html__('Save, You can also press Enter to save and escape to cancel', 'simple-tags'); ?></div>
                                         </div>
                                     </span>
                                     <span class="tp-rename-tab-error" role="alert" aria-live="polite" style="display:none;"></span>
                                 <?php } ?>
-                                </a>
                                 </li>
                                 <?php
                                 $tab_index++;
@@ -1579,6 +1583,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
 
 
                                                         <select class="taxopress-autoterms-options <?php echo esc_attr($auto_term_class); ?>"
+                                                        aria-label="<?php echo esc_attr__('Auto Terms setting', 'simple-tags'); ?>"
                                                         style="display: none;">
                                                                 <?php foreach ($auto_term_options as $option_name => $option_label) : ?>
                                                                     <option value='<?php echo esc_attr($option_name); ?>'>
@@ -1596,7 +1601,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                         placeholder="<?php echo esc_attr__('Create Term', 'simple-tags'); ?>"
                                                         style="display: none; "
                                                         onkeydown="return event.key != 'Enter';" />
-                                                    <select class="taxopress-ai-fetch-create-taxonomy create-term-item" style="display: none;">
+                                                    <select class="taxopress-ai-fetch-create-taxonomy create-term-item" aria-label="<?php echo esc_attr__('Taxonomy for new term', 'simple-tags'); ?>" style="display: none;">
                                                                     <?php foreach ($permitted_post_type_taxonomies as $tax_key => $tax_object) :
                                                                         if (!in_array($tax_key, ['post_format']) && (!empty($tax_object->show_ui) || !empty($support_private_taxonomy))) {
                                                                             $rest_api_base = !empty($tax_object->rest_base) ? $tax_object->rest_base : $tax_key;
@@ -1616,7 +1621,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                         <span class="btn-text"><?php echo esc_html__('Create Term', 'simple-tags'); ?></span>
                                                     </button>
 
-                                                    <select class="taxopress-ai-fetch-taxonomy-select" style="<?php echo esc_attr($hide_filters); ?>">
+                                                    <select class="taxopress-ai-fetch-taxonomy-select" aria-label="<?php echo esc_attr__('Taxonomy', 'simple-tags'); ?>" style="<?php echo esc_attr($hide_filters); ?>">
                                                                     <?php foreach ($post_type_taxonomies as $tax_key => $tax_object) :
                                                                         if (!in_array($tax_key, ['post_format']) && (!empty($tax_object->show_ui) || !empty($support_private_taxonomy))) {
                                                                             $rest_api_base = !empty($tax_object->rest_base) ? $tax_object->rest_base : $tax_key;
@@ -1632,6 +1637,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                                     endforeach; ?>
                                                     </select>
                                                     <select id="existing_terms_orderby"
+                                                        aria-label="<?php echo esc_attr__('Order terms by', 'simple-tags'); ?>"
                                                         class="existing-term-item" style="<?php echo esc_attr($hide_filters); ?>">
                                                                 <?php foreach (TaxoPressAiUtilities::get_existing_terms_orderby() as $key => $label) : ?>
                                                             <option value='<?php echo esc_attr($key); ?>'
@@ -1641,6 +1647,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                                 <?php endforeach; ?>
                                                     </select>
                                                     <select id="existing_terms_order"
+                                                        aria-label="<?php echo esc_attr__('Sort direction', 'simple-tags'); ?>"
                                                         class="existing-term-item" style="<?php echo esc_attr($hide_filters); ?>">
                                                                 <?php foreach (TaxoPressAiUtilities::get_existing_terms_order() as $key => $label) : ?>
                                                             <option value='<?php echo esc_attr($key); ?>'
@@ -1654,10 +1661,10 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                         step="1" min="0"
                                                         class="existing-term-item" 
                                                         type="number" 
+                                                        aria-label="<?php echo esc_attr__('Maximum terms', 'simple-tags'); ?>"
                                                         value="<?php echo esc_attr($existing_terms_maximum_terms); ?>" 
                                                         placeholder="<?php echo esc_attr__('Count', 'simple-tags'); ?>"
-                                                        style="<?php echo esc_attr($hide_filters); ?>"
-                                                        min-width: unset;width: 80px;"
+                                                        style="<?php echo esc_attr($hide_filters); ?> min-width: unset; width: 80px;"
                                                         onkeydown="return event.key != 'Enter';" />
                                                     <button class="button button-secondary taxopress-ai-fetch-button" style="<?php echo esc_attr($hide_filters); ?>">
                                                         <div class="spinner"></div>
@@ -1677,7 +1684,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                                                             echo '</p></div>';
                                                         }
                                                         ?>
-                                                <div class="taxopress-ai-fetch-result-msg <?php echo esc_attr($key); ?>"></div>
+                                                <div class="taxopress-ai-fetch-result-msg <?php echo esc_attr($key); ?>" role="status" aria-live="polite"></div>
                                             </td>
                                         </tr>
                                     </tbody>

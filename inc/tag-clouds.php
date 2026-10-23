@@ -333,28 +333,28 @@ class SimpleTags_Tag_Clouds
 
 
                                             <ul class="taxopress-tab">
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_general' ? 'true' : 'false'; ?>" class="tagcloud_general_tab <?php echo $active_tab === 'tagcloud_general' ? 'active' : ''; ?>" data-content="tagcloud_general">
-                                                    <a href="#tagcloud_general"><span><?php esc_html_e('General', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_general_tab <?php echo $active_tab === 'tagcloud_general' ? 'active' : ''; ?>" data-content="tagcloud_general">
+                                                    <a href="#tagcloud_general"<?php echo $active_tab === 'tagcloud_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('General', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_terms' ? 'true' : 'false'; ?>" class="tagcloud_terms_tab <?php echo $active_tab === 'tagcloud_terms' ? 'active' : ''; ?>" data-content="tagcloud_terms">
-                                                    <a href="#tagcloud_terms"><span><?php esc_html_e('Choose Terms', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_terms_tab <?php echo $active_tab === 'tagcloud_terms' ? 'active' : ''; ?>" data-content="tagcloud_terms">
+                                                    <a href="#tagcloud_terms"<?php echo $active_tab === 'tagcloud_terms' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Choose Terms', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_layout' ? 'true' : 'false'; ?>" class="tagcloud_layout_tab <?php echo $active_tab === 'tagcloud_layout' ? 'active' : ''; ?>" data-content="tagcloud_layout">
-                                                    <a href="#tagcloud_layout"><span><?php esc_html_e('Layout', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_layout_tab <?php echo $active_tab === 'tagcloud_layout' ? 'active' : ''; ?>" data-content="tagcloud_layout">
+                                                    <a href="#tagcloud_layout"<?php echo $active_tab === 'tagcloud_layout' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Layout', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_exceptions' ? 'true' : 'false'; ?>" class="tagcloud_exceptions_tab <?php echo $active_tab === 'tagcloud_exceptions' ? 'active' : ''; ?>" data-content="tagcloud_exceptions">
-                                                    <a href="#tagcloud_exceptions"><span><?php esc_html_e('Exceptions', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_exceptions_tab <?php echo $active_tab === 'tagcloud_exceptions' ? 'active' : ''; ?>" data-content="tagcloud_exceptions">
+                                                    <a href="#tagcloud_exceptions"<?php echo $active_tab === 'tagcloud_exceptions' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Exceptions', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_design' ? 'true' : 'false'; ?>" class="tagcloud_design_tab <?php echo $active_tab === 'tagcloud_design' ? 'active' : ''; ?>" data-content="tagcloud_design">
-                                                    <a href="#tagcloud_design"><span><?php esc_html_e('Design', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_design_tab <?php echo $active_tab === 'tagcloud_design' ? 'active' : ''; ?>" data-content="tagcloud_design">
+                                                    <a href="#tagcloud_design"<?php echo $active_tab === 'tagcloud_design' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Design', 'simple-tags'); ?></span></a>
                                                 </li>
 
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_advanced' ? 'true' : 'false'; ?>" class="tagcloud_advanced_tab <?php echo $active_tab === 'tagcloud_advanced' ? 'active' : ''; ?>" data-content="tagcloud_advanced">
-                                                    <a href="#tagcloud_advanced"><span><?php esc_html_e('Display Format', 'simple-tags'); ?></span></a>
+                                                <li class="tagcloud_advanced_tab <?php echo $active_tab === 'tagcloud_advanced' ? 'active' : ''; ?>" data-content="tagcloud_advanced">
+                                                    <a href="#tagcloud_advanced"<?php echo $active_tab === 'tagcloud_advanced' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Display Format', 'simple-tags'); ?></span></a>
                                                 </li>
 
                                             </ul>
@@ -409,6 +409,32 @@ class SimpleTags_Tag_Clouds
                                                     'namearray'  => 'taxopress_tag_cloud',
                                                     'name'       => 'hide_title',
                                                     'labeltext'  => esc_html__('Hide title in output?', 'simple-tags'),
+                                                    'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    ]);
+
+                                                    // Title header: H2 for new displays; existing displays without the setting keep "None".
+                                                    $select = [
+                                                    'options' => [
+                                                    [ 'attr' => '', 'text' => esc_attr__('None', 'simple-tags') ],
+                                                    [ 'attr' => 'h2', 'text' => esc_attr__('H2', 'simple-tags'), 'default' => 'true' ],
+                                                    [ 'attr' => 'h3', 'text' => esc_attr__('H3', 'simple-tags') ],
+                                                    [ 'attr' => 'h4', 'text' => esc_attr__('H4', 'simple-tags') ],
+                                                    [ 'attr' => 'h5', 'text' => esc_attr__('H5', 'simple-tags') ],
+                                                    [ 'attr' => 'h6', 'text' => esc_attr__('H6', 'simple-tags') ],
+                                                    [ 'attr' => 'p', 'text' => esc_attr__('Paragraph', 'simple-tags') ],
+                                                    [ 'attr' => 'div', 'text' => esc_attr__('Div', 'simple-tags') ],
+                                                    ],
+                                                    ];
+                                                    if (isset($current) && is_array($current)) {
+                                                        $select['selected'] = !empty($current['title_header']) ? $current['title_header'] : 'none';
+                                                    } else {
+                                                        $select['selected'] = '';
+                                                    }
+                                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_select_checkbox_input_main([
+                                                    'namearray'  => 'taxopress_tag_cloud',
+                                                    'name'       => 'title_header',
+                                                    'labeltext'  => esc_html__('Title header', 'simple-tags'),
                                                     'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ]);
 
@@ -937,7 +963,7 @@ class SimpleTags_Tag_Clouds
                                                        'class'     => 'st-full-width',
                                                        'rows'      => '4',
                                                        'cols'      => '40',
-                                                       'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>'),
+                                                       'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%%tag_count_sr%</a>'),
                                                        'labeltext' => esc_html__('Term link format', 'simple-tags'),
                                                        'helptext'  => sprintf(esc_html__('This option allows you to change the format of your terms. You can use any of the tokens shown below. Find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-tag-clouds/">', '</a>'),
                                                        'required'  => false,
@@ -1073,15 +1099,15 @@ class SimpleTags_Tag_Clouds
 
 
         <?php # Modal Windows;?>
-<div class="remodal" data-remodal-id="taxopress-modal-alert"
+<div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-     <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+     <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
     <div id="taxopress-modal-alert-content"></div>
     <br>
     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
 </div>
 
-<div class="remodal" data-remodal-id="taxopress-modal-confirm"
+<div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
     <div id="taxopress-modal-confirm-content"></div>
     <br>
@@ -1160,6 +1186,7 @@ class SimpleTags_Tag_Clouds
             'max'         => $config['max'] ?? 20,
             'limit_days' => $config['limit_days'] ?? '',
             'min_usage'  => $config['min_usage'] ?? 0,
+            'title_header' => $config['title_header'] ?? '',
         ]);
 
         // Get the tag cloud output
