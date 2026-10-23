@@ -627,14 +627,20 @@
     // -------------------------------------------------------------
     //   Auto terms tab action
     // -------------------------------------------------------------
-    $(document).on('click', '.simple-tags-nav-tab-wrapper li', function (e) {
+    $(document).on('click', '.simple-tags-nav-tab-wrapper .nav-tab', function (e) {
       e.preventDefault();
+      const $tab = $(this);
+      const $wrapper = $tab.closest('.simple-tags-nav-tab-wrapper');
       //change active tab
-      $('.nav-tab').removeClass('nav-tab-active');
-      $(this).addClass('nav-tab-active');
+      $wrapper.find('.nav-tab').removeClass('nav-tab-active').removeAttr('aria-current');
+      $tab.addClass('nav-tab-active').attr('aria-current', 'page');
       //change active content
       $('.auto-terms-content').hide();
-      $($(this).attr('data-page')).show();
+      $($tab.attr('data-page')).show();
+
+      if (window.history && window.history.replaceState && $tab.attr('href')) {
+        window.history.replaceState({}, '', $tab.attr('href'));
+      }
     });
 
     // -------------------------------------------------------------
@@ -820,6 +826,12 @@
       $('#removeterm_match').attr('data-prev', $('#removeterm_match').val());
       $('#removeterm_match').val('');
       $('.removeterms-to-match-input').hide();
+    });
+
+    $(document).on('click', '.delete-unused-term', function (e) {
+      if (!window.confirm(st_admin_localize.confirm_delete_low_use_terms)) {
+        e.preventDefault();
+      }
     });
 
         // -------------------------------------------------------------
@@ -2448,6 +2460,7 @@
     function hide_show_source_tab_group_fields() {
       var tabs = [
         'existing',
+        'wordpress-ai',
         'openai',
         'ibm-watson',
         'dandelion',
@@ -2456,6 +2469,7 @@
 
       tabs.forEach(function(tab) {
         if (
+        (tab === 'openai' && st_admin_localize.enable_openai_ai_source !== '1') ||
         (tab === 'ibm-watson' && st_admin_localize.enable_ibm_watson_ai_source !== '1') ||
         (tab === 'dandelion' && st_admin_localize.enable_dandelion_ai_source !== '1') ||
         (tab === 'lseg-refinitiv' && st_admin_localize.enable_lseg_ai_source !== '1')
