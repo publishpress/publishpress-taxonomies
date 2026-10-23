@@ -179,6 +179,8 @@ class SimpleTags_Client_RelatedPosts
                 $title = '';
             } else {
                 $new_title = '';
+                // Allowlist the wrapper tag (keeps h1 for existing instances).
+                $title_header = SimpleTags_Client::sanitize_title_header($title_header, array('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div'));
                 if (!empty($title_header)) {
                     $new_title .= '<' . $title_header . '>';
                 }
@@ -572,6 +574,12 @@ class SimpleTags_Client_RelatedPosts
 
             if (empty($post_thumbnail_url)) {
                 $element_loop = preg_replace('/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
+            } elseif (empty($post_thumbnail_id) || empty($image)) {
+                // Fallback/default image is decorative.
+                $element_loop = self::set_thumb_alt_empty($element_loop);
+            } else {
+                // Avoid announcing the title twice when the link text already contains it.
+                $element_loop = self::empty_redundant_title_alt($element_loop);
             }
 
             $element_loop = str_replace('%post_thumb_url%', $post_thumbnail_url, $element_loop);
@@ -581,6 +589,21 @@ class SimpleTags_Client_RelatedPosts
             $element_loop = str_replace('%post_permalink%', get_permalink($result), $element_loop);
             $element_loop = str_replace('%post_title%', $post_title, $element_loop);
             $element_loop = str_replace('%post_title_attribute%', esc_html(wp_strip_all_tags($post_title)), $element_loop);
+            // Default "(N)" output: keep the visible number, give screen readers "N comments".
+            // Needs frontend.css (not loaded in feeds or when disabled) and only in text, never inside a tag.
+            if (strpos($element_loop, '(%post_comment%)') !== false && class_exists('SimpleTags_Client') && SimpleTags_Client::frontend_script_enqueued()) {
+                $comment_count = (int) $result->comment_count;
+                /* translators: %s: number of comments */
+                $comment_text  = sprintf(_n('%s comment', '%s comments', $comment_count, 'simple-tags'), number_format_i18n($comment_count));
+                $comment_html  = '(<span aria-hidden="true">' . $comment_count . '</span><span class="taxopress-sr-only">' . esc_html($comment_text) . '</span>)';
+                $parts         = preg_split('/(<[^>]*>)/', $element_loop, -1, PREG_SPLIT_DELIM_CAPTURE);
+                foreach ($parts as $i => $part) {
+                    if ($part !== '' && $part[0] !== '<') {
+                        $parts[$i] = str_replace('(%post_comment%)', $comment_html, $part);
+                    }
+                }
+                $element_loop = implode('', $parts);
+            }
             $element_loop = str_replace('%post_comment%', (int) $result->comment_count, $element_loop);
             $element_loop = str_replace('%post_tagcount%', (int) $result->counter, $element_loop);
             $element_loop = str_replace('%post_id%', $result->ID, $element_loop);
@@ -644,6 +667,53 @@ class SimpleTags_Client_RelatedPosts
         }
 
         return SimpleTags_Client::output_content('st-related-posts', $format, $title, $output, $copyright, $separator, $wrap_class, $link_class, $before, $after);
+    }
+
+    /**
+     * Set alt="" on the %post_thumb_url% image(s) of a format string.
+     *
+     * @param string $element_loop
+     *
+     * @return string
+     */
+    public static function set_thumb_alt_empty($element_loop)
+    {
+        return preg_replace_callback(
+            '/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i',
+            function ($matches) {
+                $img = $matches[0];
+                if (preg_match('/\balt\s*=\s*("[^"]*"|\'[^\']*\')/i', $img)) {
+                    return preg_replace('/\balt\s*=\s*("[^"]*"|\'[^\']*\')/i', 'alt=""', $img, 1);
+                }
+                return preg_replace('/^<' . 'img\b/i', '<' . 'img alt=""', $img, 1);
+            },
+            $element_loop
+        );
+    }
+
+    /**
+     * When a link contains the post title as text and its image alt is just the title,
+     * empty the alt so the title is not announced twice.
+     *
+     * @param string $element_loop
+     *
+     * @return string
+     */
+    public static function empty_redundant_title_alt($element_loop)
+    {
+        return preg_replace_callback(
+            '/<a\b[^>]*>.*?<\/a>/is',
+            function ($matches) {
+                $link = $matches[0];
+                $text = preg_replace('/<' . 'img\b[^>]*>/i', '', $link);
+                $text = wp_strip_all_tags($text);
+                if (strpos($text, '%post_title%') === false) {
+                    return $link;
+                }
+                return preg_replace('/(<' . 'img\b[^>]*\b)alt\s*=\s*"\s*%post_title(?:_attribute)?%\s*"/i', '$1alt=""', $link);
+            },
+            $element_loop
+        );
     }
 
     /**

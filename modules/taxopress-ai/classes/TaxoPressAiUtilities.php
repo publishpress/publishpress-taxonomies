@@ -336,7 +336,7 @@ if (!class_exists('TaxoPressAiUtilities')) {
                     }
 
                     $response_content .= '<span class="result-terms ' . esc_attr($additional_class) . '" data-term_link_id="' . esc_attr($term_link_id) . '">';
-                    $response_content .= '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="term-name ' . esc_attr($taxonomy) . '" tabindex="0" role="button" aria-pressed="false">';
+                    $response_content .= '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="term-name ' . esc_attr($taxonomy) . '" tabindex="0" role="button" aria-pressed="' . ($selected_terms ? 'true' : 'false') . '">';
                     $display_name = stripslashes($linked_term_name);
                     if ($show_term_slug && $term_id) {
                         $term_obj = get_term($term_id, $taxonomy);
@@ -486,7 +486,7 @@ if (!class_exists('TaxoPressAiUtilities')) {
                     }
 
                     $response_content .= '<span class="result-terms ' . esc_attr($additional_class) . '" data-term_link_id="' . esc_attr($term_link_id) . '">';
-                    $response_content .= '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="term-name ' . esc_attr($taxonomy) . '" tabindex="0" role="button" aria-pressed="false">';
+                    $response_content .= '<span data-term_id="' . esc_attr($term_id) . '" data-taxonomy="' . esc_attr($taxonomy) . '" class="term-name ' . esc_attr($taxonomy) . '" tabindex="0" role="button" aria-pressed="' . ($selected_terms ? 'true' : 'false') . '">';
                     $response_content .= esc_html(stripslashes($linked_term_name));
                     $response_content .= '</span>';
                     $count_output = '';

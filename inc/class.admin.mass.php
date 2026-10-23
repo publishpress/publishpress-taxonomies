@@ -218,6 +218,7 @@ class SimpleTags_Admin_Mass
 
 
                 <p class="search-box">
+                        <label class="screen-reader-text" for="post-search-input"><?php esc_html_e('Search post title and content', 'simple-tags'); ?></label>
                         <input type="text" id="post-search-input" placeholder="<?php esc_attr_e('Search post title and content', 'simple-tags'); ?>" name="s" value="<?php the_search_query(); ?>"/>
                         <input type="submit" value="<?php _e('Search', 'simple-tags'); ?>" class="button"/>
                 </p>
@@ -255,7 +256,8 @@ class SimpleTags_Admin_Mass
 
                             if ($month_count && ! (1 == $month_count && 0 == $arc_result[0]->mmonth)) {
                                 ?>
-                                <select name='m'>
+                                <label class="screen-reader-text" for="taxopress-mass-filter-date"><?php esc_html_e('Filter by date', 'simple-tags'); ?></label>
+                                <select name='m' id="taxopress-mass-filter-date">
                                     <option <?php selected(@sanitize_text_field(wp_unslash($_GET['m'])), 0); ?>
                                         value='0'><?php _e('Show all dates', 'simple-tags'); ?></option>
                                     <?php
@@ -282,6 +284,7 @@ class SimpleTags_Admin_Mass
                             }
                             ?>
 
+                            <label class="screen-reader-text" for="posts_per_page"><?php esc_html_e('Number of items per page', 'simple-tags'); ?></label>
                             <select name="posts_per_page" id="posts_per_page">
                                 <option <?php if (! isset($_GET['posts_per_page'])) {
                                     echo 'selected="selected"';
@@ -314,6 +317,7 @@ class SimpleTags_Admin_Mass
                                         }
                                         ?>
 
+                            <label class="screen-reader-text" for="<?php echo esc_attr(SimpleTags_Admin::$taxonomy); ?>"><?php esc_html_e('Filter by term', 'simple-tags'); ?></label>
                             <select name="massedit_filter_term" id="<?php echo esc_attr(SimpleTags_Admin::$taxonomy); ?>"
                                     class="taxopress-select2-term-filter"
                                     data-placeholder="<?php echo esc_attr__('Filter by term', 'simple-tags'); ?>"
@@ -345,7 +349,7 @@ class SimpleTags_Admin_Mass
                         <thead>
                         <tr>
                             <th class="manage-column"><?php esc_html_e('Post title', 'simple-tags'); ?></th>
-                            <th class="manage-column"><?php printf(esc_html__('Terms : %s', 'simple-tags'), esc_html(SimpleTags_Admin::$taxo_name)); ?></th>
+                            <th class="manage-column" id="taxopress-mass-terms-col"><?php printf(esc_html__('Terms : %s', 'simple-tags'), esc_html(SimpleTags_Admin::$taxo_name)); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -356,11 +360,11 @@ class SimpleTags_Admin_Mass
                             $class = ($class == 'alternate') ? '' : 'alternate';
                             ?>
                             <tr valign="top" class="<?php echo esc_attr($class); ?>">
-                                <th scope="row"><a
+                                <th scope="row" id="taxopress-mass-post-<?php echo (int) get_the_ID(); ?>"><a
                                         href="<?php echo esc_url(admin_url('post.php?action=edit&amp;post=' . get_the_ID())); ?>"
                                         title="<?php esc_attr_e('Edit', 'simple-tags'); ?>"><?php echo (esc_html(get_the_title()) == '') ? (int)get_the_ID() : esc_html(get_the_title()); ?></a>
                                 </th>
-                                <td><input id="tags-input<?php the_ID(); ?>" class="autocomplete-input tags_input taxopress-mass-edit-input"
+                                <td><input id="tags-input<?php the_ID(); ?>" aria-labelledby="taxopress-mass-terms-col taxopress-mass-post-<?php echo (int) get_the_ID(); ?>" class="autocomplete-input tags_input taxopress-mass-edit-input"
                                            type="text" size="100" name="tags[<?php echo (int)get_the_ID(); ?>]"
                                            value="<?php echo esc_attr(SimpleTags_Admin::getTermsToEdit(SimpleTags_Admin::$taxonomy, get_the_ID())); ?>"/>
                                 </td>

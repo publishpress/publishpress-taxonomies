@@ -161,6 +161,7 @@ class Taxopress_Posts_List extends WP_List_Table
 
 
             <div class="alignleft actions autoposts-posts-table-filter">
+                <label class="screen-reader-text" for="posts_term_filter"><?php esc_html_e('Filter by term', 'simple-tags'); ?></label>
                 <select data-nonce="<?php echo esc_attr(wp_create_nonce('taxopress-term-search')); ?>"
                     class="posts-term-filter-select taxopress-select2 taxopress-term-search"
                     data-placeholder="<?php esc_attr_e('Terms Filter', 'simple-tags'); ?>"
@@ -178,6 +179,7 @@ class Taxopress_Posts_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="posts_post_type_filter"><?php esc_html_e('Filter by post type', 'simple-tags'); ?></label>
                 <select class="posts-post-type-filter-select taxopress-select2 taxopress-simple-select2"
                     name="posts_post_type_filter"              
                     id="posts_post_type_filter"
@@ -190,7 +192,7 @@ class Taxopress_Posts_List extends WP_List_Table
                     ?>
                 </select>
 
-                <a href="javascript:void(0)" class="taxopress-posts-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></a>
+                <button type="button" class="taxopress-posts-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></button>
 
             </div>
             <?php

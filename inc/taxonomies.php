@@ -444,7 +444,7 @@ class SimpleTags_Admin_Taxonomies
 
                 <?php
                 if ($external_edit) {
-                    echo '<input type="hidden" name="taxonomy_external_edit" aria-current="false" class="taxonomy_external_edit" value="1" />';
+                    echo '<input type="hidden" name="taxonomy_external_edit" class="taxonomy_external_edit" value="1" />';
                 }
                 ?>
 
@@ -470,46 +470,46 @@ class SimpleTags_Admin_Taxonomies
                                     <div class="main">
 
                                         <ul class="st-taxonomy-tab">
-                                            <li aria-current="true" class="taxonomy_general_tab active" data-content="taxonomy_general">
-                                                <a href="#taxonomy_general">
+                                            <li class="taxonomy_general_tab active" data-content="taxonomy_general">
+                                                <a href="#taxonomy_general" aria-current="true">
                                                     <span><?php esc_html_e('General', 'simple-tags'); ?></span>
                                                 </a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_posttypes_tab" data-content="taxonomy_posttypes">
+                                            <li class="taxonomy_posttypes_tab" data-content="taxonomy_posttypes">
                                                 <a href="#taxonomy_posttypes">
                                                     <span><?php esc_html_e('Post Types', 'simple-tags'); ?></span>
                                                 </a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_permalinks_tab" data-content="taxonomy_permalinks">
+                                            <li class="taxonomy_permalinks_tab" data-content="taxonomy_permalinks">
                                                 <a href="#taxonomy_permalinks">
                                                     <span><?php esc_html_e('Permalinks', 'simple-tags'); ?></span>
                                                 </a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_menus_tab" data-content="taxonomy_menus">
+                                            <li class="taxonomy_menus_tab" data-content="taxonomy_menus">
                                                 <a href="#taxonomy_menus"><span><?php esc_html_e('Admin Area', 'simple-tags'); ?></span></a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_labels_tab" data-content="taxonomy_labels">
+                                            <li class="taxonomy_labels_tab" data-content="taxonomy_labels">
                                                 <a href="#taxonomy_labels"><span><?php esc_html_e('Other Labels', 'simple-tags'); ?></span></a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_restapi_tab" data-content="taxonomy_restapi">
+                                            <li class="taxonomy_restapi_tab" data-content="taxonomy_restapi">
                                                 <a href="#taxonomy_restapi"><span><?php esc_html_e('REST API', 'simple-tags'); ?></span></a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_advanced_tab" data-content="taxonomy_advanced">
+                                            <li class="taxonomy_advanced_tab" data-content="taxonomy_advanced">
                                                 <a href="#taxonomy_advanced"><span><?php esc_html_e('Advanced', 'simple-tags'); ?></span></a>
                                             </li>
 
-                                            <li aria-current="false" class="taxonomy_order_tab" data-content="taxonomy_order">
+                                            <li class="taxonomy_order_tab" data-content="taxonomy_order">
                                                 <a href="#taxonomy_order"><span><?php esc_html_e('Order', 'simple-tags'); ?></span></a>
                                             </li>
 
                                             <?php if ($taxonomy_edit && !$external_edit) { ?>
-                                            <li aria-current="false" class="taxonomy_slug_tab" data-content="taxonomy_slug">
+                                            <li class="taxonomy_slug_tab" data-content="taxonomy_slug">
                                                 <a href="#taxonomy_slug"><span><?php esc_html_e('Slug', 'simple-tags'); ?></span></a>
                                             </li>
                                             <?php } ?>
@@ -518,7 +518,7 @@ class SimpleTags_Admin_Taxonomies
                                             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading non-state-modifying GET parameter for conditional UI display
                                             if (!empty($_GET) && !empty($_GET['action']) && 'edit' === $_GET['action']) {
                                                 ?>
-                                            <li aria-current="false" class="taxonomy_delete_tab" data-content="taxonomy_delete">
+                                            <li class="taxonomy_delete_tab" data-content="taxonomy_delete">
                                                 <a href="#taxonomy_delete"><span><?php esc_html_e('Deactivate or Delete', 'simple-tags'); ?></span></a>
                                             </li>
                                             <?php } ?>
@@ -1971,15 +1971,15 @@ class SimpleTags_Admin_Taxonomies
         <div class="clear"></div>
 
         <?php # Modal Windows;?>
-<div class="remodal" data-remodal-id="taxopress-modal-alert"
+<div class="remodal" data-remodal-id="taxopress-modal-alert" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-alert-title" aria-describedby="taxopress-modal-alert-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
-     <div class="" style="color:red;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
+     <div class="" id="taxopress-modal-alert-title" style="color:#d63638;"><?php echo esc_html__('Please complete the following required fields to save your changes:', 'simple-tags'); ?></div>
     <div id="taxopress-modal-alert-content"></div>
     <br>
     <button data-remodal-action="cancel" class="remodal-cancel"><?php echo esc_html__('Okay', 'simple-tags'); ?></button>
 </div>
 
-<div class="remodal" data-remodal-id="taxopress-modal-confirm"
+<div class="remodal" data-remodal-id="taxopress-modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="taxopress-modal-confirm-content"
      data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
     <div id="taxopress-modal-confirm-content"></div>
     <br>
