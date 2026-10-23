@@ -1078,6 +1078,10 @@ class SimpleTags_Autoterms
                                                                 <div class="taxopress-button-group">
                                                                     <label class="existing current">
                                                                         <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="existing_terms"><?php esc_html_e('Existing Terms', 'simple-tags'); ?></label>
+                                                                    <?php if (function_exists('wp_ai_client_prompt')) : ?>
+                                                                    <label class="wordpress-ai">
+                                                                        <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="wordpress_ai"><?php esc_html_e('AI Connectors', 'simple-tags'); ?></label>
+                                                                    <?php endif; ?>
                                                                     <label class="openai">
                                                                         <input disabled type="checkbox" name="taxopress_autoterm[autoterm_source_tab][]" value="open_ai"><?php esc_html_e('OpenAI', 'simple-tags'); ?></label>
                                                                     <label class="ibm-watson">

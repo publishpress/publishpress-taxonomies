@@ -50,7 +50,7 @@ class BundledTranslations
     }
 
     /**
-     * Initialize the translation override.
+     * Initialize the translation override and the Hub translation notice.
      *
      * @return void
      */
@@ -62,6 +62,9 @@ class BundledTranslations
 
         add_filter('load_translation_file', [$this, 'filterTranslationFile'], 10, 3);
         add_filter('load_script_translation_file', [$this, 'filterScriptTranslationFile'], 10, 3);
+
+        $notice = new HubTranslationNotice($this->domain, $this->languagesDir);
+        $notice->register();
     }
 
     /**
