@@ -381,6 +381,26 @@ class TaxopressCoreAdmin
     public function taxopress_core_autoterm_terms_to_use_field($current)
     {
         ?>
+        <?php if (function_exists('wp_ai_client_prompt')) : ?>
+        <tr>
+            <td colspan="2">
+                <div class="taxopress-content-promo-box advertisement-box-content postbox postbox upgrade-pro autoterm-terms-use-wordpress-ai-notice">
+                    <div class="postbox-header">
+                        <h3 class="advertisement-box-header hndle is-non-sortable">
+                            <span><?php echo esc_html__('Auto Terms using AI Connectors', 'simple-tags'); ?></span>
+                        </h3>
+                    </div>
+
+                    <div class="inside-content">
+                        <p><?php echo esc_html__('PublishPress Taxonomies Pro can generate terms using any compatible AI provider configured in Settings > Connectors.', 'simple-tags'); ?></p>
+                        <div class="upgrade-btn">
+                            <a href="https://publishpress.com/taxonomies/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <?php endif; ?>
         <tr>
             <td colspan="2">
                 <div class="taxopress-content-promo-box advertisement-box-content postbox postbox upgrade-pro autoterm-terms-use-openai-notice">
@@ -843,7 +863,7 @@ class TaxopressCoreAdmin
         );
         ?>
             <tr>
-                <th scope="row"><?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?></th>
+                <th scope="row"><?php echo esc_html__('Order terms for display by', 'simple-tags'); ?></th>
                 <td>
                     <?php foreach ($orderby_options as $option) :
                         $is_id = ($option['attr'] === 'term_id');
@@ -883,7 +903,7 @@ class TaxopressCoreAdmin
             $selected_order = isset($current['order']) ? $current['order'] : '';
             ?>
             <tr>
-                <th scope="row"><?php echo esc_html__('Ordering for choosing terms for display', 'simple-tags'); ?></th>
+                <th scope="row"><?php echo esc_html__('Order direction', 'simple-tags'); ?></th>
                 <td>
                 <?php foreach ($order_options as $option) :
                     $is_asc = ($option['attr'] === 'asc');
@@ -990,7 +1010,7 @@ class TaxopressCoreAdmin
         <tr>
             <th>
                 <div class="taxopress_tag_cloud[format]">
-                    <?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?>
+                    <?php echo esc_html__('Order terms for display by', 'simple-tags'); ?>
                 </div>
             </th>
             <td>
@@ -1034,7 +1054,7 @@ class TaxopressCoreAdmin
         <tr>
             <th>
                 <div class="taxopress_post_tags[format]">
-                    <?php echo esc_html__('Method for choosing terms for display', 'simple-tags'); ?>
+                    <?php echo esc_html__('Order terms for display by', 'simple-tags'); ?>
                 </div>
             </th>
             <td>

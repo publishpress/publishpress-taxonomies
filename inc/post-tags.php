@@ -510,7 +510,7 @@ class SimpleTags_Post_Tags
                                                     echo $ui->get_select_checkbox_input_main([
                                                             'namearray'  => 'taxopress_post_tags',
                                                             'name'       => 'order',
-                                                            'labeltext'  => esc_html__('Ordering for choosing terms for display', 'simple-tags'),
+                                                            'labeltext'  => esc_html__('Order direction', 'simple-tags'),
                                                             'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ]);
 

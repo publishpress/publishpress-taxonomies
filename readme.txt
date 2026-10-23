@@ -3,7 +3,7 @@ Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojop
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -267,6 +267,38 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 == Changelog ==
 
+== [4.0.1] - 26 October, 2026
+* Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
+* Update: Add "Use only some terms in the selected taxonomy" to OpenAI, #2906
+* Update: Allow users to automatically show terms over a post, #2909
+* Update: Move Options Settings to Layout tab in Terms Display, #2910
+* Update: Add a Minimum term usage for Terms Display, #2911
+* Update: Move Terms display format to Display Format Tab, #2912
+* Update: Update "Display Format" for "Terms for Current Post, #2913
+* Update: Move Related Posts format into Display Format tab, #2914
+* Update: Add a debug log to the Auto Terms preview, #2918
+* Update: Support multiple taxonomies in Auto Terms, #2919
+* Update: Improve OpenAI response, #2920
+* Update: Exclude keywords not just terms in Auto Term, #2922
+* Update: Support for more custom fields for Auto Links, #2925
+* Update: Redesign the Manage Terms box, #2927
+* Update: Add Tags Import/Export as the first Manage Terms tab, #3072
+* Update: Clarify term ordering labels, #2939
+* Update: Add accessible labels to form inputs, #3045
+* Update: Add alt text to plugin images, #3044
+* Update: Replace JS innerHTML text sinks, #3043
+* Update: Harden related posts password comparison, #3042
+* Update: Replace discouraged PHP functions, #3041
+* Update: Use checked nonce helpers for bulk actions, #3040
+* Update: Replace merge term callback variables, #3038
+* Update: Replace taxonomy sort accessor callback, #3037
+* Update: Replace terms hierarchy callback variable, #3039
+* Fixed: Issue with Hidden Terms and canonical tag, #2915
+* Fixed: Footer design isn't quite right, #3070
+* Fixed: Some Upgrade to Pro links are incorrect, #3071
+* Fixed: limit post content sent by AI term previews, #3074
+* Fixed: Join the CHANGELOG.md introduction onto one line, #3077
+
 = [4.0.0] - 28 September, 2026
 * Rebrand: Move TaxoPress to PublishPress
 
@@ -285,25 +317,5 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Update: Restrict administrative taxonomy term lookups, #3011
 * Update: Harden AI integrations and metabox mutations, #3010
 * Add a loco.xml file, #3009
-
-= [3.52.0] - 19 August, 2026 =
-* Update: Normalize Auto Terms specific-term values, #3001
-* Update: Add permission checks to Pro configuration copy actions, #3000
-* Update: Restrict synonym validation to TaxoPress managers, #2999
-* Add permission checks to term copy actions, #2998
-* Harden Linked Terms list and bulk actions, #2997
-* Strengthen Manage Terms request validation, #2995
-* Tighten access checks for term suggestion lookups, #2993
-* Add request validation to legacy tag creation, #2991
-* Harden TaxoPress AI term result rendering, #2989
-
-= [3.51.0] - 22 July, 2026 =
-* Fixed: Fatal memory exhaustion on Terms screen (st_terms) with hierarchical taxonomy — not related to term count, #2967
-* Fixed: Related Posts thumbnail image resolution setting is ignored, #2964
-* Fixed: Terms screen causes memory exhaustion on large sites, #2962
-* Fixed: Improve AI preview post validation, #2968. Thanks to Duy for the report
-* Fixed: Terms screen can run out of memory on large sites, #2961
-* Update: Remove the lock icon in the Pro version, #2963
-* Update: Include changelog in readme.txt for plugin update dialog box, #2959
 
 The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-taxonomies/blob/master/CHANGELOG.md).
