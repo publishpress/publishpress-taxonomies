@@ -176,10 +176,11 @@ class SimpleTags_Admin_Autocomplete
 		<p>
 			<?php wp_nonce_field('update-simple-tags', 'nonce-simple-tags'); ?>
 			<input type="hidden" name="adv-tags-input-here" value="1"/>
-				<input type="text" class="widefat" name="adv-tags-input" id="adv-tags-input"
+				<label for="adv-tags-input" class="screen-reader-text"><?php esc_html_e('Tags', 'simple-tags'); ?></label>
+				<input type="text" class="widefat" name="adv-tags-input" id="adv-tags-input" aria-describedby="adv-tags-input-hint"
 					   value="<?php echo esc_attr(SimpleTags_Admin::getTermsToEdit('post_tag', $post->ID)); ?>"/>
 
-			<?php esc_html_e('Separate tags with commas', 'simple-tags'); ?>
+			<span id="adv-tags-input-hint"><?php esc_html_e('Separate tags with commas', 'simple-tags'); ?></span>
 		</p>
 		<script type="text/javascript">
           <!--

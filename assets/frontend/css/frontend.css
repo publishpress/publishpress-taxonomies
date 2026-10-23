@@ -6,11 +6,56 @@
     border: none;
 }
 
-.taxopress-table-row:nth-child(n+7) {
+/* Rows past the first six are collapsed only when PHP adds .hidden (front-end script loaded). */
+.taxopress-table-container .taxopress-table-row.hidden {
     display: none;
 }
 
-.taxopress-see-more-link,
+/* Visually hidden, still announced by screen readers. Plugin-specific to avoid theme conflicts. */
+.taxopress-sr-only,
+.taxopress-table-container thead tr.taxopress-sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    width: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+}
+
+/* "See more" toggle is a <button>; reset theme button styles so it looks like the old text link. */
+.taxopress-table-container .taxopress-see-more-link,
+.taxopress-table-container .taxopress-see-more-link:hover,
+.taxopress-table-container .taxopress-see-more-link:active {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+    text-decoration: none;
+    text-transform: none;
+    width: auto;
+    cursor: pointer;
+}
+
+.taxopress-table-container .taxopress-see-more-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
 .taxopress-close-table-link {
     cursor: pointer;
 }
@@ -124,6 +169,7 @@
   
 .taxopress-parent-term::before {
     content: "•";
+    content: "•" / "";
     position: absolute;
     left: 0;
     font-size: 1.2em;
@@ -132,6 +178,7 @@
   
 .taxopress-child-list > li::before {
     content: "○";
+    content: "○" / "";
     position: absolute;
     left: 0;
     font-size: 1.2em;
@@ -140,6 +187,7 @@
 
 .taxopress-child-list .taxopress-child-list > li::before {
     content: "▪  ▪";
+    content: "▪  ▪" / "";
     font-size: 1.2em;
 }
 

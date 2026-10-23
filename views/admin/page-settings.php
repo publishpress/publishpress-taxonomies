@@ -1,9 +1,9 @@
 <div class="taxopress-block-wrap">
 <div class="wrap st_wrap tagcloudui admin-settings">
     <div id="icon-themes" class="icon32"><br></div>
-    <h2><?php _e('PublishPress Taxonomies: Options', 'simple-tags'); ?></h2>
+    <h1 class="taxopress-settings-heading"><?php esc_html_e('PublishPress Taxonomies: Options', 'simple-tags'); ?></h1>
 
-    <h2 class="nav-tab-wrapper">
+    <nav class="nav-tab-wrapper" aria-label="<?php esc_attr_e('Settings sections', 'simple-tags'); ?>">
         <?php
         // Get array options/description
         $option_data = (array) include(STAGS_DIR . '/inc/helper.options.admin.php');
@@ -39,7 +39,7 @@
             echo '<a id="' . esc_attr(sanitize_title($key)) . '-tab" class="nav-tab" ' . $style . ' href="#' . esc_attr(sanitize_title($key)) . '">' . self::getNiceTitleOptions($key) . '</a>';
         }
         ?>
-    </h2>
+    </nav>
 
     <form action="<?php echo esc_url(SimpleTags_Admin::$admin_url); ?>" method="post">
         <?php

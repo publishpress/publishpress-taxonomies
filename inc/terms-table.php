@@ -298,6 +298,47 @@ class Taxopress_Terms_List extends WP_List_Table
     /**
      * Arrange terms in hierarchical order with depth info for dash prefixing.
     */
+    private function append_hierarchical_terms(&$ordered, &$visited, $terms_by_id, $children, $term_ids)
+    {
+        $stack = [];
+
+        foreach (array_reverse($term_ids) as $term_id) {
+            $stack[] = [
+                'term_id' => (int) $term_id,
+                'depth'   => 0,
+            ];
+        }
+
+        while (!empty($stack)) {
+            $node = array_pop($stack);
+            $term_id = (int) $node['term_id'];
+
+            if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
+                continue;
+            }
+
+            $visited[$term_id] = true;
+            $term = $terms_by_id[$term_id];
+            $term->taxopress_depth = (int) $node['depth'];
+            $ordered[] = $term;
+
+            if (!empty($children[$term_id])) {
+                foreach (array_reverse($children[$term_id]) as $child_id) {
+                    $child_id = (int) $child_id;
+
+                    if ($child_id === $term_id || isset($visited[$child_id])) {
+                        continue;
+                    }
+
+                    $stack[] = [
+                        'term_id' => $child_id,
+                        'depth'   => (int) $node['depth'] + 1,
+                    ];
+                }
+            }
+        }
+    }
+
     public function taxopress_arrange_terms_hierarchically($terms)
     {
         $terms_by_id = [];
@@ -317,46 +358,6 @@ class Taxopress_Terms_List extends WP_List_Table
         $ordered = [];
         $visited = [];
 
-        $add_terms = function ($term_ids) use (&$terms_by_id, &$children, &$ordered, &$visited) {
-            $stack = [];
-
-            foreach (array_reverse($term_ids) as $term_id) {
-                $stack[] = [
-                    'term_id' => (int) $term_id,
-                    'depth'   => 0,
-                ];
-            }
-
-            while (!empty($stack)) {
-                $node = array_pop($stack);
-                $term_id = (int) $node['term_id'];
-
-                if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
-                    continue;
-                }
-
-                $visited[$term_id] = true;
-                $term = $terms_by_id[$term_id];
-                $term->taxopress_depth = (int) $node['depth'];
-                $ordered[] = $term;
-
-                if (!empty($children[$term_id])) {
-                    foreach (array_reverse($children[$term_id]) as $child_id) {
-                        $child_id = (int) $child_id;
-
-                        if ($child_id === $term_id || isset($visited[$child_id])) {
-                            continue;
-                        }
-
-                        $stack[] = [
-                            'term_id' => $child_id,
-                            'depth'   => (int) $node['depth'] + 1,
-                        ];
-                    }
-                }
-            }
-        };
-
         // Start with root terms
         $root_ids = [];
         foreach ($terms as $term) {
@@ -368,13 +369,13 @@ class Taxopress_Terms_List extends WP_List_Table
             }
         }
 
-        $add_terms($root_ids);
+        $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, $root_ids);
 
         // Include any disconnected or cyclic branches once, without recursion.
         foreach ($terms as $term) {
             $term_id = (int) $term->term_id;
             if (!isset($visited[$term_id])) {
-                $add_terms([$term_id]);
+                $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, [$term_id]);
             }
         }
 
@@ -735,7 +736,7 @@ class Taxopress_Terms_List extends WP_List_Table
             ];
         }
         $columns = [
-            'cb'      => '<input type="checkbox" />',
+            'cb'      => '<input type="checkbox" aria-label="' . esc_attr__('Select all terms', 'simple-tags') . '" />',
             'name'     => esc_html__('Title', 'simple-tags'),
             'slug'     => esc_html__('Slug', 'simple-tags'),
             'description'     => esc_html__('Description', 'simple-tags'),
@@ -786,7 +787,16 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'taxopress_terms', $item->term_id);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'taxopress_terms',
+            $item->term_id,
+            sprintf(
+                /* translators: %s: term ID. */
+                esc_attr__('Select term %s', 'simple-tags'),
+                (string) $item->term_id
+            )
+        );
     }
 
     /**
@@ -837,6 +847,7 @@ class Taxopress_Terms_List extends WP_List_Table
             ?>
 
             <div class="alignleft actions autoterms-terms-table-copy" id="taxopress-copy-selection-boxes" style="display: none;">
+                <label class="screen-reader-text" for="terms_copy_select_destination_taxonomy"><?php esc_html_e('Destination taxonomy', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-copy-select" name="taxopress_destination_taxonomy" id="terms_copy_select_destination_taxonomy">
                     <option value=""><?php esc_html_e('Select Destination Taxonomy', 'simple-tags'); ?></option> <?php
                     foreach ($taxonomies as $taxonomy) {
@@ -844,6 +855,7 @@ class Taxopress_Terms_List extends WP_List_Table
                     } ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_copy_select_destination_post"><?php esc_html_e('Destination post', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-copy-select taxopress-post-search" name="taxopress_destination_post_type" id="terms_copy_select_destination_post" data-placeholder="<?php esc_attr_e('Search posts', 'simple-tags'); ?>" data-allow-clear="true" data-nonce="<?php echo esc_attr(wp_create_nonce('taxopress-post-search')); ?>" data-post-types="<?php echo esc_attr($selected_post_type); ?>">
                     <?php
                         $post_type_label = !empty($selected_post_type) ? esc_html($selected_post_type) : esc_html__('post type', 'simple-tags');
@@ -854,6 +866,7 @@ class Taxopress_Terms_List extends WP_List_Table
             </div>
             <div class="alignleft actions autoterms-terms-table-filter">
 
+                <label class="screen-reader-text" for="terms_filter_select_post_type"><?php esc_html_e('Filter by post type', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_post_type" id="terms_filter_select_post_type">
                     <option value=""><?php esc_html_e('Post type', 'simple-tags'); ?></option>
                     <?php
@@ -863,6 +876,7 @@ class Taxopress_Terms_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_filter_select_taxonomy"><?php esc_html_e('Filter by taxonomy', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_taxonomy" id="terms_filter_select_taxonomy">
                     <option value=""><?php esc_html_e('Taxonomy', 'simple-tags'); ?></option>
                     <?php
@@ -872,13 +886,14 @@ class Taxopress_Terms_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="terms_filter_select_taxonomy_type"><?php esc_html_e('Filter by taxonomy type', 'simple-tags'); ?></label>
                 <select class="auto-terms-terms-filter-select" name="terms_filter_select_taxonomy_type" id="terms_filter_select_taxonomy_type">
                     <option value="all" <?php echo($selected_option === 'all' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('All Taxonomies', 'simple-tags'); ?></option>
                     <option value="public" <?php echo($selected_option === 'public' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('Public Taxonomies', 'simple-tags'); ?></option>
                     <option value="private" <?php echo($selected_option === 'private' ? 'selected="selected"' : ''); ?>><?php echo esc_html__('Private Taxonomies', 'simple-tags'); ?></option>
                 </select>
                 
-                <a href="javascript:void(0)" class="taxopress-terms-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></a>
+                <button type="button" class="taxopress-terms-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></button>
 
             </div>
             <?php
@@ -890,16 +905,18 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function process_bulk_action()
     {
+        $current_action = $this->current_action();
 
-        $query_arg = '_wpnonce';
-        $action = 'bulk-' . $this->_args['plural'];
-        $checked = isset($_REQUEST[$query_arg]) ? wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$query_arg])), $action) : false;
-
-        if (!$checked || !current_user_can('simple_tags')) {
+        if (
+            !in_array($current_action, ['taxopress-terms-delete-terms', 'taxopress-terms-copy-terms'], true)
+            || !current_user_can('simple_tags')
+        ) {
             return;
         }
 
-        if ($this->current_action() === 'taxopress-terms-delete-terms') {
+        check_admin_referer('bulk-' . $this->_args['plural']);
+
+        if ($current_action === 'taxopress-terms-delete-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             if (!empty($taxopress_terms)) {
                 $deleted_terms_by_taxonomy = [];
@@ -927,7 +944,7 @@ class Taxopress_Terms_List extends WP_List_Table
                 }
             }
         }
-        if ($this->current_action() === 'taxopress-terms-copy-terms') {
+        if ($current_action === 'taxopress-terms-copy-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             $destination_taxonomy = !empty($_REQUEST['taxopress_destination_taxonomy']) ? sanitize_key(wp_unslash($_REQUEST['taxopress_destination_taxonomy'])) : '';
             $destination_post = !empty($_REQUEST['taxopress_destination_post_type']) ? sanitize_text_field(wp_unslash($_REQUEST['taxopress_destination_post_type'])) : '';
@@ -1219,6 +1236,20 @@ class Taxopress_Terms_List extends WP_List_Table
                 esc_html__('Copy', 'simple-tags')
             );
             $actions = apply_filters('taxopress_terms_row_actions', $actions, $item);
+        } elseif (current_user_can('edit_term', $item->term_id)) {
+            // Keyboard/screen-reader alternative to drag-and-drop ordering (sortable is only active in this view).
+            $actions['taxopress_move_up'] = sprintf(
+                '<button type="button" class="button-link taxopress-term-move" data-direction="up" aria-label="%s">%s</button>',
+                /* translators: %s: Taxonomy term name. */
+                esc_attr(sprintf(__('Move %s up', 'simple-tags'), $item->name)),
+                esc_html__('Move up', 'simple-tags')
+            );
+            $actions['taxopress_move_down'] = sprintf(
+                '<button type="button" class="button-link taxopress-term-move" data-direction="down" aria-label="%s">%s</button>',
+                /* translators: %s: Taxonomy term name. */
+                esc_attr(sprintf(__('Move %s down', 'simple-tags'), $item->name)),
+                esc_html__('Move down', 'simple-tags')
+            );
         }
         return $column_name === $primary ? $this->row_actions($actions, false) : '';
     }

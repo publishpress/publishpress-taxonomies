@@ -185,7 +185,8 @@ class taxopress_admin_ui
         if ($args['wrap']) {
             $value = $this->get_tr_start();
             $value .= $this->get_th_start();
-            $value .= $this->get_label($args['name'], $args['labeltext']);
+            // Radio groups have no single control to point a label at; the group is named by the fieldset legend below.
+            $value .= '<span class="taxopress-radio-group-label">' . wp_strip_all_tags($args['labeltext']) . '</span>';
             if ($args['required']) {
                 $value .= $this->get_required_span();
             }
@@ -212,6 +213,12 @@ class taxopress_admin_ui
 
                 $radio_html .= '<div class="taxopress-radio-input"><label> <input class="' . $args['class'] . '" type="radio" id="' . $args['name'] . '-' . $val['attr'] . '" name="' . $args['namearray'] . '[' . $args['name'] . ']" value="' . $val['attr'] . '" ' . $checked . ' />' . $val['text'] . '</label></div>';
             }
+        }
+        if ($radio_html !== '') {
+            $radio_html = '<fieldset class="taxopress-radio-group">'
+                . $this->get_legend_start() . wp_strip_all_tags($args['labeltext']) . $this->get_legend_end()
+                . $radio_html
+                . '</fieldset>';
         }
         $value .= $radio_html;
 
@@ -455,7 +462,8 @@ class taxopress_admin_ui
      */
     public function get_required_span()
     {
-        return ' <span class="required">*</span>';
+        // Required state is exposed via the required/aria-required attributes on the control.
+        return ' <span class="required" aria-hidden="true">*</span>';
     }
 
     /**
@@ -466,7 +474,14 @@ class taxopress_admin_ui
      */
     public function get_help($help_text = '')
     {
-        return '<span class="taxopress-help-tooltip dashicons-before dashicons-editor-help"><span class="tooltip-text">' . esc_html($help_text) . '</span></span>';
+        static $help_index = 0;
+        $help_index++;
+        $tooltip_id = 'taxopress-help-tooltip-' . $help_index;
+
+        return '<span class="taxopress-help-tooltip">'
+            . '<button type="button" class="taxopress-help-tooltip-trigger dashicons-before dashicons-editor-help" aria-label="' . esc_attr__('Help', 'simple-tags') . '" aria-describedby="' . esc_attr($tooltip_id) . '"></button>'
+            . '<span class="tooltip-text" role="tooltip" id="' . esc_attr($tooltip_id) . '">' . esc_html($help_text) . '</span>'
+            . '</span>';
     }
 
     /**
@@ -521,10 +536,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a text input.
+     * Return a text input element.
      *
      * @param array $args Arguments to use with the text input.
-     * @return string Complete text `<input>` with proper attributes.
+     * @return string Complete text input element with proper attributes.
      */
     public function get_text_input($args = [])
     {
@@ -601,7 +616,7 @@ class taxopress_admin_ui
      * Return a number input.
      *
      * @param array $args Arguments to use with the text input.
-     * @return string Complete text `<input>` with proper attributes.
+     * @return string Complete number input element with proper attributes.
      */
     public function get_number_input($args = [])
     {
@@ -799,10 +814,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a checkbox `<input>`.
+     * Return a checkbox input element.
      *
      * @param array $args Arguments to use with the checkbox input.
-     * @return string $value Complete checkbox `<input>` with proper attributes.
+     * @return string $value Complete checkbox input element with proper attributes.
      */
     public function get_check_input($args = [])
     {
@@ -852,10 +867,10 @@ class taxopress_admin_ui
     }
 
     /**
-     * Return a button `<input>`.
+     * Return a button input element.
      *
      * @param array $args Arguments to use with the button input.
-     * @return string Complete button `<input>`.
+     * @return string Complete button input element.
      */
     public function get_button($args = [])
     {
@@ -876,7 +891,7 @@ class taxopress_admin_ui
     {
         $content = '';
         if (!empty($menu_icon)) {
-            $content = '<img src="' . $menu_icon . '">';
+            $content = '<img alt="" src="' . esc_url($menu_icon) . '">';
             if (0 === strpos($menu_icon, 'dashicons-')) {
                 $content = '<div class="dashicons-before ' . $menu_icon . '"></div>';
             }
