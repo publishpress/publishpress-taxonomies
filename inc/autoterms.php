@@ -1324,9 +1324,6 @@ class SimpleTags_Autoterms
                                             }
                                             echo '</td></tr>';
 
-                                            // Keep extension-provided settings available within Options.
-                                            do_action('taxopress_autoterms_after_autoterm_advanced', $current);
-
                                             ?>
 
                                                 </table>
