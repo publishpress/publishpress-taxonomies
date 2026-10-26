@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.Operators.OperatorSpacing.NoSpaceAfter,PSR12.Operators.OperatorSpacing.NoSpaceBefore,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose,Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML,WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Autoterms
@@ -23,6 +25,8 @@ class SimpleTags_Autoterms
      */
     public function __construct()
     {
+        require_once STAGS_DIR . '/inc/class.admin.autoterms-posts.php';
+        TaxoPress_Autoterms_Posts::register();
 
         add_filter('set-screen-option', [__CLASS__, 'set_screen'], 10, 3);
         // Admin menu
@@ -237,6 +241,7 @@ class SimpleTags_Autoterms
             <div class="wrap st_wrap st-manage-taxonomies-page">
 
             <div id="">
+                <div class="taxopress-autoterms-heading">
                 <h1 class="wp-heading-inline"><?php esc_html_e('Auto Terms', 'simple-tags'); ?></h1>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=st_autoterms&add=new_item')); ?>"
                    class="page-title-action taxopress">
@@ -249,6 +254,7 @@ class SimpleTags_Autoterms
                 <a href="<?php echo esc_url(admin_url('admin.php?page=st_autoterms&tab=logs')); ?>"
                    class="page-title-action"><?php esc_html_e('Logs', 'simple-tags'); ?> <span class="update-plugins"><span class="plugin-count"><?php echo esc_html($this->autoterms_logs_count()); ?></span></span></a>
 
+                </div>
                 <div class="taxopress-description">
                     <?php esc_html_e('Auto Terms can scan your content and automatically assign new and existing terms.', 'simple-tags'); ?>
                 </div>
@@ -470,11 +476,6 @@ class SimpleTags_Autoterms
                                                     <a href="#autoterm_oldcontent"><span><?php esc_html_e('Existing Content',
                                                         'simple-tags'); ?></span></a>
                                                 </li>-->
-
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_advanced' ? 'true' : 'false'; ?>" class="autoterm_advanced_tab <?php echo $active_tab === 'autoterm_advanced' ? 'active' : ''; ?>" data-content="autoterm_advanced">
-                                                    <a href="#autoterm_advanced"><span><?php esc_html_e('Advanced',
-                                                        'simple-tags'); ?></span></a>
-                                                </li>
 
                                                 <li aria-current="<?php echo $active_tab === 'autoterm_preview' ? 'true' : 'false'; ?>" class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
                                                     <a href="#autoterm_preview"><span><?php esc_html_e('Preview',
@@ -860,6 +861,22 @@ class SimpleTags_Autoterms
                                             /**
                                              * Post
                                              */
+                                            echo $ui->get_select_checkbox_input([
+                                                'namearray' => 'taxopress_autoterm',
+                                                'name' => 'autoterm_for_posts_screen',
+                                                'class' => 'autoterm-terms-when-to-field autoterm-terms-when-post fields-control',
+                                                'labeltext' => esc_html__('Run Auto Terms button', 'simple-tags'),
+                                                'aftertext' => esc_html__('Show Run Auto Terms next to Add Post on the Posts screen. Runs this configuration on selected posts using its post settings, even when automatic processing on save is disabled.', 'simple-tags'),
+                                                'selections' => [
+                                                    'selected' => !empty($current['autoterm_for_posts_screen']) ? '1' : '0',
+                                                    'options' => [
+                                                        ['attr' => '0', 'text' => esc_attr__('False', 'simple-tags')],
+                                                        ['attr' => '1', 'text' => esc_attr__('True', 'simple-tags')],
+                                                    ],
+                                                ],
+                                                'required' => false,
+                                            ]);
+
                                             $selected           = (isset($current) && isset($current['autoterm_for_post'])) ? taxopress_disp_boolean($current['autoterm_for_post']) : '';
                                             $default_select['selected'] = !empty($selected) ? $current['autoterm_for_post'] : '';
                                             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -1574,14 +1591,6 @@ class SimpleTags_Autoterms
 
                                                             <ul class="auto-term-content-result"></ul>
                                                         </td></tr>
-
-                                                </table>
-
-
-                                                <table class="form-table taxopress-table autoterm_advanced"
-                                                       style="<?php echo $active_tab === 'autoterm_advanced' ? '' : 'display:none;'; ?>">
-
-                                                        <?php do_action('taxopress_autoterms_after_autoterm_advanced', $current); ?>
 
                                                 </table>
 
