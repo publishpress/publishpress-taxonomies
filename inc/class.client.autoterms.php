@@ -311,7 +311,11 @@ class SimpleTags_Client_Autoterms
                     foreach ($add_terms as $find_term => $original_term) {
                         $terms_regex_code = !empty($autoterm_regex_code) ? str_replace('{term}', preg_quote($find_term), $autoterm_regex_code) : '';
 
-                        if (!in_array($action, ['save_posts', 'hourly_cron_schedule', 'daily_cron_schedule'])) {
+                        if (strpos($options['open_ai_tag_prompt'] ?? '', '{site_terms}') !== false && empty($terms_regex_code)) {
+                            // The AI selected an existing catalog ID using compound-topic matching.
+                            // Requiring its complete display name in the post would reject partial matches.
+                            $terms_to_add[] = $term;
+                        } elseif (!in_array($action, ['save_posts', 'hourly_cron_schedule', 'daily_cron_schedule'])) {
                             // The settings only apply to saving post and schedule auto terms. So, just add the terms for other component since it's suggested by the service.
                             $terms_to_add[] = $term;
                         } else {
