@@ -400,6 +400,9 @@ class SimpleTags_Autoterms
                                             if (in_array($active_tab, ['autoterm_display', 'autoterm_options'], true)) {
                                                 $active_tab = 'autoterm_content';
                                             }
+                                            if ($active_tab === 'autoterm_advanced') {
+                                                $active_tab = 'autoterm_general';
+                                            }
                                             echo esc_html__('Edit Auto Terms', 'simple-tags');
                                             echo '<input type="hidden" name="edited_autoterm" value="' . esc_attr($current['ID']) . '" />';
                                             echo '<input type="hidden" name="taxopress_autoterm[ID]" value="' . esc_attr($current['ID']) . '" />';
