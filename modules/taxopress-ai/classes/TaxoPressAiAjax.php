@@ -340,6 +340,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                                 } else {
                                     $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html__('OpenAI', 'simple-tags') . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . $open_ai_results['message'] . '</p></div></div></fieldset>';
                                 }
+                                $term_results .= TaxoPressAiApi::get_preview_diagnostics_html($open_ai_results);
                             }
 
                                 // autoterm_use_ibm_watson
