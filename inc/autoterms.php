@@ -23,6 +23,8 @@ class SimpleTags_Autoterms
      */
     public function __construct()
     {
+        require_once STAGS_DIR . '/inc/class.admin.autoterms-posts.php';
+        TaxoPress_Autoterms_Posts::register();
 
         add_filter('set-screen-option', [__CLASS__, 'set_screen'], 10, 3);
         // Admin menu
@@ -806,6 +808,22 @@ class SimpleTags_Autoterms
                                             /**
                                              * Post
                                              */
+                                            echo $ui->get_select_checkbox_input([
+                                                'namearray' => 'taxopress_autoterm',
+                                                'name' => 'autoterm_for_posts_screen',
+                                                'class' => 'autoterm-terms-when-to-field autoterm-terms-when-post fields-control',
+                                                'labeltext' => esc_html__('Run Auto Terms button', 'simple-tags'),
+                                                'aftertext' => esc_html__('Show Run Auto Terms next to Add Post on the Posts screen. Runs this configuration on selected posts using its post settings, even when automatic processing on save is disabled.', 'simple-tags'),
+                                                'selections' => [
+                                                    'selected' => !empty($current['autoterm_for_posts_screen']) ? '1' : '0',
+                                                    'options' => [
+                                                        ['attr' => '0', 'text' => esc_attr__('False', 'simple-tags')],
+                                                        ['attr' => '1', 'text' => esc_attr__('True', 'simple-tags')],
+                                                    ],
+                                                ],
+                                                'required' => false,
+                                            ]);
+
                                             $selected           = (isset($current) && isset($current['autoterm_for_post'])) ? taxopress_disp_boolean($current['autoterm_for_post']) : '';
                                             $default_select['selected'] = !empty($selected) ? $current['autoterm_for_post'] : '';
                                             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
