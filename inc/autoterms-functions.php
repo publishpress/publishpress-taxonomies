@@ -583,6 +583,8 @@ function taxopress_update_autoterm($data = [])
     if (!isset($data['taxopress_autoterm']['autoterm_for_post'])) {
         $data['taxopress_autoterm']['autoterm_for_post'] = 0;
     }
+    $data['taxopress_autoterm']['autoterm_for_posts_screen'] =
+        !empty($data['taxopress_autoterm']['autoterm_for_posts_screen']) ? 1 : 0;
     if (!isset($data['taxopress_autoterm']['autoterm_for_schedule'])) {
         $data['taxopress_autoterm']['autoterm_for_schedule'] = 0;
     }
