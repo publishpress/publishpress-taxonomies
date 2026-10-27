@@ -76,7 +76,7 @@ class SimpleTags_Client_RelatedPosts
             'dateformat'    => get_option('date_format'),
             'xformat' => sprintf(
                 '<a href="%%post_permalink%%" title="%%post_title%% (%%post_date%%)" style="font-size:%%post_size%%;color:%%post_color%%">' .
-                '<img src="%%post_thumb_url%%" height="%d" width="%d" class="custom-image-class"/>' .
+                '<img src="%%post_thumb_url%%" alt="" height="%d" width="%d" class="custom-image-class"/>' .
                 '<br>%%post_title%%<br>%%post_category%%</a>' .
                 '(%%post_comment%%)',
                 $width,
@@ -179,6 +179,8 @@ class SimpleTags_Client_RelatedPosts
                 $title = '';
             } else {
                 $new_title = '';
+                // Allowlist the wrapper tag (keeps h1 for existing instances).
+                $title_header = SimpleTags_Client::sanitize_title_header($title_header, array('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div'));
                 if (!empty($title_header)) {
                     $new_title .= '<' . $title_header . '>';
                 }
@@ -346,7 +348,7 @@ class SimpleTags_Client_RelatedPosts
             if ($format == 'box') {
                 $defaults['number']    = 3;
                 $defaults['xformat']   = __('<a href="%post_permalink%" title="%post_title% (%post_date%)"> 
-			                       <img src="%post_thumb_url%" height="200" width="200" class="custom-image-class" />
+			                       <img src="%post_thumb_url%" alt="" height="200" width="200" class="custom-image-class" />
 								   <br>
 								   %post_title%
 								   <br>
@@ -571,7 +573,13 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (empty($post_thumbnail_url)) {
-                $element_loop = preg_replace('/<img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
+                $element_loop = preg_replace('/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i', '', $element_loop);
+            } elseif (empty($post_thumbnail_id) || empty($image)) {
+                // Fallback/default image is decorative.
+                $element_loop = self::set_thumb_alt_empty($element_loop);
+            } else {
+                // Avoid announcing the title twice when the link text already contains it.
+                $element_loop = self::empty_redundant_title_alt($element_loop);
             }
 
             $element_loop = str_replace('%post_thumb_url%', $post_thumbnail_url, $element_loop);
@@ -581,6 +589,21 @@ class SimpleTags_Client_RelatedPosts
             $element_loop = str_replace('%post_permalink%', get_permalink($result), $element_loop);
             $element_loop = str_replace('%post_title%', $post_title, $element_loop);
             $element_loop = str_replace('%post_title_attribute%', esc_html(wp_strip_all_tags($post_title)), $element_loop);
+            // Default "(N)" output: keep the visible number, give screen readers "N comments".
+            // Needs frontend.css (not loaded in feeds or when disabled) and only in text, never inside a tag.
+            if (strpos($element_loop, '(%post_comment%)') !== false && class_exists('SimpleTags_Client') && SimpleTags_Client::frontend_script_enqueued()) {
+                $comment_count = (int) $result->comment_count;
+                /* translators: %s: number of comments */
+                $comment_text  = sprintf(_n('%s comment', '%s comments', $comment_count, 'simple-tags'), number_format_i18n($comment_count));
+                $comment_html  = '(<span aria-hidden="true">' . $comment_count . '</span><span class="taxopress-sr-only">' . esc_html($comment_text) . '</span>)';
+                $parts         = preg_split('/(<[^>]*>)/', $element_loop, -1, PREG_SPLIT_DELIM_CAPTURE);
+                foreach ($parts as $i => $part) {
+                    if ($part !== '' && $part[0] !== '<') {
+                        $parts[$i] = str_replace('(%post_comment%)', $comment_html, $part);
+                    }
+                }
+                $element_loop = implode('', $parts);
+            }
             $element_loop = str_replace('%post_comment%', (int) $result->comment_count, $element_loop);
             $element_loop = str_replace('%post_tagcount%', (int) $result->counter, $element_loop);
             $element_loop = str_replace('%post_id%', $result->ID, $element_loop);
@@ -626,7 +649,7 @@ class SimpleTags_Client_RelatedPosts
             }
 
             if (isset($result->post_excerpt) || isset($result->post_content)) {
-                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap), $element_loop);
+                $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap, $result), $element_loop);
             }
 
 
@@ -647,23 +670,68 @@ class SimpleTags_Client_RelatedPosts
     }
 
     /**
+     * Set alt="" on the %post_thumb_url% image(s) of a format string.
+     *
+     * @param string $element_loop
+     *
+     * @return string
+     */
+    public static function set_thumb_alt_empty($element_loop)
+    {
+        return preg_replace_callback(
+            '/<' . 'img\b[^>]*\bsrc="%post_thumb_url%"[^>]*>/i',
+            function ($matches) {
+                $img = $matches[0];
+                if (preg_match('/\balt\s*=\s*("[^"]*"|\'[^\']*\')/i', $img)) {
+                    return preg_replace('/\balt\s*=\s*("[^"]*"|\'[^\']*\')/i', 'alt=""', $img, 1);
+                }
+                return preg_replace('/^<' . 'img\b/i', '<' . 'img alt=""', $img, 1);
+            },
+            $element_loop
+        );
+    }
+
+    /**
+     * When a link contains the post title as text and its image alt is just the title,
+     * empty the alt so the title is not announced twice.
+     *
+     * @param string $element_loop
+     *
+     * @return string
+     */
+    public static function empty_redundant_title_alt($element_loop)
+    {
+        return preg_replace_callback(
+            '/<a\b[^>]*>.*?<\/a>/is',
+            function ($matches) {
+                $link = $matches[0];
+                $text = preg_replace('/<' . 'img\b[^>]*>/i', '', $link);
+                $text = wp_strip_all_tags($text);
+                if (strpos($text, '%post_title%') === false) {
+                    return $link;
+                }
+                return preg_replace('/(<' . 'img\b[^>]*\b)alt\s*=\s*"\s*%post_title(?:_attribute)?%\s*"/i', '$1alt=""', $link);
+            },
+            $element_loop
+        );
+    }
+
+    /**
      * Build excerpt from post data with specific lenght
      *
      * @param string $excerpt
      * @param string $content
      * @param string $password
      * @param integer $excerpt_length
+     * @param WP_Post|object|null $post
      *
      * @return string
      * @author WebFactory Ltd
      */
-    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55)
+    public static function get_excerpt_post($excerpt = '', $content = '', $password = '', $excerpt_length = 55, $post = null)
     {
-        if (! empty($password)) { // if there's a password
-            // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
-            if ($_COOKIE[ 'wp-postpass_' . COOKIEHASH ] != $password) { // and it doesn't match the cookie
-                return __('There is no excerpt because this is a protected post.', 'simple-tags');
-            }
+        if (! empty($password) && (null === $post || post_password_required($post))) {
+            return __('There is no excerpt because this is a protected post.', 'simple-tags');
         }
 
         if (! empty($excerpt)) {

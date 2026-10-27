@@ -31,14 +31,15 @@ jQuery(document).ready(function() {
     }
 
     if (activetab !== '' && jQuery(activetab + '-tab').length) {
-        jQuery(activetab + '-tab').addClass('nav-tab-active');
+        jQuery(activetab + '-tab').addClass('nav-tab-active').attr('aria-current', 'true');
     } else {
-        jQuery('.nav-tab-wrapper a:first').addClass('nav-tab-active');
+        jQuery('.nav-tab-wrapper a:first').addClass('nav-tab-active').attr('aria-current', 'true');
     }
 
     jQuery('.nav-tab-wrapper a').click(function(evt) {
-        jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
-        jQuery(this).addClass('nav-tab-active').blur();
+        jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active').removeAttr('aria-current');
+        // Keep focus on the activated tab (no blur) so keyboard users keep their place.
+        jQuery(this).addClass('nav-tab-active').attr('aria-current', 'true');
         var clicked_group = jQuery(this).attr('href');
         if (typeof(localStorage) != 'undefined' && localStorage != null) {
             localStorage.setItem("activetab", jQuery(this).attr('href'));

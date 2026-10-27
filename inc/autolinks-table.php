@@ -405,6 +405,6 @@ class Autolinks_List extends WP_List_Table
     protected function column_shortcode($item)
     {
 
-        return '<input readonly type="text" value=\'[taxopress_autolinks id="' . $item['ID'] . '"]\' />';
+        return '<input readonly type="text" aria-label="' . esc_attr(sprintf(__('Shortcode for %s', 'simple-tags'), wp_strip_all_tags($item['title']))) . '" value=\'[taxopress_autolinks id="' . (int) $item['ID'] . '"]\' />';
     }
 }

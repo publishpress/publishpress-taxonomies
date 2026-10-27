@@ -50,10 +50,15 @@ function load_click_tags(search = '') {
         event.preventDefault();
         var taxonomy = jQuery(this).attr('data-taxonomy');
         var term_id = jQuery(this).attr('data-term_id');
-        addTag(this.innerHTML, taxonomy, term_id);
+        addTag(this.textContent, taxonomy, term_id);
         jQuery(this).addClass('used_term');
         jQuery(this).attr('aria-pressed', 'true');
       });
+
+      if (window.wp && wp.a11y && wp.a11y.speak && stHelperClickTagsL10n.terms_loaded) {
+        var loadedCount = jQuery('#st-clicks-tags .container_clicktags span[role="button"]').length;
+        wp.a11y.speak(stHelperClickTagsL10n.terms_loaded.replace('%d', loadedCount));
+      }
 
       jQuery('#open_clicktags').hide();
       jQuery('#close_clicktags').show();
@@ -70,11 +75,11 @@ function load_click_tags(search = '') {
  * @returns {string | *}
  */
 function html_entity_decode(str) {
-  var ta = document.createElement('textarea');
-  ta.innerHTML = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  toReturn = ta.value;
-  ta = null;
-  return toReturn;
+  var parser = new DOMParser();
+  var safeString = String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  var parsed = parser.parseFromString(safeString, 'text/html');
+
+  return parsed.documentElement.textContent || '';
 }
 
 //inititiate click tags search when user start typying

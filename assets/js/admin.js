@@ -1,3 +1,188 @@
+/**
+ * Accessibility: keyboard activation and aria-pressed sync for term "buttons"
+ * (click terms, TaxoPress AI and Auto Terms previews).
+ */
+(function () {
+  'use strict';
+  if (window.taxopressTermButtonA11y) {
+    return;
+  }
+  window.taxopressTermButtonA11y = true;
+
+  var termSelector = '.result-terms .term-name[role="button"], .container_clicktags span[role="button"]';
+
+  function syncTerm(el) {
+    var holder = (el.closest && el.closest('.result-terms')) || el;
+    var pressed = holder.classList.contains('used_term') ? 'true' : 'false';
+    if (el.getAttribute('aria-pressed') !== pressed) {
+      el.setAttribute('aria-pressed', pressed);
+    }
+  }
+
+  function syncWithin(node) {
+    if (!node || node.nodeType !== 1) {
+      return;
+    }
+    if (node.matches && node.matches(termSelector)) {
+      syncTerm(node);
+    }
+    if (node.matches && node.matches('.result-terms')) {
+      var inner = node.querySelector('.term-name[role="button"]');
+      if (inner) {
+        syncTerm(inner);
+      }
+      return;
+    }
+    if (node.querySelectorAll) {
+      var list = node.querySelectorAll(termSelector);
+      for (var i = 0; i < list.length; i++) {
+        syncTerm(list[i]);
+      }
+    }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (!t || !t.matches || !t.matches(termSelector)) {
+      return;
+    }
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      t.click();
+    }
+  });
+
+  function startObserver() {
+    if (!window.MutationObserver || !document.body) {
+      return;
+    }
+    new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        var m = mutations[i];
+        // Class changes only: new terms are rendered with the right aria-pressed by PHP,
+        // so there is no need to scan added nodes (cheap on busy screens like the block editor).
+        var target = m.target;
+        if (target.classList && (target.classList.contains('result-terms') || (target.matches && target.matches(termSelector)))) {
+          syncWithin(target);
+        }
+      }
+    }).observe(document.body, { attributes: true, attributeFilter: ['class'], subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startObserver);
+  } else {
+    startObserver();
+  }
+})();
+
+/**
+ * Accessibility: Escape dismisses hover/focus tooltips (help icons, Pro lock icons).
+ */
+(function () {
+  'use strict';
+  var tooltipSelector = '.taxopress-help-tooltip, .pp-tooltips-library';
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' && e.key !== 'Esc') {
+      return;
+    }
+    var active = document.activeElement;
+    var tip = active && active.closest ? active.closest(tooltipSelector) : null;
+    if (!tip || tip.classList.contains('is-dismissed')) {
+      return;
+    }
+    var bubble = tip.querySelector('.taxopress-help-tooltip-text, .tooltip-text, [role="tooltip"]');
+    var visible = bubble && window.getComputedStyle(bubble).visibility !== 'hidden' && window.getComputedStyle(bubble).display !== 'none' && bubble.getBoundingClientRect().width > 1;
+    tip.classList.add('is-dismissed');
+    // Only swallow Escape when it actually closed a visible tooltip.
+    if (visible) {
+      e.stopPropagation();
+    }
+  }, true);
+  function restore(e) {
+    var tip = e.target && e.target.closest ? e.target.closest(tooltipSelector) : null;
+    if (tip) {
+      tip.classList.remove('is-dismissed');
+    }
+  }
+  document.addEventListener('focusout', restore);
+  document.addEventListener('mouseout', restore);
+})();
+
+/**
+ * Accessibility: focus management and invalid-field marking for the plugin's remodal dialogs.
+ */
+(function ($) {
+  'use strict';
+  if (!$) {
+    return;
+  }
+  var lastTrigger = null;
+  var modalSelector = '[data-remodal-id="taxopress-modal-alert"], [data-remodal-id="taxopress-modal-confirm"]';
+
+  function isBlank(value) {
+    return value === null || typeof value === 'undefined' || $.trim(String(value)) === '';
+  }
+
+  // Mark empty required fields (the condition every alert-validation routine checks) as invalid.
+  function markInvalidFields() {
+    var $fields = $('.taxopress-section, .st_wrap form, .taxopress-taxonomy-form, form')
+      .find('input[required], select[required], textarea[required]')
+      .filter(':not([type="hidden"])');
+    var $firstInvalid = $();
+    $fields.each(function () {
+      var $field = $(this);
+      if (isBlank($field.val())) {
+        $field.attr('aria-invalid', 'true');
+        if (!$firstInvalid.length) {
+          $firstInvalid = $field;
+        }
+      } else {
+        $field.removeAttr('aria-invalid');
+      }
+    });
+    return $firstInvalid;
+  }
+
+  $(document).on('input change', 'input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"]', function () {
+    if (!isBlank($(this).val())) {
+      $(this).removeAttr('aria-invalid');
+    }
+  });
+
+  // remodal focuses the dialog before "opening" fires, so remember the last focus outside it.
+  var lastFocusOutside = null;
+  document.addEventListener('focusin', function (e) {
+    if (e.target && e.target.closest && !e.target.closest('.remodal')) {
+      lastFocusOutside = e.target;
+    }
+  }, true);
+
+  $(document).on('opening', modalSelector, function () {
+    var active = document.activeElement;
+    lastTrigger = (active && active !== document.body && !$(active).closest('.remodal').length) ? active : lastFocusOutside;
+    if ($(this).is('[data-remodal-id="taxopress-modal-alert"]')) {
+      markInvalidFields();
+    }
+  });
+
+  $(document).on('opened', modalSelector, function () {
+    var $modal = $(this);
+    // Alert: "Okay"; confirm: "No" (the non-destructive choice).
+    var $button = $modal.find('.remodal-cancel').first();
+    if ($button.length) {
+      $button.trigger('focus');
+    }
+  });
+
+  $(document).on('closed', modalSelector, function () {
+    if (lastTrigger && document.body.contains(lastTrigger) && $(lastTrigger).is(':visible')) {
+      lastTrigger.focus();
+    }
+    lastTrigger = null;
+  });
+})(window.jQuery);
+
 (function ($) {
   'use strict';
 
@@ -9,6 +194,14 @@
   $(document).ready(function () {
     
     var autoTermProcessingPaused = false;
+
+    function taxopressDecodeHtmlEntities(str) {
+      var parser = new DOMParser();
+      var safeString = String(str).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      var parsed = parser.parseFromString(safeString, 'text/html');
+
+      return parsed.documentElement.textContent || '';
+    }
     
     // -------------------------------------------------------------
     //   Expand textarea height based on lines
@@ -122,10 +315,11 @@
       // -------------------------------------------------------------
       //   Settings sub tab click
       // -------------------------------------------------------------
-      $(document).on('click', '.st-legacy-subtab span', function (e) {
+      $(document).on('click', '.st-legacy-subtab [data-content]', function (e) {
         e.preventDefault();
         var current_content = $(this).attr('data-content');
-        $('.st-legacy-subtab span').removeClass('active');
+        $('.st-legacy-subtab [data-content]').removeClass('active').attr('aria-pressed', 'false');
+        $(this).attr('aria-pressed', 'true');
         $('.legacy-tab-content').addClass('st-hide-content');
         $(this).addClass('active');
         $(current_content).removeClass('st-hide-content');
@@ -134,10 +328,11 @@
       // -------------------------------------------------------------
       //   Settings PublishPress Taxonomies AI sub tab click
       // -------------------------------------------------------------
-      $(document).on('click', '.st-taxopress-ai-subtab span', function (e) {
+      $(document).on('click', '.st-taxopress-ai-subtab [data-content]', function (e) {
         e.preventDefault();
         var current_content = $(this).attr('data-content');
-        $('.st-taxopress-ai-subtab span').removeClass('active');
+        $('.st-taxopress-ai-subtab [data-content]').removeClass('active').attr('aria-pressed', 'false');
+        $(this).attr('aria-pressed', 'true');
         $('.taxopress-ai-tab-content').addClass('st-hide-content');
         $('.taxopress-ai-tab-content-sub').addClass('st-subhide-content');
         $(this).addClass('active');
@@ -279,16 +474,17 @@
                 }
             });
 
-            $('.st-taxopress-ai-subtab span:first').trigger('click');
+            $('.st-taxopress-ai-subtab [data-content]:first').trigger('click');
         }
       
       // -------------------------------------------------------------
       //   Settings metabox sub tab click
       // -------------------------------------------------------------
-      $(document).on('click', '.st-metabox-subtab span', function (e) {
+      $(document).on('click', '.st-metabox-subtab [data-content]', function (e) {
         e.preventDefault();
         var current_content = $(this).attr('data-content');
-        $('.st-metabox-subtab span').removeClass('active');
+        $('.st-metabox-subtab [data-content]').removeClass('active').attr('aria-pressed', 'false');
+        $(this).attr('aria-pressed', 'true');
         $('.metabox-tab-content').addClass('st-hide-content');
         $('.metabox-tab-content-sub').addClass('st-subhide-content');
         $(this).addClass('active');
@@ -487,17 +683,7 @@
     $('body.taxopress_page_st_terms #the-list').length > 0 &&
     new URLSearchParams(window.location.search).has('taxopress_terms_taxonomy')
     ) {
-        $('#the-list').sortable({
-            items: 'tr',
-            axis: 'y',
-            cursor: 'move',
-            helper: function(e, ui) {
-                ui.children().each(function() {
-                    $(this).width($(this).width());
-                });
-                return ui;
-            },
-            update: function(event, ui) {
+        var taxopressSaveTermOrder = function(ui, onDone) {
                 const termOrder = [];
                 $('#the-list tr').each(function() {
                     var id = $(this).attr('id');
@@ -533,13 +719,75 @@
                         taxonomy: taxonomy,
                         nonce: st_admin_localize.check_nonce
                     },
+                    success: function(response) {
+                      if (typeof onDone === 'function') {
+                        onDone(!response || response.success !== false);
+                      }
+                    },
+                    error: function() {
+                      if (typeof onDone === 'function') {
+                        onDone(false);
+                      }
+                    },
                     complete: function() {
                       // Hide spinner for all rows
                       ui.item.find('.taxopress-term-spinner').hide();
                     }
                 });
+        };
+
+        $('#the-list').sortable({
+            items: 'tr',
+            axis: 'y',
+            cursor: 'move',
+            helper: function(e, ui) {
+                ui.children().each(function() {
+                    $(this).width($(this).width());
+                });
+                return ui;
+            },
+            update: function(event, ui) {
+                taxopressSaveTermOrder(ui);
             }
         }).disableSelection();
+
+        // Move up / Move down row actions: same save path as drag and drop, announced to screen readers.
+        $(document).on('click', '#the-list .taxopress-term-move', function(e) {
+            e.preventDefault();
+            var $button = $(this);
+            var direction = $button.data('direction');
+            var $row = $button.closest('tr');
+            var termName = $.trim($row.find('.row-title, td.column-name strong a, td.name strong a').first().text()) || $.trim($row.find('td').first().text());
+            var speak = function(message) {
+              if (window.wp && wp.a11y && wp.a11y.speak) {
+                wp.a11y.speak(message);
+              }
+            };
+            var $target = direction === 'up' ? $row.prevAll('tr[id^="term-"]').first() : $row.nextAll('tr[id^="term-"]').first();
+
+            if (!$target.length) {
+              speak((direction === 'up' ? st_admin_localize.term_move_first : st_admin_localize.term_move_last).replace('%s', termName));
+              $button.trigger('focus');
+              return;
+            }
+
+            if (direction === 'up') {
+              $row.insertBefore($target);
+            } else {
+              $row.insertAfter($target);
+            }
+            $button.trigger('focus');
+
+            var $rows = $('#the-list tr[id^="term-"]');
+            var position = $rows.index($row) + 1;
+            taxopressSaveTermOrder({ item: $row }, function(ok) {
+              if (ok) {
+                speak(st_admin_localize.term_moved.replace('%1$s', termName).replace('%2$s', position).replace('%3$s', $rows.length));
+              } else {
+                speak(st_admin_localize.term_order_error, 'assertive');
+              }
+            });
+        });
 
         $('#the-list tr td').css('cursor', 'move');
     }
@@ -668,9 +916,10 @@
       var tab_content = $(this).attr('data-content');
 
       $('.taxopress-tab li').removeClass('active');
-      $('.taxopress-tab li').attr('aria-current', 'false');
+      // aria-current belongs on the link, not the list item (also clears legacy li markup).
+      $('.taxopress-tab li').removeAttr('aria-current').children('a').removeAttr('aria-current');
       $(this).addClass('active');
-      $(this).attr('aria-current', 'true');
+      $(this).children('a').attr('aria-current', 'true');
 
       $('.taxopress-tab-content table').hide();
       $('.tab-table-content').hide();
@@ -1310,6 +1559,21 @@
     // -------------------------------------------------------------
     if ($('.taxopress-select2-term-filter').length > 0) {
       taxopressTaxSelect2($('.taxopress-select2-term-filter'));
+      // Give the select2 combobox an accessible name (the native select is hidden).
+      $('.taxopress-select2-term-filter').each(function () {
+        var $select = $(this);
+        var $selection = $select.next('.select2').find('.select2-selection');
+        var $label = $select.attr('id') ? $('label[for="' + $select.attr('id') + '"]') : $();
+        if ($label.length) {
+          if (!$label.attr('id')) {
+            $label.attr('id', $select.attr('id') + '-select2-label');
+          }
+          var labelledby = $selection.attr('aria-labelledby');
+          $selection.attr('aria-labelledby', $label.attr('id') + (labelledby ? ' ' + labelledby : ''));
+        } else {
+          $selection.attr('aria-label', $select.data('placeholder') || $select.find('option:first').text());
+        }
+      });
         
             function taxopressTaxSelect2(selector) {
               selector.each(function() {
@@ -2375,15 +2639,14 @@
     });
 
     /* Start COPIED FROM PP BLOCKS */
-      $(".taxopress-dashboard-settings-control .slider").bind("click", function (e) {
+      $(".taxopress-dashboard-settings-control .switch input[type=checkbox]").on("change", function (e) {
         try {
-            e.preventDefault();
-            if ($(this).hasClass("slider--disabled")) {
+            var checkbox = $(this);
+            if (checkbox.parent().find(".slider").hasClass("slider--disabled")) {
+                checkbox.prop("checked", !checkbox.prop("checked"));
                 return false;
             }
-            var checkbox = $(this).parent().find("input");
-            var isChecked = checkbox.is(":checked") ? 1 : 0;
-            var newState = isChecked == 1 ? 0 : 1;
+            var newState = checkbox.is(":checked") ? 1 : 0;
             var feature = checkbox.data("feature");
             var option_key = checkbox.data("option_key");
             var slider = checkbox.parent().find(".slider");
@@ -2402,6 +2665,8 @@
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.error(jqXHR.responseText);
+                    checkbox.prop("checked", newState != 1);
+                    slider.css("opacity", 1);
                     taxopressTimerStatus("error");
                 },
             });
@@ -2412,7 +2677,10 @@
     function taxopressTimerStatus(type = "success") {
         setTimeout(function () {
             var uniqueClass = "taxopress-floating-msg-" + Math.round(new Date().getTime() + Math.random() * 100);
-            var message = type === "success" ? wp.i18n.__("Changes saved!", "capsman-enhanced") : wp.i18n.__(" Error: changes can't be saved.", "capsman-enhanced");
+            var message = type === "success" ? wp.i18n.__("Changes saved!", "simple-tags") : wp.i18n.__("Error: changes can't be saved.", "simple-tags");
+            if (window.wp && wp.a11y && wp.a11y.speak) {
+                wp.a11y.speak(message, type === "success" ? "polite" : "assertive");
+            }
             var instances = $(".taxopress-floating-status").length;
             $("#wpbody-content").after('<span class="taxopress-floating-status taxopress-floating-status--' + type + " " + uniqueClass + '">' + message + "</span>");
             $("." + uniqueClass)
@@ -3479,11 +3747,9 @@
                     processResults: function (data, params) {
                         params.page = params.page || 1;
                         const decodedResults = data.results.map(function(item) {
-                            const txt = document.createElement("textarea");
-                            txt.innerHTML = item.text;
                             return {
                                 ...item,
-                                text: txt.value
+                                text: taxopressDecodeHtmlEntities(item.text)
                             };
                         });
                         return {
@@ -3497,9 +3763,7 @@
                 },
                 templateSelection: function (data) {
                     if (data.text) {
-                        const txt = document.createElement("textarea");
-                        txt.innerHTML = data.text;
-                        return txt.value;
+                        return taxopressDecodeHtmlEntities(data.text);
                     }
                     return data.id;
                 },

@@ -88,6 +88,68 @@ class SimpleTags_Client
 
 
     /**
+     * Whether the front-end assets (Table List toggle script, screen-reader-only CSS) are loaded.
+     *
+     * Uses the same conditions as enqueue_displayformat_scripts(), because block themes render
+     * content before wp_enqueue_scripts runs. Enqueues the assets when they are allowed, which
+     * still prints them in the footer.
+     *
+     * @return bool
+     */
+    public static function frontend_script_enqueued()
+    {
+        if ((int) SimpleTags_Plugin::get_option_value('disable_frontend_scripts') === 1) {
+            return false;
+        }
+
+        if (! apply_filters('taxopress_load_frontend_scripts', true)) {
+            return false;
+        }
+
+        if (function_exists('is_feed') && is_feed()) {
+            return false;
+        }
+
+        if (function_exists('wp_enqueue_script') && ! wp_script_is('taxopress-frontend-js', 'done')) {
+            wp_enqueue_script('taxopress-frontend-js', STAGS_URL . '/assets/frontend/js/frontend.js', array('jquery'), STAGS_VERSION, true);
+            wp_enqueue_style('taxopress-frontend-css', STAGS_URL . '/assets/frontend/css/frontend.css', array(), STAGS_VERSION, 'all');
+        }
+
+        return true;
+    }
+
+    /**
+     * Visually hidden "(N posts)" text for the %tag_count_sr% token.
+     *
+     * @param int $count
+     *
+     * @return string
+     */
+    public static function get_term_count_sr_text($count)
+    {
+        $count = (int) $count;
+        /* translators: %s: number of posts using the term */
+        $text = sprintf(_n('(%s post)', '(%s posts)', $count, 'simple-tags'), number_format_i18n($count));
+
+        return '<span class="taxopress-sr-only"> ' . esc_html($text) . '</span>';
+    }
+
+    /**
+     * Allowlist a title wrapper tag.
+     *
+     * @param string $tag
+     * @param array $allowed
+     *
+     * @return string Allowed tag name or empty string.
+     */
+    public static function sanitize_title_header($tag, $allowed = array('h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div'))
+    {
+        $tag = strtolower(trim((string) $tag));
+
+        return in_array($tag, $allowed, true) ? $tag : '';
+    }
+
+    /**
      * Retrieves the currently queried object.
      *
      * Wrapper for WP_Query::get_queried_object().
@@ -317,7 +379,22 @@ class SimpleTags_Client
                     $output = '' . '' . '' . '' . $before .  implode($separator, $content) . " {$after}\n";
                     break;
                 case 'table':
-                    $output = $before . '<table class="' . $html_class . ' taxopress-table-container">' . "\n\t";
+                    // Only collapse rows when the front-end script that can expand them is loaded.
+                    $assets_loaded = self::frontend_script_enqueued();
+                    $collapsible   = $assets_loaded && count($content) > 6;
+                    $table_id    = function_exists('wp_unique_id') ? wp_unique_id('taxopress-table-') : uniqid('taxopress-table-');
+                    $caption     = trim(html_entity_decode(wp_strip_all_tags((string) $title), ENT_QUOTES, 'UTF-8'));
+                    if ($caption === '' || strtolower($caption) === 'false') {
+                        $caption = __('Terms', 'simple-tags');
+                    }
+
+                    $output = $before . '<table id="' . esc_attr($table_id) . '" class="' . $html_class . ' taxopress-table-container">' . "\n\t";
+                    // Hidden caption and header row need frontend.css; skip them when it is disabled.
+                    if ($assets_loaded) {
+                        $output .= '<caption class="taxopress-sr-only">' . esc_html($caption) . '</caption>' . "\n\t";
+                        $output .= '<thead><tr class="taxopress-sr-only"><th scope="col">' . esc_html__('Term', 'simple-tags') . '</th><th scope="col">' . esc_html__('Posts', 'simple-tags') . '</th></tr></thead>' . "\n\t";
+                    }
+                    $output .= '<tbody>' . "\n\t";
                     $count = 0;
                     foreach ($content as $item) {
                         // If $item is an array, use its fields
@@ -334,15 +411,20 @@ class SimpleTags_Client
                         //  continue;
                         // }
 
-                        $display_class = $count >= 6 ? 'hidden' : '';
-                        $output .= '<tr class="taxopress-table-row ' . $display_class . '"><td>' . $term_html . '</td><td class="taxopress-post-count">' . $post_count . '</td></tr>' . "\n\t";
+                        $display_class = ($collapsible && $count >= 6) ? 'hidden' : '';
+                        $output .= '<tr class="taxopress-table-row ' . $display_class . '"><td>' . $term_html . '</td><td class="taxopress-post-count">' . (int) $post_count . '</td></tr>' . "\n\t";
                         $count++;
                     }
-                    if ($count > 6) {
-                        $output .= '<tr><td class="taxopress-see-more-container" colspan="2">';
-                        $output .= '<span class="taxopress-see-more-link">see more <span class="taxopress-arrow right"></span></span>';
-                        $output .= '<span class="taxopress-close-table-link">close table <span class="taxopress-arrow down"></span></span>';
-                        $output .= '</td></tr>' . "\n";
+                    $output .= '</tbody>' . "\n";
+                    if ($collapsible && $count > 6) {
+                        $label_more  = __('See more', 'simple-tags');
+                        $label_close = __('Close table', 'simple-tags');
+                        $output .= '<tfoot><tr><td class="taxopress-see-more-container" colspan="2">';
+                        $output .= '<button type="button" class="taxopress-see-more-link" aria-expanded="false" aria-controls="' . esc_attr($table_id) . '"'
+                            . ' data-label-more="' . esc_attr($label_more) . '" data-label-close="' . esc_attr($label_close) . '">'
+                            . '<span class="taxopress-see-more-label">' . esc_html($label_more) . '</span> '
+                            . '<span class="taxopress-arrow right" aria-hidden="true"></span></button>';
+                        $output .= '</td></tr></tfoot>' . "\n";
                     }
                     $output .= "</table>" . $after . "\n";
                     break;
@@ -353,7 +435,7 @@ class SimpleTags_Client
                     $output = '<div class="taxopress-box-list ' . $html_class . '">' . $before . ' ' . "\n\t" . implode("{$separator}\n", $content) . " {$after}</div>\n";
                     break;
                 case 'parent/child':
-                    $output = $before . '<ul class="' . $html_class . ' taxopress-parent-child-list">' . "\n";
+                    $output = $before . '<ul class="' . $html_class . ' taxopress-parent-child-list" role="list">' . "\n";
 
                     // Cache term hierarchy to avoid repeated queries
                     static $term_hierarchy = [];
@@ -458,7 +540,7 @@ class SimpleTags_Client
 
                         if (isset($terms_by_parent[$term_id])) {
                             $html .= "\n" . str_repeat("\t", $level + 1);
-                            $html .= '<ul class="taxopress-child-list">' . "\n";
+                            $html .= '<ul class="taxopress-child-list" role="list">' . "\n";
                             foreach ($terms_by_parent[$term_id] as $child_id) {
                                 $html .= $output_term($child_id, $level + 2);
                             }
@@ -524,7 +606,7 @@ class SimpleTags_Client
                     $output = '<div class="taxopress-box-list ' . $html_class . '">' . $before . ' ' . "\n\t" . $content . " {$after} </div>\n";
                     break;
                 case 'parent/child':
-                    $output = $before . '<ul class="' . esc_attr($html_class) . ' taxopress-parent-child-list">' . "\n";
+                    $output = $before . '<ul class="' . esc_attr($html_class) . ' taxopress-parent-child-list" role="list">' . "\n";
                     $lines = explode("\n", $content);
                     $inside_sublist = false;
 
@@ -542,7 +624,7 @@ class SimpleTags_Client
 
                             $output .= '<li class="parent-item" style="list-style-type: disc; color: black;">' . $line;
 
-                            $output .= "\n<ul class=\"child-items\" style=\"list-style-type: circle; color: black;\">\n";
+                            $output .= "\n<ul class=\"child-items\" role=\"list\" style=\"list-style-type: circle; color: black;\">\n";
                             $inside_sublist = true;
                         } else {
                             $output .= '<li class="child-item">' . $line . "</li>\n";
@@ -615,6 +697,9 @@ class SimpleTags_Client
         $element_loop = str_replace('%tag_name%', esc_html($term->name), $element_loop);
         $element_loop = str_replace('%tag_name_attribute%', esc_html(wp_strip_all_tags($term->name)), $element_loop);
         $element_loop = str_replace('%tag_id%', $term->term_id, $element_loop);
+        if (strpos($element_loop, '%tag_count_sr%') !== false) {
+            $element_loop = str_replace('%tag_count_sr%', self::get_term_count_sr_text((int) $term->count), $element_loop);
+        }
         $element_loop = str_replace('%tag_count%', (int) $term->count, $element_loop);
         $element_loop = str_replace('%tag_description%', esc_html($term->description), $element_loop);
 
