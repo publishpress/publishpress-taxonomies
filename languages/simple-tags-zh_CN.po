@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-09-04 16:07+0000\n"
+"PO-Revision-Date: 2026-10-22 15:37+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php:5, fuzzy
+#: simple-tags.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
@@ -38,274 +38,77 @@ msgstr "PublishPress Taxonomies 允许您创建和管理标签、类别以及您
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php:9, fuzzy
+#: simple-tags.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
 #: blocks/post-tags.php:63
-#: dist/simple-tags/blocks/post-tags.php:63
-#: dist/simple-tags/inc/related-posts-widget.php:141
+#: inc/posts-tags-widget.php:141
 #: inc/related-posts-widget.php:141
 msgid "Here"
 msgstr "这里"
 
 #: blocks/post-tags.php:66
-#: dist/simple-tags/blocks/post-tags.php:66
 msgid " Select current post"
 msgstr " 选择当前帖子"
 
 #: blocks/post-tags.php:67
-#: dist/simple-tags/blocks/post-tags.php:67
 msgid "Current Posts (PublishPress Taxonomies)"
 msgstr "当前帖子 (PublishPress Taxonomies)"
 
 #: blocks/related-posts.php:80
 #: blocks/tag-clouds.php:63
-#: dist/simple-tags/blocks/related-posts.php:80
-#: dist/simple-tags/blocks/tag-clouds.php:63
-#: dist/simple-tags/inc/related-posts-widget.php:109
+#: inc/posts-tags-widget.php:109
 #: inc/related-posts-widget.php:109
 msgid "this page."
 msgstr "此页面。"
 
 #: blocks/related-posts.php:83
-#: dist/simple-tags/blocks/related-posts.php:83
 msgid "Select related post"
 msgstr "选择相关帖子"
 
 #: blocks/related-posts.php:84
-#: dist/simple-tags/blocks/related-posts.php:84
-#: dist/simple-tags/inc/related-posts-widget.php:19
 #: inc/related-posts-widget.php:19
 msgid "Related Posts (PublishPress Taxonomies)"
 msgstr "相关帖子 (PublishPress Taxonomies)"
 
 #: blocks/tag-clouds.php:66
-#: dist/simple-tags/blocks/tag-clouds.php:66
 msgid "Select Terms Display"
 msgstr "选择术语显示"
 
 #: blocks/tag-clouds.php:67
-#: dist/simple-tags/blocks/tag-clouds.php:67
 msgid "Terms Display (PublishPress Taxonomies)"
 msgstr "术语显示 (PublishPress Taxonomies)"
 
-#: dist/simple-tags/inc/related-posts-functions.php:167
-#: dist/simple-tags/inc/related-posts-table.php:15
-#: dist/simple-tags/inc/related-posts.php:73
-#: dist/simple-tags/inc/related-posts.php:74
-#: dist/simple-tags/inc/related-posts.php:131
-#: inc/related-posts-functions.php:167
-#: inc/related-posts-table.php:15
-#: inc/related-posts.php:73
-#: inc/related-posts.php:74
-#: inc/related-posts.php:131
-msgid "Related Posts"
-msgstr "相关帖子"
+#: inc/posts-tags-widget.php:19
+msgid "Terms for Current Post (PublishPress Taxonomies)"
+msgstr "当前文章的术语（PublishPress Taxonomies）"
 
-#: dist/simple-tags/inc/related-posts-functions.php:176
-#: inc/related-posts-functions.php:176
-msgid "No related posts."
-msgstr "没有相关帖子。"
+#: inc/posts-tags-widget.php:22
+msgid "PublishPress Taxonomies Terms for Current Post Shortcode"
+msgstr "当前文章短代码的 PublishPress Taxonomies 术语"
 
-#: dist/simple-tags/inc/related-posts-functions.php:262
-#: dist/simple-tags/inc/schedule.php:173
-#: dist/simple-tags/inc/tag-clouds-functions.php:245
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:181
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:311
-#: inc/related-posts-functions.php:262
-#: inc/schedule.php:173
-#: inc/tag-clouds-functions.php:245
-#: modules/taxopress-ai/taxopress-ai.php:181
-#: modules/taxopress-ai/taxopress-ai.php:311
-msgid "Settings updated successfully."
-msgstr "设置成功更新。"
+#: inc/posts-tags-widget.php:112
+msgid "Terms for Current Post are added on "
+msgstr "当前文章的术语添加于 "
 
-#: dist/simple-tags/inc/related-posts-functions.php:271
-#: inc/related-posts-functions.php:271
-msgid "Related Posts successfully deleted."
-msgstr "相关帖子成功删除。"
+#: inc/posts-tags-widget.php:120
+msgid "Select widget terms for current post."
+msgstr "选择当前文章的 widget 术语。"
 
-#: dist/simple-tags/inc/related-posts-functions.php:366
-#: inc/related-posts-functions.php:366
-msgid "Related Posts not found."
-msgstr "未找到相关帖子。"
+#: inc/posts-tags-widget.php:144
+msgid "No terms for current post shortcode available. Add new shortcode "
+msgstr "当前文章短代码没有可用的术语。添加新的短代码 "
 
-#: dist/simple-tags/inc/related-posts-table.php:14
-#: inc/related-posts-table.php:14
-msgid "Related Post"
-msgstr "相关帖子"
+#: inc/posts.php:163
+#: inc/posts.php:164
+#: inc/posts.php:215
+#: inc/related-posts.php:640
+msgid "Posts"
+msgstr "文章"
 
-#: dist/simple-tags/inc/related-posts-table.php:65
-#: dist/simple-tags/inc/related-posts.php:382
-#: dist/simple-tags/inc/tag-clouds-table.php:65
-#: dist/simple-tags/inc/tag-clouds.php:377
-#: dist/simple-tags/inc/terms-table.php:732
-#: dist/simple-tags/inc/terms-table.php:739
-#: inc/related-posts-table.php:65
-#: inc/related-posts.php:382
-#: inc/tag-clouds-table.php:65
-#: inc/tag-clouds.php:377
-#: inc/terms-table.php:732
-#: inc/terms-table.php:739
-msgid "Title"
-msgstr "标题"
-
-#: dist/simple-tags/inc/related-posts-table.php:66
-#: dist/simple-tags/inc/related-posts.php:502
-#: dist/simple-tags/inc/schedule-logs-table.php:53
-#: dist/simple-tags/inc/tag-clouds-table.php:66
-#: dist/simple-tags/inc/tag-clouds.php:463
-#: dist/simple-tags/inc/terms-table.php:742
-#: dist/simple-tags/inc/terms-table.php:867
-#: inc/related-posts-table.php:66
-#: inc/related-posts.php:502
-#: inc/schedule-logs-table.php:53
-#: inc/tag-clouds-table.php:66
-#: inc/tag-clouds.php:463
-#: inc/terms-table.php:742
-#: inc/terms-table.php:867
-msgid "Taxonomy"
-msgstr "分类法"
-
-#: dist/simple-tags/inc/related-posts-table.php:67
-#: dist/simple-tags/inc/related-posts.php:341
-#: dist/simple-tags/inc/related-posts.php:788
-#: dist/simple-tags/inc/taxonomies.php:481
-#: dist/simple-tags/inc/terms-table.php:743
-#: inc/related-posts-table.php:67
-#: inc/related-posts.php:341
-#: inc/related-posts.php:788
-#: inc/taxonomies.php:481
-#: inc/terms-table.php:743
-msgid "Post Types"
-msgstr "帖子类型"
-
-#: dist/simple-tags/inc/related-posts-table.php:68
-#: inc/related-posts-table.php:68
-msgid "Automatic display"
-msgstr "自动显示"
-
-#: dist/simple-tags/inc/related-posts-table.php:69
-#: dist/simple-tags/inc/tag-clouds-table.php:69
-#: inc/related-posts-table.php:69
-#: inc/tag-clouds-table.php:69
-msgid "Shortcode"
-msgstr "Shortcode"
-
-#: dist/simple-tags/inc/related-posts-table.php:91
-#: dist/simple-tags/inc/tag-clouds-table.php:91
-#: inc/related-posts-table.php:91
-#: inc/tag-clouds-table.php:91
-msgid "No item avaliable."
-msgstr "没有可用的项目。"
-
-#: dist/simple-tags/inc/related-posts-table.php:276
-#: dist/simple-tags/inc/tag-clouds-table.php:276
-#: dist/simple-tags/inc/terms-table.php:1155
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1523
-#: inc/related-posts-table.php:276
-#: inc/tag-clouds-table.php:276
-#: inc/terms-table.php:1155
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
-#: modules/taxopress-ai/taxopress-ai.php:1523
-msgid "Edit"
-msgstr "编辑"
-
-#: dist/simple-tags/inc/related-posts-table.php:289
-#: dist/simple-tags/inc/schedule-logs-table.php:79
-#: dist/simple-tags/inc/tag-clouds-table.php:289
-#: dist/simple-tags/inc/terms-table.php:800
-#: dist/simple-tags/inc/terms-table.php:1197
-#: inc/related-posts-table.php:289
-#: inc/schedule-logs-table.php:79
-#: inc/tag-clouds-table.php:289
-#: inc/terms-table.php:800
-#: inc/terms-table.php:1197
-msgid "Delete"
-msgstr "删除"
-
-#: dist/simple-tags/inc/related-posts-table.php:349
-#: inc/related-posts-table.php:349
-msgid "Current post type"
-msgstr "当前帖子类型"
-
-#: dist/simple-tags/inc/related-posts-table.php:351
-#: dist/simple-tags/inc/tag-clouds-table.php:359
-#: inc/related-posts-table.php:351
-#: inc/tag-clouds-table.php:359
-msgid "All"
-msgstr "全部"
-
-#: dist/simple-tags/inc/related-posts-table.php:386
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:616
-#: inc/related-posts-table.php:386
-#: includes-core/TaxopressCoreAdmin.php:616
-msgid "Default"
-msgstr "默认"
-
-#: dist/simple-tags/inc/related-posts-table.php:417
-#: dist/simple-tags/inc/related-posts.php:638
-#: inc/related-posts-table.php:417
-#: inc/related-posts.php:638
-msgid "Homepage"
-msgstr "首页"
-
-#: dist/simple-tags/inc/related-posts-table.php:418
-#: dist/simple-tags/inc/related-posts.php:639
-#: inc/related-posts-table.php:418
-#: inc/related-posts.php:639
-msgid "Blog display"
-msgstr "博客显示"
-
-#: dist/simple-tags/inc/related-posts-table.php:419
-#: inc/related-posts-table.php:419
-msgid "Single post display"
-msgstr "单个帖子显示"
-
-#: dist/simple-tags/inc/related-posts-table.php:420
-#: inc/related-posts-table.php:420
-msgid "RSS feed"
-msgstr "RSS 订阅"
-
-#: dist/simple-tags/inc/related-posts-table.php:430
-#: dist/simple-tags/inc/related-posts.php:1329
-#: dist/simple-tags/inc/tag-clouds.php:1092
-#: dist/simple-tags/inc/taxonomies.php:1986
-#: inc/related-posts-table.php:430
-#: inc/related-posts.php:1329
-#: inc/tag-clouds.php:1092
-#: inc/taxonomies.php:1986
-msgid "No"
-msgstr "否"
-
-#: dist/simple-tags/inc/related-posts-widget.php:22
-#: inc/related-posts-widget.php:22
-msgid "PublishPress Taxonomies Related Posts Shortcode"
-msgstr "PublishPress 分类法相关帖子 Shortcode"
-
-#: dist/simple-tags/inc/related-posts-widget.php:112
-#: inc/related-posts-widget.php:112
-msgid "Related Posts are added on "
-msgstr "相关帖子已添加于 "
-
-#: dist/simple-tags/inc/related-posts-widget.php:120
-#: inc/related-posts-widget.php:120
-msgid "Select widget Related Posts."
-msgstr "选择小部件相关帖子。"
-
-#: dist/simple-tags/inc/related-posts-widget.php:144
-#: inc/related-posts-widget.php:144
-msgid "No Related Posts shortcode available. Add new shortcode "
-msgstr "没有可用的相关帖子 shortcode。添加新的 shortcode "
-
-#: dist/simple-tags/inc/related-posts.php:96
-#: dist/simple-tags/inc/schedule.php:58
-#: dist/simple-tags/inc/tag-clouds.php:96
-#: dist/simple-tags/inc/taxonomies.php:137
-#: dist/simple-tags/inc/terms.php:197
+#: inc/posts.php:186
 #: inc/related-posts.php:96
 #: inc/schedule.php:58
 #: inc/tag-clouds.php:96
@@ -314,12 +117,173 @@ msgstr "没有可用的相关帖子 shortcode。添加新的 shortcode "
 msgid "Number of items per page"
 msgstr "每页项目数"
 
-#: dist/simple-tags/inc/related-posts.php:137
+#: inc/posts.php:217
+msgid ""
+"This feature allows you to search for terms and see all the posts attached "
+"to that term."
+msgstr "此功能允许您搜索术语并查看与该术语关联的所有文章。"
+
+#: inc/posts.php:242
+msgid "Search Posts"
+msgstr "搜索文章"
+
+#: inc/posts.php:254
+#: inc/related-posts.php:170
+#: inc/schedule.php:485
+#: inc/tag-clouds.php:172
+#: inc/taxonomies.php:257
+#: inc/terms.php:324
+msgid "Description here."
+msgstr "在此处输入描述。"
+
+#: inc/related-posts-functions.php:167
+#: inc/related-posts-table.php:15
+#: inc/related-posts.php:73
+#: inc/related-posts.php:74
+#: inc/related-posts.php:131
+msgid "Related Posts"
+msgstr "相关帖子"
+
+#: inc/related-posts-functions.php:176
+msgid "No related posts."
+msgstr "没有相关帖子。"
+
+#: inc/related-posts-functions.php:262
+#: inc/schedule.php:173
+#: inc/tag-clouds-functions.php:249
+#: modules/taxopress-ai/taxopress-ai.php:181
+#: modules/taxopress-ai/taxopress-ai.php:311
+msgid "Settings updated successfully."
+msgstr "设置成功更新。"
+
+#: inc/related-posts-functions.php:271
+msgid "Related Posts successfully deleted."
+msgstr "相关帖子成功删除。"
+
+#: inc/related-posts-functions.php:366
+msgid "Related Posts not found."
+msgstr "未找到相关帖子。"
+
+#: inc/related-posts-table.php:14
+msgid "Related Post"
+msgstr "相关帖子"
+
+#: inc/related-posts-table.php:65
+#: inc/related-posts.php:382
+#: inc/tag-clouds-table.php:65
+#: inc/tag-clouds.php:376
+#: inc/terms-table.php:732
+#: inc/terms-table.php:739
+msgid "Title"
+msgstr "标题"
+
+#: inc/related-posts-table.php:66
+#: inc/related-posts.php:502
+#: inc/schedule-logs-table.php:53
+#: inc/tag-clouds-table.php:66
+#: inc/tag-clouds.php:462
+#: inc/terms-table.php:742
+#: inc/terms-table.php:867
+msgid "Taxonomy"
+msgstr "分类法"
+
+#: inc/related-posts-table.php:67
+#: inc/related-posts.php:341
+#: inc/related-posts.php:819
+#: inc/taxonomies.php:481
+#: inc/terms-table.php:743
+msgid "Post Types"
+msgstr "帖子类型"
+
+#: inc/related-posts-table.php:68
+msgid "Automatic display"
+msgstr "自动显示"
+
+#: inc/related-posts-table.php:69
+#: inc/tag-clouds-table.php:69
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: inc/related-posts-table.php:91
+#: inc/tag-clouds-table.php:91
+msgid "No item avaliable."
+msgstr "没有可用的项目。"
+
+#: inc/related-posts-table.php:276
+#: inc/tag-clouds-table.php:276
+#: inc/terms-table.php:1155
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:621
+#: modules/taxopress-ai/taxopress-ai.php:1523
+msgid "Edit"
+msgstr "编辑"
+
+#: inc/related-posts-table.php:289
+#: inc/schedule-logs-table.php:79
+#: inc/tag-clouds-table.php:289
+#: inc/terms-table.php:800
+#: inc/terms-table.php:1197
+msgid "Delete"
+msgstr "删除"
+
+#: inc/related-posts-table.php:349
+msgid "Current post type"
+msgstr "当前帖子类型"
+
+#: inc/related-posts-table.php:351
+#: inc/tag-clouds-table.php:359
+msgid "All"
+msgstr "全部"
+
+#: inc/related-posts-table.php:386
+#: includes-core/TaxopressCoreAdmin.php:690
+msgid "Default"
+msgstr "默认"
+
+#: inc/related-posts-table.php:417
+#: inc/related-posts.php:638
+msgid "Homepage"
+msgstr "首页"
+
+#: inc/related-posts-table.php:418
+#: inc/related-posts.php:639
+msgid "Blog display"
+msgstr "博客显示"
+
+#: inc/related-posts-table.php:419
+msgid "Single post display"
+msgstr "单个帖子显示"
+
+#: inc/related-posts-table.php:420
+msgid "RSS feed"
+msgstr "RSS 订阅"
+
+#: inc/related-posts-table.php:430
+#: inc/related-posts.php:1327
+#: inc/tag-clouds.php:1088
+#: inc/taxonomies.php:1986
+msgid "No"
+msgstr "否"
+
+#: inc/related-posts-widget.php:22
+msgid "PublishPress Taxonomies Related Posts Shortcode"
+msgstr "PublishPress 分类法相关帖子 Shortcode"
+
+#: inc/related-posts-widget.php:112
+msgid "Related Posts are added on "
+msgstr "相关帖子已添加于 "
+
+#: inc/related-posts-widget.php:120
+msgid "Select widget Related Posts."
+msgstr "选择小部件相关帖子。"
+
+#: inc/related-posts-widget.php:144
+msgid "No Related Posts shortcode available. Add new shortcode "
+msgstr "没有可用的相关帖子 shortcode。添加新的 shortcode "
+
 #: inc/related-posts.php:137
 msgid "Add New Related Post"
 msgstr "添加新相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:140
 #: inc/related-posts.php:140
 msgid ""
 "The Related Posts feature works by checking for shared taxonomy terms. If "
@@ -329,10 +293,6 @@ msgstr ""
 "相关文章功能通过检查共享的分类法术语来工作。如果您的帖子具有“WordPress”和“网站”这两个术语，那么相关文章将显示其他也具有“WordPress"
 "”和“网站”这两个术语的帖子。"
 
-#: dist/simple-tags/inc/related-posts.php:147
-#: dist/simple-tags/inc/tag-clouds.php:145
-#: dist/simple-tags/inc/taxonomies.php:181
-#: dist/simple-tags/inc/terms.php:291
 #: inc/related-posts.php:147
 #: inc/tag-clouds.php:145
 #: inc/taxonomies.php:181
@@ -342,64 +302,40 @@ msgstr ""
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "搜索结果为&#8220;%s&#8221;"
 
-#: dist/simple-tags/inc/related-posts.php:159
 #: inc/related-posts.php:159
 msgid "Search Related Posts"
 msgstr "搜索相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:170
-#: dist/simple-tags/inc/schedule.php:485
-#: dist/simple-tags/inc/tag-clouds.php:172
-#: dist/simple-tags/inc/taxonomies.php:257
-#: dist/simple-tags/inc/terms.php:324
-#: inc/related-posts.php:170
-#: inc/schedule.php:485
-#: inc/tag-clouds.php:172
-#: inc/taxonomies.php:257
-#: inc/terms.php:324
-msgid "Description here."
-msgstr "在此处输入描述。"
-
-#: dist/simple-tags/inc/related-posts.php:234
 #: inc/related-posts.php:234
 msgid "Manage Related Posts"
 msgstr "管理相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:250
 #: inc/related-posts.php:250
 msgid "Preview Related Posts"
 msgstr "预览相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:256
-#: dist/simple-tags/inc/tag-clouds.php:270
 #: inc/related-posts.php:256
 #: inc/tag-clouds.php:270
 msgid "Toggle panel"
 msgstr "切换面板"
 
-#: dist/simple-tags/inc/related-posts.php:277
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:465
 #: inc/related-posts.php:277
 #: modules/taxopress-ai/taxopress-ai.php:465
 msgid "Preview"
 msgstr "预览"
 
-#: dist/simple-tags/inc/related-posts.php:300
 #: inc/related-posts.php:300
 msgid "Edit Related Posts"
 msgstr "编辑相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:307
 #: inc/related-posts.php:307
 msgid "Add new Related Posts"
 msgstr "添加新的相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:318
 #: inc/related-posts.php:318
 msgid "To create more Related Posts, please upgrade to PublishPress Taxonomies Pro."
 msgstr "要创建更多相关文章，请升级到 PublishPress Taxonomies Pro。"
 
-#: dist/simple-tags/inc/related-posts.php:324
 #: inc/related-posts.php:324
 msgid ""
 "With PublishPress Taxonomies Pro, you can create unlimited Related Posts. "
@@ -409,91 +345,50 @@ msgstr ""
 "使用 PublishPress Taxonomies "
 "Pro，您可以创建无限数量的相关文章。您可以为任何分类法创建相关文章，然后在您网站的任何地方显示这些相关文章。"
 
-#: dist/simple-tags/inc/related-posts.php:337
-#: dist/simple-tags/inc/tag-clouds.php:334
-#: dist/simple-tags/inc/taxonomies.php:475
 #: inc/related-posts.php:337
-#: inc/tag-clouds.php:334
+#: inc/tag-clouds.php:337
 #: inc/taxonomies.php:475
 msgid "General"
 msgstr "常规"
 
-#: dist/simple-tags/inc/related-posts.php:345
 #: inc/related-posts.php:345
 msgid "Display"
 msgstr "显示"
 
-#: dist/simple-tags/inc/related-posts.php:349
-#: dist/simple-tags/inc/tag-clouds.php:354
 #: inc/related-posts.php:349
-#: inc/tag-clouds.php:354
+#: inc/tag-clouds.php:353
 msgid "Design"
 msgstr "设计"
 
-#: dist/simple-tags/inc/related-posts.php:353
-#: dist/simple-tags/inc/tag-clouds.php:346
 #: inc/related-posts.php:353
-#: inc/tag-clouds.php:346
+#: inc/tag-clouds.php:345
 msgid "Layout"
 msgstr "布局"
 
-#: dist/simple-tags/inc/related-posts.php:357
-#: dist/simple-tags/inc/related-posts.php:724
-#: dist/simple-tags/inc/tag-clouds-table.php:68
-#: dist/simple-tags/inc/tag-clouds.php:670
 #: inc/related-posts.php:357
 #: inc/related-posts.php:724
 #: inc/tag-clouds-table.php:68
-#: inc/tag-clouds.php:670
+#: inc/tag-clouds.php:680
 msgid "Display format"
 msgstr "显示格式"
 
-#: dist/simple-tags/inc/related-posts.php:361
-#: dist/simple-tags/inc/tag-clouds.php:342
 #: inc/related-posts.php:361
-#: inc/tag-clouds.php:342
 msgid "Options"
 msgstr "选项"
 
-#: dist/simple-tags/inc/related-posts.php:365
-#: dist/simple-tags/inc/taxonomies.php:504
 #: inc/related-posts.php:365
 #: inc/taxonomies.php:504
 msgid "Advanced"
 msgstr "高级"
 
-#: dist/simple-tags/inc/related-posts.php:401
-#: dist/simple-tags/inc/related-posts.php:558
-#: dist/simple-tags/inc/related-posts.php:992
-#: dist/simple-tags/inc/schedule.php:322
-#: dist/simple-tags/inc/tag-clouds.php:397
-#: dist/simple-tags/inc/tag-clouds.php:741
-#: dist/simple-tags/inc/tag-clouds.php:779
-#: dist/simple-tags/inc/tag-clouds.php:852
-#: dist/simple-tags/inc/taxonomies.php:632
-#: dist/simple-tags/inc/taxonomies.php:762
-#: dist/simple-tags/inc/taxonomies.php:776
-#: dist/simple-tags/inc/taxonomies.php:890
-#: dist/simple-tags/inc/taxonomies.php:930
-#: dist/simple-tags/inc/taxonomies.php:957
-#: dist/simple-tags/inc/taxonomies.php:994
-#: dist/simple-tags/inc/taxonomies.php:1018
-#: dist/simple-tags/inc/taxonomies.php:1042
-#: dist/simple-tags/inc/taxonomies.php:1067
-#: dist/simple-tags/inc/taxonomies.php:1091
-#: dist/simple-tags/inc/taxonomies.php:1118
-#: dist/simple-tags/inc/taxonomies.php:1585
-#: dist/simple-tags/inc/taxonomies.php:1656
-#: dist/simple-tags/inc/taxonomies.php:1683
-#: dist/simple-tags/inc/taxonomies.php:1710
 #: inc/related-posts.php:401
 #: inc/related-posts.php:558
-#: inc/related-posts.php:992
+#: inc/related-posts.php:1023
 #: inc/schedule.php:322
-#: inc/tag-clouds.php:397
-#: inc/tag-clouds.php:741
-#: inc/tag-clouds.php:779
-#: inc/tag-clouds.php:852
+#: inc/tag-clouds.php:396
+#: inc/tag-clouds.php:743
+#: inc/tag-clouds.php:781
+#: inc/tag-clouds.php:854
 #: inc/taxonomies.php:632
 #: inc/taxonomies.php:762
 #: inc/taxonomies.php:776
@@ -513,38 +408,14 @@ msgstr "高级"
 msgid "False"
 msgstr "假"
 
-#: dist/simple-tags/inc/related-posts.php:406
-#: dist/simple-tags/inc/related-posts.php:563
-#: dist/simple-tags/inc/related-posts.php:997
-#: dist/simple-tags/inc/schedule.php:327
-#: dist/simple-tags/inc/tag-clouds.php:402
-#: dist/simple-tags/inc/tag-clouds.php:746
-#: dist/simple-tags/inc/tag-clouds.php:784
-#: dist/simple-tags/inc/tag-clouds.php:856
-#: dist/simple-tags/inc/taxonomies.php:637
-#: dist/simple-tags/inc/taxonomies.php:767
-#: dist/simple-tags/inc/taxonomies.php:780
-#: dist/simple-tags/inc/taxonomies.php:894
-#: dist/simple-tags/inc/taxonomies.php:934
-#: dist/simple-tags/inc/taxonomies.php:962
-#: dist/simple-tags/inc/taxonomies.php:998
-#: dist/simple-tags/inc/taxonomies.php:1022
-#: dist/simple-tags/inc/taxonomies.php:1046
-#: dist/simple-tags/inc/taxonomies.php:1072
-#: dist/simple-tags/inc/taxonomies.php:1096
-#: dist/simple-tags/inc/taxonomies.php:1123
-#: dist/simple-tags/inc/taxonomies.php:1589
-#: dist/simple-tags/inc/taxonomies.php:1660
-#: dist/simple-tags/inc/taxonomies.php:1687
-#: dist/simple-tags/inc/taxonomies.php:1714
 #: inc/related-posts.php:406
 #: inc/related-posts.php:563
-#: inc/related-posts.php:997
+#: inc/related-posts.php:1028
 #: inc/schedule.php:327
-#: inc/tag-clouds.php:402
-#: inc/tag-clouds.php:746
-#: inc/tag-clouds.php:784
-#: inc/tag-clouds.php:856
+#: inc/tag-clouds.php:401
+#: inc/tag-clouds.php:748
+#: inc/tag-clouds.php:786
+#: inc/tag-clouds.php:858
 #: inc/taxonomies.php:637
 #: inc/taxonomies.php:767
 #: inc/taxonomies.php:780
@@ -564,741 +435,551 @@ msgstr "假"
 msgid "True"
 msgstr "真"
 
-#: dist/simple-tags/inc/related-posts.php:416
 #: inc/related-posts.php:416
 msgid "Hide title in output ?"
 msgstr "在输出中隐藏标题？"
 
-#: dist/simple-tags/inc/related-posts.php:428
-#: dist/simple-tags/inc/schedule-logs-table.php:192
 #: inc/related-posts.php:428
 #: inc/schedule-logs-table.php:192
 msgid "None"
 msgstr "无"
 
-#: dist/simple-tags/inc/related-posts.php:432
 #: inc/related-posts.php:432, fuzzy
 msgid "H1"
 msgstr "H1"
 
-#: dist/simple-tags/inc/related-posts.php:436
 #: inc/related-posts.php:436, fuzzy
 msgid "H2"
 msgstr "H2"
 
-#: dist/simple-tags/inc/related-posts.php:440
 #: inc/related-posts.php:440, fuzzy
 msgid "H3"
 msgstr "H3"
 
-#: dist/simple-tags/inc/related-posts.php:444
 #: inc/related-posts.php:444, fuzzy
 msgid "H4"
 msgstr "H4"
 
-#: dist/simple-tags/inc/related-posts.php:449
 #: inc/related-posts.php:449, fuzzy
 msgid "H5"
 msgstr "H5"
 
-#: dist/simple-tags/inc/related-posts.php:453
 #: inc/related-posts.php:453, fuzzy
 msgid "H6"
 msgstr "H6"
 
-#: dist/simple-tags/inc/related-posts.php:467
 #: inc/related-posts.php:467
 msgid "Title header"
 msgstr "标题头"
 
-#: dist/simple-tags/inc/related-posts.php:521
-#: dist/simple-tags/inc/tag-clouds.php:813
 #: inc/related-posts.php:521
-#: inc/tag-clouds.php:813
+#: inc/tag-clouds.php:815
 msgid "Font size minimum"
 msgstr "字体大小最小值"
 
-#: dist/simple-tags/inc/related-posts.php:531
-#: dist/simple-tags/inc/tag-clouds.php:823
 #: inc/related-posts.php:531
-#: inc/tag-clouds.php:823
+#: inc/tag-clouds.php:825
 msgid "Font size maximum"
 msgstr "字体大小最大值"
 
-#: dist/simple-tags/inc/related-posts.php:538
-#: dist/simple-tags/inc/tag-clouds.php:830
 #: inc/related-posts.php:538
-#: inc/tag-clouds.php:830
+#: inc/tag-clouds.php:832
 msgid "Point"
 msgstr "点"
 
-#: dist/simple-tags/inc/related-posts.php:539
-#: dist/simple-tags/inc/tag-clouds.php:831
 #: inc/related-posts.php:539
-#: inc/tag-clouds.php:831
+#: inc/tag-clouds.php:833
 msgid "Pixel"
 msgstr "像素"
 
-#: dist/simple-tags/inc/related-posts.php:540
-#: dist/simple-tags/inc/tag-clouds.php:832
 #: inc/related-posts.php:540
-#: inc/tag-clouds.php:832, fuzzy
+#: inc/tag-clouds.php:834, fuzzy
 msgid "Em"
 msgstr "Em"
 
-#: dist/simple-tags/inc/related-posts.php:541
-#: dist/simple-tags/inc/tag-clouds.php:833
 #: inc/related-posts.php:541
-#: inc/tag-clouds.php:833
+#: inc/tag-clouds.php:835
 msgid "Percent"
 msgstr "百分比"
 
-#: dist/simple-tags/inc/related-posts.php:550
-#: dist/simple-tags/inc/tag-clouds.php:842
 #: inc/related-posts.php:550
-#: inc/tag-clouds.php:842
+#: inc/tag-clouds.php:844
 msgid "Unit font size"
 msgstr "单位字体大小"
 
-#: dist/simple-tags/inc/related-posts.php:574
-#: dist/simple-tags/inc/tag-clouds.php:873
 #: inc/related-posts.php:574
-#: inc/tag-clouds.php:873
+#: inc/tag-clouds.php:875
 msgid "Enable colors for terms"
 msgstr "为术语启用颜色"
 
-#: dist/simple-tags/inc/related-posts.php:584
-#: dist/simple-tags/inc/tag-clouds.php:883
 #: inc/related-posts.php:584
-#: inc/tag-clouds.php:883
+#: inc/tag-clouds.php:885
 msgid "Font color minimum"
 msgstr "字体颜色最小值"
 
-#: dist/simple-tags/inc/related-posts.php:585
 #: inc/related-posts.php:585
 msgid "This is the color of the least popular term."
 msgstr "这是最不受欢迎的术语的颜色。"
 
-#: dist/simple-tags/inc/related-posts.php:595
-#: dist/simple-tags/inc/tag-clouds.php:894
 #: inc/related-posts.php:595
-#: inc/tag-clouds.php:894
+#: inc/tag-clouds.php:896
 msgid "Font color maximum"
 msgstr "字体颜色最大值"
 
-#: dist/simple-tags/inc/related-posts.php:596
 #: inc/related-posts.php:596
 msgid "This is the color of the most popular term."
 msgstr "这是最受欢迎的术语的颜色。"
 
-#: dist/simple-tags/inc/related-posts.php:640
-#: inc/related-posts.php:640
-msgid "Posts"
-msgstr "文章"
-
-#: dist/simple-tags/inc/related-posts.php:653
 #: inc/related-posts.php:653
 msgid "Maximum related posts to display"
 msgstr "最大相关文章数以显示"
 
-#: dist/simple-tags/inc/related-posts.php:657
 #: inc/related-posts.php:657
 msgid "Specify the number of related posts to display."
 msgstr "指定要显示的相关文章数量。"
 
-#: dist/simple-tags/inc/related-posts.php:661
 #: inc/related-posts.php:661
 msgid "Attempt to automatically display related posts"
 msgstr "尝试自动显示相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:664
 #: inc/related-posts.php:664
 msgid ""
 "PublishPress Taxonomies will attempt to automatically display related posts "
 "in this content. It may not be successful for all post types and layouts."
 msgstr "PublishPress Taxonomies 将尝试在此内容中自动显示相关文章。对于所有文章类型和布局，它可能无法成功。"
 
-#: dist/simple-tags/inc/related-posts.php:713
 #: inc/related-posts.php:713
 msgid "Box List"
 msgstr "框列表"
 
-#: dist/simple-tags/inc/related-posts.php:714
-#: dist/simple-tags/inc/tag-clouds-table.php:377
-#: dist/simple-tags/inc/tag-clouds.php:656
 #: inc/related-posts.php:714
 #: inc/tag-clouds-table.php:377
-#: inc/tag-clouds.php:656
+#: inc/tag-clouds.php:666
 msgid "Unordered List (UL/LI)"
 msgstr "无序列表 (UL/LI)"
 
-#: dist/simple-tags/inc/related-posts.php:715
-#: dist/simple-tags/inc/tag-clouds-table.php:378
-#: dist/simple-tags/inc/tag-clouds.php:657
 #: inc/related-posts.php:715
 #: inc/tag-clouds-table.php:378
-#: inc/tag-clouds.php:657
+#: inc/tag-clouds.php:667
 msgid "Ordered List (OL/LI)"
 msgstr "有序列表 (OL/LI)"
 
-#: dist/simple-tags/inc/related-posts.php:744
-#: dist/simple-tags/inc/tag-clouds.php:939
 #: inc/related-posts.php:744
-#: inc/tag-clouds.php:939
+#: inc/tag-clouds.php:941
 msgid "Term link format"
 msgstr "术语链接格式"
 
-#: dist/simple-tags/inc/related-posts.php:745
 #: inc/related-posts.php:745
 #, php-format
 msgid ""
-"This settings allows to customize the appearance of Related Post links. You "
-"can find tokens and explanations in the sidebar and %1sin the "
+"This setting allows you to customize the appearance of Related Post links. "
+"You can use any of the tokens shown below or find more details %1sin the "
 "documentation%2s."
-msgstr "此设置允许自定义相关文章链接的外观。您可以在侧边栏和 %1$s 文档 %2$s 中找到标记和解释。"
+msgstr "此设置允许您自定义相关文章链接的外观。您可以使用下面显示的任何令牌，或在文档中找到更多详细信息 %1$s%2$s。"
 
-#: dist/simple-tags/inc/related-posts.php:791
-#: inc/related-posts.php:791
+#: inc/related-posts.php:755
+msgid "Related Posts format"
+msgstr "相关文章格式"
+
+#: inc/related-posts.php:760
+msgid "Here are the tokens you can use for related posts format"
+msgstr "以下是您可以用于相关文章格式的标记"
+
+#: inc/related-posts.php:762
+msgid "The URL of the post"
+msgstr "文章的 URL"
+
+#: inc/related-posts.php:763
+msgid "The title of the post"
+msgstr "文章的标题"
+
+#: inc/related-posts.php:764
+msgid "The date of the post (this shows inside a tooltip)"
+msgstr "文章的日期（此内容将在工具提示中显示）"
+
+#: inc/related-posts.php:765
+msgid "The number of tags used by both posts"
+msgstr "两篇文章使用的标签数量"
+
+#: inc/related-posts.php:766
+msgid "The number of comments on the post"
+msgstr "文章的评论数量"
+
+#: inc/related-posts.php:767
+msgid "The ID of the post"
+msgstr "文章的 ID"
+
+#: inc/related-posts.php:768
+msgid "A list of tags used by both the current post and the related post"
+msgstr "当前文章和相关文章使用的标签列表"
+
+#: inc/related-posts.php:769
+msgid "The post excerpt"
+msgstr "文章摘要"
+
+#: inc/related-posts.php:770
+msgid "The post featured image URL"
+msgstr "文章特色图像 URL"
+
+#: inc/related-posts.php:771
+msgid "The post content"
+msgstr "文章内容"
+
+#: inc/related-posts.php:772
+msgid "The post category"
+msgstr "文章类别"
+
+#: inc/related-posts.php:773
+msgid "The font size of the post"
+msgstr "文章的字体大小"
+
+#: inc/related-posts.php:774
+msgid "The color of the post title"
+msgstr "帖子标题的颜色"
+
+#: inc/related-posts.php:822
 msgid "PublishPress Taxonomies will display related posts from selected post types."
 msgstr "PublishPress Taxonomies 将显示来自选定文章类型的相关文章。"
 
-#: dist/simple-tags/inc/related-posts.php:845
-#: inc/related-posts.php:845
+#: inc/related-posts.php:876
 msgid "Text to display before posts list"
 msgstr "在文章列表之前显示的文本"
 
-#: dist/simple-tags/inc/related-posts.php:849
-#: inc/related-posts.php:849
+#: inc/related-posts.php:880
 msgid "Enter the text that should be displayed before the posts list."
 msgstr "输入应在文章列表之前显示的文本。"
 
-#: dist/simple-tags/inc/related-posts.php:861
-#: inc/related-posts.php:861
+#: inc/related-posts.php:892
 msgid "Text to display after posts list"
 msgstr "在文章列表之后显示的文本"
 
-#: dist/simple-tags/inc/related-posts.php:865
-#: inc/related-posts.php:865
+#: inc/related-posts.php:896
 msgid "Enter the text that should be display after the posts list."
 msgstr "输入应在文章列表之后显示的文本。"
 
-#: dist/simple-tags/inc/related-posts.php:876
-#: dist/simple-tags/inc/tag-clouds.php:605
-#: inc/related-posts.php:876
-#: inc/tag-clouds.php:605
+#: inc/related-posts.php:907
+#: inc/tag-clouds.php:615
 msgid "24 hours"
 msgstr "24小时"
 
-#: dist/simple-tags/inc/related-posts.php:880
-#: dist/simple-tags/inc/tag-clouds.php:606
-#: inc/related-posts.php:880
-#: inc/tag-clouds.php:606
+#: inc/related-posts.php:911
+#: inc/tag-clouds.php:616
 msgid "7 days"
 msgstr "7天"
 
-#: dist/simple-tags/inc/related-posts.php:884
-#: dist/simple-tags/inc/tag-clouds.php:607
-#: inc/related-posts.php:884
-#: inc/tag-clouds.php:607
+#: inc/related-posts.php:915
+#: inc/tag-clouds.php:617
 msgid "2 weeks"
 msgstr "2 周"
 
-#: dist/simple-tags/inc/related-posts.php:888
-#: dist/simple-tags/inc/tag-clouds.php:608
-#: dist/simple-tags/review-request/review.php:298
-#: inc/related-posts.php:888
-#: inc/tag-clouds.php:608
+#: inc/related-posts.php:919
+#: inc/tag-clouds.php:618
 #: review-request/review.php:298
 msgid "1 month"
 msgstr "1 个月"
 
-#: dist/simple-tags/inc/related-posts.php:892
-#: dist/simple-tags/inc/tag-clouds.php:609
-#: inc/related-posts.php:892
-#: inc/tag-clouds.php:609
+#: inc/related-posts.php:923
+#: inc/tag-clouds.php:619
 msgid "6 months"
 msgstr "6 个月"
 
-#: dist/simple-tags/inc/related-posts.php:896
-#: dist/simple-tags/inc/tag-clouds.php:610
-#: inc/related-posts.php:896
-#: inc/tag-clouds.php:610
+#: inc/related-posts.php:927
+#: inc/tag-clouds.php:620
 msgid "1 year"
 msgstr "1 年"
 
-#: dist/simple-tags/inc/related-posts.php:900
-#: dist/simple-tags/inc/schedule.php:396
-#: dist/simple-tags/inc/schedule.php:430
-#: dist/simple-tags/inc/tag-clouds.php:611
-#: inc/related-posts.php:900
+#: inc/related-posts.php:931
 #: inc/schedule.php:396
 #: inc/schedule.php:430
-#: inc/tag-clouds.php:611
+#: inc/tag-clouds.php:621
 msgid "No limit"
 msgstr "无限制"
 
-#: dist/simple-tags/inc/related-posts.php:911
-#: inc/related-posts.php:911
+#: inc/related-posts.php:942
 msgid "Limit related posts based on timeframe"
 msgstr "根据时间范围限制相关帖子"
 
-#: dist/simple-tags/inc/related-posts.php:923
-#: inc/related-posts.php:923
+#: inc/related-posts.php:954
 msgid "Least common tags between posts"
 msgstr "帖子之间最少的公共标签"
 
-#: dist/simple-tags/inc/related-posts.php:930
-#: inc/related-posts.php:930
+#: inc/related-posts.php:961
 msgid "Most common tags between posts"
 msgstr "帖子之间最多的公共标签"
 
-#: dist/simple-tags/inc/related-posts.php:938
-#: inc/related-posts.php:938
+#: inc/related-posts.php:969
 msgid "Older Entries"
 msgstr "旧条目"
 
-#: dist/simple-tags/inc/related-posts.php:942
-#: inc/related-posts.php:942
+#: inc/related-posts.php:973
 msgid "Newer Entries"
 msgstr "新条目"
 
-#: dist/simple-tags/inc/related-posts.php:946
-#: inc/related-posts.php:946
+#: inc/related-posts.php:977
 msgid "Alphabetical"
 msgstr "字母顺序"
 
-#: dist/simple-tags/inc/related-posts.php:950
-#: inc/related-posts.php:950
+#: inc/related-posts.php:981
 msgid "Inverse Alphabetical"
 msgstr "逆字母顺序"
 
-#: dist/simple-tags/inc/related-posts.php:957
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:870
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:930
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:974
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
-#: inc/related-posts.php:957
-#: includes-core/TaxopressCoreAdmin.php:870
-#: includes-core/TaxopressCoreAdmin.php:930
-#: includes-core/TaxopressCoreAdmin.php:974
+#: inc/related-posts.php:988
+#: includes-core/TaxopressCoreAdmin.php:944
+#: includes-core/TaxopressCoreAdmin.php:1004
+#: includes-core/TaxopressCoreAdmin.php:1048
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:114
 msgid "Random"
 msgstr "随机"
 
-#: dist/simple-tags/inc/related-posts.php:967
-#: inc/related-posts.php:967
+#: inc/related-posts.php:998
 msgid "Related Posts Order"
 msgstr "相关帖子顺序"
 
-#: dist/simple-tags/inc/related-posts.php:979
-#: inc/related-posts.php:979
+#: inc/related-posts.php:1010
 msgid "Text to show when there is no related post"
 msgstr "没有相关帖子时显示的文本"
 
-#: dist/simple-tags/inc/related-posts.php:1007
-#: inc/related-posts.php:1007
+#: inc/related-posts.php:1038
 msgid "Hide output if no related post is found ?"
 msgstr "如果未找到相关帖子，是否隐藏输出？"
 
-#: dist/simple-tags/inc/related-posts.php:1029
-#: inc/related-posts.php:1029
+#: inc/related-posts.php:1060
 msgid "Related Posts div class"
 msgstr "相关帖子 div 类"
 
-#: dist/simple-tags/inc/related-posts.php:1040
-#: dist/simple-tags/inc/tag-clouds.php:926
-#: inc/related-posts.php:1040
-#: inc/tag-clouds.php:926
+#: inc/related-posts.php:1071
+#: inc/tag-clouds.php:928
 msgid "Term link class"
 msgstr "术语链接类"
 
-#: dist/simple-tags/inc/related-posts.php:1047
-#: inc/related-posts.php:1047
+#: inc/related-posts.php:1078
 msgid "d.m.Y (e.g., 09.10.2024)"
 msgstr "d.m.Y（例如，09.10.2024）"
 
-#: dist/simple-tags/inc/related-posts.php:1048
-#: inc/related-posts.php:1048
+#: inc/related-posts.php:1079
 msgid "F j, Y (e.g., October 9, 2024)"
 msgstr "F j, Y（例如，2024年10月9日）"
 
-#: dist/simple-tags/inc/related-posts.php:1049
-#: inc/related-posts.php:1049
+#: inc/related-posts.php:1080
 msgid "Y-m-d (e.g., 2024-10-09)"
 msgstr "Y-m-d（例如，2024-10-09）"
 
-#: dist/simple-tags/inc/related-posts.php:1050
-#: inc/related-posts.php:1050
+#: inc/related-posts.php:1081
 msgid "m/d/Y (e.g., 10/09/2024)"
 msgstr "m/d/Y（例如，10/09/2024）"
 
-#: dist/simple-tags/inc/related-posts.php:1051
-#: inc/related-posts.php:1051
+#: inc/related-posts.php:1082
 msgid "d M, Y (e.g., 09 Oct, 2024)"
 msgstr "d M, Y（例如，09 Oct, 2024）"
 
-#: dist/simple-tags/inc/related-posts.php:1060
-#: inc/related-posts.php:1060
+#: inc/related-posts.php:1091
 msgid "Post date format"
 msgstr "帖子日期格式"
 
-#: dist/simple-tags/inc/related-posts.php:1069
-#: inc/related-posts.php:1069
+#: inc/related-posts.php:1100
 msgid "Maximum characters of post content to display"
 msgstr "显示的帖子内容最大字符数"
 
-#: dist/simple-tags/inc/related-posts.php:1082
-#: inc/related-posts.php:1082
+#: inc/related-posts.php:1113
 msgid "Maximum number of categories"
 msgstr "最大分类数"
 
-#: dist/simple-tags/inc/related-posts.php:1086
-#: inc/related-posts.php:1086
+#: inc/related-posts.php:1117
 msgid "You must set zero (0) to display all post categories."
 msgstr "您必须设置为零（0）以显示所有帖子分类。"
 
-#: dist/simple-tags/inc/related-posts.php:1096
-#: inc/related-posts.php:1096
+#: inc/related-posts.php:1127
 msgid "Maximum number of tags"
 msgstr "最大标签数"
 
-#: dist/simple-tags/inc/related-posts.php:1100
-#: inc/related-posts.php:1100
+#: inc/related-posts.php:1131
 msgid "You must set zero (0) to display all post tags."
 msgstr "您必须设置为零（0）以显示所有帖子标签。"
 
-#: dist/simple-tags/inc/related-posts.php:1107
-#: inc/related-posts.php:1107
+#: inc/related-posts.php:1138
 msgid "Thumbnail (150x150)"
 msgstr "缩略图（150x150）"
 
-#: dist/simple-tags/inc/related-posts.php:1108
-#: inc/related-posts.php:1108
+#: inc/related-posts.php:1139
 msgid "Medium (300x300)"
 msgstr "中等（300x300）"
 
-#: dist/simple-tags/inc/related-posts.php:1109
-#: inc/related-posts.php:1109
+#: inc/related-posts.php:1140
 msgid "Large (1024x1024)"
 msgstr "大（1024x1024）"
 
-#: dist/simple-tags/inc/related-posts.php:1110
-#: inc/related-posts.php:1110
+#: inc/related-posts.php:1141
 msgid "1536x1536 (High Res)"
 msgstr "1536x1536（高分辨率）"
 
-#: dist/simple-tags/inc/related-posts.php:1111
-#: inc/related-posts.php:1111
+#: inc/related-posts.php:1142
 msgid "2048x2048 (Ultra High Res)"
 msgstr "2048x2048（超高分辨率）"
 
-#: dist/simple-tags/inc/related-posts.php:1122
-#: inc/related-posts.php:1122
+#: inc/related-posts.php:1153
 msgid "Thumbnail image resolution"
 msgstr "缩略图图像分辨率"
 
-#: dist/simple-tags/inc/related-posts.php:1133
-#: inc/related-posts.php:1133
+#: inc/related-posts.php:1164
 msgid "Default post thumbnail"
 msgstr "默认帖子缩略图"
 
-#: dist/simple-tags/inc/related-posts.php:1144
-#: inc/related-posts.php:1144
+#: inc/related-posts.php:1175
 msgid "Using default PublishPress Taxonomies image"
 msgstr "使用默认的 PublishPress Taxonomies 图像"
 
-#: dist/simple-tags/inc/related-posts.php:1153
-#: inc/related-posts.php:1153
+#: inc/related-posts.php:1184
 msgid "Select Media"
 msgstr "选择媒体"
 
-#: dist/simple-tags/inc/related-posts.php:1156
-#: inc/related-posts.php:1156
+#: inc/related-posts.php:1187
 msgid "Use Default Image"
 msgstr "使用默认图像"
 
-#: dist/simple-tags/inc/related-posts.php:1159
-#: inc/related-posts.php:1159
+#: inc/related-posts.php:1190
 msgid "Remove Image"
 msgstr "移除图像"
 
-#: dist/simple-tags/inc/related-posts.php:1166
-#: inc/related-posts.php:1166
+#: inc/related-posts.php:1197
 msgid ""
 "Select the default %post_thumb_url% to be used when a post doesn't have a "
 "featured image."
 msgstr "选择默认的 %post_thumb_url% 当文章没有特色图片时使用。"
 
-#: dist/simple-tags/inc/related-posts.php:1194
-#: inc/related-posts.php:1194
+#: inc/related-posts.php:1225
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
 "                                            The Pro version has more "
 "features and support."
 msgstr "您正在使用 PublishPress Taxonomies Free。专业版有更多功能和支持。"
 
-#: dist/simple-tags/inc/related-posts.php:1198
-#: dist/simple-tags/inc/tag-clouds.php:970
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:19
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:77
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:125
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:178
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:202
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:226
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:250
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:277
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:295
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:394
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:412
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:430
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:448
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:472
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:496
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:520
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:566
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:604
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:678
-#: inc/related-posts.php:1198
-#: inc/tag-clouds.php:970
+#: inc/related-posts.php:1229
+#: inc/tag-clouds.php:997
 #: includes-core/TaxopressCoreAdmin.php:19
-#: includes-core/TaxopressCoreAdmin.php:77
-#: includes-core/TaxopressCoreAdmin.php:125
-#: includes-core/TaxopressCoreAdmin.php:178
-#: includes-core/TaxopressCoreAdmin.php:202
-#: includes-core/TaxopressCoreAdmin.php:226
-#: includes-core/TaxopressCoreAdmin.php:250
-#: includes-core/TaxopressCoreAdmin.php:277
-#: includes-core/TaxopressCoreAdmin.php:295
-#: includes-core/TaxopressCoreAdmin.php:394
-#: includes-core/TaxopressCoreAdmin.php:412
-#: includes-core/TaxopressCoreAdmin.php:430
-#: includes-core/TaxopressCoreAdmin.php:448
-#: includes-core/TaxopressCoreAdmin.php:472
-#: includes-core/TaxopressCoreAdmin.php:496
-#: includes-core/TaxopressCoreAdmin.php:520
-#: includes-core/TaxopressCoreAdmin.php:566
-#: includes-core/TaxopressCoreAdmin.php:604
+#: includes-core/TaxopressCoreAdmin.php:79
+#: includes-core/TaxopressCoreAdmin.php:127
+#: includes-core/TaxopressCoreAdmin.php:180
+#: includes-core/TaxopressCoreAdmin.php:204
+#: includes-core/TaxopressCoreAdmin.php:228
+#: includes-core/TaxopressCoreAdmin.php:252
+#: includes-core/TaxopressCoreAdmin.php:279
+#: includes-core/TaxopressCoreAdmin.php:297
+#: includes-core/TaxopressCoreAdmin.php:397
+#: includes-core/TaxopressCoreAdmin.php:416
+#: includes-core/TaxopressCoreAdmin.php:434
+#: includes-core/TaxopressCoreAdmin.php:452
+#: includes-core/TaxopressCoreAdmin.php:470
+#: includes-core/TaxopressCoreAdmin.php:546
+#: includes-core/TaxopressCoreAdmin.php:570
+#: includes-core/TaxopressCoreAdmin.php:594
+#: includes-core/TaxopressCoreAdmin.php:640
 #: includes-core/TaxopressCoreAdmin.php:678
+#: includes-core/TaxopressCoreAdmin.php:752
 msgid "Upgrade to Pro"
 msgstr "升级到专业版"
 
-#: dist/simple-tags/inc/related-posts.php:1235
-#: inc/related-posts.php:1235
+#: inc/related-posts.php:1266
 msgid "Save Related Posts"
 msgstr "保存相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:1243
-#: inc/related-posts.php:1243
+#: inc/related-posts.php:1274
 msgid "Add Related Posts"
 msgstr "添加相关文章"
 
-#: dist/simple-tags/inc/related-posts.php:1256
-#: dist/simple-tags/inc/tag-clouds.php:1021
-#: inc/related-posts.php:1256
-#: inc/tag-clouds.php:1021
+#: inc/related-posts.php:1287
+#: inc/tag-clouds.php:1048
 msgid "Shortcode: "
 msgstr "短代码: "
 
-#: dist/simple-tags/inc/related-posts.php:1278
-#: inc/related-posts.php:1278
-msgid "Related Posts format"
-msgstr "相关文章格式"
-
-#: dist/simple-tags/inc/related-posts.php:1283
-#: inc/related-posts.php:1283
-msgid "Here are the tokens you can use for related posts format"
-msgstr "以下是您可以用于相关文章格式的标记"
-
-#: dist/simple-tags/inc/related-posts.php:1285
-#: inc/related-posts.php:1285
-msgid "The URL of the post"
-msgstr "文章的 URL"
-
-#: dist/simple-tags/inc/related-posts.php:1286
-#: inc/related-posts.php:1286
-msgid "The title of the post"
-msgstr "文章的标题"
-
-#: dist/simple-tags/inc/related-posts.php:1287
-#: inc/related-posts.php:1287
-msgid "The date of the post (this shows inside a tooltip)"
-msgstr "文章的日期（此内容将在工具提示中显示）"
-
-#: dist/simple-tags/inc/related-posts.php:1288
-#: inc/related-posts.php:1288
-msgid "The number of tags used by both posts"
-msgstr "两篇文章使用的标签数量"
-
-#: dist/simple-tags/inc/related-posts.php:1289
-#: inc/related-posts.php:1289
-msgid "The number of comments on the post"
-msgstr "文章的评论数量"
-
-#: dist/simple-tags/inc/related-posts.php:1290
-#: inc/related-posts.php:1290
-msgid "The ID of the post"
-msgstr "文章的 ID"
-
-#: dist/simple-tags/inc/related-posts.php:1291
-#: inc/related-posts.php:1291
-msgid "A list of tags used by both the current post and the related post"
-msgstr "当前文章和相关文章使用的标签列表"
-
-#: dist/simple-tags/inc/related-posts.php:1292
-#: inc/related-posts.php:1292
-msgid "The post excerpt"
-msgstr "文章摘要"
-
-#: dist/simple-tags/inc/related-posts.php:1293
-#: inc/related-posts.php:1293
-msgid "The post featured image url"
-msgstr "文章特色图片 URL"
-
-#: dist/simple-tags/inc/related-posts.php:1294
-#: inc/related-posts.php:1294
-msgid "The post content"
-msgstr "文章内容"
-
-#: dist/simple-tags/inc/related-posts.php:1295
-#: inc/related-posts.php:1295
-msgid "The post category"
-msgstr "文章类别"
-
-#: dist/simple-tags/inc/related-posts.php:1296
-#: inc/related-posts.php:1296
-msgid "The font size of the post"
-msgstr "文章的字体大小"
-
-#: dist/simple-tags/inc/related-posts.php:1297
-#: inc/related-posts.php:1297
-msgid "The color of the post title"
-msgstr "帖子标题的颜色"
-
-#: dist/simple-tags/inc/related-posts.php:1319
-#: dist/simple-tags/inc/tag-clouds.php:1082
-#: dist/simple-tags/inc/taxonomies.php:1976
-#: inc/related-posts.php:1319
-#: inc/tag-clouds.php:1082
+#: inc/related-posts.php:1317
+#: inc/tag-clouds.php:1078
 #: inc/taxonomies.php:1976
 msgid "Please complete the following required fields to save your changes:"
 msgstr "请填写以下必填字段以保存更改："
 
-#: dist/simple-tags/inc/related-posts.php:1322
-#: dist/simple-tags/inc/tag-clouds.php:1085
-#: dist/simple-tags/inc/taxonomies.php:1979
-#: inc/related-posts.php:1322
-#: inc/tag-clouds.php:1085
+#: inc/related-posts.php:1320
+#: inc/tag-clouds.php:1081
 #: inc/taxonomies.php:1979
 msgid "Okay"
 msgstr "好的"
 
-#: dist/simple-tags/inc/related-posts.php:1331
-#: dist/simple-tags/inc/tag-clouds.php:1094
-#: dist/simple-tags/inc/taxonomies.php:1988
-#: inc/related-posts.php:1331
-#: inc/tag-clouds.php:1094
+#: inc/related-posts.php:1329
+#: inc/tag-clouds.php:1090
 #: inc/taxonomies.php:1988
 msgid "Yes"
 msgstr "是"
 
-#: dist/simple-tags/inc/related-posts.php:1343
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1141
-#: inc/related-posts.php:1343
+#: inc/related-posts.php:1341
 #: modules/taxopress-ai/taxopress-ai.php:1141
 msgid "Security check failed."
 msgstr "安全检查失败。"
 
-#: dist/simple-tags/inc/related-posts.php:1347
-#: dist/simple-tags/inc/tag-clouds.php:1113
-#: dist/simple-tags/inc/terms-functions.php:200
-#: dist/simple-tags/inc/terms-functions.php:217
-#: dist/simple-tags/inc/terms-functions.php:261
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1164
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1735
-#: inc/related-posts.php:1347
-#: inc/tag-clouds.php:1113
-#: inc/terms-functions.php:200
-#: inc/terms-functions.php:217
-#: inc/terms-functions.php:261
+#: inc/related-posts.php:1345
+#: inc/tag-clouds.php:1109
+#: inc/terms-functions.php:208
+#: inc/terms-functions.php:225
+#: inc/terms-functions.php:269
 #: modules/taxopress-ai/taxopress-ai.php:1164
 #: modules/taxopress-ai/taxopress-ai.php:1735
 msgid "Permission denied."
 msgstr "权限被拒绝。"
 
-#: dist/simple-tags/inc/related-posts.php:1354
-#: inc/related-posts.php:1354
+#: inc/related-posts.php:1352
 msgid "Select a post to see a preview."
 msgstr "选择一个帖子以查看预览。"
 
-#: dist/simple-tags/inc/related-posts.php:1422
-#: inc/related-posts.php:1422
+#: inc/related-posts.php:1420
 msgid "No related posts found."
 msgstr "未找到相关帖子。"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:13
 #: inc/schedule-logs-table.php:13, fuzzy
 msgid "autotermsschedulelog"
 msgstr "autotermsschedulelog"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:14
 #: inc/schedule-logs-table.php:14, fuzzy
 msgid "autotermsschedulelogs"
 msgstr "autotermsschedulelogs"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:51
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
 #: inc/schedule-logs-table.php:51
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:816
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1003
 msgid "Post"
 msgstr "帖子"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:52
-#: dist/simple-tags/inc/terms-table.php:858
 #: inc/schedule-logs-table.php:52
 #: inc/terms-table.php:858
 msgid "Post type"
 msgstr "post type"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:54
 #: inc/schedule-logs-table.php:54
 msgid "Terms added"
 msgstr "已添加条款"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:55
 #: inc/schedule-logs-table.php:55
 msgid "Date"
 msgstr "日期"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:68
 #: inc/schedule-logs-table.php:68
 msgid "Schedule log is empty."
 msgstr "计划日志为空。"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:130
 #: inc/schedule-logs-table.php:130
 msgid "Edit Main Post"
 msgstr "编辑主帖子"
 
-#: dist/simple-tags/inc/schedule-logs-table.php:143
 #: inc/schedule-logs-table.php:143
 msgid "Delete Log"
 msgstr "删除日志"
 
-#: dist/simple-tags/inc/schedule.php:40
-#: dist/simple-tags/inc/schedule.php:41
-#: dist/simple-tags/inc/schedule.php:201
 #: inc/schedule.php:40
 #: inc/schedule.php:41
 #: inc/schedule.php:201
 msgid "Auto Terms Schedule"
 msgstr "自动条款计划"
 
-#: dist/simple-tags/inc/schedule.php:83
 #: inc/schedule.php:83
 msgid "Schedule is disabled. Please enable a schedule frequency to run a test."
 msgstr "计划已禁用。请启用计划频率以运行测试。"
 
-#: dist/simple-tags/inc/schedule.php:99
 #: inc/schedule.php:99
 #, php-format
 msgid ""
@@ -1306,29 +987,23 @@ msgid ""
 "affected."
 msgstr "已安排 cron 事件 %s 立即运行。原始事件将不会受到影响。"
 
-#: dist/simple-tags/inc/schedule.php:123
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
 #: inc/schedule.php:123
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:951
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1138
 msgid "An error occured."
 msgstr "发生错误。"
 
-#: dist/simple-tags/inc/schedule.php:126
 #: inc/schedule.php:126
 msgid "Limit per batches is required."
 msgstr "每批次的限制是必需的。"
 
-#: dist/simple-tags/inc/schedule.php:128
 #: inc/schedule.php:128
 msgid "Batches wait time is required."
 msgstr "每批次的等待时间是必需的。"
 
-#: dist/simple-tags/inc/schedule.php:170
 #: inc/schedule.php:170
 msgid "Schedule is not enabled for selected Auto Terms."
 msgstr "所选的自动术语未启用计划。"
 
-#: dist/simple-tags/inc/schedule.php:203
 #: inc/schedule.php:203
 msgid ""
 "This feature allows you to run the Auto Terms feature on a schedule. This "
@@ -1338,76 +1013,62 @@ msgstr ""
 "此功能允许您按计划运行自动术语功能。如果您定期将内容导入到WordPress，这将非常有用。PublishPress "
 "Taxonomies可以按计划运行并将术语添加到您导入的内容中。"
 
-#: dist/simple-tags/inc/schedule.php:213
 #: inc/schedule.php:213
 msgid "Settings"
 msgstr "设置"
 
-#: dist/simple-tags/inc/schedule.php:225
 #: inc/schedule.php:225
 msgid "Select an option..."
 msgstr "选择一个选项..."
 
-#: dist/simple-tags/inc/schedule.php:249
 #: inc/schedule.php:249
 msgid "Auto Terms setting"
 msgstr "自动术语设置"
 
-#: dist/simple-tags/inc/schedule.php:253
 #: inc/schedule.php:253
 msgid "Select Auto Terms settings to use when running the \"Schedule\" feature."
 msgstr "选择运行“计划”功能时要使用的自动术语设置。"
 
-#: dist/simple-tags/inc/schedule.php:259
 #: inc/schedule.php:259
 msgid "Do not run on a schedule"
 msgstr "不按计划运行"
 
-#: dist/simple-tags/inc/schedule.php:260
 #: inc/schedule.php:260
 msgid "Weekly"
 msgstr "每周"
 
-#: dist/simple-tags/inc/schedule.php:264
 #: inc/schedule.php:264
 msgid "Schedule Frequency"
 msgstr "计划频率"
 
-#: dist/simple-tags/inc/schedule.php:290
 #: inc/schedule.php:290
 msgid "Disable 'Do not run on a schedule' to select schedule frequency."
 msgstr "禁用“不要按计划运行”以选择计划频率。"
 
-#: dist/simple-tags/inc/schedule.php:338
 #: inc/schedule.php:338
 msgid "Exclude previously analyzed content"
 msgstr "排除之前分析的内容"
 
-#: dist/simple-tags/inc/schedule.php:339
 #: inc/schedule.php:339
 msgid ""
 "This enables you to skip posts that have already been analyzed by the "
 "Schedule feature."
 msgstr "这使您能够跳过已被计划功能分析的帖子。"
 
-#: dist/simple-tags/inc/schedule.php:347
 #: inc/schedule.php:347
 msgid "Limit per batches"
 msgstr "每批次的限制"
 
-#: dist/simple-tags/inc/schedule.php:351
 #: inc/schedule.php:351
 msgid ""
 "This enables your scheduled Auto Terms to run in batches. If you have a lot "
 "of content, set this to a lower number to avoid timeouts."
 msgstr "这使您的计划自动术语以批次运行。如果您有很多内容，请将此设置为较低的数字以避免超时。"
 
-#: dist/simple-tags/inc/schedule.php:361
 #: inc/schedule.php:361
 msgid "Batches wait time"
 msgstr "每批次的等待时间"
 
-#: dist/simple-tags/inc/schedule.php:362
 #: inc/schedule.php:362
 msgid ""
 "This is the wait time (in seconds) between processing batches of Auto "
@@ -1415,92 +1076,67 @@ msgid ""
 "to avoid timeouts."
 msgstr "这是处理自动术语批次之间的等待时间（以秒为单位）。如果您有很多现有内容，请将此设置为较高的数字以避免超时。"
 
-#: dist/simple-tags/inc/schedule.php:371
-#: dist/simple-tags/inc/schedule.php:406
 #: inc/schedule.php:371
 #: inc/schedule.php:406
 msgid "24 hours ago"
 msgstr "24小时前"
 
-#: dist/simple-tags/inc/schedule.php:375
-#: dist/simple-tags/inc/schedule.php:410
 #: inc/schedule.php:375
 #: inc/schedule.php:410
 msgid "7 days ago"
 msgstr "7天前"
 
-#: dist/simple-tags/inc/schedule.php:379
-#: dist/simple-tags/inc/schedule.php:414
 #: inc/schedule.php:379
 #: inc/schedule.php:414
 msgid "2 weeks ago"
 msgstr "2周前"
 
-#: dist/simple-tags/inc/schedule.php:383
-#: dist/simple-tags/inc/schedule.php:418
 #: inc/schedule.php:383
 #: inc/schedule.php:418
 msgid "1 month ago"
 msgstr "1个月前"
 
-#: dist/simple-tags/inc/schedule.php:388
-#: dist/simple-tags/inc/schedule.php:422
 #: inc/schedule.php:388
 #: inc/schedule.php:422
 msgid "6 months ago"
 msgstr "6个月前"
 
-#: dist/simple-tags/inc/schedule.php:392
-#: dist/simple-tags/inc/schedule.php:426
 #: inc/schedule.php:392
 #: inc/schedule.php:426
 msgid "1 year ago"
 msgstr "1年前"
 
-#: dist/simple-tags/inc/schedule.php:443
 #: inc/schedule.php:443
 msgid "Limit Auto Terms, based on published date"
 msgstr "根据发布日期限制自动条款"
 
-#: dist/simple-tags/inc/schedule.php:447
 #: inc/schedule.php:447
 msgid ""
 "This setting can limit your scheduled Auto Terms query to only recent "
 "content. We recommend using this feature to avoid timeouts on large sites."
 msgstr "此设置可以将您的计划自动条款查询限制为仅最近的内容。我们建议使用此功能以避免在大型网站上出现超时。"
 
-#: dist/simple-tags/inc/schedule.php:457
 #: inc/schedule.php:457
 msgid "Save Settings"
 msgstr "保存设置"
 
-#: dist/simple-tags/inc/schedule.php:458
 #: inc/schedule.php:458
 msgid "Test Run"
 msgstr "测试运行"
 
-#: dist/simple-tags/inc/schedule.php:467
 #: inc/schedule.php:467
 msgid "Recent Schedule Runs"
 msgstr "最近的计划运行"
 
-#: dist/simple-tags/inc/schedule.php:473
 #: inc/schedule.php:473
 #, php-format
 msgid "You can see full log details on the %1s screen"
 msgstr "您可以在 %1s 屏幕上查看完整的日志详细信息"
 
-#: dist/simple-tags/inc/schedule.php:473
 #: inc/schedule.php:473
 msgid "Auto Terms Logs"
 msgstr "自动条款日志"
 
-#: dist/simple-tags/inc/tag-clouds-functions.php:153
-#: dist/simple-tags/inc/tag-clouds-table.php:14
-#: dist/simple-tags/inc/tag-clouds-table.php:15
-#: dist/simple-tags/inc/tag-clouds.php:73
-#: dist/simple-tags/inc/tag-clouds.php:74
-#: dist/simple-tags/inc/tag-clouds.php:129
 #: inc/tag-clouds-functions.php:153
 #: inc/tag-clouds-table.php:14
 #: inc/tag-clouds-table.php:15
@@ -1510,109 +1146,84 @@ msgstr "自动条款日志"
 msgid "Terms Display"
 msgstr "条款显示"
 
-#: dist/simple-tags/inc/tag-clouds-functions.php:254
-#: inc/tag-clouds-functions.php:254
+#: inc/tag-clouds-functions.php:258
 msgid "Terms Display successfully deleted."
 msgstr "条款显示已成功删除。"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:67
-#: dist/simple-tags/inc/tag-clouds.php:435
 #: inc/tag-clouds-table.php:67
-#: inc/tag-clouds.php:435
+#: inc/tag-clouds.php:434
 msgid "Post Type"
 msgstr "post type"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:376
-#: dist/simple-tags/inc/tag-clouds.php:655
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:694
 #: inc/tag-clouds-table.php:376
-#: inc/tag-clouds.php:655
-#: includes-core/TaxopressCoreAdmin.php:694
+#: inc/tag-clouds.php:665
+#: includes-core/TaxopressCoreAdmin.php:768
 msgid "Cloud"
 msgstr "云"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:379
-#: dist/simple-tags/inc/tag-clouds.php:658
 #: inc/tag-clouds-table.php:379
-#: inc/tag-clouds.php:658
+#: inc/tag-clouds.php:668
 msgid "WordPress Default"
 msgstr "WordPress 默认"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:380
-#: dist/simple-tags/inc/tag-clouds.php:659
 #: inc/tag-clouds-table.php:380
-#: inc/tag-clouds.php:659
+#: inc/tag-clouds.php:669
 msgid "Table List"
 msgstr "表格列表"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:381
-#: dist/simple-tags/inc/tag-clouds.php:660
 #: inc/tag-clouds-table.php:381
-#: inc/tag-clouds.php:660
+#: inc/tag-clouds.php:670
 msgid "Border Cloud"
 msgstr "边框云"
 
-#: dist/simple-tags/inc/tag-clouds-table.php:382
-#: dist/simple-tags/inc/tag-clouds.php:661
 #: inc/tag-clouds-table.php:382
-#: inc/tag-clouds.php:661
+#: inc/tag-clouds.php:671
 msgid "Parent / Child"
 msgstr "父 / 子"
 
-#: dist/simple-tags/inc/tag-clouds.php:135
 #: inc/tag-clouds.php:135
 msgid "Add New Terms Display"
 msgstr "添加新术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:138
 #: inc/tag-clouds.php:138
 msgid ""
 "This feature allows you to create a customizable display of all the terms "
 "in one taxonomy."
 msgstr "此功能允许您创建一个可自定义的显示，展示一个分类法中的所有术语。"
 
-#: dist/simple-tags/inc/tag-clouds.php:161
 #: inc/tag-clouds.php:161
 msgid "Search Terms Display"
 msgstr "搜索术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:242
 #: inc/tag-clouds.php:242
 msgid "Manage Terms Display"
 msgstr "管理术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:258
 #: inc/tag-clouds.php:258
 msgid "Preview Terms Display"
 msgstr "预览术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:263
 #: inc/tag-clouds.php:263
 msgid "Move up"
 msgstr "上移"
 
-#: dist/simple-tags/inc/tag-clouds.php:266
 #: inc/tag-clouds.php:266
 msgid "Move down"
 msgstr "下移"
 
-#: dist/simple-tags/inc/tag-clouds.php:303
-#: inc/tag-clouds.php:303
+#: inc/tag-clouds.php:306
 msgid "Edit Terms Display"
 msgstr "编辑术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:310
-#: inc/tag-clouds.php:310
+#: inc/tag-clouds.php:313
 msgid "Add new Terms Display"
 msgstr "添加新术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:321
-#: inc/tag-clouds.php:321
+#: inc/tag-clouds.php:324
 msgid "To create more Terms Display, please upgrade to PublishPress Taxonomies Pro."
 msgstr "要创建更多术语显示，请升级到 PublishPress Taxonomies Pro。"
 
-#: dist/simple-tags/inc/tag-clouds.php:324
-#: inc/tag-clouds.php:324
+#: inc/tag-clouds.php:327
 msgid ""
 "With PublishPress Taxonomies Pro, you can create unlimited Terms Display. "
 "You can create Terms Display for any taxonomy and then display those Terms "
@@ -1621,403 +1232,328 @@ msgstr ""
 "使用 PublishPress Taxonomies "
 "Pro，您可以创建无限的术语显示。您可以为任何分类法创建术语显示，然后在您网站的任何地方展示这些术语显示。"
 
-#: dist/simple-tags/inc/tag-clouds.php:338
-#: inc/tag-clouds.php:338
+#: inc/tag-clouds.php:341
 msgid "Choose Terms"
 msgstr "选择术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:350
-#: inc/tag-clouds.php:350
+#: inc/tag-clouds.php:349
 msgid "Exceptions"
 msgstr "例外"
 
-#: dist/simple-tags/inc/tag-clouds.php:358
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:700
-#: inc/tag-clouds.php:358
-#: includes-core/TaxopressCoreAdmin.php:700
+#: inc/tag-clouds.php:357
+#: includes-core/TaxopressCoreAdmin.php:774
 msgid "Display Format"
 msgstr "显示格式"
 
-#: dist/simple-tags/inc/tag-clouds.php:412
-#: inc/tag-clouds.php:412
+#: inc/tag-clouds.php:411
 msgid "Hide title in output?"
 msgstr "输出中隐藏标题？"
 
-#: dist/simple-tags/inc/tag-clouds.php:418
-#: inc/tag-clouds.php:418
+#: inc/tag-clouds.php:417
 msgid "All post types"
 msgstr "所有文章类型"
 
-#: dist/simple-tags/inc/tag-clouds.php:469
-#: inc/tag-clouds.php:469
+#: inc/tag-clouds.php:468
 msgid "All Parent Terms"
 msgstr "所有父术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:519
-#: inc/tag-clouds.php:519
+#: inc/tag-clouds.php:518
 msgid "Parent Term"
 msgstr "父术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:525
-#: inc/tag-clouds.php:525
+#: inc/tag-clouds.php:524
 msgid "Display only Parent Terms"
 msgstr "仅显示父术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:526
-#: inc/tag-clouds.php:526
+#: inc/tag-clouds.php:525
 msgid "Display only Sub-Terms"
 msgstr "仅显示子术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:527
-#: inc/tag-clouds.php:527
+#: inc/tag-clouds.php:526
 msgid "Display Parents and Sub-Terms"
 msgstr "显示父项和子项"
 
-#: dist/simple-tags/inc/tag-clouds.php:537
-#: inc/tag-clouds.php:537
+#: inc/tag-clouds.php:536
 msgid "Display Mode"
 msgstr "显示模式"
 
-#: dist/simple-tags/inc/tag-clouds.php:554
-#: inc/tag-clouds.php:554
+#: inc/tag-clouds.php:553
 msgid "Term selection mode"
 msgstr "术语选择模式"
 
-#: dist/simple-tags/inc/tag-clouds.php:562
-#: inc/tag-clouds.php:562
+#: inc/tag-clouds.php:561
 msgid "Automatic"
 msgstr "自动"
 
-#: dist/simple-tags/inc/tag-clouds.php:565
-#: inc/tag-clouds.php:565
+#: inc/tag-clouds.php:564
 msgid "Display terms based on settings in the \"General\" tab."
 msgstr "根据“常规”选项卡中的设置显示术语。"
 
-#: dist/simple-tags/inc/tag-clouds.php:571
-#: inc/tag-clouds.php:571
+#: inc/tag-clouds.php:570
 msgid "Custom"
 msgstr "自定义"
 
-#: dist/simple-tags/inc/tag-clouds.php:574
-#: inc/tag-clouds.php:574
+#: inc/tag-clouds.php:573
 msgid ""
 "Display only the specific terms entered in the \"Custom terms to display\" "
 "field below."
 msgstr "仅显示在下面“要显示的自定义术语”字段中输入的特定术语。"
 
-#: dist/simple-tags/inc/tag-clouds.php:580
-#: inc/tag-clouds.php:580
+#: inc/tag-clouds.php:579
 msgid "Combined"
 msgstr "组合"
 
-#: dist/simple-tags/inc/tag-clouds.php:583
-#: inc/tag-clouds.php:583
+#: inc/tag-clouds.php:582
 msgid "Display automatic terms plus any additional custom terms specified below."
 msgstr "显示自动术语以及下面指定的任何附加自定义术语。"
 
-#: dist/simple-tags/inc/tag-clouds.php:598
-#: inc/tag-clouds.php:598
+#: inc/tag-clouds.php:597
 msgid "Custom terms to display"
 msgstr "要显示的自定义术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:599
-#: inc/tag-clouds.php:599
+#: inc/tag-clouds.php:598
 msgid "Enter terms (comma-separated) to display. Used in Custom and Combined modes."
 msgstr "输入要显示的术语（以逗号分隔）。在自定义和组合模式中使用。"
 
-#: dist/simple-tags/inc/tag-clouds.php:620
-#: inc/tag-clouds.php:620
+#: inc/tag-clouds.php:607
+msgid "Minimum term usage"
+msgstr "最低术语使用量"
+
+#: inc/tag-clouds.php:608
+msgid ""
+"Only display terms used by at least this many content items. Set to 0 for "
+"no minimum."
+msgstr "仅显示至少由这么多内容项使用的术语。设置为 0 表示没有最低限制。"
+
+#: inc/tag-clouds.php:630
 msgid "Limit terms based on timeframe"
 msgstr "根据时间范围限制术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:629
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:826
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
-#: inc/tag-clouds.php:629
-#: includes-core/TaxopressCoreAdmin.php:826
+#: inc/tag-clouds.php:639
+#: includes-core/TaxopressCoreAdmin.php:900
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:146
 msgid "Ascending"
 msgstr "升序"
 
-#: dist/simple-tags/inc/tag-clouds.php:630
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:827
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
-#: inc/tag-clouds.php:630
-#: includes-core/TaxopressCoreAdmin.php:827
+#: inc/tag-clouds.php:640
+#: includes-core/TaxopressCoreAdmin.php:901
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:147
 msgid "Descending"
 msgstr "降序"
 
-#: dist/simple-tags/inc/tag-clouds.php:639
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:832
-#: inc/tag-clouds.php:639
-#: includes-core/TaxopressCoreAdmin.php:832
-msgid "Ordering for choosing terms for display"
-msgstr "选择显示术语的排序"
+#: inc/tag-clouds.php:649
+#: includes-core/TaxopressCoreAdmin.php:906
+msgid "Order direction"
+msgstr "排序方向"
 
-#: dist/simple-tags/inc/tag-clouds.php:688
-#: inc/tag-clouds.php:688
+#: inc/tag-clouds.php:689
 msgid "Text to display before terms list"
 msgstr "术语列表前显示的文本"
 
-#: dist/simple-tags/inc/tag-clouds.php:692
-#: inc/tag-clouds.php:692
+#: inc/tag-clouds.php:693
 msgid ""
 "Enter the text that should be display before terms list. This field accepts "
 "basic HTML."
 msgstr "输入应该在术语列表前显示的文本。该字段接受基本的 HTML。"
 
-#: dist/simple-tags/inc/tag-clouds.php:704
-#: inc/tag-clouds.php:704
+#: inc/tag-clouds.php:705
 msgid "Text to display after terms list"
 msgstr "术语列表后显示的文本"
 
-#: dist/simple-tags/inc/tag-clouds.php:708
-#: inc/tag-clouds.php:708
+#: inc/tag-clouds.php:709
 msgid ""
 "Enter the text that should be display after terms list. This field accepts "
 "basic HTML."
 msgstr "输入应该在术语列表后显示的文本。该字段接受基本的 HTML。"
 
-#: dist/simple-tags/inc/tag-clouds.php:729
-#: inc/tag-clouds.php:729
+#: inc/tag-clouds.php:731
 msgid "Exclude terms from terms display"
 msgstr "从术语显示中排除术语"
 
-#: dist/simple-tags/inc/tag-clouds.php:730
-#: inc/tag-clouds.php:730
+#: inc/tag-clouds.php:732
 msgid "Enter terms (comma-separated) to exclude from the terms display."
 msgstr "输入要从术语显示中排除的术语（用逗号分隔）。"
 
-#: dist/simple-tags/inc/tag-clouds.php:758
-#: inc/tag-clouds.php:758
+#: inc/tag-clouds.php:760
 msgid "Exclude hidden terms from Terms Display?"
 msgstr "从术语显示中排除隐藏的术语？"
 
-#: dist/simple-tags/inc/tag-clouds.php:794
-#: inc/tag-clouds.php:794
+#: inc/tag-clouds.php:796
 msgid "Hide display output if no terms?"
 msgstr "如果没有术语，是否隐藏显示输出？"
 
-#: dist/simple-tags/inc/tag-clouds.php:803
-#: inc/tag-clouds.php:803
+#: inc/tag-clouds.php:805
 msgid "Maximum terms to display"
 msgstr "最大显示术语数量"
 
-#: dist/simple-tags/inc/tag-clouds.php:884
-#: inc/tag-clouds.php:884
+#: inc/tag-clouds.php:886
 msgid "This is the color of the least popular term"
 msgstr "这是最不受欢迎术语的颜色"
 
-#: dist/simple-tags/inc/tag-clouds.php:895
-#: inc/tag-clouds.php:895
+#: inc/tag-clouds.php:897
 msgid "This is the color of the most popular term"
 msgstr "这是最受欢迎术语的颜色"
 
-#: dist/simple-tags/inc/tag-clouds.php:915
-#: inc/tag-clouds.php:915
+#: inc/tag-clouds.php:917
 msgid "Term display div class"
 msgstr "术语显示 div 类"
 
-#: dist/simple-tags/inc/tag-clouds.php:940
-#: inc/tag-clouds.php:940
+#: inc/tag-clouds.php:942
 #, php-format
 msgid ""
 "This option allows you to change the format of your terms. You can use any "
-"of the tokens in the \"Terms Display format\" sidebar\". Find more details "
-"%1sin the documentation%2s."
-msgstr "此选项允许您更改术语的格式。您可以使用 \"术语显示格式\" 侧边栏中的任何令牌。有关更多详细信息，请参阅文档中的 %1$s%2$s。"
+"of the tokens shown below. Find more details %1sin the documentation%2s."
+msgstr "此选项允许您更改术语的格式。您可以使用下面显示的任何令牌。查看文档中的更多详细信息 %1$s%2$s。"
 
-#: dist/simple-tags/inc/tag-clouds.php:966
+#: inc/tag-clouds.php:952
+msgid "Terms Display format"
+msgstr "术语显示格式"
+
+#: inc/tag-clouds.php:956
+msgid "Here are the tokens you can use for Term link format"
+msgstr "以下是您可以用于术语链接格式的令牌"
+
+#: inc/tag-clouds.php:958
+msgid "The URL of the term"
+msgstr "术语的 URL"
+
+#: inc/tag-clouds.php:959
+msgid "The ID of the term"
+msgstr "术语的 ID"
+
+#: inc/tag-clouds.php:960
+msgid "The weighted size of the term in the display"
+msgstr "术语在显示中的加权大小"
+
+#: inc/tag-clouds.php:961
+msgid "The number of times the term is used"
+msgstr "术语使用的次数"
+
+#: inc/tag-clouds.php:962
+msgid "This provides rel tag markup"
+msgstr "这提供了 rel 标签标记"
+
+#: inc/tag-clouds.php:962
+msgid "it creates"
+msgstr "它创建"
+
+#: inc/tag-clouds.php:963
+msgid "The font size for the term"
+msgstr "术语的字体大小"
+
+#: inc/tag-clouds.php:964
+msgid "The font color for the term"
+msgstr "术语的字体颜色"
+
+#: inc/tag-clouds.php:965
+msgid "The name of the term"
+msgstr "术语的名称"
+
 #: inc/tag-clouds.php:966
+msgid "The name of the term with any HTML stripped out"
+msgstr "去除任何 HTML 的术语名称"
+
+#: inc/tag-clouds.php:967
+msgid "The description of the term"
+msgstr "术语的描述"
+
+#: inc/tag-clouds.php:993
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
 "                                        The Pro version has more features "
 "and support."
 msgstr "您正在使用 PublishPress Taxonomies Free。专业版具有更多功能和支持。"
 
-#: dist/simple-tags/inc/tag-clouds.php:975
-#: inc/tag-clouds.php:975
+#: inc/tag-clouds.php:1002
 msgid "Font size minimum must not be greater than Font size maximum value."
 msgstr "字体大小的最小值不得大于字体大小的最大值。"
 
-#: dist/simple-tags/inc/tag-clouds.php:1007
-#: inc/tag-clouds.php:1007
+#: inc/tag-clouds.php:1034
 msgid "Save Terms Display"
 msgstr "保存术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:1011
-#: inc/tag-clouds.php:1011
+#: inc/tag-clouds.php:1038
 msgid "Add Terms Display"
 msgstr "添加术语显示"
 
-#: dist/simple-tags/inc/tag-clouds.php:1039
-#: inc/tag-clouds.php:1039
-msgid "Terms Display format"
-msgstr "术语显示格式"
-
-#: dist/simple-tags/inc/tag-clouds.php:1044
-#: inc/tag-clouds.php:1044
-msgid "Here are the tokens you can use for Term link format"
-msgstr "以下是您可以用于术语链接格式的令牌"
-
-#: dist/simple-tags/inc/tag-clouds.php:1046
-#: inc/tag-clouds.php:1046
-msgid "The URL of the term"
-msgstr "术语的 URL"
-
-#: dist/simple-tags/inc/tag-clouds.php:1047
-#: inc/tag-clouds.php:1047
-msgid "The ID of the term"
-msgstr "术语的 ID"
-
-#: dist/simple-tags/inc/tag-clouds.php:1048
-#: inc/tag-clouds.php:1048
-msgid "The weighted size of the term in the display"
-msgstr "术语在显示中的加权大小"
-
-#: dist/simple-tags/inc/tag-clouds.php:1049
-#: inc/tag-clouds.php:1049
-msgid "The number of times the term is used"
-msgstr "术语使用的次数"
-
-#: dist/simple-tags/inc/tag-clouds.php:1050
-#: inc/tag-clouds.php:1050
-msgid "This provides rel tag markup"
-msgstr "这提供了 rel 标签标记"
-
-#: dist/simple-tags/inc/tag-clouds.php:1050
-#: inc/tag-clouds.php:1050
-msgid "it creates"
-msgstr "它创建"
-
-#: dist/simple-tags/inc/tag-clouds.php:1051
-#: inc/tag-clouds.php:1051
-msgid "The font size for the term"
-msgstr "术语的字体大小"
-
-#: dist/simple-tags/inc/tag-clouds.php:1052
-#: inc/tag-clouds.php:1052
-msgid "The font color for the term"
-msgstr "术语的字体颜色"
-
-#: dist/simple-tags/inc/tag-clouds.php:1053
-#: inc/tag-clouds.php:1053
-msgid "The name of the term"
-msgstr "术语的名称"
-
-#: dist/simple-tags/inc/tag-clouds.php:1054
-#: inc/tag-clouds.php:1054
-msgid "The name of the term with any HTML stripped out"
-msgstr "去除任何 HTML 的术语名称"
-
-#: dist/simple-tags/inc/tag-clouds.php:1055
-#: inc/tag-clouds.php:1055
-msgid "The description of the term"
-msgstr "术语的描述"
-
-#: dist/simple-tags/inc/tag-clouds.php:1109
-#: inc/tag-clouds.php:1109
+#: inc/tag-clouds.php:1105
 msgid "Invalid nonce"
 msgstr "无效的 nonce"
 
-#: dist/simple-tags/inc/tag-clouds.php:1117
-#: inc/tag-clouds.php:1117
+#: inc/tag-clouds.php:1113
 msgid "Missing display ID."
 msgstr "缺少显示 ID。"
 
-#: dist/simple-tags/inc/tag-clouds.php:1125
-#: inc/tag-clouds.php:1125
+#: inc/tag-clouds.php:1121
 msgid "Invalid terms display configuration."
 msgstr "无效的术语显示配置。"
 
-#: dist/simple-tags/inc/tag-clouds.php:1175
-#: inc/tag-clouds.php:1175
+#: inc/tag-clouds.php:1172
 msgid "There are no terms in this taxonomy."
 msgstr "此 taxonomy 中没有术语。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:124
-#: dist/simple-tags/inc/taxonomies-functions.php:1969
 #: inc/taxonomies-functions.php:124
 #: inc/taxonomies-functions.php:1969
 msgid "Please provide a taxonomy to delete"
 msgstr "请提供要删除的 taxonomy"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:274
 #: inc/taxonomies-functions.php:274
 msgid "Please provide a taxonomy name"
 msgstr "请提供一个 taxonomy 名称"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1115
 #: inc/taxonomies-functions.php:1115
 msgid "Object"
 msgstr "对象"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1149
-#: dist/simple-tags/inc/taxonomies-functions.php:1560
 #: inc/taxonomies-functions.php:1149
 #: inc/taxonomies-functions.php:1560
 #, php-format
 msgid "%s has been successfully added"
 msgstr "%s 已成功添加"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1164
-#: dist/simple-tags/inc/taxonomies-functions.php:1562
 #: inc/taxonomies-functions.php:1164
 #: inc/taxonomies-functions.php:1562
 #, php-format
 msgid "%s has failed to be added"
 msgstr "%s 添加失败"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1179
-#: dist/simple-tags/inc/taxonomies-functions.php:1566
 #: inc/taxonomies-functions.php:1179
 #: inc/taxonomies-functions.php:1566
 #, php-format
 msgid "%s has been successfully updated"
 msgstr "%s 已成功更新"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1193
-#: dist/simple-tags/inc/taxonomies-functions.php:1568
 #: inc/taxonomies-functions.php:1193
 #: inc/taxonomies-functions.php:1568
 #, php-format
 msgid "%s has failed to be updated"
 msgstr "%s 更新失败"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1208
-#: dist/simple-tags/inc/taxonomies-functions.php:1572
 #: inc/taxonomies-functions.php:1208
 #: inc/taxonomies-functions.php:1572
 #, php-format
 msgid "%s has been successfully deleted"
 msgstr "%s 已成功删除"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1222
-#: dist/simple-tags/inc/taxonomies-functions.php:1574
 #: inc/taxonomies-functions.php:1222
 #: inc/taxonomies-functions.php:1574
 #, php-format
 msgid "%s has failed to be deleted"
 msgstr "%s 删除失败"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1234
 #: inc/taxonomies-functions.php:1234
 msgid "Nonce failed verification"
 msgstr "Nonce 验证失败"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1248
 #: inc/taxonomies-functions.php:1248
 #, php-format
 msgid "Please choose a different taxonomy name. %s is already registered."
 msgstr "请选择一个不同的 taxonomy 名称。%s 已被注册。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1261
 #: inc/taxonomies-functions.php:1261
 msgid "Please provide a post type to attach to."
 msgstr "请提供一个要附加的 post type。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1284
 #: inc/taxonomies-functions.php:1284
 #, php-format
 msgid ""
@@ -2025,28 +1561,20 @@ msgid ""
 "which can cause conflicts."
 msgstr "请选择一个不同的 post type 名称。%s 与现有页面的 slug 匹配，这可能会导致冲突。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1300
 #: inc/taxonomies-functions.php:1300
 msgid "Please do not use quotes in post type/taxonomy names or rewrite slugs"
 msgstr "请勿在 post type/taxonomy 名称或重写 slug 中使用引号"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1578
 #: inc/taxonomies-functions.php:1578
 #, php-format
 msgid "%s has been successfully imported"
 msgstr "%s 已成功导入"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1580
 #: inc/taxonomies-functions.php:1580
 #, php-format
 msgid "%s has failed to be imported"
 msgstr "%s 导入失败"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1666
-#: dist/simple-tags/inc/taxonomies-functions.php:1684
-#: dist/simple-tags/inc/taxonomies-functions.php:1707
-#: dist/simple-tags/inc/taxonomies-functions.php:1726
-#: dist/simple-tags/inc/taxonomies.php:1271
 #: inc/taxonomies-functions.php:1666
 #: inc/taxonomies-functions.php:1684
 #: inc/taxonomies-functions.php:1707
@@ -2056,11 +1584,6 @@ msgstr "%s 导入失败"
 msgid "Add new %s"
 msgstr "添加新的 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1667
-#: dist/simple-tags/inc/taxonomies-functions.php:1682
-#: dist/simple-tags/inc/taxonomies-functions.php:1708
-#: dist/simple-tags/inc/taxonomies-functions.php:1724
-#: dist/simple-tags/inc/taxonomies.php:1205
 #: inc/taxonomies-functions.php:1667
 #: inc/taxonomies-functions.php:1682
 #: inc/taxonomies-functions.php:1708
@@ -2070,19 +1593,12 @@ msgstr "添加新的 %s"
 msgid "Edit %s"
 msgstr "编辑 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1668
-#: dist/simple-tags/inc/taxonomies-functions.php:1709
 #: inc/taxonomies-functions.php:1668
 #: inc/taxonomies-functions.php:1709
 #, php-format
 msgid "New %s"
 msgstr "新 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1669
-#: dist/simple-tags/inc/taxonomies-functions.php:1670
-#: dist/simple-tags/inc/taxonomies-functions.php:1710
-#: dist/simple-tags/inc/taxonomies-functions.php:1713
-#: dist/simple-tags/inc/taxonomies.php:1226
 #: inc/taxonomies-functions.php:1669
 #: inc/taxonomies-functions.php:1670
 #: inc/taxonomies-functions.php:1710
@@ -2092,13 +1608,6 @@ msgstr "新 %s"
 msgid "View %s"
 msgstr "查看 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1671
-#: dist/simple-tags/inc/taxonomies-functions.php:1679
-#: dist/simple-tags/inc/taxonomies-functions.php:1714
-#: dist/simple-tags/inc/taxonomies-functions.php:1732
-#: dist/simple-tags/inc/taxonomies-functions.php:2429
-#: dist/simple-tags/inc/taxonomies.php:1184
-#: dist/simple-tags/inc/terms-table.php:852
 #: inc/taxonomies-functions.php:1671
 #: inc/taxonomies-functions.php:1679
 #: inc/taxonomies-functions.php:1714
@@ -2110,11 +1619,6 @@ msgstr "查看 %s"
 msgid "All %s"
 msgstr "所有 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1672
-#: dist/simple-tags/inc/taxonomies-functions.php:1677
-#: dist/simple-tags/inc/taxonomies-functions.php:1715
-#: dist/simple-tags/inc/taxonomies-functions.php:1730
-#: dist/simple-tags/inc/taxonomies.php:1355
 #: inc/taxonomies-functions.php:1672
 #: inc/taxonomies-functions.php:1677
 #: inc/taxonomies-functions.php:1715
@@ -2124,25 +1628,18 @@ msgstr "所有 %s"
 msgid "Search %s"
 msgstr "搜索 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1673
-#: dist/simple-tags/inc/taxonomies-functions.php:1716
 #: inc/taxonomies-functions.php:1673
 #: inc/taxonomies-functions.php:1716
 #, php-format
 msgid "No %s found."
 msgstr "未找到 %s。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1674
-#: dist/simple-tags/inc/taxonomies-functions.php:1717
 #: inc/taxonomies-functions.php:1674
 #: inc/taxonomies-functions.php:1717
 #, php-format
 msgid "No %s found in trash."
 msgstr "在垃圾箱中未找到 %s。"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1678
-#: dist/simple-tags/inc/taxonomies-functions.php:1731
-#: dist/simple-tags/inc/taxonomies.php:1376
 #: inc/taxonomies-functions.php:1678
 #: inc/taxonomies-functions.php:1731
 #: inc/taxonomies.php:1376
@@ -2150,9 +1647,6 @@ msgstr "在垃圾箱中未找到 %s。"
 msgid "Popular %s"
 msgstr "热门 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1680
-#: dist/simple-tags/inc/taxonomies-functions.php:1722
-#: dist/simple-tags/inc/taxonomies.php:1313
 #: inc/taxonomies-functions.php:1680
 #: inc/taxonomies-functions.php:1722
 #: inc/taxonomies.php:1313
@@ -2160,9 +1654,6 @@ msgstr "热门 %s"
 msgid "Parent %s"
 msgstr "父级 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1681
-#: dist/simple-tags/inc/taxonomies-functions.php:1723
-#: dist/simple-tags/inc/taxonomies.php:1334
 #: inc/taxonomies-functions.php:1681
 #: inc/taxonomies-functions.php:1723
 #: inc/taxonomies.php:1334
@@ -2170,17 +1661,12 @@ msgstr "父级 %s"
 msgid "Parent %s:"
 msgstr "父级 %s："
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1683
-#: dist/simple-tags/inc/taxonomies-functions.php:1725
 #: inc/taxonomies-functions.php:1683
 #: inc/taxonomies-functions.php:1725
 #, php-format
 msgid "Update %s"
 msgstr "更新 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1685
-#: dist/simple-tags/inc/taxonomies-functions.php:1727
-#: dist/simple-tags/inc/taxonomies.php:1292
 #: inc/taxonomies-functions.php:1685
 #: inc/taxonomies-functions.php:1727
 #: inc/taxonomies.php:1292
@@ -2188,9 +1674,6 @@ msgstr "更新 %s"
 msgid "New %s name"
 msgstr "新的 %s 名称"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1686
-#: dist/simple-tags/inc/taxonomies-functions.php:1733
-#: dist/simple-tags/inc/taxonomies.php:1402
 #: inc/taxonomies-functions.php:1686
 #: inc/taxonomies-functions.php:1733
 #: inc/taxonomies.php:1402
@@ -2199,9 +1682,6 @@ msgstr "新的 %s 名称"
 msgid "Separate %s with commas"
 msgstr "用逗号分隔 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1687
-#: dist/simple-tags/inc/taxonomies-functions.php:1734
-#: dist/simple-tags/inc/taxonomies.php:1427
 #: inc/taxonomies-functions.php:1687
 #: inc/taxonomies-functions.php:1734
 #: inc/taxonomies.php:1427
@@ -2209,9 +1689,6 @@ msgstr "用逗号分隔 %s"
 msgid "Add or remove %s"
 msgstr "添加或移除 %s"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1688
-#: dist/simple-tags/inc/taxonomies-functions.php:1735
-#: dist/simple-tags/inc/taxonomies.php:1453
 #: inc/taxonomies-functions.php:1688
 #: inc/taxonomies-functions.php:1735
 #: inc/taxonomies.php:1453
@@ -2220,206 +1697,159 @@ msgstr "添加或移除 %s"
 msgid "Choose from the most used %s"
 msgstr "从最常用的 %s 中选择"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1814
 #: inc/taxonomies-functions.php:1814
 msgid "Kindly select an action in bulk action dropdown!"
 msgstr "请在批量操作下拉菜单中选择一个操作！"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1826
 #: inc/taxonomies-functions.php:1826
 msgid "Kindly select atleast one taxonomy to proceed"
 msgstr "请至少选择一个taxonomy以继续"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1837
 #: inc/taxonomies-functions.php:1837
 msgid "Taxonomy has been successfully deactivated"
 msgstr "Taxonomy已成功停用"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1846
 #: inc/taxonomies-functions.php:1846
 msgid "Taxonomy has been successfully activated"
 msgstr "Taxonomy已成功启用"
 
-#: dist/simple-tags/inc/taxonomies-functions.php:1855
 #: inc/taxonomies-functions.php:1855
 msgid "Taxonomy has been successfully deleted"
 msgstr "Taxonomy已成功删除"
 
-#: dist/simple-tags/inc/taxonomies.php:77
 #: inc/taxonomies.php:77
 msgid ""
 "Are you sure you want to delete this? Deleting will NOT remove created "
 "content."
 msgstr "您确定要删除此项吗？删除不会移除已创建的内容。"
 
-#: dist/simple-tags/inc/taxonomies.php:81
 #: inc/taxonomies.php:81
 msgid "Please select at least one post type."
 msgstr "请至少选择一个post type。"
 
-#: dist/simple-tags/inc/taxonomies.php:83
 #: inc/taxonomies.php:83
 msgid "Taxonomy slug cannot be numbers only."
 msgstr "Taxonomy slug不能仅由数字组成。"
 
-#: dist/simple-tags/inc/taxonomies.php:114
-#: dist/simple-tags/inc/taxonomies.php:115
-#: dist/simple-tags/inc/taxonomies.php:170
 #: inc/taxonomies.php:114
 #: inc/taxonomies.php:115
 #: inc/taxonomies.php:170
 msgid "Taxonomies"
 msgstr "Taxonomies"
 
-#: dist/simple-tags/inc/taxonomies.php:172
 #: inc/taxonomies.php:172
 msgid "Add New"
 msgstr "添加新项"
 
-#: dist/simple-tags/inc/taxonomies.php:174
 #: inc/taxonomies.php:174
 msgid ""
 "This feature allows you to create new taxonomies and edit all the settings "
 "for each taxonomy."
 msgstr "此功能允许您创建新的taxonomies并编辑每个taxonomy的所有设置。"
 
-#: dist/simple-tags/inc/taxonomies.php:197
 #: inc/taxonomies.php:197
 msgid "Search Taxonomies"
 msgstr "搜索Taxonomies"
 
-#: dist/simple-tags/inc/taxonomies.php:215
-#: dist/simple-tags/inc/terms-table.php:876
 #: inc/taxonomies.php:215
 #: inc/terms-table.php:876
 msgid "All Taxonomies"
 msgstr "所有Taxonomies"
 
-#: dist/simple-tags/inc/taxonomies.php:216
-#: dist/simple-tags/inc/terms-table.php:877
 #: inc/taxonomies.php:216
 #: inc/terms-table.php:877
 msgid "Public Taxonomies"
 msgstr "公共Taxonomies"
 
-#: dist/simple-tags/inc/taxonomies.php:217
-#: dist/simple-tags/inc/terms-table.php:878
 #: inc/taxonomies.php:217
 #: inc/terms-table.php:878
 msgid "Private Taxonomies"
 msgstr "私有Taxonomies"
 
-#: dist/simple-tags/inc/taxonomies.php:237
 #: inc/taxonomies.php:237
 msgid "All Post Types"
 msgstr "所有Post Types"
 
-#: dist/simple-tags/inc/taxonomies.php:297
 #: inc/taxonomies.php:297
 msgid "Invalid nonce. Request is not authorized."
 msgstr "无效的nonce。请求未被授权。"
 
-#: dist/simple-tags/inc/taxonomies.php:307
 #: inc/taxonomies.php:307
 msgid "You do not have permission to view terms in this taxonomy."
 msgstr "您没有权限查看此taxonomy中的术语。"
 
-#: dist/simple-tags/inc/taxonomies.php:322
 #: inc/taxonomies.php:322
 msgid "Unable to retrieve terms for this taxonomy."
 msgstr "无法检索此taxonomy的术语。"
 
-#: dist/simple-tags/inc/taxonomies.php:440
 #: inc/taxonomies.php:440
 msgid "Manage Taxonomy"
 msgstr "管理 Taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:462
 #: inc/taxonomies.php:462
 msgid "Edit Taxonomy"
 msgstr "编辑 Taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:464
 #: inc/taxonomies.php:464
 msgid "Add new Taxonomy"
 msgstr "添加新的 Taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:487
 #: inc/taxonomies.php:487, fuzzy
 msgid "Permalinks"
 msgstr "Permalinks"
 
-#: dist/simple-tags/inc/taxonomies.php:492
 #: inc/taxonomies.php:492, fuzzy
 msgid "Admin Area"
 msgstr "Admin Area"
 
-#: dist/simple-tags/inc/taxonomies.php:496
 #: inc/taxonomies.php:496
 msgid "Other Labels"
 msgstr "其他标签"
 
-#: dist/simple-tags/inc/taxonomies.php:500
 #: inc/taxonomies.php:500, fuzzy
 msgid "REST API"
 msgstr "REST API"
 
-#: dist/simple-tags/inc/taxonomies.php:508
 #: inc/taxonomies.php:508
 msgid "Order"
 msgstr "顺序"
 
-#: dist/simple-tags/inc/taxonomies.php:513
-#: dist/simple-tags/inc/terms-table.php:740
-#: dist/simple-tags/inc/terms-table.php:1442
 #: inc/taxonomies.php:513
 #: inc/terms-table.php:740
 #: inc/terms-table.php:1442, fuzzy
 msgid "Slug"
 msgstr "Slug"
 
-#: dist/simple-tags/inc/taxonomies.php:522
 #: inc/taxonomies.php:522
 msgid "Deactivate or Delete"
 msgstr "停用或删除"
 
-#: dist/simple-tags/inc/taxonomies.php:540
-#: dist/simple-tags/inc/taxonomies.php:818
 #: inc/taxonomies.php:540
 #: inc/taxonomies.php:818, fuzzy
 msgid "Taxonomy Slug"
 msgstr "Taxonomy Slug"
 
-#: dist/simple-tags/inc/taxonomies.php:543
-#: dist/simple-tags/inc/taxonomies.php:821
 #: inc/taxonomies.php:543
 #: inc/taxonomies.php:821
 msgid "Slug has changed"
 msgstr "Slug 已更改"
 
-#: dist/simple-tags/inc/taxonomies.php:548
-#: dist/simple-tags/inc/taxonomies.php:826
 #: inc/taxonomies.php:548
 #: inc/taxonomies.php:826
 msgid "Slug already exists"
 msgstr "Slug 已经存在"
 
-#: dist/simple-tags/inc/taxonomies.php:552
-#: dist/simple-tags/inc/taxonomies.php:831
 #: inc/taxonomies.php:552
 #: inc/taxonomies.php:831
 msgid "Special character not allowed in slug."
 msgstr "Slug 中不允许使用特殊字符。"
 
-#: dist/simple-tags/inc/taxonomies.php:563
 #: inc/taxonomies.php:563
 msgid ""
 "The “slug” is the URL-friendly version of the name. It is usually all "
 "lowercase and contains only letters, numbers, and underscores."
 msgstr "“slug” 是名称的 URL 友好版本。它通常全部为小写，仅包含字母、数字和下划线。"
 
-#: dist/simple-tags/inc/taxonomies.php:575
-#: dist/simple-tags/inc/taxonomies.php:851
 #: inc/taxonomies.php:575
 #: inc/taxonomies.php:851
 msgid ""
@@ -2427,65 +1857,50 @@ msgid ""
 "Changing the slug registers a new taxonomy entry."
 msgstr "除非也计划迁移术语，否则请勿编辑 taxonomy slug。更改 slug 会注册新的 taxonomy 条目。"
 
-#: dist/simple-tags/inc/taxonomies.php:588
-#: dist/simple-tags/inc/taxonomies.php:864
 #: inc/taxonomies.php:588
 #: inc/taxonomies.php:864
 msgid "Migrate terms to newly renamed taxonomy?"
 msgstr "将术语迁移到新命名的 taxonomy 吗？"
 
-#: dist/simple-tags/inc/taxonomies.php:607
-#: dist/simple-tags/inc/taxonomies.php:1157
 #: inc/taxonomies.php:607
 #: inc/taxonomies.php:1157
 msgid "(e.g. Jobs)"
 msgstr "(例如：Jobs)"
 
-#: dist/simple-tags/inc/taxonomies.php:608
 #: inc/taxonomies.php:608
 msgid "Plural Label"
 msgstr "复数标签"
 
-#: dist/simple-tags/inc/taxonomies.php:619
 #: inc/taxonomies.php:619
 msgid "(e.g. Job)"
 msgstr "(例如：Job)"
 
-#: dist/simple-tags/inc/taxonomies.php:620
 #: inc/taxonomies.php:620
 msgid "Singular Label"
 msgstr "单数标签"
 
-#: dist/simple-tags/inc/taxonomies.php:647
 #: inc/taxonomies.php:647
 msgid "Parent-Child Relationships"
 msgstr "父子关系"
 
-#: dist/simple-tags/inc/taxonomies.php:648
 #: inc/taxonomies.php:648
 msgid "Can terms in this taxonomy be organized into hierarchical relationships?"
 msgstr "此分类法中的术语可以组织成层次关系吗？"
 
-#: dist/simple-tags/inc/taxonomies.php:667
-#: dist/simple-tags/inc/terms-table.php:733
-#: dist/simple-tags/inc/terms-table.php:741
 #: inc/taxonomies.php:667
 #: inc/terms-table.php:733
 #: inc/terms-table.php:741
 msgid "Description"
 msgstr "描述"
 
-#: dist/simple-tags/inc/taxonomies.php:668
 #: inc/taxonomies.php:668
 msgid "Describe what your taxonomy is used for."
 msgstr "描述您的分类法的用途。"
 
-#: dist/simple-tags/inc/taxonomies.php:679
 #: inc/taxonomies.php:679
 msgid "Default Terms"
 msgstr "默认术语"
 
-#: dist/simple-tags/inc/taxonomies.php:680
 #: inc/taxonomies.php:680
 msgid ""
 "Set the default terms for this taxonomy. These will be automatically added "
@@ -2493,213 +1908,168 @@ msgid ""
 "with by comma."
 msgstr "为此分类法设置默认术语。这些术语将自动添加到所有新帖子中。输入术语名称或别名。用逗号分隔多个术语。"
 
-#: dist/simple-tags/inc/taxonomies.php:795
 #: inc/taxonomies.php:795
 msgid "Archive page result"
 msgstr "存档页面结果"
 
-#: dist/simple-tags/inc/taxonomies.php:796
 #: inc/taxonomies.php:796
 msgid ""
 "Normally, WordPress will only show one post type on taxonomy archive pages. "
 "Enable this feature to show content from all selected posts types."
 msgstr "通常，WordPress 只会在分类法存档页面上显示一种帖子类型。启用此功能以显示所有选定的帖子类型的内容。"
 
-#: dist/simple-tags/inc/taxonomies.php:905
 #: inc/taxonomies.php:905
 msgid "Rewrite"
 msgstr "重写"
 
-#: dist/simple-tags/inc/taxonomies.php:906
 #: inc/taxonomies.php:906
 msgid ""
 "WordPress can use a custom permalink for this taxonomy. It does not have to "
 "match the slug."
 msgstr "WordPress 可以为此分类法使用自定义永久链接。它不必与别名匹配。"
 
-#: dist/simple-tags/inc/taxonomies.php:918
 #: inc/taxonomies.php:918
 msgid "(default: taxonomy name)"
 msgstr "(默认：分类法名称)"
 
-#: dist/simple-tags/inc/taxonomies.php:919
 #: inc/taxonomies.php:919
 msgid "Custom Rewrite Slug"
 msgstr "自定义重写别名"
 
-#: dist/simple-tags/inc/taxonomies.php:920
 #: inc/taxonomies.php:920
 msgid "Custom taxonomy rewrite slug."
 msgstr "自定义分类法重写别名。"
 
-#: dist/simple-tags/inc/taxonomies.php:945
 #: inc/taxonomies.php:945
 msgid "Rewrite With Front"
 msgstr "带前缀的重写"
 
-#: dist/simple-tags/inc/taxonomies.php:946
 #: inc/taxonomies.php:946
 msgid "Should the permastruct be prepended with the front base."
 msgstr "永久结构是否应以前缀基础开头。"
 
-#: dist/simple-tags/inc/taxonomies.php:972
 #: inc/taxonomies.php:972
 msgid "Rewrite Hierarchical"
 msgstr "重写层次结构"
 
-#: dist/simple-tags/inc/taxonomies.php:973
 #: inc/taxonomies.php:973
 msgid "Should the permastruct allow hierarchical urls."
 msgstr "永久结构是否允许层次 URL。"
 
-#: dist/simple-tags/inc/taxonomies.php:1009
 #: inc/taxonomies.php:1009
 msgid "Show user interface"
 msgstr "显示用户界面"
 
-#: dist/simple-tags/inc/taxonomies.php:1010
 #: inc/taxonomies.php:1010
 msgid ""
 "Should there be a visible interface in the WordPress admin area to manage "
 "these terms?"
 msgstr "在 WordPress 管理区域中是否应该有一个可见的界面来管理这些术语？"
 
-#: dist/simple-tags/inc/taxonomies.php:1033
 #: inc/taxonomies.php:1033
 msgid "Show in admin menus"
 msgstr "在管理菜单中显示"
 
-#: dist/simple-tags/inc/taxonomies.php:1034
 #: inc/taxonomies.php:1034
 msgid "Should there be links to this taxonomy in the WordPress admin menus?"
 msgstr "在WordPress管理菜单中是否应该有指向此taxonomy的链接？"
 
-#: dist/simple-tags/inc/taxonomies.php:1057
 #: inc/taxonomies.php:1057
 msgid "Show in frontend menus"
 msgstr "在前端菜单中显示"
 
-#: dist/simple-tags/inc/taxonomies.php:1058
 #: inc/taxonomies.php:1058
 msgid ""
 "Should this taxonomy be available for the frontend “Menus” and “Navigation” "
 "options?"
 msgstr "此taxonomy是否应该在前端的“菜单”和“导航”选项中可用？"
 
-#: dist/simple-tags/inc/taxonomies.php:1082
 #: inc/taxonomies.php:1082
 msgid "Show admin column"
 msgstr "显示管理列"
 
-#: dist/simple-tags/inc/taxonomies.php:1083
 #: inc/taxonomies.php:1083
 msgid ""
 "Should a column for this taxonomy appear on screens such as “Posts” and "
 "“Pages”?"
 msgstr "此taxonomy的列是否应该出现在“文章”和“页面”等屏幕上？"
 
-#: dist/simple-tags/inc/taxonomies.php:1106
 #: inc/taxonomies.php:1106
 msgid "Show in \"Quick Edit\" and \"Bulk Edit\""
 msgstr "在“快速编辑”和“批量编辑”中显示"
 
-#: dist/simple-tags/inc/taxonomies.php:1110
 #: inc/taxonomies.php:1110
 msgid ""
 "Should this taxonomy be available in editing tools on screens such as "
 "“Posts” and “Pages”?"
 msgstr "此taxonomy是否应该在“文章”和“页面”等屏幕的编辑工具中可用？"
 
-#: dist/simple-tags/inc/taxonomies.php:1134
 #: inc/taxonomies.php:1134
 msgid "Show in Filter"
 msgstr "在筛选器中显示"
 
-#: dist/simple-tags/inc/taxonomies.php:1138
 #: inc/taxonomies.php:1138
 msgid ""
 "Should this taxonomy be available in filters on screens such as “Posts” and "
 "“Pages”?"
 msgstr "此taxonomy是否应该在“文章”和“页面”等屏幕的筛选器中可用？"
 
-#: dist/simple-tags/inc/taxonomies.php:1158
 #: inc/taxonomies.php:1158
 msgid "Menu Name"
 msgstr "菜单名称"
 
-#: dist/simple-tags/inc/taxonomies.php:1159
 #: inc/taxonomies.php:1159
 msgid "Custom admin menu name for your taxonomy."
 msgstr "您taxonomy的自定义管理菜单名称。"
 
-#: dist/simple-tags/inc/taxonomies.php:1175
 #: inc/taxonomies.php:1175
 msgid "(e.g. All Jobs)"
 msgstr "(例如：所有作业)"
 
-#: dist/simple-tags/inc/taxonomies.php:1176
 #: inc/taxonomies.php:1176
 msgid "All Items"
 msgstr "所有项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1177
 #: inc/taxonomies.php:1177
 msgid ""
 "Used as tab text when showing all terms for hierarchical taxonomy while "
 "editing post."
 msgstr "在编辑文章时用于显示层次taxonomy的所有条目的标签文本。"
 
-#: dist/simple-tags/inc/taxonomies.php:1196
 #: inc/taxonomies.php:1196
 msgid "(e.g. Edit Job)"
 msgstr "(例如：编辑作业)"
 
-#: dist/simple-tags/inc/taxonomies.php:1197
 #: inc/taxonomies.php:1197
 msgid "Edit Item"
 msgstr "编辑项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1198
 #: inc/taxonomies.php:1198
 msgid "Used at the top of the term editor screen for an existing taxonomy term."
 msgstr "用于现有taxonomy条目的术语编辑器屏幕顶部。"
 
-#: dist/simple-tags/inc/taxonomies.php:1217
 #: inc/taxonomies.php:1217
 msgid "(e.g. View Job)"
 msgstr "(例如：查看作业)"
 
-#: dist/simple-tags/inc/taxonomies.php:1218
 #: inc/taxonomies.php:1218
 msgid "View Item"
 msgstr "查看项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1219
 #: inc/taxonomies.php:1219
 msgid ""
 "Used in the admin bar when viewing editor screen for an existing taxonomy "
 "term."
 msgstr "在查看现有 taxonomy 术语的编辑器屏幕时使用的管理栏。"
 
-#: dist/simple-tags/inc/taxonomies.php:1238
 #: inc/taxonomies.php:1238
 msgid "(e.g. Update Job Name)"
 msgstr "(例如：更新工作名称)"
 
-#: dist/simple-tags/inc/taxonomies.php:1239
 #: inc/taxonomies.php:1239
 msgid "Update Item Name"
 msgstr "更新项目名称"
 
-#: dist/simple-tags/inc/taxonomies.php:1240
-#: dist/simple-tags/inc/taxonomies.php:1285
-#: dist/simple-tags/inc/taxonomies.php:1306
-#: dist/simple-tags/inc/taxonomies.php:1327
-#: dist/simple-tags/inc/taxonomies.php:1348
-#: dist/simple-tags/inc/taxonomies.php:1369
-#: dist/simple-tags/inc/taxonomies.php:1396
-#: dist/simple-tags/inc/taxonomies.php:1420
-#: dist/simple-tags/inc/taxonomies.php:1447
 #: inc/taxonomies.php:1240
 #: inc/taxonomies.php:1285
 #: inc/taxonomies.php:1306
@@ -2712,303 +2082,246 @@ msgstr "更新项目名称"
 msgid "Custom taxonomy label. Used in the admin menu for displaying taxonomies."
 msgstr "自定义 taxonomy 标签。在管理菜单中用于显示 taxonomies。"
 
-#: dist/simple-tags/inc/taxonomies.php:1247
 #: inc/taxonomies.php:1247
 #, php-format
 msgid "Update %s name"
 msgstr "更新 %s 名称"
 
-#: dist/simple-tags/inc/taxonomies.php:1262
 #: inc/taxonomies.php:1262
 msgid "(e.g. Add New Job)"
 msgstr "(例如：添加新工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1263
 #: inc/taxonomies.php:1263
 msgid "Add New Item"
 msgstr "添加新项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1264
 #: inc/taxonomies.php:1264
 msgid ""
 "Used at the top of the term editor screen and button text for a new "
 "taxonomy term."
 msgstr "用于术语编辑器屏幕顶部和新 taxonomy 术语的按钮文本。"
 
-#: dist/simple-tags/inc/taxonomies.php:1283
 #: inc/taxonomies.php:1283
 msgid "(e.g. New Job Name)"
 msgstr "(例如：新工作名称)"
 
-#: dist/simple-tags/inc/taxonomies.php:1284
 #: inc/taxonomies.php:1284
 msgid "New Item Name"
 msgstr "新项目名称"
 
-#: dist/simple-tags/inc/taxonomies.php:1304
 #: inc/taxonomies.php:1304
 msgid "(e.g. Parent Job)"
 msgstr "(例如：父工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1305
 #: inc/taxonomies.php:1305
 msgid "Parent Item"
 msgstr "父项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1325
 #: inc/taxonomies.php:1325
 msgid "(e.g. Parent Job:)"
 msgstr "(例如：父工作：)"
 
-#: dist/simple-tags/inc/taxonomies.php:1326
 #: inc/taxonomies.php:1326
 msgid "Parent Item Colon"
 msgstr "父项目冒号"
 
-#: dist/simple-tags/inc/taxonomies.php:1346
 #: inc/taxonomies.php:1346
 msgid "(e.g. Search Jobs)"
 msgstr "(例如：搜索工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1347
 #: inc/taxonomies.php:1347
 msgid "Search Items"
 msgstr "搜索项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1367
 #: inc/taxonomies.php:1367
 msgid "(e.g. Popular Jobs)"
 msgstr "(例如：热门工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1368
 #: inc/taxonomies.php:1368
 msgid "Popular Items"
 msgstr "热门项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1388
 #: inc/taxonomies.php:1388
 msgid "(e.g. Separate Jobs with commas)"
 msgstr "(例如：用逗号分隔工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1392
 #: inc/taxonomies.php:1392
 msgid "Separate Items with Commas"
 msgstr "用逗号分隔项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1415
 #: inc/taxonomies.php:1415
 msgid "(e.g. Add or remove Jobs)"
 msgstr "(例如，添加或移除工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1419
 #: inc/taxonomies.php:1419
 msgid "Add or Remove Items"
 msgstr "添加或移除项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1442
 #: inc/taxonomies.php:1442
 msgid "(e.g. Choose from the most used Jobs)"
 msgstr "(例如，从最常用的工作中选择)"
 
-#: dist/simple-tags/inc/taxonomies.php:1446
 #: inc/taxonomies.php:1446
 msgid "Choose From Most Used"
 msgstr "从最常用的中选择"
 
-#: dist/simple-tags/inc/taxonomies.php:1466
 #: inc/taxonomies.php:1466
 msgid "(e.g. No jobs)"
 msgstr "(例如，没有工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1467
 #: inc/taxonomies.php:1467
 msgid "No terms"
 msgstr "没有术语"
 
-#: dist/simple-tags/inc/taxonomies.php:1468
 #: inc/taxonomies.php:1468
 msgid ""
 "Used when indicating that there are no terms in the given taxonomy "
 "associated with an object."
 msgstr "用于指示在给定的分类法中与对象关联的术语不存在。"
 
-#: dist/simple-tags/inc/taxonomies.php:1475
 #: inc/taxonomies.php:1475
 #, php-format
 msgid "No %s"
 msgstr "没有 %s"
 
-#: dist/simple-tags/inc/taxonomies.php:1487
 #: inc/taxonomies.php:1487
 msgid "(e.g. Jobs list navigation)"
 msgstr "(例如，工作列表导航)"
 
-#: dist/simple-tags/inc/taxonomies.php:1491
 #: inc/taxonomies.php:1491
 msgid "Items List Navigation"
 msgstr "项目列表导航"
 
-#: dist/simple-tags/inc/taxonomies.php:1492
 #: inc/taxonomies.php:1492
 msgid "Screen reader text for the pagination heading on the term listing screen."
 msgstr "在术语列表屏幕上的分页标题的屏幕阅读器文本。"
 
-#: dist/simple-tags/inc/taxonomies.php:1499
 #: inc/taxonomies.php:1499
 #, php-format
 msgid "%s list navigation"
 msgstr "%s 列表导航"
 
-#: dist/simple-tags/inc/taxonomies.php:1514
 #: inc/taxonomies.php:1514
 msgid "(e.g. Jobs list)"
 msgstr "(例如，工作列表)"
 
-#: dist/simple-tags/inc/taxonomies.php:1515
 #: inc/taxonomies.php:1515
 msgid "Items List"
 msgstr "项目列表"
 
-#: dist/simple-tags/inc/taxonomies.php:1516
 #: inc/taxonomies.php:1516
 msgid "Screen reader text for the items list heading on the term listing screen."
 msgstr "在术语列表屏幕上的项目列表标题的屏幕阅读器文本。"
 
-#: dist/simple-tags/inc/taxonomies.php:1523
 #: inc/taxonomies.php:1523
 #, php-format
 msgid "%s list"
 msgstr "%s 列表"
 
-#: dist/simple-tags/inc/taxonomies.php:1535
 #: inc/taxonomies.php:1535
 msgid "(e.g. No jobs found)"
 msgstr "(例如，未找到工作)"
 
-#: dist/simple-tags/inc/taxonomies.php:1536
 #: inc/taxonomies.php:1536
 msgid "Not Found"
 msgstr "未找到"
 
-#: dist/simple-tags/inc/taxonomies.php:1537
 #: inc/taxonomies.php:1537
 msgid ""
 "The text displayed via clicking ‘Choose from the most used items’ in the "
 "taxonomy meta box when no items are available."
 msgstr "在分类法元框中点击“从最常用的项目中选择”时显示的文本，当没有可用项目时。"
 
-#: dist/simple-tags/inc/taxonomies.php:1544
 #: inc/taxonomies.php:1544
 #, php-format
 msgid "No %s found"
 msgstr "没有找到 %s"
 
-#: dist/simple-tags/inc/taxonomies.php:1556
 #: inc/taxonomies.php:1556
 msgid "(e.g. &larr; Back to jobs"
 msgstr "(例如 &larr; 返回到职位"
 
-#: dist/simple-tags/inc/taxonomies.php:1560
 #: inc/taxonomies.php:1560
 msgid "Back to Items"
 msgstr "返回到项目"
 
-#: dist/simple-tags/inc/taxonomies.php:1561
 #: inc/taxonomies.php:1561
 msgid ""
 "The text displayed after a term has been updated for a link back to main "
 "index."
 msgstr "更新后显示的文本，用于链接回主索引。"
 
-#: dist/simple-tags/inc/taxonomies.php:1568
 #: inc/taxonomies.php:1568
 #, php-format
 msgid "Back to %s"
 msgstr "返回到 %s"
 
-#: dist/simple-tags/inc/taxonomies.php:1600
 #: inc/taxonomies.php:1600
 msgid "Show in REST API"
 msgstr "在 REST API 中显示"
 
-#: dist/simple-tags/inc/taxonomies.php:1601
 #: inc/taxonomies.php:1601
 msgid "Add the taxonomy to the WordPress wp-json API."
 msgstr "将分类法添加到 WordPress wp-json API。"
 
-#: dist/simple-tags/inc/taxonomies.php:1621
 #: inc/taxonomies.php:1621
 msgid "REST API base slug"
 msgstr "REST API 基础 slug"
 
-#: dist/simple-tags/inc/taxonomies.php:1622
 #: inc/taxonomies.php:1622
 msgid "The base slug that this taxonomy will use in the REST API."
 msgstr "此分类法在 REST API 中使用的基础 slug。"
 
-#: dist/simple-tags/inc/taxonomies.php:1630
 #: inc/taxonomies.php:1630
 msgid "REST API controller class"
 msgstr "REST API 控制器类"
 
-#: dist/simple-tags/inc/taxonomies.php:1634
 #: inc/taxonomies.php:1634
 msgid ""
 "The name of a custom Rest Controller class instead of "
 "WP_REST_Terms_Controller."
 msgstr "自定义 Rest 控制器类的名称，而不是 WP_REST_Terms_Controller。"
 
-#: dist/simple-tags/inc/taxonomies.php:1635
 #: inc/taxonomies.php:1635
 msgid "Custom controller to use instead of WP_REST_Terms_Controller."
 msgstr "自定义控制器，用于替代 WP_REST_Terms_Controller。"
 
-#: dist/simple-tags/inc/taxonomies.php:1671
 #: inc/taxonomies.php:1671
 msgid "Public"
 msgstr "公开"
 
-#: dist/simple-tags/inc/taxonomies.php:1672
 #: inc/taxonomies.php:1672
 msgid "The taxonomy is for public use. It can be seen by frontend users."
 msgstr "该分类法供公共使用。前端用户可以看到。"
 
-#: dist/simple-tags/inc/taxonomies.php:1698
 #: inc/taxonomies.php:1698
 msgid "Public Queryable"
 msgstr "公开可查询"
 
-#: dist/simple-tags/inc/taxonomies.php:1699
 #: inc/taxonomies.php:1699
 msgid "The taxonomy is publicly queryable."
 msgstr "该分类法可以公开查询。"
 
-#: dist/simple-tags/inc/taxonomies.php:1725
 #: inc/taxonomies.php:1725
 msgid "Query Var"
 msgstr "查询变量"
 
-#: dist/simple-tags/inc/taxonomies.php:1726
 #: inc/taxonomies.php:1726
 msgid "Enable a custom query_var key for this taxonomy."
 msgstr "为此分类法启用自定义 query_var 键。"
 
-#: dist/simple-tags/inc/taxonomies.php:1739
 #: inc/taxonomies.php:1739
 msgid "Custom Query Var String"
 msgstr "自定义查询变量字符串"
 
-#: dist/simple-tags/inc/taxonomies.php:1740
 #: inc/taxonomies.php:1740
 msgid "Sets a custom query_var slug for this taxonomy."
 msgstr "为此分类法设置自定义 query_var slug。"
 
-#: dist/simple-tags/inc/taxonomies.php:1751
 #: inc/taxonomies.php:1751
 msgid "Metabox callback"
 msgstr "Metabox 回调"
 
-#: dist/simple-tags/inc/taxonomies.php:1752
 #: inc/taxonomies.php:1752
 msgid ""
 "Sets a callback function name for the meta box display. Hierarchical "
@@ -3018,12 +2331,10 @@ msgstr ""
 "设置一个回调函数名称用于元框显示。层次结构默认值：post_categories_meta_box，非层次结构默认值：post_tags_meta_"
 "box。要完全移除元框，请使用 \"false\"。"
 
-#: dist/simple-tags/inc/taxonomies.php:1763
 #: inc/taxonomies.php:1763, fuzzy
 msgid "Categories"
 msgstr "Categories"
 
-#: dist/simple-tags/inc/taxonomies.php:1771
 #: inc/taxonomies.php:1771
 #, php-format
 msgid ""
@@ -3031,39 +2342,32 @@ msgid ""
 "frontend displays."
 msgstr "此功能控制您在编辑帖子时 %s 的顺序，以及在前端显示时的顺序。"
 
-#: dist/simple-tags/inc/taxonomies.php:1781
 #: inc/taxonomies.php:1781
 msgid "Enable PublishPress Taxonomies ordering"
 msgstr "启用 PublishPress taxonomy 排序"
 
-#: dist/simple-tags/inc/taxonomies.php:1786
 #: inc/taxonomies.php:1786
 msgid ""
 "Enable PublishPress Taxonomies ordering for this taxonomy in the frontend "
 "and admin area."
 msgstr "在前端和管理区域启用此 taxonomy 的 PublishPress taxonomy 排序。"
 
-#: dist/simple-tags/inc/taxonomies.php:1836
 #: inc/taxonomies.php:1836
 msgid "Re-activate Taxonomy"
 msgstr "重新激活 taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:1839
 #: inc/taxonomies.php:1839
 msgid "Deactivate Taxonomy"
 msgstr "停用 taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:1853
 #: inc/taxonomies.php:1853
 msgid "Delete Taxonomy"
 msgstr "删除 taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:1861
 #: inc/taxonomies.php:1861
 msgid "Delete PublishPress Taxonomies Edit Data"
 msgstr "删除 PublishPress taxonomy 编辑数据"
 
-#: dist/simple-tags/inc/taxonomies.php:1864
 #: inc/taxonomies.php:1864
 msgid ""
 "You can only delete taxonomies created with PublishPress Taxonomies. "
@@ -3074,167 +2378,128 @@ msgstr ""
 "您只能删除使用 PublishPress taxonomy 创建的 taxonomy。不过，您可以删除从 PublishPress taxonomy "
 "所做的任何更改或编辑，这将删除 PublishPress taxonomy 版本编辑，恢复原始 taxonomy 数据或移除已删除的内容。"
 
-#: dist/simple-tags/inc/taxonomies.php:1931
 #: inc/taxonomies.php:1931
 msgid "Save Taxonomy"
 msgstr "保存 taxonomy"
 
-#: dist/simple-tags/inc/taxonomies.php:1946
 #: inc/taxonomies.php:1946
 msgid "Add Taxonomy"
 msgstr "添加 taxonomy"
 
-#: dist/simple-tags/inc/terms-functions.php:313
-#: inc/terms-functions.php:313
+#: inc/terms-functions.php:321
 msgid "Term copied successfully."
 msgstr "术语复制成功。"
 
-#: dist/simple-tags/inc/terms-functions.php:322
-#: dist/simple-tags/inc/terms-table.php:926
-#: inc/terms-functions.php:322
+#: inc/terms-functions.php:330
 #: inc/terms-table.php:926
 msgid "Term deleted successfully."
 msgstr "术语删除成功。"
 
-#: dist/simple-tags/inc/terms-functions.php:331
-#: inc/terms-functions.php:331
+#: inc/terms-functions.php:339
 msgid "Term removed from all posts successfully."
 msgstr "术语成功从所有帖子中移除。"
 
-#: dist/simple-tags/inc/terms-table.php:734
-#: dist/simple-tags/inc/terms-table.php:748
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1652
 #: inc/terms-table.php:734
 #: inc/terms-table.php:748
 #: modules/taxopress-ai/taxopress-ai.php:1652
 msgid "Count"
 msgstr "计数"
 
-#: dist/simple-tags/inc/terms-table.php:744
 #: inc/terms-table.php:744
 msgid "Custom URL"
 msgstr "自定义 URL"
 
-#: dist/simple-tags/inc/terms-table.php:745
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:581
 #: inc/terms-table.php:745
-#: includes-core/TaxopressCoreAdmin.php:581
+#: includes-core/TaxopressCoreAdmin.php:655
 msgid "Synonyms"
 msgstr "同义词"
 
-#: dist/simple-tags/inc/terms-table.php:746
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:539
 #: inc/terms-table.php:746
-#: includes-core/TaxopressCoreAdmin.php:539
+#: includes-core/TaxopressCoreAdmin.php:613
 msgid "Linked Terms"
 msgstr "关联术语"
 
-#: dist/simple-tags/inc/terms-table.php:747
 #: inc/terms-table.php:747
 msgid "Status"
 msgstr "状态"
 
-#: dist/simple-tags/inc/terms-table.php:801
-#: dist/simple-tags/inc/terms-table.php:1219
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:318
 #: inc/terms-table.php:801
 #: inc/terms-table.php:1219
-#: includes-core/TaxopressCoreAdmin.php:318
+#: includes-core/TaxopressCoreAdmin.php:320
 msgid "Copy"
 msgstr "复制"
 
-#: dist/simple-tags/inc/terms-table.php:841
 #: inc/terms-table.php:841
 msgid "Select Destination Taxonomy"
 msgstr "选择目标 taxonomy"
 
-#: dist/simple-tags/inc/terms-table.php:847
 #: inc/terms-table.php:847
 msgid "Search posts"
 msgstr "搜索帖子"
 
-#: dist/simple-tags/inc/terms-table.php:849
 #: inc/terms-table.php:849
 msgid "post type"
 msgstr "post type"
 
-#: dist/simple-tags/inc/terms-table.php:851
 #: inc/terms-table.php:851
 #, php-format
 msgid "Select Destination %s"
 msgstr "选择目标 %s"
 
-#: dist/simple-tags/inc/terms-table.php:881
 #: inc/terms-table.php:881
 msgid "Filter"
 msgstr "筛选"
 
-#: dist/simple-tags/inc/terms-table.php:923
 #: inc/terms-table.php:923
 msgid "Terms deleted successfully."
 msgstr "条目已成功删除。"
 
-#: dist/simple-tags/inc/terms-table.php:987
 #: inc/terms-table.php:987
 msgid "Term(s) copied successfully."
 msgstr "条目已成功复制。"
 
-#: dist/simple-tags/inc/terms-table.php:1005
 #: inc/terms-table.php:1005
 msgid "Hidden"
 msgstr "隐藏"
 
-#: dist/simple-tags/inc/terms-table.php:1008
 #: inc/terms-table.php:1008
 msgid "Live"
 msgstr "公开"
 
-#: dist/simple-tags/inc/terms-table.php:1027
 #: inc/terms-table.php:1027
 msgid "No terms found."
 msgstr "未找到条目。"
 
-#: dist/simple-tags/inc/terms-table.php:1166
 #: inc/terms-table.php:1166
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "快速编辑 &#8220;%s&#8221; 内联"
 
-#: dist/simple-tags/inc/terms-table.php:1167
 #: inc/terms-table.php:1167
 msgid "Quick&nbsp;Edit"
 msgstr "快速&nbsp;编辑"
 
-#: dist/simple-tags/inc/terms-table.php:1182
 #: inc/terms-table.php:1182
 msgid "Remove From All Posts"
 msgstr "从所有帖子中移除"
 
-#: dist/simple-tags/inc/terms-table.php:1205
 #: inc/terms-table.php:1205
 msgid "View"
 msgstr "查看"
 
-#: dist/simple-tags/inc/terms-table.php:1434
 #: inc/terms-table.php:1434
 msgid "Quick Edit"
 msgstr "快速编辑"
 
-#: dist/simple-tags/inc/terms-table.php:1461
 #: inc/terms-table.php:1461
 msgid "Cancel"
 msgstr "取消"
 
-#: dist/simple-tags/inc/terms-table.php:1462
 #: inc/terms-table.php:1462
 msgid "Update"
 msgstr "更新"
 
-#: dist/simple-tags/inc/terms.php:172
-#: dist/simple-tags/inc/terms.php:173
-#: dist/simple-tags/inc/terms.php:239
-#: dist/simple-tags/inc/terms.php:273
 #: inc/terms.php:172
 #: inc/terms.php:173
 #: inc/terms.php:239
@@ -3242,131 +2507,101 @@ msgstr "更新"
 msgid "Terms"
 msgstr "条目"
 
-#: dist/simple-tags/inc/terms.php:241
-#: dist/simple-tags/inc/terms.php:282
 #: inc/terms.php:241
 #: inc/terms.php:282
 msgid "This screen allows you to search and edit all the terms on your site."
 msgstr "此屏幕允许您搜索和编辑您网站上的所有条目。"
 
-#: dist/simple-tags/inc/terms.php:280
 #: inc/terms.php:280
 msgid "This screen allows you to order terms via drag and drop."
 msgstr "此屏幕允许您通过拖放来排序术语。"
 
-#: dist/simple-tags/inc/terms.php:309
 #: inc/terms.php:309
 msgid "Search Terms"
 msgstr "搜索术语"
 
-#: dist/simple-tags/inc/utilities.php:10
-#: dist/simple-tags/inc/utilities.php:12
-#: dist/simple-tags/inc/utilities.php:34
 #: inc/utilities.php:10
 #: inc/utilities.php:12
 #: inc/utilities.php:34
 msgid "Media Tags"
 msgstr "媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:11
 #: inc/utilities.php:11
 msgid "Media Tag"
 msgstr "媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:13
 #: inc/utilities.php:13
 msgid "All Media Tags"
 msgstr "所有媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:14
 #: inc/utilities.php:14
 msgid "Edit Media Tag"
 msgstr "编辑媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:15
 #: inc/utilities.php:15
 msgid "View Media Tag"
 msgstr "查看媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:16
 #: inc/utilities.php:16
 msgid "Update Media Tag name"
 msgstr "更新媒体标签名称"
 
-#: dist/simple-tags/inc/utilities.php:17
 #: inc/utilities.php:17
 msgid "Add new Media Tag"
 msgstr "添加新的媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:18
 #: inc/utilities.php:18
 msgid "New Media Tag name"
 msgstr "新媒体标签名称"
 
-#: dist/simple-tags/inc/utilities.php:19
 #: inc/utilities.php:19
 msgid "Parent Media Tag"
 msgstr "父媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:20
 #: inc/utilities.php:20
 msgid "Parent Media Tag:"
 msgstr "父媒体标签："
 
-#: dist/simple-tags/inc/utilities.php:21
 #: inc/utilities.php:21
 msgid "Search Media Tags"
 msgstr "搜索媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:22
 #: inc/utilities.php:22
 msgid "Popular Media Tags"
 msgstr "热门媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:23
 #: inc/utilities.php:23
 msgid "Separate Media Tags with commas"
 msgstr "用逗号分隔媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:24
 #: inc/utilities.php:24
 msgid "Add or remove Media Tags"
 msgstr "添加或删除媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:25
 #: inc/utilities.php:25
 msgid "Choose from the most used Media Tags"
 msgstr "从最常用的媒体标签中选择"
 
-#: dist/simple-tags/inc/utilities.php:26
 #: inc/utilities.php:26
 msgid "No Media Tags found"
 msgstr "未找到媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:27
 #: inc/utilities.php:27
 msgid "No Media Tags"
 msgstr "没有媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:28
 #: inc/utilities.php:28
 msgid "Media Tags list navigation"
 msgstr "媒体标签列表导航"
 
-#: dist/simple-tags/inc/utilities.php:29
 #: inc/utilities.php:29
 msgid "Media Tags list"
 msgstr "媒体标签列表"
 
-#: dist/simple-tags/inc/utilities.php:30
 #: inc/utilities.php:30
 msgid "Back to Media Tags"
 msgstr "返回媒体标签"
 
-#: dist/simple-tags/inc/utilities.php:62
-#: dist/simple-tags/inc/utilities.php:63
-#: dist/simple-tags/inc/utilities.php:65
-#: dist/simple-tags/inc/utilities.php:70
 #: inc/utilities.php:62
 #: inc/utilities.php:63
 #: inc/utilities.php:65
@@ -3374,230 +2609,193 @@ msgstr "返回媒体标签"
 msgid "PublishPress Taxonomies Logs"
 msgstr "PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/inc/utilities.php:64
 #: inc/utilities.php:64
 msgid "Search PublishPress Taxonomies Logs"
 msgstr "搜索 PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/inc/utilities.php:66
 #: inc/utilities.php:66
 msgid "Edit PublishPress Taxonomies Logs"
 msgstr "编辑 PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/inc/utilities.php:67
 #: inc/utilities.php:67
 msgid "Update PublishPress Taxonomies Logs"
 msgstr "更新 PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/inc/utilities.php:68
 #: inc/utilities.php:68
 msgid "Add New PublishPress Taxonomies Logs"
 msgstr "添加新的 PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/inc/utilities.php:69
 #: inc/utilities.php:69
 msgid "New PublishPress Taxonomies Logs"
 msgstr "新的 PublishPress Taxonomies 日志"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:74
-#: includes-core/TaxopressCoreAdmin.php:74
+#: includes-core/TaxopressCoreAdmin.php:76
 msgid ""
 "You're using PublishPress Taxonomies Free. The Pro version has more "
 "features and support."
 msgstr "您正在使用 PublishPress Taxonomies 免费版。专业版具有更多功能和支持。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:103
-#: includes-core/TaxopressCoreAdmin.php:103
+#: includes-core/TaxopressCoreAdmin.php:105
 msgid "Upgrade to PublishPress Taxonomies Pro"
 msgstr "升级到 PublishPress Taxonomies Pro"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:108
-#: includes-core/TaxopressCoreAdmin.php:108
+#: includes-core/TaxopressCoreAdmin.php:110
 msgid "Enhance the power of PublishPress Taxonomies with the Pro version:"
 msgstr "通过专业版增强 PublishPress Taxonomies 的功能："
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:111
-#: includes-core/TaxopressCoreAdmin.php:111
+#: includes-core/TaxopressCoreAdmin.php:113
 msgid "Unlimited “Term Display”"
 msgstr "无限制的“术语显示”"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:112
-#: includes-core/TaxopressCoreAdmin.php:112
+#: includes-core/TaxopressCoreAdmin.php:114
 msgid "Unlimited “Terms for Current Posts”"
 msgstr "无限制的“当前帖子术语”"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:113
-#: includes-core/TaxopressCoreAdmin.php:113
+#: includes-core/TaxopressCoreAdmin.php:115
 msgid "Unlimited “Related Posts”"
 msgstr "无限制的“相关帖子”"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:114
-#: includes-core/TaxopressCoreAdmin.php:114
+#: includes-core/TaxopressCoreAdmin.php:116
 msgid "Unlimited “Auto Links”"
 msgstr "无限制的“自动链接”"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:115
-#: includes-core/TaxopressCoreAdmin.php:115
+#: includes-core/TaxopressCoreAdmin.php:117
 msgid "Unlimited “Auto Terms”"
 msgstr "无限制的“自动术语”"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:116
-#: includes-core/TaxopressCoreAdmin.php:116
+#: includes-core/TaxopressCoreAdmin.php:118
 msgid "Create new terms using OpenAI and other sources"
 msgstr "使用 OpenAI 和其他来源创建新术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:117
-#: includes-core/TaxopressCoreAdmin.php:117
+#: includes-core/TaxopressCoreAdmin.php:119
 msgid "Use Linked Terms"
 msgstr "使用关联术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:118
-#: includes-core/TaxopressCoreAdmin.php:118
+#: includes-core/TaxopressCoreAdmin.php:120
 msgid "Use Synonyms"
 msgstr "使用同义词"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:119
-#: includes-core/TaxopressCoreAdmin.php:119
+#: includes-core/TaxopressCoreAdmin.php:121
 msgid "Schedule Auto Terms to run automatically"
 msgstr "安排自动术语自动运行"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:120
-#: includes-core/TaxopressCoreAdmin.php:120
+#: includes-core/TaxopressCoreAdmin.php:122
 msgid "Control the display of term metaboxes"
 msgstr "控制术语元框的显示"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:121
-#: includes-core/TaxopressCoreAdmin.php:121
+#: includes-core/TaxopressCoreAdmin.php:123
 msgid "Fast, professional support"
 msgstr "快速、专业的支持"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:122
-#: includes-core/TaxopressCoreAdmin.php:122
+#: includes-core/TaxopressCoreAdmin.php:124
 msgid "No ads inside the plugin"
 msgstr "插件内部无广告"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:132
-#: includes-core/TaxopressCoreAdmin.php:132
+#: includes-core/TaxopressCoreAdmin.php:134
 msgid "Need PublishPress Taxonomies Support?"
 msgstr "需要 PublishPress Taxonomies 支持吗？"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:137
-#: includes-core/TaxopressCoreAdmin.php:137
+#: includes-core/TaxopressCoreAdmin.php:139
 msgid "If you need help or have a new feature request, let us know."
 msgstr "如果您需要帮助或有新的功能请求，请告诉我们。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:139
-#: includes-core/TaxopressCoreAdmin.php:139
+#: includes-core/TaxopressCoreAdmin.php:141
 msgid "Request Support"
 msgstr "请求支持"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:146
-#: includes-core/TaxopressCoreAdmin.php:146
+#: includes-core/TaxopressCoreAdmin.php:148
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "详细文档也可以在插件网站上找到。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:148
-#: includes-core/TaxopressCoreAdmin.php:148
+#: includes-core/TaxopressCoreAdmin.php:150
 msgid "View Knowledge Base"
 msgstr "查看知识库"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:171
-#: includes-core/TaxopressCoreAdmin.php:171
+#: includes-core/TaxopressCoreAdmin.php:173
 msgid "OpenAI Integration"
 msgstr "OpenAI 集成"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:176
-#: includes-core/TaxopressCoreAdmin.php:176
+#: includes-core/TaxopressCoreAdmin.php:178
 msgid ""
 "PublishPress Taxonomies Pro allows you to integrate OpenAI to analyze your "
 "content and suggest terms."
 msgstr "PublishPress Taxonomies Pro 允许您集成 OpenAI 来分析您的内容并建议术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:195
-#: includes-core/TaxopressCoreAdmin.php:195
+#: includes-core/TaxopressCoreAdmin.php:197
 msgid "IBM Watson Integration"
 msgstr "IBM Watson 集成"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:200
-#: includes-core/TaxopressCoreAdmin.php:200
+#: includes-core/TaxopressCoreAdmin.php:202
 msgid ""
 "PublishPress Taxonomies Pro allows you to integrate Watson to analyze your "
 "content and suggest terms."
 msgstr "PublishPress Taxonomies Pro 允许您集成 Watson 来分析您的内容并建议术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:219
-#: includes-core/TaxopressCoreAdmin.php:219
+#: includes-core/TaxopressCoreAdmin.php:221
 msgid "Dandelion Integration"
 msgstr "蒲公英集成"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:224
-#: includes-core/TaxopressCoreAdmin.php:224
+#: includes-core/TaxopressCoreAdmin.php:226
 msgid ""
 "PublishPress Taxonomies Pro allows you to integrate Dandelion to analyze "
 "your content and suggest terms."
 msgstr "PublishPress Taxonomies Pro 允许您集成蒲公英来分析您的内容并建议术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:243
-#: includes-core/TaxopressCoreAdmin.php:243
+#: includes-core/TaxopressCoreAdmin.php:245
 msgid "LSEG / Refinitiv Integration"
 msgstr "LSEG / Refinitiv 集成"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:248
-#: includes-core/TaxopressCoreAdmin.php:248
+#: includes-core/TaxopressCoreAdmin.php:250
 msgid ""
 "PublishPress Taxonomies Pro allows you to integrate LSEG / Refinitiv to "
 "analyze your content and suggest terms."
 msgstr "PublishPress Taxonomies Pro 允许您集成 LSEG / Refinitiv 来分析您的内容并建议术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:271
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:288
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:465
-#: includes-core/TaxopressCoreAdmin.php:271
-#: includes-core/TaxopressCoreAdmin.php:288
-#: includes-core/TaxopressCoreAdmin.php:465
+#: includes-core/TaxopressCoreAdmin.php:273
+#: includes-core/TaxopressCoreAdmin.php:290
+#: includes-core/TaxopressCoreAdmin.php:539
 msgid "Suggest terms using AI"
 msgstr "使用 AI 建议术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:275
-#: includes-core/TaxopressCoreAdmin.php:275
+#: includes-core/TaxopressCoreAdmin.php:277
 msgid ""
 "PublishPress Taxonomies Pro allows you to suggest new terms for your "
 "content using the OpenAI. This service can analyze your content and suggest "
 "new terms."
 msgstr "PublishPress Taxonomies Pro 允许您使用 OpenAI 为您的内容建议新术语。此服务可以分析您的内容并建议新术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:293
-#: includes-core/TaxopressCoreAdmin.php:293
+#: includes-core/TaxopressCoreAdmin.php:295
 msgid ""
 "PublishPress Taxonomies Pro allows you to suggest new terms for your "
 "content using the IBM Watson. This service can analyze your content and "
 "suggest new terms."
 msgstr "PublishPress Taxonomies Pro 允许您使用 IBM Watson 为您的内容建议新术语。此服务可以分析您的内容并建议新术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:357
-#: includes-core/TaxopressCoreAdmin.php:357
+#: includes-core/TaxopressCoreAdmin.php:359
 msgid "Copy with Metadata"
 msgstr "复制带元数据"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:387
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:405
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:423
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:441
-#: includes-core/TaxopressCoreAdmin.php:387
-#: includes-core/TaxopressCoreAdmin.php:405
-#: includes-core/TaxopressCoreAdmin.php:423
-#: includes-core/TaxopressCoreAdmin.php:441
+#: includes-core/TaxopressCoreAdmin.php:390
+msgid "Auto Terms using AI Connectors"
+msgstr "使用 AI 连接器的自动术语"
+
+#: includes-core/TaxopressCoreAdmin.php:395
+msgid ""
+"PublishPress Taxonomies Pro can generate terms using any compatible AI "
+"provider configured in Settings > Connectors."
+msgstr "PublishPress Taxonomies Pro 可以使用在设置 > 连接器中配置的任何兼容 AI 提供者生成术语。"
+
+#: includes-core/TaxopressCoreAdmin.php:409
+#: includes-core/TaxopressCoreAdmin.php:427
+#: includes-core/TaxopressCoreAdmin.php:445
+#: includes-core/TaxopressCoreAdmin.php:463
 msgid "Auto terms using AI"
 msgstr "使用AI自动生成术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:392
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:410
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:428
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:446
-#: includes-core/TaxopressCoreAdmin.php:392
-#: includes-core/TaxopressCoreAdmin.php:410
-#: includes-core/TaxopressCoreAdmin.php:428
-#: includes-core/TaxopressCoreAdmin.php:446
+#: includes-core/TaxopressCoreAdmin.php:414
+#: includes-core/TaxopressCoreAdmin.php:432
+#: includes-core/TaxopressCoreAdmin.php:450
+#: includes-core/TaxopressCoreAdmin.php:468
 msgid ""
 "PublishPress Taxonomies Pro allows you to generate new terms for your "
 "content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
@@ -3606,8 +2804,25 @@ msgstr ""
 "PublishPress Taxonomies Pro允许您使用OpenAI、IBM Watson、Dandelion和Open "
 "Calais服务为您的内容生成新术语。这些服务可以分析您的内容并添加新术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:470
-#: includes-core/TaxopressCoreAdmin.php:470
+#: includes-core/TaxopressCoreAdmin.php:486
+msgid "Additional taxonomies"
+msgstr "附加分类法"
+
+#: includes-core/TaxopressCoreAdmin.php:496
+msgid "Select additional taxonomies..."
+msgstr "选择附加分类法..."
+
+#: includes-core/TaxopressCoreAdmin.php:507
+msgid ""
+"Upgrade to PublishPress Taxonomies Pro to generate separate terms for "
+"multiple taxonomies in one OpenAI request."
+msgstr "升级到 PublishPress Taxonomies Pro，以在一次 OpenAI 请求中为多个分类法生成单独的术语。"
+
+#: includes-core/TaxopressCoreAdmin.php:512
+msgid "Generate separate terms for multiple taxonomies in one OpenAI request."
+msgstr "在一次 OpenAI 请求中为多个分类法生成单独的术语。"
+
+#: includes-core/TaxopressCoreAdmin.php:544
 msgid ""
 "PublishPress Taxonomies Pro allows you to suggest new terms for your "
 "content using the OpenAI, IBM Watson, Dandelion and Open Calais services. "
@@ -3616,46 +2831,39 @@ msgstr ""
 "PublishPress Taxonomies Pro允许您使用OpenAI、IBM Watson、Dandelion和Open "
 "Calais服务为您的内容建议新术语。这些服务可以分析您的内容并建议新术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:489
-#: includes-core/TaxopressCoreAdmin.php:489
+#: includes-core/TaxopressCoreAdmin.php:563
 msgid "Add Custom Elements"
 msgstr "添加自定义元素"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:494
-#: includes-core/TaxopressCoreAdmin.php:494
+#: includes-core/TaxopressCoreAdmin.php:568
 msgid ""
 "PublishPress Taxonomies Pro allows you complete control over where Auto "
 "Links are added. You can choose to skip any HTML elements that appear in "
 "your content."
 msgstr "PublishPress Taxonomies Pro允许您完全控制自动链接添加的位置。您可以选择跳过出现在您内容中的任何HTML元素。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:513
-#: includes-core/TaxopressCoreAdmin.php:513
+#: includes-core/TaxopressCoreAdmin.php:587
 msgid "Use Regular Expressions to modify Auto Terms"
 msgstr "使用正则表达式修改自动术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:518
-#: includes-core/TaxopressCoreAdmin.php:518
+#: includes-core/TaxopressCoreAdmin.php:592
 msgid ""
 "PublishPress Taxonomies Pro allows you to change how Auto Terms analyzes "
 "your posts. You will need to know how to write Regular Expressions to use "
 "this feature."
 msgstr "PublishPress Taxonomies Pro允许您更改自动术语分析您帖子的方法。您需要知道如何编写正则表达式才能使用此功能。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:540
-#: includes-core/TaxopressCoreAdmin.php:540
+#: includes-core/TaxopressCoreAdmin.php:614
 msgid ""
 "This feature allows you to connect terms. When the main term or any of "
 "these terms are added to the post, all the other terms will be added also."
 msgstr "此功能允许您连接术语。当主术语或这些术语中的任何一个被添加到帖子时，所有其他术语也将被添加。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:560
-#: includes-core/TaxopressCoreAdmin.php:560
+#: includes-core/TaxopressCoreAdmin.php:634
 msgid "Linked Terms Feature"
 msgstr "链接术语功能"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:564
-#: includes-core/TaxopressCoreAdmin.php:564
+#: includes-core/TaxopressCoreAdmin.php:638
 msgid ""
 "PublishPress Taxonomies Pro allows you to create powerful connections "
 "between your terms. When one term is added to a post, its linked terms can "
@@ -3665,21 +2873,18 @@ msgstr ""
 "PublishPress Taxonomies "
 "Pro允许您在术语之间创建强大的连接。当一个术语被添加到帖子时，其链接术语也可以自动添加。这有助于在您的内容中保持一致的组织。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:582
-#: includes-core/TaxopressCoreAdmin.php:582
+#: includes-core/TaxopressCoreAdmin.php:656
 msgid ""
 "This feature allows you to associate additional words with each term. For "
 "example, \"website\" can have synonyms such as \"websites\", \"web site\", "
 "and \"web pages\"."
 msgstr "此功能允许您将额外的词与每个术语关联。例如，“网站”可以具有“网站”、“网页”和“网页”的同义词。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:598
-#: includes-core/TaxopressCoreAdmin.php:598
+#: includes-core/TaxopressCoreAdmin.php:672
 msgid "Synonyms Terms Feature"
 msgstr "同义词术语功能"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:602
-#: includes-core/TaxopressCoreAdmin.php:602
+#: includes-core/TaxopressCoreAdmin.php:676
 msgid ""
 "PublishPress Taxonomies Pro allows you to have multiple words associated "
 "with a single term. If PublishPress Taxonomies scans your content and finds "
@@ -3688,40 +2893,32 @@ msgstr ""
 "PublishPress Taxonomies Pro允许您有多个词与单个术语关联。如果PublishPress "
 "Taxonomies扫描您的内容并找到一个同义词，它将表现得像找到了主术语。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:622
-#: includes-core/TaxopressCoreAdmin.php:622
+#: includes-core/TaxopressCoreAdmin.php:696
 msgid "Taxonomy Display"
 msgstr "分类显示"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:630
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:719
-#: includes-core/TaxopressCoreAdmin.php:630
-#: includes-core/TaxopressCoreAdmin.php:719
+#: includes-core/TaxopressCoreAdmin.php:704
+#: includes-core/TaxopressCoreAdmin.php:793
 msgid "This feature is available in PublishPress Taxonomies Pro"
 msgstr "此功能在PublishPress Taxonomies Pro中可用"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:635
-#: includes-core/TaxopressCoreAdmin.php:635
+#: includes-core/TaxopressCoreAdmin.php:709
 msgid "Customize the display of terms in the PublishPress Taxonomies metabox."
 msgstr "自定义PublishPress Taxonomies元框中术语的显示。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:636
-#: includes-core/TaxopressCoreAdmin.php:636
+#: includes-core/TaxopressCoreAdmin.php:710
 msgid "Options include checkboxes and a dropdown list."
 msgstr "选项包括复选框和下拉列表。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:670
-#: includes-core/TaxopressCoreAdmin.php:670
+#: includes-core/TaxopressCoreAdmin.php:744
 msgid "Copy Term with Metadata"
 msgstr "复制带有元数据的术语"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:675
-#: includes-core/TaxopressCoreAdmin.php:675
+#: includes-core/TaxopressCoreAdmin.php:749
 msgid "To Copy terms with their metadata, please upgrade to pro."
 msgstr "要复制带有元数据的术语，请升级到专业版。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:676
-#: includes-core/TaxopressCoreAdmin.php:676
+#: includes-core/TaxopressCoreAdmin.php:750
 msgid ""
 "With PublishPress Taxonomies Pro, you can duplicate taxonomy terms along "
 "with all their metadata. This includes term descriptions, images, and "
@@ -3731,181 +2928,145 @@ msgstr ""
 "使用PublishPress Taxonomies "
 "Pro，您可以复制分类术语及其所有元数据。这包括术语描述、图像和自定义字段。您可以在分类之间复制术语，以在您的网站上保持一致的组织。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:723
-#: includes-core/TaxopressCoreAdmin.php:723
+#: includes-core/TaxopressCoreAdmin.php:797
 msgid ""
 "Choose the display formats of your terms, options include table list, "
 "ordered list, border-cloud and lots more."
 msgstr "选择您的术语的显示格式，选项包括表格列表、有序列表、边框云等。"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:743
-#: includes-core/TaxopressCoreAdmin.php:743
+#: includes-core/TaxopressCoreAdmin.php:817
 msgid "Hourly"
 msgstr "每小时"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:756
-#: includes-core/TaxopressCoreAdmin.php:756
+#: includes-core/TaxopressCoreAdmin.php:830
 msgid "Daily"
 msgstr "每日"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:764
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:816
-#: includes-core/TaxopressCoreAdmin.php:764
-#: includes-core/TaxopressCoreAdmin.php:816
+#: includes-core/TaxopressCoreAdmin.php:838
+#: includes-core/TaxopressCoreAdmin.php:890
 msgid "Pro Feature"
 msgstr "专业功能"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:766
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:818
-#: includes-core/TaxopressCoreAdmin.php:766
-#: includes-core/TaxopressCoreAdmin.php:818
+#: includes-core/TaxopressCoreAdmin.php:840
+#: includes-core/TaxopressCoreAdmin.php:892
 msgid "Some of these features are available in PublishPress Taxonomies Pro"
 msgstr "这些功能中的一些在 PublishPress Taxonomies Pro 中可用"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:776
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:868
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:893
-#: includes-core/TaxopressCoreAdmin.php:776
-#: includes-core/TaxopressCoreAdmin.php:868
-#: includes-core/TaxopressCoreAdmin.php:893, fuzzy
+#: includes-core/TaxopressCoreAdmin.php:850
+#: includes-core/TaxopressCoreAdmin.php:942
+#: includes-core/TaxopressCoreAdmin.php:967, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:777
-#: includes-core/TaxopressCoreAdmin.php:777
+#: includes-core/TaxopressCoreAdmin.php:851
 msgid "Name (Pro)"
 msgstr "名称 (专业)"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:778
-#: includes-core/TaxopressCoreAdmin.php:778
+#: includes-core/TaxopressCoreAdmin.php:852
 msgid "Counter (Pro)"
 msgstr "计数器 (专业)"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:779
-#: includes-core/TaxopressCoreAdmin.php:779
+#: includes-core/TaxopressCoreAdmin.php:853
 msgid "Random (Pro)"
 msgstr "随机 (专业)"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:780
-#: includes-core/TaxopressCoreAdmin.php:780
+#: includes-core/TaxopressCoreAdmin.php:854
 msgid "Term Order (Pro)"
 msgstr "术语顺序 (专业)"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:792
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:939
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:983
-#: includes-core/TaxopressCoreAdmin.php:792
-#: includes-core/TaxopressCoreAdmin.php:939
-#: includes-core/TaxopressCoreAdmin.php:983
-msgid "Method for choosing terms for display"
-msgstr "选择显示术语的方法"
+#: includes-core/TaxopressCoreAdmin.php:866
+#: includes-core/TaxopressCoreAdmin.php:1013
+#: includes-core/TaxopressCoreAdmin.php:1057
+msgid "Order terms for display by"
+msgstr "按以下方式排序术语以供显示"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:867
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:928
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:972
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
-#: includes-core/TaxopressCoreAdmin.php:867
-#: includes-core/TaxopressCoreAdmin.php:928
-#: includes-core/TaxopressCoreAdmin.php:972
+#: includes-core/TaxopressCoreAdmin.php:941
+#: includes-core/TaxopressCoreAdmin.php:1002
+#: includes-core/TaxopressCoreAdmin.php:1046
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:112
 msgid "Name"
 msgstr "名称"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:869
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:929
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:973
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
-#: includes-core/TaxopressCoreAdmin.php:869
-#: includes-core/TaxopressCoreAdmin.php:929
-#: includes-core/TaxopressCoreAdmin.php:973
+#: includes-core/TaxopressCoreAdmin.php:943
+#: includes-core/TaxopressCoreAdmin.php:1003
+#: includes-core/TaxopressCoreAdmin.php:1047
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:113
 msgid "Counter"
 msgstr "计数器"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:871
-#: includes-core/TaxopressCoreAdmin.php:871
+#: includes-core/TaxopressCoreAdmin.php:945
 msgid "Term Order"
 msgstr "术语顺序"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:888
-#: includes-core/TaxopressCoreAdmin.php:888
+#: includes-core/TaxopressCoreAdmin.php:962
 msgid "Disabled"
 msgstr "已禁用"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:889
-#: includes-core/TaxopressCoreAdmin.php:889
+#: includes-core/TaxopressCoreAdmin.php:963
 msgid "You have disabled PublishPress Taxonomies ordering"
 msgstr "您已禁用 PublishPress Taxonomies 的排序"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:895
-#: includes-core/TaxopressCoreAdmin.php:895
+#: includes-core/TaxopressCoreAdmin.php:969
 #, php-format
 msgid "Terms in this taxonomy are ordered by %s"
 msgstr "此分类法中的术语按 %s 排序"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:931
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:975
-#: includes-core/TaxopressCoreAdmin.php:931
-#: includes-core/TaxopressCoreAdmin.php:975
+#: includes-core/TaxopressCoreAdmin.php:1005
+#: includes-core/TaxopressCoreAdmin.php:1049
 msgid "Term Order(Pro)"
 msgstr "术语顺序 (专业)"
 
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:959
-#: dist/simple-tags/includes-core/TaxopressCoreAdmin.php:1003
-#: includes-core/TaxopressCoreAdmin.php:959
-#: includes-core/TaxopressCoreAdmin.php:1003
+#: includes-core/TaxopressCoreAdmin.php:1033
+#: includes-core/TaxopressCoreAdmin.php:1077
 msgid ""
 "Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order "
 "Terms"
 msgstr "升级到 PublishPress Taxonomies Pro 以使用术语顺序手动排序术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:88
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:796
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1071
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:112
+msgid "The provider request was not sent."
+msgstr "提供者请求未发送。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:127
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:438
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:581
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:742
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1325
+msgid "Result from api."
+msgstr "来自 API 的结果。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:152
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:983
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1258
 msgid "Request completed."
 msgstr "请求已完成。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:96
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:804
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:959
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:160
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1146
 msgid "Security error. Kindly reload this page and try again"
 msgstr "安全错误。请重新加载此页面并重试"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:102
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:810
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:965
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:166
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:997
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1152
 msgid ""
 "Permission error. You do not have permission to manage PublishPress "
 "Taxonomies"
 msgstr "权限错误。您没有权限管理 PublishPress Taxonomies"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:118
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:615
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:186
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:800
 msgid "Posts content and title is empty."
 msgstr "帖子内容和标题为空。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:125
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:193
 msgid "Permission error. You do not have permission to preview this post."
 msgstr "权限错误。您没有权限预览此帖子。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:151
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:823
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:220
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1010
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1166
 #, php-format
 msgid ""
 "You do not have permission to manage this taxonomy. Enable Metabox Access "
@@ -3914,424 +3075,364 @@ msgstr ""
 "您没有权限管理此 taxonomy。在 %1sPublishPress Taxonomies Settings%2s 中为此角色启用 Metabox "
 "Access Taxonomies。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:173
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:250
 msgid "Too many AI preview requests. Please wait a minute and try again."
 msgstr "请求的 AI 预览次数过多。请稍等一会儿再试。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:276
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
 msgid "Term Results"
 msgstr "术语结果"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:279
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:356
 msgid "No results found for this post with this taxonomy."
 msgstr "未找到与此 taxonomy 关联的该帖子的结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:284
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:361
 msgid "Invalid Auto Term ID. Please save the settings before using preview."
 msgstr "无效的自动术语 ID。请在使用预览之前保存设置。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:289
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:366
 msgid "You must enable at least one AI integration source to use auto term preview."
 msgstr "您必须启用至少一个 AI 集成源才能使用自动术语预览。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:292
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:369
 msgid ""
 "This Auto Terms option is not enabled for metaboxes. Please enable it in "
 "the Auto Terms settings."
 msgstr "此自动术语选项未为 metaboxes 启用。请在自动术语设置中启用它。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:306
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:384
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:291
 #, php-format
 msgid "Click %1s to select or deselect them from this %2s."
 msgstr "点击 %1s 从该 %2s 中选择或取消选择它们。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:319
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:322
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:397
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:410
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:413
 msgid "Suggest Existing Terms"
 msgstr "建议现有术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:341
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:338
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:341, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:432
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:442
+msgid "AI Connectors"
+msgstr "AI 连接器"
+
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:439
+#, php-format
+msgid "AI Connectors: %s"
+msgstr "AI 连接器：%s"
+
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:483
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:486
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:491, fuzzy
 msgid "OpenAI"
 msgstr "OpenAI"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:356
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:353
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:356, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:505
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:510
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:513, fuzzy
 msgid "IBM Watson"
 msgstr "IBM Watson"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:368
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:371
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:527
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:532
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:535
 msgid "Dandelion"
 msgstr "蒲公英"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:386
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:383
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:386, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:549
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:554
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:557, fuzzy
 msgid "LSEG / Refinitiv"
 msgstr "LSEG / Refinitiv"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:395
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:564
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:404
 #, php-format
 msgid "Update %1s on this %2s"
 msgstr "在此 %2s 上更新 %1s"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:464
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:649
 msgid "Existing Terms not found for the selected post type and taxonomies"
 msgstr "未找到与所选帖子类型和 taxonomies 相关的现有术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:715
 msgid ""
 "Existing Terms taxonomy is required. Kindly select taxonomies and save the "
 "settings before running preview."
 msgstr "需要现有术语 taxonomy。请在运行预览之前选择 taxonomies 并保存设置。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:767
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:954
 msgid "Result from ajax request."
 msgstr "来自 ajax 请求的结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:773
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:960
 msgid "The selected taxonomy is not associated with the selected post type."
 msgstr "所选的 taxonomy 与所选的 post type 不相关联。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:779
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:966
 msgid "No results found for this taxonomy."
 msgstr "未找到该 taxonomy 的结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:839
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1026
 msgid "You do not have permission to edit this post."
 msgstr "您没有权限编辑此帖子。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:852
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1015
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1039
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1202
 msgid "You do not have permission to assign terms from this taxonomy."
 msgstr "您没有权限从此 taxonomy 分配术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:859
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1046
 #, php-format
 msgid "Click Term to select or deselect from this %1s"
 msgstr "单击术语以从此 %1s 中选择或取消选择"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:862
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1049
 msgid "Both Taxonomy and Post are required."
 msgstr "taxonomy 和 post 都是必需的。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:923
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1110
 msgid "No new terms were selected or deselected."
 msgstr "没有选择或取消选择新术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1115
 #, php-format
 msgid "%1s terms added to this %2s."
 msgstr "%1s 术语已添加到此 %2s。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:933
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1120
 #, php-format
 msgid "%1s terms removed from this %2s."
 msgstr "%1s 术语已从此 %2s 中移除。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:991
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1178
 msgid "You do not have capability to manage this taxonomy."
 msgstr "您没有管理此 taxonomy 的能力。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1002
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1189
 msgid "You do not have permission to edit this post with this taxonomy."
 msgstr "您没有权限使用此 taxonomy 编辑此帖子。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1116
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1303
 #, php-format
 msgid "Terms cannot contain the following characters: %s"
 msgstr "术语不能包含以下字符：%s"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1131
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1318
 #, php-format
 msgid "Terms must be at least %d characters long."
 msgstr "术语必须至少 %d 个字符长。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1324
 #, php-format
 msgid "Terms cannot exceed %d characters."
 msgstr "术语不能超过 %d 个字符。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:78
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:78
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:342
 msgid "The Dandelion integration is disabled in the Legacy AI Sources settings."
 msgstr "Dandelion 集成在 Legacy AI Sources 设置中已禁用。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:84
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:166
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:199
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:289
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:323
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:429
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:489
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:687
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:84
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:166
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:199
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:289
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:323
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:429
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:489
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:687
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:348
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:447
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:483
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:591
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:628
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:752
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1068
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1337
 msgid "No matched result from the API Server."
 msgstr "API 服务器没有匹配的结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:102
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:102
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:368
 msgid ""
 "The Dandelion integration requires an API Key. Please add your API Key in "
 "the Auto Term settings."
 msgstr "Dandelion 集成需要一个 API 密钥。请在自动术语设置中添加您的 API 密钥。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:108
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:222
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:353
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:515
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:108
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:222
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:353
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:515
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:374
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:508
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:660
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:840
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1102
 msgid "Selected content is empty."
 msgstr "所选内容为空。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:124
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:238
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:369
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:531
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:124
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:238
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:369
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:531
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:390
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:524
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:676
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1157
 msgid "Result from cache."
 msgstr "来自缓存的结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:148
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:264
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:408
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:148
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:264
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:408
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:429
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:566
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:731
 #, php-format
 msgid "API Error: %1s."
 msgstr "API 错误：%1$s。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:157
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:279
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:419
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:675
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:157
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:279
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:419
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:675
-msgid "Result from api."
-msgstr "来自 API 的结果。"
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:596
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:757
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1342
+msgid "Empty response."
+msgstr "空响应。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:171
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:294
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:434
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:692
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:171
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:294
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:434
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:692
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:455
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:599
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:760
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1345
 msgid "Error establishing connection with the API server. Try again."
 msgstr "与 API 服务器建立连接时出错。请重试。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:194
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:194
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:478
 msgid ""
 "The LSEG / Refinitiv integration is disabled in the Legacy AI Sources "
 "settings."
 msgstr "LSEG / Refinitiv 集成在遗留 AI 源设置中已禁用。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:216
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:216
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:502
 msgid ""
 "The LSEG / Refinitiv integration requires an API Key. Please add your API "
 "Key in the Auto Term settings."
 msgstr "LSEG / Refinitiv 集成需要 API 密钥。请在自动术语设置中添加您的 API 密钥。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:285
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:285
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:587
 msgid "API Error: No matched result for content."
 msgstr "API 错误：没有匹配的内容结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:317
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:317
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:622
 msgid "The IBM Watson integration is disabled in the Legacy AI Sources settings."
 msgstr "IBM Watson 集成在遗留 AI 源设置中已禁用。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:341
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:648
 msgid ""
 "The IBM Watson integration requires an API Key and URL. Please add your API "
 "Key in the Auto Term settings."
 msgstr "IBM Watson 集成需要 API 密钥和 URL。请在自动术语设置中添加您的 API 密钥。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:347
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:347
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:654
 msgid ""
 "The IBM Watson API URL must use HTTPS and an official Natural Language "
 "Understanding service hostname."
 msgstr "IBM Watson API URL 必须使用 HTTPS 和官方自然语言理解服务主机名。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:509
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:509
-msgid ""
-"The OpenAI integration requires an API Key. Please add your API Key in the "
-"Auto Term settings."
-msgstr "OpenAI 集成需要 API 密钥。请在自动术语设置中添加您的 API 密钥。"
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:815
+msgid "No matched result from an AI Connector."
+msgstr "来自 AI 连接器的结果未匹配。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:554
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:554
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:822
+msgid "AI Connectors require WordPress 7.0 or newer."
+msgstr "AI 连接器需要 WordPress 7.0 或更高版本。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:861
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
 "{post_terms}, {site_terms}"
 msgstr "检测到无效的占位符：{%s}。有效的占位符有：{content}，{post_terms}，{site_terms}"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:590
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:590
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:894
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1192
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
 msgstr "您在提示中添加了 {post_terms}，但您的帖子不包含任何术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:593
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:593
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:900
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1195
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
 msgstr "您在提示中添加了 {site_terms}，但您的站点不包含此分类法的任何术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiApi.php:642
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:963
+msgid ""
+"No compatible AI provider is configured. Install and configure a provider "
+"in Settings > Connectors."
+msgstr "未配置兼容的 AI 提供者。在设置 > 连接器中安装并配置一个提供者。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+msgid "Result from an AI Connector."
+msgstr "来自 AI 连接器的结果。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1057
+msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
+msgstr "在旧版 AI 源设置中禁用了直接的 OpenAI 集成。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1096
+msgid ""
+"The OpenAI integration requires an API Key. Please add your API Key in the "
+"Auto Term settings."
+msgstr "OpenAI 集成需要 API 密钥。请在自动术语设置中添加您的 API 密钥。"
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1260
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
 msgstr "错误：OpenAI 表示此 API 密钥存在问题。请检查您的计划或账单详细信息。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:18
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1373
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1695
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:18
 #: modules/taxopress-ai/taxopress-ai.php:1373
 #: modules/taxopress-ai/taxopress-ai.php:1695
 msgid "Show All Existing Terms"
 msgstr "显示所有现有术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:23
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1381
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1696
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:23
 #: modules/taxopress-ai/taxopress-ai.php:1381
 #: modules/taxopress-ai/taxopress-ai.php:1696
 msgid "Manage Post Terms"
 msgstr "管理帖子术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:28
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1697
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:28
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:54
 #: modules/taxopress-ai/taxopress-ai.php:1697
 msgid "Auto Terms"
 msgstr "自动术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:33
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1394
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1698
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:33
 #: modules/taxopress-ai/taxopress-ai.php:1394
 #: modules/taxopress-ai/taxopress-ai.php:1698
 msgid "Create Terms"
 msgstr "创建术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:38
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:38
 msgid "View Existing Terms"
 msgstr "查看现有术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:39
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:39
 msgid "This feature allows you to browse all the terms in a taxonomy."
 msgstr "此功能允许您浏览分类法中的所有术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:44
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:44
 msgid "View Current Post Terms"
 msgstr "查看当前帖子术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:45
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:45
 msgid ""
 "This feature allows you to manage all the terms that are currently attached "
 "to a post."
 msgstr "此功能允许您管理当前附加到帖子的所有术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:50
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1555
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:50
 #: modules/taxopress-ai/taxopress-ai.php:1555
 msgid "View Terms"
 msgstr "查看术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiFields.php:51
 #: modules/taxopress-ai/classes/TaxoPressAiFields.php:51
 msgid ""
 "This feature allows you to browse based on selected auto terms settings and "
 "sources."
 msgstr "此功能允许您根据所选的自动术语设置和来源进行浏览。"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:53
 msgid "Suggest Terms"
 msgstr "建议术语"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
@@ -4340,10 +3441,6 @@ msgstr "建议术语"
 msgid "Select all %1s"
 msgstr "选择所有 %1s"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:439
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:280
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:282
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:437
@@ -4352,76 +3449,57 @@ msgstr "选择所有 %1s"
 msgid "Deselect all %1s"
 msgstr "取消选择所有 %1s"
 
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
-#: dist/simple-tags/modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:299
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:452
 #, php-format
 msgid "Select %1s"
 msgstr "选择 %1s"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:411
 #: modules/taxopress-ai/taxopress-ai.php:411
 msgid "Please choose a post to use with PublishPress Taxonomies AI."
 msgstr "请选择一个帖子以与 PublishPress Taxonomies AI 一起使用。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:420
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1747
 #: modules/taxopress-ai/taxopress-ai.php:420
 #: modules/taxopress-ai/taxopress-ai.php:1747
 msgid "Label can't be empty."
 msgstr "标签不能为空。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:421
 #: modules/taxopress-ai/taxopress-ai.php:421
 msgid "Label can't exceed 30 characters."
 msgstr "标签不能超过 30 个字符。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:422
 #: modules/taxopress-ai/taxopress-ai.php:422
 msgid "Unknown tab type."
 msgstr "未知的选项卡类型。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:423
 #: modules/taxopress-ai/taxopress-ai.php:423
 msgid "Error saving label."
 msgstr "保存标签时出错。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:424
 #: modules/taxopress-ai/taxopress-ai.php:424
 msgid "Please choose a post to preview."
 msgstr "请选择一个帖子进行预览。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:440
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:441
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:473
 #: modules/taxopress-ai/taxopress-ai.php:440
 #: modules/taxopress-ai/taxopress-ai.php:441
 #: modules/taxopress-ai/taxopress-ai.php:473
 msgid "Metaboxes"
 msgstr "元框"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:466
 #: modules/taxopress-ai/taxopress-ai.php:466
 msgid "Metabox Settings"
 msgstr "元框设置"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:467
 #: modules/taxopress-ai/taxopress-ai.php:467
 msgid "Metabox Access"
 msgstr "元框访问"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:476
 #: modules/taxopress-ai/taxopress-ai.php:476
 msgid ""
 "This feature allows you to customize the metabox interface you see when "
 "adding terms to posts."
 msgstr "此功能允许您自定义在将术语添加到帖子时看到的元框界面。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:825
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:870
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:952
-#: dist/simple-tags/views/admin/page-settings.php:53
 #: modules/taxopress-ai/taxopress-ai.php:825
 #: modules/taxopress-ai/taxopress-ai.php:870
 #: modules/taxopress-ai/taxopress-ai.php:952
@@ -4429,53 +3507,43 @@ msgstr "此功能允许您自定义在将术语添加到帖子时看到的元框
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:941
 #: modules/taxopress-ai/taxopress-ai.php:941
 msgid "Select..."
 msgstr "选择..."
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1067
 #: modules/taxopress-ai/taxopress-ai.php:1067
 #, php-format
 msgid "Select %s"
 msgstr "选择 %s"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1129
 #: modules/taxopress-ai/taxopress-ai.php:1129
 msgid "Invalid request."
 msgstr "无效请求。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1171
 #: modules/taxopress-ai/taxopress-ai.php:1171
 msgid "No terms in your WordPress database."
 msgstr "您的 WordPress 数据库中没有术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1180
 #: modules/taxopress-ai/taxopress-ai.php:1180
 msgid "There's no content to scan."
 msgstr "没有内容可供扫描。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1187
 #: modules/taxopress-ai/taxopress-ai.php:1187
 msgid "No results from your WordPress database."
 msgstr "您的 WordPress 数据库没有结果。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1229
 #: modules/taxopress-ai/taxopress-ai.php:1229
 msgid "There are no terms that are relevant to your content."
 msgstr "没有与您的内容相关的术语。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1279
 #: modules/taxopress-ai/taxopress-ai.php:1279
 msgid "Tags"
 msgstr "标签"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1311
 #: modules/taxopress-ai/taxopress-ai.php:1311, fuzzy
 msgid "PublishPress Taxonomies"
 msgstr "PublishPress Taxonomies"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1497
 #: modules/taxopress-ai/taxopress-ai.php:1497
 #, php-format
 msgid ""
@@ -4486,51 +3554,41 @@ msgstr ""
 "该用户没有权限管理此帖子附加的任何分类。请在 %1sPublishPress Taxonomies Settings%2s 中为该角色启用 "
 "Metabox 访问分类。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1501
 #: modules/taxopress-ai/taxopress-ai.php:1501
 msgid "No PublishPress Taxonomies Metabox features are enabled for this post type."
 msgstr "此帖子类型未启用任何 PublishPress Taxonomies Metabox 功能。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1529
 #: modules/taxopress-ai/taxopress-ai.php:1529
 msgid "Save, You can also press Enter to save and escape to cancel"
 msgstr "保存，您也可以按 Enter 键保存，按 Esc 键取消"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1571
 #: modules/taxopress-ai/taxopress-ai.php:1571
 msgid "Search Terms..."
 msgstr "搜索术语..."
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1590
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1610
 #: modules/taxopress-ai/taxopress-ai.php:1590
 #: modules/taxopress-ai/taxopress-ai.php:1610
 msgid "Create Term"
 msgstr "创建术语"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1670
 #: modules/taxopress-ai/taxopress-ai.php:1670
 msgid ""
 "You do not have the required capabilities to manage any of this post "
 "attached taxonomies."
 msgstr "您没有管理此帖子附加的任何分类所需的能力。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1738
 #: modules/taxopress-ai/taxopress-ai.php:1738
 msgid "You can not edit this label."
 msgstr "您无法编辑此标签。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1741
 #: modules/taxopress-ai/taxopress-ai.php:1741
 msgid "Invalid nonce token."
 msgstr "无效的 nonce 令牌。"
 
-#: dist/simple-tags/modules/taxopress-ai/taxopress-ai.php:1750
 #: modules/taxopress-ai/taxopress-ai.php:1750
 msgid "Label is too long."
 msgstr "标签太长。"
 
-#: dist/simple-tags/review-request/review.php:281
 #: review-request/review.php:281
 #, php-format
 msgid ""
@@ -4542,38 +3600,31 @@ msgstr ""
 "嘿，您在网站上使用 PublishPress Taxonomies 已经 %s 了。我们希望这个插件对您有所帮助。请您快速在 "
 "WordPress.org 上留下 5 星评价吗？这确实有助于 PublishPress Taxonomies 的发展。"
 
-#: dist/simple-tags/review-request/review.php:290
 #: review-request/review.php:290
 msgid "1 week"
 msgstr "1 周"
 
-#: dist/simple-tags/review-request/review.php:306
 #: review-request/review.php:306
 msgid "3 months"
 msgstr "3 个月"
 
-#: dist/simple-tags/review-request/review.php:371
 #: review-request/review.php:371
 msgid "Click here to add your rating for PublishPress Taxonomies"
 msgstr "点击这里添加您对 PublishPress Taxonomies 的评分"
 
-#: dist/simple-tags/review-request/review.php:373
 #: review-request/review.php:373
 msgid "Maybe later"
 msgstr "也许稍后"
 
-#: dist/simple-tags/review-request/review.php:375
 #: review-request/review.php:375
 msgid "I already did"
 msgstr "我已经评分了"
 
-#: dist/simple-tags/simple-tags.php:97
-#: simple-tags.php:97
+#: simple-tags.php:121
 msgid "This plugin can be deleted."
 msgstr "此插件可以被删除。"
 
-#: dist/simple-tags/simple-tags.php:125
-#: simple-tags.php:125
+#: simple-tags.php:149
 msgid ""
 "PublishPress Taxonomies was not activated because PublishPress Taxonomies "
 "Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
@@ -4581,18 +3632,15 @@ msgstr ""
 "PublishPress Taxonomies 未被激活，因为 PublishPress Taxonomies Pro 已经激活。请仅保留 "
 "PublishPress Taxonomies Pro 启用。"
 
-#: dist/simple-tags/views/admin/page-settings.php:4
 #: views/admin/page-settings.php:4
 msgid "PublishPress Taxonomies: Options"
 msgstr "PublishPress Taxonomies：选项"
 
-#: dist/simple-tags/inc/terms-table.php:1437
 #: inc/terms-table.php:1437
 msgctxt "term name"
 msgid "Name"
 msgstr "名称"
 
-#: dist/simple-tags/inc/terms-table.php:1446
 #: inc/terms-table.php:1446
 msgctxt "term name"
 msgid "Taxonomy"
