@@ -46,10 +46,7 @@ Credits Icons :
 
 */
 
-// don't load directly
-if (!defined('ABSPATH')) {
-    die('-1');
-}
+defined('ABSPATH') || exit;
 
 if (!defined('STAGS_VERSION')) {
     define('STAGS_VERSION', '4.0.1');

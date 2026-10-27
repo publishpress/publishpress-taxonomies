@@ -2,6 +2,8 @@
 
 namespace PublishPress\Taxopress;
 
+\defined('ABSPATH') || exit;
+
 class TaxopressCoreAdmin
 {
     public function __construct()

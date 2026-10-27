@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * PublishPress Taxonomies widget class
  *

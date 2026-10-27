@@ -26,9 +26,7 @@
  * TODO Keep in mind highest priority group/code combination that has all passing conditions will be chosen.
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 if (!class_exists('Taxopress_Modules_Reviews')) {
     /**
