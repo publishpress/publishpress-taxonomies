@@ -2299,6 +2299,27 @@ body.block-editor-page .clicktags-search-wrapper .option input {
     top: 3px !important;
 }
 
+.taxopress-autoterms-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.taxopress-autoterms-heading .wp-heading-inline {
+    margin: 0;
+    padding: 0;
+}
+
+.taxopress-autoterms-heading .page-title-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    top: auto !important;
+}
+
 .suggest-merge-terms {
     display: inline-block;
     padding: 0 10px;
