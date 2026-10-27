@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="taxopress-block-wrap">
 <div class="wrap st_wrap tagcloudui admin-settings">
     <div id="icon-themes" class="icon32"><br></div>
