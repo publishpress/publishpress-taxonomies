@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 add_action('admin_init', 'taxopress_flush_rewrite_rules');
 add_action('admin_init', 'taxopress_process_taxonomy', 8);
 add_action('init', 'taxopress_do_convert_taxonomy_terms');

@@ -6,9 +6,7 @@
  * @package TaxoPress
  */
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /** Trusted-call service for validated taxonomy-term CSV transfers. */
 class TaxoPress_Tag_CSV_Service

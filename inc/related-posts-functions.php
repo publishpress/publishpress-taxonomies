@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Fetch our PublishPress Taxonomies Related Posts option.
  *
