@@ -401,6 +401,7 @@ class SimpleTags_Autoterms
                                             $active_tab = (isset($current['active_tab']) && !empty(trim($current['active_tab']))) ? $current['active_tab'] : 'autoterm_general';
                                             if (in_array($active_tab, ['autoterm_display', 'autoterm_options'], true)) {
                                                 $active_tab = 'autoterm_content';
+                                            }
                                             if ($active_tab === 'autoterm_advanced') {
                                                 $active_tab = 'autoterm_general';
                                             }
