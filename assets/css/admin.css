@@ -1595,9 +1595,6 @@ ul.taxopress-tab li.autoterm_schedule_tab a::before {
 ul.taxopress-tab li.autoterm_logs_tab a::before {
     content: "\f321";
 }
-ul.taxopress-tab li.autoterm_advanced_tab a::before {
-    content: "\f111";
-}
 ul.taxopress-tab li.autoterm_preview_tab a::before {
     content: "\f115";
 }

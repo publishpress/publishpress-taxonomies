@@ -399,6 +399,9 @@ class SimpleTags_Autoterms
                                         <?php
                                         if ($autoterm_edit) {
                                             $active_tab = (isset($current['active_tab']) && !empty(trim($current['active_tab']))) ? $current['active_tab'] : 'autoterm_general';
+                                            if ($active_tab === 'autoterm_advanced') {
+                                                $active_tab = 'autoterm_general';
+                                            }
                                             echo esc_html__('Edit Auto Terms', 'simple-tags');
                                             echo '<input type="hidden" name="edited_autoterm" value="' . esc_attr($current['ID']) . '" />';
                                             echo '<input type="hidden" name="taxopress_autoterm[ID]" value="' . esc_attr($current['ID']) . '" />';
@@ -471,11 +474,6 @@ class SimpleTags_Autoterms
                                                     <a href="#autoterm_oldcontent"><span><?php esc_html_e('Existing Content',
                                                         'simple-tags'); ?></span></a>
                                                 </li>-->
-
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_advanced' ? 'true' : 'false'; ?>" class="autoterm_advanced_tab <?php echo $active_tab === 'autoterm_advanced' ? 'active' : ''; ?>" data-content="autoterm_advanced">
-                                                    <a href="#autoterm_advanced"><span><?php esc_html_e('Advanced',
-                                                        'simple-tags'); ?></span></a>
-                                                </li>
 
                                                 <li aria-current="<?php echo $active_tab === 'autoterm_preview' ? 'true' : 'false'; ?>" class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
                                                     <a href="#autoterm_preview"><span><?php esc_html_e('Preview',
@@ -1218,7 +1216,7 @@ class SimpleTags_Autoterms
                                             echo '<div class="auto-terms-to-use-error" style="display:none;"> '.esc_html__('Please choose an option for "Sources"', 'simple-tags').' </div>';
 
                                             echo '<div class="st-autoterms-single-specific-term autoterm-terms-use-existing">
-                                                            <input autocomplete="off" type="text" class="st-full-width specific_terms_input" name="specific_terms_search" maxlength="32" placeholder="'. esc_attr(__('Choose the terms to use.', 'simple-tags')) .'" value="">
+                                                            <input autocomplete="off" type="text" class="st-full-width specific_terms_input" name="specific_terms_search" maxlength="32" aria-label="'. esc_attr__('Choose the terms to use', 'simple-tags') .'" placeholder="'. esc_attr(__('Choose the terms to use.', 'simple-tags')) .'" value="">
                                                         </div>';
                                             echo '<ul class="taxopress-term-list-style">';
                                             if (!empty($specific_terms)) {
@@ -1323,7 +1321,7 @@ class SimpleTags_Autoterms
                                             $autoterms_post_status = (!empty($current['post_status'])) ? (array)$current['post_status'] : ['publish'];
                                             foreach ($post_status_options as $key => $value) {
                                                 $checked_status = (in_array($key, $autoterms_post_status)) ? 'checked' : '';
-                                                echo '<input class="autoterm_post_status_'.esc_attr($key).'" type="checkbox" name="post_status[]" value="'.esc_attr($key).'" '.esc_attr($checked_status).'> ' . esc_html($value) . ' <br /><br />';
+                                                echo '<input class="autoterm_post_status_'.esc_attr($key).'" type="checkbox" name="post_status[]" value="'.esc_attr($key).'" aria-label="'.esc_attr($value).'" '.esc_attr($checked_status).'> ' . esc_html($value) . ' <br /><br />';
 
                                             }
                                             echo '</td></tr>';
@@ -1582,14 +1580,6 @@ class SimpleTags_Autoterms
 
                                                             <ul class="auto-term-content-result"></ul>
                                                         </td></tr>
-
-                                                </table>
-
-
-                                                <table class="form-table taxopress-table autoterm_advanced"
-                                                       style="<?php echo $active_tab === 'autoterm_advanced' ? '' : 'display:none;'; ?>">
-
-                                                        <?php do_action('taxopress_autoterms_after_autoterm_advanced', $current); ?>
 
                                                 </table>
 

@@ -49,7 +49,7 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
     public function get_columns()
     {
         $columns = [
-            'cb' => '<input type="checkbox"/>',
+            'cb' => '<input type="checkbox" aria-label="' . esc_attr__('Select all scheduled auto terms logs', 'simple-tags') . '" />',
             'title'     => esc_html__('Post', 'simple-tags'),
             'post_type'     => esc_html__('Post type', 'simple-tags'),
             'taxonomy'     => esc_html__('Taxonomy', 'simple-tags'),
@@ -72,7 +72,16 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
 
     protected function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'taxopress_autoterms_schedule_logs', $item->ID);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'taxopress_autoterms_schedule_logs',
+            $item->ID,
+            sprintf(
+                /* translators: %s: log ID. */
+                esc_attr__('Select scheduled auto terms log %s', 'simple-tags'),
+                (string) $item->ID
+            )
+        );
     }
 
     protected function get_bulk_actions()
@@ -86,21 +95,20 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
 
     public function process_bulk_action()
     {
+        $current_action = $this->current_action();
 
-        $query_arg = '_wpnonce';
-        $action = 'bulk-' . $this->_args['plural'];
-        $checked = $result = isset($_REQUEST[$query_arg]) ? wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$query_arg])), $action) : false;
-
-        if (!$checked || !current_user_can('simple_tags')) {
+        if ('taxopress-autoterms-delete-logs' !== $current_action || !current_user_can('simple_tags')) {
             return;
         }
 
-        if ($this->current_action() === 'taxopress-autoterms-delete-logs') {
-            $taxopress_autoterms_schedule_logs = isset($_REQUEST['taxopress_autoterms_schedule_logs']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_autoterms_schedule_logs'])) : [];
-            if (!empty($taxopress_autoterms_schedule_logs)) {
-                foreach ($taxopress_autoterms_schedule_logs as $taxopress_autoterms_log) {
-                    wp_delete_post($taxopress_autoterms_log, true);
-                }
+        check_admin_referer('bulk-' . $this->_args['plural']);
+
+        $taxopress_autoterms_schedule_logs = isset($_REQUEST['taxopress_autoterms_schedule_logs'])
+            ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_autoterms_schedule_logs']))
+            : [];
+        if (!empty($taxopress_autoterms_schedule_logs)) {
+            foreach ($taxopress_autoterms_schedule_logs as $taxopress_autoterms_log) {
+                wp_delete_post($taxopress_autoterms_log, true);
             }
         }
     }
