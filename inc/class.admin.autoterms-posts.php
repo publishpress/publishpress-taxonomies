@@ -98,8 +98,8 @@ class TaxoPress_Autoterms_Posts
 
     public static function ajax()
     {
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Used only for an exact comparison to the allowed HTTP method.
-        if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+        $request_method = isset($_SERVER['REQUEST_METHOD']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'])) : '';
+        if ('POST' !== $request_method) {
             wp_send_json_error(['message' => __('A POST request is required.', 'simple-tags')], 405);
         }
         check_ajax_referer('taxopress-run-selected-autoterms', 'nonce');
