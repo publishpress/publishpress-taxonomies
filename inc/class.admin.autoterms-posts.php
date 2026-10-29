@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /**
  * Run opted-in Auto Terms configurations on selected rows of the Posts list.
