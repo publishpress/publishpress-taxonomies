@@ -11,6 +11,7 @@
 .env.testing.linux.dist export-ignore
 .env.testing.mac.dist export-ignore
 .gitattributes export-ignore
+.git export-ignore
 .github export-ignore
 .gitignore export-ignore
 .ide.php export-ignore

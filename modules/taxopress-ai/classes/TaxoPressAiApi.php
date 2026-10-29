@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TaxoPressAiApi')) {
     class TaxoPressAiApi
     {

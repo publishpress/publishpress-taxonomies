@@ -2,6 +2,8 @@
 
 // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
+defined('ABSPATH') || exit;
+
 class SimpleTags_Posts
 {
     public const MENU_SLUG = 'st_options';

@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Taxonomies Free
  * Plugin URI: https://wordpress.org/plugins/simple-tags/
  * Description: PublishPress Taxonomies allows you to create and manage Tags, Categories, and all your WordPress taxonomy terms.
- * Version: 4.0.0
+ * Version: 4.0.1
  * Author: PublishPress
  * Author URI: https://publishpress.com
  * Text Domain: simple-tags
@@ -46,13 +46,10 @@ Credits Icons :
 
 */
 
-// don't load directly
-if (!defined('ABSPATH')) {
-    die('-1');
-}
+defined('ABSPATH') || exit;
 
 if (!defined('STAGS_VERSION')) {
-    define('STAGS_VERSION', '4.0.0');
+    define('STAGS_VERSION', '4.0.1');
 }
 
 if (! defined('PUBLISHPRESS_TAXONOMIES_VERSION')) {

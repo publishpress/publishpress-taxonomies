@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect,Generic.WhiteSpace.ScopeIndent.IncorrectExact,PSR12.Operators.OperatorSpacing.NoSpaceAfter,PSR12.Operators.OperatorSpacing.NoSpaceBefore,PSR2.Classes.ClassDeclaration.CloseBraceAfterBody,PSR2.Methods.FunctionCallSignature.CloseBracketLine,PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket,PSR2.Methods.FunctionCallSignature.Indent,PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose,Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis,Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen,Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose,Squiz.WhiteSpace.ScopeClosingBrace.Indent,WordPress.Security.EscapeOutput.OutputNotEscaped,WordPress.Security.NonceVerification.Recommended,WordPressVIPMinimum.Security.ProperEscapingFunction.htmlAttrNotByEscHTML,WordPressVIPMinimum.Security.ProperEscapingFunction.notAttrEscAttr -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Autoterms
@@ -399,6 +401,8 @@ class SimpleTags_Autoterms
                                             $active_tab = (isset($current['active_tab']) && !empty(trim($current['active_tab']))) ? $current['active_tab'] : 'autoterm_general';
                                             if (in_array($active_tab, ['autoterm_display', 'autoterm_options'], true)) {
                                                 $active_tab = 'autoterm_content';
+                                            if ($active_tab === 'autoterm_advanced') {
+                                                $active_tab = 'autoterm_general';
                                             }
                                             echo esc_html__('Edit Auto Terms', 'simple-tags');
                                             echo '<input type="hidden" name="edited_autoterm" value="' . esc_attr($current['ID']) . '" />';
@@ -467,11 +471,6 @@ class SimpleTags_Autoterms
                                                     <a href="#autoterm_oldcontent"><span><?php esc_html_e('Existing Content',
                                                         'simple-tags'); ?></span></a>
                                                 </li>-->
-
-                                                <li aria-current="<?php echo $active_tab === 'autoterm_advanced' ? 'true' : 'false'; ?>" class="autoterm_advanced_tab <?php echo $active_tab === 'autoterm_advanced' ? 'active' : ''; ?>" data-content="autoterm_advanced">
-                                                    <a href="#autoterm_advanced"><span><?php esc_html_e('Advanced',
-                                                        'simple-tags'); ?></span></a>
-                                                </li>
 
                                                 <li aria-current="<?php echo $active_tab === 'autoterm_preview' ? 'true' : 'false'; ?>" class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
                                                     <a href="#autoterm_preview"><span><?php esc_html_e('Preview',
@@ -1571,14 +1570,6 @@ class SimpleTags_Autoterms
 
                                                             <ul class="auto-term-content-result"></ul>
                                                         </td></tr>
-
-                                                </table>
-
-
-                                                <table class="form-table taxopress-table autoterm_advanced"
-                                                       style="<?php echo $active_tab === 'autoterm_advanced' ? '' : 'display:none;'; ?>">
-
-                                                        <?php do_action('taxopress_autoterms_after_autoterm_advanced', $current); ?>
 
                                                 </table>
 
