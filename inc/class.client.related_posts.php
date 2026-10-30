@@ -627,7 +627,7 @@ class SimpleTags_Client_RelatedPosts
                 }
             }
 
-            if (isset($result->post_excerpt) || isset($result->post_content)) {
+            if (false !== strpos($element_loop, '%post_excerpt%') && (isset($result->post_excerpt) || isset($result->post_content))) {
                 $element_loop = str_replace('%post_excerpt%', self::get_excerpt_post($result->post_excerpt, $result->post_content, $result->post_password, $excerpt_wrap, $result), $element_loop);
             }
 
@@ -666,8 +666,8 @@ class SimpleTags_Client_RelatedPosts
             return __('There is no excerpt because this is a protected post.', 'simple-tags');
         }
 
-        if (! empty($excerpt)) {
-            return apply_filters('get_the_excerpt', $excerpt);
+        if ('' !== trim((string) $excerpt)) {
+            return apply_filters('get_the_excerpt', $excerpt, get_post($post));
         } else { // Fake excerpt
             $content = str_replace(']]>', ']]&gt;', $content);
             $content = wp_strip_all_tags($content);
