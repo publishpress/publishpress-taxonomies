@@ -63,7 +63,8 @@ class SimpleTags_Admin
         //dashboard
         require STAGS_DIR . '/inc/dashboard.php';
         SimpleTags_Dashboard::get_instance();
-        self::$enabled_menus['st_dashboard'] = esc_html__('Dashboard', 'simple-tags');
+        // Reuse the WordPress core Dashboard translation.
+        self::$enabled_menus['st_dashboard'] = esc_html__('Dashboard', 'default');
         if (1 === (int) SimpleTags_Plugin::get_option_value('active_taxonomies')) {
             self::$enabled_menus['st_taxonomies'] = esc_html__('Taxonomies', 'simple-tags');
         }

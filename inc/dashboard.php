@@ -41,10 +41,11 @@ class SimpleTags_Dashboard
      */
     public function admin_menu()
     {
+        // Reuse the WordPress core Dashboard translation.
         $hook = add_submenu_page(
             self::MENU_SLUG,
-            esc_html__('Dashboard', 'simple-tags'),
-            esc_html__('Dashboard', 'simple-tags'),
+            esc_html__('Dashboard', 'default'),
+            esc_html__('Dashboard', 'default'),
             'simple_tags',
             'st_dashboard',
             [
@@ -95,7 +96,7 @@ class SimpleTags_Dashboard
         <?php endif; ?>
     <div class="taxopress-block-wrap">
         <div class="wrap st_wrap tagcloudui st_dashboard-page admin-settings">
-            <h1 class="wp-heading-inline"><?php esc_html_e('Dashboard', 'simple-tags'); ?></h1>
+            <h1 class="wp-heading-inline"><?php esc_html_e('Dashboard', 'default'); ?></h1>
             <div class="taxopress-description">
                 <?php esc_html_e('This screen allows you to enable or disable PublishPress Taxonomies features.', 'simple-tags'); ?>
             </div>
