@@ -267,7 +267,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 == Changelog ==
 
-== [4.0.1] - 26 October, 2026
+== [4.0.1] - 02 November, 2026
 * Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
 * Update: Add "Use only some terms in the selected taxonomy" to OpenAI, #2906
 * Update: Allow users to automatically show terms over a post, #2909
@@ -293,6 +293,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Update: Replace merge term callback variables, #3038
 * Update: Replace taxonomy sort accessor callback, #3037
 * Update: Replace terms hierarchy callback variable, #3039
+* Update: Require PHP 8.2, #3100
 * Fixed: Issue with Hidden Terms and canonical tag, #2915
 * Fixed: Footer design isn't quite right, #3070
 * Fixed: Some Upgrade to Pro links are incorrect, #3071
