@@ -10,23 +10,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-30 10:27+0000\n"
+"PO-Revision-Date: 2026-10-31 02:01+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: simple-tags.php:4
+#: simple-tags.php
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Ücretsiz"
 
-#: simple-tags.php:5
+#: simple-tags.php
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php:6
+#: simple-tags.php
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -35,13 +35,13 @@ msgstr ""
 "PublishPress Taxonomies, Etiketler, Kategoriler ve tüm WordPress taxonomy "
 "terimlerinizi oluşturmanıza ve yönetmenize olanak tanır."
 
-#: simple-tags.php:8
-#: inc/class.admin.php:1164
+#: simple-tags.php
+#: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php:9
+#: simple-tags.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -92,8 +92,8 @@ msgstr "Terimler Gösterimi (PublishPress Taxonomies)"
 #: inc/class.admin.manage.php:1184
 #: inc/class.admin.manage.php:1679
 #: inc/class.admin.manage.php:1834
-#: inc/class.admin.php:261
-#: inc/class.admin.php:307
+#: inc/class.admin.php:262
+#: inc/class.admin.php:308
 #: inc/post-tags.php:1083
 #: inc/related-posts.php:1347
 #: inc/tag-clouds.php:1111
@@ -205,7 +205,7 @@ msgid "Completed: %s terms added from %s posts checked."
 msgstr "Tamamlandı: %s terim %s kontrol edilen gönderiden eklendi."
 
 #: inc/autolinks-functions.php:175
-#: inc/class.admin.php:1407
+#: inc/class.admin.php:1408
 msgid "Auto link"
 msgstr "Otomatik bağlantı"
 
@@ -245,7 +245,7 @@ msgstr "Otomatik Bağlantı"
 #: inc/autolinks.php:74
 #: inc/autolinks.php:75
 #: inc/autolinks.php:128
-#: inc/class.admin.php:1195
+#: inc/class.admin.php:1196
 #: inc/class.admin.post.php:86
 #: inc/functions.inc.php:591
 msgid "Auto Links"
@@ -276,7 +276,7 @@ msgstr "Başlık"
 #: inc/autoterms.php:596
 #: inc/class-taxonomies-table.php:18
 #: inc/class.admin.clickterms.php:62
-#: inc/class.admin.php:585
+#: inc/class.admin.php:586
 #: inc/post-tags-table.php:70
 #: inc/post-tags.php:465
 #: inc/related-posts-table.php:68
@@ -325,7 +325,7 @@ msgstr "Düzenle"
 #: inc/autoterms-table.php:282
 #: inc/autoterms.php:663
 #: inc/class-tag-table.php:220
-#: inc/class.admin.php:770
+#: inc/class.admin.php:771
 #: inc/class.admin.taxonomies.ui.php:843
 #: inc/post-tags-table.php:282
 #: inc/related-posts-table.php:291
@@ -672,13 +672,13 @@ msgstr ""
 #: inc/autoterms.php:873
 #: inc/autoterms.php:970
 #: inc/autoterms.php:1051
-#: inc/autoterms.php:1175
-#: inc/autoterms.php:1189
-#: inc/autoterms.php:1220
-#: inc/autoterms.php:1234
-#: inc/autoterms.php:1264
-#: inc/autoterms.php:1316
-#: inc/autoterms.php:1447
+#: inc/autoterms.php:1178
+#: inc/autoterms.php:1192
+#: inc/autoterms.php:1223
+#: inc/autoterms.php:1237
+#: inc/autoterms.php:1267
+#: inc/autoterms.php:1319
+#: inc/autoterms.php:1450
 #: inc/autoterms_content.php:192
 #: inc/post-tags.php:575
 #: inc/post-tags.php:816
@@ -722,13 +722,13 @@ msgstr "Yanlış"
 #: inc/autoterms.php:874
 #: inc/autoterms.php:975
 #: inc/autoterms.php:1056
-#: inc/autoterms.php:1180
-#: inc/autoterms.php:1193
-#: inc/autoterms.php:1225
-#: inc/autoterms.php:1238
-#: inc/autoterms.php:1269
-#: inc/autoterms.php:1321
-#: inc/autoterms.php:1452
+#: inc/autoterms.php:1183
+#: inc/autoterms.php:1196
+#: inc/autoterms.php:1228
+#: inc/autoterms.php:1241
+#: inc/autoterms.php:1272
+#: inc/autoterms.php:1324
+#: inc/autoterms.php:1455
 #: inc/autoterms_content.php:197
 #: inc/post-tags.php:580
 #: inc/post-tags.php:821
@@ -794,58 +794,58 @@ msgid "Separate multiple entries with a comma. For example: .notag, #main-header
 msgstr "Birden fazla girişi virgülle ayırın. Örneğin: .notag, #main-header"
 
 #: inc/autolinks.php:788
-#: inc/autoterms.php:1368
+#: inc/autoterms.php:1371
 #: inc/related-posts.php:434, fuzzy
 msgid "H1"
 msgstr "H1"
 
 #: inc/autolinks.php:789
-#: inc/autoterms.php:1369
+#: inc/autoterms.php:1372
 #: inc/related-posts.php:438, fuzzy
 msgid "H2"
 msgstr "H2"
 
 #: inc/autolinks.php:790
-#: inc/autoterms.php:1370
+#: inc/autoterms.php:1373
 #: inc/related-posts.php:442, fuzzy
 msgid "H3"
 msgstr "H3"
 
 #: inc/autolinks.php:791
-#: inc/autoterms.php:1371
+#: inc/autoterms.php:1374
 #: inc/related-posts.php:446, fuzzy
 msgid "H4"
 msgstr "H4"
 
 #: inc/autolinks.php:792
-#: inc/autoterms.php:1372
+#: inc/autoterms.php:1375
 #: inc/related-posts.php:451, fuzzy
 msgid "H5"
 msgstr "H5"
 
 #: inc/autolinks.php:793
-#: inc/autoterms.php:1373
+#: inc/autoterms.php:1376
 #: inc/related-posts.php:455, fuzzy
 msgid "H6"
 msgstr "H6"
 
 #: inc/autolinks.php:795
-#: inc/autoterms.php:1376, fuzzy
+#: inc/autoterms.php:1379, fuzzy
 msgid "script"
 msgstr "script"
 
 #: inc/autolinks.php:796
-#: inc/autoterms.php:1377, fuzzy
+#: inc/autoterms.php:1380, fuzzy
 msgid "style"
 msgstr "style"
 
 #: inc/autolinks.php:797
-#: inc/autoterms.php:1378, fuzzy
+#: inc/autoterms.php:1381, fuzzy
 msgid "pre"
 msgstr "pre"
 
 #: inc/autolinks.php:798
-#: inc/autoterms.php:1379, fuzzy
+#: inc/autoterms.php:1382, fuzzy
 msgid "code"
 msgstr "code"
 
@@ -945,7 +945,7 @@ msgstr ""
 "çalıştırılacağı anlamına gelir."
 
 #: inc/autolinks.php:1112
-#: inc/autoterms.php:1697
+#: inc/autoterms.php:1700
 #: inc/tag-clouds.php:995
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
@@ -957,7 +957,7 @@ msgstr ""
 "destek bulunmaktadır."
 
 #: inc/autolinks.php:1115
-#: inc/autoterms.php:1701
+#: inc/autoterms.php:1704
 #: inc/post-tags.php:977
 #: inc/related-posts.php:1231
 #: inc/tag-clouds.php:999
@@ -993,12 +993,12 @@ msgid "Add Auto Links"
 msgstr "Auto Links Ekle"
 
 #: inc/autolinks.php:1178
-#: inc/autoterms.php:1763
+#: inc/autoterms.php:1766
 msgid "PublishPress Taxonomies and Languages"
 msgstr "PublishPress Taxonomies ve Diller"
 
 #: inc/autolinks.php:1182
-#: inc/autoterms.php:1767
+#: inc/autoterms.php:1770
 #, php-format
 msgid ""
 "Please note that this is an automatic tool. It does have limitations around "
@@ -1010,7 +1010,7 @@ msgstr ""
 "okuyun. %2s"
 
 #: inc/autolinks.php:1206
-#: inc/autoterms.php:1791
+#: inc/autoterms.php:1794
 #: inc/post-tags.php:1060
 #: inc/related-posts.php:1319
 #: inc/tag-clouds.php:1080
@@ -1021,7 +1021,7 @@ msgstr ""
 "doldurun:"
 
 #: inc/autolinks.php:1209
-#: inc/autoterms.php:1794
+#: inc/autoterms.php:1797
 #: inc/post-tags.php:1063
 #: inc/related-posts.php:1322
 #: inc/tag-clouds.php:1083
@@ -1030,7 +1030,7 @@ msgid "Okay"
 msgstr "Tamam"
 
 #: inc/autolinks.php:1215
-#: inc/autoterms.php:1801
+#: inc/autoterms.php:1804
 #: inc/class-taxonomies-table.php:417
 #: inc/post-tags-table.php:363
 #: inc/post-tags.php:1069
@@ -1042,7 +1042,7 @@ msgid "No"
 msgstr "Hayır"
 
 #: inc/autolinks.php:1216
-#: inc/autoterms.php:1803
+#: inc/autoterms.php:1806
 #: inc/class-taxonomies-table.php:419
 #: inc/post-tags.php:1070
 #: inc/related-posts.php:1331
@@ -1180,7 +1180,7 @@ msgstr "Durum mesajı"
 #: inc/autoterms-logs-table.php:168
 #: inc/autoterms-logs-table.php:199
 #: inc/autoterms_content.php:146
-#: inc/class.admin.php:890
+#: inc/class.admin.php:891
 #: inc/schedule.php:215
 msgid "Settings"
 msgstr "Ayarlar"
@@ -1253,12 +1253,12 @@ msgid "Post Type"
 msgstr "Post Type"
 
 #: inc/autoterms-table.php:386
-#: inc/autoterms.php:1207
+#: inc/autoterms.php:1210
 msgid "Existing taxonomy terms"
 msgstr "Mevcut taxonomy terimleri"
 
 #: inc/autoterms-table.php:390
-#: inc/autoterms.php:1157
+#: inc/autoterms.php:1160
 #: inc/class.client.autoterms.php:440
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
@@ -1267,7 +1267,7 @@ msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
-#: inc/autoterms.php:1154
+#: inc/autoterms.php:1157
 #: inc/class.client.autoterms.php:360
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444
@@ -1275,7 +1275,7 @@ msgid "AI Connectors"
 msgstr "AI Bağlayıcıları"
 
 #: inc/autoterms-table.php:398
-#: inc/autoterms.php:1159
+#: inc/autoterms.php:1162
 #: inc/class.client.autoterms.php:520
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
@@ -1284,7 +1284,7 @@ msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
-#: inc/autoterms.php:1161
+#: inc/autoterms.php:1164
 #: inc/class.client.autoterms.php:602
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
@@ -1293,7 +1293,7 @@ msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
-#: inc/autoterms.php:1163
+#: inc/autoterms.php:1166
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
@@ -1305,8 +1305,8 @@ msgstr "LSEG / Refinitiv"
 #: inc/autoterms.php:181
 #: inc/autoterms.php:245
 #: inc/autoterms.php:383
-#: inc/class.admin.php:135
-#: inc/class.admin.php:1443
+#: inc/class.admin.php:136
+#: inc/class.admin.php:1444
 #: inc/class.admin.post.php:75
 #: inc/functions.inc.php:597
 #: inc/helper.options.admin.php:38
@@ -1428,12 +1428,12 @@ msgstr "Ne Zaman Kullanılmalı"
 #: inc/autoterms.php:476
 #: inc/autoterms.php:821
 #: inc/autoterms.php:1086
-#: inc/autoterms.php:1578
+#: inc/autoterms.php:1581
 msgid "Existing Content"
 msgstr "Mevcut İçerik"
 
 #: inc/autoterms.php:481
-#: inc/autoterms.php:1638
+#: inc/autoterms.php:1641
 #: inc/post-tags.php:283
 #: inc/related-posts.php:279
 #: modules/taxopress-ai/taxopress-ai.php:468
@@ -1484,9 +1484,9 @@ msgid "Please choose an option for \"Content statuses\""
 msgstr "\"İçerik durumları\" için bir seçenek seçin lütfen"
 
 #: inc/autoterms.php:817
-#: inc/class.admin.php:90
-#: inc/class.admin.php:415
-#: inc/class.admin.php:1419
+#: inc/class.admin.php:91
+#: inc/class.admin.php:416
+#: inc/class.admin.php:1420
 #: inc/functions.inc.php:567
 #: inc/posts-table.php:27
 #: inc/posts.php:165
@@ -1503,7 +1503,7 @@ msgstr "Programla"
 
 #: inc/autoterms.php:823
 #: inc/autoterms.php:1133
-#: inc/class.admin.php:1421
+#: inc/class.admin.php:1422
 #: modules/taxopress-ai/taxopress-ai.php:443
 #: modules/taxopress-ai/taxopress-ai.php:444
 #: modules/taxopress-ai/taxopress-ai.php:476
@@ -1606,71 +1606,81 @@ msgstr ""
 "\"Metaboxlar\" ve \"Hızlı Güncelleme\" özelliği için Otomatik Terimleri "
 "etkinleştir."
 
-#: inc/autoterms.php:1151
+#: inc/autoterms.php:1149
+msgid ""
+"Existing Terms requires the term name to appear in the selected content. AI "
+"sources can suggest terms without an exact text match."
+msgstr ""
+"Mevcut Terimler, terim adının seçilen içerikte görünmesini gerektirir. AI "
+"kaynakları, tam metin eşleşmesi olmadan terimler önerebilir."
+
+#: inc/autoterms.php:1154
 msgid "Existing Terms"
 msgstr "Mevcut Terimler"
 
-#: inc/autoterms.php:1208
+#: inc/autoterms.php:1211
 msgid ""
-"This will add existing terms from the taxonomy selected in the \"General\" "
-"tab."
-msgstr "Bu, \"Genel\" sekmesinde seçilen taksonomiden mevcut terimleri ekleyecektir."
+"Add existing terms from the taxonomy selected on the General tab when their "
+"names match the content."
+msgstr ""
+"İçerik adları eşleştiğinde Genel sekmesinde seçilen taksonomiden mevcut "
+"terimleri ekleyin."
 
-#: inc/autoterms.php:1254
+#: inc/autoterms.php:1257
 msgid "Use all the terms in the selected taxonomy."
 msgstr "Seçilen taksonomideki tüm terimleri kullanın."
 
-#: inc/autoterms.php:1281
+#: inc/autoterms.php:1284
 msgid "Use only some terms in the selected taxonomy."
 msgstr "Seçilen taksonomide yalnızca bazı terimleri kullanın."
 
-#: inc/autoterms.php:1287
+#: inc/autoterms.php:1290
 msgid "Please choose an option for \"Sources\""
 msgstr "Lütfen \"Kaynaklar\" için bir seçenek seçin"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use"
 msgstr "Kullanılacak terimleri seçin"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use."
 msgstr "Kullanılacak terimleri seçin."
 
-#: inc/autoterms.php:1331
+#: inc/autoterms.php:1334
 msgid "Show Term Post Count"
 msgstr "Terim Gönderi Sayısını Göster"
 
-#: inc/autoterms.php:1332
+#: inc/autoterms.php:1335
 msgid "This will show the number of posts attached to the terms."
 msgstr "Bu, terimlere bağlı gönderi sayısını gösterecektir."
 
-#: inc/autoterms.php:1355
+#: inc/autoterms.php:1358
 msgid "Exclude terms and keywords from Auto Terms"
 msgstr "Otomatik Terimlerden terimleri ve anahtar kelimeleri hariç tutun"
 
-#: inc/autoterms.php:1359
+#: inc/autoterms.php:1362
 msgid "Enter comma-separated terms or keywords to exclude."
 msgstr "Hariç tutulacak terimleri veya anahtar kelimeleri virgülle ayırarak girin."
 
-#: inc/autoterms.php:1375, fuzzy
+#: inc/autoterms.php:1378, fuzzy
 msgid "a"
 msgstr "a"
 
-#: inc/autoterms.php:1382
+#: inc/autoterms.php:1385
 msgid "Prevent Auto Term inside elements"
 msgstr "Elementler içinde Otomatik Terimi engelle"
 
-#: inc/autoterms.php:1385
+#: inc/autoterms.php:1388
 msgid "Terms inside these HTML tags will not be used to generate terms."
 msgstr "Bu HTML etiketleri içindeki terimler, terim üretimi için kullanılmayacaktır."
 
-#: inc/autoterms.php:1463
+#: inc/autoterms.php:1466
 #: inc/autoterms_content.php:208
 #: inc/schedule.php:340
 msgid "Exclude previously analyzed content"
 msgstr "Daha önce analiz edilen içeriği hariç tut"
 
-#: inc/autoterms.php:1464
+#: inc/autoterms.php:1467
 #: inc/autoterms_content.php:209
 msgid ""
 "This enables you to skip posts that have already been analyzed by the "
@@ -1679,13 +1689,13 @@ msgstr ""
 "Bu, \"Mevcut İçerik\" özelliği tarafından zaten analiz edilmiş gönderileri "
 "atlamanızı sağlar."
 
-#: inc/autoterms.php:1473
+#: inc/autoterms.php:1476
 #: inc/autoterms_content.php:218
 #: inc/schedule.php:349
 msgid "Limit per batches"
 msgstr "Parti başına limit"
 
-#: inc/autoterms.php:1477
+#: inc/autoterms.php:1480
 msgid ""
 "This enables you to add Auto Terms to existing content in batches. If you "
 "have a lot of existing content, set this to a lower number to avoid "
@@ -1695,13 +1705,13 @@ msgstr ""
 "fazla mevcut içeriğiniz varsa, zaman aşımını önlemek için bunu daha düşük "
 "bir sayıya ayarlayın."
 
-#: inc/autoterms.php:1487
+#: inc/autoterms.php:1490
 #: inc/autoterms_content.php:232
 #: inc/schedule.php:363
 msgid "Batches wait time"
 msgstr "Partilerin bekleme süresi"
 
-#: inc/autoterms.php:1488
+#: inc/autoterms.php:1491
 #: inc/autoterms_content.php:233
 #: inc/schedule.php:364
 msgid ""
@@ -1713,8 +1723,8 @@ msgstr ""
 "cinsinden). Çok fazla mevcut içeriğiniz varsa, zaman aşımını önlemek için "
 "bunu daha yüksek bir sayıya ayarlayın."
 
-#: inc/autoterms.php:1497
-#: inc/autoterms.php:1532
+#: inc/autoterms.php:1500
+#: inc/autoterms.php:1535
 #: inc/autoterms_content.php:242
 #: inc/autoterms_content.php:277
 #: inc/schedule.php:373
@@ -1722,8 +1732,8 @@ msgstr ""
 msgid "24 hours ago"
 msgstr "24 saat önce"
 
-#: inc/autoterms.php:1501
-#: inc/autoterms.php:1536
+#: inc/autoterms.php:1504
+#: inc/autoterms.php:1539
 #: inc/autoterms_content.php:246
 #: inc/autoterms_content.php:281
 #: inc/schedule.php:377
@@ -1731,8 +1741,8 @@ msgstr "24 saat önce"
 msgid "7 days ago"
 msgstr "7 gün önce"
 
-#: inc/autoterms.php:1505
-#: inc/autoterms.php:1540
+#: inc/autoterms.php:1508
+#: inc/autoterms.php:1543
 #: inc/autoterms_content.php:250
 #: inc/autoterms_content.php:285
 #: inc/schedule.php:381
@@ -1740,8 +1750,8 @@ msgstr "7 gün önce"
 msgid "2 weeks ago"
 msgstr "2 hafta önce"
 
-#: inc/autoterms.php:1509
-#: inc/autoterms.php:1544
+#: inc/autoterms.php:1512
+#: inc/autoterms.php:1547
 #: inc/autoterms_content.php:254
 #: inc/autoterms_content.php:289
 #: inc/schedule.php:385
@@ -1749,8 +1759,8 @@ msgstr "2 hafta önce"
 msgid "1 month ago"
 msgstr "1 ay önce"
 
-#: inc/autoterms.php:1514
-#: inc/autoterms.php:1548
+#: inc/autoterms.php:1517
+#: inc/autoterms.php:1551
 #: inc/autoterms_content.php:259
 #: inc/autoterms_content.php:293
 #: inc/schedule.php:390
@@ -1758,8 +1768,8 @@ msgstr "1 ay önce"
 msgid "6 months ago"
 msgstr "6 ay önce"
 
-#: inc/autoterms.php:1518
-#: inc/autoterms.php:1552
+#: inc/autoterms.php:1521
+#: inc/autoterms.php:1555
 #: inc/autoterms_content.php:263
 #: inc/autoterms_content.php:297
 #: inc/schedule.php:394
@@ -1767,8 +1777,8 @@ msgstr "6 ay önce"
 msgid "1 year ago"
 msgstr "1 yıl önce"
 
-#: inc/autoterms.php:1522
-#: inc/autoterms.php:1556
+#: inc/autoterms.php:1525
+#: inc/autoterms.php:1559
 #: inc/autoterms_content.php:267
 #: inc/autoterms_content.php:301
 #: inc/post-tags.php:488
@@ -1779,87 +1789,87 @@ msgstr "1 yıl önce"
 msgid "No limit"
 msgstr "Sınırsız"
 
-#: inc/autoterms.php:1569
+#: inc/autoterms.php:1572
 #: inc/autoterms_content.php:314
 #: inc/schedule.php:445
 msgid "Limit Auto Terms, based on published date"
 msgstr "Yayınlanan tarihe göre Otomatik Terimleri sınırla"
 
-#: inc/autoterms.php:1573
+#: inc/autoterms.php:1576
 msgid "This setting allows you to add Auto Terms only to recent content."
 msgstr "Bu ayar, yalnızca son içeriklere Otomatik Terimler eklemenizi sağlar."
 
-#: inc/autoterms.php:1581
+#: inc/autoterms.php:1584
 #: inc/autoterms_content.php:347
 msgid "Add Auto Terms to existing content"
 msgstr "Mevcut içeriğe Otomatik Terimler ekle"
 
-#: inc/autoterms.php:1585
+#: inc/autoterms.php:1588
 msgid "Click the button to add Auto Terms to existing content."
 msgstr "Mevcut içeriğe Otomatik Terimler eklemek için butona tıklayın."
 
-#: inc/autoterms.php:1602
+#: inc/autoterms.php:1605
 msgid "Save changes to the settings before using this feature."
 msgstr "Bu özelliği kullanmadan önce ayarlardaki değişiklikleri kaydedin."
 
-#: inc/autoterms.php:1627
+#: inc/autoterms.php:1630
 #: modules/taxopress-ai/taxopress-ai.php:944
 msgid "Select..."
 msgstr "Seç..."
 
-#: inc/autoterms.php:1649
+#: inc/autoterms.php:1652
 msgid "Show debug information"
 msgstr "Hata ayıklama bilgilerini göster"
 
-#: inc/autoterms.php:1652
+#: inc/autoterms.php:1655
 msgid "Display sanitized request and response data for each enabled source."
 msgstr "Her etkin kaynak için temizlenmiş istek ve yanıt verilerini görüntüleyin."
 
-#: inc/autoterms.php:1657
+#: inc/autoterms.php:1660
 msgid "Debug information"
 msgstr "Hata ayıklama bilgileri"
 
-#: inc/autoterms.php:1658
+#: inc/autoterms.php:1661
 msgid "Request"
 msgstr "İstek"
 
-#: inc/autoterms.php:1659
+#: inc/autoterms.php:1662
 msgid "Response"
 msgstr "Yanıt"
 
-#: inc/autoterms.php:1660
+#: inc/autoterms.php:1663
 msgid "No source debug data was returned for this preview request."
 msgstr "Bu önizleme isteği için hiçbir kaynak hata ayıklama verisi döndürülmedi."
 
-#: inc/autoterms.php:1661
+#: inc/autoterms.php:1664
 msgid "Copy request"
 msgstr "İsteği kopyala"
 
-#: inc/autoterms.php:1662
+#: inc/autoterms.php:1665
 msgid "Copy response"
 msgstr "Yanıtı kopyala"
 
-#: inc/autoterms.php:1663
+#: inc/autoterms.php:1666
 msgid "Copy all"
 msgstr "Hepsini kopyala"
 
-#: inc/autoterms.php:1664
+#: inc/autoterms.php:1667
 msgid "Download JSON"
 msgstr "JSON'u indir"
 
-#: inc/autoterms.php:1665
+#: inc/autoterms.php:1668
 msgid "Debug information copied to the clipboard."
 msgstr "Hata ayıklama bilgisi panoya kopyalandı."
 
-#: inc/autoterms.php:1666
+#: inc/autoterms.php:1669
 msgid "The debug information could not be copied. Please try again."
 msgstr "Hata ayıklama bilgisi kopyalanamadı. Lütfen tekrar deneyin."
 
-#: inc/autoterms.php:1735
+#: inc/autoterms.php:1738
 msgid "Save Auto Terms"
 msgstr "Otomatik Terimleri Kaydet"
 
-#: inc/autoterms.php:1741
+#: inc/autoterms.php:1744
 msgid "Add Auto Terms"
 msgstr "Otomatik Terimleri Ekle"
 
@@ -1929,7 +1939,7 @@ msgid "You can see full log details on the %1s screen"
 msgstr "%1s ekranında tam günlük detaylarını görebilirsiniz"
 
 #: inc/class-tag-table.php:18
-#: inc/class.admin.php:1192
+#: inc/class.admin.php:1193
 msgid "Tag Cloud"
 msgstr "Etiket Bulutu"
 
@@ -1982,8 +1992,8 @@ msgid "Select term %s"
 msgstr "Terim %s'yi seç"
 
 #: inc/class-taxonomies-table.php:19
-#: inc/class.admin.php:68
-#: inc/class.admin.php:877
+#: inc/class.admin.php:69
+#: inc/class.admin.php:878
 #: inc/functions.inc.php:555
 #: inc/taxonomies.php:116
 #: inc/taxonomies.php:117
@@ -2029,7 +2039,7 @@ msgid "WordPress core"
 msgstr "WordPress çekirdek"
 
 #: inc/class-taxonomies-table.php:398
-#: inc/class.admin.php:1148
+#: inc/class.admin.php:1149
 #: inc/class.admin.post.php:49
 #: modules/taxopress-ai/taxopress-ai.php:1317, fuzzy
 msgid "PublishPress Taxonomies"
@@ -2559,8 +2569,8 @@ msgstr "Mevcut terimleri göster"
 #: inc/class.admin.clickterms.php:230
 #: inc/class.admin.manage.php:1120
 #: inc/class.admin.manage.php:1179
-#: inc/class.admin.php:256
-#: inc/class.admin.php:303
+#: inc/class.admin.php:257
+#: inc/class.admin.php:304
 #: inc/post-tags.php:1079
 #: inc/related-posts.php:1343
 #: modules/taxopress-ai/taxopress-ai.php:1147
@@ -2583,7 +2593,7 @@ msgstr "PublishPress Taksonomileri: Terimleri Yönet"
 
 #: inc/class.admin.manage.php:72
 #: inc/class.admin.manage.php:193
-#: inc/class.admin.php:1435
+#: inc/class.admin.php:1436
 #: inc/functions.inc.php:609
 msgid "Manage Terms"
 msgstr "Terimleri Yönet"
@@ -2805,13 +2815,13 @@ msgstr ""
 "yeni terime birleştirilecektir."
 
 #: inc/class.admin.manage.php:456
-#: inc/class.admin.php:780
+#: inc/class.admin.php:781
 #: inc/terms-table.php:1475
 msgid "Cancel"
 msgstr "İptal"
 
 #: inc/class.admin.manage.php:459
-#: inc/class.admin.php:782
+#: inc/class.admin.php:783
 msgid "Continue"
 msgstr "Devam Et"
 
@@ -3022,7 +3032,7 @@ msgstr "Terim(ler) %1s %2s'den kaldırıldı."
 #: inc/class.admin.mass.php:36
 #: inc/class.admin.mass.php:37
 #: inc/class.admin.mass.php:182
-#: inc/class.admin.php:1437
+#: inc/class.admin.php:1438
 #: inc/functions.inc.php:603
 msgid "Mass Edit Terms"
 msgstr "Toplu Terim Düzenleme"
@@ -3087,14 +3097,7 @@ msgstr "Tümünü güncelle &raquo;"
 msgid "No content to edit."
 msgstr "Düzenlenecek içerik yok."
 
-#: inc/class.admin.php:66
-#: inc/dashboard.php:46
-#: inc/dashboard.php:47
-#: inc/dashboard.php:98
-msgid "Dashboard"
-msgstr "dashboard"
-
-#: inc/class.admin.php:82
+#: inc/class.admin.php:83
 #: inc/functions.inc.php:561
 #: inc/posts-table.php:41
 #: inc/terms.php:174
@@ -3104,205 +3107,205 @@ msgstr "dashboard"
 msgid "Terms"
 msgstr "Terimler"
 
-#: inc/class.admin.php:222
+#: inc/class.admin.php:223
 msgid "No permission!"
 msgstr "Yetki yok!"
 
-#: inc/class.admin.php:232
+#: inc/class.admin.php:233
 msgid "Invalid nonce token!"
 msgstr "Geçersiz nonce belirteci!"
 
-#: inc/class.admin.php:237
+#: inc/class.admin.php:238
 msgid "Error: wrong data"
 msgstr "Hata: yanlış veri"
 
-#: inc/class.admin.php:414
+#: inc/class.admin.php:415
 msgid "Post tags"
 msgstr "Gönderi etiketleri"
 
-#: inc/class.admin.php:512
-#: inc/class.admin.php:606
+#: inc/class.admin.php:513
+#: inc/class.admin.php:607
 msgid "Change selection"
 msgstr "Seçimi değiştir"
 
-#: inc/class.admin.php:570
+#: inc/class.admin.php:571
 msgid "Content type"
 msgstr "İçerik türü"
 
-#: inc/class.admin.php:756
+#: inc/class.admin.php:757
 msgid "Please select a valid"
 msgstr "Lütfen geçerli birini seçin"
 
-#: inc/class.admin.php:758
+#: inc/class.admin.php:759
 msgid "Select Default Post Thumb"
 msgstr "Varsayılan Gönderi Küçük Resmini Seç"
 
-#: inc/class.admin.php:759
+#: inc/class.admin.php:760
 msgid "Use this media"
 msgstr "Bu medyayı kullan"
 
-#: inc/class.admin.php:760
+#: inc/class.admin.php:761
 msgid "Edit the current setting."
 msgstr "Mevcut ayarı düzenleyin."
 
-#: inc/class.admin.php:761
+#: inc/class.admin.php:762
 #: modules/taxopress-ai/taxopress-ai.php:426
 msgid "The request could not be completed. Please try again."
 msgstr "Talep tamamlanamadı. Lütfen tekrar deneyin."
 
-#: inc/class.admin.php:763
+#: inc/class.admin.php:764
 msgid "No terms will be deleted"
 msgstr "Hiçbir terim silinmeyecek"
 
-#: inc/class.admin.php:764
+#: inc/class.admin.php:765
 msgid " terms will be deleted."
 msgstr " terim silinecek."
 
-#: inc/class.admin.php:765
+#: inc/class.admin.php:766
 msgid "Checking terms..."
 msgstr "Terimler kontrol ediliyor..."
 
-#: inc/class.admin.php:766
+#: inc/class.admin.php:767
 msgid "An error occurred while checking terms."
 msgstr "Terimleri kontrol ederken bir hata oluştu."
 
-#: inc/class.admin.php:767
+#: inc/class.admin.php:768
 msgid "Permanently delete the affected terms? This action cannot be undone."
 msgstr ""
 "Etkilenen terimleri kalıcı olarak silmek istiyor musunuz? Bu işlem geri "
 "alınamaz."
 
-#: inc/class.admin.php:768
+#: inc/class.admin.php:769
 #: inc/post-tags.php:1090
 #: inc/related-posts.php:1354
 msgid "Select a post to see a preview."
 msgstr "Önizlemeyi görmek için bir gönderi seçin."
 
-#: inc/class.admin.php:769
+#: inc/class.admin.php:770
 msgid "Auto Term ID missing. Kindly save the auto term before using this feature."
 msgstr ""
 "Otomatik Terim ID'si eksik. Lütfen bu özelliği kullanmadan önce otomatik "
 "terimi kaydedin."
 
-#: inc/class.admin.php:779
+#: inc/class.admin.php:780
 msgid "Merge has been cancelled."
 msgstr "Birleştirme iptal edildi."
 
-#: inc/class.admin.php:781
+#: inc/class.admin.php:782
 msgid "Pause."
 msgstr "Duraklat."
 
-#: inc/class.admin.php:783
+#: inc/class.admin.php:784
 msgid "Merging terms. Please wait..."
 msgstr "Terimleri birleştiriliyor. Lütfen bekleyin..."
 
-#: inc/class.admin.php:784
+#: inc/class.admin.php:785
 #, php-format
 msgid "Merging %1$s terms attached to %2$s posts. Please wait..."
 msgstr "%1$s terimi %2$s gönderilerine eklenmiş durumda. Lütfen bekleyin..."
 
-#: inc/class.admin.php:785
+#: inc/class.admin.php:786
 msgid "Large dataset detected, terms will be merged in batches of 20!"
 msgstr ""
 "Büyük veri kümesi tespit edildi, terimler 20'li gruplar halinde "
 "birleştirilecektir!"
 
-#: inc/class.admin.php:786
+#: inc/class.admin.php:787
 msgid "No terms were merged."
 msgstr "Hiçbir terim birleştirilmedi."
 
-#: inc/class.admin.php:787
+#: inc/class.admin.php:788
 #, php-format
 msgid "Batch %1$s of %2$s merged."
 msgstr "Grup %1$s, %2$s birleştirildi."
 
-#: inc/class.admin.php:788
+#: inc/class.admin.php:789
 msgid "terms merged"
 msgstr "terimler birleştirildi"
 
-#: inc/class.admin.php:789
+#: inc/class.admin.php:790
 msgid "posts updated"
 msgstr "gönderiler güncellendi"
 
-#: inc/class.admin.php:790
+#: inc/class.admin.php:791
 #, php-format
 msgid "All terms merged into \"%s\""
 msgstr "Tüm terimler \"%s\" içine birleştirildi"
 
-#: inc/class.admin.php:791
+#: inc/class.admin.php:792
 #, php-format
 msgid "Terms merged into \"%s\""
 msgstr "Terimler \"%s\" içine birleştirildi"
 
-#: inc/class.admin.php:792
+#: inc/class.admin.php:793
 msgid "Some batches were skipped because they contained non-existent terms."
 msgstr "Bazı gruplar var olmayan terimler içerdiği için atlandı."
 
-#: inc/class.admin.php:793
+#: inc/class.admin.php:794
 #, php-format
 msgid "Batch %1$s failed because it contained non-existent terms: %2$s"
 msgstr "Grup %1$s, var olmayan terimler içerdiği için başarısız oldu: %2$s"
 
-#: inc/class.admin.php:794
+#: inc/class.admin.php:795
 msgid "AJAX error on batch"
 msgstr "Grup üzerinde AJAX hatası"
 
-#: inc/class.admin.php:795
+#: inc/class.admin.php:796
 #, php-format
 msgid "Error on batch %1$s:"
 msgstr "Grup %1$s'da hata:"
 
-#: inc/class.admin.php:801
+#: inc/class.admin.php:802
 msgid "Search Posts..."
 msgstr "Gönderileri Ara..."
 
-#: inc/class.admin.php:802
+#: inc/class.admin.php:803
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: inc/class.admin.php:803
+#: inc/class.admin.php:804
 msgid "Error loading preview"
 msgstr "Önizleme yüklenirken hata"
 
-#: inc/class.admin.php:809
+#: inc/class.admin.php:810
 #: inc/related-posts.php:1177
 msgid "Using default PublishPress Taxonomies image"
 msgstr "Varsayılan PublishPress Taxonomies resmini kullanma"
 
-#: inc/class.admin.php:810
+#: inc/class.admin.php:811
 #: inc/related-posts.php:1186
 msgid "Select Media"
 msgstr "Medya Seçin"
 
-#: inc/class.admin.php:811
+#: inc/class.admin.php:812
 msgid "Change Media"
 msgstr "Medya Değiştir"
 
-#: inc/class.admin.php:812
+#: inc/class.admin.php:813
 msgid "Use Default"
 msgstr "Varsayılanı Kullan"
 
-#: inc/class.admin.php:813
+#: inc/class.admin.php:814
 msgid "See More"
 msgstr "Daha Fazla Gör"
 
-#: inc/class.admin.php:814
+#: inc/class.admin.php:815
 msgid "See Less"
 msgstr "Daha Az Gör"
 
-#: inc/class.admin.php:815
+#: inc/class.admin.php:816
 msgid "Apply Selected"
 msgstr "Seçilenleri Uygula"
 
-#: inc/class.admin.php:816
+#: inc/class.admin.php:817
 msgid "Close"
 msgstr "Kapat"
 
-#: inc/class.admin.php:817
+#: inc/class.admin.php:818
 msgid "Please select at least one suggestion to apply."
 msgstr "Uygulamak için lütfen en az bir öneri seçin."
 
-#: inc/class.admin.php:818
+#: inc/class.admin.php:819
 msgid ""
 "You have selected multiple merge suggestions. All selected terms will be "
 "merged into a single new term. Do you want to continue?"
@@ -3310,63 +3313,63 @@ msgstr ""
 "Birden fazla birleştirme önerisi seçtiniz. Tüm seçilen terimler tek bir "
 "yeni terim içine birleştirilecektir. Devam etmek istiyor musunuz?"
 
-#: inc/class.admin.php:819
+#: inc/class.admin.php:820
 msgid "No merge suggestions found for this taxonomy."
 msgstr "Bu taksonomi için herhangi bir birleştirme önerisi bulunamadı."
 
-#: inc/class.admin.php:820
+#: inc/class.admin.php:821
 msgid "Suggested Terms to Merge:"
 msgstr "Birleştirilmesi Önerilen Terimler:"
 
-#: inc/class.admin.php:821
+#: inc/class.admin.php:822
 msgid "duplicates"
 msgstr "kopyalar"
 
-#: inc/class.admin.php:822
+#: inc/class.admin.php:823
 msgid "Reason:"
 msgstr "Sebep:"
 
-#: inc/class.admin.php:823
+#: inc/class.admin.php:824
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: inc/class.admin.php:824
+#: inc/class.admin.php:825
 msgid "Deselect All"
 msgstr "Tümünü Seçme"
 
-#: inc/class.admin.php:825
+#: inc/class.admin.php:826
 msgid "Terms to Merge"
 msgstr "Birleştirilecek Terimler"
 
-#: inc/class.admin.php:826
+#: inc/class.admin.php:827
 msgid "New Term"
 msgstr "Yeni Terim"
 
-#: inc/class.admin.php:827
+#: inc/class.admin.php:828
 msgid "Reasons"
 msgstr "Sebepler"
 
-#: inc/class.admin.php:876
-#: inc/class.admin.php:889
+#: inc/class.admin.php:877
+#: inc/class.admin.php:890
 #: views/admin/page-settings.php:6
 msgid "PublishPress Taxonomies: Options"
 msgstr "PublishPress Taxonomy'lar: Seçenekler"
 
-#: inc/class.admin.php:1005
+#: inc/class.admin.php:1006
 msgid "Options saved"
 msgstr "Seçenekler kaydedildi"
 
-#: inc/class.admin.php:1011
+#: inc/class.admin.php:1012
 msgid "PublishPress Taxonomies options resetted to default options!"
 msgstr "PublishPress Taksonomileri seçenekleri varsayılan seçeneklere sıfırlandı!"
 
-#: inc/class.admin.php:1085
+#: inc/class.admin.php:1086
 msgid "This feature requires at least 1 tag to work. Begin by adding tags!"
 msgstr ""
 "Bu özellik çalışmak için en az 1 etiket gerektirir. Etiket eklemeye "
 "başlayın!"
 
-#: inc/class.admin.php:1087
+#: inc/class.admin.php:1088
 msgid ""
 "This feature works only with activated JavaScript. Activate it in your Web "
 "browser so you can!"
@@ -3374,7 +3377,7 @@ msgstr ""
 "Bu özellik yalnızca etkinleştirilmiş JavaScript ile çalışır. Bunu web "
 "tarayıcınızda etkinleştirerek kullanabilirsiniz!"
 
-#: inc/class.admin.php:1147
+#: inc/class.admin.php:1148
 #. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
@@ -3382,29 +3385,29 @@ msgstr ""
 "%1$s'i beğendiyseniz lütfen bize %2$s ile bir derecelendirme bırakın. "
 "Teşekkür ederiz!"
 
-#: inc/class.admin.php:1155
+#: inc/class.admin.php:1156
 msgid "PublishPress Taxonomies resources"
 msgstr "PublishPress Taksonomileri kaynakları"
 
-#: inc/class.admin.php:1157
+#: inc/class.admin.php:1158
 msgid "About"
 msgstr "Hakkında"
 
-#: inc/class.admin.php:1158
+#: inc/class.admin.php:1159
 msgid "Documentation"
 msgstr "Belgeler"
 
-#: inc/class.admin.php:1159
+#: inc/class.admin.php:1160
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/class.admin.php:1193
-#: inc/class.admin.php:1413
+#: inc/class.admin.php:1194
+#: inc/class.admin.php:1414
 msgid "Tags for Current Post"
 msgstr "Geçerli Gönderi için Etiketler"
 
-#: inc/class.admin.php:1194
-#: inc/class.admin.php:1415
+#: inc/class.admin.php:1195
+#: inc/class.admin.php:1416
 #: inc/functions.inc.php:585
 #: inc/related-posts-functions.php:169
 #: inc/related-posts-table.php:17
@@ -3414,49 +3417,49 @@ msgstr "Geçerli Gönderi için Etiketler"
 msgid "Related Posts"
 msgstr "İlgili Yazılar"
 
-#: inc/class.admin.php:1405
+#: inc/class.admin.php:1406
 msgid "Administration"
 msgstr "Yönetim"
 
-#: inc/class.admin.php:1409
+#: inc/class.admin.php:1410
 msgid "Features"
 msgstr "Özellikler"
 
-#: inc/class.admin.php:1411
+#: inc/class.admin.php:1412
 msgid "Embedded Tags"
 msgstr "Gömülü Etiketler"
 
-#: inc/class.admin.php:1417
+#: inc/class.admin.php:1418
 msgid "Legacy"
 msgstr "Eski"
 
-#: inc/class.admin.php:1423
+#: inc/class.admin.php:1424
 #: inc/helper.options.admin.php:243
 #: modules/taxopress-ai/taxopress-ai.php:470
 msgid "Metabox Access"
 msgstr "Metabox Erişimi"
 
-#: inc/class.admin.php:1425
-#: inc/class.admin.php:1439
+#: inc/class.admin.php:1426
+#: inc/class.admin.php:1440
 #: inc/terms-table.php:749
 #: includes-core/TaxopressCoreAdmin.php:615
 msgid "Linked Terms"
 msgstr "Bağlı Terimler"
 
-#: inc/class.admin.php:1427
-#: inc/class.admin.php:1441
+#: inc/class.admin.php:1428
+#: inc/class.admin.php:1442
 msgid "Term Synonyms"
 msgstr "Terim Eşanlamları"
 
-#: inc/class.admin.php:1429
+#: inc/class.admin.php:1430
 msgid "License"
 msgstr "Lisans"
 
-#: inc/class.admin.php:1431
+#: inc/class.admin.php:1432
 msgid "Hidden Terms"
 msgstr "Gizli Terimler"
 
-#: inc/class.admin.php:1433
+#: inc/class.admin.php:1434
 msgid "Frontend Scripts"
 msgstr "Ön Uç Betikleri"
 
@@ -3909,15 +3912,15 @@ msgstr "Gelişmiş kullanım:"
 msgid "What to show"
 msgstr "Ne gösterilecek"
 
-#: inc/dashboard.php:80
+#: inc/dashboard.php:81
 msgid "PublishPress Taxonomies Logo"
 msgstr "PublishPress Taxonomies Logosu"
 
-#: inc/dashboard.php:90
+#: inc/dashboard.php:91
 msgid "Welcome to PublishPress Taxonomies, the WordPress taxonomy plugin"
 msgstr "PublishPress Taxonomies'e, WordPress taksonomi eklentisine hoş geldiniz"
 
-#: inc/dashboard.php:100
+#: inc/dashboard.php:101
 msgid ""
 "This screen allows you to enable or disable PublishPress Taxonomies "
 "features."
@@ -7179,7 +7182,7 @@ msgstr "Sağlayıcı isteği gönderilmedi."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
 msgid "Result from api."
 msgstr "API'den gelen sonuç."
 
@@ -7369,8 +7372,8 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1084
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
 msgid "No matched result from the API Server."
 msgstr "API Sunucusundan eşleşen sonuç bulunamadı."
 
@@ -7385,16 +7388,16 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:856
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1118
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
 msgid "Selected content is empty."
 msgstr "Seçilen içerik boş."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:953
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1173
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
 msgid "Result from cache."
 msgstr "Önbellekten sonuç."
 
@@ -7408,14 +7411,14 @@ msgstr "API Hatası: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1358
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
 msgid "Empty response."
 msgstr "Boş yanıt."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1361
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
 msgid "Error establishing connection with the API server. Try again."
 msgstr "API sunucusuyla bağlantı kurulurken hata oluştu. Lütfen tekrar deneyin."
 
@@ -7461,16 +7464,16 @@ msgstr ""
 "IBM Watson API URL'si HTTPS kullanmalı ve resmi bir Doğal Dil Anlayışı "
 "hizmeti ana bilgisayar adını içermelidir."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:831
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:858
 msgid "No matched result from an AI Connector."
 msgstr "Bir AI Bağlayıcısından eşleşen sonuç yok."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:838
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:865
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "AI Bağlayıcıları, WordPress 7.0 veya daha yenisini gerektirir."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:877
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1187
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7479,8 +7482,8 @@ msgstr ""
 "Geçersiz yer tutucu(lar) tespit edildi: {%s}. Geçerli yer tutucular: "
 "{content}, {post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:910
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1208
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
@@ -7488,8 +7491,8 @@ msgstr ""
 "Prompt'ta {post_terms} eklediniz ama gönderinizde herhangi bir terim "
 "bulunmamaktadır."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:916
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1211
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7497,25 +7500,41 @@ msgstr ""
 "Prompt'ta {site_terms} eklediniz ama siteniz bu taksonomi için herhangi bir "
 "terim içermemektedir."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
 msgid ""
-"No compatible AI provider is configured. Install and configure a provider "
-"in Settings > Connectors."
+"The selected AI Connector is not configured. Choose a connected provider in "
+"Auto Terms > Sources."
 msgstr ""
-"Uyumlu bir AI sağlayıcısı yapılandırılmamış. Ayarlar > Bağlayıcılar'da bir "
-"sağlayıcı yükleyin ve yapılandırın."
+"Seçilen AI Bağlayıcı yapılandırılmamıştır. Auto Terms > Sources bölümünde "
+"bağlı bir sağlayıcı seçin."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+msgid ""
+"AI is disabled or unavailable on this site. Check the WordPress AI settings "
+"before generating terms."
+msgstr ""
+"Bu sitede AI devre dışı veya kullanılamıyor. Terimleri oluşturmeden önce "
+"WordPress AI ayarlarını kontrol edin."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+msgid ""
+"The selected AI Connector cannot generate text for this request. Check its "
+"connection and text generation support in Settings > Connectors."
+msgstr ""
+"Seçilen AI Bağlayıcı bu talep için metin üretemiyor. Bağlantısını ve metin "
+"oluşturma desteğini Ayarlar > Bağlayıcılar bölümünde kontrol edin."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
 msgid "Result from an AI Connector."
 msgstr "Bir AI Bağlayıcısından gelen sonuç."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1073
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr ""
 "Doğrudan OpenAI entegrasyonu, Legacy AI Sources ayarlarında devre dışı "
 "bırakılmıştır."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7523,7 +7542,7 @@ msgstr ""
 "OpenAI entegrasyonu bir API Anahtarı gerektirir. Lütfen API Anahtarınızı "
 "Auto Term ayarlarına ekleyin."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1276
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
@@ -7748,11 +7767,27 @@ msgstr "Belki daha sonra"
 msgid "I already did"
 msgstr "Zaten yaptım"
 
-#: simple-tags.php:118
+#: simple-tags.php:58
+msgid ""
+"PublishPress Taxonomies Free requires PHP 8.2 or newer. The plugin cannot "
+"run until PHP is updated."
+msgstr ""
+"PublishPress Taxonomies Free, PHP 8.2 veya daha yeni bir sürüm gerektirir. "
+"Eklenti, PHP güncellenene kadar çalışamaz."
+
+#: simple-tags.php:68
+msgid ""
+"PublishPress Taxonomies Free requires WordPress 6.7 or newer. The plugin "
+"cannot run until WordPress is updated."
+msgstr ""
+"PublishPress Taxonomies Free, WordPress 6.7 veya daha yeni bir sürüm "
+"gerektirir. Eklenti, WordPress güncellenene kadar çalışamaz."
+
+#: simple-tags.php:143
 msgid "This plugin can be deleted."
 msgstr "Bu eklenti silinebilir."
 
-#: simple-tags.php:146
+#: simple-tags.php:171
 msgid ""
 "PublishPress Taxonomies was not activated because PublishPress Taxonomies "
 "Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."

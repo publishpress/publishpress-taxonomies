@@ -10,7 +10,7 @@
  * Text Domain: simple-tags
  * Domain Path: /languages
  * Requires at least: 6.7
- * Requires PHP: 7.4
+ * Requires PHP: 8.2
  * License: GPLv3
  *
  * Copyright (c) 2022 PublishPress
@@ -47,6 +47,31 @@ Credits Icons :
 */
 
 defined('ABSPATH') || exit;
+
+// Keep this entry point parseable on older PHP versions.
+$publishpress_taxonomies_minimum_php_version = '8.2';
+$publishpress_taxonomies_minimum_wp_version = '6.7';
+global $wp_version;
+if (version_compare(PHP_VERSION, $publishpress_taxonomies_minimum_php_version, '<')) {
+    $requirements_notice = function () {
+        echo '<div class="notice notice-error"><p>'
+            . esc_html__('PublishPress Taxonomies Free requires PHP 8.2 or newer. The plugin cannot run until PHP is updated.', 'simple-tags')
+            . '</p></div>';
+    };
+    add_action('admin_notices', $requirements_notice);
+    add_action('network_admin_notices', $requirements_notice);
+    return;
+}
+if (version_compare($wp_version, $publishpress_taxonomies_minimum_wp_version, '<')) {
+    $requirements_notice = function () {
+        echo '<div class="notice notice-error"><p>'
+            . esc_html__('PublishPress Taxonomies Free requires WordPress 6.7 or newer. The plugin cannot run until WordPress is updated.', 'simple-tags')
+            . '</p></div>';
+    };
+    add_action('admin_notices', $requirements_notice);
+    add_action('network_admin_notices', $requirements_notice);
+    return;
+}
 
 if (!defined('STAGS_VERSION')) {
     define('STAGS_VERSION', '4.0.1');
@@ -208,7 +233,7 @@ if (! defined('TAXOPRESS_FILE')) {
 }
 
 if (! defined('STAGS_MIN_PHP_VERSION')) {
-    define('STAGS_MIN_PHP_VERSION', '7.4');
+    define('STAGS_MIN_PHP_VERSION', '8.2');
 }
 
 if (! defined('STAGS_OPTIONS_NAME')) {
@@ -233,17 +258,6 @@ if (! defined('TAXOPRESS_ABSPATH')) {
 
 if (! defined('STAGS_LIB_VENDOR_PATH')) {
     define('STAGS_LIB_VENDOR_PATH', __DIR__ . '/lib/vendor');
-}
-
-// Check PHP min version
-if (version_compare(PHP_VERSION, STAGS_MIN_PHP_VERSION, '<')) {
-    require STAGS_DIR . '/inc/class.compatibility.php';
-
-    // possibly display a notice, trigger error
-    add_action('admin_init', array('SimpleTags_Compatibility', 'admin_init'));
-
-    // stop execution of this file
-    return;
 }
 
 require STAGS_DIR . '/inc/loads.php';

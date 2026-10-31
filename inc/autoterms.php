@@ -1145,6 +1145,9 @@ class SimpleTags_Autoterms
                                                        style="<?php echo $active_tab === 'autoterm_terms' ? '' : 'display:none;'; ?>">
                                                     <tr valign="top" class="tab-group-tr"> 
                                                         <td colspan="2">
+                                                            <p class="description">
+                                                                <?php esc_html_e('Existing Terms requires the term name to appear in the selected content. AI sources can suggest terms without an exact text match.', 'simple-tags'); ?>
+                                                            </p>
                                                             <div class="taxopress-group-wrap autoterm-tab-group source">
                                                                 <div class="taxopress-button-group">
                                                                     <label class="existing current">
@@ -1205,7 +1208,7 @@ class SimpleTags_Autoterms
                                                 'name'       => 'autoterm_use_taxonomy',
                                                 'class'      => 'autoterm_use_taxonomy autoterm-terms-to-use-field autoterm-terms-use-existing fields-control',
                                                 'labeltext'  => esc_html__('Existing taxonomy terms', 'simple-tags'),
-                                                'aftertext'  => esc_html__('This will add existing terms from the taxonomy selected in the "General" tab.', 'simple-tags'),
+                                                'aftertext'  => esc_html__('Add existing terms from the taxonomy selected on the General tab when their names match the content.', 'simple-tags'),
                                                 'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                 'required'    => false,
                                             ]);

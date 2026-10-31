@@ -819,6 +819,33 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
+         * List connected providers that the WordPress AI client has registered.
+         *
+         * @return array<string, string> Provider IDs mapped to display names.
+         */
+        public static function get_wordpress_ai_providers()
+        {
+            if (!function_exists('wp_ai_client_prompt') || !class_exists('WordPress\\AiClient\\AiClient')) {
+                return [];
+            }
+
+            $providers = [];
+            $registry = \WordPress\AiClient\AiClient::defaultRegistry();
+            foreach ($registry->getRegisteredProviderIds() as $provider_id) {
+                if (!$registry->isProviderConfigured($provider_id)) {
+                    continue;
+                }
+
+                $connector = function_exists('wp_get_connector') ? wp_get_connector($provider_id) : null;
+                $providers[$provider_id] = !empty($connector['name'])
+                    ? $connector['name']
+                    : ucwords(str_replace(['-', '_'], ' ', $provider_id));
+            }
+
+            return $providers;
+        }
+
+        /**
          * Get terms through the provider-agnostic WordPress AI Client.
          *
          * @param array $args Request arguments.
@@ -930,12 +957,36 @@ if (!class_exists('TaxoPressAiApi')) {
             $max_tokens = !empty($settings_data['wordpress_ai_max_tokens'])
                 ? max(16, (int) $settings_data['wordpress_ai_max_tokens'])
                 : 50;
+            $provider_id = !empty($settings_data['wordpress_ai_provider'])
+                ? sanitize_key($settings_data['wordpress_ai_provider'])
+                : '';
+            $available_providers = self::get_wordpress_ai_providers();
+            if ($provider_id === '' && !empty($available_providers)) {
+                $provider_id = array_key_first($available_providers);
+            }
+            if ($provider_id === '' || !isset($available_providers[$provider_id])) {
+                $return['message'] = esc_html__(
+                    'The selected AI Connector is not configured. Choose a connected provider in Auto Terms > Sources.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+            if (function_exists('wp_supports_ai') && !wp_supports_ai()) {
+                $return['message'] = esc_html__(
+                    'AI is disabled or unavailable on this site. Check the WordPress AI settings before generating terms.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
             $cache_fingerprint = hash('sha256', wp_json_encode([
                 'content'             => $content,
                 'taxonomy'            => $taxonomy,
                 'api'                 => 'wordpress-ai-client-v1',
                 'prompt'              => $custom_prompt,
                 'max_tokens'          => $max_tokens,
+                'provider'            => $provider_id,
                 'existing_terms_only' => $existing_terms_only,
                 'post_terms'          => $existing_post_terms,
                 'site_terms'          => $existing_site_terms,
@@ -967,17 +1018,19 @@ if (!class_exists('TaxoPressAiApi')) {
 
             $debug_request = [
                 'transport'          => 'WordPress AI Client',
+                'provider'           => $provider_id,
                 'system_instruction' => $instructions,
                 'input'              => $user_input,
                 'max_tokens'         => $max_tokens,
             ];
             $builder = wp_ai_client_prompt($user_input)
+                ->using_provider($provider_id)
                 ->using_system_instruction($instructions)
                 ->using_max_tokens($max_tokens);
 
             if (!$builder->is_supported_for_text_generation()) {
                 $return['message'] = esc_html__(
-                    'No compatible AI provider is configured. Install and configure a provider in Settings > Connectors.',
+                    'The selected AI Connector cannot generate text for this request. Check its connection and text generation support in Settings > Connectors.',
                     'simple-tags'
                 );
 

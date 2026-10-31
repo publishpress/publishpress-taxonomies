@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-30 09:52+0000\n"
+"PO-Revision-Date: 2026-10-31 02:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 ">= 2 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -19,17 +19,17 @@ msgstr ""
 "Language: lt_LT\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
-#: simple-tags.php:4, fuzzy
+#: simple-tags.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php:5
+#: simple-tags.php
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php:6
+#: simple-tags.php
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -38,13 +38,13 @@ msgstr ""
 "PublishPress Taxonomies leidžia jums kurti ir valdyti žymeles, kategorijas "
 "ir visus jūsų WordPress taksonomijos terminus."
 
-#: simple-tags.php:8
-#: inc/class.admin.php:1164
+#: simple-tags.php
+#: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php:9
+#: simple-tags.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -95,8 +95,8 @@ msgstr "Terminų rodymas (PublishPress Taxonomies)"
 #: inc/class.admin.manage.php:1184
 #: inc/class.admin.manage.php:1679
 #: inc/class.admin.manage.php:1834
-#: inc/class.admin.php:261
-#: inc/class.admin.php:307
+#: inc/class.admin.php:262
+#: inc/class.admin.php:308
 #: inc/post-tags.php:1083
 #: inc/related-posts.php:1347
 #: inc/tag-clouds.php:1111
@@ -205,7 +205,7 @@ msgid "Completed: %s terms added from %s posts checked."
 msgstr "Baigta: %s terminai pridėti iš %s patikrintų pranešimų."
 
 #: inc/autolinks-functions.php:175
-#: inc/class.admin.php:1407, fuzzy
+#: inc/class.admin.php:1408, fuzzy
 msgid "Auto link"
 msgstr "Auto link"
 
@@ -245,7 +245,7 @@ msgstr "Auto Link"
 #: inc/autolinks.php:74
 #: inc/autolinks.php:75
 #: inc/autolinks.php:128
-#: inc/class.admin.php:1195
+#: inc/class.admin.php:1196
 #: inc/class.admin.post.php:86
 #: inc/functions.inc.php:591, fuzzy
 msgid "Auto Links"
@@ -276,7 +276,7 @@ msgstr "Pavadinimas"
 #: inc/autoterms.php:596
 #: inc/class-taxonomies-table.php:18
 #: inc/class.admin.clickterms.php:62
-#: inc/class.admin.php:585
+#: inc/class.admin.php:586
 #: inc/post-tags-table.php:70
 #: inc/post-tags.php:465
 #: inc/related-posts-table.php:68
@@ -325,7 +325,7 @@ msgstr "Redaguoti"
 #: inc/autoterms-table.php:282
 #: inc/autoterms.php:663
 #: inc/class-tag-table.php:220
-#: inc/class.admin.php:770
+#: inc/class.admin.php:771
 #: inc/class.admin.taxonomies.ui.php:843
 #: inc/post-tags-table.php:282
 #: inc/related-posts-table.php:291
@@ -670,13 +670,13 @@ msgstr ""
 #: inc/autoterms.php:873
 #: inc/autoterms.php:970
 #: inc/autoterms.php:1051
-#: inc/autoterms.php:1175
-#: inc/autoterms.php:1189
-#: inc/autoterms.php:1220
-#: inc/autoterms.php:1234
-#: inc/autoterms.php:1264
-#: inc/autoterms.php:1316
-#: inc/autoterms.php:1447
+#: inc/autoterms.php:1178
+#: inc/autoterms.php:1192
+#: inc/autoterms.php:1223
+#: inc/autoterms.php:1237
+#: inc/autoterms.php:1267
+#: inc/autoterms.php:1319
+#: inc/autoterms.php:1450
 #: inc/autoterms_content.php:192
 #: inc/post-tags.php:575
 #: inc/post-tags.php:816
@@ -720,13 +720,13 @@ msgstr "Netiesa"
 #: inc/autoterms.php:874
 #: inc/autoterms.php:975
 #: inc/autoterms.php:1056
-#: inc/autoterms.php:1180
-#: inc/autoterms.php:1193
-#: inc/autoterms.php:1225
-#: inc/autoterms.php:1238
-#: inc/autoterms.php:1269
-#: inc/autoterms.php:1321
-#: inc/autoterms.php:1452
+#: inc/autoterms.php:1183
+#: inc/autoterms.php:1196
+#: inc/autoterms.php:1228
+#: inc/autoterms.php:1241
+#: inc/autoterms.php:1272
+#: inc/autoterms.php:1324
+#: inc/autoterms.php:1455
 #: inc/autoterms_content.php:197
 #: inc/post-tags.php:580
 #: inc/post-tags.php:821
@@ -791,58 +791,58 @@ msgid "Separate multiple entries with a comma. For example: .notag, #main-header
 msgstr "Atskirkite kelis įrašus kableliu. Pavyzdžiui: .notag, #main-header"
 
 #: inc/autolinks.php:788
-#: inc/autoterms.php:1368
+#: inc/autoterms.php:1371
 #: inc/related-posts.php:434, fuzzy
 msgid "H1"
 msgstr "H1"
 
 #: inc/autolinks.php:789
-#: inc/autoterms.php:1369
+#: inc/autoterms.php:1372
 #: inc/related-posts.php:438, fuzzy
 msgid "H2"
 msgstr "H2"
 
 #: inc/autolinks.php:790
-#: inc/autoterms.php:1370
+#: inc/autoterms.php:1373
 #: inc/related-posts.php:442, fuzzy
 msgid "H3"
 msgstr "H3"
 
 #: inc/autolinks.php:791
-#: inc/autoterms.php:1371
+#: inc/autoterms.php:1374
 #: inc/related-posts.php:446, fuzzy
 msgid "H4"
 msgstr "H4"
 
 #: inc/autolinks.php:792
-#: inc/autoterms.php:1372
+#: inc/autoterms.php:1375
 #: inc/related-posts.php:451, fuzzy
 msgid "H5"
 msgstr "H5"
 
 #: inc/autolinks.php:793
-#: inc/autoterms.php:1373
+#: inc/autoterms.php:1376
 #: inc/related-posts.php:455, fuzzy
 msgid "H6"
 msgstr "H6"
 
 #: inc/autolinks.php:795
-#: inc/autoterms.php:1376, fuzzy
+#: inc/autoterms.php:1379, fuzzy
 msgid "script"
 msgstr "script"
 
 #: inc/autolinks.php:796
-#: inc/autoterms.php:1377, fuzzy
+#: inc/autoterms.php:1380, fuzzy
 msgid "style"
 msgstr "style"
 
 #: inc/autolinks.php:797
-#: inc/autoterms.php:1378, fuzzy
+#: inc/autoterms.php:1381, fuzzy
 msgid "pre"
 msgstr "pre"
 
 #: inc/autolinks.php:798
-#: inc/autoterms.php:1379, fuzzy
+#: inc/autoterms.php:1382, fuzzy
 msgid "code"
 msgstr "code"
 
@@ -942,7 +942,7 @@ msgstr ""
 "vykdomi kabliukai su mažesniu skaičiumi."
 
 #: inc/autolinks.php:1112
-#: inc/autoterms.php:1697
+#: inc/autoterms.php:1700
 #: inc/tag-clouds.php:995
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
@@ -953,7 +953,7 @@ msgstr ""
 "ir palaikymo."
 
 #: inc/autolinks.php:1115
-#: inc/autoterms.php:1701
+#: inc/autoterms.php:1704
 #: inc/post-tags.php:977
 #: inc/related-posts.php:1231
 #: inc/tag-clouds.php:999
@@ -989,12 +989,12 @@ msgid "Add Auto Links"
 msgstr "Pridėti Auto Nuorodas"
 
 #: inc/autolinks.php:1178
-#: inc/autoterms.php:1763
+#: inc/autoterms.php:1766
 msgid "PublishPress Taxonomies and Languages"
 msgstr "PublishPress Taxonomies ir Kalbos"
 
 #: inc/autolinks.php:1182
-#: inc/autoterms.php:1767
+#: inc/autoterms.php:1770
 #, php-format
 msgid ""
 "Please note that this is an automatic tool. It does have limitations around "
@@ -1006,7 +1006,7 @@ msgstr ""
 "perskaityti šią dokumentaciją. %2s"
 
 #: inc/autolinks.php:1206
-#: inc/autoterms.php:1791
+#: inc/autoterms.php:1794
 #: inc/post-tags.php:1060
 #: inc/related-posts.php:1319
 #: inc/tag-clouds.php:1080
@@ -1017,7 +1017,7 @@ msgstr ""
 "pakeitimus:"
 
 #: inc/autolinks.php:1209
-#: inc/autoterms.php:1794
+#: inc/autoterms.php:1797
 #: inc/post-tags.php:1063
 #: inc/related-posts.php:1322
 #: inc/tag-clouds.php:1083
@@ -1026,7 +1026,7 @@ msgid "Okay"
 msgstr "Gerai"
 
 #: inc/autolinks.php:1215
-#: inc/autoterms.php:1801
+#: inc/autoterms.php:1804
 #: inc/class-taxonomies-table.php:417
 #: inc/post-tags-table.php:363
 #: inc/post-tags.php:1069
@@ -1038,7 +1038,7 @@ msgid "No"
 msgstr "Ne"
 
 #: inc/autolinks.php:1216
-#: inc/autoterms.php:1803
+#: inc/autoterms.php:1806
 #: inc/class-taxonomies-table.php:419
 #: inc/post-tags.php:1070
 #: inc/related-posts.php:1331
@@ -1173,7 +1173,7 @@ msgstr "Būsenos pranešimas"
 #: inc/autoterms-logs-table.php:168
 #: inc/autoterms-logs-table.php:199
 #: inc/autoterms_content.php:146
-#: inc/class.admin.php:890
+#: inc/class.admin.php:891
 #: inc/schedule.php:215
 msgid "Settings"
 msgstr "Nustatymai"
@@ -1246,12 +1246,12 @@ msgid "Post Type"
 msgstr "post type"
 
 #: inc/autoterms-table.php:386
-#: inc/autoterms.php:1207
+#: inc/autoterms.php:1210
 msgid "Existing taxonomy terms"
 msgstr "Esami taksonomijos terminai"
 
 #: inc/autoterms-table.php:390
-#: inc/autoterms.php:1157
+#: inc/autoterms.php:1160
 #: inc/class.client.autoterms.php:440
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
@@ -1260,7 +1260,7 @@ msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
-#: inc/autoterms.php:1154
+#: inc/autoterms.php:1157
 #: inc/class.client.autoterms.php:360
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444
@@ -1268,7 +1268,7 @@ msgid "AI Connectors"
 msgstr "AI jungikliai"
 
 #: inc/autoterms-table.php:398
-#: inc/autoterms.php:1159
+#: inc/autoterms.php:1162
 #: inc/class.client.autoterms.php:520
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
@@ -1277,7 +1277,7 @@ msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
-#: inc/autoterms.php:1161
+#: inc/autoterms.php:1164
 #: inc/class.client.autoterms.php:602
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
@@ -1286,7 +1286,7 @@ msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
-#: inc/autoterms.php:1163
+#: inc/autoterms.php:1166
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
@@ -1298,8 +1298,8 @@ msgstr "LSEG / Refinitiv"
 #: inc/autoterms.php:181
 #: inc/autoterms.php:245
 #: inc/autoterms.php:383
-#: inc/class.admin.php:135
-#: inc/class.admin.php:1443
+#: inc/class.admin.php:136
+#: inc/class.admin.php:1444
 #: inc/class.admin.post.php:75
 #: inc/functions.inc.php:597
 #: inc/helper.options.admin.php:38
@@ -1421,12 +1421,12 @@ msgstr "Kada naudoti"
 #: inc/autoterms.php:476
 #: inc/autoterms.php:821
 #: inc/autoterms.php:1086
-#: inc/autoterms.php:1578
+#: inc/autoterms.php:1581
 msgid "Existing Content"
 msgstr "Esamas turinys"
 
 #: inc/autoterms.php:481
-#: inc/autoterms.php:1638
+#: inc/autoterms.php:1641
 #: inc/post-tags.php:283
 #: inc/related-posts.php:279
 #: modules/taxopress-ai/taxopress-ai.php:468
@@ -1475,9 +1475,9 @@ msgid "Please choose an option for \"Content statuses\""
 msgstr "Prašome pasirinkti parinktį \"Turinio būsenoms\""
 
 #: inc/autoterms.php:817
-#: inc/class.admin.php:90
-#: inc/class.admin.php:415
-#: inc/class.admin.php:1419
+#: inc/class.admin.php:91
+#: inc/class.admin.php:416
+#: inc/class.admin.php:1420
 #: inc/functions.inc.php:567
 #: inc/posts-table.php:27
 #: inc/posts.php:165
@@ -1494,7 +1494,7 @@ msgstr "Tvarkaraštis"
 
 #: inc/autoterms.php:823
 #: inc/autoterms.php:1133
-#: inc/class.admin.php:1421
+#: inc/class.admin.php:1422
 #: modules/taxopress-ai/taxopress-ai.php:443
 #: modules/taxopress-ai/taxopress-ai.php:444
 #: modules/taxopress-ai/taxopress-ai.php:476
@@ -1600,73 +1600,84 @@ msgstr ""
 "Įgalinti automatiškai sukurtus terminus „Metaboxes“ ir „Greito atnaujinimo“ "
 "funkcijai."
 
-#: inc/autoterms.php:1151
+#: inc/autoterms.php:1149
+msgid ""
+"Existing Terms requires the term name to appear in the selected content. AI "
+"sources can suggest terms without an exact text match."
+msgstr ""
+"Esami terminai reikalauja, kad termino pavadinimas būtų pateiktas "
+"pasirinktoje turinio dalyje. AI šaltiniai gali pasiūlyti terminus be "
+"tikslaus teksto atitikimo."
+
+#: inc/autoterms.php:1154
 msgid "Existing Terms"
 msgstr "Esami terminai"
 
-#: inc/autoterms.php:1208
+#: inc/autoterms.php:1211
 msgid ""
-"This will add existing terms from the taxonomy selected in the \"General\" "
-"tab."
-msgstr "Tai pridės esamus terminus iš „General“ skirtuke pasirinktos taksonomijos."
+"Add existing terms from the taxonomy selected on the General tab when their "
+"names match the content."
+msgstr ""
+"Pridėkite esamus terminus iš taksonomijos, pasirinktos Bendrojoje skiltyje, "
+"kai jų pavadinimai atitinka turinį."
 
-#: inc/autoterms.php:1254
+#: inc/autoterms.php:1257
 msgid "Use all the terms in the selected taxonomy."
 msgstr "Naudokite visus terminus pasirinktoje taksonomijoje."
 
-#: inc/autoterms.php:1281
+#: inc/autoterms.php:1284
 msgid "Use only some terms in the selected taxonomy."
 msgstr "Naudokite tik kai kuriuos terminus pasirinktoje taksonomijoje."
 
-#: inc/autoterms.php:1287
+#: inc/autoterms.php:1290
 msgid "Please choose an option for \"Sources\""
 msgstr "Prašome pasirinkti parinktį „Šaltiniai“"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use"
 msgstr "Pasirinkite terminus, kuriuos naudoti"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use."
 msgstr "Pasirinkite terminus, kuriuos naudoti."
 
-#: inc/autoterms.php:1331
+#: inc/autoterms.php:1334
 msgid "Show Term Post Count"
 msgstr "Rodyti terminų įrašų skaičių"
 
-#: inc/autoterms.php:1332
+#: inc/autoterms.php:1335
 msgid "This will show the number of posts attached to the terms."
 msgstr "Tai parodys įrašų, pridedamų prie terminų, skaičių."
 
-#: inc/autoterms.php:1355
+#: inc/autoterms.php:1358
 msgid "Exclude terms and keywords from Auto Terms"
 msgstr "Išskirti terminus ir raktinius žodžius iš automatiškai sukurtų terminų"
 
-#: inc/autoterms.php:1359
+#: inc/autoterms.php:1362
 msgid "Enter comma-separated terms or keywords to exclude."
 msgstr ""
 "Įveskite kableliais atskirtus terminus arba raktinius žodžius, kuriuos "
 "norite išskirti."
 
-#: inc/autoterms.php:1375, fuzzy
+#: inc/autoterms.php:1378, fuzzy
 msgid "a"
 msgstr "a"
 
-#: inc/autoterms.php:1382
+#: inc/autoterms.php:1385
 msgid "Prevent Auto Term inside elements"
 msgstr "Užkirsti kelią automatiškai sukurtam terminui elementuose"
 
-#: inc/autoterms.php:1385
+#: inc/autoterms.php:1388
 msgid "Terms inside these HTML tags will not be used to generate terms."
 msgstr "Terminai šiuose HTML žymėse nebus naudojami generuoti terminus."
 
-#: inc/autoterms.php:1463
+#: inc/autoterms.php:1466
 #: inc/autoterms_content.php:208
 #: inc/schedule.php:340
 msgid "Exclude previously analyzed content"
 msgstr "Išskirti anksčiau analizuotą turinį"
 
-#: inc/autoterms.php:1464
+#: inc/autoterms.php:1467
 #: inc/autoterms_content.php:209
 msgid ""
 "This enables you to skip posts that have already been analyzed by the "
@@ -1675,13 +1686,13 @@ msgstr ""
 "Tai leidžia jums praleisti įrašus, kurie jau buvo analizuoti „Esamo "
 "turinio“ funkcijoje."
 
-#: inc/autoterms.php:1473
+#: inc/autoterms.php:1476
 #: inc/autoterms_content.php:218
 #: inc/schedule.php:349
 msgid "Limit per batches"
 msgstr "Limitas per grupes"
 
-#: inc/autoterms.php:1477
+#: inc/autoterms.php:1480
 msgid ""
 "This enables you to add Auto Terms to existing content in batches. If you "
 "have a lot of existing content, set this to a lower number to avoid "
@@ -1691,13 +1702,13 @@ msgstr ""
 "dideliais kiekiais. Jei turite daug esamo turinio, nustatykite mažesnį "
 "skaičių, kad išvengtumėte laiko limitų."
 
-#: inc/autoterms.php:1487
+#: inc/autoterms.php:1490
 #: inc/autoterms_content.php:232
 #: inc/schedule.php:363
 msgid "Batches wait time"
 msgstr "Laukimo laikas grupėms"
 
-#: inc/autoterms.php:1488
+#: inc/autoterms.php:1491
 #: inc/autoterms_content.php:233
 #: inc/schedule.php:364
 msgid ""
@@ -1709,8 +1720,8 @@ msgstr ""
 "turite daug esamo turinio, nustatykite šį skaičių didesnį, kad būtų "
 "išvengta laikinosios pabaigos."
 
-#: inc/autoterms.php:1497
-#: inc/autoterms.php:1532
+#: inc/autoterms.php:1500
+#: inc/autoterms.php:1535
 #: inc/autoterms_content.php:242
 #: inc/autoterms_content.php:277
 #: inc/schedule.php:373
@@ -1718,8 +1729,8 @@ msgstr ""
 msgid "24 hours ago"
 msgstr "Prieš 24 valandas"
 
-#: inc/autoterms.php:1501
-#: inc/autoterms.php:1536
+#: inc/autoterms.php:1504
+#: inc/autoterms.php:1539
 #: inc/autoterms_content.php:246
 #: inc/autoterms_content.php:281
 #: inc/schedule.php:377
@@ -1727,8 +1738,8 @@ msgstr "Prieš 24 valandas"
 msgid "7 days ago"
 msgstr "prieš 7 dienas"
 
-#: inc/autoterms.php:1505
-#: inc/autoterms.php:1540
+#: inc/autoterms.php:1508
+#: inc/autoterms.php:1543
 #: inc/autoterms_content.php:250
 #: inc/autoterms_content.php:285
 #: inc/schedule.php:381
@@ -1736,8 +1747,8 @@ msgstr "prieš 7 dienas"
 msgid "2 weeks ago"
 msgstr "prieš 2 savaites"
 
-#: inc/autoterms.php:1509
-#: inc/autoterms.php:1544
+#: inc/autoterms.php:1512
+#: inc/autoterms.php:1547
 #: inc/autoterms_content.php:254
 #: inc/autoterms_content.php:289
 #: inc/schedule.php:385
@@ -1745,8 +1756,8 @@ msgstr "prieš 2 savaites"
 msgid "1 month ago"
 msgstr "prieš 1 mėnesį"
 
-#: inc/autoterms.php:1514
-#: inc/autoterms.php:1548
+#: inc/autoterms.php:1517
+#: inc/autoterms.php:1551
 #: inc/autoterms_content.php:259
 #: inc/autoterms_content.php:293
 #: inc/schedule.php:390
@@ -1754,8 +1765,8 @@ msgstr "prieš 1 mėnesį"
 msgid "6 months ago"
 msgstr "prieš 6 mėnesius"
 
-#: inc/autoterms.php:1518
-#: inc/autoterms.php:1552
+#: inc/autoterms.php:1521
+#: inc/autoterms.php:1555
 #: inc/autoterms_content.php:263
 #: inc/autoterms_content.php:297
 #: inc/schedule.php:394
@@ -1763,8 +1774,8 @@ msgstr "prieš 6 mėnesius"
 msgid "1 year ago"
 msgstr "prieš 1 metus"
 
-#: inc/autoterms.php:1522
-#: inc/autoterms.php:1556
+#: inc/autoterms.php:1525
+#: inc/autoterms.php:1559
 #: inc/autoterms_content.php:267
 #: inc/autoterms_content.php:301
 #: inc/post-tags.php:488
@@ -1775,93 +1786,93 @@ msgstr "prieš 1 metus"
 msgid "No limit"
 msgstr "Be apribojimų"
 
-#: inc/autoterms.php:1569
+#: inc/autoterms.php:1572
 #: inc/autoterms_content.php:314
 #: inc/schedule.php:445
 msgid "Limit Auto Terms, based on published date"
 msgstr "Apriboti Auto Terminus pagal paskelbimo datą"
 
-#: inc/autoterms.php:1573
+#: inc/autoterms.php:1576
 msgid "This setting allows you to add Auto Terms only to recent content."
 msgstr ""
 "Šis nustatymas leidžia jums pridėti automatiškai sukurtus terminus tik prie "
 "naujausio turinio."
 
-#: inc/autoterms.php:1581
+#: inc/autoterms.php:1584
 #: inc/autoterms_content.php:347
 msgid "Add Auto Terms to existing content"
 msgstr "Pridėti automatiškai sukurtus terminus prie esamo turinio"
 
-#: inc/autoterms.php:1585
+#: inc/autoterms.php:1588
 msgid "Click the button to add Auto Terms to existing content."
 msgstr ""
 "Paspauskite mygtuką, kad pridėtumėte automatiškai sukurtus terminus prie "
 "esamo turinio."
 
-#: inc/autoterms.php:1602
+#: inc/autoterms.php:1605
 msgid "Save changes to the settings before using this feature."
 msgstr "Išsaugokite pakeitimus nustatymuose prieš naudodami šią funkciją."
 
-#: inc/autoterms.php:1627
+#: inc/autoterms.php:1630
 #: modules/taxopress-ai/taxopress-ai.php:944
 msgid "Select..."
 msgstr "Pasirinkti..."
 
-#: inc/autoterms.php:1649
+#: inc/autoterms.php:1652
 msgid "Show debug information"
 msgstr "Rodyti derinimo informaciją"
 
-#: inc/autoterms.php:1652
+#: inc/autoterms.php:1655
 msgid "Display sanitized request and response data for each enabled source."
 msgstr ""
 "Rodyti sanizuotus užklausų ir atsakymų duomenis kiekvienam įgalintam "
 "šaltiniui."
 
-#: inc/autoterms.php:1657
+#: inc/autoterms.php:1660
 msgid "Debug information"
 msgstr "Derinimo informacija"
 
-#: inc/autoterms.php:1658
+#: inc/autoterms.php:1661
 msgid "Request"
 msgstr "Užklausa"
 
-#: inc/autoterms.php:1659
+#: inc/autoterms.php:1662
 msgid "Response"
 msgstr "Atsakymas"
 
-#: inc/autoterms.php:1660
+#: inc/autoterms.php:1663
 msgid "No source debug data was returned for this preview request."
 msgstr "Šiam peržiūros užklausimui nebuvo grąžinta jokių šaltinio derinimo duomenų."
 
-#: inc/autoterms.php:1661
+#: inc/autoterms.php:1664
 msgid "Copy request"
 msgstr "Kopijuoti užklausą"
 
-#: inc/autoterms.php:1662
+#: inc/autoterms.php:1665
 msgid "Copy response"
 msgstr "Kopijuoti atsakymą"
 
-#: inc/autoterms.php:1663
+#: inc/autoterms.php:1666
 msgid "Copy all"
 msgstr "Kopijuoti viską"
 
-#: inc/autoterms.php:1664
+#: inc/autoterms.php:1667
 msgid "Download JSON"
 msgstr "Atsisiųsti JSON"
 
-#: inc/autoterms.php:1665
+#: inc/autoterms.php:1668
 msgid "Debug information copied to the clipboard."
 msgstr "Klaidų informacija nukopijuota į mainų sritį."
 
-#: inc/autoterms.php:1666
+#: inc/autoterms.php:1669
 msgid "The debug information could not be copied. Please try again."
 msgstr "Klaidų informacijos nepavyko nukopijuoti. Prašome pabandyti dar kartą."
 
-#: inc/autoterms.php:1735
+#: inc/autoterms.php:1738
 msgid "Save Auto Terms"
 msgstr "Išsaugoti automatiškai nustatytus terminus"
 
-#: inc/autoterms.php:1741
+#: inc/autoterms.php:1744
 msgid "Add Auto Terms"
 msgstr "Pridėti automatiškai nustatytus terminus"
 
@@ -1933,7 +1944,7 @@ msgid "You can see full log details on the %1s screen"
 msgstr "Visą žurnalo informaciją galite pamatyti %1s ekrane"
 
 #: inc/class-tag-table.php:18
-#: inc/class.admin.php:1192
+#: inc/class.admin.php:1193
 msgid "Tag Cloud"
 msgstr "Žymų debesys"
 
@@ -1986,8 +1997,8 @@ msgid "Select term %s"
 msgstr "Pasirinkti terminą %s"
 
 #: inc/class-taxonomies-table.php:19
-#: inc/class.admin.php:68
-#: inc/class.admin.php:877
+#: inc/class.admin.php:69
+#: inc/class.admin.php:878
 #: inc/functions.inc.php:555
 #: inc/taxonomies.php:116
 #: inc/taxonomies.php:117
@@ -2033,7 +2044,7 @@ msgid "WordPress core"
 msgstr "WordPress branduolys"
 
 #: inc/class-taxonomies-table.php:398
-#: inc/class.admin.php:1148
+#: inc/class.admin.php:1149
 #: inc/class.admin.post.php:49
 #: modules/taxopress-ai/taxopress-ai.php:1317
 msgid "PublishPress Taxonomies"
@@ -2570,8 +2581,8 @@ msgstr "Rodyti esamus terminus"
 #: inc/class.admin.clickterms.php:230
 #: inc/class.admin.manage.php:1120
 #: inc/class.admin.manage.php:1179
-#: inc/class.admin.php:256
-#: inc/class.admin.php:303
+#: inc/class.admin.php:257
+#: inc/class.admin.php:304
 #: inc/post-tags.php:1079
 #: inc/related-posts.php:1343
 #: modules/taxopress-ai/taxopress-ai.php:1147
@@ -2594,7 +2605,7 @@ msgstr "PublishPress Taxonomies: Tvarkyti terminus"
 
 #: inc/class.admin.manage.php:72
 #: inc/class.admin.manage.php:193
-#: inc/class.admin.php:1435
+#: inc/class.admin.php:1436
 #: inc/functions.inc.php:609
 msgid "Manage Terms"
 msgstr "Tvarkyti terminus"
@@ -2820,13 +2831,13 @@ msgstr ""
 "sujungti į vieną naują terminą."
 
 #: inc/class.admin.manage.php:456
-#: inc/class.admin.php:780
+#: inc/class.admin.php:781
 #: inc/terms-table.php:1475
 msgid "Cancel"
 msgstr "Atšaukti"
 
 #: inc/class.admin.manage.php:459
-#: inc/class.admin.php:782
+#: inc/class.admin.php:783
 msgid "Continue"
 msgstr "Tęsti"
 
@@ -3043,7 +3054,7 @@ msgstr "Term(s) pašalinti iš %1s %2s."
 #: inc/class.admin.mass.php:36
 #: inc/class.admin.mass.php:37
 #: inc/class.admin.mass.php:182
-#: inc/class.admin.php:1437
+#: inc/class.admin.php:1438
 #: inc/functions.inc.php:603
 msgid "Mass Edit Terms"
 msgstr "Masinė redagavimo terminai"
@@ -3108,14 +3119,7 @@ msgstr "Atnaujinti viską &raquo;"
 msgid "No content to edit."
 msgstr "Nėra turinio redagavimui."
 
-#: inc/class.admin.php:66
-#: inc/dashboard.php:46
-#: inc/dashboard.php:47
-#: inc/dashboard.php:98
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: inc/class.admin.php:82
+#: inc/class.admin.php:83
 #: inc/functions.inc.php:561
 #: inc/posts-table.php:41
 #: inc/terms.php:174
@@ -3125,203 +3129,203 @@ msgstr "Dashboard"
 msgid "Terms"
 msgstr "Terminai"
 
-#: inc/class.admin.php:222
+#: inc/class.admin.php:223
 msgid "No permission!"
 msgstr "Nėra leidimo!"
 
-#: inc/class.admin.php:232
+#: inc/class.admin.php:233
 msgid "Invalid nonce token!"
 msgstr "Neteisingas nonce žetonas!"
 
-#: inc/class.admin.php:237
+#: inc/class.admin.php:238
 msgid "Error: wrong data"
 msgstr "Klaida: neteisingi duomenys"
 
-#: inc/class.admin.php:414
+#: inc/class.admin.php:415
 msgid "Post tags"
 msgstr "Įrašo žymės"
 
-#: inc/class.admin.php:512
-#: inc/class.admin.php:606
+#: inc/class.admin.php:513
+#: inc/class.admin.php:607
 msgid "Change selection"
 msgstr "Keisti pasirinkimą"
 
-#: inc/class.admin.php:570
+#: inc/class.admin.php:571
 msgid "Content type"
 msgstr "Turinio tipas"
 
-#: inc/class.admin.php:756
+#: inc/class.admin.php:757
 msgid "Please select a valid"
 msgstr "Prašome pasirinkti galiojantį"
 
-#: inc/class.admin.php:758
+#: inc/class.admin.php:759
 msgid "Select Default Post Thumb"
 msgstr "Pasirinkti numatytąjį įrašo miniatiūrą"
 
-#: inc/class.admin.php:759
+#: inc/class.admin.php:760
 msgid "Use this media"
 msgstr "Naudoti šią mediją"
 
-#: inc/class.admin.php:760
+#: inc/class.admin.php:761
 msgid "Edit the current setting."
 msgstr "Redaguoti esamą nustatymą."
 
-#: inc/class.admin.php:761
+#: inc/class.admin.php:762
 #: modules/taxopress-ai/taxopress-ai.php:426
 msgid "The request could not be completed. Please try again."
 msgstr "Prašymas negali būti įvykdytas. Prašome bandyti dar kartą."
 
-#: inc/class.admin.php:763
+#: inc/class.admin.php:764
 msgid "No terms will be deleted"
 msgstr "Nėra terminų, kurie būtų ištrinti"
 
-#: inc/class.admin.php:764
+#: inc/class.admin.php:765
 msgid " terms will be deleted."
 msgstr " terminai bus ištrinti."
 
-#: inc/class.admin.php:765
+#: inc/class.admin.php:766
 msgid "Checking terms..."
 msgstr "Tikrinami terminai..."
 
-#: inc/class.admin.php:766
+#: inc/class.admin.php:767
 msgid "An error occurred while checking terms."
 msgstr "Įvyko klaida tikrinant terminus."
 
-#: inc/class.admin.php:767
+#: inc/class.admin.php:768
 msgid "Permanently delete the affected terms? This action cannot be undone."
 msgstr ""
 "Ar tikrai norite visam laikui ištrinti paveiktus terminus? Šios akcijos "
 "negalima atšaukti."
 
-#: inc/class.admin.php:768
+#: inc/class.admin.php:769
 #: inc/post-tags.php:1090
 #: inc/related-posts.php:1354
 msgid "Select a post to see a preview."
 msgstr "Pasirinkite įrašą, kad pamatytumėte peržiūrą."
 
-#: inc/class.admin.php:769
+#: inc/class.admin.php:770
 msgid "Auto Term ID missing. Kindly save the auto term before using this feature."
 msgstr ""
 "Trūksta automatinio termino ID. Prašome išsaugoti automatinį terminą prieš "
 "naudodami šią funkciją."
 
-#: inc/class.admin.php:779
+#: inc/class.admin.php:780
 msgid "Merge has been cancelled."
 msgstr "Sujungimas buvo atšauktas."
 
-#: inc/class.admin.php:781
+#: inc/class.admin.php:782
 msgid "Pause."
 msgstr "Sustoti."
 
-#: inc/class.admin.php:783
+#: inc/class.admin.php:784
 msgid "Merging terms. Please wait..."
 msgstr "Jungiamas terminai. Prašome palaukti..."
 
-#: inc/class.admin.php:784
+#: inc/class.admin.php:785
 #, php-format
 msgid "Merging %1$s terms attached to %2$s posts. Please wait..."
 msgstr "Jungiamas %1$s terminai, priskirti %2$s įrašams. Prašome palaukti..."
 
-#: inc/class.admin.php:785
+#: inc/class.admin.php:786
 msgid "Large dataset detected, terms will be merged in batches of 20!"
 msgstr "Aptiktas didelis duomenų rinkinys, terminai bus sujungti po 20!"
 
-#: inc/class.admin.php:786
+#: inc/class.admin.php:787
 msgid "No terms were merged."
 msgstr "Nebuvo sujungta jokių terminų."
 
-#: inc/class.admin.php:787
+#: inc/class.admin.php:788
 #, php-format
 msgid "Batch %1$s of %2$s merged."
 msgstr "Partija %1$s iš %2$s sujungta."
 
-#: inc/class.admin.php:788
+#: inc/class.admin.php:789
 msgid "terms merged"
 msgstr "sujungti terminai"
 
-#: inc/class.admin.php:789
+#: inc/class.admin.php:790
 msgid "posts updated"
 msgstr "atnaujinti įrašai"
 
-#: inc/class.admin.php:790
+#: inc/class.admin.php:791
 #, php-format
 msgid "All terms merged into \"%s\""
 msgstr "Visi terminai sujungti į \"%s\""
 
-#: inc/class.admin.php:791
+#: inc/class.admin.php:792
 #, php-format
 msgid "Terms merged into \"%s\""
 msgstr "Terminai sujungti į \"%s\""
 
-#: inc/class.admin.php:792
+#: inc/class.admin.php:793
 msgid "Some batches were skipped because they contained non-existent terms."
 msgstr "Kai kurios partijos buvo praleistos, nes jose buvo neegzistuojančių terminų."
 
-#: inc/class.admin.php:793
+#: inc/class.admin.php:794
 #, php-format
 msgid "Batch %1$s failed because it contained non-existent terms: %2$s"
 msgstr "Partija %1$s nepavyko, nes joje buvo neegzistuojančių terminų: %2$s"
 
-#: inc/class.admin.php:794
+#: inc/class.admin.php:795
 msgid "AJAX error on batch"
 msgstr "AJAX klaida partijoje"
 
-#: inc/class.admin.php:795
+#: inc/class.admin.php:796
 #, php-format
 msgid "Error on batch %1$s:"
 msgstr "Klaida partijoje %1$s:"
 
-#: inc/class.admin.php:801
+#: inc/class.admin.php:802
 msgid "Search Posts..."
 msgstr "Ieškoti įrašų..."
 
-#: inc/class.admin.php:802
+#: inc/class.admin.php:803
 msgid "Loading..."
 msgstr "Kraunama..."
 
-#: inc/class.admin.php:803
+#: inc/class.admin.php:804
 msgid "Error loading preview"
 msgstr "Klaida kraunant peržiūrą"
 
-#: inc/class.admin.php:809
+#: inc/class.admin.php:810
 #: inc/related-posts.php:1177
 msgid "Using default PublishPress Taxonomies image"
 msgstr "Naudojant numatytąją PublishPress Taxonomies vaizdą"
 
-#: inc/class.admin.php:810
+#: inc/class.admin.php:811
 #: inc/related-posts.php:1186
 msgid "Select Media"
 msgstr "Pasirinkti mediją"
 
-#: inc/class.admin.php:811
+#: inc/class.admin.php:812
 msgid "Change Media"
 msgstr "Pakeisti mediją"
 
-#: inc/class.admin.php:812
+#: inc/class.admin.php:813
 msgid "Use Default"
 msgstr "Naudoti numatytąjį"
 
-#: inc/class.admin.php:813
+#: inc/class.admin.php:814
 msgid "See More"
 msgstr "Peržiūrėti daugiau"
 
-#: inc/class.admin.php:814
+#: inc/class.admin.php:815
 msgid "See Less"
 msgstr "Peržiūrėti mažiau"
 
-#: inc/class.admin.php:815
+#: inc/class.admin.php:816
 msgid "Apply Selected"
 msgstr "Taikyti pasirinktus"
 
-#: inc/class.admin.php:816
+#: inc/class.admin.php:817
 msgid "Close"
 msgstr "Užsidaryti"
 
-#: inc/class.admin.php:817
+#: inc/class.admin.php:818
 msgid "Please select at least one suggestion to apply."
 msgstr "Prašome pasirinkti bent vieną pasiūlymą, kurį norite taikyti."
 
-#: inc/class.admin.php:818
+#: inc/class.admin.php:819
 msgid ""
 "You have selected multiple merge suggestions. All selected terms will be "
 "merged into a single new term. Do you want to continue?"
@@ -3329,61 +3333,61 @@ msgstr ""
 "Pasirinkote kelis sujungimo pasiūlymus. Visi pasirinkti terminai bus "
 "sujungti į vieną naują terminą. Ar norite tęsti?"
 
-#: inc/class.admin.php:819
+#: inc/class.admin.php:820
 msgid "No merge suggestions found for this taxonomy."
 msgstr "Šiai taksonomijai nerasta jokių sujungimo pasiūlymų."
 
-#: inc/class.admin.php:820
+#: inc/class.admin.php:821
 msgid "Suggested Terms to Merge:"
 msgstr "Pasiūlyti terminai sujungimui:"
 
-#: inc/class.admin.php:821
+#: inc/class.admin.php:822
 msgid "duplicates"
 msgstr "dublikatai"
 
-#: inc/class.admin.php:822
+#: inc/class.admin.php:823
 msgid "Reason:"
 msgstr "Priežastis:"
 
-#: inc/class.admin.php:823
+#: inc/class.admin.php:824
 msgid "Select All"
 msgstr "Pasirinkti visus"
 
-#: inc/class.admin.php:824
+#: inc/class.admin.php:825
 msgid "Deselect All"
 msgstr "Atšaukti visus"
 
-#: inc/class.admin.php:825
+#: inc/class.admin.php:826
 msgid "Terms to Merge"
 msgstr "Terminai sujungimui"
 
-#: inc/class.admin.php:826
+#: inc/class.admin.php:827
 msgid "New Term"
 msgstr "Naujas terminas"
 
-#: inc/class.admin.php:827
+#: inc/class.admin.php:828
 msgid "Reasons"
 msgstr "Priežastys"
 
-#: inc/class.admin.php:876
-#: inc/class.admin.php:889
+#: inc/class.admin.php:877
+#: inc/class.admin.php:890
 #: views/admin/page-settings.php:6
 msgid "PublishPress Taxonomies: Options"
 msgstr "PublishPress taxonomies: Parinktys"
 
-#: inc/class.admin.php:1005
+#: inc/class.admin.php:1006
 msgid "Options saved"
 msgstr "Parinktys išsaugotos"
 
-#: inc/class.admin.php:1011
+#: inc/class.admin.php:1012
 msgid "PublishPress Taxonomies options resetted to default options!"
 msgstr "PublishPress taksonomijų parinktys atstatytos į numatytąsias parinktis!"
 
-#: inc/class.admin.php:1085
+#: inc/class.admin.php:1086
 msgid "This feature requires at least 1 tag to work. Begin by adding tags!"
 msgstr "Šiai funkcijai reikia bent 1 žymos, kad veiktų. Pradėkite pridėdami žymas!"
 
-#: inc/class.admin.php:1087
+#: inc/class.admin.php:1088
 msgid ""
 "This feature works only with activated JavaScript. Activate it in your Web "
 "browser so you can!"
@@ -3391,35 +3395,35 @@ msgstr ""
 "Ši funkcija veikia tik su aktyvuotu JavaScript. Aktyvuokite jį savo "
 "žiniatinklio naršyklėje, kad galėtumėte!"
 
-#: inc/class.admin.php:1147
+#: inc/class.admin.php:1148
 #. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
 msgstr "Jei jums patinka %1$s, prašome palikti mums %2$s įvertinimą. Ačiū!"
 
-#: inc/class.admin.php:1155
+#: inc/class.admin.php:1156
 msgid "PublishPress Taxonomies resources"
 msgstr "PublishPress Taxonomies ištekliai"
 
-#: inc/class.admin.php:1157
+#: inc/class.admin.php:1158
 msgid "About"
 msgstr "Apie"
 
-#: inc/class.admin.php:1158
+#: inc/class.admin.php:1159
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: inc/class.admin.php:1159
+#: inc/class.admin.php:1160
 msgid "Contact"
 msgstr "Kontaktai"
 
-#: inc/class.admin.php:1193
-#: inc/class.admin.php:1413
+#: inc/class.admin.php:1194
+#: inc/class.admin.php:1414
 msgid "Tags for Current Post"
 msgstr "Žymės dabartiniam įrašui"
 
-#: inc/class.admin.php:1194
-#: inc/class.admin.php:1415
+#: inc/class.admin.php:1195
+#: inc/class.admin.php:1416
 #: inc/functions.inc.php:585
 #: inc/related-posts-functions.php:169
 #: inc/related-posts-table.php:17
@@ -3429,49 +3433,49 @@ msgstr "Žymės dabartiniam įrašui"
 msgid "Related Posts"
 msgstr "Susiję įrašai"
 
-#: inc/class.admin.php:1405
+#: inc/class.admin.php:1406
 msgid "Administration"
 msgstr "Administravimas"
 
-#: inc/class.admin.php:1409
+#: inc/class.admin.php:1410
 msgid "Features"
 msgstr "Funkcijos"
 
-#: inc/class.admin.php:1411
+#: inc/class.admin.php:1412
 msgid "Embedded Tags"
 msgstr "Įterptos žymės"
 
-#: inc/class.admin.php:1417
+#: inc/class.admin.php:1418
 msgid "Legacy"
 msgstr "Paveldas"
 
-#: inc/class.admin.php:1423
+#: inc/class.admin.php:1424
 #: inc/helper.options.admin.php:243
 #: modules/taxopress-ai/taxopress-ai.php:470
 msgid "Metabox Access"
 msgstr "Metaboxo prieiga"
 
-#: inc/class.admin.php:1425
-#: inc/class.admin.php:1439
+#: inc/class.admin.php:1426
+#: inc/class.admin.php:1440
 #: inc/terms-table.php:749
 #: includes-core/TaxopressCoreAdmin.php:615
 msgid "Linked Terms"
 msgstr "Susiję terminai"
 
-#: inc/class.admin.php:1427
-#: inc/class.admin.php:1441
+#: inc/class.admin.php:1428
+#: inc/class.admin.php:1442
 msgid "Term Synonyms"
 msgstr "Terminų sinonimai"
 
-#: inc/class.admin.php:1429
+#: inc/class.admin.php:1430
 msgid "License"
 msgstr "Licencija"
 
-#: inc/class.admin.php:1431
+#: inc/class.admin.php:1432
 msgid "Hidden Terms"
 msgstr "Slapti terminai"
 
-#: inc/class.admin.php:1433
+#: inc/class.admin.php:1434
 msgid "Frontend Scripts"
 msgstr "Frontend scenarijai"
 
@@ -3928,15 +3932,15 @@ msgstr "Išplėstinis naudojimas:"
 msgid "What to show"
 msgstr "Ką rodyti"
 
-#: inc/dashboard.php:80
+#: inc/dashboard.php:81
 msgid "PublishPress Taxonomies Logo"
 msgstr "PublishPress Taxonomies logotipas"
 
-#: inc/dashboard.php:90
+#: inc/dashboard.php:91
 msgid "Welcome to PublishPress Taxonomies, the WordPress taxonomy plugin"
 msgstr "Sveiki atvykę į PublishPress Taxonomies, WordPress taksonomijų papildinį"
 
-#: inc/dashboard.php:100
+#: inc/dashboard.php:101
 msgid ""
 "This screen allows you to enable or disable PublishPress Taxonomies "
 "features."
@@ -7174,7 +7178,7 @@ msgstr "Pateikimo užklausa nebuvo išsiųsta."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
 msgid "Result from api."
 msgstr "Rezultatas iš API."
 
@@ -7364,8 +7368,8 @@ msgstr "Dandelion integracija yra išjungta Legacy AI Sources nustatymuose."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1084
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
 msgid "No matched result from the API Server."
 msgstr "Nerasta atitikmens iš API Serverio."
 
@@ -7380,16 +7384,16 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:856
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1118
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
 msgid "Selected content is empty."
 msgstr "Pasirinktas turinys yra tuščias."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:953
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1173
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
 msgid "Result from cache."
 msgstr "Rezultatas iš talpyklos."
 
@@ -7403,14 +7407,14 @@ msgstr "API klaida: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1358
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
 msgid "Empty response."
 msgstr "Tuščias atsakymas."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1361
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
 msgid "Error establishing connection with the API server. Try again."
 msgstr "Klaida nustatant ryšį su API serveriu. Bandykite dar kartą."
 
@@ -7452,16 +7456,16 @@ msgstr ""
 "IBM Watson API URL turi naudoti HTTPS ir oficialų Natūralios kalbos "
 "supratimo paslaugos domeno vardą."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:831
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:858
 msgid "No matched result from an AI Connector."
 msgstr "Nėra atitikimo iš AI jungiklio."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:838
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:865
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "AI jungikliai reikalauja WordPress 7.0 arba naujesnės versijos."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:877
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1187
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7470,8 +7474,8 @@ msgstr ""
 "Aptiktas neteisingas vietos žymėjimas: {%s}. Galiojantys vietos žymėjimai "
 "yra: {content}, {post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:910
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1208
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
@@ -7479,8 +7483,8 @@ msgstr ""
 "Jūs pridėjote {post_terms} užklausoje, tačiau jūsų įrašas neturi jokių "
 "terminų."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:916
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1211
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7488,23 +7492,39 @@ msgstr ""
 "Jūs pridėjote {site_terms} užklausoje, tačiau jūsų svetainėje nėra jokių "
 "terminų šiai taksonomijai."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
 msgid ""
-"No compatible AI provider is configured. Install and configure a provider "
-"in Settings > Connectors."
+"The selected AI Connector is not configured. Choose a connected provider in "
+"Auto Terms > Sources."
 msgstr ""
-"Nėra sukonfigūruoto suderinamo AI tiekėjo. Įdiekite ir sukonfigūruokite "
-"tiekėją Nustatymuose > Jungikliai."
+"Pasirinktas AI jungiklis nėra sukonfigūruotas. Pasirinkite prijungtą "
+"teikėją Automatiniai terminai > Šaltiniai."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+msgid ""
+"AI is disabled or unavailable on this site. Check the WordPress AI settings "
+"before generating terms."
+msgstr ""
+"AI yra išjungtas arba neprieinamas šiame svetainėje. Patikrinkite WordPress "
+"AI nustatymus prieš generuodami terminus."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+msgid ""
+"The selected AI Connector cannot generate text for this request. Check its "
+"connection and text generation support in Settings > Connectors."
+msgstr ""
+"Pasirinktas AI jungiklis negali generuoti teksto šiai užklausai. "
+"Patikrinkite jo ryšį ir teksto generavimo palaikymą Nustatymai > Jungikliai."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
 msgid "Result from an AI Connector."
 msgstr "Atsakymas iš AI jungiklio."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1073
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr "Tiesioginė OpenAI integracija yra išjungta Legacy AI Sources nustatymuose."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7512,7 +7532,7 @@ msgstr ""
 "OpenAI integracijai reikalingas API raktas. Prašome pridėti savo API raktą "
 "Auto Term nustatymuose."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1276
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
@@ -7735,11 +7755,27 @@ msgstr "Galbūt vėliau"
 msgid "I already did"
 msgstr "Aš jau tai padariau"
 
-#: simple-tags.php:118
+#: simple-tags.php:58
+msgid ""
+"PublishPress Taxonomies Free requires PHP 8.2 or newer. The plugin cannot "
+"run until PHP is updated."
+msgstr ""
+"PublishPress Taxonomies Free reikalauja PHP 8.2 arba naujesnės versijos. "
+"Priedas negali veikti, kol PHP nebus atnaujintas."
+
+#: simple-tags.php:68
+msgid ""
+"PublishPress Taxonomies Free requires WordPress 6.7 or newer. The plugin "
+"cannot run until WordPress is updated."
+msgstr ""
+"PublishPress Taxonomies Free reikalauja WordPress 6.7 arba naujesnės "
+"versijos. Priedas negali veikti, kol WordPress nebus atnaujintas."
+
+#: simple-tags.php:143
 msgid "This plugin can be deleted."
 msgstr "Šį papildinį galima ištrinti."
 
-#: simple-tags.php:146
+#: simple-tags.php:171
 msgid ""
 "PublishPress Taxonomies was not activated because PublishPress Taxonomies "
 "Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
