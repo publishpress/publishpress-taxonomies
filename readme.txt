@@ -4,7 +4,7 @@ Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
 Stable tag: 4.0.1
-Requires PHP: 7.4
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,7 +143,7 @@ Follow the PublishPress team and find product news on the [PublishPress website]
 
 == Installation ==
 
-**Requires PHP 5.6 or ideally PHP 7.**
+**Requires PHP 8.2 or newer.**
 
 PublishPress Taxonomies can be installed in 3 easy steps:
 
