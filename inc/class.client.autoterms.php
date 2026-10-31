@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.Security.NonceVerification.Missing,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_Autoterms
@@ -197,14 +199,23 @@ class SimpleTags_Client_Autoterms
             return false;
         }
 
-        if ($action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
+        $skip_single_target_check = (bool) apply_filters(
+            'taxopress_autoterms_skip_single_target_check',
+            false,
+            $object,
+            $taxonomy,
+            $options,
+            $action
+        );
+
+        if (!$skip_single_target_check && $action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Only use Auto Terms on posts with no added terms is enabled and this post contain terms.', 'simple-tags');
             //update log
             self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option');
             return false; // Skip post with terms, if term only empty post option is checked
         }
 
-        $autoterm_exclude = isset($options['autoterm_exclude']) ? taxopress_change_to_array($options['autoterm_exclude']) : [];
+        $autoterm_exclude = isset($options['autoterm_exclude']) ? taxopress_get_autoterm_exclusions($options['autoterm_exclude']) : [];
 
 
         $content_source = !empty($options['autoterm_from']) ? $options['autoterm_from'] : 'post_content_title';
@@ -247,6 +258,7 @@ class SimpleTags_Client_Autoterms
             return false;
         }
 
+        $autoterm_use_wordpress_ai = isset($options['autoterm_use_wordpress_ai']) ? (int) $options['autoterm_use_wordpress_ai'] : 0;
         $autoterm_use_open_ai = isset($options['autoterm_use_open_ai']) ? (int) $options['autoterm_use_open_ai'] : 0;
         $autoterm_use_ibm_watson = isset($options['autoterm_use_ibm_watson']) ? (int) $options['autoterm_use_ibm_watson'] : 0;
         $autoterm_use_dandelion = isset($options['autoterm_use_dandelion']) ? (int) $options['autoterm_use_dandelion'] : 0;
@@ -268,6 +280,87 @@ class SimpleTags_Client_Autoterms
 
         ];
 
+        $preprocessed_result = apply_filters(
+            'taxopress_autoterms_pre_process_sources',
+            null,
+            $object,
+            $taxonomy,
+            $options,
+            $counter,
+            $action,
+            $component,
+            $args
+        );
+
+        if ($preprocessed_result !== null) {
+            return (bool) $preprocessed_result;
+        }
+
+        // Auto Terms with the provider-agnostic WordPress AI Client.
+        if ($autoterm_use_wordpress_ai > 0 && taxopress_is_pro_version()) {
+            $wordpress_ai_results = TaxoPressAiApi::get_wordpress_ai_results($args);
+            if (!empty($wordpress_ai_results['results'])) {
+                foreach ((array) $wordpress_ai_results['results'] as $term) {
+                    $term = is_string($term) ? trim(stripslashes($term)) : '';
+                    if ($term === '') {
+                        continue;
+                    }
+
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
+                        $empty_term_messages[$object->ID]['message'][] = sprintf(
+                            esc_html__('%1s was suggested through AI Connectors but excluded by Auto Term Exception settings.', 'simple-tags'),
+                            '<strong>' . $term . '</strong>'
+                        );
+                        continue;
+                    }
+
+                    $add_terms = [$term => $term];
+                    if (is_array($options) && isset($options['synonyms_term']) && (int) $options['synonyms_term'] > 0) {
+                        $term_synonyms = taxopress_get_term_synonyms($term, $taxonomy);
+                        if (!empty($term_synonyms)) {
+                            foreach ($term_synonyms as $term_synonym) {
+                                $add_terms[$term_synonym] = $term;
+                            }
+                        }
+                    }
+
+                    $add_terms = taxopress_add_linked_term_options($add_terms, $term, $taxonomy, false, true);
+                    foreach ($add_terms as $find_term => $original_term) {
+                        $terms_regex_code = !empty($autoterm_regex_code)
+                            ? str_replace('{term}', preg_quote($find_term), $autoterm_regex_code)
+                            : '';
+
+                        if (!in_array($action, ['save_posts', 'hourly_cron_schedule', 'daily_cron_schedule'])) {
+                            $terms_to_add[] = $term;
+                        } elseif (!empty($terms_regex_code)) {
+                            if (preg_match("{$terms_regex_code}", $content)) {
+                                $terms_to_add[] = $term;
+                            }
+                        } elseif (isset($options['autoterm_word']) && (int) $options['autoterm_word'] === 1) {
+                            if (preg_match("#\b" . preg_quote($find_term) . "\b#i", $content)) {
+                                $terms_to_add[] = $term;
+                            }
+
+                            if (substr($find_term, 0, 1) === '#') {
+                                $trim_term = ltrim($find_term, '#');
+                                if (preg_match("/\B(\#+$trim_term\b)(?!;)/i", $content)) {
+                                    $terms_to_add[] = $term;
+                                }
+                            }
+
+                            if (isset($options['autoterm_hash']) && (int) $options['autoterm_hash'] === 1 && stristr($content, '#' . $find_term)) {
+                                $terms_to_add[] = $term;
+                            }
+                        } elseif (stristr($content, $find_term)) {
+                            $terms_to_add[] = $term;
+                        }
+                    }
+                }
+            } else {
+                $empty_term_messages[$object->ID]['message'][] = esc_html__('AI Connectors', 'simple-tags') . ': ' . $wordpress_ai_results['message'];
+            }
+        }
+
         //Autoterm with OpenAI
         if ($autoterm_use_open_ai > 0 && taxopress_is_pro_version()) {
             $open_ai_results = TaxoPressAiApi::get_open_ai_results($args);
@@ -287,7 +380,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by OpenAI but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -367,7 +460,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by IBM Watson but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -448,7 +541,7 @@ class SimpleTags_Client_Autoterms
                         }
 
                         //exclude if name found in exclude terms
-                        if (in_array($term, $autoterm_exclude)) {
+                        if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                             $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Dandelion but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                             continue;
                         }
@@ -528,7 +621,7 @@ class SimpleTags_Client_Autoterms
                     }
 
                     //exclude if name found in exclude terms
-                    if (in_array($term, $autoterm_exclude)) {
+                    if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                         $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by OpenCalais but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                         continue;
                     }
@@ -604,7 +697,7 @@ class SimpleTags_Client_Autoterms
                 }
 
                 //exclude if name found in exclude terms
-                if (in_array($term, $autoterm_exclude)) {
+                if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                     $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Suggested terms from specific terms but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                     continue;
                 }
@@ -680,7 +773,7 @@ class SimpleTags_Client_Autoterms
                 }
 
                 //exclude if name found in exclude terms
-                if (in_array($term, $autoterm_exclude)) {
+                if (taxopress_autoterm_is_excluded($term, $autoterm_exclude)) {
                     $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('%1s was suggested by Suggested terms from taxonomy terms but excluded by Auto Term Exception settings.', 'simple-tags'), '<strong>' . $term . '</strong>');
                     continue;
                 }
@@ -781,7 +874,10 @@ class SimpleTags_Client_Autoterms
                 $added_post_term = [];
             }
 
-            $added_post_term[$object->ID] = $terms_to_add;
+            $existing_added_terms = !empty($added_post_term[$object->ID]) && is_array($added_post_term[$object->ID])
+                ? $added_post_term[$object->ID]
+                : [];
+            $added_post_term[$object->ID] = array_values(array_unique(array_merge($existing_added_terms, $terms_to_add)));
 
             // Validate taxonomy exists
             if (!taxonomy_exists($taxonomy)) {

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.SlowDBQuery.slow_db_query_meta_query,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
@@ -373,6 +375,93 @@ function taxopress_sanitize_specific_terms($terms)
 }
 
 /**
+ * Normalize terms and keywords excluded from Auto Terms.
+ *
+ * Exclusions are intentionally not checked against the term database. This
+ * allows a value to prevent a new term from being suggested or created even
+ * when that value is not an existing term yet.
+ *
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return array
+ */
+function taxopress_get_autoterm_exclusions($exclusions)
+{
+    return taxopress_sanitize_specific_terms($exclusions);
+}
+
+/**
+ * Normalize an Auto Terms value for case-insensitive comparison.
+ *
+ * @param string $value Value to normalize.
+ * @return string
+ */
+function taxopress_autoterm_casefold($value)
+{
+    if (function_exists('mb_convert_case') && defined('MB_CASE_FOLD')) {
+        return mb_convert_case($value, MB_CASE_FOLD, 'UTF-8');
+    }
+
+    return strtolower($value);
+}
+
+/**
+ * Check whether a suggested term or keyword is excluded from Auto Terms.
+ *
+ * @param mixed $value      Suggested term or keyword.
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return bool
+ */
+function taxopress_autoterm_is_excluded($value, $exclusions)
+{
+    if (!is_scalar($value)) {
+        return false;
+    }
+
+    $value = trim(wp_unslash((string) $value));
+    if ($value === '') {
+        return false;
+    }
+
+    $normalized_value = taxopress_autoterm_casefold($value);
+    foreach (taxopress_get_autoterm_exclusions($exclusions) as $excluded_value) {
+        if ($normalized_value === taxopress_autoterm_casefold($excluded_value)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Remove excluded terms and keywords from a source result.
+ *
+ * Supports both flat source results and taxonomy-keyed multi-taxonomy results.
+ *
+ * @param mixed $results    Source results.
+ * @param mixed $exclusions Comma-separated exclusions or an exclusion array.
+ * @return mixed
+ */
+function taxopress_filter_autoterm_excluded_results($results, $exclusions)
+{
+    if (!is_array($results)) {
+        return $results;
+    }
+
+    $filtered_results = [];
+    foreach ($results as $key => $result) {
+        if (is_array($result)) {
+            $filtered_results[$key] = taxopress_filter_autoterm_excluded_results($result, $exclusions);
+        } elseif (!taxopress_autoterm_is_excluded($result, $exclusions)) {
+            $filtered_results[$key] = $result;
+        }
+    }
+
+    $is_list = empty($results) || array_keys($results) === range(0, count($results) - 1);
+
+    return $is_list ? array_values($filtered_results) : $filtered_results;
+}
+
+/**
  * Add to or update our PublishPress Taxonomies option with new data.
  *
  *
@@ -392,7 +481,16 @@ function taxopress_update_autoterm($data = [])
         } else {
             $new_value = [];
             foreach ($data[$key] as $option_key => $option_value) {
-                if ($option_key === 'terms_regex_code') {
+                $filtered_value = apply_filters(
+                    'taxopress_sanitize_autoterm_option',
+                    null,
+                    $option_key,
+                    $option_value
+                );
+
+                if ($filtered_value !== null) {
+                    $new_value[$option_key] = $filtered_value;
+                } elseif ($option_key === 'terms_regex_code') {
                     $regex_pattern = sanitize_text_field($option_value);
                     if (!empty($regex_pattern) && preg_match($regex_pattern, '') !== false) {
                         $new_value[$option_key] = $regex_pattern;
@@ -440,6 +538,8 @@ function taxopress_update_autoterm($data = [])
         }
     }
 
+    $data = apply_filters('taxopress_prepare_autoterm_data', $data, $existing_autoterm);
+
     $title                               = $data['taxopress_autoterm']['title'];
     $title                               = str_replace('"', '', htmlspecialchars_decode($title));
     $title                               = htmlspecialchars($title, ENT_QUOTES);
@@ -483,6 +583,8 @@ function taxopress_update_autoterm($data = [])
     if (!isset($data['taxopress_autoterm']['autoterm_for_post'])) {
         $data['taxopress_autoterm']['autoterm_for_post'] = 0;
     }
+    $data['taxopress_autoterm']['autoterm_for_posts_screen'] =
+        !empty($data['taxopress_autoterm']['autoterm_for_posts_screen']) ? 1 : 0;
     if (!isset($data['taxopress_autoterm']['autoterm_for_schedule'])) {
         $data['taxopress_autoterm']['autoterm_for_schedule'] = 0;
     }
@@ -491,6 +593,9 @@ function taxopress_update_autoterm($data = [])
     }
     if (!isset($data['taxopress_autoterm']['autoterm_for_metaboxes'])) {
         $data['taxopress_autoterm']['autoterm_for_metaboxes'] = 0;
+    }
+    if (!isset($data['taxopress_autoterm']['autoterm_preview_debug'])) {
+        $data['taxopress_autoterm']['autoterm_preview_debug'] = 0;
     }
     if (!isset($data['taxopress_autoterm']['schedule_autoterm_target'])) {
         $data['taxopress_autoterm']['schedule_autoterm_target'] = 0;

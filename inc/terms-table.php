@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
@@ -298,6 +300,47 @@ class Taxopress_Terms_List extends WP_List_Table
     /**
      * Arrange terms in hierarchical order with depth info for dash prefixing.
     */
+    private function append_hierarchical_terms(&$ordered, &$visited, $terms_by_id, $children, $term_ids)
+    {
+        $stack = [];
+
+        foreach (array_reverse($term_ids) as $term_id) {
+            $stack[] = [
+                'term_id' => (int) $term_id,
+                'depth'   => 0,
+            ];
+        }
+
+        while (!empty($stack)) {
+            $node = array_pop($stack);
+            $term_id = (int) $node['term_id'];
+
+            if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
+                continue;
+            }
+
+            $visited[$term_id] = true;
+            $term = $terms_by_id[$term_id];
+            $term->taxopress_depth = (int) $node['depth'];
+            $ordered[] = $term;
+
+            if (!empty($children[$term_id])) {
+                foreach (array_reverse($children[$term_id]) as $child_id) {
+                    $child_id = (int) $child_id;
+
+                    if ($child_id === $term_id || isset($visited[$child_id])) {
+                        continue;
+                    }
+
+                    $stack[] = [
+                        'term_id' => $child_id,
+                        'depth'   => (int) $node['depth'] + 1,
+                    ];
+                }
+            }
+        }
+    }
+
     public function taxopress_arrange_terms_hierarchically($terms)
     {
         $terms_by_id = [];
@@ -317,46 +360,6 @@ class Taxopress_Terms_List extends WP_List_Table
         $ordered = [];
         $visited = [];
 
-        $add_terms = function ($term_ids) use (&$terms_by_id, &$children, &$ordered, &$visited) {
-            $stack = [];
-
-            foreach (array_reverse($term_ids) as $term_id) {
-                $stack[] = [
-                    'term_id' => (int) $term_id,
-                    'depth'   => 0,
-                ];
-            }
-
-            while (!empty($stack)) {
-                $node = array_pop($stack);
-                $term_id = (int) $node['term_id'];
-
-                if (isset($visited[$term_id]) || !isset($terms_by_id[$term_id])) {
-                    continue;
-                }
-
-                $visited[$term_id] = true;
-                $term = $terms_by_id[$term_id];
-                $term->taxopress_depth = (int) $node['depth'];
-                $ordered[] = $term;
-
-                if (!empty($children[$term_id])) {
-                    foreach (array_reverse($children[$term_id]) as $child_id) {
-                        $child_id = (int) $child_id;
-
-                        if ($child_id === $term_id || isset($visited[$child_id])) {
-                            continue;
-                        }
-
-                        $stack[] = [
-                            'term_id' => $child_id,
-                            'depth'   => (int) $node['depth'] + 1,
-                        ];
-                    }
-                }
-            }
-        };
-
         // Start with root terms
         $root_ids = [];
         foreach ($terms as $term) {
@@ -368,13 +371,13 @@ class Taxopress_Terms_List extends WP_List_Table
             }
         }
 
-        $add_terms($root_ids);
+        $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, $root_ids);
 
         // Include any disconnected or cyclic branches once, without recursion.
         foreach ($terms as $term) {
             $term_id = (int) $term->term_id;
             if (!isset($visited[$term_id])) {
-                $add_terms([$term_id]);
+                $this->append_hierarchical_terms($ordered, $visited, $terms_by_id, $children, [$term_id]);
             }
         }
 
@@ -735,7 +738,7 @@ class Taxopress_Terms_List extends WP_List_Table
             ];
         }
         $columns = [
-            'cb'      => '<input type="checkbox" />',
+            'cb'      => '<input type="checkbox" aria-label="' . esc_attr__('Select all terms', 'simple-tags') . '" />',
             'name'     => esc_html__('Title', 'simple-tags'),
             'slug'     => esc_html__('Slug', 'simple-tags'),
             'description'     => esc_html__('Description', 'simple-tags'),
@@ -786,7 +789,16 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'taxopress_terms', $item->term_id);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'taxopress_terms',
+            $item->term_id,
+            sprintf(
+                /* translators: %s: term ID. */
+                esc_attr__('Select term %s', 'simple-tags'),
+                (string) $item->term_id
+            )
+        );
     }
 
     /**
@@ -890,16 +902,18 @@ class Taxopress_Terms_List extends WP_List_Table
      */
     public function process_bulk_action()
     {
+        $current_action = $this->current_action();
 
-        $query_arg = '_wpnonce';
-        $action = 'bulk-' . $this->_args['plural'];
-        $checked = isset($_REQUEST[$query_arg]) ? wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$query_arg])), $action) : false;
-
-        if (!$checked || !current_user_can('simple_tags')) {
+        if (
+            !in_array($current_action, ['taxopress-terms-delete-terms', 'taxopress-terms-copy-terms'], true)
+            || !current_user_can('simple_tags')
+        ) {
             return;
         }
 
-        if ($this->current_action() === 'taxopress-terms-delete-terms') {
+        check_admin_referer('bulk-' . $this->_args['plural']);
+
+        if ($current_action === 'taxopress-terms-delete-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             if (!empty($taxopress_terms)) {
                 $deleted_terms_by_taxonomy = [];
@@ -927,7 +941,7 @@ class Taxopress_Terms_List extends WP_List_Table
                 }
             }
         }
-        if ($this->current_action() === 'taxopress-terms-copy-terms') {
+        if ($current_action === 'taxopress-terms-copy-terms') {
             $taxopress_terms = !empty($_REQUEST['taxopress_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_REQUEST['taxopress_terms'])) : [];
             $destination_taxonomy = !empty($_REQUEST['taxopress_destination_taxonomy']) ? sanitize_key(wp_unslash($_REQUEST['taxopress_destination_taxonomy'])) : '';
             $destination_post = !empty($_REQUEST['taxopress_destination_post_type']) ? sanitize_text_field(wp_unslash($_REQUEST['taxopress_destination_post_type'])) : '';

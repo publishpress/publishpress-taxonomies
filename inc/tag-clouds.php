@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 class SimpleTags_Tag_Clouds
 {
     public const MENU_SLUG = 'st_options';
@@ -300,6 +302,9 @@ class SimpleTags_Tag_Clouds
                                         <?php
                                         if ($tag_cloud_edit) {
                                             $active_tab = (isset($current['active_tab']) && !empty(trim($current['active_tab']))) ? $current['active_tab'] : 'tagcloud_general';
+                                            if ($active_tab === 'tagcloud_options') {
+                                                $active_tab = 'tagcloud_layout';
+                                            }
                                             echo esc_html__('Edit Terms Display', 'simple-tags');
                                             echo '<input type="hidden" name="edited_tagcloud" value="' . esc_attr($current['ID']) . '" />';
                                             echo '<input type="hidden" name="taxopress_tag_cloud[ID]" value="' . esc_attr($current['ID']) . '" />';
@@ -336,10 +341,6 @@ class SimpleTags_Tag_Clouds
 
                                                 <li aria-current="<?php echo $active_tab === 'tagcloud_terms' ? 'true' : 'false'; ?>" class="tagcloud_terms_tab <?php echo $active_tab === 'tagcloud_terms' ? 'active' : ''; ?>" data-content="tagcloud_terms">
                                                     <a href="#tagcloud_terms"><span><?php esc_html_e('Choose Terms', 'simple-tags'); ?></span></a>
-                                                </li>
-
-                                                <li aria-current="<?php echo $active_tab === 'tagcloud_options' ? 'true' : 'false'; ?>" class="tagcloud_options_tab <?php echo $active_tab === 'tagcloud_options' ? 'active' : ''; ?>" data-content="tagcloud_options">
-                                                    <a href="#tagcloud_options"><span><?php esc_html_e('Options', 'simple-tags'); ?></span></a>
                                                 </li>
 
                                                 <li aria-current="<?php echo $active_tab === 'tagcloud_layout' ? 'true' : 'false'; ?>" class="tagcloud_layout_tab <?php echo $active_tab === 'tagcloud_layout' ? 'active' : ''; ?>" data-content="tagcloud_layout">
@@ -600,6 +601,17 @@ class SimpleTags_Tag_Clouds
                                                         'required'  => false,
                                                     ]);
 
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_number_input([
+                                                        'namearray' => 'taxopress_tag_cloud',
+                                                        'name'      => 'min_usage',
+                                                        'textvalue' => isset($current['min_usage']) ? esc_attr($current['min_usage']) : '0',
+                                                        'labeltext' => esc_html__('Minimum term usage', 'simple-tags'),
+                                                        'helptext'  => esc_html__('Only display terms used by at least this many content items. Set to 0 for no minimum.', 'simple-tags'),
+                                                        'min'       => '0',
+                                                        'required'  => true,
+                                                    ]);
+
                                                     $select = [
                                                     'options' => [
                                                     [ 'attr' => '1', 'text' => esc_attr__('24 hours', 'simple-tags') ],
@@ -636,7 +648,7 @@ class SimpleTags_Tag_Clouds
                                                     echo $ui->get_select_checkbox_input_main([
                                                     'namearray'  => 'taxopress_tag_cloud',
                                                     'name'       => 'order',
-                                                    'labeltext'  => esc_html__('Ordering for choosing terms for display', 'simple-tags'),
+                                                    'labeltext'  => esc_html__('Order direction', 'simple-tags'),
                                                     'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ]);
 
@@ -670,15 +682,6 @@ class SimpleTags_Tag_Clouds
                                                         'labeltext'  => esc_html__('Display format', 'simple-tags'),
                                                         'selections' => $select,// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         ]);
-                                                        ?>
-
-                                                </table>  
-                                                     
-
-
-                                                <table class="form-table taxopress-table tagcloud_options"
-                                                       style="<?php echo $active_tab === 'tagcloud_options' ? '' : 'display:none;'; ?>">
-                                                       <?php
 
                                                  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         echo $ui->get_text_input([
@@ -712,6 +715,7 @@ class SimpleTags_Tag_Clouds
                                                        'required'  => false,
                                                        ]);
                                                         ?>
+
                                                 </table>
 
                                                 <table class="form-table taxopress-table tagcloud_exceptions"
@@ -937,12 +941,37 @@ class SimpleTags_Tag_Clouds
                                                        'cols'      => '40',
                                                        'textvalue' => isset($current['xformat']) ? esc_attr($current['xformat']) : esc_attr('<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>'),
                                                        'labeltext' => esc_html__('Term link format', 'simple-tags'),
-                                                       'helptext'  => sprintf(esc_html__('This option allows you to change the format of your terms. You can use any of the tokens in the "Terms Display format" sidebar". Find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-tag-clouds/">', '</a>'),
+                                                       'helptext'  => sprintf(esc_html__('This option allows you to change the format of your terms. You can use any of the tokens shown below. Find more details %1sin the documentation%2s.', 'simple-tags'), '<a target="blank" href="https://taxopress.com/docs/format-tag-clouds/">', '</a>'),
                                                        'required'  => false,
                                                        ]);
 
-
                                                         ?>
+                                                    <tr valign="top">
+                                                        <td colspan="2">
+                                                            <div class="postbox taxopress-terms-display-format-box">
+                                                                <div class="postbox-header">
+                                                                    <h2 class="hndle is-non-sortable">
+                                                                        <span><?php echo esc_html__('Terms Display format', 'simple-tags'); ?></span>
+                                                                    </h2>
+                                                                </div>
+                                                                <div class="inside">
+                                                                    <p><?php echo esc_html__('Here are the tokens you can use for Term link format', 'simple-tags'); ?>:</p>
+                                                                    <ul>
+                                                                        <li><code>%tag_link%</code> – <?php echo esc_html__('The URL of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_id%</code> – <?php echo esc_html__('The ID of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>t%tag_scale%</code> – <?php echo esc_html__('The weighted size of the term in the display', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_count%</code> – <?php echo esc_html__('The number of times the term is used', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_rel%</code> – <?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (<?php echo esc_html__('it creates', 'simple-tags'); ?> <code>rel="tag"</code>)</li>
+                                                                        <li><code>%tag_size%</code> – <?php echo esc_html__('The font size for the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_color%</code> – <?php echo esc_html__('The font color for the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_name%</code> – <?php echo esc_html__('The name of the term', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_name_attribute%</code> – <?php echo esc_html__('The name of the term with any HTML stripped out', 'simple-tags'); ?></li>
+                                                                        <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the term', 'simple-tags'); ?></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </table>
 
 
@@ -967,7 +996,7 @@ class SimpleTags_Tag_Clouds
                                         The Pro version has more features and support.', 'simple-tags'); ?>
                                     </div>
                                     <div class="pp-version-notice-bold-purple-button">
-                                        <a href="https://taxopress.com/taxopress/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?> </a>
+                                        <a href="https://publishpress.com/taxonomies/" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'simple-tags'); ?> </a>
                                     </div>
                                 </div>
 
@@ -1029,37 +1058,6 @@ class SimpleTags_Tag_Clouds
                     ?>
 
                     </div>
-
-                    <div class="taxopress-token-right-sidebar">
-            <div id="postbox-container-1" class="postbox-container">
-            <div class="meta-box-sortables">
-                <div class="postbox">
-                    <div class="postbox-header">
-                        <h3 class="hndle is-non-sortable">
-                            <span><?php echo esc_html__('Terms Display format', 'simple-tags'); ?></span>
-                        </h3>
-                    </div>
-        
-                    <div class="inside">
-                        <p><?php echo esc_html__('Here are the tokens you can use for Term link format', 'simple-tags'); ?>:</p>
-                        <ul>
-                            <li><code>%tag_link%</code> – <?php echo esc_html__('The URL of the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_id%</code> – <?php echo esc_html__('The ID of the term', 'simple-tags'); ?></li>
-                            <li><code>t%tag_scale%</code> – <?php echo esc_html__('The weighted size of the term in the display', 'simple-tags'); ?></li>
-                            <li><code>%tag_count%</code> – <?php echo esc_html__('The number of times the term is used', 'simple-tags'); ?></li>
-                            <li><code>%tag_rel%</code> – <?php echo esc_html__('This provides rel tag markup', 'simple-tags'); ?> (<?php echo esc_html__('it creates', 'simple-tags'); ?> <code>rel="tag"</code>)</li>
-                            <li><code>%tag_size%</code> – <?php echo esc_html__('The font size for the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_color%</code> – <?php echo esc_html__('The font color for the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_name%</code> – <?php echo esc_html__('The name of the term', 'simple-tags'); ?></li>
-                            <li><code>%tag_name_attribute%</code> – <?php echo esc_html__('The name of the term with any HTML stripped out', 'simple-tags'); ?></li>
-                            <li><code>%tag_description%</code> – <?php echo esc_html__('The description of the term', 'simple-tags'); ?></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>
-
 
                                                     <?php do_action('taxopress_admin_after_sidebar'); ?>
                 </div>
@@ -1163,6 +1161,7 @@ class SimpleTags_Tag_Clouds
             'display_mode' => $config['display_mode'] ?? 'parents_and_sub',
             'max'         => $config['max'] ?? 20,
             'limit_days' => $config['limit_days'] ?? '',
+            'min_usage'  => $config['min_usage'] ?? 0,
         ]);
 
         // Get the tag cloud output

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Fetch our PublishPress Taxonomies Related Posts option.
  *
@@ -174,7 +176,7 @@ function taxopress_create_default_related_post()
     $default['taxopress_related_post']['limit_days']   = 0;
     $default['taxopress_related_post']['order']        = 'count-desc';
     $default['taxopress_related_post']['nopoststext']  = __('No related posts.', 'simple-tags');
-    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" height="200" width="200" class="custom-image-class"/><br>%post_title%<br>%post_category%</a>';
+    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>';
     $default['taxopress_related_post']['format']       = 'box';
     $default['taxopress_related_post']['default_featured_media'] = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
     $default['taxopress_related_post']['imageresolution'] = '1536x1536';
@@ -380,36 +382,47 @@ function taxopress_relatedposts_shortcode($atts)
  */
 function taxopress_relatedposts_the_content($content = '')
 {
+    static $is_rendering = false;
 
-    $post_tags = taxopress_get_relatedpost_data();
-
-    if (count($post_tags) > 0) {
-        foreach ($post_tags as $post_tag) {
-            // Get option
-            $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
-
-            if (!$embedded) {
-                continue;
-            }
-
-            $marker = false;
-            if (is_feed() && in_array('feed', $embedded)) {
-                $marker = true;
-            } elseif (is_home() && in_array('homeonly', $embedded)) {
-                $marker = true;
-            } elseif (is_feed() && in_array('blogonly', $embedded)) {
-                $marker = true;
-            } elseif (is_singular() && in_array('singleonly', $embedded)) {
-                $marker = true;
-            } elseif (is_singular() && in_array(get_post_type(), $embedded)) {
-                $marker = true;
-            }
-            if (true === $marker) {
-                $relatedpost_arg = build_query($post_tag);
-                $content         .= SimpleTags_Client_RelatedPosts::get_related_posts($relatedpost_arg);
-            }
-        }
+    if ($is_rendering) {
+        return $content;
     }
 
-    return $content;
+    $is_rendering = true;
+
+    try {
+        $post_tags = taxopress_get_relatedpost_data();
+
+        if (count($post_tags) > 0) {
+            foreach ($post_tags as $post_tag) {
+                // Get option
+                $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
+
+                if (!$embedded) {
+                    continue;
+                }
+
+                $marker = false;
+                if (is_feed() && in_array('feed', $embedded)) {
+                    $marker = true;
+                } elseif (is_home() && in_array('homeonly', $embedded)) {
+                    $marker = true;
+                } elseif (is_feed() && in_array('blogonly', $embedded)) {
+                    $marker = true;
+                } elseif (is_singular() && in_array('singleonly', $embedded)) {
+                    $marker = true;
+                } elseif (is_singular() && in_array(get_post_type(), $embedded)) {
+                    $marker = true;
+                }
+                if (true === $marker) {
+                    $relatedpost_arg = build_query($post_tag);
+                    $content         .= SimpleTags_Client_RelatedPosts::get_related_posts($relatedpost_arg);
+                }
+            }
+        }
+
+        return $content;
+    } finally {
+        $is_rendering = false;
+    }
 }

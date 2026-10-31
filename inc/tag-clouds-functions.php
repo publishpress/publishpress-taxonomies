@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Fetch our PublishPress Taxonomies Terms Display option.
  *
@@ -169,6 +171,7 @@ function taxopress_create_default_tag_cloud()
     $default['taxopress_tag_cloud']['maxcolor'] = '#000000';
     $default['taxopress_tag_cloud']['xformat'] = '<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>';
     $default['taxopress_tag_cloud']['limit_days'] = 0;
+    $default['taxopress_tag_cloud']['min_usage'] = 0;
     $default['taxopress_tag_cloud']['term_selection_mode'] = 'automatic';
     $default['taxopress_tag_cloud']['include_terms'] = '';
     $default['tagcloud_submit'] = 'Add Terms Display';
@@ -217,6 +220,9 @@ function taxopress_update_tagcloud($data = [])
 
     $xformat                       = $data['taxopress_tag_cloud']['xformat'];
     $data['taxopress_tag_cloud']['xformat'] = stripslashes_deep($xformat);
+
+    $min_usage = isset($data['taxopress_tag_cloud']['min_usage']) ? (int) $data['taxopress_tag_cloud']['min_usage'] : 0;
+    $data['taxopress_tag_cloud']['min_usage'] = max(0, $min_usage);
 
     if (!empty($data['taxopress_tag_cloud']['color'])) {
         $data['taxopress_tag_cloud']['color'] = taxopress_disp_boolean($data['taxopress_tag_cloud']['color']);
