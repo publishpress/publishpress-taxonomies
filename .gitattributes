@@ -3,6 +3,7 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.json text eol=lf
+readme.txt whitespace=cr-at-eol
 .gitattributes text eol=lf
 
 *.code-workspace export-ignore
