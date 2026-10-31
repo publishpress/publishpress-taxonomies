@@ -10,23 +10,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-30 09:09+0000\n"
+"PO-Revision-Date: 2026-10-31 01:59+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: el\n"
 
-#: simple-tags.php:4, fuzzy
+#: simple-tags.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php:5
+#: simple-tags.php
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php:6
+#: simple-tags.php
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -35,13 +35,13 @@ msgstr ""
 "PublishPress Taxonomies σας επιτρέπει να δημιουργείτε και να διαχειρίζεστε "
 "Ετικέτες, Κατηγορίες και όλους τους όρους ταξινόμησης του WordPress."
 
-#: simple-tags.php:8
-#: inc/class.admin.php:1164
+#: simple-tags.php
+#: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php:9
+#: simple-tags.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -92,8 +92,8 @@ msgstr "Εμφάνιση Όρων (PublishPress Taxonomies)"
 #: inc/class.admin.manage.php:1184
 #: inc/class.admin.manage.php:1679
 #: inc/class.admin.manage.php:1834
-#: inc/class.admin.php:261
-#: inc/class.admin.php:307
+#: inc/class.admin.php:262
+#: inc/class.admin.php:308
 #: inc/post-tags.php:1083
 #: inc/related-posts.php:1347
 #: inc/tag-clouds.php:1111
@@ -205,7 +205,7 @@ msgid "Completed: %s terms added from %s posts checked."
 msgstr "Ολοκληρώθηκε: %s όροι προστέθηκαν από %s δημοσιεύσεις που ελέγχθηκαν."
 
 #: inc/autolinks-functions.php:175
-#: inc/class.admin.php:1407, fuzzy
+#: inc/class.admin.php:1408, fuzzy
 msgid "Auto link"
 msgstr "Auto link"
 
@@ -245,7 +245,7 @@ msgstr "Auto Link"
 #: inc/autolinks.php:74
 #: inc/autolinks.php:75
 #: inc/autolinks.php:128
-#: inc/class.admin.php:1195
+#: inc/class.admin.php:1196
 #: inc/class.admin.post.php:86
 #: inc/functions.inc.php:591, fuzzy
 msgid "Auto Links"
@@ -276,7 +276,7 @@ msgstr "Τίτλος"
 #: inc/autoterms.php:596
 #: inc/class-taxonomies-table.php:18
 #: inc/class.admin.clickterms.php:62
-#: inc/class.admin.php:585
+#: inc/class.admin.php:586
 #: inc/post-tags-table.php:70
 #: inc/post-tags.php:465
 #: inc/related-posts-table.php:68
@@ -325,7 +325,7 @@ msgstr "Επεξεργασία"
 #: inc/autoterms-table.php:282
 #: inc/autoterms.php:663
 #: inc/class-tag-table.php:220
-#: inc/class.admin.php:770
+#: inc/class.admin.php:771
 #: inc/class.admin.taxonomies.ui.php:843
 #: inc/post-tags-table.php:282
 #: inc/related-posts-table.php:291
@@ -675,13 +675,13 @@ msgstr ""
 #: inc/autoterms.php:873
 #: inc/autoterms.php:970
 #: inc/autoterms.php:1051
-#: inc/autoterms.php:1175
-#: inc/autoterms.php:1189
-#: inc/autoterms.php:1220
-#: inc/autoterms.php:1234
-#: inc/autoterms.php:1264
-#: inc/autoterms.php:1316
-#: inc/autoterms.php:1447
+#: inc/autoterms.php:1178
+#: inc/autoterms.php:1192
+#: inc/autoterms.php:1223
+#: inc/autoterms.php:1237
+#: inc/autoterms.php:1267
+#: inc/autoterms.php:1319
+#: inc/autoterms.php:1450
 #: inc/autoterms_content.php:192
 #: inc/post-tags.php:575
 #: inc/post-tags.php:816
@@ -725,13 +725,13 @@ msgstr "Ψευδές"
 #: inc/autoterms.php:874
 #: inc/autoterms.php:975
 #: inc/autoterms.php:1056
-#: inc/autoterms.php:1180
-#: inc/autoterms.php:1193
-#: inc/autoterms.php:1225
-#: inc/autoterms.php:1238
-#: inc/autoterms.php:1269
-#: inc/autoterms.php:1321
-#: inc/autoterms.php:1452
+#: inc/autoterms.php:1183
+#: inc/autoterms.php:1196
+#: inc/autoterms.php:1228
+#: inc/autoterms.php:1241
+#: inc/autoterms.php:1272
+#: inc/autoterms.php:1324
+#: inc/autoterms.php:1455
 #: inc/autoterms_content.php:197
 #: inc/post-tags.php:580
 #: inc/post-tags.php:821
@@ -799,58 +799,58 @@ msgstr ""
 "#main-header"
 
 #: inc/autolinks.php:788
-#: inc/autoterms.php:1368
+#: inc/autoterms.php:1371
 #: inc/related-posts.php:434, fuzzy
 msgid "H1"
 msgstr "H1"
 
 #: inc/autolinks.php:789
-#: inc/autoterms.php:1369
+#: inc/autoterms.php:1372
 #: inc/related-posts.php:438, fuzzy
 msgid "H2"
 msgstr "H2"
 
 #: inc/autolinks.php:790
-#: inc/autoterms.php:1370
+#: inc/autoterms.php:1373
 #: inc/related-posts.php:442, fuzzy
 msgid "H3"
 msgstr "H3"
 
 #: inc/autolinks.php:791
-#: inc/autoterms.php:1371
+#: inc/autoterms.php:1374
 #: inc/related-posts.php:446, fuzzy
 msgid "H4"
 msgstr "H4"
 
 #: inc/autolinks.php:792
-#: inc/autoterms.php:1372
+#: inc/autoterms.php:1375
 #: inc/related-posts.php:451, fuzzy
 msgid "H5"
 msgstr "H5"
 
 #: inc/autolinks.php:793
-#: inc/autoterms.php:1373
+#: inc/autoterms.php:1376
 #: inc/related-posts.php:455, fuzzy
 msgid "H6"
 msgstr "H6"
 
 #: inc/autolinks.php:795
-#: inc/autoterms.php:1376, fuzzy
+#: inc/autoterms.php:1379, fuzzy
 msgid "script"
 msgstr "script"
 
 #: inc/autolinks.php:796
-#: inc/autoterms.php:1377, fuzzy
+#: inc/autoterms.php:1380, fuzzy
 msgid "style"
 msgstr "style"
 
 #: inc/autolinks.php:797
-#: inc/autoterms.php:1378, fuzzy
+#: inc/autoterms.php:1381, fuzzy
 msgid "pre"
 msgstr "pre"
 
 #: inc/autolinks.php:798
-#: inc/autoterms.php:1379, fuzzy
+#: inc/autoterms.php:1382, fuzzy
 msgid "code"
 msgstr "code"
 
@@ -953,7 +953,7 @@ msgstr ""
 "με χαμηλότερο αριθμό."
 
 #: inc/autolinks.php:1112
-#: inc/autoterms.php:1697
+#: inc/autoterms.php:1700
 #: inc/tag-clouds.php:995
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
@@ -965,7 +965,7 @@ msgstr ""
 "δυνατότητες και υποστήριξη."
 
 #: inc/autolinks.php:1115
-#: inc/autoterms.php:1701
+#: inc/autoterms.php:1704
 #: inc/post-tags.php:977
 #: inc/related-posts.php:1231
 #: inc/tag-clouds.php:999
@@ -1001,12 +1001,12 @@ msgid "Add Auto Links"
 msgstr "Προσθήκη Auto Links"
 
 #: inc/autolinks.php:1178
-#: inc/autoterms.php:1763
+#: inc/autoterms.php:1766
 msgid "PublishPress Taxonomies and Languages"
 msgstr "PublishPress Taxonomies και Γλώσσες"
 
 #: inc/autolinks.php:1182
-#: inc/autoterms.php:1767
+#: inc/autoterms.php:1770
 #, php-format
 msgid ""
 "Please note that this is an automatic tool. It does have limitations around "
@@ -1018,7 +1018,7 @@ msgstr ""
 "Παρακαλώ διαβάστε αυτή τη τεκμηρίωση. %2s"
 
 #: inc/autolinks.php:1206
-#: inc/autoterms.php:1791
+#: inc/autoterms.php:1794
 #: inc/post-tags.php:1060
 #: inc/related-posts.php:1319
 #: inc/tag-clouds.php:1080
@@ -1029,7 +1029,7 @@ msgstr ""
 "αλλαγές σας:"
 
 #: inc/autolinks.php:1209
-#: inc/autoterms.php:1794
+#: inc/autoterms.php:1797
 #: inc/post-tags.php:1063
 #: inc/related-posts.php:1322
 #: inc/tag-clouds.php:1083
@@ -1038,7 +1038,7 @@ msgid "Okay"
 msgstr "Εντάξει"
 
 #: inc/autolinks.php:1215
-#: inc/autoterms.php:1801
+#: inc/autoterms.php:1804
 #: inc/class-taxonomies-table.php:417
 #: inc/post-tags-table.php:363
 #: inc/post-tags.php:1069
@@ -1050,7 +1050,7 @@ msgid "No"
 msgstr "Όχι"
 
 #: inc/autolinks.php:1216
-#: inc/autoterms.php:1803
+#: inc/autoterms.php:1806
 #: inc/class-taxonomies-table.php:419
 #: inc/post-tags.php:1070
 #: inc/related-posts.php:1331
@@ -1190,7 +1190,7 @@ msgstr "Μήνυμα κατάστασης"
 #: inc/autoterms-logs-table.php:168
 #: inc/autoterms-logs-table.php:199
 #: inc/autoterms_content.php:146
-#: inc/class.admin.php:890
+#: inc/class.admin.php:891
 #: inc/schedule.php:215
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -1263,12 +1263,12 @@ msgid "Post Type"
 msgstr "Post Type"
 
 #: inc/autoterms-table.php:386
-#: inc/autoterms.php:1207
+#: inc/autoterms.php:1210
 msgid "Existing taxonomy terms"
 msgstr "Υπάρχοντες όροι κατηγοριών"
 
 #: inc/autoterms-table.php:390
-#: inc/autoterms.php:1157
+#: inc/autoterms.php:1160
 #: inc/class.client.autoterms.php:440
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
@@ -1277,7 +1277,7 @@ msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
-#: inc/autoterms.php:1154
+#: inc/autoterms.php:1157
 #: inc/class.client.autoterms.php:360
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444, fuzzy
@@ -1285,7 +1285,7 @@ msgid "AI Connectors"
 msgstr "AI Connectors"
 
 #: inc/autoterms-table.php:398
-#: inc/autoterms.php:1159
+#: inc/autoterms.php:1162
 #: inc/class.client.autoterms.php:520
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
@@ -1294,7 +1294,7 @@ msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
-#: inc/autoterms.php:1161
+#: inc/autoterms.php:1164
 #: inc/class.client.autoterms.php:602
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
@@ -1303,7 +1303,7 @@ msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
-#: inc/autoterms.php:1163
+#: inc/autoterms.php:1166
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
@@ -1315,8 +1315,8 @@ msgstr "LSEG / Refinitiv"
 #: inc/autoterms.php:181
 #: inc/autoterms.php:245
 #: inc/autoterms.php:383
-#: inc/class.admin.php:135
-#: inc/class.admin.php:1443
+#: inc/class.admin.php:136
+#: inc/class.admin.php:1444
 #: inc/class.admin.post.php:75
 #: inc/functions.inc.php:597
 #: inc/helper.options.admin.php:38
@@ -1438,12 +1438,12 @@ msgstr "Πότε να χρησιμοποιήσετε"
 #: inc/autoterms.php:476
 #: inc/autoterms.php:821
 #: inc/autoterms.php:1086
-#: inc/autoterms.php:1578
+#: inc/autoterms.php:1581
 msgid "Existing Content"
 msgstr "Υπάρχον Περιεχόμενο"
 
 #: inc/autoterms.php:481
-#: inc/autoterms.php:1638
+#: inc/autoterms.php:1641
 #: inc/post-tags.php:283
 #: inc/related-posts.php:279
 #: modules/taxopress-ai/taxopress-ai.php:468
@@ -1494,9 +1494,9 @@ msgid "Please choose an option for \"Content statuses\""
 msgstr "Παρακαλώ επιλέξτε μια επιλογή για \"Καταστάσεις περιεχομένου\""
 
 #: inc/autoterms.php:817
-#: inc/class.admin.php:90
-#: inc/class.admin.php:415
-#: inc/class.admin.php:1419
+#: inc/class.admin.php:91
+#: inc/class.admin.php:416
+#: inc/class.admin.php:1420
 #: inc/functions.inc.php:567
 #: inc/posts-table.php:27
 #: inc/posts.php:165
@@ -1513,7 +1513,7 @@ msgstr "Προγραμματισμός"
 
 #: inc/autoterms.php:823
 #: inc/autoterms.php:1133
-#: inc/class.admin.php:1421
+#: inc/class.admin.php:1422
 #: modules/taxopress-ai/taxopress-ai.php:443
 #: modules/taxopress-ai/taxopress-ai.php:444
 #: modules/taxopress-ai/taxopress-ai.php:476, fuzzy
@@ -1624,75 +1624,84 @@ msgstr ""
 "Ενεργοποιήστε τους Αυτόματους Όρους για τη λειτουργία \"Metaboxes\" και "
 "\"Γρήγορη Ενημέρωση\"."
 
-#: inc/autoterms.php:1151
+#: inc/autoterms.php:1149
+msgid ""
+"Existing Terms requires the term name to appear in the selected content. AI "
+"sources can suggest terms without an exact text match."
+msgstr ""
+"Οι Υπάρχουσες Όροι απαιτούν το όνομα του όρου να εμφανίζεται στο επιλεγμένο "
+"περιεχόμενο. Οι πηγές AI μπορούν να προτείνουν όρους χωρίς ακριβή "
+"αντιστοιχία κειμένου."
+
+#: inc/autoterms.php:1154
 msgid "Existing Terms"
 msgstr "Υπάρχοντες Όροι"
 
-#: inc/autoterms.php:1208
+#: inc/autoterms.php:1211
 msgid ""
-"This will add existing terms from the taxonomy selected in the \"General\" "
-"tab."
+"Add existing terms from the taxonomy selected on the General tab when their "
+"names match the content."
 msgstr ""
-"Αυτό θα προσθέσει υπάρχοντες όρους από την επιλεγμένη ταξινόμηση στην "
-"καρτέλα \"Γενικά\"."
+"Προσθέστε υπάρχοντες όρους από την ταξινόμηση που επιλέχθηκε στην καρτέλα "
+"Γενικά όταν τα ονόματά τους ταιριάζουν με το περιεχόμενο."
 
-#: inc/autoterms.php:1254
+#: inc/autoterms.php:1257
 msgid "Use all the terms in the selected taxonomy."
 msgstr "Χρησιμοποιήστε όλους τους όρους στην επιλεγμένη ταξινόμηση."
 
-#: inc/autoterms.php:1281
+#: inc/autoterms.php:1284
 msgid "Use only some terms in the selected taxonomy."
 msgstr "Χρησιμοποιήστε μόνο μερικούς όρους στην επιλεγμένη ταξινόμηση."
 
-#: inc/autoterms.php:1287
+#: inc/autoterms.php:1290
 msgid "Please choose an option for \"Sources\""
 msgstr "Παρακαλώ επιλέξτε μια επιλογή για \"Πηγές\""
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use"
 msgstr "Επιλέξτε τους όρους που θέλετε να χρησιμοποιήσετε"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use."
 msgstr "Επιλέξτε τους όρους που θέλετε να χρησιμοποιήσετε."
 
-#: inc/autoterms.php:1331
+#: inc/autoterms.php:1334
 msgid "Show Term Post Count"
 msgstr "Εμφάνιση Μετρητή Δημοσίευσης Όρου"
 
-#: inc/autoterms.php:1332
+#: inc/autoterms.php:1335
 msgid "This will show the number of posts attached to the terms."
 msgstr "Αυτό θα δείξει τον αριθμό των δημοσιεύσεων που συνδέονται με τους όρους."
 
-#: inc/autoterms.php:1355
+#: inc/autoterms.php:1358
 msgid "Exclude terms and keywords from Auto Terms"
 msgstr "Αποκλεισμός όρων και λέξεων-κλειδιών από τους Αυτόματους Όρους"
 
-#: inc/autoterms.php:1359
+#: inc/autoterms.php:1362
 msgid "Enter comma-separated terms or keywords to exclude."
 msgstr "Εισάγετε όρους ή λέξεις-κλειδιά διαχωρισμένους με κόμμα για αποκλεισμό."
 
-#: inc/autoterms.php:1375, fuzzy
+#: inc/autoterms.php:1378, fuzzy
 msgid "a"
 msgstr "a"
 
-#: inc/autoterms.php:1382
+#: inc/autoterms.php:1385
 msgid "Prevent Auto Term inside elements"
 msgstr "Αποτροπή Αυτόματου Όρου μέσα σε στοιχεία"
 
-#: inc/autoterms.php:1385
+#: inc/autoterms.php:1388
 msgid "Terms inside these HTML tags will not be used to generate terms."
 msgstr ""
 "Όροι μέσα σε αυτές τις ετικέτες HTML δεν θα χρησιμοποιηθούν για την "
 "παραγωγή όρων."
 
-#: inc/autoterms.php:1463
+#: inc/autoterms.php:1466
 #: inc/autoterms_content.php:208
 #: inc/schedule.php:340
 msgid "Exclude previously analyzed content"
 msgstr "Απαλλαγή από το προηγουμένως αναλυμένο περιεχόμενο"
 
-#: inc/autoterms.php:1464
+#: inc/autoterms.php:1467
 #: inc/autoterms_content.php:209
 msgid ""
 "This enables you to skip posts that have already been analyzed by the "
@@ -1701,13 +1710,13 @@ msgstr ""
 "Αυτό σας επιτρέπει να παραλείψετε δημοσιεύσεις που έχουν ήδη αναλυθεί από "
 "τη λειτουργία Υπάρχον Περιεχόμενο."
 
-#: inc/autoterms.php:1473
+#: inc/autoterms.php:1476
 #: inc/autoterms_content.php:218
 #: inc/schedule.php:349
 msgid "Limit per batches"
 msgstr "Όριο ανά παρτίδα"
 
-#: inc/autoterms.php:1477
+#: inc/autoterms.php:1480
 msgid ""
 "This enables you to add Auto Terms to existing content in batches. If you "
 "have a lot of existing content, set this to a lower number to avoid "
@@ -1717,13 +1726,13 @@ msgstr ""
 "κατά ομάδες. Αν έχετε πολύ υπάρχον περιεχόμενο, ρυθμίστε αυτό σε χαμηλότερο "
 "αριθμό για να αποφύγετε χρονοκαθυστερήσεις."
 
-#: inc/autoterms.php:1487
+#: inc/autoterms.php:1490
 #: inc/autoterms_content.php:232
 #: inc/schedule.php:363
 msgid "Batches wait time"
 msgstr "Χρόνος αναμονής παρτίδων"
 
-#: inc/autoterms.php:1488
+#: inc/autoterms.php:1491
 #: inc/autoterms_content.php:233
 #: inc/schedule.php:364
 msgid ""
@@ -1735,8 +1744,8 @@ msgstr ""
 "παρτίδων Auto Terms. Αν έχετε πολύ υπάρχον περιεχόμενο, ορίστε αυτό σε "
 "υψηλότερο αριθμό για να αποφύγετε χρονικά όρια."
 
-#: inc/autoterms.php:1497
-#: inc/autoterms.php:1532
+#: inc/autoterms.php:1500
+#: inc/autoterms.php:1535
 #: inc/autoterms_content.php:242
 #: inc/autoterms_content.php:277
 #: inc/schedule.php:373
@@ -1744,8 +1753,8 @@ msgstr ""
 msgid "24 hours ago"
 msgstr "Πριν από 24 ώρες"
 
-#: inc/autoterms.php:1501
-#: inc/autoterms.php:1536
+#: inc/autoterms.php:1504
+#: inc/autoterms.php:1539
 #: inc/autoterms_content.php:246
 #: inc/autoterms_content.php:281
 #: inc/schedule.php:377
@@ -1753,8 +1762,8 @@ msgstr "Πριν από 24 ώρες"
 msgid "7 days ago"
 msgstr "πριν 7 ημέρες"
 
-#: inc/autoterms.php:1505
-#: inc/autoterms.php:1540
+#: inc/autoterms.php:1508
+#: inc/autoterms.php:1543
 #: inc/autoterms_content.php:250
 #: inc/autoterms_content.php:285
 #: inc/schedule.php:381
@@ -1762,8 +1771,8 @@ msgstr "πριν 7 ημέρες"
 msgid "2 weeks ago"
 msgstr "πριν 2 εβδομάδες"
 
-#: inc/autoterms.php:1509
-#: inc/autoterms.php:1544
+#: inc/autoterms.php:1512
+#: inc/autoterms.php:1547
 #: inc/autoterms_content.php:254
 #: inc/autoterms_content.php:289
 #: inc/schedule.php:385
@@ -1771,8 +1780,8 @@ msgstr "πριν 2 εβδομάδες"
 msgid "1 month ago"
 msgstr "πριν 1 μήνα"
 
-#: inc/autoterms.php:1514
-#: inc/autoterms.php:1548
+#: inc/autoterms.php:1517
+#: inc/autoterms.php:1551
 #: inc/autoterms_content.php:259
 #: inc/autoterms_content.php:293
 #: inc/schedule.php:390
@@ -1780,8 +1789,8 @@ msgstr "πριν 1 μήνα"
 msgid "6 months ago"
 msgstr "πριν 6 μήνες"
 
-#: inc/autoterms.php:1518
-#: inc/autoterms.php:1552
+#: inc/autoterms.php:1521
+#: inc/autoterms.php:1555
 #: inc/autoterms_content.php:263
 #: inc/autoterms_content.php:297
 #: inc/schedule.php:394
@@ -1789,8 +1798,8 @@ msgstr "πριν 6 μήνες"
 msgid "1 year ago"
 msgstr "πριν 1 χρόνο"
 
-#: inc/autoterms.php:1522
-#: inc/autoterms.php:1556
+#: inc/autoterms.php:1525
+#: inc/autoterms.php:1559
 #: inc/autoterms_content.php:267
 #: inc/autoterms_content.php:301
 #: inc/post-tags.php:488
@@ -1801,99 +1810,99 @@ msgstr "πριν 1 χρόνο"
 msgid "No limit"
 msgstr "Χωρίς περιορισμό"
 
-#: inc/autoterms.php:1569
+#: inc/autoterms.php:1572
 #: inc/autoterms_content.php:314
 #: inc/schedule.php:445
 msgid "Limit Auto Terms, based on published date"
 msgstr "Περιορισμός Αυτόματων Όρων, με βάση την ημερομηνία δημοσίευσης"
 
-#: inc/autoterms.php:1573
+#: inc/autoterms.php:1576
 msgid "This setting allows you to add Auto Terms only to recent content."
 msgstr ""
 "Αυτή η ρύθμιση σας επιτρέπει να προσθέσετε Αυτόματους Όρους μόνο σε "
 "πρόσφατο περιεχόμενο."
 
-#: inc/autoterms.php:1581
+#: inc/autoterms.php:1584
 #: inc/autoterms_content.php:347
 msgid "Add Auto Terms to existing content"
 msgstr "Προσθήκη Αυτόματων Όρων σε υπάρχον περιεχόμενο"
 
-#: inc/autoterms.php:1585
+#: inc/autoterms.php:1588
 msgid "Click the button to add Auto Terms to existing content."
 msgstr ""
 "Κάντε κλικ στο κουμπί για να προσθέσετε Αυτόματους Όρους σε υπάρχον "
 "περιεχόμενο."
 
-#: inc/autoterms.php:1602
+#: inc/autoterms.php:1605
 msgid "Save changes to the settings before using this feature."
 msgstr ""
 "Αποθηκεύστε τις αλλαγές στις ρυθμίσεις πριν χρησιμοποιήσετε αυτή τη "
 "λειτουργία."
 
-#: inc/autoterms.php:1627
+#: inc/autoterms.php:1630
 #: modules/taxopress-ai/taxopress-ai.php:944
 msgid "Select..."
 msgstr "Επιλέξτε..."
 
-#: inc/autoterms.php:1649
+#: inc/autoterms.php:1652
 msgid "Show debug information"
 msgstr "Εμφάνιση πληροφοριών αποσφαλμάτωσης"
 
-#: inc/autoterms.php:1652
+#: inc/autoterms.php:1655
 msgid "Display sanitized request and response data for each enabled source."
 msgstr ""
 "Εμφάνιση καθαρισμένων δεδομένων αίτησης και απόκρισης για κάθε "
 "ενεργοποιημένη πηγή."
 
-#: inc/autoterms.php:1657
+#: inc/autoterms.php:1660
 msgid "Debug information"
 msgstr "Πληροφορίες αποσφαλμάτωσης"
 
-#: inc/autoterms.php:1658
+#: inc/autoterms.php:1661
 msgid "Request"
 msgstr "Αίτηση"
 
-#: inc/autoterms.php:1659
+#: inc/autoterms.php:1662
 msgid "Response"
 msgstr "Απόκριση"
 
-#: inc/autoterms.php:1660
+#: inc/autoterms.php:1663
 msgid "No source debug data was returned for this preview request."
 msgstr ""
 "Δεν επιστράφηκαν δεδομένα αποσφαλμάτωσης πηγής για αυτή την προεπισκόπηση "
 "αίτησης."
 
-#: inc/autoterms.php:1661
+#: inc/autoterms.php:1664
 msgid "Copy request"
 msgstr "Αντιγραφή αίτησης"
 
-#: inc/autoterms.php:1662
+#: inc/autoterms.php:1665
 msgid "Copy response"
 msgstr "Αντιγραφή απάντησης"
 
-#: inc/autoterms.php:1663
+#: inc/autoterms.php:1666
 msgid "Copy all"
 msgstr "Αντιγραφή όλων"
 
-#: inc/autoterms.php:1664
+#: inc/autoterms.php:1667
 msgid "Download JSON"
 msgstr "Λήψη JSON"
 
-#: inc/autoterms.php:1665
+#: inc/autoterms.php:1668
 msgid "Debug information copied to the clipboard."
 msgstr "Οι πληροφορίες αποσφαλμάτωσης αντιγράφηκαν στο πρόχειρο."
 
-#: inc/autoterms.php:1666
+#: inc/autoterms.php:1669
 msgid "The debug information could not be copied. Please try again."
 msgstr ""
 "Οι πληροφορίες αποσφαλμάτωσης δεν μπόρεσαν να αντιγραφούν. Παρακαλώ "
 "δοκιμάστε ξανά."
 
-#: inc/autoterms.php:1735
+#: inc/autoterms.php:1738
 msgid "Save Auto Terms"
 msgstr "Αποθήκευση Αυτόματων Όρων"
 
-#: inc/autoterms.php:1741
+#: inc/autoterms.php:1744
 msgid "Add Auto Terms"
 msgstr "Προσθήκη Αυτόματων Όρων"
 
@@ -1967,7 +1976,7 @@ msgid "You can see full log details on the %1s screen"
 msgstr "Μπορείτε να δείτε λεπτομέρειες πλήρους καταγραφής στην οθόνη %1s"
 
 #: inc/class-tag-table.php:18
-#: inc/class.admin.php:1192
+#: inc/class.admin.php:1193
 msgid "Tag Cloud"
 msgstr "Σύννεφο Ετικετών"
 
@@ -2020,8 +2029,8 @@ msgid "Select term %s"
 msgstr "Επιλέξτε τον όρο %s"
 
 #: inc/class-taxonomies-table.php:19
-#: inc/class.admin.php:68
-#: inc/class.admin.php:877
+#: inc/class.admin.php:69
+#: inc/class.admin.php:878
 #: inc/functions.inc.php:555
 #: inc/taxonomies.php:116
 #: inc/taxonomies.php:117
@@ -2067,7 +2076,7 @@ msgid "WordPress core"
 msgstr "WordPress core"
 
 #: inc/class-taxonomies-table.php:398
-#: inc/class.admin.php:1148
+#: inc/class.admin.php:1149
 #: inc/class.admin.post.php:49
 #: modules/taxopress-ai/taxopress-ai.php:1317, fuzzy
 msgid "PublishPress Taxonomies"
@@ -2626,8 +2635,8 @@ msgstr "Εμφάνιση υπαρχόντων όρων"
 #: inc/class.admin.clickterms.php:230
 #: inc/class.admin.manage.php:1120
 #: inc/class.admin.manage.php:1179
-#: inc/class.admin.php:256
-#: inc/class.admin.php:303
+#: inc/class.admin.php:257
+#: inc/class.admin.php:304
 #: inc/post-tags.php:1079
 #: inc/related-posts.php:1343
 #: modules/taxopress-ai/taxopress-ai.php:1147
@@ -2650,7 +2659,7 @@ msgstr "PublishPress Taxonomies: Διαχείριση Όρων"
 
 #: inc/class.admin.manage.php:72
 #: inc/class.admin.manage.php:193
-#: inc/class.admin.php:1435
+#: inc/class.admin.php:1436
 #: inc/functions.inc.php:609
 msgid "Manage Terms"
 msgstr "Διαχείριση Όρων"
@@ -2882,13 +2891,13 @@ msgstr ""
 "συγχωνευτούν σε έναν νέο όρο."
 
 #: inc/class.admin.manage.php:456
-#: inc/class.admin.php:780
+#: inc/class.admin.php:781
 #: inc/terms-table.php:1475
 msgid "Cancel"
 msgstr "Ακύρωση"
 
 #: inc/class.admin.manage.php:459
-#: inc/class.admin.php:782
+#: inc/class.admin.php:783
 msgid "Continue"
 msgstr "Συνέχεια"
 
@@ -3099,7 +3108,7 @@ msgstr "Ο όρος(οι) αφαιρέθηκαν από το %1s %2s."
 #: inc/class.admin.mass.php:36
 #: inc/class.admin.mass.php:37
 #: inc/class.admin.mass.php:182
-#: inc/class.admin.php:1437
+#: inc/class.admin.php:1438
 #: inc/functions.inc.php:603
 msgid "Mass Edit Terms"
 msgstr "Μαζική Επεξεργασία Όρων"
@@ -3164,14 +3173,7 @@ msgstr "Ενημέρωση όλων &raquo;"
 msgid "No content to edit."
 msgstr "Δεν υπάρχει περιεχόμενο προς επεξεργασία."
 
-#: inc/class.admin.php:66
-#: inc/dashboard.php:46
-#: inc/dashboard.php:47
-#: inc/dashboard.php:98
-msgid "Dashboard"
-msgstr "dashboard"
-
-#: inc/class.admin.php:82
+#: inc/class.admin.php:83
 #: inc/functions.inc.php:561
 #: inc/posts-table.php:41
 #: inc/terms.php:174
@@ -3181,207 +3183,207 @@ msgstr "dashboard"
 msgid "Terms"
 msgstr "Όροι"
 
-#: inc/class.admin.php:222
+#: inc/class.admin.php:223
 msgid "No permission!"
 msgstr "Καμία άδεια!"
 
-#: inc/class.admin.php:232
+#: inc/class.admin.php:233
 msgid "Invalid nonce token!"
 msgstr "Εσφαλμένο nonce token!"
 
-#: inc/class.admin.php:237
+#: inc/class.admin.php:238
 msgid "Error: wrong data"
 msgstr "Σφάλμα: λανθασμένα δεδομένα"
 
-#: inc/class.admin.php:414
+#: inc/class.admin.php:415
 msgid "Post tags"
 msgstr "Ετικέτες ανάρτησης"
 
-#: inc/class.admin.php:512
-#: inc/class.admin.php:606
+#: inc/class.admin.php:513
+#: inc/class.admin.php:607
 msgid "Change selection"
 msgstr "Αλλαγή επιλογής"
 
-#: inc/class.admin.php:570
+#: inc/class.admin.php:571
 msgid "Content type"
 msgstr "Τύπος περιεχομένου"
 
-#: inc/class.admin.php:756
+#: inc/class.admin.php:757
 msgid "Please select a valid"
 msgstr "Παρακαλώ επιλέξτε ένα έγκυρο"
 
-#: inc/class.admin.php:758
+#: inc/class.admin.php:759
 msgid "Select Default Post Thumb"
 msgstr "Επιλέξτε προεπιλεγμένη μικρογραφία ανάρτησης"
 
-#: inc/class.admin.php:759
+#: inc/class.admin.php:760
 msgid "Use this media"
 msgstr "Χρησιμοποιήστε αυτό το μέσο"
 
-#: inc/class.admin.php:760
+#: inc/class.admin.php:761
 msgid "Edit the current setting."
 msgstr "Επεξεργαστείτε την τρέχουσα ρύθμιση."
 
-#: inc/class.admin.php:761
+#: inc/class.admin.php:762
 #: modules/taxopress-ai/taxopress-ai.php:426
 msgid "The request could not be completed. Please try again."
 msgstr "Το αίτημα δεν μπόρεσε να ολοκληρωθεί. Παρακαλώ δοκιμάστε ξανά."
 
-#: inc/class.admin.php:763
+#: inc/class.admin.php:764
 msgid "No terms will be deleted"
 msgstr "Δεν θα διαγραφούν όροι"
 
-#: inc/class.admin.php:764
+#: inc/class.admin.php:765
 msgid " terms will be deleted."
 msgstr " όροι θα διαγραφούν."
 
-#: inc/class.admin.php:765
+#: inc/class.admin.php:766
 msgid "Checking terms..."
 msgstr "Έλεγχος όρων..."
 
-#: inc/class.admin.php:766
+#: inc/class.admin.php:767
 msgid "An error occurred while checking terms."
 msgstr "Παρουσιάστηκε σφάλμα κατά τον έλεγχο των όρων."
 
-#: inc/class.admin.php:767
+#: inc/class.admin.php:768
 msgid "Permanently delete the affected terms? This action cannot be undone."
 msgstr ""
 "Θα διαγραφούν μόνιμα οι επηρεαζόμενοι όροι; Αυτή η ενέργεια δεν μπορεί να "
 "αναιρεθεί."
 
-#: inc/class.admin.php:768
+#: inc/class.admin.php:769
 #: inc/post-tags.php:1090
 #: inc/related-posts.php:1354
 msgid "Select a post to see a preview."
 msgstr "Επιλέξτε μια ανάρτηση για να δείτε μια προεπισκόπηση."
 
-#: inc/class.admin.php:769
+#: inc/class.admin.php:770
 msgid "Auto Term ID missing. Kindly save the auto term before using this feature."
 msgstr ""
 "Λείπει το Auto Term ID. Παρακαλώ αποθηκεύστε τον αυτόματο όρο πριν "
 "χρησιμοποιήσετε αυτή τη δυνατότητα."
 
-#: inc/class.admin.php:779
+#: inc/class.admin.php:780
 msgid "Merge has been cancelled."
 msgstr "Η συγχώνευση έχει ακυρωθεί."
 
-#: inc/class.admin.php:781
+#: inc/class.admin.php:782
 msgid "Pause."
 msgstr "Παύση."
 
-#: inc/class.admin.php:783
+#: inc/class.admin.php:784
 msgid "Merging terms. Please wait..."
 msgstr "Συγχώνευση όρων. Παρακαλώ περιμένετε..."
 
-#: inc/class.admin.php:784
+#: inc/class.admin.php:785
 #, php-format
 msgid "Merging %1$s terms attached to %2$s posts. Please wait..."
 msgstr ""
 "Συγχώνευση %1$s όρων που συνδέονται με %2$s δημοσιεύσεις. Παρακαλώ "
 "περιμένετε..."
 
-#: inc/class.admin.php:785
+#: inc/class.admin.php:786
 msgid "Large dataset detected, terms will be merged in batches of 20!"
 msgstr ""
 "Ανιχνεύτηκε μεγάλος όγκος δεδομένων, οι όροι θα συγχωνευτούν σε δόσεις των "
 "20!"
 
-#: inc/class.admin.php:786
+#: inc/class.admin.php:787
 msgid "No terms were merged."
 msgstr "Δεν συγχωνεύτηκαν όροι."
 
-#: inc/class.admin.php:787
+#: inc/class.admin.php:788
 #, php-format
 msgid "Batch %1$s of %2$s merged."
 msgstr "Δόση %1$s από %2$s συγχωνεύτηκε."
 
-#: inc/class.admin.php:788
+#: inc/class.admin.php:789
 msgid "terms merged"
 msgstr "όροι συγχωνεύτηκαν"
 
-#: inc/class.admin.php:789
+#: inc/class.admin.php:790
 msgid "posts updated"
 msgstr "δημοσιεύσεις ενημερώθηκαν"
 
-#: inc/class.admin.php:790
+#: inc/class.admin.php:791
 #, php-format
 msgid "All terms merged into \"%s\""
 msgstr "Όλοι οι όροι συγχωνεύτηκαν σε \"%s\""
 
-#: inc/class.admin.php:791
+#: inc/class.admin.php:792
 #, php-format
 msgid "Terms merged into \"%s\""
 msgstr "Όροι συγχωνεύτηκαν σε \"%s\""
 
-#: inc/class.admin.php:792
+#: inc/class.admin.php:793
 msgid "Some batches were skipped because they contained non-existent terms."
 msgstr "Ορισμένες δόσεις παρακάμφθηκαν επειδή περιείχαν μη υπάρχοντες όρους."
 
-#: inc/class.admin.php:793
+#: inc/class.admin.php:794
 #, php-format
 msgid "Batch %1$s failed because it contained non-existent terms: %2$s"
 msgstr "Η δόση %1$s απέτυχε επειδή περιείχε μη υπάρχοντες όρους: %2$s"
 
-#: inc/class.admin.php:794
+#: inc/class.admin.php:795
 msgid "AJAX error on batch"
 msgstr "Σφάλμα AJAX στη δόση"
 
-#: inc/class.admin.php:795
+#: inc/class.admin.php:796
 #, php-format
 msgid "Error on batch %1$s:"
 msgstr "Σφάλμα στη δόση %1$s:"
 
-#: inc/class.admin.php:801
+#: inc/class.admin.php:802
 msgid "Search Posts..."
 msgstr "Αναζήτηση Δημοσιεύσεων..."
 
-#: inc/class.admin.php:802
+#: inc/class.admin.php:803
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
-#: inc/class.admin.php:803
+#: inc/class.admin.php:804
 msgid "Error loading preview"
 msgstr "Σφάλμα φόρτωσης προεπισκόπησης"
 
-#: inc/class.admin.php:809
+#: inc/class.admin.php:810
 #: inc/related-posts.php:1177
 msgid "Using default PublishPress Taxonomies image"
 msgstr "Χρησιμοποιώντας την προεπιλεγμένη εικόνα Taxonomies του PublishPress"
 
-#: inc/class.admin.php:810
+#: inc/class.admin.php:811
 #: inc/related-posts.php:1186
 msgid "Select Media"
 msgstr "Επιλογή Πολυμέσων"
 
-#: inc/class.admin.php:811
+#: inc/class.admin.php:812
 msgid "Change Media"
 msgstr "Αλλαγή Πολυμέσων"
 
-#: inc/class.admin.php:812
+#: inc/class.admin.php:813
 msgid "Use Default"
 msgstr "Χρήση προεπιλογής"
 
-#: inc/class.admin.php:813
+#: inc/class.admin.php:814
 msgid "See More"
 msgstr "Δείτε Περισσότερα"
 
-#: inc/class.admin.php:814
+#: inc/class.admin.php:815
 msgid "See Less"
 msgstr "Δείτε Λιγότερα"
 
-#: inc/class.admin.php:815
+#: inc/class.admin.php:816
 msgid "Apply Selected"
 msgstr "Εφαρμογή Επιλεγμένων"
 
-#: inc/class.admin.php:816
+#: inc/class.admin.php:817
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: inc/class.admin.php:817
+#: inc/class.admin.php:818
 msgid "Please select at least one suggestion to apply."
 msgstr "Παρακαλώ επιλέξτε τουλάχιστον μια πρόταση για να εφαρμοστεί."
 
-#: inc/class.admin.php:818
+#: inc/class.admin.php:819
 msgid ""
 "You have selected multiple merge suggestions. All selected terms will be "
 "merged into a single new term. Do you want to continue?"
@@ -3389,65 +3391,65 @@ msgstr ""
 "Έχετε επιλέξει πολλές προτάσεις συγχώνευσης. Όλοι οι επιλεγμένοι όροι θα "
 "συγχωνευτούν σε έναν νέο όρο. Θέλετε να συνεχίσετε;"
 
-#: inc/class.admin.php:819
+#: inc/class.admin.php:820
 msgid "No merge suggestions found for this taxonomy."
 msgstr "Δεν βρέθηκαν προτάσεις συγχώνευσης για αυτή την taxonomy."
 
-#: inc/class.admin.php:820
+#: inc/class.admin.php:821
 msgid "Suggested Terms to Merge:"
 msgstr "Προτεινόμενοι Όροι για Συγχώνευση:"
 
-#: inc/class.admin.php:821
+#: inc/class.admin.php:822
 msgid "duplicates"
 msgstr "αντίγραφα"
 
-#: inc/class.admin.php:822
+#: inc/class.admin.php:823
 msgid "Reason:"
 msgstr "Λόγος:"
 
-#: inc/class.admin.php:823
+#: inc/class.admin.php:824
 msgid "Select All"
 msgstr "Επιλογή Όλων"
 
-#: inc/class.admin.php:824
+#: inc/class.admin.php:825
 msgid "Deselect All"
 msgstr "Αποεπιλογή Όλων"
 
-#: inc/class.admin.php:825
+#: inc/class.admin.php:826
 msgid "Terms to Merge"
 msgstr "Όροι προς Συγχώνευση"
 
-#: inc/class.admin.php:826
+#: inc/class.admin.php:827
 msgid "New Term"
 msgstr "Νέος Όρος"
 
-#: inc/class.admin.php:827
+#: inc/class.admin.php:828
 msgid "Reasons"
 msgstr "Λόγοι"
 
-#: inc/class.admin.php:876
-#: inc/class.admin.php:889
+#: inc/class.admin.php:877
+#: inc/class.admin.php:890
 #: views/admin/page-settings.php:6
 msgid "PublishPress Taxonomies: Options"
 msgstr "Taxonomies του PublishPress: Επιλογές"
 
-#: inc/class.admin.php:1005
+#: inc/class.admin.php:1006
 msgid "Options saved"
 msgstr "Επιλογές αποθηκεύτηκαν"
 
-#: inc/class.admin.php:1011
+#: inc/class.admin.php:1012
 msgid "PublishPress Taxonomies options resetted to default options!"
 msgstr ""
 "Οι επιλογές του PublishPress Taxonomies επαναρυθμίστηκαν στις "
 "προεπιλεγμένες επιλογές!"
 
-#: inc/class.admin.php:1085
+#: inc/class.admin.php:1086
 msgid "This feature requires at least 1 tag to work. Begin by adding tags!"
 msgstr ""
 "Αυτή η λειτουργία απαιτεί τουλάχιστον 1 ετικέτα για να λειτουργήσει. "
 "Ξεκινήστε προσθέτοντας ετικέτες!"
 
-#: inc/class.admin.php:1087
+#: inc/class.admin.php:1088
 msgid ""
 "This feature works only with activated JavaScript. Activate it in your Web "
 "browser so you can!"
@@ -3455,35 +3457,35 @@ msgstr ""
 "Αυτή η λειτουργία λειτουργεί μόνο με ενεργοποιημένο JavaScript. "
 "Ενεργοποιήστε το στο πρόγραμμα περιήγησής σας για να μπορείτε!"
 
-#: inc/class.admin.php:1147
+#: inc/class.admin.php:1148
 #. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
 msgstr "Αν σας αρέσει το %1$s παρακαλώ αφήστε μας μια βαθμολογία %2$s. Ευχαριστώ!"
 
-#: inc/class.admin.php:1155
+#: inc/class.admin.php:1156
 msgid "PublishPress Taxonomies resources"
 msgstr "Πόροι Taxonomies PublishPress"
 
-#: inc/class.admin.php:1157
+#: inc/class.admin.php:1158
 msgid "About"
 msgstr "Σχετικά"
 
-#: inc/class.admin.php:1158
+#: inc/class.admin.php:1159
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
-#: inc/class.admin.php:1159
+#: inc/class.admin.php:1160
 msgid "Contact"
 msgstr "Επικοινωνία"
 
-#: inc/class.admin.php:1193
-#: inc/class.admin.php:1413
+#: inc/class.admin.php:1194
+#: inc/class.admin.php:1414
 msgid "Tags for Current Post"
 msgstr "Ετικέτες για την Τρέχουσα Δημοσίευση"
 
-#: inc/class.admin.php:1194
-#: inc/class.admin.php:1415
+#: inc/class.admin.php:1195
+#: inc/class.admin.php:1416
 #: inc/functions.inc.php:585
 #: inc/related-posts-functions.php:169
 #: inc/related-posts-table.php:17
@@ -3493,49 +3495,49 @@ msgstr "Ετικέτες για την Τρέχουσα Δημοσίευση"
 msgid "Related Posts"
 msgstr "Σχετικές Αναρτήσεις"
 
-#: inc/class.admin.php:1405
+#: inc/class.admin.php:1406
 msgid "Administration"
 msgstr "Διαχείριση"
 
-#: inc/class.admin.php:1409
+#: inc/class.admin.php:1410
 msgid "Features"
 msgstr "Χαρακτηριστικά"
 
-#: inc/class.admin.php:1411
+#: inc/class.admin.php:1412
 msgid "Embedded Tags"
 msgstr "Ενσωματωμένες Ετικέτες"
 
-#: inc/class.admin.php:1417
+#: inc/class.admin.php:1418
 msgid "Legacy"
 msgstr "Κληρονομιά"
 
-#: inc/class.admin.php:1423
+#: inc/class.admin.php:1424
 #: inc/helper.options.admin.php:243
 #: modules/taxopress-ai/taxopress-ai.php:470
 msgid "Metabox Access"
 msgstr "Πρόσβαση Metabox"
 
-#: inc/class.admin.php:1425
-#: inc/class.admin.php:1439
+#: inc/class.admin.php:1426
+#: inc/class.admin.php:1440
 #: inc/terms-table.php:749
 #: includes-core/TaxopressCoreAdmin.php:615
 msgid "Linked Terms"
 msgstr "Συνδεδεμένοι Όροι"
 
-#: inc/class.admin.php:1427
-#: inc/class.admin.php:1441
+#: inc/class.admin.php:1428
+#: inc/class.admin.php:1442
 msgid "Term Synonyms"
 msgstr "Συνώνυμα Όρων"
 
-#: inc/class.admin.php:1429
+#: inc/class.admin.php:1430
 msgid "License"
 msgstr "Άδεια"
 
-#: inc/class.admin.php:1431
+#: inc/class.admin.php:1432
 msgid "Hidden Terms"
 msgstr "Κρυφοί Όροι"
 
-#: inc/class.admin.php:1433
+#: inc/class.admin.php:1434
 msgid "Frontend Scripts"
 msgstr "Σενάρια Frontend"
 
@@ -3993,15 +3995,15 @@ msgstr "Προηγμένη χρήση:"
 msgid "What to show"
 msgstr "Τι να εμφανιστεί"
 
-#: inc/dashboard.php:80
+#: inc/dashboard.php:81
 msgid "PublishPress Taxonomies Logo"
 msgstr "Λογότυπο PublishPress Taxonomies"
 
-#: inc/dashboard.php:90
+#: inc/dashboard.php:91
 msgid "Welcome to PublishPress Taxonomies, the WordPress taxonomy plugin"
 msgstr "Καλώς ήρθατε στο PublishPress Taxonomies, το πρόσθετο taxonomy του WordPress"
 
-#: inc/dashboard.php:100
+#: inc/dashboard.php:101
 msgid ""
 "This screen allows you to enable or disable PublishPress Taxonomies "
 "features."
@@ -7311,7 +7313,7 @@ msgstr "Το αίτημα του παρόχου δεν στάλθηκε."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
 msgid "Result from api."
 msgstr "Αποτέλεσμα από το api."
 
@@ -7506,8 +7508,8 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1084
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
 msgid "No matched result from the API Server."
 msgstr "Δεν βρέθηκε αντίστοιχο αποτέλεσμα από τον διακομιστή API."
 
@@ -7522,16 +7524,16 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:856
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1118
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
 msgid "Selected content is empty."
 msgstr "Το επιλεγμένο περιεχόμενο είναι κενό."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:953
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1173
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
 msgid "Result from cache."
 msgstr "Αποτέλεσμα από την cache."
 
@@ -7545,14 +7547,14 @@ msgstr "Σφάλμα API: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1358
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
 msgid "Empty response."
 msgstr "Κενή απάντηση."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1361
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
 msgid "Error establishing connection with the API server. Try again."
 msgstr "Σφάλμα κατά την εγκαθίδρυση σύνδεσης με τον διακομιστή API. Δοκιμάστε ξανά."
 
@@ -7598,16 +7600,16 @@ msgstr ""
 "Η διεύθυνση URL του API IBM Watson πρέπει να χρησιμοποιεί HTTPS και έναν "
 "επίσημο όνομα τομέα υπηρεσίας Natural Language Understanding."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:831
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:858
 msgid "No matched result from an AI Connector."
 msgstr "Δεν υπάρχει αντιστοιχισμένο αποτέλεσμα από έναν AI Connector."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:838
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:865
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "Οι AI Connectors απαιτούν WordPress 7.0 ή νεότερη έκδοση."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:877
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1187
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7616,8 +7618,8 @@ msgstr ""
 "Αναγνωρίστηκαν μη έγκυρες θέσεις κράτησης: {%s}. Οι έγκυρες θέσεις κράτησης "
 "είναι: {content}, {post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:910
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1208
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
@@ -7625,8 +7627,8 @@ msgstr ""
 "Προσθέσατε {post_terms} στην προτροπή αλλά η ανάρτησή σας δεν περιέχει "
 "όρους."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:916
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1211
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7634,25 +7636,42 @@ msgstr ""
 "Προσθέσατε {site_terms} στην προτροπή αλλά η τοποθεσία σας δεν περιέχει "
 "όρους για αυτή την ταξινόμηση."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
 msgid ""
-"No compatible AI provider is configured. Install and configure a provider "
-"in Settings > Connectors."
+"The selected AI Connector is not configured. Choose a connected provider in "
+"Auto Terms > Sources."
 msgstr ""
-"Δεν έχει ρυθμιστεί συμβατός πάροχος AI. Εγκαταστήστε και ρυθμίστε έναν "
-"πάροχο στις Ρυθμίσεις > Connectors."
+"Ο επιλεγμένος Σύνδεσμος AI δεν είναι ρυθμισμένος. Επιλέξτε έναν συνδεδεμένο "
+"πάροχο στο Auto Terms > Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+msgid ""
+"AI is disabled or unavailable on this site. Check the WordPress AI settings "
+"before generating terms."
+msgstr ""
+"Η AI είναι απενεργοποιημένη ή μη διαθέσιμη σε αυτόν τον ιστότοπο. Ελέγξτε "
+"τις ρυθμίσεις AI του WordPress πριν δημιουργήσετε όρους."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+msgid ""
+"The selected AI Connector cannot generate text for this request. Check its "
+"connection and text generation support in Settings > Connectors."
+msgstr ""
+"Ο επιλεγμένος Σύνδεσμος AI δεν μπορεί να δημιουργήσει κείμενο για αυτήν την "
+"αίτηση. Ελέγξτε τη σύνδεσή του και την υποστήριξη δημιουργίας κειμένου στις "
+"Ρυθμίσεις > Συνδέσεις."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
 msgid "Result from an AI Connector."
 msgstr "Αποτέλεσμα από έναν AI Connector."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1073
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr ""
 "Η άμεση ενσωμάτωση OpenAI είναι απενεργοποιημένη στις ρυθμίσεις Legacy AI "
 "Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7660,7 +7679,7 @@ msgstr ""
 "Η ενσωμάτωσή του OpenAI απαιτεί ένα API Key. Παρακαλώ προσθέστε το API Key "
 "σας στις ρυθμίσεις Auto Term."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1276
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
@@ -7891,11 +7910,27 @@ msgstr "Ίσως αργότερα"
 msgid "I already did"
 msgstr "Το έχω ήδη κάνει"
 
-#: simple-tags.php:118
+#: simple-tags.php:58
+msgid ""
+"PublishPress Taxonomies Free requires PHP 8.2 or newer. The plugin cannot "
+"run until PHP is updated."
+msgstr ""
+"Το PublishPress Taxonomies Free απαιτεί PHP 8.2 ή νεότερη έκδοση. Το "
+"πρόσθετο δεν μπορεί να τρέξει έως ότου ενημερωθεί η PHP."
+
+#: simple-tags.php:68
+msgid ""
+"PublishPress Taxonomies Free requires WordPress 6.7 or newer. The plugin "
+"cannot run until WordPress is updated."
+msgstr ""
+"Το PublishPress Taxonomies Free απαιτεί WordPress 6.7 ή νεότερη έκδοση. Το "
+"πρόσθετο δεν μπορεί να τρέξει έως ότου ενημερωθεί το WordPress."
+
+#: simple-tags.php:143
 msgid "This plugin can be deleted."
 msgstr "Αυτό το πρόσθετο μπορεί να διαγραφεί."
 
-#: simple-tags.php:146
+#: simple-tags.php:171
 msgid ""
 "PublishPress Taxonomies was not activated because PublishPress Taxonomies "
 "Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."

@@ -10,23 +10,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-30 10:36+0000\n"
+"PO-Revision-Date: 2026-10-31 02:01+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "Language: yor\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: simple-tags.php:4, fuzzy
+#: simple-tags.php, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php:5
+#: simple-tags.php
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php:6
+#: simple-tags.php
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -35,13 +35,13 @@ msgstr ""
 "PublishPress Taxonomies n gba ọ laaye lati ṣẹda ati ṣakoso Tags, "
 "Categories, ati gbogbo awọn ọrọ taxonomy WordPress rẹ."
 
-#: simple-tags.php:8
-#: inc/class.admin.php:1164
+#: simple-tags.php
+#: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php:9
+#: simple-tags.php
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -92,8 +92,8 @@ msgstr "Ifihan Awọn ọrọ (PublishPress Taxonomies)"
 #: inc/class.admin.manage.php:1184
 #: inc/class.admin.manage.php:1679
 #: inc/class.admin.manage.php:1834
-#: inc/class.admin.php:261
-#: inc/class.admin.php:307
+#: inc/class.admin.php:262
+#: inc/class.admin.php:308
 #: inc/post-tags.php:1083
 #: inc/related-posts.php:1347
 #: inc/tag-clouds.php:1111
@@ -201,7 +201,7 @@ msgid "Completed: %s terms added from %s posts checked."
 msgstr "Ti pari: %s awọn ọrọ ti a fi kun lati %s awọn ifiweranṣẹ ti a ṣayẹwo."
 
 #: inc/autolinks-functions.php:175
-#: inc/class.admin.php:1407, fuzzy
+#: inc/class.admin.php:1408, fuzzy
 msgid "Auto link"
 msgstr "Auto link"
 
@@ -241,7 +241,7 @@ msgstr "Auto Link"
 #: inc/autolinks.php:74
 #: inc/autolinks.php:75
 #: inc/autolinks.php:128
-#: inc/class.admin.php:1195
+#: inc/class.admin.php:1196
 #: inc/class.admin.post.php:86
 #: inc/functions.inc.php:591, fuzzy
 msgid "Auto Links"
@@ -272,7 +272,7 @@ msgstr "Akole"
 #: inc/autoterms.php:596
 #: inc/class-taxonomies-table.php:18
 #: inc/class.admin.clickterms.php:62
-#: inc/class.admin.php:585
+#: inc/class.admin.php:586
 #: inc/post-tags-table.php:70
 #: inc/post-tags.php:465
 #: inc/related-posts-table.php:68
@@ -321,7 +321,7 @@ msgstr "Ṣatunkọ"
 #: inc/autoterms-table.php:282
 #: inc/autoterms.php:663
 #: inc/class-tag-table.php:220
-#: inc/class.admin.php:770
+#: inc/class.admin.php:771
 #: inc/class.admin.taxonomies.ui.php:843
 #: inc/post-tags-table.php:282
 #: inc/related-posts-table.php:291
@@ -665,13 +665,13 @@ msgstr ""
 #: inc/autoterms.php:873
 #: inc/autoterms.php:970
 #: inc/autoterms.php:1051
-#: inc/autoterms.php:1175
-#: inc/autoterms.php:1189
-#: inc/autoterms.php:1220
-#: inc/autoterms.php:1234
-#: inc/autoterms.php:1264
-#: inc/autoterms.php:1316
-#: inc/autoterms.php:1447
+#: inc/autoterms.php:1178
+#: inc/autoterms.php:1192
+#: inc/autoterms.php:1223
+#: inc/autoterms.php:1237
+#: inc/autoterms.php:1267
+#: inc/autoterms.php:1319
+#: inc/autoterms.php:1450
 #: inc/autoterms_content.php:192
 #: inc/post-tags.php:575
 #: inc/post-tags.php:816
@@ -715,13 +715,13 @@ msgstr "Iro"
 #: inc/autoterms.php:874
 #: inc/autoterms.php:975
 #: inc/autoterms.php:1056
-#: inc/autoterms.php:1180
-#: inc/autoterms.php:1193
-#: inc/autoterms.php:1225
-#: inc/autoterms.php:1238
-#: inc/autoterms.php:1269
-#: inc/autoterms.php:1321
-#: inc/autoterms.php:1452
+#: inc/autoterms.php:1183
+#: inc/autoterms.php:1196
+#: inc/autoterms.php:1228
+#: inc/autoterms.php:1241
+#: inc/autoterms.php:1272
+#: inc/autoterms.php:1324
+#: inc/autoterms.php:1455
 #: inc/autoterms_content.php:197
 #: inc/post-tags.php:580
 #: inc/post-tags.php:821
@@ -786,58 +786,58 @@ msgid "Separate multiple entries with a comma. For example: .notag, #main-header
 msgstr "Ya awọn akọsilẹ pupọ pẹlu koma. Fun apẹẹrẹ: .notag, #main-header"
 
 #: inc/autolinks.php:788
-#: inc/autoterms.php:1368
+#: inc/autoterms.php:1371
 #: inc/related-posts.php:434, fuzzy
 msgid "H1"
 msgstr "H1"
 
 #: inc/autolinks.php:789
-#: inc/autoterms.php:1369
+#: inc/autoterms.php:1372
 #: inc/related-posts.php:438, fuzzy
 msgid "H2"
 msgstr "H2"
 
 #: inc/autolinks.php:790
-#: inc/autoterms.php:1370
+#: inc/autoterms.php:1373
 #: inc/related-posts.php:442, fuzzy
 msgid "H3"
 msgstr "H3"
 
 #: inc/autolinks.php:791
-#: inc/autoterms.php:1371
+#: inc/autoterms.php:1374
 #: inc/related-posts.php:446, fuzzy
 msgid "H4"
 msgstr "H4"
 
 #: inc/autolinks.php:792
-#: inc/autoterms.php:1372
+#: inc/autoterms.php:1375
 #: inc/related-posts.php:451, fuzzy
 msgid "H5"
 msgstr "H5"
 
 #: inc/autolinks.php:793
-#: inc/autoterms.php:1373
+#: inc/autoterms.php:1376
 #: inc/related-posts.php:455, fuzzy
 msgid "H6"
 msgstr "H6"
 
 #: inc/autolinks.php:795
-#: inc/autoterms.php:1376, fuzzy
+#: inc/autoterms.php:1379, fuzzy
 msgid "script"
 msgstr "script"
 
 #: inc/autolinks.php:796
-#: inc/autoterms.php:1377, fuzzy
+#: inc/autoterms.php:1380, fuzzy
 msgid "style"
 msgstr "style"
 
 #: inc/autolinks.php:797
-#: inc/autoterms.php:1378, fuzzy
+#: inc/autoterms.php:1381, fuzzy
 msgid "pre"
 msgstr "pre"
 
 #: inc/autolinks.php:798
-#: inc/autoterms.php:1379, fuzzy
+#: inc/autoterms.php:1382, fuzzy
 msgid "code"
 msgstr "code"
 
@@ -936,7 +936,7 @@ msgstr ""
 "pe autolink yoo ṣee ṣe nikan lẹhin ti awọn hooks pẹlu nọmba kekere ti ṣiṣẹ."
 
 #: inc/autolinks.php:1112
-#: inc/autoterms.php:1697
+#: inc/autoterms.php:1700
 #: inc/tag-clouds.php:995
 msgid ""
 "You're using PublishPress Taxonomies Free.\n"
@@ -948,7 +948,7 @@ msgstr ""
 "atilẹyin."
 
 #: inc/autolinks.php:1115
-#: inc/autoterms.php:1701
+#: inc/autoterms.php:1704
 #: inc/post-tags.php:977
 #: inc/related-posts.php:1231
 #: inc/tag-clouds.php:999
@@ -984,12 +984,12 @@ msgid "Add Auto Links"
 msgstr "Fi Auto Links kun"
 
 #: inc/autolinks.php:1178
-#: inc/autoterms.php:1763
+#: inc/autoterms.php:1766
 msgid "PublishPress Taxonomies and Languages"
 msgstr "PublishPress Taxonomies ati Awọn Ede"
 
 #: inc/autolinks.php:1182
-#: inc/autoterms.php:1767
+#: inc/autoterms.php:1770
 #, php-format
 msgid ""
 "Please note that this is an automatic tool. It does have limitations around "
@@ -1000,7 +1000,7 @@ msgstr ""
 "awọn iru ak content, ati awọn ifosiwewe miiran. %1s Jọwọ ka iwe aṣẹ yii. %2s"
 
 #: inc/autolinks.php:1206
-#: inc/autoterms.php:1791
+#: inc/autoterms.php:1794
 #: inc/post-tags.php:1060
 #: inc/related-posts.php:1319
 #: inc/tag-clouds.php:1080
@@ -1009,7 +1009,7 @@ msgid "Please complete the following required fields to save your changes:"
 msgstr "Jọwọ parípé àwọn ààyè tó wúlò tó tẹle láti fipamọ́ àwọn ayipada rẹ:"
 
 #: inc/autolinks.php:1209
-#: inc/autoterms.php:1794
+#: inc/autoterms.php:1797
 #: inc/post-tags.php:1063
 #: inc/related-posts.php:1322
 #: inc/tag-clouds.php:1083
@@ -1018,7 +1018,7 @@ msgid "Okay"
 msgstr "Dáadáa"
 
 #: inc/autolinks.php:1215
-#: inc/autoterms.php:1801
+#: inc/autoterms.php:1804
 #: inc/class-taxonomies-table.php:417
 #: inc/post-tags-table.php:363
 #: inc/post-tags.php:1069
@@ -1030,7 +1030,7 @@ msgid "No"
 msgstr "Rara"
 
 #: inc/autolinks.php:1216
-#: inc/autoterms.php:1803
+#: inc/autoterms.php:1806
 #: inc/class-taxonomies-table.php:419
 #: inc/post-tags.php:1070
 #: inc/related-posts.php:1331
@@ -1168,7 +1168,7 @@ msgstr "Ifiranṣẹ ipo"
 #: inc/autoterms-logs-table.php:168
 #: inc/autoterms-logs-table.php:199
 #: inc/autoterms_content.php:146
-#: inc/class.admin.php:890
+#: inc/class.admin.php:891
 #: inc/schedule.php:215
 msgid "Settings"
 msgstr "Awọn eto"
@@ -1241,12 +1241,12 @@ msgid "Post Type"
 msgstr "post type"
 
 #: inc/autoterms-table.php:386
-#: inc/autoterms.php:1207, fuzzy
+#: inc/autoterms.php:1210, fuzzy
 msgid "Existing taxonomy terms"
 msgstr "Existing taxonomy terms"
 
 #: inc/autoterms-table.php:390
-#: inc/autoterms.php:1157
+#: inc/autoterms.php:1160
 #: inc/class.client.autoterms.php:440
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
@@ -1255,7 +1255,7 @@ msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
-#: inc/autoterms.php:1154
+#: inc/autoterms.php:1157
 #: inc/class.client.autoterms.php:360
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444, fuzzy
@@ -1263,7 +1263,7 @@ msgid "AI Connectors"
 msgstr "AI Connectors"
 
 #: inc/autoterms-table.php:398
-#: inc/autoterms.php:1159
+#: inc/autoterms.php:1162
 #: inc/class.client.autoterms.php:520
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
@@ -1272,7 +1272,7 @@ msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
-#: inc/autoterms.php:1161
+#: inc/autoterms.php:1164
 #: inc/class.client.autoterms.php:602
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
@@ -1281,7 +1281,7 @@ msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
-#: inc/autoterms.php:1163
+#: inc/autoterms.php:1166
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
@@ -1293,8 +1293,8 @@ msgstr "LSEG / Refinitiv"
 #: inc/autoterms.php:181
 #: inc/autoterms.php:245
 #: inc/autoterms.php:383
-#: inc/class.admin.php:135
-#: inc/class.admin.php:1443
+#: inc/class.admin.php:136
+#: inc/class.admin.php:1444
 #: inc/class.admin.post.php:75
 #: inc/functions.inc.php:597
 #: inc/helper.options.admin.php:38
@@ -1415,12 +1415,12 @@ msgstr "Nigbati lati Lo"
 #: inc/autoterms.php:476
 #: inc/autoterms.php:821
 #: inc/autoterms.php:1086
-#: inc/autoterms.php:1578
+#: inc/autoterms.php:1581
 msgid "Existing Content"
 msgstr "Akọkọ ti o wa"
 
 #: inc/autoterms.php:481
-#: inc/autoterms.php:1638
+#: inc/autoterms.php:1641
 #: inc/post-tags.php:283
 #: inc/related-posts.php:279
 #: modules/taxopress-ai/taxopress-ai.php:468
@@ -1469,9 +1469,9 @@ msgid "Please choose an option for \"Content statuses\""
 msgstr "Jọwọ yan aṣayan fun \"Ipo akoonu\""
 
 #: inc/autoterms.php:817
-#: inc/class.admin.php:90
-#: inc/class.admin.php:415
-#: inc/class.admin.php:1419
+#: inc/class.admin.php:91
+#: inc/class.admin.php:416
+#: inc/class.admin.php:1420
 #: inc/functions.inc.php:567
 #: inc/posts-table.php:27
 #: inc/posts.php:165
@@ -1488,7 +1488,7 @@ msgstr "Iṣeto"
 
 #: inc/autoterms.php:823
 #: inc/autoterms.php:1133
-#: inc/class.admin.php:1421
+#: inc/class.admin.php:1422
 #: modules/taxopress-ai/taxopress-ai.php:443
 #: modules/taxopress-ai/taxopress-ai.php:444
 #: modules/taxopress-ai/taxopress-ai.php:476, fuzzy
@@ -1588,73 +1588,79 @@ msgstr "Muu ṣiṣẹ Auto Terms fun ẹya \"Akopọ Ti o wa\"."
 msgid "Enable Auto Terms for the \"Metaboxes\" and the \"Fast Update\" feature."
 msgstr "Muu ṣiṣẹ Auto Terms fun ẹya \"Metaboxes\" ati \"Imudojuiwọn Yara\"."
 
-#: inc/autoterms.php:1151
+#: inc/autoterms.php:1149
+msgid ""
+"Existing Terms requires the term name to appear in the selected content. AI "
+"sources can suggest terms without an exact text match."
+msgstr "Awọn ọrọ to wa nilo ki orukọ ọrọ han ninu akoonu ti a yan."
+
+#: inc/autoterms.php:1154
 msgid "Existing Terms"
 msgstr "Awọn Ọrọ Ti o wa"
 
-#: inc/autoterms.php:1208
+#: inc/autoterms.php:1211
 msgid ""
-"This will add existing terms from the taxonomy selected in the \"General\" "
-"tab."
+"Add existing terms from the taxonomy selected on the General tab when their "
+"names match the content."
 msgstr ""
-"Eyi yoo fi awọn ọrọ ti o wa lati taxonomy ti a yan ni taabu \"Gbogbogbo\" "
-"kun."
+"Fi awọn ọrọ to wa kun lati taxonomy ti a yan lori taabu Gbogbogbo nigbati "
+"awọn orukọ wọn ba ba akoonu mu."
 
-#: inc/autoterms.php:1254
+#: inc/autoterms.php:1257
 msgid "Use all the terms in the selected taxonomy."
 msgstr "Lo gbogbo awọn ọrọ ni taxonomy ti a yan."
 
-#: inc/autoterms.php:1281
+#: inc/autoterms.php:1284
 msgid "Use only some terms in the selected taxonomy."
 msgstr "Lo diẹ ninu awọn ọrọ nikan ni taxonomy ti a yan."
 
-#: inc/autoterms.php:1287
+#: inc/autoterms.php:1290
 msgid "Please choose an option for \"Sources\""
 msgstr "Jọwọ yan aṣayan fun \"Awọn Orisun\""
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use"
 msgstr "Yan awọn ọrọ lati lo"
 
-#: inc/autoterms.php:1290
+#: inc/autoterms.php:1293
 msgid "Choose the terms to use."
 msgstr "Yan awọn ọrọ lati lo."
 
-#: inc/autoterms.php:1331
+#: inc/autoterms.php:1334
 msgid "Show Term Post Count"
 msgstr "Fihan Iye Ifiweranṣẹ Ọrọ"
 
-#: inc/autoterms.php:1332
+#: inc/autoterms.php:1335
 msgid "This will show the number of posts attached to the terms."
 msgstr "Eyi yoo fihan iye awọn ifiweranṣẹ ti o ni asopọ si awọn ọrọ."
 
-#: inc/autoterms.php:1355
+#: inc/autoterms.php:1358
 msgid "Exclude terms and keywords from Auto Terms"
 msgstr "Yọ awọn ọrọ ati awọn ọrọ-ọrọ kuro ninu Auto Terms"
 
-#: inc/autoterms.php:1359
+#: inc/autoterms.php:1362
 msgid "Enter comma-separated terms or keywords to exclude."
 msgstr "Tẹ awọn ọrọ tabi awọn ọrọ-ọrọ ti a ya sọtọ nipasẹ koma lati yọ kuro."
 
-#: inc/autoterms.php:1375, fuzzy
+#: inc/autoterms.php:1378, fuzzy
 msgid "a"
 msgstr "a"
 
-#: inc/autoterms.php:1382
+#: inc/autoterms.php:1385
 msgid "Prevent Auto Term inside elements"
 msgstr "Dena Auto Term ninu awọn eroja"
 
-#: inc/autoterms.php:1385
+#: inc/autoterms.php:1388
 msgid "Terms inside these HTML tags will not be used to generate terms."
 msgstr "Awọn ọrọ inu awọn aami HTML wọnyi ko ni lo lati ṣẹda awọn ọrọ."
 
-#: inc/autoterms.php:1463
+#: inc/autoterms.php:1466
 #: inc/autoterms_content.php:208
 #: inc/schedule.php:340
 msgid "Exclude previously analyzed content"
 msgstr "Yọ akoonu ti a ti ṣe itupalẹ tẹlẹ"
 
-#: inc/autoterms.php:1464
+#: inc/autoterms.php:1467
 #: inc/autoterms_content.php:209
 msgid ""
 "This enables you to skip posts that have already been analyzed by the "
@@ -1663,13 +1669,13 @@ msgstr ""
 "Eyi fun laaye lati fo awọn ifiweranṣẹ ti a ti ṣe ayẹwo tẹlẹ nipasẹ ẹya "
 "Akopọ Ti o wa."
 
-#: inc/autoterms.php:1473
+#: inc/autoterms.php:1476
 #: inc/autoterms_content.php:218
 #: inc/schedule.php:349
 msgid "Limit per batches"
 msgstr "Iwọn fun awọn ẹka"
 
-#: inc/autoterms.php:1477
+#: inc/autoterms.php:1480
 msgid ""
 "This enables you to add Auto Terms to existing content in batches. If you "
 "have a lot of existing content, set this to a lower number to avoid "
@@ -1679,13 +1685,13 @@ msgstr ""
 "ni ọpọlọpọ akoonu ti o wa, ṣeto eyi si nọmba kekere lati yago fun awọn "
 "iṣoro akoko."
 
-#: inc/autoterms.php:1487
+#: inc/autoterms.php:1490
 #: inc/autoterms_content.php:232
 #: inc/schedule.php:363
 msgid "Batches wait time"
 msgstr "Akoko idaduro fun awọn ẹka"
 
-#: inc/autoterms.php:1488
+#: inc/autoterms.php:1491
 #: inc/autoterms_content.php:233
 #: inc/schedule.php:364
 msgid ""
@@ -1697,8 +1703,8 @@ msgstr ""
 "Aifọwọyi. Ti o ba ni akoonu ti o wa tẹlẹ pupọ, ṣeto eyi si nọmba ti o ga "
 "julọ lati yago fun akoko idaduro."
 
-#: inc/autoterms.php:1497
-#: inc/autoterms.php:1532
+#: inc/autoterms.php:1500
+#: inc/autoterms.php:1535
 #: inc/autoterms_content.php:242
 #: inc/autoterms_content.php:277
 #: inc/schedule.php:373
@@ -1706,8 +1712,8 @@ msgstr ""
 msgid "24 hours ago"
 msgstr "Awọn wakati 24 sẹyin"
 
-#: inc/autoterms.php:1501
-#: inc/autoterms.php:1536
+#: inc/autoterms.php:1504
+#: inc/autoterms.php:1539
 #: inc/autoterms_content.php:246
 #: inc/autoterms_content.php:281
 #: inc/schedule.php:377
@@ -1715,8 +1721,8 @@ msgstr "Awọn wakati 24 sẹyin"
 msgid "7 days ago"
 msgstr "ọjọ 7 seyin"
 
-#: inc/autoterms.php:1505
-#: inc/autoterms.php:1540
+#: inc/autoterms.php:1508
+#: inc/autoterms.php:1543
 #: inc/autoterms_content.php:250
 #: inc/autoterms_content.php:285
 #: inc/schedule.php:381
@@ -1724,8 +1730,8 @@ msgstr "ọjọ 7 seyin"
 msgid "2 weeks ago"
 msgstr "ọsẹ 2 seyin"
 
-#: inc/autoterms.php:1509
-#: inc/autoterms.php:1544
+#: inc/autoterms.php:1512
+#: inc/autoterms.php:1547
 #: inc/autoterms_content.php:254
 #: inc/autoterms_content.php:289
 #: inc/schedule.php:385
@@ -1733,8 +1739,8 @@ msgstr "ọsẹ 2 seyin"
 msgid "1 month ago"
 msgstr "osù 1 seyin"
 
-#: inc/autoterms.php:1514
-#: inc/autoterms.php:1548
+#: inc/autoterms.php:1517
+#: inc/autoterms.php:1551
 #: inc/autoterms_content.php:259
 #: inc/autoterms_content.php:293
 #: inc/schedule.php:390
@@ -1742,8 +1748,8 @@ msgstr "osù 1 seyin"
 msgid "6 months ago"
 msgstr "oṣù 6 seyin"
 
-#: inc/autoterms.php:1518
-#: inc/autoterms.php:1552
+#: inc/autoterms.php:1521
+#: inc/autoterms.php:1555
 #: inc/autoterms_content.php:263
 #: inc/autoterms_content.php:297
 #: inc/schedule.php:394
@@ -1751,8 +1757,8 @@ msgstr "oṣù 6 seyin"
 msgid "1 year ago"
 msgstr "ọdún 1 seyin"
 
-#: inc/autoterms.php:1522
-#: inc/autoterms.php:1556
+#: inc/autoterms.php:1525
+#: inc/autoterms.php:1559
 #: inc/autoterms_content.php:267
 #: inc/autoterms_content.php:301
 #: inc/post-tags.php:488
@@ -1763,87 +1769,87 @@ msgstr "ọdún 1 seyin"
 msgid "No limit"
 msgstr "Ko si ihamọ"
 
-#: inc/autoterms.php:1569
+#: inc/autoterms.php:1572
 #: inc/autoterms_content.php:314
 #: inc/schedule.php:445
 msgid "Limit Auto Terms, based on published date"
 msgstr "Limiti Awọn Ọrọ Aifọwọyi, da lori ọjọ ti a tẹjade"
 
-#: inc/autoterms.php:1573
+#: inc/autoterms.php:1576
 msgid "This setting allows you to add Auto Terms only to recent content."
 msgstr "Eyi n gba ọ laaye lati fi Auto Terms kun akoonu tuntun nikan."
 
-#: inc/autoterms.php:1581
+#: inc/autoterms.php:1584
 #: inc/autoterms_content.php:347
 msgid "Add Auto Terms to existing content"
 msgstr "Fi Auto Terms kun akoonu ti o wa"
 
-#: inc/autoterms.php:1585
+#: inc/autoterms.php:1588
 msgid "Click the button to add Auto Terms to existing content."
 msgstr "Tẹ bọtini lati fi Auto Terms kun akoonu ti o wa."
 
-#: inc/autoterms.php:1602
+#: inc/autoterms.php:1605
 msgid "Save changes to the settings before using this feature."
 msgstr "Fipamọ awọn ayipada si awọn eto ṣaaju lilo ẹya yii."
 
-#: inc/autoterms.php:1627
+#: inc/autoterms.php:1630
 #: modules/taxopress-ai/taxopress-ai.php:944
 msgid "Select..."
 msgstr "Yan..."
 
-#: inc/autoterms.php:1649
+#: inc/autoterms.php:1652
 msgid "Show debug information"
 msgstr "Fihan alaye ayẹwo"
 
-#: inc/autoterms.php:1652
+#: inc/autoterms.php:1655
 msgid "Display sanitized request and response data for each enabled source."
 msgstr "Fihan ibeere ti a sanitize ati data idahun fun ọkọọkan orisun ti a mu ṣiṣẹ."
 
-#: inc/autoterms.php:1657
+#: inc/autoterms.php:1660
 msgid "Debug information"
 msgstr "Alaye ayẹwo"
 
-#: inc/autoterms.php:1658
+#: inc/autoterms.php:1661
 msgid "Request"
 msgstr "Ibeere"
 
-#: inc/autoterms.php:1659
+#: inc/autoterms.php:1662
 msgid "Response"
 msgstr "Idahun"
 
-#: inc/autoterms.php:1660
+#: inc/autoterms.php:1663
 msgid "No source debug data was returned for this preview request."
 msgstr "Ko si data ayẹwo orisun ti a pada fun ibeere ifihan yii."
 
-#: inc/autoterms.php:1661
+#: inc/autoterms.php:1664
 msgid "Copy request"
 msgstr "Da ibeere kopani"
 
-#: inc/autoterms.php:1662
+#: inc/autoterms.php:1665
 msgid "Copy response"
 msgstr "Daakọ idahun"
 
-#: inc/autoterms.php:1663
+#: inc/autoterms.php:1666
 msgid "Copy all"
 msgstr "Daakọ gbogbo"
 
-#: inc/autoterms.php:1664
+#: inc/autoterms.php:1667
 msgid "Download JSON"
 msgstr "Gba JSON"
 
-#: inc/autoterms.php:1665
+#: inc/autoterms.php:1668
 msgid "Debug information copied to the clipboard."
 msgstr "Alaye iṣoro ti daakọ si clipboard."
 
-#: inc/autoterms.php:1666
+#: inc/autoterms.php:1669
 msgid "The debug information could not be copied. Please try again."
 msgstr "A ko le daakọ alaye iṣoro. Jọwọ tun gbiyanju."
 
-#: inc/autoterms.php:1735
+#: inc/autoterms.php:1738
 msgid "Save Auto Terms"
 msgstr "Fipamọ Auto Terms"
 
-#: inc/autoterms.php:1741
+#: inc/autoterms.php:1744
 msgid "Add Auto Terms"
 msgstr "Ṣe afikun Auto Terms"
 
@@ -1912,7 +1918,7 @@ msgid "You can see full log details on the %1s screen"
 msgstr "O le rii awọn alaye igbasilẹ kikun lori iboju %1s"
 
 #: inc/class-tag-table.php:18
-#: inc/class.admin.php:1192
+#: inc/class.admin.php:1193
 msgid "Tag Cloud"
 msgstr "Bulọọgi Tag"
 
@@ -1965,8 +1971,8 @@ msgid "Select term %s"
 msgstr "Yan ọrọ %s"
 
 #: inc/class-taxonomies-table.php:19
-#: inc/class.admin.php:68
-#: inc/class.admin.php:877
+#: inc/class.admin.php:69
+#: inc/class.admin.php:878
 #: inc/functions.inc.php:555
 #: inc/taxonomies.php:116
 #: inc/taxonomies.php:117
@@ -2012,7 +2018,7 @@ msgid "WordPress core"
 msgstr "WordPress core"
 
 #: inc/class-taxonomies-table.php:398
-#: inc/class.admin.php:1148
+#: inc/class.admin.php:1149
 #: inc/class.admin.post.php:49
 #: modules/taxopress-ai/taxopress-ai.php:1317, fuzzy
 msgid "PublishPress Taxonomies"
@@ -2537,8 +2543,8 @@ msgstr "Ṣafihan awọn ọrọ to wa tẹlẹ"
 #: inc/class.admin.clickterms.php:230
 #: inc/class.admin.manage.php:1120
 #: inc/class.admin.manage.php:1179
-#: inc/class.admin.php:256
-#: inc/class.admin.php:303
+#: inc/class.admin.php:257
+#: inc/class.admin.php:304
 #: inc/post-tags.php:1079
 #: inc/related-posts.php:1343
 #: modules/taxopress-ai/taxopress-ai.php:1147
@@ -2561,7 +2567,7 @@ msgstr "PublishPress Taxonomies: Ṣakoso Awọn ọrọ"
 
 #: inc/class.admin.manage.php:72
 #: inc/class.admin.manage.php:193
-#: inc/class.admin.php:1435
+#: inc/class.admin.php:1436
 #: inc/functions.inc.php:609
 msgid "Manage Terms"
 msgstr "Ṣakoso Awọn Ọrọ"
@@ -2780,13 +2786,13 @@ msgstr ""
 "ọrọ tuntun kan."
 
 #: inc/class.admin.manage.php:456
-#: inc/class.admin.php:780
+#: inc/class.admin.php:781
 #: inc/terms-table.php:1475
 msgid "Cancel"
 msgstr "Fagilee"
 
 #: inc/class.admin.manage.php:459
-#: inc/class.admin.php:782
+#: inc/class.admin.php:783
 msgid "Continue"
 msgstr "Tesiwaju"
 
@@ -2999,7 +3005,7 @@ msgstr "Term(s) ti yọ́ kuro ni %1s %2s."
 #: inc/class.admin.mass.php:36
 #: inc/class.admin.mass.php:37
 #: inc/class.admin.mass.php:182
-#: inc/class.admin.php:1437
+#: inc/class.admin.php:1438
 #: inc/functions.inc.php:603
 msgid "Mass Edit Terms"
 msgstr "Iwọn Iṣatunkọ Mass"
@@ -3064,14 +3070,7 @@ msgstr "Imudojuiwọn gbogbo &raquo;"
 msgid "No content to edit."
 msgstr "Ko si akoonu lati ṣatunkọ."
 
-#: inc/class.admin.php:66
-#: inc/dashboard.php:46
-#: inc/dashboard.php:47
-#: inc/dashboard.php:98
-msgid "Dashboard"
-msgstr "dashboard"
-
-#: inc/class.admin.php:82
+#: inc/class.admin.php:83
 #: inc/functions.inc.php:561
 #: inc/posts-table.php:41
 #: inc/terms.php:174
@@ -3081,201 +3080,201 @@ msgstr "dashboard"
 msgid "Terms"
 msgstr "Awọn ọrọ"
 
-#: inc/class.admin.php:222
+#: inc/class.admin.php:223
 msgid "No permission!"
 msgstr "Ko si aṣẹ!"
 
-#: inc/class.admin.php:232
+#: inc/class.admin.php:233
 msgid "Invalid nonce token!"
 msgstr "Nọ́mbà nonce ti a sọ jẹ́ àìtọ!"
 
-#: inc/class.admin.php:237
+#: inc/class.admin.php:238
 msgid "Error: wrong data"
 msgstr "Aṣiṣe: data ti ko tọ"
 
-#: inc/class.admin.php:414
+#: inc/class.admin.php:415
 msgid "Post tags"
 msgstr "Awọn afi ifiweranṣẹ"
 
-#: inc/class.admin.php:512
-#: inc/class.admin.php:606
+#: inc/class.admin.php:513
+#: inc/class.admin.php:607
 msgid "Change selection"
 msgstr "Yipada yiyan"
 
-#: inc/class.admin.php:570
+#: inc/class.admin.php:571
 msgid "Content type"
 msgstr "Iru akoonu"
 
-#: inc/class.admin.php:756
+#: inc/class.admin.php:757
 msgid "Please select a valid"
 msgstr "Jọwọ yan ọkan ti o yẹ"
 
-#: inc/class.admin.php:758
+#: inc/class.admin.php:759
 msgid "Select Default Post Thumb"
 msgstr "Yan Iboju Ifiweranṣẹ Aiyipada"
 
-#: inc/class.admin.php:759
+#: inc/class.admin.php:760
 msgid "Use this media"
 msgstr "Lo media yii"
 
-#: inc/class.admin.php:760
+#: inc/class.admin.php:761
 msgid "Edit the current setting."
 msgstr "Ṣatunkọ eto lọwọlọwọ."
 
-#: inc/class.admin.php:761
+#: inc/class.admin.php:762
 #: modules/taxopress-ai/taxopress-ai.php:426
 msgid "The request could not be completed. Please try again."
 msgstr "Ibéèrè naa ko le pari. Jọwọ gbiyanju lẹẹkansi."
 
-#: inc/class.admin.php:763
+#: inc/class.admin.php:764
 msgid "No terms will be deleted"
 msgstr "Ko si term(s) ti yoo parẹ"
 
-#: inc/class.admin.php:764
+#: inc/class.admin.php:765
 msgid " terms will be deleted."
 msgstr " term(s) ni yoo parẹ."
 
-#: inc/class.admin.php:765
+#: inc/class.admin.php:766
 msgid "Checking terms..."
 msgstr "Nṣayẹwo term(s)..."
 
-#: inc/class.admin.php:766
+#: inc/class.admin.php:767
 msgid "An error occurred while checking terms."
 msgstr "Aṣiṣe kan ṣẹlẹ nigba n ṣayẹwo term(s)."
 
-#: inc/class.admin.php:767
+#: inc/class.admin.php:768
 msgid "Permanently delete the affected terms? This action cannot be undone."
 msgstr "Ṣe parẹ awọn term ti o kan lailai? Igbese yii ko le yipada."
 
-#: inc/class.admin.php:768
+#: inc/class.admin.php:769
 #: inc/post-tags.php:1090
 #: inc/related-posts.php:1354
 msgid "Select a post to see a preview."
 msgstr "Yan ifiweranṣẹ kan láti wo àtẹ́jade."
 
-#: inc/class.admin.php:769
+#: inc/class.admin.php:770
 msgid "Auto Term ID missing. Kindly save the auto term before using this feature."
 msgstr ""
 "ID term aifọwọyi ti padanu. Jọwọ fipamọ term aifọwọyi ṣaaju ki o to lo ẹya "
 "yii."
 
-#: inc/class.admin.php:779
+#: inc/class.admin.php:780
 msgid "Merge has been cancelled."
 msgstr "A ti fagile iṣọpọ."
 
-#: inc/class.admin.php:781
+#: inc/class.admin.php:782
 msgid "Pause."
 msgstr "Duro."
 
-#: inc/class.admin.php:783
+#: inc/class.admin.php:784
 msgid "Merging terms. Please wait..."
 msgstr "Iṣọpọ awọn ọrọ. Jọwọ duro..."
 
-#: inc/class.admin.php:784
+#: inc/class.admin.php:785
 #, php-format
 msgid "Merging %1$s terms attached to %2$s posts. Please wait..."
 msgstr "Iṣọpọ %1$s awọn ọrọ ti a so mọ %2$s awọn ifiweranṣẹ. Jọwọ duro..."
 
-#: inc/class.admin.php:785
+#: inc/class.admin.php:786
 msgid "Large dataset detected, terms will be merged in batches of 20!"
 msgstr "Iṣẹ data nla ti a ri, awọn ọrọ yoo wa ni iṣọpọ ni awọn ẹgbẹ ti 20!"
 
-#: inc/class.admin.php:786
+#: inc/class.admin.php:787
 msgid "No terms were merged."
 msgstr "Ko si awọn ọrọ ti a ti iṣọpọ."
 
-#: inc/class.admin.php:787
+#: inc/class.admin.php:788
 #, php-format
 msgid "Batch %1$s of %2$s merged."
 msgstr "Igbẹ %1$s ti %2$s ti iṣọpọ."
 
-#: inc/class.admin.php:788
+#: inc/class.admin.php:789
 msgid "terms merged"
 msgstr "awọn ọrọ ti a ti iṣọpọ"
 
-#: inc/class.admin.php:789
+#: inc/class.admin.php:790
 msgid "posts updated"
 msgstr "awọn ifiweranṣẹ ti a ṣe imudojuiwọn"
 
-#: inc/class.admin.php:790
+#: inc/class.admin.php:791
 #, php-format
 msgid "All terms merged into \"%s\""
 msgstr "Gbogbo awọn ọrọ ti a ti iṣọpọ sinu \"%s\""
 
-#: inc/class.admin.php:791
+#: inc/class.admin.php:792
 #, php-format
 msgid "Terms merged into \"%s\""
 msgstr "Awọn ọrọ ti a ti iṣọpọ sinu \"%s\""
 
-#: inc/class.admin.php:792
+#: inc/class.admin.php:793
 msgid "Some batches were skipped because they contained non-existent terms."
 msgstr "Diẹ ninu awọn ẹgbẹ ti kọja nitori wọn ni awọn ọrọ ti ko si."
 
-#: inc/class.admin.php:793
+#: inc/class.admin.php:794
 #, php-format
 msgid "Batch %1$s failed because it contained non-existent terms: %2$s"
 msgstr "Igbẹ %1$s kuna nitori o ni awọn ọrọ ti ko si: %2$s"
 
-#: inc/class.admin.php:794
+#: inc/class.admin.php:795
 msgid "AJAX error on batch"
 msgstr "Aṣiṣe AJAX lori igbẹ"
 
-#: inc/class.admin.php:795
+#: inc/class.admin.php:796
 #, php-format
 msgid "Error on batch %1$s:"
 msgstr "Aṣiṣe lori igbẹ %1$s:"
 
-#: inc/class.admin.php:801
+#: inc/class.admin.php:802
 msgid "Search Posts..."
 msgstr "Wa Awọn Ifiweranṣẹ..."
 
-#: inc/class.admin.php:802
+#: inc/class.admin.php:803
 msgid "Loading..."
 msgstr "Nṣiṣẹ..."
 
-#: inc/class.admin.php:803
+#: inc/class.admin.php:804
 msgid "Error loading preview"
 msgstr "Aṣiṣe n loading awotẹlẹ"
 
-#: inc/class.admin.php:809
+#: inc/class.admin.php:810
 #: inc/related-posts.php:1177
 msgid "Using default PublishPress Taxonomies image"
 msgstr "Nlo aworan Taxonomies PublishPress aiyipada"
 
-#: inc/class.admin.php:810
+#: inc/class.admin.php:811
 #: inc/related-posts.php:1186
 msgid "Select Media"
 msgstr "Yan Media"
 
-#: inc/class.admin.php:811
+#: inc/class.admin.php:812
 msgid "Change Media"
 msgstr "Yipada Media"
 
-#: inc/class.admin.php:812
+#: inc/class.admin.php:813
 msgid "Use Default"
 msgstr "Lo Aiyipada"
 
-#: inc/class.admin.php:813
+#: inc/class.admin.php:814
 msgid "See More"
 msgstr "Wo Siwaju"
 
-#: inc/class.admin.php:814
+#: inc/class.admin.php:815
 msgid "See Less"
 msgstr "Wo Kuru"
 
-#: inc/class.admin.php:815
+#: inc/class.admin.php:816
 msgid "Apply Selected"
 msgstr "Lilo Ti a Yan"
 
-#: inc/class.admin.php:816
+#: inc/class.admin.php:817
 msgid "Close"
 msgstr "Pa"
 
-#: inc/class.admin.php:817
+#: inc/class.admin.php:818
 msgid "Please select at least one suggestion to apply."
 msgstr "Jọwọ yan o kere ju iṣeduro kan lati lo."
 
-#: inc/class.admin.php:818
+#: inc/class.admin.php:819
 msgid ""
 "You have selected multiple merge suggestions. All selected terms will be "
 "merged into a single new term. Do you want to continue?"
@@ -3283,61 +3282,61 @@ msgstr ""
 "O ti yan ọpọlọpọ awọn iṣeduro iṣọpọ. Gbogbo awọn ọrọ ti a yan yoo wa ni "
 "iṣọpọ sinu ọrọ tuntun kan. Ṣe o fẹ lati tẹsiwaju?"
 
-#: inc/class.admin.php:819
+#: inc/class.admin.php:820
 msgid "No merge suggestions found for this taxonomy."
 msgstr "Ko si awọn iṣeduro iṣọpọ ti a ri fun taxonomy yii."
 
-#: inc/class.admin.php:820
+#: inc/class.admin.php:821
 msgid "Suggested Terms to Merge:"
 msgstr "Awọn Ọrọ ti a ṣe iṣeduro lati Iṣọpọ:"
 
-#: inc/class.admin.php:821
+#: inc/class.admin.php:822
 msgid "duplicates"
 msgstr "awọn ẹda"
 
-#: inc/class.admin.php:822
+#: inc/class.admin.php:823
 msgid "Reason:"
 msgstr "Idi:"
 
-#: inc/class.admin.php:823
+#: inc/class.admin.php:824
 msgid "Select All"
 msgstr "Yan Gbogbo"
 
-#: inc/class.admin.php:824
+#: inc/class.admin.php:825
 msgid "Deselect All"
 msgstr "Yọ Gbogbo"
 
-#: inc/class.admin.php:825
+#: inc/class.admin.php:826
 msgid "Terms to Merge"
 msgstr "Awọn ọrọ lati Iṣọpọ"
 
-#: inc/class.admin.php:826
+#: inc/class.admin.php:827
 msgid "New Term"
 msgstr "Ọrọ Tuntun"
 
-#: inc/class.admin.php:827
+#: inc/class.admin.php:828
 msgid "Reasons"
 msgstr "Awọn Idi"
 
-#: inc/class.admin.php:876
-#: inc/class.admin.php:889
+#: inc/class.admin.php:877
+#: inc/class.admin.php:890
 #: views/admin/page-settings.php:6
 msgid "PublishPress Taxonomies: Options"
 msgstr "PublishPress Taxonomies: Awọn aṣayan"
 
-#: inc/class.admin.php:1005
+#: inc/class.admin.php:1006
 msgid "Options saved"
 msgstr "Awọn aṣayan ti a fipamọ"
 
-#: inc/class.admin.php:1011
+#: inc/class.admin.php:1012
 msgid "PublishPress Taxonomies options resetted to default options!"
 msgstr "Awọn aṣayan PublishPress Taxonomies ti wa ni tunṣe si awọn aṣayan aiyipada!"
 
-#: inc/class.admin.php:1085
+#: inc/class.admin.php:1086
 msgid "This feature requires at least 1 tag to work. Begin by adding tags!"
 msgstr "Iṣẹ yii nilo o kere ju 1 tag lati ṣiṣẹ. Bẹrẹ nipa fifi awọn tag kun!"
 
-#: inc/class.admin.php:1087
+#: inc/class.admin.php:1088
 msgid ""
 "This feature works only with activated JavaScript. Activate it in your Web "
 "browser so you can!"
@@ -3345,35 +3344,35 @@ msgstr ""
 "Iṣẹ yii n ṣiṣẹ nikan pẹlu JavaScript ti a mu ṣiṣẹ. Mu un ṣiṣẹ ninu "
 "aṣawakiri Wẹẹbu rẹ ki o le!"
 
-#: inc/class.admin.php:1147
+#: inc/class.admin.php:1148
 #. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
 msgstr "Ti o ba fẹ %1$s jọwọ fi wa %2$s idiyele. O ṣeun!"
 
-#: inc/class.admin.php:1155
+#: inc/class.admin.php:1156
 msgid "PublishPress Taxonomies resources"
 msgstr "Awọn orisun Taxonomies PublishPress"
 
-#: inc/class.admin.php:1157
+#: inc/class.admin.php:1158
 msgid "About"
 msgstr "Nipa"
 
-#: inc/class.admin.php:1158
+#: inc/class.admin.php:1159
 msgid "Documentation"
 msgstr "Iwe itọnisọna"
 
-#: inc/class.admin.php:1159
+#: inc/class.admin.php:1160
 msgid "Contact"
 msgstr "Kan si"
 
-#: inc/class.admin.php:1193
-#: inc/class.admin.php:1413
+#: inc/class.admin.php:1194
+#: inc/class.admin.php:1414
 msgid "Tags for Current Post"
 msgstr "Awọn afi fun Ifiweranṣẹ lọwọlọwọ"
 
-#: inc/class.admin.php:1194
-#: inc/class.admin.php:1415
+#: inc/class.admin.php:1195
+#: inc/class.admin.php:1416
 #: inc/functions.inc.php:585
 #: inc/related-posts-functions.php:169
 #: inc/related-posts-table.php:17
@@ -3383,49 +3382,49 @@ msgstr "Awọn afi fun Ifiweranṣẹ lọwọlọwọ"
 msgid "Related Posts"
 msgstr "Ifiweranṣẹ Ti o Ni Ibatan"
 
-#: inc/class.admin.php:1405
+#: inc/class.admin.php:1406
 msgid "Administration"
 msgstr "Isakoso"
 
-#: inc/class.admin.php:1409
+#: inc/class.admin.php:1410
 msgid "Features"
 msgstr "Awọn ẹya"
 
-#: inc/class.admin.php:1411
+#: inc/class.admin.php:1412
 msgid "Embedded Tags"
 msgstr "Awọn afi ti a fi sinu"
 
-#: inc/class.admin.php:1417
+#: inc/class.admin.php:1418
 msgid "Legacy"
 msgstr "Iṣẹlẹ"
 
-#: inc/class.admin.php:1423
+#: inc/class.admin.php:1424
 #: inc/helper.options.admin.php:243
 #: modules/taxopress-ai/taxopress-ai.php:470
 msgid "Metabox Access"
 msgstr "Iwọle Metabox"
 
-#: inc/class.admin.php:1425
-#: inc/class.admin.php:1439
+#: inc/class.admin.php:1426
+#: inc/class.admin.php:1440
 #: inc/terms-table.php:749
 #: includes-core/TaxopressCoreAdmin.php:615
 msgid "Linked Terms"
 msgstr "Awọn Ọrọ Ti a So"
 
-#: inc/class.admin.php:1427
-#: inc/class.admin.php:1441
+#: inc/class.admin.php:1428
+#: inc/class.admin.php:1442
 msgid "Term Synonyms"
 msgstr "Awọn ọrọ amugbooro"
 
-#: inc/class.admin.php:1429
+#: inc/class.admin.php:1430
 msgid "License"
 msgstr "Iwe-aṣẹ"
 
-#: inc/class.admin.php:1431
+#: inc/class.admin.php:1432
 msgid "Hidden Terms"
 msgstr "Awọn ọrọ ti a pamọ"
 
-#: inc/class.admin.php:1433
+#: inc/class.admin.php:1434
 msgid "Frontend Scripts"
 msgstr "Awọn iwe afọwọkọ iwaju"
 
@@ -3876,15 +3875,15 @@ msgstr "Lilo to ti ni ilọsiwaju:"
 msgid "What to show"
 msgstr "Ohun ti lati fihan"
 
-#: inc/dashboard.php:80
+#: inc/dashboard.php:81
 msgid "PublishPress Taxonomies Logo"
 msgstr "Ami PublishPress Taxonomies"
 
-#: inc/dashboard.php:90
+#: inc/dashboard.php:91
 msgid "Welcome to PublishPress Taxonomies, the WordPress taxonomy plugin"
 msgstr "Kaabọ si PublishPress Taxonomies, amugbooro taxonomy WordPress"
 
-#: inc/dashboard.php:100
+#: inc/dashboard.php:101
 msgid ""
 "This screen allows you to enable or disable PublishPress Taxonomies "
 "features."
@@ -7095,7 +7094,7 @@ msgstr "Ibeere olupese ko ti ranṣẹ."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1341
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
 msgid "Result from api."
 msgstr "Abajade lati api."
 
@@ -7281,8 +7280,8 @@ msgstr "Isopọ Dandelion ti wa ni pipade ni awọn eto Legacy AI Sources."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1084
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1353
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
 msgid "No matched result from the API Server."
 msgstr "Ko si abajade ti o baamu lati API Server."
 
@@ -7295,16 +7294,16 @@ msgstr "Isopọ Dandelion nilo API Key. Jọwọ fi API Key rẹ kun ni awọn e
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:856
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1118
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
 msgid "Selected content is empty."
 msgstr "Ayanfẹ akoonu jẹ ofo."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:953
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1173
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
 msgid "Result from cache."
 msgstr "Abajade lati cache."
 
@@ -7318,14 +7317,14 @@ msgstr "API Aṣiṣe: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1358
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
 msgid "Empty response."
 msgstr "Idahun ofo."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1361
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
 msgid "Error establishing connection with the API server. Try again."
 msgstr "Aṣiṣe ti o ṣẹda asopọ pẹlu olupin API. Gbiyanju lẹẹkan si."
 
@@ -7367,16 +7366,16 @@ msgstr ""
 "URL API IBM Watson gbọdọ lo HTTPS ati orukọ olupin iṣẹ oye ede adayeba "
 "osise."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:831
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:858
 msgid "No matched result from an AI Connector."
 msgstr "Ko si abajade ti o baamu lati ọdọ AI Connector."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:838
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:865
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "AI Connectors nilo WordPress 7.0 tabi tuntun si."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:877
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1187
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7385,8 +7384,8 @@ msgstr ""
 "Iboju ti ko tọ (s) ti a ri: {%s}. Awọn iboju ti o wulo ni: {content}, "
 "{post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:910
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1208
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
@@ -7394,8 +7393,8 @@ msgstr ""
 "O ti fi {post_terms} kun ninu iwifunni ṣugbọn ifiweranṣẹ rẹ ko ni awọn ọrọ "
 "kankan."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:916
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1211
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7403,23 +7402,39 @@ msgstr ""
 "O ti fi {site_terms} kun ninu iwifunni ṣugbọn aaye rẹ ko ni awọn ọrọ kankan "
 "fun taxonomy yii."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:979
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
 msgid ""
-"No compatible AI provider is configured. Install and configure a provider "
-"in Settings > Connectors."
+"The selected AI Connector is not configured. Choose a connected provider in "
+"Auto Terms > Sources."
 msgstr ""
-"Ko si olupese AI ti o baamu ti a ṣeto. Fi sori ẹrọ ati tunto olupese ni "
-"Awọn Eto > Connectors."
+"AI Connector ti a yan ko ti ṣeto. Yan olupese ti o so pọ ni Auto Terms > "
+"Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+msgid ""
+"AI is disabled or unavailable on this site. Check the WordPress AI settings "
+"before generating terms."
+msgstr ""
+"AI ti wa ni pa tabi ko si lori aaye yii. Ṣayẹwo awọn eto AI WordPress ṣaaju "
+"ki o to ṣẹda awọn ọrọ."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+msgid ""
+"The selected AI Connector cannot generate text for this request. Check its "
+"connection and text generation support in Settings > Connectors."
+msgstr ""
+"AI Connector ti a yan ko le ṣe agbejade ọrọ fun ibeere yii. Ṣayẹwo asopọ rẹ "
+"ati atilẹyin agbejade ọrọ ni Eto > Connectors."
+
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
 msgid "Result from an AI Connector."
 msgstr "Abajade lati ọdọ AI Connector."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1073
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr "Isopọ taara OpenAI ti wa ni pipade ni awọn eto Legacy AI Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7427,7 +7442,7 @@ msgstr ""
 "Iṣọpọ OpenAI nilo Bọtini API. Jọwọ fi Bọtini API rẹ kun ninu awọn eto Auto "
 "Term."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1276
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
@@ -7650,11 +7665,27 @@ msgstr "Boya nigbamii"
 msgid "I already did"
 msgstr "Mo ti ṣe tẹlẹ"
 
-#: simple-tags.php:118
+#: simple-tags.php:58
+msgid ""
+"PublishPress Taxonomies Free requires PHP 8.2 or newer. The plugin cannot "
+"run until PHP is updated."
+msgstr ""
+"PublishPress Taxonomies Free nilo PHP 8.2 tabi tuntun. Plugin naa ko le "
+"ṣiṣẹ titi PHP yoo fi ni imudojuiwọn."
+
+#: simple-tags.php:68
+msgid ""
+"PublishPress Taxonomies Free requires WordPress 6.7 or newer. The plugin "
+"cannot run until WordPress is updated."
+msgstr ""
+"PublishPress Taxonomies Free nilo WordPress 6.7 tabi tuntun. Plugin naa ko "
+"le ṣiṣẹ titi WordPress yoo fi ni imudojuiwọn."
+
+#: simple-tags.php:143
 msgid "This plugin can be deleted."
 msgstr "A le pa afikun yii run."
 
-#: simple-tags.php:146
+#: simple-tags.php:171
 msgid ""
 "PublishPress Taxonomies was not activated because PublishPress Taxonomies "
 "Pro is already active. Please keep only PublishPress Taxonomies Pro enabled."
