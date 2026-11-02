@@ -329,7 +329,8 @@ function taxopress_update_taxonomy($data = [])
             'taxopress_taxonomy_slug_exists',
             false,
             $data['cpt_custom_tax']['name'],
-            $taxonomies
+            $taxonomies,
+            $data['tax_original'] ?? ''
         );
         if (true === $slug_exists) {
             add_filter('taxopress_custom_error_message', 'taxopress_slug_matches_taxonomy');
@@ -612,6 +613,65 @@ function taxopress_reserved_taxonomies()
     return $reserved;
 }
 
+/** Retarget native settings and presets without rewriting post content or third-party options. */
+function taxopress_retarget_taxonomy_references($source, $destination, $apply = true)
+{
+    $summary = ['settings' => [], 'presets' => []];
+    $settings = (array) get_option(STAGS_OPTIONS_NAME, []);
+    $original = $settings;
+    foreach ($settings as $key => $value) {
+        if (!in_array($key, ['synonyms_taxonomies', 'linked_terms_taxonomies'], true) && !preg_match('/^taxopress_ai_.+_metabox_default_taxonomy$|^enable_metabox_|^remove_taxonomy_metabox_/', $key)) {
+            continue;
+        }
+        $next = is_array($value) ? array_map(static function ($item) use ($source, $destination) { return $item === $source ? $destination : $item; }, $value) : ($value === $source ? $destination : $value);
+        if ($next !== $value) {
+            $settings[$key] = is_array($next) ? array_values(array_unique($next)) : $next;
+            $summary['settings'][] = $key;
+        }
+    }
+    if ($apply && $settings !== $original) {
+        SimpleTags_Plugin::set_option($settings);
+        if (get_option(STAGS_OPTIONS_NAME) !== $settings) {
+            return new WP_Error('taxopress_reference_save', __('Native taxonomy settings could not be verified after saving.', 'simple-tags'));
+        }
+    }
+    foreach (['taxopress_tagclouds', 'taxopress_posttagss', 'taxopress_relatedposts', 'taxopress_autolinks', 'taxopress_autoterms'] as $option) {
+        $original = get_option($option, []);
+        if (!is_array($original)) {
+            continue;
+        }
+        $records = $original;
+        foreach ($records as $id => &$record) {
+            if (!is_array($record)) {
+                continue;
+            }
+            $before = $record;
+            if (($record['taxonomy'] ?? '') === $source) {
+                $record['taxonomy'] = $destination;
+            }
+            foreach (['additional_taxonomies', 'enable_customurl_field'] as $key) {
+                if (isset($record[$key]) && is_array($record[$key])) {
+                    $record[$key] = array_values(array_unique(array_map(static function ($value) use ($source, $destination) { return $value === $source ? $destination : $value; }, $record[$key])));
+                }
+            }
+            if ($before !== $record) {
+                $summary['presets'][$option][] = $id;
+            }
+        }
+        unset($record);
+        if ($apply && $records !== $original) {
+            update_option($option, $records);
+            if (get_option($option) !== $records) {
+                return new WP_Error('taxopress_reference_save', __('A native preset could not be verified after saving.', 'simple-tags'));
+            }
+        }
+    }
+    if ($apply) {
+        taxopress_get_autolink_data(true);
+    }
+    return $summary;
+}
+
 /**
  * Convert taxonomies.
  *
@@ -620,32 +680,54 @@ function taxopress_reserved_taxonomies()
  * @internal
  *
  */
-function taxopress_convert_taxonomy_terms($original_slug = '', $new_slug = '')
+function taxopress_convert_taxonomy_terms($original_slug = '', $new_slug = '', $selected_ids = null, $delete_definition = true)
 {
     global $wpdb;
-
-    $args = [
-        'taxonomy'   => $original_slug,
-        'hide_empty' => false,
-        'fields'     => 'ids',
-    ];
-
-    $term_ids = get_terms($args);
-
-    if (is_int($term_ids)) {
-        $term_ids = (array)$term_ids;
+    $term_ids = get_terms(['taxonomy' => $original_slug, 'hide_empty' => false, 'fields' => 'ids']);
+    if (is_wp_error($term_ids)) {
+        return $term_ids;
     }
-
-    if (is_array($term_ids) && !empty($term_ids)) {
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Term IDs are integers from array, safely imploded
-        $term_ids = implode(',', $term_ids);
-
-        $query = "UPDATE `{$wpdb->term_taxonomy}` SET `taxonomy` = %s WHERE `taxonomy` = %s AND `term_id` IN ( {$term_ids} )";
-
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Term IDs safely imploded; direct query necessary for bulk taxonomy update
-        $wpdb->query($wpdb->prepare($query, $new_slug, $original_slug));
+    if ($selected_ids !== null) {
+        if (array_diff($selected_ids, $term_ids) || ($delete_definition && array_diff($term_ids, $selected_ids))) {
+            return new WP_Error('taxopress_conversion_scope', __('The taxonomy term scope changed before conversion.', 'simple-tags'));
+        }
+        $term_ids = array_values(array_intersect(array_map('intval', $term_ids), $selected_ids));
     }
-    taxopress_delete_taxonomy($original_slug);
+    $objects = $term_ids ? get_objects_in_term($term_ids, $original_slug) : [];
+    if (is_wp_error($objects)) {
+        return $objects;
+    }
+    if ($term_ids) {
+        $ids_sql = implode(',', array_map('intval', $term_ids));
+        // Integer IDs originate from get_terms; WordPress has no taxonomy-move API.
+        $result = $wpdb->query($wpdb->prepare("UPDATE {$wpdb->term_taxonomy} SET taxonomy = %s WHERE taxonomy = %s AND term_id IN ($ids_sql)", $new_slug, $original_slug));
+        if ($result === false) {
+            return new WP_Error('taxopress_conversion_failed', __('The taxonomy conversion could not be saved.', 'simple-tags'));
+        }
+        clean_term_cache($term_ids, $original_slug);
+        clean_term_cache($term_ids, $new_slug);
+        foreach (array_unique($objects) as $id) {
+            clean_object_term_cache($id, get_post_type($id));
+        }
+        $tt_ids = get_terms(['taxonomy' => $new_slug, 'include' => $term_ids, 'hide_empty' => false, 'fields' => 'tt_ids']);
+        if (!is_wp_error($tt_ids)) {
+            wp_update_term_count_now($tt_ids, $new_slug);
+        }
+    }
+    delete_transient('taxopress_terms_' . $original_slug);
+    delete_transient('taxopress_terms_' . $new_slug);
+    if (class_exists('SimpleTags_Hidden_Terms')) {
+        SimpleTags_Hidden_Terms::get_instance()->taxopress_set_hidden_terms('post_tag', 0, [$original_slug, $new_slug]);
+    }
+    do_action('taxopress_terms_taxonomy_converted', $term_ids, $original_slug, $new_slug);
+    if ($delete_definition) {
+        $references = taxopress_retarget_taxonomy_references($original_slug, $new_slug);
+        if (is_wp_error($references)) {
+            return $references;
+        }
+        taxopress_delete_taxonomy($original_slug);
+    }
+    return array_map('intval', $term_ids);
 }
 
 /**
@@ -839,13 +921,13 @@ function taxopress_do_convert_taxonomy_terms()
  * @param array $taxonomies PublishPress Taxonomies taxonomies.
  * @return bool
  */
-function taxopress_updated_taxonomy_slug_exists($slug_exists, $taxonomy_slug = '', $taxonomies = [])
+function taxopress_updated_taxonomy_slug_exists($slug_exists, $taxonomy_slug = '', $taxonomies = [], $original_slug = null)
 {
     if (
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Function called after nonce verification in parent handler
-        (isset($_POST['cpt_tax_status']) && 'edit' === $_POST['cpt_tax_status']) && !in_array($taxonomy_slug, taxopress_reserved_taxonomies(), true) &&
+        ($original_slug !== null ? $original_slug !== '' : (isset($_POST['cpt_tax_status']) && 'edit' === $_POST['cpt_tax_status'])) && !in_array($taxonomy_slug, taxopress_reserved_taxonomies(), true) &&
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
-        (isset($_POST['tax_original']) && $taxonomy_slug === $_POST['tax_original'])
+        ($original_slug !== null ? ($original_slug === $taxonomy_slug && isset($taxonomies[$taxonomy_slug])) : (isset($_POST['tax_original']) && $taxonomy_slug === $_POST['tax_original']))
     ) {
         $slug_exists = false;
     }
@@ -853,7 +935,7 @@ function taxopress_updated_taxonomy_slug_exists($slug_exists, $taxonomy_slug = '
     return $slug_exists;
 }
 
-add_filter('taxopress_taxonomy_slug_exists', 'taxopress_updated_taxonomy_slug_exists', 11, 3);
+add_filter('taxopress_taxonomy_slug_exists', 'taxopress_updated_taxonomy_slug_exists', 11, 4);
 
 
 /**

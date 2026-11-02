@@ -149,32 +149,7 @@ function taxopress_create_default_tag_cloud()
         return;
     }
 
-    $default = [];
-    $default['taxopress_tag_cloud']['title'] = esc_html__('Terms Display', 'simple-tags');
-    $default['taxopress_tag_cloud']['post_type'] = '';
-    $default['taxopress_tag_cloud']['before']   = '';
-    $default['taxopress_tag_cloud']['after']    = '';
-    $default['taxopress_tag_cloud']['taxonomy'] = 'post_tag';
-    $default['taxopress_tag_cloud']['max'] = 20;
-    $default['taxopress_tag_cloud']['selectionby'] = 'count';
-    $default['taxopress_tag_cloud']['selection'] = 'desc';
-    $default['taxopress_tag_cloud']['orderby'] = 'random';
-    $default['taxopress_tag_cloud']['order'] = 'desc';
-    $default['taxopress_tag_cloud']['smallest'] = 12;
-    $default['taxopress_tag_cloud']['largest'] = 12;
-    $default['taxopress_tag_cloud']['unit'] = 'pt';
-    $default['taxopress_tag_cloud']['format'] = 'border';
-    $default['taxopress_tag_cloud']['color'] = 1;
-    $default['taxopress_tag_cloud']['mincolor'] = '#353535';
-    $default['taxopress_tag_cloud']['maxcolor'] = '#000000';
-    $default['taxopress_tag_cloud']['xformat'] = '<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>';
-    $default['taxopress_tag_cloud']['limit_days'] = 0;
-    $default['taxopress_tag_cloud']['min_usage'] = 0;
-    $default['taxopress_tag_cloud']['term_selection_mode'] = 'automatic';
-    $default['taxopress_tag_cloud']['include_terms'] = '';
-    $default['tagcloud_submit'] = 'Add Terms Display';
-    $default['cpt_tax_status'] = 'new';
-    $result = taxopress_update_tagcloud($default);
+    $result = taxopress_update_tagcloud(taxopress_get_tag_cloud_defaults());
     update_option('taxopress_default_tagclouds', $result);
 }
 
@@ -210,14 +185,10 @@ function taxopress_update_tagcloud($data = [])
 
     $tagclouds          = taxopress_get_tagcloud_data();
 
-    $title                        = $data['taxopress_tag_cloud']['title'];
-    $title                        = str_replace('"', '', htmlspecialchars_decode($title));
-    $title                        = htmlspecialchars($title, ENT_QUOTES);
-    $title                        = trim($title);
-    $data['taxopress_tag_cloud']['title'] = stripslashes_deep($title);
+    $data['taxopress_tag_cloud']['title'] = taxopress_sanitize_preset_title($data['taxopress_tag_cloud']['title']);
 
     $xformat                       = $data['taxopress_tag_cloud']['xformat'];
-    $data['taxopress_tag_cloud']['xformat'] = stripslashes_deep($xformat);
+    $data['taxopress_tag_cloud']['xformat'] = $xformat;
 
     $min_usage = isset($data['taxopress_tag_cloud']['min_usage']) ? (int) $data['taxopress_tag_cloud']['min_usage'] : 0;
     $data['taxopress_tag_cloud']['min_usage'] = max(0, $min_usage);
@@ -309,13 +280,17 @@ function taxopress_delete_tagcloud_filter_removable_query_args(array $args)
  * Delete our custom taxonomy from the array of taxonomies.
  * @return bool|string False on failure, string on success.
  */
-function taxopress_action_delete_tagcloud($tagcloud_id)
+function taxopress_action_delete_tagcloud($tagcloud_id, $redirect = true)
 {
     $tagclouds = taxopress_get_tagcloud_data();
 
     if (array_key_exists($tagcloud_id, $tagclouds)) {
         unset($tagclouds[$tagcloud_id]);
         $success = update_option('taxopress_tagclouds', $tagclouds);
+    }
+
+    if (!$redirect) {
+        return isset($success) && $success;
     }
 
     if (isset($success)) {
@@ -355,4 +330,35 @@ function taxopress_termsdisplay_shortcode($atts)
 
     $html = ob_get_clean();
     return $html;
+}
+
+/** Native default data shared by initial presets and API previews. */
+function taxopress_get_tag_cloud_defaults()
+{
+    $default = [];
+    $default['taxopress_tag_cloud']['title'] = esc_html__('Terms Display', 'simple-tags');
+    $default['taxopress_tag_cloud']['post_type'] = '';
+    $default['taxopress_tag_cloud']['before']   = '';
+    $default['taxopress_tag_cloud']['after']    = '';
+    $default['taxopress_tag_cloud']['taxonomy'] = 'post_tag';
+    $default['taxopress_tag_cloud']['max'] = 20;
+    $default['taxopress_tag_cloud']['selectionby'] = 'count';
+    $default['taxopress_tag_cloud']['selection'] = 'desc';
+    $default['taxopress_tag_cloud']['orderby'] = 'random';
+    $default['taxopress_tag_cloud']['order'] = 'desc';
+    $default['taxopress_tag_cloud']['smallest'] = 12;
+    $default['taxopress_tag_cloud']['largest'] = 12;
+    $default['taxopress_tag_cloud']['unit'] = 'pt';
+    $default['taxopress_tag_cloud']['format'] = 'border';
+    $default['taxopress_tag_cloud']['color'] = 1;
+    $default['taxopress_tag_cloud']['mincolor'] = '#353535';
+    $default['taxopress_tag_cloud']['maxcolor'] = '#000000';
+    $default['taxopress_tag_cloud']['xformat'] = '<a href="%tag_link%" id="tag-link-%tag_id%" class="st-tags t%tag_scale%" title="%tag_count% topics" %tag_rel% style="%tag_size% %tag_color%">%tag_name%</a>';
+    $default['taxopress_tag_cloud']['limit_days'] = 0;
+    $default['taxopress_tag_cloud']['min_usage'] = 0;
+    $default['taxopress_tag_cloud']['term_selection_mode'] = 'automatic';
+    $default['taxopress_tag_cloud']['include_terms'] = '';
+    $default['tagcloud_submit'] = 'Add Terms Display';
+    $default['cpt_tax_status'] = 'new';
+    return $default;
 }

@@ -163,30 +163,7 @@ function taxopress_create_default_related_post()
         return;
     }
 
-    $default                                           = [];
-    $default['taxopress_related_post']['title']        = esc_html__('Related Posts', 'simple-tags');
-    $default['taxopress_related_post']['title_header'] = 'h4';
-    $default['taxopress_related_post']['before']       = '';
-    $default['taxopress_related_post']['after']        = '';
-    $default['taxopress_related_post']['post_types']   = ['post'];
-    $default['taxopress_related_post']['taxonomy']     = 'post_tag';
-    $default['taxopress_related_post']['number']       = 5;
-    $default['taxopress_related_post']['limit_days']   = 0;
-    $default['taxopress_related_post']['order']        = 'count-desc';
-    $default['taxopress_related_post']['nopoststext']  = __('No related posts.', 'simple-tags');
-    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>';
-    $default['taxopress_related_post']['format']       = 'box';
-    $default['taxopress_related_post']['default_featured_media'] = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
-    $default['taxopress_related_post']['imageresolution'] = '1536x1536';
-    $default['taxopress_related_post']['smallest']     = 12;
-    $default['taxopress_related_post']['largest']      = 12;
-    $default['taxopress_related_post']['unit']         = 'pt';
-    $default['taxopress_related_post']['color']        = 1;
-    $default['taxopress_related_post']['mincolor']     = '#353535';
-    $default['taxopress_related_post']['maxcolor']     = '#000000';
-    $default['relatedpost_submit']                     = 'Add Related Posts';
-    $default['cpt_tax_status']                         = 'new';
-    $result                                            = taxopress_update_relatedpost($default);
+    $result                                            = taxopress_update_relatedpost(taxopress_get_related_posts_defaults());
     update_option('taxopress_default_relatedposts', $result);
 }
 
@@ -222,14 +199,10 @@ function taxopress_update_relatedpost($data = [])
 
     $relatedposts = taxopress_get_relatedpost_data();
 
-    $title                                   = $data['taxopress_related_post']['title'];
-    $title                                   = str_replace('"', '', htmlspecialchars_decode($title));
-    $title                                   = htmlspecialchars($title, ENT_QUOTES);
-    $title                                   = trim($title);
-    $data['taxopress_related_post']['title'] = stripslashes_deep($title);
+    $data['taxopress_related_post']['title'] = taxopress_sanitize_preset_title($data['taxopress_related_post']['title']);
 
     $xformat                                    = $data['taxopress_related_post']['xformat'];
-    $data['taxopress_related_post']['xformat']  = stripslashes_deep($xformat);
+    $data['taxopress_related_post']['xformat']  = $xformat;
     $data['taxopress_related_post']['embedded'] = isset($data['embedded']) ? $data['embedded'] : [];
     $data['taxopress_related_post']['post_types'] = isset($data['post_types']) ? array_map('sanitize_key', (array) $data['post_types']) : [];
     $data['taxopress_related_post']['taxonomy'] = isset($data['taxopress_related_post']['taxonomy']) ? sanitize_key($data['taxopress_related_post']['taxonomy']) : 'post_tag';
@@ -322,13 +295,17 @@ function taxopress_delete_relatedpost_filter_removable_query_args(array $args)
  * Delete our custom related post from the array of related posts.
  * @return bool|string False on failure, string on success.
  */
-function taxopress_action_delete_relatedpost($relatedpost_id)
+function taxopress_action_delete_relatedpost($relatedpost_id, $redirect = true)
 {
     $relatedposts = taxopress_get_relatedpost_data();
 
     if (array_key_exists($relatedpost_id, $relatedposts)) {
         unset($relatedposts[$relatedpost_id]);
         $success = update_option('taxopress_relatedposts', $relatedposts);
+    }
+
+    if (!$redirect) {
+        return isset($success) && $success;
     }
 
     if (isset($success)) {
@@ -412,4 +389,33 @@ function taxopress_relatedposts_the_content($content = '')
     }
 
     return $content;
+}
+
+/** Native default data shared by initial presets and API previews. */
+function taxopress_get_related_posts_defaults()
+{
+    $default                                           = [];
+    $default['taxopress_related_post']['title']        = esc_html__('Related Posts', 'simple-tags');
+    $default['taxopress_related_post']['title_header'] = 'h4';
+    $default['taxopress_related_post']['before']       = '';
+    $default['taxopress_related_post']['after']        = '';
+    $default['taxopress_related_post']['post_types']   = ['post'];
+    $default['taxopress_related_post']['taxonomy']     = 'post_tag';
+    $default['taxopress_related_post']['number']       = 5;
+    $default['taxopress_related_post']['limit_days']   = 0;
+    $default['taxopress_related_post']['order']        = 'count-desc';
+    $default['taxopress_related_post']['nopoststext']  = __('No related posts.', 'simple-tags');
+    $default['taxopress_related_post']['xformat']      = '<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"><img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" /><br>%post_title%<br>%post_category%</a>';
+    $default['taxopress_related_post']['format']       = 'box';
+    $default['taxopress_related_post']['default_featured_media'] = STAGS_URL . '/assets/images/publishpress-taxonomies-logo.png';
+    $default['taxopress_related_post']['imageresolution'] = '1536x1536';
+    $default['taxopress_related_post']['smallest']     = 12;
+    $default['taxopress_related_post']['largest']      = 12;
+    $default['taxopress_related_post']['unit']         = 'pt';
+    $default['taxopress_related_post']['color']        = 1;
+    $default['taxopress_related_post']['mincolor']     = '#353535';
+    $default['taxopress_related_post']['maxcolor']     = '#000000';
+    $default['relatedpost_submit']                     = 'Add Related Posts';
+    $default['cpt_tax_status']                         = 'new';
+    return $default;
 }

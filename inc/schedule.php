@@ -135,16 +135,7 @@ if (!class_exists('SimpleTags_Autoterms_Schedule')) {
                         'schedule_terms_limit_days' => $schedule_terms_limit_days,
                         'autoterm_schedule_exclude' => $autoterm_schedule_exclude,
                     ];
-                    update_option('taxopress_autoterms_schedule', $auto_term_schedule_settings);
-
-                    wp_clear_scheduled_hook('taxopress_cron_autoterms_weekly');
-                    do_action('taxopress_clear_schedule_cron_hooks');
-
-                    if ($cron_schedule == 'weekly') {
-                        wp_schedule_event(time(), 'weekly', 'taxopress_cron_autoterms_weekly');
-                    }
-
-                    do_action('taxopress_schedule_cron_events', $cron_schedule);
+                    self::persist_schedule($auto_term_schedule_settings);
 
                     $autoterm_data = taxopress_get_autoterm_data();
                     $autoterm_data_selected = [];
@@ -179,6 +170,23 @@ if (!class_exists('SimpleTags_Autoterms_Schedule')) {
                     echo wp_kses_post(taxopress_admin_notices_helper($response_message, $response_sucess));
                 });
             }
+        }
+
+        /** Shared native schedule persistence and cron lifecycle. */
+        public static function persist_schedule(array $auto_term_schedule_settings)
+        {
+            $cron_schedule = $auto_term_schedule_settings['cron_schedule'];
+            update_option('taxopress_autoterms_schedule', $auto_term_schedule_settings);
+
+            wp_clear_scheduled_hook('taxopress_cron_autoterms_weekly');
+            do_action('taxopress_clear_schedule_cron_hooks');
+
+            if ($cron_schedule == 'weekly') {
+                wp_schedule_event(time(), 'weekly', 'taxopress_cron_autoterms_weekly');
+            }
+
+            do_action('taxopress_schedule_cron_events', $cron_schedule);
+
         }
 
         public function page_manage_autoterms_schedule()

@@ -1,5 +1,8 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+* Added: MCP actions for native taxonomy, term, configuration and scheduling workflows with permission checks.
+
 ## [4.0.0] - 28 September, 2026
 * Rebrand: Move TaxoPress to PublishPress
 

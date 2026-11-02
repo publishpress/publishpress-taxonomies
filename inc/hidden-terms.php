@@ -47,7 +47,7 @@ if (!class_exists('SimpleTags_Hidden_Terms')) {
             }
         }
 
-        public function taxopress_set_hidden_terms($taxonomy = 'post_tag', $min_usage = 0)
+        public function taxopress_set_hidden_terms($taxonomy = 'post_tag', $min_usage = 0, $only_taxonomies = null)
         {
             if (!(int) SimpleTags_Plugin::get_option_value('enable_hidden_terms')) {
                 return;
@@ -60,6 +60,9 @@ if (!class_exists('SimpleTags_Hidden_Terms')) {
             }
 
             $taxonomies = array_keys(get_taxonomies(['public' => true, 'show_ui' => true]));
+            if ($only_taxonomies !== null) {
+                $taxonomies = array_values(array_intersect($taxonomies, $only_taxonomies));
+            }
 
             foreach ($taxonomies as $taxonomy) {
                 $offset = 0;

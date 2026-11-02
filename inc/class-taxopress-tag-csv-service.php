@@ -394,9 +394,10 @@ class TaxoPress_Tag_CSV_Service
      * @param bool   $skip_missing_posts Retained for backward compatibility; missing or incompatible targets are always skipped.
      * @param string $taxonomy Taxonomy name.
      * @param string $post_type Post type whose term relationships are transferred.
+     * @param callable|null $authorize_assignment Optional term/post permission recheck immediately before each assignment.
      * @return array Counts created, updated, skipped, errors; error_messages contains details.
      */
-    public static function import_rows($rows, $update_existing = false, $skip_missing_posts = false, $taxonomy = 'post_tag', $post_type = 'post')
+    public static function import_rows($rows, $update_existing = false, $skip_missing_posts = false, $taxonomy = 'post_tag', $post_type = 'post', $authorize_assignment = null)
     {
         $result = array(
             'created'                 => 0,
@@ -427,7 +428,7 @@ class TaxoPress_Tag_CSV_Service
             $existing = get_term_by('slug', $row['slug'], $taxonomy, OBJECT, 'raw');
             if ($existing && ! $update_existing) {
                 ++$result['skipped'];
-                self::attach_posts($row, (int) $existing->term_id, $number, $result, $valid, $taxonomy, $post_type);
+                self::attach_posts($row, (int) $existing->term_id, $number, $result, $valid, $taxonomy, $post_type, $authorize_assignment);
                 continue;
             }
             $parent_id = 0;
@@ -461,7 +462,7 @@ class TaxoPress_Tag_CSV_Service
                 $result['error_messages'][] = self::row_error($number, $written->get_error_message())->get_error_message();
             } else {
                 ++$result[ $existing ? 'updated' : 'created' ];
-                self::attach_posts($row, (int) $written['term_id'], $number, $result, $valid, $taxonomy, $post_type);
+                self::attach_posts($row, (int) $written['term_id'], $number, $result, $valid, $taxonomy, $post_type, $authorize_assignment);
             }
         }
         if (! $skip_missing_posts && $result['relationships_skipped'] > 0) {
@@ -529,12 +530,19 @@ class TaxoPress_Tag_CSV_Service
      * @param array  $skipped_ids Targets excluded during preflight.
      * @param string $taxonomy Taxonomy name.
      * @param string $post_type Post type whose term relationships are transferred.
+     * @param callable|null $authorize_assignment Optional final permission check for the resolved term and post.
      */
-    private static function attach_posts($row, $term_id, $number, &$result, $skipped_ids, $taxonomy, $post_type)
+    private static function attach_posts($row, $term_id, $number, &$result, $skipped_ids, $taxonomy, $post_type, $authorize_assignment)
     {
         $ids = self::assignment_ids($row, $number);
         foreach ($ids as $id) {
             if (isset($skipped_ids[ $id ])) {
+                continue;
+            }
+            // New terms acquire their final object permissions only after creation.
+            if ($authorize_assignment !== null && !call_user_func($authorize_assignment, $term_id, $id)) {
+                ++$result['errors'];
+                $result['error_messages'][] = self::row_error($number, __('Content assignment is no longer permitted.', 'simple-tags'))->get_error_message();
                 continue;
             }
             // Recheck after term writes in case hooks or another request removed content.
