@@ -423,33 +423,34 @@ if (!class_exists('TaxoPressAiAjax')) {
                                     ? $settings_data['wordpress_ai_show_post_count']
                                     : 0;
                                 $wordpress_ai_results = TaxoPressAiApi::get_wordpress_ai_results($request_args);
-                                $wordpress_ai_results['results'] = taxopress_filter_autoterm_excluded_results(
-                                    isset($wordpress_ai_results['results']) ? $wordpress_ai_results['results'] : [],
-                                    isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
-                                );
-
-                                if ($include_debug) {
-                                    self::add_preview_debug_entry(
-                                        $debug_log,
-                                        esc_html__('AI Connectors', 'simple-tags'),
-                                        $wordpress_ai_results
+                                $provider_results = !empty($wordpress_ai_results['provider_results'])
+                                    ? $wordpress_ai_results['provider_results']
+                                    : [$wordpress_ai_results];
+                                foreach ($provider_results as $provider_result) {
+                                    $provider_result['results'] = taxopress_filter_autoterm_excluded_results(
+                                        isset($provider_result['results']) ? $provider_result['results'] : [],
+                                        isset($settings_data['autoterm_exclude']) ? $settings_data['autoterm_exclude'] : []
                                     );
-                                }
 
-                                $connected_ai_label = !empty($wordpress_ai_results['provider_name'])
-                                    ? sprintf(
-                                        esc_html__('AI Connectors: %s', 'simple-tags'),
-                                        $wordpress_ai_results['provider_name']
-                                    )
-                                    : esc_html__('AI Connectors', 'simple-tags');
+                                    $connected_ai_label = !empty($provider_result['provider_name'])
+                                        ? sprintf(
+                                            esc_html__('AI Connectors: %s', 'simple-tags'),
+                                            $provider_result['provider_name']
+                                        )
+                                        : esc_html__('AI Connectors', 'simple-tags');
 
-                                if (!empty($wordpress_ai_results['results'])) {
-                                    $terms_found = true;
-                                    $request_args['results'] = $wordpress_ai_results['results'];
-                                    $request_args['legend_title'] = $connected_ai_label;
-                                    $term_results .= TaxoPressAiUtilities::get_term_fieldset_html($request_args);
-                                } else {
-                                    $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html($connected_ai_label) . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . esc_html($wordpress_ai_results['message']) . '</p></div></div></fieldset>';
+                                    if ($include_debug) {
+                                        self::add_preview_debug_entry($debug_log, $connected_ai_label, $provider_result);
+                                    }
+
+                                    if (!empty($provider_result['results'])) {
+                                        $terms_found = true;
+                                        $request_args['results'] = $provider_result['results'];
+                                        $request_args['legend_title'] = $connected_ai_label;
+                                        $term_results .= TaxoPressAiUtilities::get_term_fieldset_html($request_args);
+                                    } else {
+                                        $term_results .= '<fieldset class="previewed-tag-fieldset"><legend> ' . esc_html($connected_ai_label) . ' </legend><div class="previewed-tag-content"><div class="taxopress-response-css red"><p>' . esc_html($provider_result['message']) . '</p></div></div></fieldset>';
+                                    }
                                 }
                             }
 
