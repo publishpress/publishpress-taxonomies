@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-31 01:59+0000\n"
+"PO-Revision-Date: 2026-11-02 03:20+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Language: fil\n"
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
 
-#: simple-tags.php, fuzzy
+#: simple-tags.php:4, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php
+#: simple-tags.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php
+#: simple-tags.php:6
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -37,13 +37,13 @@ msgstr ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
 "and all your WordPress taxonomy terms."
 
-#: simple-tags.php
+#: simple-tags.php:8
 #: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php
+#: simple-tags.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -319,7 +319,7 @@ msgstr "Walang item na available."
 #: inc/related-posts-table.php:278
 #: inc/tag-clouds-table.php:278
 #: inc/terms-table.php:1169
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:623
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:624
 #: modules/taxopress-ai/taxopress-ai.php:1529
 msgid "Edit"
 msgstr "I-edit"
@@ -1215,7 +1215,7 @@ msgstr "Pumili ng lahat ng auto terms logs"
 #: inc/autoterms.php:887
 #: inc/posts-table.php:26
 #: inc/schedule-logs-table.php:53
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1005, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1006, fuzzy
 msgid "Post"
 msgstr "Post"
 
@@ -1274,44 +1274,43 @@ msgstr "Existing taxonomy terms"
 
 #: inc/autoterms-table.php:390
 #: inc/autoterms.php:1160
-#: inc/class.client.autoterms.php:440
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:493, fuzzy
+#: inc/class.client.autoterms.php:448
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:486
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:489
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:494, fuzzy
 msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
 #: inc/autoterms.php:1157
-#: inc/class.client.autoterms.php:360
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444, fuzzy
+#: inc/class.client.autoterms.php:366
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440, fuzzy
 msgid "AI Connectors"
 msgstr "AI Connectors"
 
 #: inc/autoterms-table.php:398
 #: inc/autoterms.php:1162
-#: inc/class.client.autoterms.php:520
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:515, fuzzy
+#: inc/class.client.autoterms.php:528
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:508
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:513
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:516, fuzzy
 msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
 #: inc/autoterms.php:1164
-#: inc/class.client.autoterms.php:602
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:537, fuzzy
+#: inc/class.client.autoterms.php:610
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:535
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:538, fuzzy
 msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
 #: inc/autoterms.php:1166
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:552
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:557
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:560, fuzzy
 msgid "LSEG / Refinitiv"
 msgstr "LSEG / Refinitiv"
 
@@ -1903,7 +1902,7 @@ msgstr "Umiiral na Auto Terms"
 
 #: inc/autoterms_content.php:91
 #: inc/schedule.php:125
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1140
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1141
 msgid "An error occured."
 msgstr "Isang error ang naganap."
 
@@ -3608,7 +3607,7 @@ msgstr ""
 "Walang laman ang nilalaman ng Auto Term. Hindi makapagmungkahi ng mga "
 "termino nang walang nilalaman."
 
-#: inc/class.client.autoterms.php:311
+#: inc/class.client.autoterms.php:315
 #, php-format
 msgid ""
 "%1s was suggested through AI Connectors but excluded by Auto Term Exception "
@@ -3617,14 +3616,14 @@ msgstr ""
 "%1s ay iminungkahi sa pamamagitan ng AI Connectors ngunit hindi kasama "
 "dahil sa mga setting ng Auto Term Exception."
 
-#: inc/class.client.autoterms.php:384
+#: inc/class.client.autoterms.php:392
 #, php-format
 msgid "%1s was suggested by OpenAI but excluded by Auto Term Exception settings."
 msgstr ""
 "%1s ay iminungkahi ng OpenAI ngunit hindi kasama dahil sa mga setting ng "
 "Auto Term Exception."
 
-#: inc/class.client.autoterms.php:464
+#: inc/class.client.autoterms.php:472
 #, php-format
 msgid ""
 "%1s was suggested by IBM Watson but excluded by Auto Term Exception "
@@ -3633,14 +3632,14 @@ msgstr ""
 "%1s ay iminungkahi ng IBM Watson ngunit hindi kasama dahil sa mga setting "
 "ng Auto Term Exception."
 
-#: inc/class.client.autoterms.php:545
+#: inc/class.client.autoterms.php:553
 #, php-format
 msgid "%1s was suggested by Dandelion but excluded by Auto Term Exception settings."
 msgstr ""
 "%1s ay iminungkahi ng Dandelion ngunit hindi kasama dahil sa mga setting ng "
 "Auto Term Exception."
 
-#: inc/class.client.autoterms.php:625
+#: inc/class.client.autoterms.php:633
 #, php-format
 msgid ""
 "%1s was suggested by OpenCalais but excluded by Auto Term Exception "
@@ -3649,11 +3648,11 @@ msgstr ""
 "%1s ay iminungkahi ng OpenCalais ngunit hindi kasama dahil sa mga setting "
 "ng Auto Term Exception."
 
-#: inc/class.client.autoterms.php:682, fuzzy
+#: inc/class.client.autoterms.php:690, fuzzy
 msgid "OpenCalais"
 msgstr "OpenCalais"
 
-#: inc/class.client.autoterms.php:701
+#: inc/class.client.autoterms.php:709
 #, php-format
 msgid ""
 "%1s was suggested by Suggested terms from specific terms but excluded by "
@@ -3662,7 +3661,7 @@ msgstr ""
 "%1s ay iminungkahi ng mga iminungkahing termino mula sa mga tiyak na "
 "termino ngunit hindi kasama dahil sa mga setting ng Auto Term Exception."
 
-#: inc/class.client.autoterms.php:777
+#: inc/class.client.autoterms.php:785
 #, php-format
 msgid ""
 "%1s was suggested by Suggested terms from taxonomy terms but excluded by "
@@ -3671,12 +3670,12 @@ msgstr ""
 "%1s ay iminungkahi ng mga iminungkahing termino mula sa mga taxonomy terms "
 "ngunit hindi kasama dahil sa mga setting ng Auto Term Exception."
 
-#: inc/class.client.autoterms.php:847
+#: inc/class.client.autoterms.php:855
 #, php-format
 msgid "%1s was suggested but not added because it already belongs to the post."
 msgstr "%1s ay iminungkahi ngunit hindi idinagdag dahil ito ay kabilang na sa post."
 
-#: inc/class.client.autoterms.php:856
+#: inc/class.client.autoterms.php:864
 msgid ""
 "No term was suggested but all post terms were removed based on Auto Terms "
 "replace settings."
@@ -3684,27 +3683,27 @@ msgstr ""
 "Walang terminong iminungkahi ngunit lahat ng mga termino ng post ay "
 "tinanggal batay sa mga setting ng pagpapalit ng Auto Terms."
 
-#: inc/class.client.autoterms.php:884
+#: inc/class.client.autoterms.php:892
 #, php-format
 msgid "Taxonomy \"%s\" does not exist."
 msgstr "Ang Taxonomy \"%s\" ay hindi umiiral."
 
-#: inc/class.client.autoterms.php:898
+#: inc/class.client.autoterms.php:906
 #, php-format
 msgid "Error creating term \"%s\": %s"
 msgstr "Error sa paglikha ng termino \"%s\": %s"
 
-#: inc/class.client.autoterms.php:924
+#: inc/class.client.autoterms.php:932
 #, php-format
 msgid "Error: Post ID %d does not exist."
 msgstr "Error: Ang Post ID %d ay hindi umiiral."
 
-#: inc/class.client.autoterms.php:932
+#: inc/class.client.autoterms.php:940
 #, php-format
 msgid "Warning: Taxonomy \"%s\" is not registered for post type \"%s\"."
 msgstr "Babala: Ang Taxonomy \"%s\" ay hindi nakarehistro para sa post type \"%s\"."
 
-#: inc/class.client.autoterms.php:1047
+#: inc/class.client.autoterms.php:1055
 #, php-format
 msgid "Error adding terms: %s"
 msgstr "Error sa pagdadagdag ng mga termino: %s"
@@ -7335,25 +7334,25 @@ msgstr "Ang kahilingan ng provider ay hindi naipadala."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1420
 msgid "Result from api."
 msgstr "Result mula sa api."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:154
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:985
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1260
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:986
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1261
 msgid "Request completed."
 msgstr "Natapos ang kahilingan."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:162
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:993
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1148
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:994
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1149
 msgid "Security error. Kindly reload this page and try again"
 msgstr "Error sa seguridad. Pakisubukang i-reload ang pahinang ito at subukan muli"
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:168
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:999
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1154
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1000
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1155
 msgid ""
 "Permission error. You do not have permission to manage PublishPress "
 "Taxonomies"
@@ -7362,7 +7361,7 @@ msgstr ""
 "Taxonomies"
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:188
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:802
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:803
 msgid "Posts content and title is empty."
 msgstr "Walang nilalaman at pamagat ang mga post."
 
@@ -7371,8 +7370,8 @@ msgid "Permission error. You do not have permission to preview this post."
 msgstr "Error sa pahintulot. Wala kang pahintulot na tingnan ang post na ito."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:222
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1012
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1168
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1013
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1169
 #, php-format
 msgid ""
 "You do not have permission to manage this taxonomy. Enable Metabox Access "
@@ -7428,24 +7427,24 @@ msgstr "I-click ang %1s upang pumili o hindi pumili mula sa %2s na ito."
 msgid "Suggest Existing Terms"
 msgstr "Magmungkahi ng Umiiral na Mga Termino"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:441
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:437
 #, fuzzy, php-format
 msgid "AI Connectors: %s"
 msgstr "AI Connectors: %s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:566
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:567
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:406
 #, php-format
 msgid "Update %1s on this %2s"
 msgstr "I-update ang %1s sa %2s na ito"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:651
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:652
 msgid "Existing Terms not found for the selected post type and taxonomies"
 msgstr ""
 "Walang umiiral na mga termino na natagpuan para sa napiling post type at "
 "taxonomies"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:717
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:718
 msgid ""
 "Existing Terms taxonomy is required. Kindly select taxonomies and save the "
 "settings before running preview."
@@ -7453,69 +7452,69 @@ msgstr ""
 "Kinakailangan ang umiiral na mga taxonomy ng termino. Pakisali ang mga "
 "taxonomy at i-save ang mga setting bago patakbuhin ang preview."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:956
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:957
 msgid "Result from ajax request."
 msgstr "Result mula sa ajax request."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:962
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:963
 msgid "The selected taxonomy is not associated with the selected post type."
 msgstr "Ang napiling taxonomy ay hindi naka-ugnay sa napiling post type."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:968
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:969
 msgid "No results found for this taxonomy."
 msgstr "Walang resulta na natagpuan para sa taxonomy na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1028
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1029
 msgid "You do not have permission to edit this post."
 msgstr "Wala kang pahintulot na i-edit ang post na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1041
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1204
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1042
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1205
 msgid "You do not have permission to assign terms from this taxonomy."
 msgstr "Wala kang pahintulot na magtalaga ng mga termino mula sa taxonomy na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1049
 #, php-format
 msgid "Click Term to select or deselect from this %1s"
 msgstr "I-click ang Term para pumili o magtanggal mula sa %1s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1051
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1052
 msgid "Both Taxonomy and Post are required."
 msgstr "Kailangan ang parehong Taxonomy at Post."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1113
 msgid "No new terms were selected or deselected."
 msgstr "Walang bagong mga termino na napili o natanggal."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1117
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1118
 #, php-format
 msgid "%1s terms added to this %2s."
 msgstr "%1s na mga termino ay idinagdag sa %2s na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1122
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1123
 #, php-format
 msgid "%1s terms removed from this %2s."
 msgstr "%1s na mga termino ay inalis mula sa %2s na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1180
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1181
 msgid "You do not have capability to manage this taxonomy."
 msgstr "Wala kang kakayahan na pamahalaan ang taxonomy na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1191
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1192
 msgid "You do not have permission to edit this post with this taxonomy."
 msgstr "Wala kang pahintulot na i-edit ang post na ito gamit ang taxonomy na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1305
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1306
 #, php-format
 msgid "Terms cannot contain the following characters: %s"
 msgstr "Ang mga termino ay hindi maaaring maglaman ng mga sumusunod na karakter: %s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1320
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1321
 #, php-format
 msgid "Terms must be at least %d characters long."
 msgstr "Ang mga termino ay dapat na hindi bababa sa %d na karakter ang haba."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1326
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1327
 #, php-format
 msgid "Terms cannot exceed %d characters."
 msgstr "Ang mga termino ay hindi maaaring lumampas sa %d na karakter."
@@ -7530,8 +7529,8 @@ msgstr "Ang Dandelion integration ay na-disable sa mga setting ng Legacy AI Sour
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1163
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1432
 msgid "No matched result from the API Server."
 msgstr "Walang natugmang resulta mula sa API Server."
 
@@ -7546,16 +7545,16 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:907
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1197
 msgid "Selected content is empty."
 msgstr "Ang napiling nilalaman ay walang laman."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1030
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1252
 msgid "Result from cache."
 msgstr "Resulta mula sa cache."
 
@@ -7569,14 +7568,14 @@ msgstr "API Error: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1437
 msgid "Empty response."
 msgstr "Walang laman na tugon."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1440
 msgid "Error establishing connection with the API server. Try again."
 msgstr "Error sa pagtatag ng koneksyon sa API server. Subukan muli."
 
@@ -7628,8 +7627,8 @@ msgstr "Walang tugmang resulta mula sa isang AI Connector."
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "Ang AI Connectors ay nangangailangan ng WordPress 7.0 o mas bago."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1266
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7638,8 +7637,8 @@ msgstr ""
 "Nakita ang hindi wastong placeholder(s): {%s}. Ang mga wastong placeholder "
 "ay: {content}, {post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:961
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1287
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
@@ -7647,8 +7646,8 @@ msgstr ""
 "Idinagdag mo ang {post_terms} sa prompt ngunit ang iyong post ay walang "
 "anumang mga termino."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:967
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1290
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7656,7 +7655,7 @@ msgstr ""
 "Idinagdag mo ang {site_terms} sa prompt ngunit ang iyong site ay walang "
 "anumang mga termino para sa taxonomy na ito."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:992
 msgid ""
 "The selected AI Connector is not configured. Choose a connected provider in "
 "Auto Terms > Sources."
@@ -7664,7 +7663,7 @@ msgstr ""
 "Ang napiling AI Connector ay hindi nakakonfigure. Pumili ng konektadong "
 "provider sa Auto Terms > Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1001
 msgid ""
 "AI is disabled or unavailable on this site. Check the WordPress AI settings "
 "before generating terms."
@@ -7672,7 +7671,7 @@ msgstr ""
 "Ang AI ay hindi pinagana o hindi magagamit sa site na ito. Suriin ang mga "
 "setting ng WordPress AI bago makabuo ng mga termino."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1058
 msgid ""
 "The selected AI Connector cannot generate text for this request. Check its "
 "connection and text generation support in Settings > Connectors."
@@ -7681,17 +7680,17 @@ msgstr ""
 "ito. Suriin ang koneksyon nito at suporta sa pagbuo ng teksto sa Settings > "
 "Connectors."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1127
 msgid "Result from an AI Connector."
 msgstr "Resulta mula sa isang AI Connector."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1152
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr ""
 "Ang direktang integrasyon ng OpenAI ay hindi pinagana sa mga setting ng "
 "Legacy AI Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1191
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7699,7 +7698,7 @@ msgstr ""
 "Ang OpenAI integration ay nangangailangan ng API Key. Mangyaring idagdag "
 "ang iyong API Key sa Auto Term settings."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1355
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-04T13:08:23+00:00\n"
-"PO-Revision-Date: 2026-10-31 01:59+0000\n"
+"PO-Revision-Date: 2026-11-02 03:20+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-tags\n"
 "% 10 == 0) ? 2 : 3)));\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
-#: simple-tags.php, fuzzy
+#: simple-tags.php:4, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Taxonomies Free"
 msgstr "PublishPress Taxonomies Free"
 
-#: simple-tags.php
+#: simple-tags.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/simple-tags/"
 msgstr "https://wordpress.org/plugins/simple-tags/"
 
-#: simple-tags.php
+#: simple-tags.php:6
 #. Description of the plugin
 msgid ""
 "PublishPress Taxonomies allows you to create and manage Tags, Categories, "
@@ -37,13 +37,13 @@ msgstr ""
 "PublishPress Taxonomies מאפשר לך ליצור ולנהל תגיות, קטגוריות וכל המונחים של "
 "taxonomy של WordPress שלך."
 
-#: simple-tags.php
+#: simple-tags.php:8
 #: inc/class.admin.php:1165
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: simple-tags.php
+#: simple-tags.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -311,7 +311,7 @@ msgstr "אין פריט זמין."
 #: inc/related-posts-table.php:278
 #: inc/tag-clouds-table.php:278
 #: inc/terms-table.php:1169
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:623
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:624
 #: modules/taxopress-ai/taxopress-ai.php:1529
 msgid "Edit"
 msgstr "עריכה"
@@ -1173,7 +1173,7 @@ msgstr "בחר את כל יומני המונחים האוטומטיים"
 #: inc/autoterms.php:887
 #: inc/posts-table.php:26
 #: inc/schedule-logs-table.php:53
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1005, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1006, fuzzy
 msgid "Post"
 msgstr "Post"
 
@@ -1232,44 +1232,43 @@ msgstr "מונחי טקסונומיה קיימים"
 
 #: inc/autoterms-table.php:390
 #: inc/autoterms.php:1160
-#: inc/class.client.autoterms.php:440
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:485
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:488
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:493, fuzzy
+#: inc/class.client.autoterms.php:448
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:486
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:489
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:494, fuzzy
 msgid "OpenAI"
 msgstr "OpenAI"
 
 #: inc/autoterms-table.php:394
 #: inc/autoterms.php:1157
-#: inc/class.client.autoterms.php:360
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:434
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:444
+#: inc/class.client.autoterms.php:366
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:440
 msgid "AI Connectors"
 msgstr "מחברים של AI"
 
 #: inc/autoterms-table.php:398
 #: inc/autoterms.php:1162
-#: inc/class.client.autoterms.php:520
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:507
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:512
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:515, fuzzy
+#: inc/class.client.autoterms.php:528
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:508
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:513
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:516, fuzzy
 msgid "IBM Watson"
 msgstr "IBM Watson"
 
 #: inc/autoterms-table.php:402
 #: inc/autoterms.php:1164
-#: inc/class.client.autoterms.php:602
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:529
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:534
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:537, fuzzy
+#: inc/class.client.autoterms.php:610
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:530
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:535
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:538, fuzzy
 msgid "Dandelion"
 msgstr "Dandelion"
 
 #: inc/autoterms-table.php:406
 #: inc/autoterms.php:1166
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:551
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:556
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:559, fuzzy
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:552
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:557
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:560, fuzzy
 msgid "LSEG / Refinitiv"
 msgstr "LSEG / Refinitiv"
 
@@ -1837,7 +1836,7 @@ msgstr "מונחים אוטומטיים קיימים"
 
 #: inc/autoterms_content.php:91
 #: inc/schedule.php:125
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1140
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1141
 msgid "An error occured."
 msgstr "אירעה שגיאה."
 
@@ -3438,42 +3437,42 @@ msgstr ""
 msgid "Auto Term content is empty. Could not suggest terms without content."
 msgstr "תוכן המונח האוטומטי ריק. לא ניתן להציע מונחים ללא תוכן."
 
-#: inc/class.client.autoterms.php:311
+#: inc/class.client.autoterms.php:315
 #, php-format
 msgid ""
 "%1s was suggested through AI Connectors but excluded by Auto Term Exception "
 "settings."
 msgstr "%1s הוצע דרך AI Connectors אך הוצא על ידי הגדרות חריגות למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:384
+#: inc/class.client.autoterms.php:392
 #, php-format
 msgid "%1s was suggested by OpenAI but excluded by Auto Term Exception settings."
 msgstr "%1s הוצע על ידי OpenAI אך הוצא על ידי הגדרות חריגות למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:464
+#: inc/class.client.autoterms.php:472
 #, php-format
 msgid ""
 "%1s was suggested by IBM Watson but excluded by Auto Term Exception "
 "settings."
 msgstr "%1s הוצע על ידי IBM Watson אך הוצא על ידי הגדרות חריגות למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:545
+#: inc/class.client.autoterms.php:553
 #, php-format
 msgid "%1s was suggested by Dandelion but excluded by Auto Term Exception settings."
 msgstr "%1s הוצע על ידי Dandelion אך הוצא על ידי הגדרות חריגות למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:625
+#: inc/class.client.autoterms.php:633
 #, php-format
 msgid ""
 "%1s was suggested by OpenCalais but excluded by Auto Term Exception "
 "settings."
 msgstr "%1s הוצע על ידי OpenCalais אך הוצא על ידי הגדרות חריגות למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:682, fuzzy
+#: inc/class.client.autoterms.php:690, fuzzy
 msgid "OpenCalais"
 msgstr "OpenCalais"
 
-#: inc/class.client.autoterms.php:701
+#: inc/class.client.autoterms.php:709
 #, php-format
 msgid ""
 "%1s was suggested by Suggested terms from specific terms but excluded by "
@@ -3482,7 +3481,7 @@ msgstr ""
 "%1s הוצע על ידי מונחים מוצעים ממונחים ספציפיים אך הוצא על ידי הגדרות חריגות "
 "למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:777
+#: inc/class.client.autoterms.php:785
 #, php-format
 msgid ""
 "%1s was suggested by Suggested terms from taxonomy terms but excluded by "
@@ -3491,12 +3490,12 @@ msgstr ""
 "%1s הוצע על ידי מונחים מוצעים ממונחי קטגוריה אך הוצא על ידי הגדרות חריגות "
 "למונח אוטומטי."
 
-#: inc/class.client.autoterms.php:847
+#: inc/class.client.autoterms.php:855
 #, php-format
 msgid "%1s was suggested but not added because it already belongs to the post."
 msgstr "%1s הוצע אך לא נוסף מכיוון שכבר שייך לפוסט."
 
-#: inc/class.client.autoterms.php:856
+#: inc/class.client.autoterms.php:864
 msgid ""
 "No term was suggested but all post terms were removed based on Auto Terms "
 "replace settings."
@@ -3504,27 +3503,27 @@ msgstr ""
 "לא הומלץ על מונח אך כל מונחי הפוסט הוסרו בהתבסס על הגדרות החלפה של מונחים "
 "אוטומטיים."
 
-#: inc/class.client.autoterms.php:884
+#: inc/class.client.autoterms.php:892
 #, php-format
 msgid "Taxonomy \"%s\" does not exist."
 msgstr "הקטגוריה \"%s\" אינה קיימת."
 
-#: inc/class.client.autoterms.php:898
+#: inc/class.client.autoterms.php:906
 #, php-format
 msgid "Error creating term \"%s\": %s"
 msgstr "שגיאה ביצירת מונח \"%s\": %s"
 
-#: inc/class.client.autoterms.php:924
+#: inc/class.client.autoterms.php:932
 #, php-format
 msgid "Error: Post ID %d does not exist."
 msgstr "שגיאה: מזהה הפוסט %d אינו קיים."
 
-#: inc/class.client.autoterms.php:932
+#: inc/class.client.autoterms.php:940
 #, php-format
 msgid "Warning: Taxonomy \"%s\" is not registered for post type \"%s\"."
 msgstr "אזהרה: הקטגוריה \"%s\" אינה רשומה עבור סוג הפוסט \"%s\"."
 
-#: inc/class.client.autoterms.php:1047
+#: inc/class.client.autoterms.php:1055
 #, php-format
 msgid "Error adding terms: %s"
 msgstr "שגיאה בהוספת מונחים: %s"
@@ -6963,32 +6962,32 @@ msgstr "בקשת הספק לא נשלחה."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:452
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:595
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:758
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1394
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1420
 msgid "Result from api."
 msgstr "תוצאה מ-API."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:154
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:985
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1260
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:986
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1261
 msgid "Request completed."
 msgstr "הבקשה הושלמה."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:162
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:993
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1148
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:994
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1149
 msgid "Security error. Kindly reload this page and try again"
 msgstr "שגיאת אבטחה. אנא טען מחדש את הדף הזה ונסה שוב"
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:168
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:999
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1154
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1000
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1155
 msgid ""
 "Permission error. You do not have permission to manage PublishPress "
 "Taxonomies"
 msgstr "שגיאת הרשאה. אין לך הרשאה לנהל את Taxonomies של PublishPress"
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:188
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:802
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:803
 msgid "Posts content and title is empty."
 msgstr "תוכן וכותרת הפוסט ריקים."
 
@@ -6997,8 +6996,8 @@ msgid "Permission error. You do not have permission to preview this post."
 msgstr "שגיאת הרשאה. אין לך הרשאה להציג תצוגה מקדימה של הפוסט הזה."
 
 #: modules/taxopress-ai/classes/TaxoPressAiAjax.php:222
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1012
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1168
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1013
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1169
 #, php-format
 msgid ""
 "You do not have permission to manage this taxonomy. Enable Metabox Access "
@@ -7049,22 +7048,22 @@ msgstr "לחץ %1s כדי לבחור או לבטל את הבחירה מהם ב-%
 msgid "Suggest Existing Terms"
 msgstr "הצע מונחים קיימים"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:441
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:437
 #, php-format
 msgid "AI Connectors: %s"
 msgstr "מחברים של AI: %s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:566
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:567
 #: modules/taxopress-ai/classes/TaxoPressAiUtilities.php:406
 #, php-format
 msgid "Update %1s on this %2s"
 msgstr "עדכן %1s על %2s הזה"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:651
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:652
 msgid "Existing Terms not found for the selected post type and taxonomies"
 msgstr "לא נמצאו מונחים קיימים עבור סוג הפוסט והטקסונומיות שנבחרו"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:717
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:718
 msgid ""
 "Existing Terms taxonomy is required. Kindly select taxonomies and save the "
 "settings before running preview."
@@ -7072,69 +7071,69 @@ msgstr ""
 "דרושה טקסונומיית מונחים קיימים. אנא בחר טקסונומיות ושמור את ההגדרות לפני "
 "הרצת תצוגה מקדימה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:956
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:957
 msgid "Result from ajax request."
 msgstr "תוצאה מהבקשה של ajax."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:962
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:963
 msgid "The selected taxonomy is not associated with the selected post type."
 msgstr "ה-taxonomy שנבחרה אינה משויכת ל-post type שנבחר."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:968
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:969
 msgid "No results found for this taxonomy."
 msgstr "לא נמצאו תוצאות עבור ה-taxonomy הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1028
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1029
 msgid "You do not have permission to edit this post."
 msgstr "אין לך הרשאה לערוך את הפוסט הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1041
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1204
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1042
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1205
 msgid "You do not have permission to assign terms from this taxonomy."
 msgstr "אין לך הרשאה להקצות מונחים מה-taxonomy הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1048
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1049
 #, php-format
 msgid "Click Term to select or deselect from this %1s"
 msgstr "לחץ על מונח כדי לבחור או לבטל בחירה מתוך ה-%1s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1051
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1052
 msgid "Both Taxonomy and Post are required."
 msgstr "גם ה-taxonomy וגם ה-post נדרשים."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1112
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1113
 msgid "No new terms were selected or deselected."
 msgstr "לא נבחרו או בוטלו מונחים חדשים."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1117
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1118
 #, php-format
 msgid "%1s terms added to this %2s."
 msgstr "%1s מונחים נוספו ל-%2s הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1122
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1123
 #, php-format
 msgid "%1s terms removed from this %2s."
 msgstr "%1s מונחים הוסרו מ-%2s הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1180
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1181
 msgid "You do not have capability to manage this taxonomy."
 msgstr "אין לך אפשרות לנהל את ה-taxonomy הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1191
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1192
 msgid "You do not have permission to edit this post with this taxonomy."
 msgstr "אין לך הרשאה לערוך את הפוסט הזה עם ה-taxonomy הזה."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1305
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1306
 #, php-format
 msgid "Terms cannot contain the following characters: %s"
 msgstr "מונחים אינם יכולים להכיל את התווים הבאים: %s"
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1320
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1321
 #, php-format
 msgid "Terms must be at least %d characters long."
 msgstr "מונחים חייבים להיות באורך של לפחות %d תווים."
 
-#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1326
+#: modules/taxopress-ai/classes/TaxoPressAiAjax.php:1327
 #, php-format
 msgid "Terms cannot exceed %d characters."
 msgstr "מונחים אינם יכולים לחרוג מ-%d תווים."
@@ -7149,8 +7148,8 @@ msgstr "האינטגרציה של Dandelion מושבתת בהגדרות של Leg
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:605
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:642
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:768
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1137
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1406
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1163
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1432
 msgid "No matched result from the API Server."
 msgstr "לא נמצאה תוצאה תואמת משרת ה-API."
 
@@ -7165,16 +7164,16 @@ msgstr ""
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:388
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:522
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:674
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:883
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1171
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:907
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1197
 msgid "Selected content is empty."
 msgstr "התוכן שנבחר ריק."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:404
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:538
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:690
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1004
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1226
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1030
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1252
 msgid "Result from cache."
 msgstr "תוצאה מהמטמון."
 
@@ -7188,14 +7187,14 @@ msgstr "שגיאת API: %1s."
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:466
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:610
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:773
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1411
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1437
 msgid "Empty response."
 msgstr "תגובה ריקה."
 
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:469
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:613
 #: modules/taxopress-ai/classes/TaxoPressAiApi.php:776
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1414
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1440
 msgid "Error establishing connection with the API server. Try again."
 msgstr "שגיאה בהקמת חיבור עם שרת ה-API. נסה שוב."
 
@@ -7245,8 +7244,8 @@ msgstr "לא נמצא תוצאה תואמת ממחבר AI."
 msgid "AI Connectors require WordPress 7.0 or newer."
 msgstr "מחברים של AI דורשים WordPress 7.0 או גרסה חדשה יותר."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:904
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1240
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:928
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1266
 #, php-format
 msgid ""
 "Invalid placeholder(s) detected: {%s}. Valid placeholders are: {content}, "
@@ -7255,15 +7254,15 @@ msgstr ""
 "זוהו מקום מחזיקים לא חוקיים: {%s}. מקומות מחזיקים חוקיים הם: {content}, "
 "{post_terms}, {site_terms}"
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:937
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1261
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:961
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1287
 msgid ""
 "You added {post_terms} in the prompt but your post does not contain any "
 "terms."
 msgstr "הוספת {post_terms} בהנחיה שלך, אך הפוסט שלך אינו מכיל מונחים כלשהם."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:943
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1264
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:967
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1290
 msgid ""
 "You added {site_terms} in the prompt but your site does not contain any "
 "terms for this taxonomy."
@@ -7271,13 +7270,13 @@ msgstr ""
 "הוספת {site_terms} בהנחיה שלך, אך האתר שלך אינו מכיל מונחים כלשהם עבור "
 "טקסונומיה זו."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:968
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:992
 msgid ""
 "The selected AI Connector is not configured. Choose a connected provider in "
 "Auto Terms > Sources."
 msgstr "המחבר AI שנבחר אינו מוגדר. בחר ספק מחובר ב- Auto Terms > Sources."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:976
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1001
 msgid ""
 "AI is disabled or unavailable on this site. Check the WordPress AI settings "
 "before generating terms."
@@ -7285,7 +7284,7 @@ msgstr ""
 "AI מושבת או לא זמין באתר זה. בדוק את הגדרות ה- AI של WordPress לפני יצירת "
 "מונחים."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1032
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1058
 msgid ""
 "The selected AI Connector cannot generate text for this request. Check its "
 "connection and text generation support in Settings > Connectors."
@@ -7293,15 +7292,15 @@ msgstr ""
 "המחבר AI שנבחר אינו יכול ליצור טקסט לבקשה זו. בדוק את החיבור שלו ותמיכת "
 "יצירת הטקסט ב- Settings > Connectors."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1101
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1127
 msgid "Result from an AI Connector."
 msgstr "תוצאה ממחבר AI."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1126
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1152
 msgid "The direct OpenAI integration is disabled in the Legacy AI Sources settings."
 msgstr "האינטגרציה הישירה של OpenAI מושבתת בהגדרות מקורות ה-AI הישנים."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1165
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1191
 msgid ""
 "The OpenAI integration requires an API Key. Please add your API Key in the "
 "Auto Term settings."
@@ -7309,7 +7308,7 @@ msgstr ""
 "האינטגרציה של OpenAI דורשת מפתח API. אנא הוסף את מפתח ה-API שלך בהגדרות "
 "Auto Term."
 
-#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1329
+#: modules/taxopress-ai/classes/TaxoPressAiApi.php:1355
 msgid ""
 "Error: OpenAI says there is an issue with this API key. Please check your "
 "plan or billing details."
