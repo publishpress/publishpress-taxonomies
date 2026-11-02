@@ -170,7 +170,7 @@ class SimpleTags_Client_Autoterms
      * @return boolean
      * @author WebFactory Ltd
      */
-    public static function auto_terms_post($object, $taxonomy = 'post_tag', $options = array(), $counter = false, $action = 'save_posts', $component = 'st_autoterms')
+    public static function auto_terms_post($object, $taxonomy = 'post_tag', $options = array(), $counter = false, $action = 'save_posts', $component = 'st_autoterms', $preview = false)
     {
         global $wpdb, $added_post_term, $empty_term_messages;
 
@@ -183,6 +183,12 @@ class SimpleTags_Client_Autoterms
         }
 
         $terms_to_add = array();
+        if ($preview) {
+            foreach (['autoterm_use_wordpress_ai', 'autoterm_use_open_ai', 'autoterm_use_ibm_watson', 'autoterm_use_dandelion', 'autoterm_use_opencalais'] as $provider) {
+                if (!empty($options[$provider])) { return false; }
+            }
+        }
+
 
         if ('disabled' === self::get_post_feature_status($object->ID, '_taxopress_autoterms_status', '_exclude_autotags')) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Post is excluded from Auto Term from post area.', 'simple-tags');
@@ -193,7 +199,7 @@ class SimpleTags_Client_Autoterms
         if ($options == false || empty($options)) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Invalid Auto Term settings.', 'simple-tags');
             //update log
-            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'invalid_option');
+            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'invalid_option'); }
             return false;
         }
 
@@ -209,7 +215,7 @@ class SimpleTags_Client_Autoterms
         if (!$skip_single_target_check && $action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Only use Auto Terms on posts with no added terms is enabled and this post contain terms.', 'simple-tags');
             //update log
-            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option');
+            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option'); }
             return false; // Skip post with terms, if term only empty post option is checked
         }
 
@@ -252,7 +258,7 @@ class SimpleTags_Client_Autoterms
         if (empty(trim($content))) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Auto Term content is empty. Could not suggest terms without content.', 'simple-tags');
             //update log
-            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_post_content');
+            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_post_content'); }
             return false;
         }
 
@@ -278,7 +284,7 @@ class SimpleTags_Client_Autoterms
 
         ];
 
-        $preprocessed_result = apply_filters(
+        $preprocessed_result = $preview ? null : apply_filters(
             'taxopress_autoterms_pre_process_sources',
             null,
             $object,
@@ -838,6 +844,8 @@ class SimpleTags_Client_Autoterms
                 $terms_to_add = array_slice($terms_to_add, 0, $terms_limit);
             }
 
+            if ($preview) { return array_values($terms_to_add); }
+
             // remove term that already belongs to the post
             foreach ($terms_to_add as $index => $term_name) {
                 if (has_term($term_name, $taxonomy, $object)) {
@@ -1054,6 +1062,7 @@ class SimpleTags_Client_Autoterms
 
             return true;
         } else {
+            if ($preview) { return []; }
             // remove term if replace type is replace and term is empty
             if ($autoterm_replace_type == 'replace') {
                 wp_set_object_terms($object->ID, [], $taxonomy, true);

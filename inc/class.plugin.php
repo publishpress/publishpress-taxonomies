@@ -54,7 +54,7 @@ class SimpleTags_Plugin
      *
      * @return array
      */
-    private static function load_default_option()
+    public static function load_default_option()
     {
         $default_options = (array) include STAGS_DIR . '/inc/helper.options.default.php';
 
@@ -111,7 +111,7 @@ class SimpleTags_Plugin
     /**
      * Load plugin option, combine DB options with default
      */
-    private static function load_option()
+    public static function load_option()
     {
         $saved_option = wp_parse_args((array) get_option(STAGS_OPTIONS_NAME), self::load_default_option());
 
