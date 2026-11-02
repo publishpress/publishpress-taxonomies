@@ -75,7 +75,11 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
 }
 
 .form-table.taxopress-table.autoterm_terms .tab-group-tr td {
-    padding: 20px 10px 20px 0;
+    padding: 0 10px 24px 0;
+}
+
+.form-table.taxopress-table.autoterm_terms .tab-group-tr .description {
+    margin: 8px 0 10px;
 }
 
 .taxopress-button-group {
