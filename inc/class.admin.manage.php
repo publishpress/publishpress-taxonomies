@@ -1524,6 +1524,28 @@ class SimpleTags_Admin_Manage
         return true;
     }
 
+    /** Native Manage Terms match-any selection, with optional bounds for non-form clients. */
+    public static function matching_post_ids($taxonomy, array $term_ids, $post_type = '', $limit = 0)
+    {
+        global $wpdb;
+        if ($term_ids) {
+            $ids = get_objects_in_term($term_ids, $taxonomy, ['fields' => 'ids']);
+            if (is_wp_error($ids)) {
+                return $ids;
+            }
+            if ($post_type !== '') {
+                $ids = array_filter($ids, static function ($id) use ($post_type) { return get_post_type($id) === $post_type; });
+            }
+            return array_map('intval', array_values($ids));
+        }
+        $sql = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE (post_status = 'publish' OR post_status = 'inherit') AND post_type = %s ORDER BY ID", $post_type);
+        if ($limit > 0) {
+            $sql .= $wpdb->prepare(' LIMIT %d', $limit);
+        }
+        $ids = $wpdb->get_col($sql);
+        return $wpdb->last_error ? new WP_Error('taxopress_match_query', __('Content selection failed.', 'simple-tags')) : array_map('intval', $ids);
+    }
+
     /**
      * Method for add terms for all or specified posts
      *
@@ -1567,7 +1589,10 @@ class SimpleTags_Admin_Manage
             }
 
             // Get object ID with terms ID
-            $objects_id = get_objects_in_term($terms_id, $taxonomy, array( 'fields' => 'all_with_object_id' ));
+            $objects_id = self::matching_post_ids($taxonomy, $terms_id);
+            if (is_wp_error($objects_id)) {
+                return false;
+            }
 
             // Add new tags for specified post
             foreach ((array) $objects_id as $object_id) {
@@ -1587,12 +1612,10 @@ class SimpleTags_Admin_Manage
                 return false;
             }
             SimpleTags_Admin::$post_type = $post_type;
-            $objects_id = $wpdb->get_col(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE (post_status = 'publish' OR post_status = 'inherit') AND post_type = %s",
-                    $post_type
-                )
-            );
+            $objects_id = self::matching_post_ids($taxonomy, [], $post_type);
+            if (is_wp_error($objects_id)) {
+                return false;
+            }
 
             // Add new tags for all posts
             foreach ((array) $objects_id as $object_id) {
@@ -1615,6 +1638,18 @@ class SimpleTags_Admin_Manage
         return true;
     }
 
+    /** Native usage threshold query, optionally bounded for non-form clients. */
+    public static function rarely_used_term_ids($taxonomy, $number, $limit = 0)
+    {
+        global $wpdb;
+        $sql = $wpdb->prepare("SELECT term_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s AND count < %d ORDER BY term_id", $taxonomy, (int) $number);
+        if ($limit > 0) {
+            $sql .= $wpdb->prepare(' LIMIT %d', (int) $limit);
+        }
+        $ids = $wpdb->get_col($sql);
+        return $wpdb->last_error ? new WP_Error('taxopress_usage_query', __('Term usage selection failed.', 'simple-tags')) : array_map('intval', $ids);
+    }
+
     /**
      * Delete terms when counter if inferior to a specific number
      *
@@ -1633,7 +1668,11 @@ class SimpleTags_Admin_Manage
         }
 
         // Get terms with counter inferior to...
-        $terms_id = $wpdb->get_col($wpdb->prepare("SELECT term_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s AND count < %d", $taxonomy, (int) $number));
+        $terms_id = self::rarely_used_term_ids($taxonomy, $number);
+        if (is_wp_error($terms_id)) {
+            add_settings_error(__CLASS__, __CLASS__, $terms_id->get_error_message(), 'error taxopress-notice');
+            return false;
+        }
 
         // Delete terms
         $counter = 0;
@@ -1766,7 +1805,10 @@ class SimpleTags_Admin_Manage
             }
 
             // Get object ID with terms ID
-            $objects_id = get_objects_in_term($terms_id, $taxonomy, array('fields' => 'all_with_object_id'));
+            $objects_id = self::matching_post_ids($taxonomy, $terms_id);
+            if (is_wp_error($objects_id)) {
+                return false;
+            }
 
             // Remove specified terms from matched posts
             foreach ((array) $objects_id as $object_id) {
@@ -1785,12 +1827,10 @@ class SimpleTags_Admin_Manage
                 return false;
             }
             SimpleTags_Admin::$post_type = $post_type;
-            $objects_id = $wpdb->get_col(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE (post_status = 'publish' OR post_status = 'inherit') AND post_type = %s",
-                    $post_type
-                )
-            );
+            $objects_id = self::matching_post_ids($taxonomy, [], $post_type);
+            if (is_wp_error($objects_id)) {
+                return false;
+            }
 
             // Remove valid terms for all posts
             foreach ((array) $objects_id as $object_id) {

@@ -7,11 +7,11 @@
  *
  * @return mixed
  */
-function taxopress_get_autolink_data()
+function taxopress_get_autolink_data($refresh = false)
 {
     static $cached_data = null;
 
-    if ($cached_data === null) {
+    if ($refresh || $cached_data === null) {
         $cached_data = array_filter((array)apply_filters(
             'taxopress_get_autolinks_data',
             get_option('taxopress_autolinks', []),
@@ -169,41 +169,7 @@ function taxopress_create_default_autolink()
         return;
     }
 
-    $default                                                   = [];
-    $default['taxopress_autolink']['title']                    = esc_html__('Auto link', 'simple-tags');
-    $default['taxopress_autolink']['taxonomy']                 = 'post_tag';
-    $default['taxopress_autolink']['autolink_case']            = 'none';
-    $default['taxopress_autolink']['autolink_display']         = 'post_content';
-    $default['taxopress_autolink']['autolink_custom_fields']   = [];
-    $default['taxopress_autolink']['autolink_title_attribute'] = __('Posts tagged with %s', 'simple-tags');
-    $default['taxopress_autolink']['autolink_title_attribute_when_using_custom_url'] = __('Visit this URL for more on %s', 'simple-tags');
-    $default['taxopress_autolink']['autolink_usage_min']       = '1';
-    $default['taxopress_autolink']['auto_link_exclude']        = '';
-    $default['taxopress_autolink']['autolink_usage_max']       = '10';
-    $default['taxopress_autolink']['autolink_same_usage_max']  = '1';
-    $default['taxopress_autolink']['autolink_min_char']        = '';
-    $default['taxopress_autolink']['autolink_max_char']        = '';
-    $default['taxopress_autolink']['autolink_exclude_class']   = '';
-    $default['taxopress_autolink']['hook_priority']            = '12';
-    $default['taxopress_autolink']['embedded']                 = [];
-    $default['taxopress_autolink']['html_exclusion']           = [];
-    $default['taxopress_autolink']['html_exclusion_customs']   = [];
-    $default['taxopress_autolink']['html_exclusion_customs_entry']   = [];
-    $default['taxopress_autolink']['shortcodes_exclusion']   = [];
-    $default['taxopress_autolink']['shortcodes_exclusion_entries']   = [];
-    $default['taxopress_autolink']['blocks_exclusion']   = [];
-    $default['taxopress_autolink']['blocks_exclusion_entries']   = [];
-    $default['taxopress_autolink']['unattached_terms']         = '1';
-    $default['taxopress_autolink']['ignore_case']              = '1';
-    $default['taxopress_autolink']['autolink_dom']             = '1';
-    $default['taxopress_autolink']['synonyms_link']            = '0';
-    $default['taxopress_autolink']['whole_words']              = '1';
-    $default['autolink_submit']                                = 'Add Auto Links';
-    $default['cpt_tax_status']                                 = 'new';
-    $default['taxopress_autolink']['enable_customurl_field']   = ['post_tag', 'category'];
-    $default['taxopress_autolink']['enable_custom_urls']       = '1';
-    $default['taxopress_autolink']['archivepage']               = '1';
-    $result                                                    = taxopress_update_autolink($default);
+    $result                                                    = taxopress_update_autolink(taxopress_get_autolink_defaults());
     update_option('taxopress_default_autolinks', $result);
 }
 
@@ -237,11 +203,7 @@ function taxopress_update_autolink($data = [])
 
     $autolinks = taxopress_get_autolink_data();
 
-    $title                               = $data['taxopress_autolink']['title'];
-    $title                               = str_replace('"', '', htmlspecialchars_decode($title));
-    $title                               = htmlspecialchars($title, ENT_QUOTES);
-    $title                               = trim($title);
-    $data['taxopress_autolink']['title'] = stripslashes_deep($title);
+    $data['taxopress_autolink']['title'] = taxopress_sanitize_preset_title($data['taxopress_autolink']['title']);
 
     //update seperate post
     $data['taxopress_autolink']['embedded']       = isset($data['embedded']) ? $data['embedded'] : [];
@@ -297,6 +259,7 @@ function taxopress_update_autolink($data = [])
         $update_id                        = update_option('taxopress_autolink_ids_increament', $autolink_id);
     }
 
+    taxopress_get_autolink_data(true);
     return $autolink_id;
 }
 
@@ -369,13 +332,18 @@ function taxopress_delete_autolink_filter_removable_query_args(array $args)
  * Delete our custom autolink from the array of autolinks.
  * @return bool|string False on failure, string on success.
  */
-function taxopress_action_delete_autolink($autolink_id)
+function taxopress_action_delete_autolink($autolink_id, $redirect = true)
 {
     $autolinks = taxopress_get_autolink_data();
 
     if (array_key_exists($autolink_id, $autolinks)) {
         unset($autolinks[$autolink_id]);
         $success = update_option('taxopress_autolinks', $autolinks);
+        taxopress_get_autolink_data(true);
+    }
+
+    if (!$redirect) {
+        return isset($success) && $success;
     }
 
     if (isset($success)) {
@@ -426,4 +394,44 @@ function taxopress_post_type_autolink_autolink()
     }
 
     return false;
+}
+
+/** Native default data shared by initial presets and API previews. */
+function taxopress_get_autolink_defaults()
+{
+    $default                                                   = [];
+    $default['taxopress_autolink']['title']                    = esc_html__('Auto link', 'simple-tags');
+    $default['taxopress_autolink']['taxonomy']                 = 'post_tag';
+    $default['taxopress_autolink']['autolink_case']            = 'none';
+    $default['taxopress_autolink']['autolink_display']         = 'post_content';
+    $default['taxopress_autolink']['autolink_custom_fields']   = [];
+    $default['taxopress_autolink']['autolink_title_attribute'] = __('Posts tagged with %s', 'simple-tags');
+    $default['taxopress_autolink']['autolink_title_attribute_when_using_custom_url'] = __('Visit this URL for more on %s', 'simple-tags');
+    $default['taxopress_autolink']['autolink_usage_min']       = '1';
+    $default['taxopress_autolink']['auto_link_exclude']        = '';
+    $default['taxopress_autolink']['autolink_usage_max']       = '10';
+    $default['taxopress_autolink']['autolink_same_usage_max']  = '1';
+    $default['taxopress_autolink']['autolink_min_char']        = '';
+    $default['taxopress_autolink']['autolink_max_char']        = '';
+    $default['taxopress_autolink']['autolink_exclude_class']   = '';
+    $default['taxopress_autolink']['hook_priority']            = '12';
+    $default['taxopress_autolink']['embedded']                 = [];
+    $default['taxopress_autolink']['html_exclusion']           = [];
+    $default['taxopress_autolink']['html_exclusion_customs']   = [];
+    $default['taxopress_autolink']['html_exclusion_customs_entry']   = [];
+    $default['taxopress_autolink']['shortcodes_exclusion']   = [];
+    $default['taxopress_autolink']['shortcodes_exclusion_entries']   = [];
+    $default['taxopress_autolink']['blocks_exclusion']   = [];
+    $default['taxopress_autolink']['blocks_exclusion_entries']   = [];
+    $default['taxopress_autolink']['unattached_terms']         = '1';
+    $default['taxopress_autolink']['ignore_case']              = '1';
+    $default['taxopress_autolink']['autolink_dom']             = '1';
+    $default['taxopress_autolink']['synonyms_link']            = '0';
+    $default['taxopress_autolink']['whole_words']              = '1';
+    $default['autolink_submit']                                = 'Add Auto Links';
+    $default['cpt_tax_status']                                 = 'new';
+    $default['taxopress_autolink']['enable_customurl_field']   = ['post_tag', 'category'];
+    $default['taxopress_autolink']['enable_custom_urls']       = '1';
+    $default['taxopress_autolink']['archivepage']               = '1';
+    return $default;
 }

@@ -250,8 +250,7 @@ taxopress_transfer_test_guard_runtime();
             try {
                 $denied_export = TaxoPress_Tag_CSV_Service::write_csv($permission_stream, true);
                 $check(is_wp_error($denied_export)
-                    && $denied_export->get_error_code() !== ''
-                    && $denied_export->get_error_message() === __('You cannot read every associated post. Export was cancelled without downloading a partial file.', 'simple-tags'),
+                    && $denied_export->get_error_code() === 'taxopress_tag_csv_read_permission',
                     'User 0 export denied for unreadable associated drafts');
             } finally {
                 fclose($permission_stream);
@@ -348,7 +347,7 @@ taxopress_transfer_test_guard_runtime();
             ), $headers);
             $check(is_array($csv_bad), 'CSV parser retains terms with a later ' . $label . ' content ID');
             $before = $state();
-            $result = $import(array($good, $bad));
+            $result = $import(array($good, $bad), false, true);
             $check($result['created'] === 2 && $result['updated'] === 0 && $result['skipped'] === 0, 'A later ' . $label . ' content ID does not block either term');
             $check($result['relationships_added'] > 0 && $result['relationships_skipped'] === 1, 'Valid assignments continue while the ' . $label . ' assignment is skipped');
             $check($state() !== $before, 'Resilient import writes the valid term and assignment data');

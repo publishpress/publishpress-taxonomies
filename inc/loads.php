@@ -38,3 +38,10 @@ require STAGS_DIR . '/inc/ajax-request.php';
 
 //review request
 require STAGS_DIR . '/review-request/review.php';
+
+require_once STAGS_DIR . '/inc/mcp/registry.php';
+require_once STAGS_DIR . '/inc/mcp/contracts.php';
+require_once STAGS_DIR . '/inc/mcp/operations.php';
+require_once STAGS_DIR . '/inc/mcp/terms.php';
+require_once STAGS_DIR . '/inc/mcp/manage.php';
+SimpleTags_Mcp::boot();

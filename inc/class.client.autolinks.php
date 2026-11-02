@@ -72,7 +72,7 @@ class SimpleTags_Client_Autolinks
         return in_array($pagenow, ['edit-tags.php', 'term.php']);
     }
 
-    private function get_enabled_taxonomies($autolink_settings)
+    public static function get_enabled_taxonomies($autolink_settings)
     {
         $default_enabled_taxonomies = ['post_tag', 'category'];
         $enabled_taxonomies = [];
@@ -254,12 +254,16 @@ class SimpleTags_Client_Autolinks
 
     public function taxopress_save_custom_url_field($term_id)
     {
-        if (!empty($_POST['taxopress_custom_url'])) {
-            $taxopress_custom_url = sanitize_url(wp_unslash($_POST['taxopress_custom_url']));
-            update_term_meta($term_id, 'taxopress_custom_url', $taxopress_custom_url);
-        } else {
-            delete_term_meta($term_id, 'taxopress_custom_url');
+        self::set_custom_url($term_id, isset($_POST['taxopress_custom_url']) ? wp_unslash($_POST['taxopress_custom_url']) : '');
+    }
+
+    /** Shared native custom link persistence. An empty value restores the archive link. */
+    public static function set_custom_url($term_id, $url)
+    {
+        if ($url !== '') {
+            return update_term_meta($term_id, 'taxopress_custom_url', sanitize_url($url));
         }
+        return delete_term_meta($term_id, 'taxopress_custom_url');
     }
 
     /**
