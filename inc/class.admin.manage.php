@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_tax_query,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Manage
@@ -1534,7 +1536,9 @@ class SimpleTags_Admin_Manage
                 return $ids;
             }
             if ($post_type !== '') {
-                $ids = array_filter($ids, static function ($id) use ($post_type) { return get_post_type($id) === $post_type; });
+                $ids = array_filter($ids, static function ($id) use ($post_type) {
+                    return get_post_type($id) === $post_type;
+                });
             }
             return array_map('intval', array_values($ids));
         }

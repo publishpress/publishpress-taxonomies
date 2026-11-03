@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
@@ -1066,6 +1068,7 @@ function taxopress_get_posts_data(array $filters)
     if (!empty($term_filter)) {
         $term_filter_data = get_term($term_filter);
         if ($term_filter_data instanceof WP_Term) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Native term filtering requires this taxonomy constraint.
             $args['tax_query'] = array(
                 'relation' => 'AND',
                 array(

@@ -591,7 +591,9 @@ class SimpleTags_Mcp_Terms
             return $source;
         }
         $meta = get_term_meta($term->term_id);
+        // phpcs:ignore WordPressVIPMinimum.Performance.TaxonomyMetaInOptions.PossibleTermMetaInOptions -- Read the native Yoast option for copy concurrency; do not migrate another plugin's storage.
         $seo = get_option('wpseo_taxonomy_meta', []);
+        // phpcs:ignore WordPressVIPMinimum.Performance.TaxonomyMetaInOptions.PossibleTermMetaInOptions -- The native per-taxonomy ordering option is read for concurrency, not written as term metadata.
         $hash = SimpleTags_Mcp::hash(['term' => $source, 'metadata' => $meta, 'post_ids' => $affected, 'order' => get_option('taxopress_term_order_' . $term->taxonomy, []), 'seo' => $seo[$term->taxonomy][$term->term_id] ?? []]);
         if ($action === 'preview-copy-term') {
             return ['source' => (object) $source, 'post_ids' => $affected, 'expected_hash' => $hash];
@@ -759,6 +761,7 @@ class SimpleTags_Mcp_Terms
             }
         }
         require_once STAGS_DIR . '/inc/class-taxopress-tag-csv-service.php';
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Native CSV parsing requires a PHP temporary stream, not a filesystem path.
         $stream = fopen('php://temp', 'w+');
         if (!$stream) {
             return SimpleTags_Mcp::error();
@@ -780,8 +783,10 @@ class SimpleTags_Mcp_Terms
             if (!hash_equals($hash, $input['expected_hash'])) {
                 return SimpleTags_Mcp::error(__('Terms or assignments changed. Export again.', 'simple-tags'), 409);
             }
+            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_ftruncate -- Reset the temporary CSV stream; no application file is modified.
             ftruncate($stream, 0);
             rewind($stream);
+            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite, WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- Write bounded CSV input to the temporary stream for native parsing.
             fwrite($stream, $input['csv']);
             rewind($stream);
             $rows = TaxoPress_Tag_CSV_Service::parse_csv($stream, false, $taxonomy, $type);
@@ -818,6 +823,7 @@ class SimpleTags_Mcp_Terms
             unset($result['error_messages'], $result['skipped_post_ids']);
             return ['complete' => empty($result['errors']), 'result' => $result];
         } finally {
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Release the temporary CSV stream.
             fclose($stream);
         }
     }

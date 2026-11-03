@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('SimpleTags_Autoterms_Schedule')) {
     class SimpleTags_Autoterms_Schedule
     {
@@ -186,7 +188,6 @@ if (!class_exists('SimpleTags_Autoterms_Schedule')) {
             }
 
             do_action('taxopress_schedule_cron_events', $cron_schedule);
-
         }
 
         public function page_manage_autoterms_schedule()

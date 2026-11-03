@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.Security.NonceVerification.Missing,WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_Autoterms
@@ -185,7 +187,9 @@ class SimpleTags_Client_Autoterms
         $terms_to_add = array();
         if ($preview) {
             foreach (['autoterm_use_wordpress_ai', 'autoterm_use_open_ai', 'autoterm_use_ibm_watson', 'autoterm_use_dandelion', 'autoterm_use_opencalais'] as $provider) {
-                if (!empty($options[$provider])) { return false; }
+                if (!empty($options[$provider])) {
+                    return false;
+                }
             }
         }
 
@@ -199,7 +203,9 @@ class SimpleTags_Client_Autoterms
         if ($options == false || empty($options)) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Invalid Auto Term settings.', 'simple-tags');
             //update log
-            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'invalid_option'); }
+            if (!$preview) {
+                self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'invalid_option');
+            }
             return false;
         }
 
@@ -215,7 +221,9 @@ class SimpleTags_Client_Autoterms
         if (!$skip_single_target_check && $action == 'save_posts' && (int) $options['autoterm_target'] === 1 && get_the_terms($object->ID, $taxonomy) != false) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Only use Auto Terms on posts with no added terms is enabled and this post contain terms.', 'simple-tags');
             //update log
-            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option'); }
+            if (!$preview) {
+                self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'term_only_option');
+            }
             return false; // Skip post with terms, if term only empty post option is checked
         }
 
@@ -258,7 +266,9 @@ class SimpleTags_Client_Autoterms
         if (empty(trim($content))) {
             $empty_term_messages[$object->ID]['message'][] = esc_html__('Auto Term content is empty. Could not suggest terms without content.', 'simple-tags');
             //update log
-            if (!$preview) { self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_post_content'); }
+            if (!$preview) {
+                self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_post_content');
+            }
             return false;
         }
 
@@ -844,7 +854,9 @@ class SimpleTags_Client_Autoterms
                 $terms_to_add = array_slice($terms_to_add, 0, $terms_limit);
             }
 
-            if ($preview) { return array_values($terms_to_add); }
+            if ($preview) {
+                return array_values($terms_to_add);
+            }
 
             // remove term that already belongs to the post
             foreach ($terms_to_add as $index => $term_name) {
@@ -1062,7 +1074,9 @@ class SimpleTags_Client_Autoterms
 
             return true;
         } else {
-            if ($preview) { return []; }
+            if ($preview) {
+                return [];
+            }
             // remove term if replace type is replace and term is empty
             if ($autoterm_replace_type == 'replace') {
                 wp_set_object_terms($object->ID, [], $taxonomy, true);
