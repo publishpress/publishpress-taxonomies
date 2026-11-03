@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 return array(
     // Features
     'active_taxonomies'      => 1,

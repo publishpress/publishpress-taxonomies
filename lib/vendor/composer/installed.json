@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "publishpress/bundled-translations",
-            "version": "v1.0.3",
-            "version_normalized": "1.0.3.0",
+            "version": "v1.0.6",
+            "version_normalized": "1.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-bundled-translations.git",
-                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559"
+                "reference": "29e91e3dddcdf63fa635d3e6fa43b0a43b0ddeb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-bundled-translations/zipball/95b06baed793a3a4ec44c5d932b68785302a0559",
-                "reference": "95b06baed793a3a4ec44c5d932b68785302a0559",
+                "url": "https://api.github.com/repos/publishpress/library-bundled-translations/zipball/29e91e3dddcdf63fa635d3e6fa43b0a43b0ddeb6",
+                "reference": "29e91e3dddcdf63fa635d3e6fa43b0a43b0ddeb6",
                 "shasum": ""
             },
             "require": {
@@ -22,12 +22,12 @@
                 "publishpress/dev-workspace": "^1.0",
                 "publishpress/version-loader-generator": "^1.0"
             },
-            "time": "2026-05-13T14:34:02+00:00",
+            "time": "2026-10-23T14:11:03+00:00",
             "type": "library",
             "extra": {
                 "generator": {
                     "src-dir": "core",
-                    "version": "1.0.3",
+                    "version": "1.0.6",
                     "lib-class-test": "class_exists('PublishPress\\BundledTranslations\\BundledTranslations')",
                     "action-register-priority": "-200",
                     "action-initialize-priority": "-190"
@@ -58,7 +58,7 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-bundled-translations/issues",
-                "source": "https://github.com/publishpress/library-bundled-translations/tree/v1.0.3"
+                "source": "https://github.com/publishpress/library-bundled-translations/tree/v1.0.6"
             },
             "install-path": "../publishpress/bundled-translations"
         },

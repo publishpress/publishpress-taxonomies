@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Deprecated - Generate meta keywords for HTML header
  *
