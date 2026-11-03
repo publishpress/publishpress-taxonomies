@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Construct a dropdown of our taxonomies so users can select which to edit.
  *

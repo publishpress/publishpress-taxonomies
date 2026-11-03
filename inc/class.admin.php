@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 // Include modules
@@ -61,7 +63,8 @@ class SimpleTags_Admin
         //dashboard
         require STAGS_DIR . '/inc/dashboard.php';
         SimpleTags_Dashboard::get_instance();
-        self::$enabled_menus['st_dashboard'] = esc_html__('Dashboard', 'simple-tags');
+        // Reuse the WordPress core Dashboard translation.
+        self::$enabled_menus['st_dashboard'] = esc_html__('Dashboard', 'default');
         if (1 === (int) SimpleTags_Plugin::get_option_value('active_taxonomies')) {
             self::$enabled_menus['st_taxonomies'] = esc_html__('Taxonomies', 'simple-tags');
         }

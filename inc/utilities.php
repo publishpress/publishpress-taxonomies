@@ -4,6 +4,8 @@
  * Register media tags taxonomy
  */
 
+defined('ABSPATH') || exit;
+
 add_action('init', function () {
     if ((int)get_option('taxopress_media_tag_deleted') === 0) {
         $labels = [
