@@ -4,6 +4,8 @@
  * TODO : Autoload classes
  */
 
+defined('ABSPATH') || exit;
+
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiAjax.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiApi.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiFields.php';

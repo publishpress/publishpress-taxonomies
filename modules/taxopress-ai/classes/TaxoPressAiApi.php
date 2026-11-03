@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TaxoPressAiApi')) {
     class TaxoPressAiApi
     {
@@ -817,6 +819,33 @@ if (!class_exists('TaxoPressAiApi')) {
         }
 
         /**
+         * List connected providers that the WordPress AI client has registered.
+         *
+         * @return array<string, string> Provider IDs mapped to display names.
+         */
+        public static function get_wordpress_ai_providers()
+        {
+            if (!function_exists('wp_ai_client_prompt') || !class_exists('WordPress\\AiClient\\AiClient')) {
+                return [];
+            }
+
+            $providers = [];
+            $registry = \WordPress\AiClient\AiClient::defaultRegistry();
+            foreach ($registry->getRegisteredProviderIds() as $provider_id) {
+                if (!$registry->isProviderConfigured($provider_id)) {
+                    continue;
+                }
+
+                $connector = function_exists('wp_get_connector') ? wp_get_connector($provider_id) : null;
+                $providers[$provider_id] = !empty($connector['name'])
+                    ? $connector['name']
+                    : ucwords(str_replace(['-', '_'], ' ', $provider_id));
+            }
+
+            return $providers;
+        }
+
+        /**
          * Get terms through the provider-agnostic WordPress AI Client.
          *
          * @param array $args Request arguments.
@@ -844,6 +873,34 @@ if (!class_exists('TaxoPressAiApi')) {
             $settings_data  = !empty($args['settings_data']) && is_array($args['settings_data'])
                 ? $args['settings_data']
                 : [];
+            $selected_providers = [];
+            if (!empty($settings_data['wordpress_ai_providers']) && is_array($settings_data['wordpress_ai_providers'])) {
+                foreach ($settings_data['wordpress_ai_providers'] as $selected_provider) {
+                    if (is_scalar($selected_provider)) {
+                        $selected_providers[] = sanitize_key((string) $selected_provider);
+                    }
+                }
+                $selected_providers = array_values(array_unique(array_filter($selected_providers)));
+            } elseif (empty($settings_data['wordpress_ai_providers_present']) && !empty($settings_data['wordpress_ai_provider'])) {
+                // Preserve configurations saved before multiple connector selection was available.
+                $selected_providers = [sanitize_key($settings_data['wordpress_ai_provider'])];
+            }
+
+            if (empty($args['wordpress_ai_provider_id']) && count($selected_providers) > 1) {
+                $return['provider_results'] = [];
+                foreach ($selected_providers as $selected_provider) {
+                    $provider_args = $args;
+                    $provider_args['wordpress_ai_provider_id'] = $selected_provider;
+                    $return['provider_results'][$selected_provider] = self::get_wordpress_ai_results($provider_args);
+                    if (!empty($return['provider_results'][$selected_provider]['results'])) {
+                        $return['status'] = 'success';
+                        $return['message'] = esc_html__('Result from an AI Connector.', 'simple-tags');
+                    }
+                }
+
+                return $return;
+            }
+
             $content        = isset($args['content']) ? (string) $args['content'] : '';
             $clean_content  = isset($args['clean_content']) ? (string) $args['clean_content'] : '';
             $content_source = !empty($args['content_source']) ? sanitize_key($args['content_source']) : 'autoterm';
@@ -928,19 +985,45 @@ if (!class_exists('TaxoPressAiApi')) {
             $max_tokens = !empty($settings_data['wordpress_ai_max_tokens'])
                 ? max(16, (int) $settings_data['wordpress_ai_max_tokens'])
                 : 50;
+            $provider_id = !empty($args['wordpress_ai_provider_id'])
+                ? sanitize_key($args['wordpress_ai_provider_id'])
+                : (isset($selected_providers[0]) ? $selected_providers[0] : '');
+            $available_providers = self::get_wordpress_ai_providers();
+            if ($provider_id === '' && empty($settings_data['wordpress_ai_providers_present']) && !empty($available_providers)) {
+                $provider_id = array_key_first($available_providers);
+            }
+            if ($provider_id === '' || !isset($available_providers[$provider_id])) {
+                $return['message'] = esc_html__(
+                    'The selected AI Connector is not configured. Choose a connected provider in Auto Terms > Sources.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
+            $return['provider_name'] = $available_providers[$provider_id];
+            if (function_exists('wp_supports_ai') && !wp_supports_ai()) {
+                $return['message'] = esc_html__(
+                    'AI is disabled or unavailable on this site. Check the WordPress AI settings before generating terms.',
+                    'simple-tags'
+                );
+
+                return self::add_preview_debug_data($return, $args, $debug_request, $debug_response);
+            }
             $cache_fingerprint = hash('sha256', wp_json_encode([
                 'content'             => $content,
                 'taxonomy'            => $taxonomy,
                 'api'                 => 'wordpress-ai-client-v1',
                 'prompt'              => $custom_prompt,
                 'max_tokens'          => $max_tokens,
+                'provider'            => $provider_id,
                 'existing_terms_only' => $existing_terms_only,
                 'post_terms'          => $existing_post_terms,
                 'site_terms'          => $existing_site_terms,
             ]));
-            $result_key = '_taxopress_wordpress_ai_' . $content_source . '_result';
-            $fingerprint_key = '_taxopress_wordpress_ai_saved_' . $content_source . '_content';
-            $provider_key = '_taxopress_wordpress_ai_' . $content_source . '_provider';
+            $cache_suffix = !empty($settings_data['wordpress_ai_providers_present']) ? '_' . $provider_id : '';
+            $result_key = '_taxopress_wordpress_ai_' . $content_source . $cache_suffix . '_result';
+            $fingerprint_key = '_taxopress_wordpress_ai_saved_' . $content_source . $cache_suffix . '_content';
+            $provider_key = '_taxopress_wordpress_ai_' . $content_source . $cache_suffix . '_provider';
 
             if ($post_id > 0 && $cache_results) {
                 $cached_results = get_post_meta($post_id, $result_key, true);
@@ -965,17 +1048,19 @@ if (!class_exists('TaxoPressAiApi')) {
 
             $debug_request = [
                 'transport'          => 'WordPress AI Client',
+                'provider'           => $provider_id,
                 'system_instruction' => $instructions,
                 'input'              => $user_input,
                 'max_tokens'         => $max_tokens,
             ];
             $builder = wp_ai_client_prompt($user_input)
+                ->using_provider($provider_id)
                 ->using_system_instruction($instructions)
                 ->using_max_tokens($max_tokens);
 
             if (!$builder->is_supported_for_text_generation()) {
                 $return['message'] = esc_html__(
-                    'No compatible AI provider is configured. Install and configure a provider in Settings > Connectors.',
+                    'The selected AI Connector cannot generate text for this request. Check its connection and text generation support in Settings > Connectors.',
                     'simple-tags'
                 );
 

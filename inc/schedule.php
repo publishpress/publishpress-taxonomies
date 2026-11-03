@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('SimpleTags_Autoterms_Schedule')) {
     class SimpleTags_Autoterms_Schedule
     {
