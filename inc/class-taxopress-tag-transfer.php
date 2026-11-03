@@ -7,9 +7,7 @@
  */
 
 // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose,WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Native temporary/upload streams need resource handles, not credential-based WP_Filesystem file management.
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /** HTTP authorization, temporary results, and the Manage Terms tab. */
 class TaxoPress_Tag_Transfer
