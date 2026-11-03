@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.Security.NonceVerification.Missing -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_Autolinks
@@ -254,7 +256,7 @@ class SimpleTags_Client_Autolinks
 
     public function taxopress_save_custom_url_field($term_id)
     {
-        self::set_custom_url($term_id, isset($_POST['taxopress_custom_url']) ? wp_unslash($_POST['taxopress_custom_url']) : '');
+        self::set_custom_url($term_id, isset($_POST['taxopress_custom_url']) ? sanitize_url(wp_unslash($_POST['taxopress_custom_url'])) : '');
     }
 
     /** Shared native custom link persistence. An empty value restores the archive link. */

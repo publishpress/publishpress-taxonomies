@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * TODO : Autoload classes
  */
@@ -1703,7 +1705,6 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 'taxopress_ai_suggest_local_terms_tab_label'  => esc_html__('Auto Terms', 'simple-tags'),
                 'taxopress_ai_create_terms_tab_label'         => esc_html__('Create Terms', 'simple-tags'),
             ];
-
         }
 
         public static function get_tab_labels()

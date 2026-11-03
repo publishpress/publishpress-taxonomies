@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Construct a dropdown of our taxonomies so users can select which to edit.
  *
@@ -623,7 +625,9 @@ function taxopress_retarget_taxonomy_references($source, $destination, $apply = 
         if (!in_array($key, ['synonyms_taxonomies', 'linked_terms_taxonomies'], true) && !preg_match('/^taxopress_ai_.+_metabox_default_taxonomy$|^enable_metabox_|^remove_taxonomy_metabox_/', $key)) {
             continue;
         }
-        $next = is_array($value) ? array_map(static function ($item) use ($source, $destination) { return $item === $source ? $destination : $item; }, $value) : ($value === $source ? $destination : $value);
+        $next = is_array($value) ? array_map(static function ($item) use ($source, $destination) {
+            return $item === $source ? $destination : $item;
+        }, $value) : ($value === $source ? $destination : $value);
         if ($next !== $value) {
             $settings[$key] = is_array($next) ? array_values(array_unique($next)) : $next;
             $summary['settings'][] = $key;
@@ -651,7 +655,9 @@ function taxopress_retarget_taxonomy_references($source, $destination, $apply = 
             }
             foreach (['additional_taxonomies', 'enable_customurl_field'] as $key) {
                 if (isset($record[$key]) && is_array($record[$key])) {
-                    $record[$key] = array_values(array_unique(array_map(static function ($value) use ($source, $destination) { return $value === $source ? $destination : $value; }, $record[$key])));
+                    $record[$key] = array_values(array_unique(array_map(static function ($value) use ($source, $destination) {
+                        return $value === $source ? $destination : $value;
+                    }, $record[$key])));
                 }
             }
             if ($before !== $record) {
@@ -700,6 +706,7 @@ function taxopress_convert_taxonomy_terms($original_slug = '', $new_slug = '', $
     if ($term_ids) {
         $ids_sql = implode(',', array_map('intval', $term_ids));
         // Integer IDs originate from get_terms; WordPress has no taxonomy-move API.
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- The interpolated ID list contains only integers; taxonomy names use prepared placeholders.
         $result = $wpdb->query($wpdb->prepare("UPDATE {$wpdb->term_taxonomy} SET taxonomy = %s WHERE taxonomy = %s AND term_id IN ($ids_sql)", $new_slug, $original_slug));
         if ($result === false) {
             return new WP_Error('taxopress_conversion_failed', __('The taxonomy conversion could not be saved.', 'simple-tags'));
