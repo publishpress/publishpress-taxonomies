@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.0.1] - 02 November, 2026
+## [4.0.1] - 03 November, 2026
 * Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
 * Update: Add "Use only some terms in the selected taxonomy" to OpenAI, #2906
 * Update: Allow users to automatically show terms over a post, #2909
