@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedUnsetVariable,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize,WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_TagCloud
@@ -169,6 +171,13 @@ class SimpleTags_Client_TagCloud
             }
         } else {
             $terms = self::getTags($args, $taxonomy);
+        }
+
+        $min_usage = isset($args['min_usage']) ? max(0, (int) $args['min_usage']) : 0;
+        if ($min_usage > 0 && is_array($terms)) {
+            $terms = array_filter($terms, static function ($term) use ($min_usage) {
+                return is_object($term) && isset($term->count) && (int) $term->count >= $min_usage;
+            });
         }
 
         // Remove hidden terms if enabled

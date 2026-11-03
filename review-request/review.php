@@ -26,9 +26,7 @@
  * TODO Keep in mind highest priority group/code combination that has all passing conditions will be chosen.
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 if (!class_exists('Taxopress_Modules_Reviews')) {
     /**
@@ -360,7 +358,7 @@ if (!class_exists('Taxopress_Modules_Reviews')) {
 
             <div class="notice notice-success is-dismissible taxopress-notice">
 
-                <img src="<?php echo esc_url(STAGS_URL . '/assets/images/logo-notice.png'); ?>" class="logo" alt=""/>
+                <img alt="" class="logo" src="<?php echo esc_url(STAGS_URL . '/assets/images/logo-notice.png'); ?>" />
                 <p>
                     <?php echo esc_html($tigger['message']); ?>
                 </p>

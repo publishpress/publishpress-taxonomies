@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 return array(
     // Features
     'active_taxonomies'      => 1,
@@ -74,6 +76,7 @@ return array(
     'taxopress_ai_post_exclusions' => '',
 
     // legacy ai settings
+    'enable_openai_ai_source' => 0,
     'enable_ibm_watson_ai_source' => 0,
     'enable_dandelion_ai_source' => 0,
     'enable_lseg_ai_source' => 0,
@@ -146,7 +149,7 @@ return array(
     'rp_title'               => __('<h4>Related posts</h4>', 'simple-tags'),
     'rp_xformat'             =>  __('<a href="%post_permalink%" title="%post_title% (%post_date%)" style="font-size:%post_size%;color:%post_color%"> 
 			                       %post_title% <br> 
-			                       <img src="%post_thumb_url%" height="200" width="200" class="custom-image-class" />
+			                       <img src="%post_thumb_url%" alt="%post_title%" height="200" width="200" class="custom-image-class" />
 			                       </a> 
 			                       (%post_comment%)', 'simple-tags'),
     'rp_default_featured_media' => 'default',

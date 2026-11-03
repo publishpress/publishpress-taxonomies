@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPressVIPMinimum.Functions.CheckReturnValue.NonCheckedVariable -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 if (! class_exists('WP_List_Table')) {
@@ -41,7 +43,7 @@ class Termcloud_List extends WP_List_Table
     public function get_columns()
     {
         $columns = [
-            'cb'      => '<input type="checkbox" />',
+            'cb'      => '<input type="checkbox" aria-label="' . esc_attr__('Select all terms', 'simple-tags') . '" />',
             'name'    => __('Name', 'simple-tags'),
             'slug'    => __('Slug', 'simple-tags'),
             'count'    => __('Count', 'simple-tags')
@@ -145,8 +147,13 @@ class Termcloud_List extends WP_List_Table
     public function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="st-bulk-delete-term[]" value="%s" />',
-            $item->term_id
+            '<input type="checkbox" name="st-bulk-delete-term[]" value="%1$s" aria-label="%2$s" />',
+            $item->term_id,
+            sprintf(
+                /* translators: %s: term ID. */
+                esc_attr__('Select term %s', 'simple-tags'),
+                (string) $item->term_id
+            )
         );
     }
 

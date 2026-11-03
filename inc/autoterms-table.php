@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 if (!class_exists('WP_List_Table')) {
@@ -328,7 +330,7 @@ class Autoterms_List extends WP_List_Table
             $return = '&mdash;';
         }
 
-        return $return;
+        return apply_filters('taxopress_autoterm_taxonomy_column', $return, $item);
     }
 
     /**
@@ -386,6 +388,10 @@ class Autoterms_List extends WP_List_Table
 
         if (isset($item['autoterm_use_open_ai']) && !empty(taxopress_disp_boolean($item['autoterm_use_open_ai']))) {
             $used_source[] = esc_html__('OpenAI', 'simple-tags');
+        }
+
+        if (isset($item['autoterm_use_wordpress_ai']) && !empty(taxopress_disp_boolean($item['autoterm_use_wordpress_ai']))) {
+            $used_source[] = esc_html__('AI Connectors', 'simple-tags');
         }
 
         if (isset($item['autoterm_use_ibm_watson']) && !empty(taxopress_disp_boolean($item['autoterm_use_ibm_watson']))) {

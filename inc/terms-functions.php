@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Generate a unique term slug should user decide to copy same term more than once.
  *

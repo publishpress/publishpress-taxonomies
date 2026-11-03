@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 /**
