@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 class SimpleTags_Plugin
 {
     public static $options = null;
