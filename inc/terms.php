@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 class SimpleTags_Terms
 {
     public const MENU_SLUG = 'st_options';
