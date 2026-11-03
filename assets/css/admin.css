@@ -75,7 +75,11 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
 }
 
 .form-table.taxopress-table.autoterm_terms .tab-group-tr td {
-    padding: 20px 10px 20px 0;
+    padding: 0 10px 24px 0;
+}
+
+.form-table.taxopress-table.autoterm_terms .tab-group-tr .description {
+    margin: 8px 0 10px;
 }
 
 .taxopress-button-group {
@@ -1574,11 +1578,8 @@ ul.taxopress-tab li.autoterm_terms_tab a::before {
 ul.taxopress-tab li.autoterm_when_to_use_tab a::before {
     content: "\f506";
 }
-ul.taxopress-tab li.autoterm_display_tab a::before {
+ul.taxopress-tab li.autoterm_content_tab a::before {
     content: "\f186";
-}
-ul.taxopress-tab li.autoterm_options_tab a::before {
-    content: "\f180";
 }
 ul.taxopress-tab li.autoterm_oldcontent_tab a::before {
     content: "\f186";
@@ -1594,9 +1595,6 @@ ul.taxopress-tab li.autoterm_schedule_tab a::before {
 }
 ul.taxopress-tab li.autoterm_logs_tab a::before {
     content: "\f321";
-}
-ul.taxopress-tab li.autoterm_advanced_tab a::before {
-    content: "\f111";
 }
 ul.taxopress-tab li.autoterm_preview_tab a::before {
     content: "\f115";
@@ -2297,6 +2295,27 @@ body.block-editor-page .clicktags-search-wrapper .option input {
     align-items: center;
     gap: 5px;
     top: 3px !important;
+}
+
+.taxopress-autoterms-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.taxopress-autoterms-heading .wp-heading-inline {
+    margin: 0;
+    padding: 0;
+}
+
+.taxopress-autoterms-heading .page-title-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    top: auto !important;
 }
 
 .suggest-merge-terms {

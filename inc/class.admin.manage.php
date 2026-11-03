@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_tax_query,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Manage
@@ -1021,7 +1023,7 @@ class SimpleTags_Admin_Manage
         return trim(preg_replace('/\s*\(.*?\)$/', '', $term));
     }
 
-    private static function get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type, &$missing_terms = [])
+    private static function get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type)
     {
         $term_ids = [];
 
@@ -1203,7 +1205,10 @@ class SimpleTags_Admin_Manage
 
         foreach ($old_terms_input as $term_name) {
             $term_name_clean = self::extract_merge_term_name($term_name);
-            $term = self::getExistingMergeTerm($taxonomy, $term_name);
+            $term = get_term_by('name', $term_name_clean, $taxonomy);
+            if (!$term || is_wp_error($term)) {
+                $term = get_term_by('slug', sanitize_title($term_name_clean), $taxonomy);
+            }
             if ($term && !is_wp_error($term)) {
                 $old_terms[] = $term_name;
             } elseif (!empty($term_name_clean)) {
