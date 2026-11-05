@@ -1,0 +1,37 @@
+name: Infra audit
+on:
+  push:
+    branches: [development]
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  vulnerability-alerts: read
+  security-events: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout plugin
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Checkout dependency audit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: publishpress/infra
+          ref: development
+          token: ${{ secrets.INFRA_READ_TOKEN }}
+          path: .infra-audit
+          sparse-checkout: .github/actions/dependency-audit
+          persist-credentials: false
+
+      - name: Post dependency audit
+        env:
+          DASHBOARD_URL: ${{ secrets.INFRA_DASHBOARD_URL }}
+          ENTITY_SLUG: wp-plugin-taxonomies-free
+          COMPOSER_PROD_DIR: lib
+          USERNAME: ${{ secrets.INFRA_PLUGIN_USER }}
+          APP_PASSWORD: ${{ secrets.INFRA_PLUGIN_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .infra-audit/.github/actions/dependency-audit/audit.sh
