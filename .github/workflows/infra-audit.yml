@@ -1,9 +1,7 @@
 name: Infra audit
 on:
-  push:
-    branches: [development]
-  schedule:
-    - cron: '0 6 * * *'
+  release:
+    types: [released]
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,6 +13,8 @@ jobs:
     steps:
       - name: Checkout plugin
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.release.tag_name || github.sha }}
 
       - name: Checkout dependency audit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
