@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * TODO : Autoload classes
  */
@@ -1697,15 +1699,32 @@ if (!class_exists('TaxoPress_AI_Module')) {
             <?php
         }
 
-        public function ensure_tab_label_options()
+        public static function tab_label_defaults()
         {
-            $keys = [
+            return [
                 'taxopress_ai_existing_terms_tab_label'       => esc_html__('Show All Existing Terms', 'simple-tags'),
                 'taxopress_ai_post_terms_tab_label'           => esc_html__('Manage Post Terms', 'simple-tags'),
                 'taxopress_ai_suggest_local_terms_tab_label'  => esc_html__('Auto Terms', 'simple-tags'),
                 'taxopress_ai_create_terms_tab_label'         => esc_html__('Create Terms', 'simple-tags'),
             ];
+        }
 
+        public static function get_tab_labels()
+        {
+            $labels = [];
+            foreach (self::tab_label_defaults() as $key => $default) {
+                $label = get_option($key, '');
+                if ($label === '' || $label === false) {
+                    $label = SimpleTags_Plugin::get_option_value($key);
+                }
+                $labels[$key] = $label !== '' && $label !== false ? (string) $label : $default;
+            }
+            return $labels;
+        }
+
+        public function ensure_tab_label_options()
+        {
+            $keys = self::tab_label_defaults();
             foreach ($keys as $opt => $default) {
                 $current = get_option($opt, '');
                 if ($current === '' || $current === false) {
@@ -1737,6 +1756,35 @@ if (!class_exists('TaxoPress_AI_Module')) {
             $this->taxopress_save_tab_label('taxopress_ai_create_terms_tab_label');
         }
 
+        /** Validate the native inline-label control without HTTP side effects. */
+        public static function validate_tab_label($label)
+        {
+            $label = trim(sanitize_text_field($label));
+            if ($label === '') {
+                return new WP_Error('taxopress_label_empty', esc_html__("Label can't be empty.", 'simple-tags'));
+            }
+            if (mb_strlen($label) > 80) {
+                return new WP_Error('taxopress_label_length', esc_html__('Label is too long.', 'simple-tags'));
+            }
+            return $label;
+        }
+
+        /** Persist both native label representations for wp-admin and non-form clients. */
+        public static function persist_tab_label($option_key, $label)
+        {
+            if (!isset(self::tab_label_defaults()[$option_key]) || !current_user_can('simple_tags') || !can_edit_taxopress_metabox_labels()) {
+                return new WP_Error('taxopress_label_permission', esc_html__('Permission denied.', 'simple-tags'));
+            }
+            $label = self::validate_tab_label($label);
+            if (is_wp_error($label)) {
+                return $label;
+            }
+            SimpleTags_Plugin::set_option_value($option_key, $label);
+            update_option($option_key, $label);
+            return SimpleTags_Plugin::get_option_value($option_key) === $label && get_option($option_key) === $label
+                ? true : new WP_Error('taxopress_label_save', esc_html__('The label could not be saved.', 'simple-tags'));
+        }
+
         private function taxopress_save_tab_label($option_key)
         {
             if (!current_user_can('simple_tags')) {
@@ -1749,18 +1797,14 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 wp_send_json_error(['message' => esc_html__('Invalid nonce token.', 'simple-tags')], 400);
             }
             $new_label = isset($_POST['new_label']) ? sanitize_text_field(wp_unslash($_POST['new_label'])) : '';
-            $new_label = trim($new_label);
-
-            if ($new_label === '') {
-                wp_send_json_error(['message' => esc_html__("Label can't be empty.", 'simple-tags')], 400);
+            $new_label = self::validate_tab_label($new_label);
+            if (is_wp_error($new_label)) {
+                wp_send_json_error(['message' => $new_label->get_error_message()], 400);
             }
-            if (mb_strlen($new_label) > 80) {
-                wp_send_json_error(['message' => esc_html__('Label is too long.', 'simple-tags')], 400);
+            $result = self::persist_tab_label($option_key, $new_label);
+            if (is_wp_error($result)) {
+                wp_send_json_error(['message' => $result->get_error_message()], 400);
             }
-
-            // Save both in plugin container and as dedicated option
-            SimpleTags_Plugin::set_option_value($option_key, $new_label);
-            update_option($option_key, $new_label);
 
             wp_send_json_success(['label' => $new_label]);
         }

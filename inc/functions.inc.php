@@ -502,6 +502,13 @@ function taxopress_html_character_and_entity($enity_code_as_key = false)
     return $character_set;
 }
 
+/** Normalize native saved configuration titles without unslashing twice. */
+function taxopress_sanitize_preset_title($title)
+{
+    $title = str_replace('"', '', htmlspecialchars_decode($title, ENT_QUOTES));
+    return trim(htmlspecialchars($title, ENT_QUOTES, 'UTF-8'));
+}
+
 /**
  * Sanitize PublishPress Taxonomies text field
  *
@@ -512,7 +519,7 @@ function taxopress_sanitize_text_field($content)
 {
 
     if (is_array($content)) {
-        return stripslashes_deep(array_map('taxopress_sanitize_text_field', $content));
+        return array_map('taxopress_sanitize_text_field', $content);
     }
 
     $content = stripslashes_deep($content);
@@ -698,7 +705,7 @@ function taxopress_get_term_synonyms($term, $taxonomy = '')
  * @param string $linked_terms_type
  * @return array $linked_terms
  */
-function taxopress_get_linked_terms($term_id, $taxonomy = '', $term_object = false, $linked_terms_type = 'main')
+function taxopress_get_linked_terms($term_id, $taxonomy = '', $term_object = false, $linked_terms_type = 'main', $limit = 0)
 {
     global $wpdb;
 
@@ -727,6 +734,10 @@ function taxopress_get_linked_terms($term_id, $taxonomy = '', $term_object = fal
             $term_id,
             $term_id
         );
+    }
+
+    if ($limit > 0) {
+        $query .= $wpdb->prepare(' LIMIT %d', min(2001, (int) $limit));
     }
 
     $linked_terms = $wpdb->get_results($query);
@@ -1020,4 +1031,70 @@ function can_manage_taxopress_metabox_tabs($tabs)
     }
 
     return $tabs;
+}
+
+
+/** Query the native Posts screen without reading request globals. Callers authorize returned objects. */
+function taxopress_get_posts_data(array $filters)
+{
+    $search = $filters['search'] ?? '';
+    $term_filter = $filters['term_id'] ?? 0;
+    $post_types = $filters['post_type'] ?? '';
+    $orderby = $filters['orderby'] ?? 'date';
+    $order = $filters['order'] ?? 'DESC';
+    $posts_per_page = $filters['per_page'] ?? 20;
+    $page = $filters['page'] ?? 1;
+    if (empty($post_types)) {
+        $post_types = get_post_types(array('public' => true), 'names');
+        if (isset($post_types['attachment'])) {
+            unset($post_types['attachment']);
+        }
+        $post_types = array_keys($post_types);
+    }
+
+    $args = array(
+        'post_type'      => $post_types,
+        'post_status'    => 'any',
+        'posts_per_page' => $posts_per_page,
+        'order' => $order,
+        'orderby' => $orderby,
+        'paged'          => $page
+    );
+
+    if (!empty($search)) {
+        $args['s'] = $search;
+    }
+
+    if (!empty($term_filter)) {
+        $term_filter_data = get_term($term_filter);
+        if ($term_filter_data instanceof WP_Term) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Native term filtering requires this taxonomy constraint.
+            $args['tax_query'] = array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => $term_filter_data->taxonomy,
+                    'field'     => 'term_id',
+                    'terms'    => $term_filter_data->term_id,
+                )
+            );
+        }
+    }
+
+    $query = new WP_Query($args);
+
+    $results = [
+        'posts'         => [],
+        'max_num_posts' => 0,
+        'max_num_pages' => 1
+    ];
+
+    if ($query->have_posts()) {
+        $results['posts']         = $query->posts;
+        $results['max_num_posts'] = $query->found_posts;
+        $results['max_num_pages'] = $query->max_num_pages;
+        wp_reset_postdata();
+    }
+
+
+    return $results;
 }

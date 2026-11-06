@@ -6,8 +6,8 @@ defined('ABSPATH') || exit;
 
 require_once STAGS_DIR . '/modules/taxopress-ai/classes/TaxoPressAiUtilities.php';
 
-$current_screen = get_current_screen();
-$is_fast_update = isset($_GET['page']) && $_GET['page'] === 'st_taxopress_ai';
+$current_screen = function_exists('get_current_screen') ? get_current_screen() : null;
+$is_fast_update = !empty($include_fast_update) || (isset($_GET['page']) && $_GET['page'] === 'st_taxopress_ai');
 
 $taxopress_ai_tabs = [];
 
