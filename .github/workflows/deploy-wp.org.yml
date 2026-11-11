@@ -10,10 +10,11 @@ jobs:
     secrets: inherit
 
   deploy-wp-org:
+    needs:
+      - code-check
     permissions:
       contents: write
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
-    needs: [code-check]
-    secrets:
-      SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-      SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+    with:
+      stable_branch: master
+    secrets: inherit
