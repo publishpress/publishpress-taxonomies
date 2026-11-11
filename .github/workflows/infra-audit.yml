@@ -2,6 +2,8 @@ name: Infra audit
 on:
   release:
     types: [released]
+  schedule:
+    - cron: '27 6 * * 1'
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,7 +16,7 @@ jobs:
       - name: Checkout plugin
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          ref: ${{ github.event.release.tag_name || github.sha }}
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || 'development' }}
 
       - name: Checkout dependency audit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -28,6 +30,7 @@ jobs:
 
       - name: Post dependency audit
         env:
+          AUDIT_SOURCE: ${{ github.event_name == 'release' && 'release' || 'development' }}
           DASHBOARD_URL: ${{ secrets.INFRA_DASHBOARD_URL }}
           ENTITY_SLUG: wp-plugin-taxonomies-free
           COMPOSER_PROD_DIR: lib
