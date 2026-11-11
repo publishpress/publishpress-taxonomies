@@ -1,0 +1,27 @@
+name: Build signed pre-release artifacts
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch, tag, commit SHA, or same-repository pull request number.
+        type: string
+        default: ""
+      skip_translations:
+        description: Use committed translation catalogs.
+        type: boolean
+        default: true
+      skip_release_checks:
+        description: Skip stable release checks for this unpublished test build.
+        type: boolean
+        default: true
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  build:
+    uses: publishpress/github-workflows/.github/workflows/build-prerelease.yml@v3
+    with:
+      ref: ${{ inputs.ref }}
+      skip_translations: ${{ inputs.skip_translations }}
+      skip_release_checks: ${{ inputs.skip_release_checks }}
+    secrets: inherit
