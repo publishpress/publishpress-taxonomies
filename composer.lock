@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61720482c8f9c6227e4ee216099b4083",
+    "content-hash": "51426c2ed3d153d65162bd07efd88c86",
     "packages": [],
     "packages-dev": [
         {
@@ -6057,16 +6057,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "2.0.4",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-dev-workspace.git",
-                "reference": "041de278f529bdf25b2bde94e56ed8b6f4b66d02"
+                "reference": "ef57a10f0ca8dcb69df18ebf7235130a46dea2f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/041de278f529bdf25b2bde94e56ed8b6f4b66d02",
-                "reference": "041de278f529bdf25b2bde94e56ed8b6f4b66d02",
+                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/ef57a10f0ca8dcb69df18ebf7235130a46dea2f6",
+                "reference": "ef57a10f0ca8dcb69df18ebf7235130a46dea2f6",
                 "shasum": ""
             },
             "require": {
@@ -6123,9 +6123,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/library-dev-workspace/issues",
-                "source": "https://github.com/publishpress/library-dev-workspace/tree/2.0.4"
+                "source": "https://github.com/publishpress/library-dev-workspace/tree/2.1.0"
             },
-            "time": "2026-10-23T18:11:43+00:00"
+            "time": "2026-11-12T15:17:35+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
@@ -13741,5 +13741,5 @@
         "php": ">=8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
