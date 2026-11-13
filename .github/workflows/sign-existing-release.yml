@@ -1,0 +1,16 @@
+name: Sign an existing release without rebuilding
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing stable release tag, for example v1.2.0.
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  sign:
+    uses: publishpress/github-workflows/.github/workflows/sign-existing-release.yml@v3
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets: inherit
