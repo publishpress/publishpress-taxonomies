@@ -281,22 +281,7 @@ function taxopress_create_default_autoterm()
                 $create_default = false;
                 foreach ($options_taxdata as $options_taxonomy => $options_taxonomy_data) {
                     $taxonomy = get_taxonomy($options_taxonomy);
-                    $default                                                   = [];
-                    $default['taxopress_autoterm']['autoterm_from']            = 'posts';
-                    $default['taxopress_autoterm']['title']                    = '' . (is_object($taxonomy) ? $taxonomy->labels->name : $options_taxonomy) . ' ' . ucwords($options_post_type) . ' Auto term';
-                    $default['taxopress_autoterm']['taxonomy']                 = $options_taxonomy;
-                    $default['post_types']                                     = [];
-                    $default['post_status']                                    = ['publish'];
-                    $default['taxopress_autoterm']['autoterm_useall']          = isset($options_taxonomy_data['at_all']) ? $options_taxonomy_data['at_all'] : 0;
-                    $default['taxopress_autoterm']['autoterm_useonly']         = isset($options_taxonomy_data['at_all_no']) ? $options_taxonomy_data['at_all_no'] : 0;
-                    $default['taxopress_autoterm']['autoterm_target']          = isset($options_taxonomy_data['at_empty']) ? $options_taxonomy_data['at_empty'] : 0;
-                    $default['taxopress_autoterm']['autoterm_word']            = isset($options_taxonomy_data['only_full_word']) ? $options_taxonomy_data['only_full_word'] : 0;
-                    $default['taxopress_autoterm']['autoterm_hash']            = isset($options_taxonomy_data['allow_hashtag_format']) ? $options_taxonomy_data['allow_hashtag_format'] : 0;
-                    $default['specific_terms']            = isset($options_taxonomy_data['auto_list']) ? taxopress_sanitize_specific_terms($options_taxonomy_data['auto_list']) : [];
-                    $default['taxopress_autoterm']['terms_limit']              = '5';
-                    $default['taxopress_autoterm']['synonyms_term']            = 1;
-
-                    $result                                                    = taxopress_update_autoterm($default);
+                    $result                                                    = taxopress_update_autoterm(taxopress_get_autoterm_defaults($options_taxonomy, $options_post_type, $options_taxonomy_data));
                 }
             }
         }
@@ -540,11 +525,7 @@ function taxopress_update_autoterm($data = [])
 
     $data = apply_filters('taxopress_prepare_autoterm_data', $data, $existing_autoterm);
 
-    $title                               = $data['taxopress_autoterm']['title'];
-    $title                               = str_replace('"', '', htmlspecialchars_decode($title));
-    $title                               = htmlspecialchars($title, ENT_QUOTES);
-    $title                               = trim($title);
-    $data['taxopress_autoterm']['title'] = stripslashes_deep($title);
+    $data['taxopress_autoterm']['title'] = taxopress_sanitize_preset_title($data['taxopress_autoterm']['title']);
 
 
     //update other post post
@@ -752,13 +733,17 @@ function taxopress_delete_autoterm_log_filter_removable_query_args(array $args)
  * Delete our custom autoterm from the array of autoterms.
  * @return bool|string False on failure, string on success.
  */
-function taxopress_action_delete_autoterm($autoterm_id)
+function taxopress_action_delete_autoterm($autoterm_id, $redirect = true)
 {
     $autoterms = taxopress_get_autoterm_data();
 
     if (array_key_exists($autoterm_id, $autoterms)) {
         unset($autoterms[$autoterm_id]);
         $success = update_option('taxopress_autoterms', $autoterms);
+    }
+
+    if (!$redirect) {
+        return isset($success) && $success;
     }
 
     if (isset($success)) {
@@ -836,4 +821,26 @@ function taxopress_autoterms_logs_data($per_page = 20, $current_page = 1, $order
     $logs = new WP_Query($logs_arg);
 
     return ['posts' => $logs->posts, 'counts' => $logs->found_posts];
+}
+
+/** Native default data shared by initial presets and API previews. */
+function taxopress_get_autoterm_defaults($options_taxonomy = 'post_tag', $options_post_type = 'post', $options_taxonomy_data = [])
+{
+    $taxonomy = get_taxonomy($options_taxonomy);
+    $default                                                   = [];
+    $default['taxopress_autoterm']['autoterm_from']            = 'posts';
+    $default['taxopress_autoterm']['title']                    = '' . (is_object($taxonomy) ? $taxonomy->labels->name : $options_taxonomy) . ' ' . ucwords($options_post_type) . ' Auto term';
+    $default['taxopress_autoterm']['taxonomy']                 = $options_taxonomy;
+    $default['post_types']                                     = [];
+    $default['post_status']                                    = ['publish'];
+    $default['taxopress_autoterm']['autoterm_useall']          = isset($options_taxonomy_data['at_all']) ? $options_taxonomy_data['at_all'] : 0;
+    $default['taxopress_autoterm']['autoterm_useonly']         = isset($options_taxonomy_data['at_all_no']) ? $options_taxonomy_data['at_all_no'] : 0;
+    $default['taxopress_autoterm']['autoterm_target']          = isset($options_taxonomy_data['at_empty']) ? $options_taxonomy_data['at_empty'] : 0;
+    $default['taxopress_autoterm']['autoterm_word']            = isset($options_taxonomy_data['only_full_word']) ? $options_taxonomy_data['only_full_word'] : 0;
+    $default['taxopress_autoterm']['autoterm_hash']            = isset($options_taxonomy_data['allow_hashtag_format']) ? $options_taxonomy_data['allow_hashtag_format'] : 0;
+    $default['specific_terms']            = isset($options_taxonomy_data['auto_list']) ? taxopress_sanitize_specific_terms($options_taxonomy_data['auto_list']) : [];
+    $default['taxopress_autoterm']['terms_limit']              = '5';
+    $default['taxopress_autoterm']['synonyms_term']            = 1;
+
+    return $default;
 }

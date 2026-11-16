@@ -7,6 +7,7 @@ require_once __DIR__ . '/bootstrap.php';
 define('ABSPATH', taxopress_transfer_test_root() . '/');
 require_once ABSPATH . 'wp-includes/plugin.php';
 require_once ABSPATH . 'wp-includes/class-wp-error.php';
+require_once ABSPATH . 'wp-includes/compat.php';
 if (is_file(ABSPATH . 'wp-includes/utf8.php')) {
     require_once ABSPATH . 'wp-includes/utf8.php';
 }
