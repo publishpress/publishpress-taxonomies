@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TaxoPressAiFields')) {
     class TaxoPressAiFields
     {

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable Squiz.PHP.CommentedOutCode.Found,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.SlowDBQuery.slow_db_query_tax_query,WordPress.Security.NonceVerification.Missing,WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Admin_Manage
@@ -660,7 +662,7 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                // Resolve and validate every source term before changing terms.
+                // Resolve and validate all source terms before processing the destination.
                 $source_terms = [];
                 $missing_terms = [];
                 foreach ((array) $old_term_inputs as $old_term_input) {
@@ -689,16 +691,25 @@ class SimpleTags_Admin_Manage
                     return false;
                 }
 
-                // The destination must already exist; do not create a term during a merge.
-                $new_term_input = !empty($new_term_inputs[0]) ? $new_term_inputs[0] : $new_tag;
-                $new_term = self::getExistingMergeTerm($taxonomy, $new_term_input);
-                if (!$new_term) {
-                    add_settings_error(__CLASS__, __CLASS__, esc_html__('The term to merge into must be an existing term.', 'simple-tags'), 'error taxopress-notice');
+                if (empty($source_terms)) {
+                    add_settings_error(__CLASS__, __CLASS__, esc_html__('No matching terms found to merge.', 'simple-tags'), 'error taxopress-notice');
                     return false;
                 }
 
-                $new_term_id = (int) $new_term->term_id;
-                $new_term_slug = $new_term->slug;
+                // Resolve or create the destination only after validating all source terms.
+                $new_term_input = !empty($new_term_inputs[0]) ? $new_term_inputs[0] : $new_tag;
+                $new_term = self::getExistingMergeTerm($taxonomy, $new_term_input);
+
+                if (!$new_term) {
+                    $new_term_info = wp_insert_term($new_tag, $taxonomy);
+                    if (is_wp_error($new_term_info)) {
+                        add_settings_error(__CLASS__, __CLASS__, esc_html__('Failed to create the new term.', 'simple-tags'), 'error taxopress-notice');
+                        return false;
+                    }
+                    $new_term_id = (int) $new_term_info['term_id'];
+                } else {
+                    $new_term_id = (int) $new_term->term_id;
+                }
 
                 // Never delete the destination when it was also selected as a source term.
                 unset($source_terms[$new_term_id]);
@@ -1012,7 +1023,7 @@ class SimpleTags_Admin_Manage
         return trim(preg_replace('/\s*\(.*?\)$/', '', $term));
     }
 
-    private static function get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type, &$missing_terms = [])
+    private static function get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type)
     {
         $term_ids = [];
 
@@ -1194,8 +1205,10 @@ class SimpleTags_Admin_Manage
 
         foreach ($old_terms_input as $term_name) {
             $term_name_clean = self::extract_merge_term_name($term_name);
-            $term_name_clean = sanitize_text_field($term_name_clean);
-            $term = self::getExistingMergeTerm($taxonomy, $term_name);
+            $term = get_term_by('name', $term_name_clean, $taxonomy);
+            if (!$term || is_wp_error($term)) {
+                $term = get_term_by('slug', sanitize_title($term_name_clean), $taxonomy);
+            }
             if ($term && !is_wp_error($term)) {
                 $old_terms[] = $term_name;
             } elseif (!empty($term_name_clean)) {
