@@ -337,3 +337,41 @@ body.taxopress-block-editor .taxopress-post-suggestterm {
     display: table;
     box-sizing: border-box;
 }
+
+/* Accessibility: rename controls live outside the tab link */
+.taxopress-tab.ai-integration-tab li.tp-has-rename {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eee;
+}
+
+.taxopress-tab.ai-integration-tab li.tp-has-rename > a {
+    border-bottom: 0;
+    padding-right: 0;
+}
+
+.taxopress-tab.ai-integration-tab li.tp-has-rename.active {
+    background-color: #eee;
+}
+
+.taxopress-tab.ai-integration-tab li.tp-has-rename .pp-tooltips-library {
+    display: inline-block;
+}
+
+button.tp-rename-tab,
+button.tp-rename-tab-save {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+button.tp-rename-tab:focus-visible,
+button.tp-rename-tab-save:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}

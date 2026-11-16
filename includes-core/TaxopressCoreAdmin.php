@@ -504,8 +504,8 @@ class TaxopressCoreAdmin
                         <?php endforeach; ?>
                     </select>
                     <span class="pp-tooltips-library" data-toggle="tooltip">
-                        <span class="dashicons dashicons-lock taxopress-select-icon"></span>
-                        <span class="taxopress tooltip-text">
+                        <span class="dashicons dashicons-lock taxopress-select-icon" tabindex="0" role="img" aria-label="<?php echo esc_attr__('Upgrade to PublishPress Taxonomies Pro to generate separate terms for multiple taxonomies in one OpenAI request.', 'simple-tags'); ?>"></span>
+                        <span class="taxopress tooltip-text" aria-hidden="true">
                             <?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to generate separate terms for multiple taxonomies in one OpenAI request.', 'simple-tags'); ?>
                         </span>
                     </span>
@@ -701,8 +701,8 @@ class TaxopressCoreAdmin
             $default_taxonomy_display_options,
             '<div class="taxopress-select-icon-wrapper">
                     <span class="pp-tooltips-library" data-toggle="tooltip">
-                        <span class="dashicons dashicons-lock taxopress-select-icon"></span>
-                        <span class="taxopress tooltip-text">' .
+                        <span class="dashicons dashicons-lock taxopress-select-icon" tabindex="0" role="img" aria-label="' . esc_attr__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags') . '"></span>
+                        <span class="taxopress tooltip-text" aria-hidden="true">' .
                         esc_html__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags') .
                     '</span>
                     </span>
@@ -791,8 +791,8 @@ class TaxopressCoreAdmin
                         ?>
                     </select>
                     <span class="pp-tooltips-library" data-toggle="tooltip">
-                        <span class="dashicons dashicons-lock taxopress-select-icon taxopress-formats"></span>
-                        <span class="taxopress tooltip-text"><?php echo esc_html__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
+                        <span class="dashicons dashicons-lock taxopress-select-icon taxopress-formats" tabindex="0" role="img" aria-label="<?php echo esc_attr__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags'); ?>"></span>
+                        <span class="taxopress tooltip-text" aria-hidden="true"><?php echo esc_html__('This feature is available in PublishPress Taxonomies Pro', 'simple-tags'); ?></span>
                     </span>
                 </div>
                 <div class="taxopress-stpexplan">
@@ -1031,8 +1031,8 @@ class TaxopressCoreAdmin
                     </select>
                     <div>
                         <span class="pp-tooltips-library" data-toggle="tooltip">
-                            <span class="dashicons dashicons-lock taxopress-select-icon order"></span>
-                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
+                            <span class="dashicons dashicons-lock taxopress-select-icon order" tabindex="0" role="img" aria-label="<?php echo esc_attr__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?>"></span>
+                            <span class="taxopress tooltip-text" aria-hidden="true"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
                         </span>
                     </div>
                 </div>
@@ -1075,8 +1075,8 @@ class TaxopressCoreAdmin
                     </select>
                     <div>
                         <span class="pp-tooltips-library" data-toggle="tooltip">
-                            <span class="dashicons dashicons-lock taxopress-select-icon order"></span>
-                            <span class="taxopress tooltip-text"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
+                            <span class="dashicons dashicons-lock taxopress-select-icon order" tabindex="0" role="img" aria-label="<?php echo esc_attr__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?>"></span>
+                            <span class="taxopress tooltip-text" aria-hidden="true"><?php echo esc_html__('Upgrade to PublishPress Taxonomies Pro to use Term Order to manually order Terms', 'simple-tags'); ?></span>
                         </span>
                     </div>
                 </div>
