@@ -38,3 +38,4 @@ phpmd-ruleset.xml
 .wordpress-org
 dev-workspace
 dev-workspace-cache/
+/.agents

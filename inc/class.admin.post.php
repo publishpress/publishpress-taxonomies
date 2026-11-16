@@ -132,7 +132,7 @@ class SimpleTags_Admin_Post_Settings
         }
     }
 
-    private static function get_status($post_id, $status_meta_key, $legacy_disable_meta_key = '')
+    public static function get_status($post_id, $status_meta_key, $legacy_disable_meta_key = '')
     {
         $status = get_post_meta($post_id, $status_meta_key, true);
 
@@ -151,6 +151,12 @@ class SimpleTags_Admin_Post_Settings
     {
         $status = isset($_POST[$post_key]) ? sanitize_key(wp_unslash($_POST[$post_key])) : self::STATUS_DEFAULT;
 
+        self::set_status($post_id, $status, $status_meta_key, $legacy_disable_meta_key);
+    }
+
+    /** Persist a validated native feature override without depending on a form request. */
+    public static function set_status($post_id, $status, $status_meta_key, $legacy_disable_meta_key = '')
+    {
         if (! self::is_valid_status($status)) {
             $status = self::STATUS_DEFAULT;
         }

@@ -153,66 +153,7 @@ function taxopress_create_default_post_tags()
     }
 
     // Get options
-    $options = SimpleTags_Plugin::get_option();
-
-    // Default values
-    $defaults = [
-        'before'    => __('Tags: ', 'simple-tags'),
-        'separator' => ', ',
-        'after'     => '<br />',
-        'xformat'   => __('<a href="%tag_link%" title="%tag_name_attribute%" class="st-post-tags t%tag_scale%" style="%tag_size% %tag_color%" %tag_rel%>%tag_name%</a>', 'simple-tags'),
-        'notagtext' => __('No tag for this post.', 'simple-tags'),
-        'number'    => 0,
-        'format'    => '',
-        'smallest'  => 12,
-        'largest'   => 12,
-        'unit'      => 'pt',
-        'mincolor'  => '#353535',
-        'maxcolor'  => '#000000',
-        'color'     => 1,
-        'selectionby' => 'count',
-        'selection'   => 'desc',
-        'orderby'     => 'random',
-        'order'       => 'asc',
-        'limit_days'  => 0,
-    ];
-    // Get values in DB
-    $defaults['before']    = $options['tt_before'];
-    $defaults['separator'] = $options['tt_separator'];
-    $defaults['after']     = $options['tt_after'];
-    $defaults['xformat']   = $options['tt_xformat'];
-    $defaults['notagtext'] = $options['tt_notagstext'];
-    $defaults['number']    = (int)$options['tt_number'];
-    $defaults['selectionby'] = $options['tt_selectionby'];
-    $defaults['selection']   = $options['tt_selection'];
-    $defaults['orderby']     = $options['tt_orderby'];
-    $defaults['order']       = $options['tt_order'];
-    $defaults['limit_days']  = (int)$options['tt_limit_days'];
-
-    $post_tags_default                                     = [];
-    $post_tags_default['taxopress_post_tags']['title']     = esc_html__('Terms for Current Post', 'simple-tags');
-    $post_tags_default['taxopress_post_tags']['taxonomy']  = 'post_tag';
-    $post_tags_default['taxopress_post_tags']['embedded']  = [];
-    $post_tags_default['taxopress_post_tags']['display_position'] = 'below';
-    $post_tags_default['taxopress_post_tags']['number']    = $defaults['number'];
-    $post_tags_default['taxopress_post_tags']['separator'] = $defaults['separator'];
-    $post_tags_default['taxopress_post_tags']['after']     = $defaults['after'];
-    $post_tags_default['taxopress_post_tags']['before']    = $defaults['before'];
-    $post_tags_default['taxopress_post_tags']['notagtext'] = $defaults['notagtext'];
-    $post_tags_default['taxopress_post_tags']['xformat']   = $defaults['xformat'];
-    $post_tags_default['taxopress_post_tags']['smallest']    = $defaults['smallest'];
-    $post_tags_default['taxopress_post_tags']['largest']     = $defaults['largest'];
-    $post_tags_default['taxopress_post_tags']['unit']        = $defaults['unit'];
-    $post_tags_default['taxopress_post_tags']['mincolor']   = $defaults['mincolor'];
-    $post_tags_default['taxopress_post_tags']['maxcolor']   = $defaults['maxcolor'];
-    $post_tags_default['taxopress_post_tags']['color']      = $defaults['color'];
-    $post_tags_default['taxopress_post_tags']['format']     = $defaults['format'];
-    $post_tags_default['taxopress_post_tags']['selectionby'] = $defaults['selectionby'];
-    $post_tags_default['taxopress_post_tags']['selection']   = $defaults['selection'];
-    $post_tags_default['taxopress_post_tags']['orderby']     = $defaults['orderby'];
-    $post_tags_default['taxopress_post_tags']['order']       = $defaults['order'];
-    $post_tags_default['taxopress_post_tags']['limit_days']  = $defaults['limit_days'];
-    $result                                                = taxopress_update_posttags($post_tags_default);
+    $result                                                = taxopress_update_posttags(taxopress_get_post_tags_defaults());
     update_option('taxopress_default_posttagss', $result);
 }
 
@@ -318,14 +259,10 @@ function taxopress_update_posttags($data = [])
 
     $posttagss = taxopress_get_posttags_data();
 
-    $title                                = $data['taxopress_post_tags']['title'];
-    $title                                = str_replace('"', '', htmlspecialchars_decode($title));
-    $title                                = htmlspecialchars($title, ENT_QUOTES);
-    $title                                = trim($title);
-    $data['taxopress_post_tags']['title'] = stripslashes_deep($title);
+    $data['taxopress_post_tags']['title'] = taxopress_sanitize_preset_title($data['taxopress_post_tags']['title']);
 
     $xformat                                = $data['taxopress_post_tags']['xformat'];
-    $data['taxopress_post_tags']['xformat'] = stripslashes_deep($xformat);
+    $data['taxopress_post_tags']['xformat'] = $xformat;
     $data['taxopress_post_tags']['embedded']  = isset($data['embedded']) ? $data['embedded'] : [];
 
     if (isset($data['edited_posttags'])) {
@@ -350,13 +287,17 @@ function taxopress_update_posttags($data = [])
  * Delete our custom taxonomy from the array of taxonomies.
  * @return bool|string False on failure, string on success.
  */
-function taxopress_action_delete_posttags($posttags_id)
+function taxopress_action_delete_posttags($posttags_id, $redirect = true)
 {
     $posttagss = taxopress_get_posttags_data();
 
     if (array_key_exists($posttags_id, $posttagss)) {
         unset($posttagss[$posttags_id]);
         $success = update_option('taxopress_posttagss', $posttagss);
+    }
+
+    if (!$redirect) {
+        return isset($success) && $success;
     }
 
     if (isset($success)) {
@@ -448,4 +389,69 @@ function taxopress_posttags_the_content($content = '')
     }
 
     return $above_content . $content . $below_content;
+}
+
+/** Native default data shared by initial presets and API previews. */
+function taxopress_get_post_tags_defaults()
+{
+    $options = SimpleTags_Plugin::get_option();
+
+    // Default values
+    $defaults = [
+        'before'    => __('Tags: ', 'simple-tags'),
+        'separator' => ', ',
+        'after'     => '<br />',
+        'xformat'   => __('<a href="%tag_link%" title="%tag_name_attribute%" class="st-post-tags t%tag_scale%" style="%tag_size% %tag_color%" %tag_rel%>%tag_name%</a>', 'simple-tags'),
+        'notagtext' => __('No tag for this post.', 'simple-tags'),
+        'number'    => 0,
+        'format'    => '',
+        'smallest'  => 12,
+        'largest'   => 12,
+        'unit'      => 'pt',
+        'mincolor'  => '#353535',
+        'maxcolor'  => '#000000',
+        'color'     => 1,
+        'selectionby' => 'count',
+        'selection'   => 'desc',
+        'orderby'     => 'random',
+        'order'       => 'asc',
+        'limit_days'  => 0,
+    ];
+    // Get values in DB
+    $defaults['before']    = $options['tt_before'];
+    $defaults['separator'] = $options['tt_separator'];
+    $defaults['after']     = $options['tt_after'];
+    $defaults['xformat']   = $options['tt_xformat'];
+    $defaults['notagtext'] = $options['tt_notagstext'];
+    $defaults['number']    = (int)$options['tt_number'];
+    $defaults['selectionby'] = $options['tt_selectionby'];
+    $defaults['selection']   = $options['tt_selection'];
+    $defaults['orderby']     = $options['tt_orderby'];
+    $defaults['order']       = $options['tt_order'];
+    $defaults['limit_days']  = (int)$options['tt_limit_days'];
+
+    $post_tags_default                                     = [];
+    $post_tags_default['taxopress_post_tags']['title']     = esc_html__('Terms for Current Post', 'simple-tags');
+    $post_tags_default['taxopress_post_tags']['taxonomy']  = 'post_tag';
+    $post_tags_default['taxopress_post_tags']['embedded']  = [];
+    $post_tags_default['taxopress_post_tags']['display_position'] = 'below';
+    $post_tags_default['taxopress_post_tags']['number']    = $defaults['number'];
+    $post_tags_default['taxopress_post_tags']['separator'] = $defaults['separator'];
+    $post_tags_default['taxopress_post_tags']['after']     = $defaults['after'];
+    $post_tags_default['taxopress_post_tags']['before']    = $defaults['before'];
+    $post_tags_default['taxopress_post_tags']['notagtext'] = $defaults['notagtext'];
+    $post_tags_default['taxopress_post_tags']['xformat']   = $defaults['xformat'];
+    $post_tags_default['taxopress_post_tags']['smallest']    = $defaults['smallest'];
+    $post_tags_default['taxopress_post_tags']['largest']     = $defaults['largest'];
+    $post_tags_default['taxopress_post_tags']['unit']        = $defaults['unit'];
+    $post_tags_default['taxopress_post_tags']['mincolor']   = $defaults['mincolor'];
+    $post_tags_default['taxopress_post_tags']['maxcolor']   = $defaults['maxcolor'];
+    $post_tags_default['taxopress_post_tags']['color']      = $defaults['color'];
+    $post_tags_default['taxopress_post_tags']['format']     = $defaults['format'];
+    $post_tags_default['taxopress_post_tags']['selectionby'] = $defaults['selectionby'];
+    $post_tags_default['taxopress_post_tags']['selection']   = $defaults['selection'];
+    $post_tags_default['taxopress_post_tags']['orderby']     = $defaults['orderby'];
+    $post_tags_default['taxopress_post_tags']['order']       = $defaults['order'];
+    $post_tags_default['taxopress_post_tags']['limit_days']  = $defaults['limit_days'];
+    return $post_tags_default;
 }
