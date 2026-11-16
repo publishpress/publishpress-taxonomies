@@ -3,6 +3,7 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.json text eol=lf
+readme.txt whitespace=cr-at-eol
 .gitattributes text eol=lf
 
 *.code-workspace export-ignore
@@ -11,6 +12,7 @@
 .env.testing.linux.dist export-ignore
 .env.testing.mac.dist export-ignore
 .gitattributes export-ignore
+.git export-ignore
 .github export-ignore
 .gitignore export-ignore
 .ide.php export-ignore

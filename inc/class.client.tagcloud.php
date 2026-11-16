@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR2.Methods.MethodDeclaration.Underscore,Squiz.PHP.CommentedOutCode.Found,VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedUnsetVariable,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared,WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize,WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Legacy PublishPress Taxonomies file: keep behavior unchanged while documenting existing PHPCS exceptions.
 
 class SimpleTags_Client_TagCloud
