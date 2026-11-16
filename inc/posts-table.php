@@ -78,58 +78,15 @@ class Taxopress_Posts_List extends WP_List_Table
 
         $page              = $this->get_pagenum();
 
-        if (empty($post_types)) {
-            $post_types = get_post_types(array('public' => true), 'names');
-            if (isset($post_types['attachment'])) {
-                unset($post_types['attachment']);
-            }
-            $post_types = array_keys($post_types);
-        }
-
-        $args = array(
-            'post_type'      => $post_types,
-            'post_status'    => 'any',
-            'posts_per_page' => $posts_per_page,
-            'order' => $order,
+        return taxopress_get_posts_data([
+            'search' => $search,
+            'term_id' => $term_filter,
+            'post_type' => $post_types,
             'orderby' => $orderby,
-            'paged'          => $page
-        );
-
-        if (!empty($search)) {
-            $args['s'] = $search;
-        }
-
-        if (!empty($term_filter)) {
-            $term_filter_data = get_term($term_filter);
-            if ($term_filter_data instanceof WP_Term) {
-                $args['tax_query'] = array(
-                    'relation' => 'AND',
-                    array(
-                        'taxonomy' => $term_filter_data->taxonomy,
-                        'field'     => 'term_id',
-                        'terms'    => $term_filter_data->term_id,
-                    )
-                );
-            }
-        }
-
-        $query = new WP_Query($args);
-
-        $results = [
-            'posts'         => [],
-            'max_num_posts' => 0,
-            'max_num_pages' => 1
-        ];
-
-        if ($query->have_posts()) {
-            $results['posts']         = $query->posts;
-            $results['max_num_posts'] = $query->found_posts;
-            $results['max_num_pages'] = $query->max_num_pages;
-            wp_reset_postdata();
-        }
-
-
-        return $results;
+            'order' => $order,
+            'per_page' => $posts_per_page,
+            'page' => $page,
+        ]);
     }
 
     /**
