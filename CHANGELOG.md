@@ -1,7 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [4.0.2] - 17 November, 2026
 * Added: MCP actions for native taxonomy, term, configuration and scheduling workflows with permission checks.
+* Fixed: Changelog missing on WordPress.org and update details since 4.0.1 (readme heading uses ==). #3114
+
 ## [4.0.1] - 03 November, 2026
 * Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
 * Update: Add "Use only some terms in the selected taxonomy" to OpenAI, #2906
