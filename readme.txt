@@ -3,7 +3,7 @@ Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojop
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -267,7 +267,11 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 == Changelog ==
 
-== [4.0.1] - 03 November, 2026
+= [4.0.2] - 17 November, 2026 =
+* Added: MCP actions for native taxonomy, term, configuration and scheduling workflows with permission checks.
+* Fixed: Changelog missing on WordPress.org and update details since 4.0.1 (readme heading uses ==). #3114
+
+= [4.0.1] - 03 November, 2026 =
 * Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
 * Update: Add "Use only some terms in the selected taxonomy" to OpenAI, #2906
 * Update: Allow users to automatically show terms over a post, #2909
@@ -300,7 +304,7 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 * Fixed: limit post content sent by AI term previews, #3074
 * Fixed: Join the CHANGELOG.md introduction onto one line, #3077
 
-= [4.0.0] - 28 September, 2026
+= [4.0.0] - 28 September, 2026 =
 * Rebrand: Move TaxoPress to PublishPress
 
 = [3.54.0] - 22 September, 2026 =

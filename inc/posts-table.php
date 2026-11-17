@@ -78,58 +78,15 @@ class Taxopress_Posts_List extends WP_List_Table
 
         $page              = $this->get_pagenum();
 
-        if (empty($post_types)) {
-            $post_types = get_post_types(array('public' => true), 'names');
-            if (isset($post_types['attachment'])) {
-                unset($post_types['attachment']);
-            }
-            $post_types = array_keys($post_types);
-        }
-
-        $args = array(
-            'post_type'      => $post_types,
-            'post_status'    => 'any',
-            'posts_per_page' => $posts_per_page,
-            'order' => $order,
+        return taxopress_get_posts_data([
+            'search' => $search,
+            'term_id' => $term_filter,
+            'post_type' => $post_types,
             'orderby' => $orderby,
-            'paged'          => $page
-        );
-
-        if (!empty($search)) {
-            $args['s'] = $search;
-        }
-
-        if (!empty($term_filter)) {
-            $term_filter_data = get_term($term_filter);
-            if ($term_filter_data instanceof WP_Term) {
-                $args['tax_query'] = array(
-                    'relation' => 'AND',
-                    array(
-                        'taxonomy' => $term_filter_data->taxonomy,
-                        'field'     => 'term_id',
-                        'terms'    => $term_filter_data->term_id,
-                    )
-                );
-            }
-        }
-
-        $query = new WP_Query($args);
-
-        $results = [
-            'posts'         => [],
-            'max_num_posts' => 0,
-            'max_num_pages' => 1
-        ];
-
-        if ($query->have_posts()) {
-            $results['posts']         = $query->posts;
-            $results['max_num_posts'] = $query->found_posts;
-            $results['max_num_pages'] = $query->max_num_pages;
-            wp_reset_postdata();
-        }
-
-
-        return $results;
+            'order' => $order,
+            'per_page' => $posts_per_page,
+            'page' => $page,
+        ]);
     }
 
     /**
@@ -163,6 +120,7 @@ class Taxopress_Posts_List extends WP_List_Table
 
 
             <div class="alignleft actions autoposts-posts-table-filter">
+                <label class="screen-reader-text" for="posts_term_filter"><?php esc_html_e('Filter by term', 'simple-tags'); ?></label>
                 <select data-nonce="<?php echo esc_attr(wp_create_nonce('taxopress-term-search')); ?>"
                     class="posts-term-filter-select taxopress-select2 taxopress-term-search"
                     data-placeholder="<?php esc_attr_e('Terms Filter', 'simple-tags'); ?>"
@@ -180,6 +138,7 @@ class Taxopress_Posts_List extends WP_List_Table
                     ?>
                 </select>
 
+                <label class="screen-reader-text" for="posts_post_type_filter"><?php esc_html_e('Filter by post type', 'simple-tags'); ?></label>
                 <select class="posts-post-type-filter-select taxopress-select2 taxopress-simple-select2"
                     name="posts_post_type_filter"              
                     id="posts_post_type_filter"
@@ -192,7 +151,7 @@ class Taxopress_Posts_List extends WP_List_Table
                     ?>
                 </select>
 
-                <a href="javascript:void(0)" class="taxopress-posts-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></a>
+                <button type="button" class="taxopress-posts-tablenav-filter button"><?php esc_html_e('Filter', 'simple-tags'); ?></button>
 
             </div>
             <?php
