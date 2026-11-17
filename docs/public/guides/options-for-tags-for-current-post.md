@@ -2,6 +2,7 @@
 title: "Options for Terms for Current Post"
 order: 42
 doc_category: publishpress-taxonomies
+section: Current Post
 ---
 
 # Options for Terms for Current Post

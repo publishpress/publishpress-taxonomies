@@ -2,6 +2,7 @@
 title: "Auto Terms: Sources"
 order: 55
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Auto Terms: Sources

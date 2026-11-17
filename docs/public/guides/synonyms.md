@@ -2,6 +2,7 @@
 title: "Introduction to Term Synonyms (Pro)"
 order: 58
 doc_category: publishpress-taxonomies
+section: Synonyms and Linked Terms
 ---
 
 # Introduction to Term Synonyms (Pro)

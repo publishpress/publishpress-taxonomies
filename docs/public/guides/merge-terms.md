@@ -2,6 +2,7 @@
 title: "Merge Terms"
 order: 36
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Merge Terms

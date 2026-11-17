@@ -2,6 +2,7 @@
 title: "Show the Terms Display in a Widget"
 order: 60
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Show the Terms Display in a Widget

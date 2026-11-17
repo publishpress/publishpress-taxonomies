@@ -2,6 +2,7 @@
 title: "Taxonomies: Other Labels"
 order: 65
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Other Labels

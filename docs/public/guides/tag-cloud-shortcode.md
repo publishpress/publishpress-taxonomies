@@ -2,6 +2,7 @@
 title: "Show the Terms Display with a Shortcode"
 order: 59
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Show the Terms Display with a Shortcode

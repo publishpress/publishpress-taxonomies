@@ -2,6 +2,7 @@
 title: "Options for Term Displays"
 order: 43
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Options for Term Displays

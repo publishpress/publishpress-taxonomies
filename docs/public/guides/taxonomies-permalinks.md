@@ -2,6 +2,7 @@
 title: "Taxonomies: Permalinks"
 order: 66
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Permalinks

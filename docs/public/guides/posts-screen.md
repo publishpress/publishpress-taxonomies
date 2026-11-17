@@ -2,6 +2,7 @@
 title: "Introduction to the Posts Screen"
 order: 45
 doc_category: publishpress-taxonomies
+section: Posts
 ---
 
 # Introduction to the Posts Screen

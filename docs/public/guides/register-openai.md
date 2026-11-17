@@ -2,6 +2,7 @@
 title: "How to Register for OpenAI (Pro)"
 order: 48
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # How to Register for OpenAI (Pro)
