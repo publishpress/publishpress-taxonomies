@@ -2,6 +2,7 @@
 title: "Taxonomies: Admin Area"
 order: 61
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Admin Area

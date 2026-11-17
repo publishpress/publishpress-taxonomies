@@ -2,6 +2,7 @@
 title: "Remove terms"
 order: 51
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Remove terms

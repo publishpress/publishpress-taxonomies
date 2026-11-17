@@ -2,6 +2,7 @@
 title: "Metabox Settings"
 order: 38
 doc_category: publishpress-taxonomies
+section: Metaboxes
 ---
 
 # Metabox Settings

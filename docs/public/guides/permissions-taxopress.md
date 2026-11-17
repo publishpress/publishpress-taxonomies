@@ -2,6 +2,7 @@
 title: "Capabilities / Permissions in Taxonomies"
 order: 44
 doc_category: publishpress-taxonomies
+section: Capabilities
 ---
 
 # Capabilities / Permissions in Taxonomies

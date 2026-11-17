@@ -2,6 +2,7 @@
 title: "Taxonomies: Order (Pro)"
 order: 64
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Order (Pro)

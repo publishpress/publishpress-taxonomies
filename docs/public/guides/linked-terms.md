@@ -2,6 +2,7 @@
 title: "Introduction to Linked Terms (Pro)"
 order: 32
 doc_category: publishpress-taxonomies
+section: Synonyms and Linked Terms
 ---
 
 # Introduction to Linked Terms (Pro)

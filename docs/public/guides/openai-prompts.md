@@ -2,6 +2,7 @@
 title: "OpenAI Prompts (Pro)"
 order: 40
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # OpenAI Prompts (Pro)

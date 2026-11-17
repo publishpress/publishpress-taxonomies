@@ -2,6 +2,7 @@
 title: "How to Register for Dandelion (Pro)"
 order: 46
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # How to Register for Dandelion (Pro)

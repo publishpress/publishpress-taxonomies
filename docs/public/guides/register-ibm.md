@@ -2,6 +2,7 @@
 title: "How to Register for IBM Watson (Pro)"
 order: 47
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # How to Register for IBM Watson (Pro)

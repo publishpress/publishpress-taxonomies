@@ -2,6 +2,7 @@
 title: "Introduction to Related Posts"
 order: 28
 doc_category: publishpress-taxonomies
+section: Related Posts
 ---
 
 # Introduction to Related Posts

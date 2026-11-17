@@ -2,6 +2,7 @@
 title: "Add CSS to Terms for Current Post"
 order: 14
 doc_category: publishpress-taxonomies
+section: Current Post
 ---
 
 # Add CSS to Terms for Current Post

@@ -2,6 +2,7 @@
 title: "Add Terms"
 order: 5
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Add Terms

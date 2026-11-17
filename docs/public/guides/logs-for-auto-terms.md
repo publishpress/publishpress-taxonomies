@@ -2,6 +2,7 @@
 title: "Logs for Auto Terms"
 order: 33
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Logs for Auto Terms

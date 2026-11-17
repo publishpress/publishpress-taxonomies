@@ -2,6 +2,7 @@
 title: "Auto Links Options"
 order: 7
 doc_category: publishpress-taxonomies
+section: Auto Links
 ---
 
 # Auto Links Options

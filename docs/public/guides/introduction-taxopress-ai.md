@@ -2,6 +2,7 @@
 title: "Introduction to Taxonomies Metaboxes"
 order: 23
 doc_category: publishpress-taxonomies
+section: Metaboxes
 ---
 
 # Introduction to Taxonomies Metaboxes

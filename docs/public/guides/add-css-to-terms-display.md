@@ -2,6 +2,7 @@
 title: "Add CSS to Your Terms Display"
 order: 3
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Add CSS to Your Terms Display

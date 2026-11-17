@@ -2,6 +2,7 @@
 title: "Automatically Display Terms for Current Post"
 order: 18
 doc_category: publishpress-taxonomies
+section: Current Post
 ---
 
 # Automatically Display Terms for Current Post

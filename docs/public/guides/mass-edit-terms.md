@@ -2,6 +2,7 @@
 title: "Introduction to the Mass Edit Terms Screen"
 order: 34
 doc_category: publishpress-taxonomies
+section: Mass Edit Terms
 ---
 
 # Introduction to the Mass Edit Terms Screen

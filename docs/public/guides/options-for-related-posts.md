@@ -2,6 +2,7 @@
 title: "Options for Related Posts"
 order: 41
 doc_category: publishpress-taxonomies
+section: Related Posts
 ---
 
 # Options for Related Posts
