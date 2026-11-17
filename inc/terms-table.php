@@ -1238,20 +1238,31 @@ class Taxopress_Terms_List extends WP_List_Table
                 esc_html__('Copy', 'simple-tags')
             );
             $actions = apply_filters('taxopress_terms_row_actions', $actions, $item);
-        } elseif (current_user_can('edit_term', $item->term_id)) {
-            // Keyboard/screen-reader alternative to drag-and-drop ordering (sortable is only active in this view).
-            $actions['taxopress_move_up'] = sprintf(
-                '<button type="button" class="button-link taxopress-term-move" data-direction="up" aria-label="%s">%s</button>',
-                /* translators: %s: Taxonomy term name. */
-                esc_attr(sprintf(__('Move %s up', 'simple-tags'), $item->name)),
-                esc_html__('Move up', 'simple-tags')
-            );
-            $actions['taxopress_move_down'] = sprintf(
-                '<button type="button" class="button-link taxopress-term-move" data-direction="down" aria-label="%s">%s</button>',
-                /* translators: %s: Taxonomy term name. */
-                esc_attr(sprintf(__('Move %s down', 'simple-tags'), $item->name)),
-                esc_html__('Move down', 'simple-tags')
-            );
+        } elseif (
+            current_user_can('edit_term', $item->term_id)
+            && (defined('PUBLISHPRESS_TAXONOMIES_PRO_VERSION') || defined('TAXOPRESS_PRO_VERSION'))
+        ) {
+            // Keyboard/screen-reader alternative to drag-and-drop ordering.
+            $term_ids = wp_list_pluck($this->items, 'term_id');
+            $position = array_search((int) $item->term_id, array_map('intval', $term_ids), true);
+
+            if ($position !== false && $position > 0) {
+                $actions['taxopress_move_up'] = sprintf(
+                    '<button type="button" class="button-link taxopress-term-move" data-direction="up" aria-label="%s">%s</button>',
+                    /* translators: %s: Taxonomy term name. */
+                    esc_attr(sprintf(__('Move %s up', 'simple-tags'), $item->name)),
+                    esc_html__('Move up', 'simple-tags')
+                );
+            }
+
+            if ($position !== false && $position < count($term_ids) - 1) {
+                $actions['taxopress_move_down'] = sprintf(
+                    '<button type="button" class="button-link taxopress-term-move" data-direction="down" aria-label="%s">%s</button>',
+                    /* translators: %s: Taxonomy term name. */
+                    esc_attr(sprintf(__('Move %s down', 'simple-tags'), $item->name)),
+                    esc_html__('Move down', 'simple-tags')
+                );
+            }
         }
         return $column_name === $primary ? $this->row_actions($actions, false) : '';
     }

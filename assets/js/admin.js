@@ -679,9 +679,12 @@
     // -------------------------------------------------------------
     //   Terms table drag and drop ordering
     // -------------------------------------------------------------
+    var taxopressTermOrderParams = new URLSearchParams(window.location.search);
     if (
-    $('body.taxopress_page_st_terms #the-list').length > 0 &&
-    new URLSearchParams(window.location.search).has('taxopress_terms_taxonomy')
+        $('#the-list').length > 0 &&
+        taxopressTermOrderParams.get('page') === 'st_terms' &&
+        taxopressTermOrderParams.has('taxopress_terms_taxonomy') &&
+        (st_admin_localize.term_order_enabled === true || st_admin_localize.term_order_enabled === '1')
     ) {
         var taxopressSaveTermOrder = function(ui, onDone) {
                 const termOrder = [];
@@ -736,20 +739,23 @@
                 });
         };
 
-        $('#the-list').sortable({
-            items: 'tr',
-            axis: 'y',
-            cursor: 'move',
-            helper: function(e, ui) {
-                ui.children().each(function() {
-                    $(this).width($(this).width());
-                });
-                return ui;
-            },
-            update: function(event, ui) {
-                taxopressSaveTermOrder(ui);
-            }
-        }).disableSelection();
+        if (typeof $.fn.sortable === 'function') {
+            $('#the-list').sortable({
+                items: 'tr',
+                axis: 'y',
+                cursor: 'move',
+                helper: function(e, ui) {
+                    ui.children().each(function() {
+                        $(this).width($(this).width());
+                    });
+                    return ui;
+                },
+                update: function(event, ui) {
+                    taxopressSaveTermOrder(ui);
+                }
+            }).disableSelection();
+            $('#the-list tr td').css('cursor', 'move');
+        }
 
         // Move up / Move down row actions: same save path as drag and drop, announced to screen readers.
         $(document).on('click', '#the-list .taxopress-term-move', function(e) {
@@ -789,7 +795,6 @@
             });
         });
 
-        $('#the-list tr td').css('cursor', 'move');
     }
 
     // -------------------------------------------------------------
