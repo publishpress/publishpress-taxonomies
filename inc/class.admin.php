@@ -733,6 +733,13 @@ class SimpleTags_Admin
 
         //Register and enqueue admin js
         $script_dependencies = ['jquery', 'wp-a11y', 'wp-i18n'];
+        if (
+            isset($_GET['page'])
+            && $_GET['page'] === 'st_terms'
+            && (defined('PUBLISHPRESS_TAXONOMIES_PRO_VERSION') || defined('TAXOPRESS_PRO_VERSION'))
+        ) {
+            $script_dependencies[] = 'jquery-ui-sortable';
+        }
         if ($select_2_page) {
             $script_dependencies[] = 'taxopress-admin-select2';
             $script_dependencies[] = 'wp-util';
@@ -756,6 +763,7 @@ class SimpleTags_Admin
             'ajaxurl'     => admin_url('admin-ajax.php'),
             'select_valid' => esc_html__('Please select a valid', 'simple-tags'),
             'check_nonce' => wp_create_nonce('st-admin-js'),
+            'term_order_enabled' => defined('PUBLISHPRESS_TAXONOMIES_PRO_VERSION') || defined('TAXOPRESS_PRO_VERSION'),
             'select_default_label' => esc_html__('Select Default Post Thumb', 'simple-tags'),
             'use_media_label' => esc_html__('Use this media', 'simple-tags'),
             'existing_content_admin_label' => esc_html__('Edit the current setting.', 'simple-tags'),
