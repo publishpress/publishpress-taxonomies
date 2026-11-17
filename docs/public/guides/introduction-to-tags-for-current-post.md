@@ -2,6 +2,7 @@
 title: "Introduction to Terms for Current Post"
 order: 30
 doc_category: publishpress-taxonomies
+section: Current Post
 ---
 
 # Introduction to Terms for Current Post

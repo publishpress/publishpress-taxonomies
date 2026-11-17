@@ -2,6 +2,7 @@
 title: "What’s the Difference Between Linked Terms and Synonyms? (Pro)"
 order: 17
 doc_category: publishpress-taxonomies
+section: Synonyms and Linked Terms
 ---
 
 # What’s the Difference Between Linked Terms and Synonyms? (Pro)

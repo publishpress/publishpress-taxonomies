@@ -2,6 +2,7 @@
 title: "Introduction to the Taxonomies Screen"
 order: 22
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # Introduction to the Taxonomies Screen

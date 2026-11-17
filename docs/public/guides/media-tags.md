@@ -2,6 +2,7 @@
 title: "Media Tags"
 order: 35
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Media Tags

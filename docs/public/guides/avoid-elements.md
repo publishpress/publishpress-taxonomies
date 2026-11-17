@@ -2,6 +2,7 @@
 title: "Allow Auto Links to Skip Content Areas"
 order: 11
 doc_category: publishpress-taxonomies
+section: Auto Links
 ---
 
 # Allow Auto Links to Skip Content Areas

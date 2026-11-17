@@ -2,6 +2,7 @@
 title: "Comparing the Taxonomies AI Integrations (Pro)"
 order: 12
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # Comparing the Taxonomies AI Integrations (Pro)

@@ -2,6 +2,7 @@
 title: "Auto Terms: Existing"
 order: 1
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Auto Terms: Existing

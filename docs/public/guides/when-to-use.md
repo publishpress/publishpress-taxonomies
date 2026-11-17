@@ -2,6 +2,7 @@
 title: "Auto Terms: When to Use"
 order: 70
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Auto Terms: When to Use

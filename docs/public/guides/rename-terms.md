@@ -2,6 +2,7 @@
 title: "Rename Terms"
 order: 53
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Rename Terms

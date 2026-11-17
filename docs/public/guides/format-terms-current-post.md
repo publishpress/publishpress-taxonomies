@@ -2,6 +2,7 @@
 title: "Change the Format of Terms for Current Post"
 order: 21
 doc_category: publishpress-taxonomies
+section: Current Post
 ---
 
 # Change the Format of Terms for Current Post

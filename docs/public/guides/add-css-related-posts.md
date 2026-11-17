@@ -2,6 +2,7 @@
 title: "Add CSS to Your Related Posts"
 order: 2
 doc_category: publishpress-taxonomies
+section: Related Posts
 ---
 
 # Add CSS to Your Related Posts

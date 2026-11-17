@@ -2,6 +2,7 @@
 title: "Introduction to Auto Terms"
 order: 25
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Introduction to Auto Terms

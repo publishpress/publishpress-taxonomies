@@ -2,6 +2,7 @@
 title: "Automatically Add New Terms (Pro)"
 order: 10
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Automatically Add New Terms (Pro)

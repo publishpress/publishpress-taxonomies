@@ -2,6 +2,7 @@
 title: "Taxonomies: Advanced"
 order: 62
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Advanced

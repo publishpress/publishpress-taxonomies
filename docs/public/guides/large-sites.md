@@ -2,6 +2,7 @@
 title: "The Auto Terms Feature on Large Sites"
 order: 31
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # The Auto Terms Feature on Large Sites

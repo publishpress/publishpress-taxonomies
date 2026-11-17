@@ -2,6 +2,7 @@
 title: "Who Can Create and Add Terms in Taxonomies?"
 order: 4
 doc_category: publishpress-taxonomies
+section: Capabilities
 ---
 
 # Who Can Create and Add Terms in Taxonomies?

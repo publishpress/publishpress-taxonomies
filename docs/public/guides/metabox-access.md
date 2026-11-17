@@ -2,6 +2,7 @@
 title: "Metabox Access"
 order: 37
 doc_category: publishpress-taxonomies
+section: Metaboxes
 ---
 
 # Metabox Access

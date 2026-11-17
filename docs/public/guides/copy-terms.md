@@ -2,6 +2,7 @@
 title: "Copy Terms"
 order: 13
 doc_category: publishpress-taxonomies
+section: Terms
 ---
 
 # Copy Terms

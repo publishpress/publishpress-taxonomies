@@ -2,6 +2,7 @@
 title: "Taxonomies: Deactivate or Delete"
 order: 63
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Deactivate or Delete

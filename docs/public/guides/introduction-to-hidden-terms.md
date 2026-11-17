@@ -2,6 +2,7 @@
 title: "Introduction to Hidden Terms"
 order: 26
 doc_category: publishpress-taxonomies
+section: Hidden Terms
 ---
 
 # Introduction to Hidden Terms

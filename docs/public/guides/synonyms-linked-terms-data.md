@@ -2,6 +2,7 @@
 title: "Synonyms and Linked Terms in the Database (Pro)"
 order: 57
 doc_category: publishpress-taxonomies
+section: Synonyms and Linked Terms
 ---
 
 # Synonyms and Linked Terms in the Database (Pro)

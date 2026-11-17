@@ -2,6 +2,7 @@
 title: "Delete Unused Terms"
 order: 50
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Delete Unused Terms

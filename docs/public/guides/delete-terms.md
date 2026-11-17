@@ -2,6 +2,7 @@
 title: "Delete Terms"
 order: 16
 doc_category: publishpress-taxonomies
+section: Terms
 ---
 
 # Delete Terms
