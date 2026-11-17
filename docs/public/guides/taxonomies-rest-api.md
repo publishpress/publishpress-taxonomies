@@ -2,6 +2,7 @@
 title: "Taxonomies: REST API"
 order: 68
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: REST API

@@ -2,6 +2,7 @@
 title: "Automatically Add Existing Terms"
 order: 9
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Automatically Add Existing Terms

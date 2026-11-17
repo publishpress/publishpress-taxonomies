@@ -2,6 +2,7 @@
 title: "How to Register for LSEG / Refinitiv (Pro)"
 order: 49
 doc_category: publishpress-taxonomies
+section: Integration
 ---
 
 # How to Register for LSEG / Refinitiv (Pro)

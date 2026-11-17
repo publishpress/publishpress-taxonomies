@@ -2,6 +2,7 @@
 title: "Introduction to the Terms Screen"
 order: 69
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Introduction to the Terms Screen

@@ -2,6 +2,7 @@
 title: "The Metaboxes Screen"
 order: 39
 doc_category: publishpress-taxonomies
+section: Metaboxes
 ---
 
 # The Metaboxes Screen

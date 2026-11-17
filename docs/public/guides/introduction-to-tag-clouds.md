@@ -2,6 +2,7 @@
 title: "Introduction to Terms Display"
 order: 29
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Introduction to Terms Display

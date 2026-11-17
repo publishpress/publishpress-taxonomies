@@ -2,6 +2,7 @@
 title: "Taxonomies: Post Types"
 order: 67
 doc_category: publishpress-taxonomies
+section: Taxonomies Screen
 ---
 
 # Taxonomies: Post Types

@@ -2,6 +2,7 @@
 title: "Remove Terms From All Posts"
 order: 52
 doc_category: publishpress-taxonomies
+section: Terms
 ---
 
 # Remove Terms From All Posts

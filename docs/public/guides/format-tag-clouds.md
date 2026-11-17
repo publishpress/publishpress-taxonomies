@@ -2,6 +2,7 @@
 title: "Change the Format of Terms Display"
 order: 20
 doc_category: publishpress-taxonomies
+section: Terms Display
 ---
 
 # Change the Format of Terms Display

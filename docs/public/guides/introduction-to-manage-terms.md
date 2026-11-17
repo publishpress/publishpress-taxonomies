@@ -2,6 +2,7 @@
 title: "Introduction to Manage Terms"
 order: 27
 doc_category: publishpress-taxonomies
+section: Manage Terms
 ---
 
 # Introduction to Manage Terms

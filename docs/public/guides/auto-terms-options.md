@@ -2,6 +2,7 @@
 title: "Auto Terms: Options"
 order: 8
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Auto Terms: Options

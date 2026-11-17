@@ -2,6 +2,7 @@
 title: "Getting Started with PublishPress Taxonomies"
 order: 56
 doc_category: publishpress-taxonomies
+section: Getting Started
 ---
 
 # Getting Started with PublishPress Taxonomies

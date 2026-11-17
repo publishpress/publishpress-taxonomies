@@ -2,6 +2,7 @@
 title: "Use Regular Expressions to Analyze Content"
 order: 6
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Use Regular Expressions to Analyze Content

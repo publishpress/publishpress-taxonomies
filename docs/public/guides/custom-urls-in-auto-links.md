@@ -2,6 +2,7 @@
 title: "Custom URLs in Auto Links"
 order: 15
 doc_category: publishpress-taxonomies
+section: Auto Links
 ---
 
 # Custom URLs in Auto Links

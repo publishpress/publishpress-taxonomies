@@ -2,6 +2,7 @@
 title: "Where to Display Related Posts"
 order: 71
 doc_category: publishpress-taxonomies
+section: Related Posts
 ---
 
 # Where to Display Related Posts

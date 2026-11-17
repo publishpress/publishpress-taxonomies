@@ -2,6 +2,7 @@
 title: "Change the Format of Related Posts"
 order: 19
 doc_category: publishpress-taxonomies
+section: Related Posts
 ---
 
 # Change the Format of Related Posts

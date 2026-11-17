@@ -2,6 +2,7 @@
 title: "Introduction to Auto Links"
 order: 24
 doc_category: publishpress-taxonomies
+section: Auto Links
 ---
 
 # Introduction to Auto Links

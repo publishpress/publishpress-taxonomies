@@ -2,6 +2,7 @@
 title: "Auto Terms: Schedule"
 order: 54
 doc_category: publishpress-taxonomies
+section: Auto Terms
 ---
 
 # Auto Terms: Schedule
