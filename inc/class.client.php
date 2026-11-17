@@ -133,7 +133,9 @@ class SimpleTags_Client
         /* translators: %s: number of posts using the term */
         $text = sprintf(_n('(%s post)', '(%s posts)', $count, 'simple-tags'), number_format_i18n($count));
 
-        return '<span class="taxopress-sr-only"> ' . esc_html($text) . '</span>';
+        $screen_reader_only_style = 'position:absolute!important;clip:rect(1px,1px,1px,1px)!important;clip-path:inset(50%)!important;height:1px!important;width:1px!important;overflow:hidden!important;padding:0!important;margin:-1px!important;border:0!important;white-space:nowrap!important;';
+
+        return '<span class="taxopress-sr-only" style="' . esc_attr($screen_reader_only_style) . '"> ' . esc_html($text) . '</span>';
     }
 
     /**
