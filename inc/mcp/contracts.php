@@ -79,17 +79,11 @@ class SimpleTags_Mcp_Contracts
 
     public static function site_schema($registration = false)
     {
-        $fields = self::site_fields();
         if ($registration) {
-            // Runtime discovery validates current taxonomy/role choices, including objects created in this request.
-            foreach ($fields as &$field) {
-                if ($field['type'] === 'array') {
-                    unset($field['items']['enum']);
-                }
-            }
-            unset($field);
+            // Role and Pro controls may load later; writes validate the live site_fields() contract.
+            return ['type' => 'object'];
         }
-        return SimpleTags_Mcp::object_schema($fields);
+        return SimpleTags_Mcp::object_schema(self::site_fields());
     }
 
     public static function ui_fields()
