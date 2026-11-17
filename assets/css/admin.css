@@ -321,13 +321,13 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     opacity: 0
 }
 
-.taxopress-switch-button .switch input:focus-visible+.slider,
-.taxopress-switch-button .switch input:focus+.slider {
+.taxopress-switch-button .switch input:focus-visible~.slider,
+.taxopress-switch-button .switch input:focus~.slider {
     outline: 2px solid #2271b1;
     outline-offset: 2px
 }
 
-.taxopress-switch-button .switch input:focus:not(:focus-visible)+.slider {
+.taxopress-switch-button .switch input:focus:not(:focus-visible)~.slider {
     outline: none
 }
 
@@ -368,11 +368,11 @@ table.st-autoterm-area-table .find-in-customs-row .action-checkbox {
     border-radius: 50%
 }
 
-.taxopress-switch-button .switch input:checked+.slider {
+.taxopress-switch-button .switch input:checked~.slider {
     background-color: #007a4d
 }
 
-.taxopress-switch-button .switch input:checked+.slider:before {
+.taxopress-switch-button .switch input:checked~.slider:before {
     -webkit-transform: translateX(20px);
     -moz-transform: translateX(20px);
     -ms-transform: translateX(20px);

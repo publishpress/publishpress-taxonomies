@@ -3,7 +3,7 @@ Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojop
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 6.7
 Tested up to: 7.1
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -266,6 +266,10 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 6. If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add a link to the archive page for that tag.
 
 == Changelog ==
+
+= [4.0.2] - 17 November, 2026 =
+* Added: MCP actions for native taxonomy, term, configuration and scheduling workflows with permission checks.
+* Fixed: Changelog missing on WordPress.org and update details since 4.0.1 (readme heading uses ==). #3114
 
 = [4.0.1] - 03 November, 2026 =
 * Update: Integrate Autoterms with the wordpress Connectors screen for AI sources, #2923
