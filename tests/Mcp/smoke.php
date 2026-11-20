@@ -1,6 +1,12 @@
 <?php
 /** Native Taxonomies workflows through released MCP Adapter 0.7.1. Disposable database only. */
 define('REST_REQUEST', true);
+// Set PUBLISHPRESS_MCP_EARLY_REGISTRY=1 to exercise schemas before native role and Pro controls load.
+if (getenv('PUBLISHPRESS_MCP_EARLY_REGISTRY') === '1') {
+    $GLOBALS['wp_filter']['init'][0][] = ['function' => static function () {
+        wp_get_abilities();
+    }, 'accepted_args' => 0];
+}
 require $argv[1];
 if (strpos(DB_NAME, 'taxonomies_mcp_') !== 0) { throw new RuntimeException('Disposable taxonomies_mcp_* database required'); }
 require $argv[2] . '/vendor/autoload.php';
