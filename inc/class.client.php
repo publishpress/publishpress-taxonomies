@@ -8,8 +8,6 @@ class SimpleTags_Client
 {
     /**
      * Initialize PublishPress Taxonomies client
-     *
-     * @return boolean
      */
     public function __construct()
     {
@@ -66,8 +64,6 @@ class SimpleTags_Client
                 }
             }
         }
-
-        return true;
     }
 
     public function enqueue_displayformat_scripts()
