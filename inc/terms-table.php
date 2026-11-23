@@ -1194,7 +1194,6 @@ class Taxopress_Terms_List extends WP_List_Table
                     esc_attr(sprintf(esc_html__('Quick edit &#8220;%s&#8221; inline', 'simple-tags'), $item->name)),
                     esc_html__('Quick&nbsp;Edit', 'simple-tags')
                 );
-
             }
 
             if (current_user_can('edit_term', $item->term_id)) {

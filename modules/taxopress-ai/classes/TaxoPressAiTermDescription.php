@@ -121,6 +121,7 @@ if (!class_exists('TaxoPressAiTermDescription')) {
 
             $taxonomy = isset($_POST['taxonomy']) ? sanitize_key(wp_unslash($_POST['taxonomy'])) : '';
             $term_id = isset($_POST['term_id']) ? absint($_POST['term_id']) : 0;
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitize_description() strips tags, sanitizes textarea text, and bounds the description.
             $description = isset($_POST['description']) ? self::sanitize_description(wp_unslash($_POST['description'])) : '';
             $original_hash = isset($_POST['original_hash']) ? sanitize_text_field(wp_unslash($_POST['original_hash'])) : '';
             $source = isset($_POST['source']) ? sanitize_text_field(wp_unslash($_POST['source'])) : 'local';
