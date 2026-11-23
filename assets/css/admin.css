@@ -2577,6 +2577,8 @@ ul.st-taxonomy-tab li a:focus-visible {
 
 .pp-tooltips-library.is-dismissed .tooltip-text {
     display: none !important;
+}
+
 /* Manage Terms screen. */
 .st-manage-terms-page {
     max-width: 1100px;
@@ -2596,6 +2598,10 @@ ul.st-taxonomy-tab li a:focus-visible {
     margin: 0 0 -1px;
     padding: 10px 14px;
     text-decoration: none;
+}
+
+.st-manage-terms-page .simple-tags-nav-tab-wrapper .nav-tab:last-child {
+    margin-top: 10px;
 }
 
 .taxopress-manage-terms-content {
@@ -2619,14 +2625,16 @@ ul.st-taxonomy-tab li a:focus-visible {
     grid-template-columns: repeat(2, minmax(180px, 1fr)) auto;
     gap: 12px;
     align-items: end;
+    padding: 10px 0;
 }
 
-.taxopress-manage-context-field,
+.st-manage-terms-page .taxopress-manage-context-field {
+    display: block;
+    margin: 0;
+}
+
 .taxopress-manage-context-field > span {
     display: block;
-}
-
-.taxopress-manage-context-field > span {
     margin-bottom: 5px;
     font-weight: 600;
 }
