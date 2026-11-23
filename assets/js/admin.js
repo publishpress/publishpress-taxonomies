@@ -2732,6 +2732,69 @@
             return false;
         }
 
+        function identityField($field) {
+            const fieldName = $field.attr('name');
+            if (!fieldName) return jQuery();
+
+            const identityName = fieldName + '_identities';
+            let $identity = $field.siblings('input.taxopress-term-identities[name="' + identityName + '"]');
+            if (!$identity.length) {
+                $identity = jQuery('<input>', {
+                    type: 'hidden',
+                    name: identityName,
+                    class: 'taxopress-term-identities',
+                    value: '[]'
+                });
+                $field.after($identity);
+            }
+
+            return $identity;
+        }
+
+        function readIdentities($field) {
+            const $identity = identityField($field);
+            if (!$identity.length) return [];
+
+            try {
+                const identities = JSON.parse($identity.val() || '[]');
+                return Array.isArray(identities) ? identities : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function visibleTermName(value) {
+            return String(value || '').trim().replace(/\s*\([^()]*\)\s*$/, '').trim();
+        }
+
+        function rememberIdentity($field, item) {
+            const termId = parseInt(item.id, 10);
+            if (!termId || !item.name) return;
+
+            const identities = readIdentities($field);
+            identities.push({
+                term_id: termId,
+                name: String(item.name),
+                slug: String(item.slug || '')
+            });
+            identityField($field).val(JSON.stringify(identities));
+        }
+
+        function discardRemovedIdentities($field) {
+            const counts = {};
+            $field.val().split(',').map(visibleTermName).filter(Boolean).forEach(function(name) {
+                counts[name] = (counts[name] || 0) + 1;
+            });
+
+            const identities = readIdentities($field).filter(function(identity) {
+                const name = String(identity.name || '');
+                if (!counts[name]) return false;
+                counts[name]--;
+                return true;
+            });
+            identityField($field).val(JSON.stringify(identities));
+        }
+
         function currentTaxonomy($el){
             return (
                 $el.closest('.auto-terms-content').find('.st-taxonomy-select').val() ||
@@ -2778,7 +2841,10 @@
                                 const label = useSlug && item.slug ? (item.name + ' (' + item.slug + ')') : item.name;
                                 return {
                                     label: label,
-                                    value: label
+                                    value: label,
+                                    id: item.id,
+                                    name: item.name,
+                                    slug: item.slug
                                 };
                             }));
                         },
@@ -2791,6 +2857,7 @@
                     parts[parts.length - 1] = ui.item.value;
                     const cleaned = parts.map(p=>p.trim()).filter(Boolean);
                     $field.val(cleaned.join(', ') + ', ');
+                    rememberIdentity($field, ui.item);
                     return false;
                 }
             }).on('keydown', function(evt){
@@ -2798,6 +2865,8 @@
                     const frag = jQuery(this).val().split(',').pop().trim();
                     jQuery(this).autocomplete('search', frag);
                 }
+            }).on('input', function(){
+                discardRemovedIdentities(jQuery(this));
             });
         });
 
@@ -2910,6 +2979,7 @@
 
               $('#mergeterm_old').val(currentOldValue ? currentOldValue + ', ' + allOldTerms : allOldTerms);
               $('#mergeterm_new').val(lastSuggestedName);
+              $('input[name="renameterm_new_identities"]').val('[]');
 
           }
           
@@ -2967,6 +3037,7 @@
 
               $('#mergeterm_old').val(currentOldValue ? currentOldValue + ', ' + allOldTerms : allOldTerms);
               $('#mergeterm_new').val(lastSuggestedName);
+              $('input[name="renameterm_new_identities"]').val('[]');
           }
       });
 
@@ -3074,6 +3145,8 @@
       const oldTermsRaw = $form.find('#mergeterm_old').val().split(',').map(function(term) {
         return term.trim();
       }).filter(Boolean);
+      const oldTermIdentities = $form.find('input[name="renameterm_old_identities"]').val() || '[]';
+      const newTermIdentities = $form.find('input[name="renameterm_new_identities"]').val() || '[]';
       const batchSize = 20;
 
       if ((mergeType === 'different_name' || mergeType === 'same_name') && oldTermsRaw.length > 2) {
@@ -3219,6 +3292,8 @@
             action: 'taxopress_merge_terms_batch',
             taxonomy: taxonomy,
             old_terms: batches[index],
+            old_term_identities: oldTermIdentities,
+            new_term_identities: newTermIdentities,
             merge_type: mergeType,
             nonce: st_admin_localize.check_nonce
         };
@@ -3319,6 +3394,8 @@
             action: 'taxopress_merge_terms_batch',
             taxonomy: taxonomy,
             old_terms: retainedSlugs,
+            old_term_identities: oldTermIdentities,
+            new_term_identities: newTermIdentities,
             merge_type: mergeType,
             nonce: st_admin_localize.check_nonce
           };
@@ -3375,6 +3452,7 @@
         if (mergeType === 'different_name') {
           $form.find('#mergeterm_new').val('');
         }
+        $form.find('input.taxopress-term-identities').val('[]');
       }
       
 
@@ -3435,6 +3513,7 @@
           action: 'taxopress_merge_terms_preflight',
           taxonomy: taxonomy,
           old_terms: oldTermsRaw,
+          old_term_identities: oldTermIdentities,
           merge_type: mergeType,
           nonce: st_admin_localize.check_nonce
         }, function(response) {

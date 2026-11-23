@@ -1075,6 +1075,7 @@ function taxopress_get_posts_data(array $filters)
                     'taxonomy' => $term_filter_data->taxonomy,
                     'field'     => 'term_id',
                     'terms'    => $term_filter_data->term_id,
+                    'include_children' => false,
                 )
             );
         }
