@@ -1173,6 +1173,15 @@ class Taxopress_Terms_List extends WP_List_Table
                 ),
                 esc_html__('Edit', 'simple-tags')
             );
+
+            $actions['suggest_description'] = sprintf(
+                '<button type="button" class="button-link taxopress-suggest-term-description" data-term-id="%1$d" data-taxonomy="%2$s" data-term-name="%3$s" data-parent-id="%4$d">%5$s</button>',
+                (int) $item->term_id,
+                esc_attr($item->taxonomy),
+                esc_attr($item->name),
+                (int) $item->parent,
+                esc_html__('Suggest Description', 'simple-tags')
+            );
         }
 
         // Only add other actions if not viewing via taxopress_terms_taxonomy
@@ -1185,6 +1194,7 @@ class Taxopress_Terms_List extends WP_List_Table
                     esc_attr(sprintf(esc_html__('Quick edit &#8220;%s&#8221; inline', 'simple-tags'), $item->name)),
                     esc_html__('Quick&nbsp;Edit', 'simple-tags')
                 );
+
             }
 
             if (current_user_can('edit_term', $item->term_id)) {

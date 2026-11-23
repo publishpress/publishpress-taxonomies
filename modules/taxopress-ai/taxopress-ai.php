@@ -11,6 +11,7 @@ defined('ABSPATH') || exit;
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiAjax.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiApi.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiFields.php';
+require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiTermDescription.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiUtilities.php';
 
 if (!class_exists('TaxoPress_AI_Module')) {
@@ -49,6 +50,9 @@ if (!class_exists('TaxoPress_AI_Module')) {
             add_action('wp_ajax_taxopress_ai_add_post_term', ['TaxoPressAiAjax', 'handle_taxopress_ai_post_term']);
             // Handle AI new term.
             add_action('wp_ajax_taxopress_ai_add_new_term', ['TaxoPressAiAjax', 'handle_taxopress_ai_new_term']);
+            // Suggest and apply reviewable term descriptions.
+            add_action('wp_ajax_taxopress_suggest_term_description', ['TaxoPressAiTermDescription', 'handle_suggestion']);
+            add_action('wp_ajax_taxopress_apply_term_description', ['TaxoPressAiTermDescription', 'handle_apply']);
             // Ajax action, JS Helper and admin action
             add_action('wp_ajax_simpletags', [$this, 'ajax_check']);
             // PublishPress Taxonomies AI metabox default result on page load
