@@ -3867,6 +3867,276 @@
 
     }
 
+    // Term description suggestions for native term forms and the TaxoPress Terms screen.
+    (function initTermDescriptionSuggestions() {
+      const config = window.st_admin_localize || {};
+      const sources = Array.isArray(config.term_description_sources) ? config.term_description_sources : [];
+      if (!sources.length) return;
+
+      let dialogState = null;
+
+      function speak(message) {
+        if (window.wp && wp.a11y && typeof wp.a11y.speak === 'function') {
+          wp.a11y.speak(message);
+        }
+      }
+
+      function requestError(xhr) {
+        return xhr && xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message
+          ? xhr.responseJSON.data.message
+          : (config.request_error || 'The request could not be completed. Please try again.');
+      }
+
+      function ensureDialog() {
+        let $dialog = $('#taxopress-term-description-dialog');
+        if ($dialog.length) return $dialog;
+
+        const $source = $('<select>', { id: 'taxopress-term-description-source' });
+        sources.forEach(function(source) {
+          $('<option>', { value: source.id, text: source.label }).appendTo($source);
+        });
+
+        $dialog = $('<div>', {
+          id: 'taxopress-term-description-dialog',
+          class: 'taxopress-term-description-overlay',
+          hidden: true,
+          role: 'dialog',
+          'aria-modal': 'true',
+          'aria-labelledby': 'taxopress-term-description-title'
+        });
+        const $panel = $('<div>', { class: 'taxopress-term-description-dialog' }).appendTo($dialog);
+        $('<button>', {
+          type: 'button',
+          class: 'taxopress-term-description-close',
+          'aria-label': config.close_suggestions || 'Close',
+          text: '×'
+        }).appendTo($panel);
+        $('<h2>', {
+          id: 'taxopress-term-description-title',
+          text: config.suggest_description_label || 'Suggest Description'
+        }).appendTo($panel);
+
+        const $sourceField = $('<div>', { class: 'taxopress-term-description-field' }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-source',
+          text: config.term_description_source_label || 'Description source'
+        }).appendTo($sourceField);
+        $source.appendTo($sourceField);
+
+        const $contextField = $('<div>', { class: 'taxopress-term-description-field' }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-context',
+          text: config.term_description_context_label || 'Additional context (optional)'
+        }).appendTo($contextField);
+        $('<textarea>', {
+          id: 'taxopress-term-description-context',
+          rows: 3
+        }).appendTo($contextField);
+        $('<p>', {
+          class: 'description',
+          text: config.term_description_context_help || ''
+        }).appendTo($contextField);
+
+        const $generateActions = $('<div>', { class: 'taxopress-term-description-actions' }).appendTo($panel);
+        $('<button>', {
+          type: 'button',
+          class: 'button button-secondary taxopress-generate-term-description',
+          text: config.generate_description_label || 'Generate Suggestion'
+        }).appendTo($generateActions);
+        $('<span>', { class: 'spinner' }).appendTo($generateActions);
+
+        $('<div>', {
+          class: 'taxopress-term-description-status',
+          role: 'status',
+          'aria-live': 'polite'
+        }).appendTo($panel);
+
+        const $suggestionField = $('<div>', {
+          class: 'taxopress-term-description-field taxopress-term-description-result',
+          hidden: true
+        }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-suggestion',
+          text: config.description_suggestion_label || 'Suggested description'
+        }).appendTo($suggestionField);
+        $('<textarea>', {
+          id: 'taxopress-term-description-suggestion',
+          rows: 5
+        }).appendTo($suggestionField);
+        $('<button>', {
+          type: 'button',
+          class: 'button button-primary taxopress-apply-term-description',
+          text: config.apply_description_label || 'Apply Description'
+        }).appendTo($suggestionField);
+
+        $('body').append($dialog);
+        return $dialog;
+      }
+
+      function openDialog(state) {
+        if (!state.termName) {
+          const message = config.description_name_required || 'Enter a term name before requesting a description.';
+          window.alert(message);
+          return;
+        }
+
+        dialogState = state;
+        const $dialog = ensureDialog();
+        $dialog.find('#taxopress-term-description-context').val('');
+        $dialog.find('#taxopress-term-description-suggestion').val('');
+        $dialog.find('.taxopress-term-description-result').prop('hidden', true);
+        $dialog.find('.taxopress-term-description-status').removeClass('notice-error notice-success').text('');
+        $dialog.find('.taxopress-apply-term-description').text(
+          state.mode === 'form'
+            ? (config.use_description_label || 'Use This Description')
+            : (config.apply_description_label || 'Apply Description')
+        );
+        $dialog.prop('hidden', false).find('.taxopress-generate-term-description').trigger('focus');
+      }
+
+      function closeDialog() {
+        const $dialog = ensureDialog();
+        $dialog.prop('hidden', true);
+        dialogState = null;
+      }
+
+      $(document).on('click', '.taxopress-suggest-term-description', function() {
+        const $button = $(this);
+        openDialog({
+          mode: 'saved',
+          termId: parseInt($button.attr('data-term-id'), 10) || 0,
+          taxonomy: String($button.attr('data-taxonomy') || ''),
+          termName: String($button.attr('data-term-name') || ''),
+          parentId: parseInt($button.attr('data-parent-id'), 10) || 0,
+          $trigger: $button
+        });
+      });
+
+      $(document).on('click', '.taxopress-term-description-close', closeDialog);
+      $(document).on('click', '.taxopress-term-description-overlay', function(event) {
+        if (event.target === this) closeDialog();
+      });
+      $(document).on('keydown', function(event) {
+        if (event.key === 'Escape' && !$('#taxopress-term-description-dialog').prop('hidden')) {
+          closeDialog();
+        }
+      });
+
+      $(document).on('click', '.taxopress-generate-term-description', function() {
+        if (!dialogState) return;
+
+        const $dialog = ensureDialog();
+        const $button = $(this);
+        const $spinner = $button.siblings('.spinner');
+        const $status = $dialog.find('.taxopress-term-description-status');
+        $button.prop('disabled', true);
+        $spinner.addClass('is-active');
+        $status.removeClass('notice-error notice-success').text(
+          config.description_generating || 'Generating a description suggestion...'
+        );
+
+        $.post(config.ajaxurl, {
+          action: 'taxopress_suggest_term_description',
+          nonce: config.ai_nonce,
+          taxonomy: dialogState.taxonomy,
+          term_id: dialogState.termId,
+          term_name: dialogState.termName,
+          parent_id: dialogState.parentId,
+          source: $dialog.find('#taxopress-term-description-source').val(),
+          context: $dialog.find('#taxopress-term-description-context').val()
+        }).done(function(response) {
+          if (!response || !response.success) {
+            $status.addClass('notice-error').text(
+              response && response.data && response.data.message ? response.data.message : config.request_error
+            );
+            return;
+          }
+
+          dialogState.originalHash = response.data.original_hash;
+          dialogState.source = response.data.source;
+          $dialog.find('#taxopress-term-description-suggestion').val(response.data.description);
+          $dialog.find('.taxopress-term-description-result').prop('hidden', false);
+          $status.addClass('notice-success').text(response.data.context_message || '');
+          $button.text(config.regenerate_description_label || 'Regenerate');
+          speak(response.data.context_message || 'Description suggestion generated.');
+        }).fail(function(xhr) {
+          $status.addClass('notice-error').text(requestError(xhr));
+        }).always(function() {
+          $button.prop('disabled', false);
+          $spinner.removeClass('is-active');
+        });
+      });
+
+      $(document).on('click', '.taxopress-apply-term-description', function() {
+        if (!dialogState) return;
+
+        const $dialog = ensureDialog();
+        const description = $dialog.find('#taxopress-term-description-suggestion').val().trim();
+        if (!description) return;
+
+        if (dialogState.mode === 'form') {
+          dialogState.$target.val(description).trigger('input').trigger('change');
+          closeDialog();
+          speak(config.description_saved || 'The term description was updated.');
+          return;
+        }
+
+        const $button = $(this).prop('disabled', true);
+        const $status = $dialog.find('.taxopress-term-description-status');
+        $.post(config.ajaxurl, {
+          action: 'taxopress_apply_term_description',
+          nonce: config.ai_nonce,
+          taxonomy: dialogState.taxonomy,
+          term_id: dialogState.termId,
+          description: description,
+          original_hash: dialogState.originalHash,
+          source: dialogState.source || 'local'
+        }).done(function(response) {
+          if (!response || !response.success) {
+            $status.addClass('notice-error').text(
+              response && response.data && response.data.message ? response.data.message : config.request_error
+            );
+            return;
+          }
+
+          $('#term-' + dialogState.termId + ' .column-description').html(response.data.rendered_description);
+          speak(response.data.message || config.description_saved);
+          closeDialog();
+        }).fail(function(xhr) {
+          $status.addClass('notice-error').text(requestError(xhr));
+        }).always(function() {
+          $button.prop('disabled', false);
+        });
+      });
+
+      const nativeTermPage = /\/(edit-tags|term)\.php$/.test(window.location.pathname);
+      if (nativeTermPage) {
+        const $description = $('textarea#tag-description, textarea#description').first();
+        const $name = $('input#tag-name, input#name').first();
+        if ($description.length && $name.length) {
+          const $suggestButton = $('<button>', {
+            type: 'button',
+            class: 'button button-secondary taxopress-native-suggest-description',
+            text: config.suggest_description_label || 'Suggest Description'
+          });
+          $description.after($('<p>', { class: 'taxopress-native-description-action' }).append($suggestButton));
+
+          $suggestButton.on('click', function() {
+            const query = new URLSearchParams(window.location.search);
+            openDialog({
+              mode: 'form',
+              termId: parseInt($('input#tag_ID').val() || query.get('tag_ID'), 10) || 0,
+              taxonomy: String($('input#taxonomy').val() || query.get('taxonomy') || ''),
+              termName: String($name.val() || '').trim(),
+              parentId: parseInt($('select#parent').val(), 10) || 0,
+              $target: $description,
+              $trigger: $suggestButton
+            });
+          });
+        }
+      }
+    })();
+
     // Schedule Frequency toggle
     if ($('.taxopress-autoterm-schedule').length > 0) {
       function updateCronUI() {

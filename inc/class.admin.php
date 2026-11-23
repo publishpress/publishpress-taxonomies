@@ -843,6 +843,19 @@ class SimpleTags_Admin
             'terms_to_merge_text' => esc_html__('Terms to Merge', 'simple-tags'),
             'new_term_text' => esc_html__('New Term', 'simple-tags'),
             'reasons_text' => esc_html__('Reasons', 'simple-tags'),
+            'term_description_sources' => class_exists('TaxoPressAiTermDescription') ? TaxoPressAiTermDescription::get_sources() : [],
+            'suggest_description_label' => esc_html__('Suggest Description', 'simple-tags'),
+            'term_description_source_label' => esc_html__('Description source', 'simple-tags'),
+            'term_description_context_label' => esc_html__('Additional context (optional)', 'simple-tags'),
+            'term_description_context_help' => esc_html__('Add details that are not clear from the term name or its assigned content.', 'simple-tags'),
+            'generate_description_label' => esc_html__('Generate Suggestion', 'simple-tags'),
+            'regenerate_description_label' => esc_html__('Regenerate', 'simple-tags'),
+            'apply_description_label' => esc_html__('Apply Description', 'simple-tags'),
+            'use_description_label' => esc_html__('Use This Description', 'simple-tags'),
+            'description_suggestion_label' => esc_html__('Suggested description', 'simple-tags'),
+            'description_generating' => esc_html__('Generating a description suggestion...', 'simple-tags'),
+            'description_saved' => esc_html__('The term description was updated.', 'simple-tags'),
+            'description_name_required' => esc_html__('Enter a term name before requesting a description.', 'simple-tags'),
         ]);
 
 
@@ -854,6 +867,7 @@ class SimpleTags_Admin
         // Register location
         $wp_post_pages = array('post.php', 'post-new.php');
         $wp_page_pages = array('page.php', 'page-new.php');
+        $wp_term_pages = array('edit-tags.php', 'term.php');
 
         wp_enqueue_style('st-admin-global');
 
@@ -861,6 +875,7 @@ class SimpleTags_Admin
         if (
             in_array($pagenow, $wp_post_pages) ||
             (in_array($pagenow, $wp_page_pages) && is_page_have_tags()) ||
+            in_array($pagenow, $wp_term_pages) ||
             (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages))
         ) {
             wp_enqueue_script('st-remodal-js');
