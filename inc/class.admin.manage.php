@@ -105,8 +105,8 @@ class SimpleTags_Admin_Manage
 
                 $oldtag = isset($_POST['renameterm_old']) ? sanitize_text_field(wp_unslash($_POST['renameterm_old'])) : '';
                 $newtag = isset($_POST['renameterm_new']) ? sanitize_text_field(wp_unslash($_POST['renameterm_new'])) : '';
-                $old_identities = self::decodeTermIdentities($_POST['renameterm_old_identities'] ?? []);
-                $new_identities = self::decodeTermIdentities($_POST['renameterm_new_identities'] ?? []);
+                $old_identities = self::decodeTermIdentities(isset($_POST['renameterm_old_identities']) ? wp_unslash($_POST['renameterm_old_identities']) : []);
+                $new_identities = self::decodeTermIdentities(isset($_POST['renameterm_new_identities']) ? wp_unslash($_POST['renameterm_new_identities']) : []);
                 self::renameTerms($taxonomy, $oldtag, $newtag, $old_identities, $new_identities);
                 $default_tab = '.st-rename-terms';
             } elseif ($_POST['term_action'] == 'mergeterm') {
@@ -119,8 +119,8 @@ class SimpleTags_Admin_Manage
                 $oldtag = isset($_POST['renameterm_old']) ? sanitize_text_field(wp_unslash($_POST['renameterm_old'])) : '';
                 $newtag = isset($_POST['renameterm_new']) ? sanitize_text_field(wp_unslash($_POST['renameterm_new'])) : '';
                 $merge_type = isset($_POST['mergeterm_type']) ? sanitize_text_field(wp_unslash($_POST['mergeterm_type'])) : '';
-                $old_identities = self::decodeTermIdentities($_POST['renameterm_old_identities'] ?? []);
-                $new_identities = self::decodeTermIdentities($_POST['renameterm_new_identities'] ?? []);
+                $old_identities = self::decodeTermIdentities(isset($_POST['renameterm_old_identities']) ? wp_unslash($_POST['renameterm_old_identities']) : []);
+                $new_identities = self::decodeTermIdentities(isset($_POST['renameterm_new_identities']) ? wp_unslash($_POST['renameterm_new_identities']) : []);
                 self::mergeTerms($taxonomy, $oldtag, $newtag, $merge_type, $old_identities, $new_identities);
                 $default_tab = '.st-merge-terms';
             } elseif ($_POST['term_action'] == 'addterm') {
@@ -132,8 +132,8 @@ class SimpleTags_Admin_Manage
 
                 $oldtag = isset($_POST['addterm_match']) ? sanitize_text_field(wp_unslash($_POST['addterm_match'])) : '';
                 $newtag = isset($_POST['addterm_new']) ? sanitize_text_field(wp_unslash($_POST['addterm_new'])) : '';
-                $match_identities = self::decodeTermIdentities($_POST['addterm_match_identities'] ?? []);
-                $new_identities = self::decodeTermIdentities($_POST['addterm_new_identities'] ?? []);
+                $match_identities = self::decodeTermIdentities(isset($_POST['addterm_match_identities']) ? wp_unslash($_POST['addterm_match_identities']) : []);
+                $new_identities = self::decodeTermIdentities(isset($_POST['addterm_new_identities']) ? wp_unslash($_POST['addterm_new_identities']) : []);
                 self::addMatchTerms($taxonomy, $oldtag, $newtag, $match_identities, $new_identities);
                 $default_tab = '.st-add-terms';
             } elseif ($_POST['term_action'] == 'removeterm') {
@@ -145,8 +145,8 @@ class SimpleTags_Admin_Manage
 
                 $matchtag = isset($_POST['removeterm_match']) ? sanitize_text_field(wp_unslash($_POST['removeterm_match'])) : '';
                 $removetag = isset($_POST['remove_term']) ? sanitize_text_field(wp_unslash($_POST['remove_term'])) : '';
-                $match_identities = self::decodeTermIdentities($_POST['removeterm_match_identities'] ?? []);
-                $remove_identities = self::decodeTermIdentities($_POST['remove_term_identities'] ?? []);
+                $match_identities = self::decodeTermIdentities(isset($_POST['removeterm_match_identities']) ? wp_unslash($_POST['removeterm_match_identities']) : []);
+                $remove_identities = self::decodeTermIdentities(isset($_POST['remove_term_identities']) ? wp_unslash($_POST['remove_term_identities']) : []);
                 self::removeMatchTerms($taxonomy, $matchtag, $removetag, $match_identities, $remove_identities);
                 $default_tab = '.st-remove-terms';
             } elseif ($_POST['term_action'] == 'remove-rarelyterms') {
@@ -877,7 +877,7 @@ class SimpleTags_Admin_Manage
     private static function decodeTermIdentities($identities)
     {
         if (is_string($identities)) {
-            $identities = json_decode(wp_unslash($identities), true);
+            $identities = json_decode($identities, true);
         }
 
         if (!is_array($identities)) {
@@ -1261,7 +1261,7 @@ class SimpleTags_Admin_Manage
 
         $merge_type = isset($_POST['merge_type']) ? sanitize_text_field(wp_unslash($_POST['merge_type'])) : 'different_name';
         $old_terms_input = isset($_POST['old_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['old_terms'])) : [];
-        $old_identities = self::decodeTermIdentities($_POST['old_term_identities'] ?? []);
+        $old_identities = self::decodeTermIdentities(isset($_POST['old_term_identities']) ? wp_unslash($_POST['old_term_identities']) : []);
 
         $missing_terms = [];
         $term_ids = self::get_merge_preflight_term_ids($taxonomy, $old_terms_input, $merge_type, $missing_terms, $old_identities);
@@ -1307,8 +1307,8 @@ class SimpleTags_Admin_Manage
         $new_term = isset($_POST['new_term']) ? sanitize_text_field(wp_unslash($_POST['new_term'])) : '';
         $merge_type = isset($_POST['merge_type']) ? sanitize_text_field(wp_unslash($_POST['merge_type'])) : 'different_name';
         $old_terms_input = isset($_POST['old_terms']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['old_terms'])) : [];
-        $old_identities = self::decodeTermIdentities($_POST['old_term_identities'] ?? []);
-        $new_identities = self::decodeTermIdentities($_POST['new_term_identities'] ?? []);
+        $old_identities = self::decodeTermIdentities(isset($_POST['old_term_identities']) ? wp_unslash($_POST['old_term_identities']) : []);
+        $new_identities = self::decodeTermIdentities(isset($_POST['new_term_identities']) ? wp_unslash($_POST['new_term_identities']) : []);
 
         if (
             !taxopress_current_user_can_for_taxonomy(
