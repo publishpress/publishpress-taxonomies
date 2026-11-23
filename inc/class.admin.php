@@ -618,10 +618,6 @@ class SimpleTags_Admin
             return;
         }
 
-        if (strpos($screen->id, 'taxopress_page_') === false) {
-            return;
-        }
-
         $is_edit_mode = isset($_GET['action']) && in_array($_GET['action'], ['edit'], true);
         if (!$is_edit_mode) {
             return;
@@ -637,6 +633,11 @@ class SimpleTags_Admin
         ];
 
         if (!in_array($current_page, $preview_pages, true)) {
+            return;
+        }
+
+        // WordPress derives the screen ID prefix from the translated parent menu title.
+        if (!str_ends_with((string) $screen->id, '_page_' . $current_page)) {
             return;
         }
 
