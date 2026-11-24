@@ -971,6 +971,9 @@ class SimpleTags_Admin
                         $options['taxopress_ai_' . $post_type . '_metabox_maximum_terms'] = 45;
                         $options['taxopress_ai_' . $post_type . '_metabox_show_post_count'] = 0;
                         $options['taxopress_ai_' . $post_type . '_metabox_show_term_slug'] = 0;
+                        $options['taxopress_ai_' . $post_type . '_metabox_term_on_post_color'] = '#5ecd8a';
+                        $options['taxopress_ai_' . $post_type . '_metabox_existing_term_color'] = '#dddddd';
+                        $options['taxopress_ai_' . $post_type . '_metabox_new_term_color'] = '#dddddd';
 
                         $options['taxopress_ai_' . $post_type . '_minimum_term_length'] = 2;
                         $options['taxopress_ai_' . $post_type . '_maximum_term_length'] = 40;
@@ -978,6 +981,7 @@ class SimpleTags_Admin
                         $options['taxopress_ai_' . $post_type . '_exclusions'] = '';
                         $options['enable_taxopress_ai_' . $post_type . '_metabox'] = $opt_default_value;
                         $options['taxopress_ai_' . $post_type . '_metabox_filters'] = 1;
+                        $options['enable_taxopress_ai_' . $post_type . '_term_colors'] = 1;
                         foreach (['post_terms', 'existing_terms', 'suggest_local_terms', 'create_terms'] as $taxopress_ai_tab) {
                             $options['enable_taxopress_ai_' . $post_type . '_' . $taxopress_ai_tab . '_tab'] = $opt_default_value;
                         }

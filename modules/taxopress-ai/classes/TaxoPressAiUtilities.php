@@ -14,11 +14,15 @@ if (!class_exists('TaxoPressAiUtilities')) {
         {
             // new settings now store it for each post type
             if ($post_type) {
+                $term_colors = self::get_term_colors($post_type);
                 $settings_option = [
                     'existing_terms_orderby' => SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_type . '_metabox_orderby'),
                     'existing_terms_order' => SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_type . '_metabox_order'),
                     'existing_terms_maximum_terms' => SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_type . '_metabox_maximum_terms'),
                     'existing_terms_show_post_count' => SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_type . '_metabox_show_post_count'),
+                    'term_on_post_color' => $term_colors['term_on_post'],
+                    'existing_term_color' => $term_colors['existing_term'],
+                    'new_term_color' => $term_colors['new_term'],
                 ];
             } else {
                 // keeping this for legacy purpose
@@ -30,6 +34,61 @@ if (!class_exists('TaxoPressAiUtilities')) {
             }
 
             return $settings_option;
+        }
+
+        /**
+         * Get the configured metabox term colors for a post type.
+         *
+         * @param string $post_type Post type name.
+         *
+         * @return array
+         */
+        public static function get_term_colors($post_type)
+        {
+            $defaults = [
+                'term_on_post' => '#5ecd8a',
+                'existing_term' => '#dddddd',
+                'new_term' => '#dddddd',
+            ];
+            $colors = [];
+
+            if (empty(SimpleTags_Plugin::get_option_value('enable_taxopress_ai_' . $post_type . '_term_colors'))) {
+                return $defaults;
+            }
+
+            foreach ($defaults as $state => $default_color) {
+                $saved_color = SimpleTags_Plugin::get_option_value('taxopress_ai_' . $post_type . '_metabox_' . $state . '_color');
+                $colors[$state] = sanitize_hex_color((string) $saved_color) ?: $default_color;
+            }
+
+            return $colors;
+        }
+
+        /**
+         * Choose a readable text color for a background color.
+         *
+         * @param string $background_color Hex background color.
+         *
+         * @return string
+         */
+        public static function get_contrast_text_color($background_color)
+        {
+            $background_color = sanitize_hex_color((string) $background_color);
+            if (!$background_color) {
+                return '#1e1e1e';
+            }
+
+            $red   = hexdec(substr($background_color, 1, 2)) / 255;
+            $green = hexdec(substr($background_color, 3, 2)) / 255;
+            $blue  = hexdec(substr($background_color, 5, 2)) / 255;
+
+            $red   = ($red <= 0.03928) ? $red / 12.92 : pow(($red + 0.055) / 1.055, 2.4);
+            $green = ($green <= 0.03928) ? $green / 12.92 : pow(($green + 0.055) / 1.055, 2.4);
+            $blue  = ($blue <= 0.03928) ? $blue / 12.92 : pow(($blue + 0.055) / 1.055, 2.4);
+
+            $luminance = (0.2126 * $red) + (0.7152 * $green) + (0.0722 * $blue);
+
+            return ($luminance > 0.179) ? '#1e1e1e' : '#ffffff';
         }
 
         /**
@@ -321,15 +380,19 @@ if (!class_exists('TaxoPressAiUtilities')) {
                 }
 
                 foreach ($linked_term_results as $linked_term_name => $linked_term_id) {
-                    $additional_class = '';
+                    $additional_class = 'new_term';
                     $term_post_counts = 0;
                     $term_id = false;
                     $selected_terms = false;
 
                     if (!empty($linked_term_id)) {
                         $term_id = $linked_term_id;
-                        $additional_class = in_array($term_id, $post_terms) ? 'used_term' : '';
+                        $additional_class = 'existing_term';
                         $selected_terms = in_array($term_id, $post_terms) ? true : false;
+
+                        if ($selected_terms) {
+                            $additional_class .= ' used_term';
+                        }
 
                         if (!empty($show_counts)) {
                             $additional_class .= ' countable';
@@ -473,14 +536,17 @@ if (!class_exists('TaxoPressAiUtilities')) {
                     $linked_term_results = $metabox_display_option == 'default' ? taxopress_add_linked_term_options([$term_result => $term->term_id], $term->term_id, $taxonomy) : [$term_result => $term->term_id];
                 }
                 foreach ($linked_term_results as $linked_term_name => $linked_term_id) {
-                    $additional_class = '';
+                    $additional_class = 'new_term';
                     $term_post_counts = 0;
                     $term_id = false;
                     $selected_terms = false;
                     if (!empty($linked_term_id)) {
                         $term_id = $linked_term_id;
-                        $additional_class = in_array($term_id, $post_terms) ? 'used_term' : '';
+                        $additional_class = 'existing_term';
                         $selected_terms = in_array($term_id, $post_terms) ? true : false;
+                        if ($selected_terms) {
+                            $additional_class .= ' used_term';
+                        }
                         if (!empty($show_counts)) {
                             $additional_class .= ' countable';
                         }
