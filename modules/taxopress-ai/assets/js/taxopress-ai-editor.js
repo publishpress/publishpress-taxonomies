@@ -48,6 +48,78 @@
       messageWrapper.removeClass('updated error').addClass(messageClass);
     }
 
+    function getContrastTextColor(backgroundColor) {
+      var color = String(backgroundColor || '').replace('#', '');
+      if (!/^[0-9a-f]{6}$/i.test(color)) {
+        return '#1e1e1e';
+      }
+
+      var channels = [0, 2, 4].map(function (offset) {
+        var channel = parseInt(color.substring(offset, offset + 2), 16) / 255;
+        return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+      });
+      var luminance = (0.2126 * channels[0]) + (0.7152 * channels[1]) + (0.0722 * channels[2]);
+
+      return luminance > 0.179 ? '#1e1e1e' : '#ffffff';
+    }
+
+    function applyTermColor($input, color) {
+      var backgroundVariable = $input.data('css-variable');
+      var textVariable = $input.data('text-css-variable');
+      var validColor = /^#[0-9a-f]{6}$/i.test(color) ? color : $input.data('default-color');
+
+      $('.taxopress-post-suggestterm').each(function () {
+        if (backgroundVariable) {
+          this.style.setProperty(backgroundVariable, validColor);
+        }
+        if (textVariable) {
+          this.style.setProperty(textVariable, getContrastTextColor(validColor));
+        }
+      });
+    }
+
+    function applyActiveTermColors() {
+      var $activeContent = $('.post-type-content.active');
+      var $activeColorFields = $activeContent.find('.taxopress-term-color');
+      if (!$activeColorFields.length) {
+        $activeContent = $('.taxopress-term-color').first().closest('.post-type-content');
+        $activeColorFields = $activeContent.find('.taxopress-term-color');
+      }
+      var customColorsEnabled = $activeContent.find('[name$="_term_colors"]').prop('checked');
+
+      $activeColorFields.each(function () {
+        var $input = $(this);
+        var color = customColorsEnabled ? $input.val() : $input.data('default-color');
+        applyTermColor($input, color);
+      });
+    }
+
+    function updateTermColorFieldVisibility(postType, isMetaboxChecked) {
+      var colorsChecked = $('[name="enable_taxopress_ai_' + postType + '_term_colors"]').prop('checked');
+      var $colorsContainer = $('.enable_taxopress_ai_' + postType + '_term_colors_field');
+
+      if (isMetaboxChecked && colorsChecked) {
+        $colorsContainer.removeClass('st-subhide-content');
+      } else {
+        $colorsContainer.addClass('st-subhide-content');
+      }
+    }
+
+    if ($.fn.wpColorPicker) {
+      $('.taxopress-term-color').each(function () {
+        var $input = $(this);
+        $input.wpColorPicker({
+          change: function (event, ui) {
+            applyTermColor($input, ui.color.toString());
+          },
+          clear: function () {
+            applyTermColor($input, $input.data('default-color'));
+          }
+        });
+      });
+      applyActiveTermColors();
+    }
+
     // Remove built in tax for block editor
     if (removed_tax.length > 0 && typeof wp.data !== 'undefined' && typeof wp.data.dispatch === 'function') {
       var editPostDispatch = wp.data.dispatch('core/edit-post');
@@ -363,6 +435,7 @@
             .then(term_id => {
               this_result.attr('data-term_id', term_id);
               selectGutenbergTerms([term_id], taxonomy_rest, taxonomy);
+              term_button.removeClass('new_term').addClass('existing_term');
               term_button.toggleClass('used_term');
               term_button.removeClass('disabled');
             })
@@ -412,6 +485,7 @@
                   categoryList.prepend(categoryItem.append(categoryLabel));
 
                   this_result.attr('data-term_id', term_data.term_id);
+                  term_button.removeClass('new_term').addClass('existing_term');
                   term_button.toggleClass('used_term');
                   term_button.removeClass('disabled');
                 } else {
@@ -465,6 +539,7 @@
                 jQuery(currentFocus).focus();
               }
             }
+            term_button.removeClass('new_term').addClass('existing_term');
             term_button.toggleClass('used_term');
             term_button.removeClass('disabled');
           }
@@ -1244,6 +1319,8 @@
             } else {
                 $filtersContainer.addClass('st-subhide-content');
             }
+
+            updateTermColorFieldVisibility(postType, isMetaboxChecked);
         });
      }
 
@@ -1256,11 +1333,13 @@
         var metaboxMatch = field_name.match(/^enable_taxopress_ai_(\w+)_metabox$/);
         var filtersMatch = field_name.match(/^taxopress_ai_(\w+)_metabox_filters$/);
         var tabMatch = field_name.match(/^enable_taxopress_ai_(\w+)_(existing_terms|post_terms|suggest_local_terms|create_terms)_tab$/);
+        var termColorsMatch = field_name.match(/^enable_taxopress_ai_(\w+)_term_colors$/);
 
         var postType = null;
         if (metaboxMatch) postType = metaboxMatch[1];
         else if (filtersMatch) postType = filtersMatch[1];
         else if (tabMatch) postType = tabMatch[1];
+        else if (termColorsMatch) postType = termColorsMatch[1];
 
         if (!postType) {
             // fallback to re-run global initializer
@@ -1296,12 +1375,16 @@
             } else {
                 $filtersContainer.addClass('st-subhide-content');
             }
+
+            updateTermColorFieldVisibility(postType, isMetaboxChecked);
+            applyActiveTermColors();
         })(postType);
     });
 
     $(document).on('click', '.taxopress-ai-post-type-tab-nav a', function() {
         setTimeout(function() {
             initializeFieldDependencies();
+            applyActiveTermColors();
         }, 100);
     });
 

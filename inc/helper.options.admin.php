@@ -85,6 +85,9 @@ foreach (TaxoPressAiUtilities::get_post_types_options() as $post_type => $post_t
                 'label' => $taxopress_ai_tab_label
             ];
         }
+        $tab_field_options['enable_taxopress_ai_' . $post_type . '_term_colors'] = [
+            'label' => esc_html__('Customize Term Colors', 'simple-tags'),
+        ];
         $taxopress_ai_fields[] = array(
             'enable_taxopress_ai_' . $post_type . '_tab',
             '<div class="taxopress-ai-tab-content-sub taxopress-settings-subtab-title taxopress-ai-' . $post_type . '-content-sub enable_taxopress_ai_' . $post_type . '_metabox_field st-subhide-content">' . esc_html__('Metabox Features', 'simple-tags') . '</div>',
@@ -209,6 +212,57 @@ foreach (TaxoPressAiUtilities::get_post_types_options() as $post_type => $post_t
                 'width' => '80%'
             )
         );
+
+        $term_color_field_class = 'taxopress-ai-tab-content-sub taxopress-ai-' . $post_type . '-content-sub enable_taxopress_ai_' . $post_type . '_term_colors_field st-subhide-content';
+
+        $taxopress_ai_fields[] = array(
+            'taxopress_ai_' . $post_type . '_metabox_term_colors_header',
+            esc_html__('Metabox Term Colors', 'simple-tags'),
+            'header',
+            '',
+            '',
+            $term_color_field_class
+        );
+
+        $taxopress_ai_fields[] = array(
+            'taxopress_ai_' . $post_type . '_metabox_term_on_post_color',
+            esc_html__('Term Assigned to Post', 'simple-tags'),
+            'text-color',
+            '#5ecd8a',
+            esc_html__('The background color for terms already assigned to the current post.', 'simple-tags'),
+            $term_color_field_class,
+            array(
+                'css_variable' => '--taxopress-term-on-post-color',
+                'text_css_variable' => '--taxopress-term-on-post-text-color',
+            )
+        );
+
+        $taxopress_ai_fields[] = array(
+            'taxopress_ai_' . $post_type . '_metabox_existing_term_color',
+            esc_html__('Existing Term Not Assigned', 'simple-tags'),
+            'text-color',
+            '#dddddd',
+            esc_html__('The background color for existing terms not assigned to the current post.', 'simple-tags'),
+            $term_color_field_class,
+            array(
+                'css_variable' => '--taxopress-existing-term-color',
+                'text_css_variable' => '--taxopress-existing-term-text-color',
+            )
+        );
+
+        $taxopress_ai_fields[] = array(
+            'taxopress_ai_' . $post_type . '_metabox_new_term_color',
+            esc_html__('Term Does Not Exist', 'simple-tags'),
+            'text-color',
+            '#dddddd',
+            esc_html__('The background color for suggested terms that have not been created yet.', 'simple-tags'),
+            $term_color_field_class,
+            array(
+                'css_variable' => '--taxopress-new-term-color',
+                'text_css_variable' => '--taxopress-new-term-text-color',
+            )
+        );
+
         // allow to PublishPress Taxonomies ai field for each post type
         $taxopress_ai_fields = apply_filters('taxopress_settings_post_type_ai_fields', $taxopress_ai_fields, $post_type);
     }
