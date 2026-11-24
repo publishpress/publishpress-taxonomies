@@ -54,6 +54,7 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
             'post_type'     => esc_html__('Post type', 'simple-tags'),
             'taxonomy'     => esc_html__('Taxonomy', 'simple-tags'),
             'terms'     => esc_html__('Terms added', 'simple-tags'),
+            'term_sources' => esc_html__('Term sources', 'simple-tags'),
             'date'     => esc_html__('Date', 'simple-tags')
         ];
 
@@ -201,6 +202,12 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
         } else {
             return '<font color="red"> ' . esc_html__('None', 'simple-tags') . ' </font>';
         }
+    }
+
+    /** Display the engine or service that suggested each added term. */
+    protected function column_term_sources($item)
+    {
+        return taxopress_autoterms_log_term_sources_html($item->ID);
     }
 
     protected function column_date($item)
