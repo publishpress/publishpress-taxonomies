@@ -65,6 +65,31 @@ if (!class_exists('TaxoPressAiUtilities')) {
         }
 
         /**
+         * Get the colors used by an Auto Terms configuration preview.
+         *
+         * @param array $settings_data Auto Terms configuration data.
+         *
+         * @return array
+         */
+        public static function get_autoterm_preview_colors($settings_data)
+        {
+            $defaults = [
+                'term_on_post' => '#5ecd8a',
+                'existing_term' => '#dddddd',
+                'new_term' => '#dddddd',
+            ];
+            $colors = [];
+
+            foreach ($defaults as $state => $default_color) {
+                $option_name = 'autoterm_preview_' . $state . '_color';
+                $saved_color = isset($settings_data[$option_name]) ? $settings_data[$option_name] : '';
+                $colors[$state] = sanitize_hex_color((string) $saved_color) ?: $default_color;
+            }
+
+            return $colors;
+        }
+
+        /**
          * Choose a readable text color for a background color.
          *
          * @param string $background_color Hex background color.

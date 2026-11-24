@@ -311,6 +311,9 @@ function taxopress_create_default_autoterm()
         $default['taxopress_autoterm']['schedule_autoterm_word']    = '0';
         $default['taxopress_autoterm']['schedule_autoterm_hash']    = '0';
         $default['taxopress_autoterm']['existing_content_terms_limit'] = '5';
+        $default['taxopress_autoterm']['autoterm_preview_term_on_post_color'] = '#5ecd8a';
+        $default['taxopress_autoterm']['autoterm_preview_existing_term_color'] = '#dddddd';
+        $default['taxopress_autoterm']['autoterm_preview_new_term_color'] = '#dddddd';
         $default['specific_terms']                                  = [];
         $default['find_in_customs_entries']                         = [];
         $default['find_in_custom_fields_custom_items']              = [];
@@ -458,6 +461,11 @@ function taxopress_filter_autoterm_excluded_results($results, $exclusions)
 function taxopress_update_autoterm($data = [])
 {
     $sanitized_data = [];
+    $preview_color_defaults = [
+        'autoterm_preview_term_on_post_color' => '#5ecd8a',
+        'autoterm_preview_existing_term_color' => '#dddddd',
+        'autoterm_preview_new_term_color' => '#dddddd',
+    ];
     foreach ($data as $key => $value) {
         if ($key === 'specific_terms') {
             $sanitized_data[$key] = taxopress_sanitize_specific_terms($value);
@@ -466,6 +474,12 @@ function taxopress_update_autoterm($data = [])
         } else {
             $new_value = [];
             foreach ($data[$key] as $option_key => $option_value) {
+                if (isset($preview_color_defaults[$option_key])) {
+                    $sanitized_color = sanitize_hex_color((string) $option_value);
+                    $new_value[$option_key] = $sanitized_color ?: $preview_color_defaults[$option_key];
+                    continue;
+                }
+
                 $filtered_value = apply_filters(
                     'taxopress_sanitize_autoterm_option',
                     null,
@@ -925,6 +939,9 @@ function taxopress_get_autoterm_defaults($options_taxonomy = 'post_tag', $option
     $default['specific_terms']            = isset($options_taxonomy_data['auto_list']) ? taxopress_sanitize_specific_terms($options_taxonomy_data['auto_list']) : [];
     $default['taxopress_autoterm']['terms_limit']              = '5';
     $default['taxopress_autoterm']['synonyms_term']            = 1;
+    $default['taxopress_autoterm']['autoterm_preview_term_on_post_color'] = '#5ecd8a';
+    $default['taxopress_autoterm']['autoterm_preview_existing_term_color'] = '#dddddd';
+    $default['taxopress_autoterm']['autoterm_preview_new_term_color'] = '#dddddd';
 
     return $default;
 }

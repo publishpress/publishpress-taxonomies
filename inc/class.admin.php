@@ -745,6 +745,9 @@ class SimpleTags_Admin
             $script_dependencies[] = 'taxopress-admin-select2';
             $script_dependencies[] = 'wp-util';
         }
+        if (isset($_GET['page']) && $_GET['page'] === 'st_autoterms') {
+            $script_dependencies[] = 'wp-color-picker';
+        }
 
         $taxopress_pages = taxopress_admin_pages();
 

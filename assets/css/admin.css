@@ -1261,10 +1261,15 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
     padding: 0;
     display: inline-block;
     white-space: nowrap;
-    background: #ddd;
+    background: var(--taxopress-new-term-color, #ddd);
     border: 1px dotted transparent;
-    color: #1e1e1e;
+    color: var(--taxopress-new-term-text-color, #1e1e1e);
     cursor: pointer;
+}
+
+.previewed-tag-content .result-terms.existing_term {
+    background: var(--taxopress-existing-term-color, #ddd);
+    color: var(--taxopress-existing-term-text-color, #1e1e1e);
 }
 
 .previewed-tag-content .result-terms:not(.countable) {
@@ -1272,8 +1277,37 @@ div[id^="suggestedtags-"] .postbox-header .hndle,
 }
 
 .previewed-tag-content .result-terms.used_term {
-    background: #5ecd8a;
-    color: #333333;
+    background: var(--taxopress-term-on-post-color, #5ecd8a);
+    color: var(--taxopress-term-on-post-text-color, #1e1e1e);
+}
+
+.taxopress-autoterm-color-settings {
+    margin: 24px 0;
+    padding: 16px;
+    border: 1px solid #dcdcde;
+    background: #fff;
+}
+
+.taxopress-autoterm-color-settings h3 {
+    margin: 0 0 16px;
+}
+
+.taxopress-autoterm-color-setting {
+    margin-bottom: 16px;
+}
+
+.taxopress-autoterm-color-setting:last-child {
+    margin-bottom: 0;
+}
+
+.taxopress-autoterm-color-setting > label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.taxopress-autoterm-color-setting .description {
+    margin: 6px 0 0;
 }
 
 .previewed-tag-content .result-terms .term-name {
