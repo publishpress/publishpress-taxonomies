@@ -2040,6 +2040,54 @@
       debugLog.prop('hidden', false);
     }
 
+    function getAutoTermPreviewContrastColor(backgroundColor) {
+      var color = String(backgroundColor || '').replace('#', '');
+      if (!/^[0-9a-f]{6}$/i.test(color)) {
+        return '#1e1e1e';
+      }
+
+      var channels = [0, 2, 4].map(function (offset) {
+        var channel = parseInt(color.substring(offset, offset + 2), 16) / 255;
+        return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+      });
+      var luminance = (0.2126 * channels[0]) + (0.7152 * channels[1]) + (0.0722 * channels[2]);
+
+      return luminance > 0.179 ? '#1e1e1e' : '#ffffff';
+    }
+
+    function applyAutoTermPreviewColor(input, color) {
+      var colorInput = $(input);
+      var backgroundVariable = colorInput.data('css-variable');
+      var textVariable = colorInput.data('text-css-variable');
+      var validColor = /^#[0-9a-f]{6}$/i.test(color) ? color : colorInput.data('default-color');
+      var preview = colorInput.closest('.taxopress-tab-content').find('.autoterm_preview .taxopress-autoterm-result');
+
+      if (!preview.length) {
+        return;
+      }
+
+      if (backgroundVariable) {
+        preview.get(0).style.setProperty(backgroundVariable, validColor);
+      }
+      if (textVariable) {
+        preview.get(0).style.setProperty(textVariable, getAutoTermPreviewContrastColor(validColor));
+      }
+    }
+
+    if ($.fn.wpColorPicker) {
+      $('.taxopress-autoterm-color').each(function () {
+        var colorInput = $(this);
+        colorInput.wpColorPicker({
+          change: function (event, ui) {
+            applyAutoTermPreviewColor(colorInput, ui.color.toString());
+          },
+          clear: function () {
+            applyAutoTermPreviewColor(colorInput, colorInput.data('default-color'));
+          }
+        });
+      });
+    }
+
     /**
      * Auto Term preview
      */
