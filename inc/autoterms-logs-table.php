@@ -147,7 +147,7 @@ class Autoterms_Logs extends WP_List_Table
                 </select>
                 
                 <select class="auto-terms-log-filter-select" name="log_source_filter_select" id="log_source_filter_select">
-                    <option value=""><?php esc_html_e('Source', 'simple-tags'); ?></option>
+                    <option value=""><?php esc_html_e('Run source', 'simple-tags'); ?></option>
                     <?php
                     foreach ($log_actions as $key => $label) {
                         echo '<option value="' . esc_attr($key) . '" ' . selected($selected_source, $key, false) . '>' . esc_html($label) . '</option>';
@@ -192,8 +192,9 @@ class Autoterms_Logs extends WP_List_Table
             'title'     => esc_html__('Post', 'simple-tags'),
             'post_type'     => esc_html__('Post type', 'simple-tags'),
             'taxonomy'     => esc_html__('Taxonomy', 'simple-tags'),
-            'source'     => esc_html__('Source', 'simple-tags'),
+            'source'     => esc_html__('Run source', 'simple-tags'),
             'terms'     => esc_html__('Terms added', 'simple-tags'),
+            'term_sources' => esc_html__('Term sources', 'simple-tags'),
             'status_message'     => esc_html__('Status message', 'simple-tags'),
             'date'     => esc_html__('Date', 'simple-tags'),
             'settings'     => esc_html__('Settings', 'simple-tags')
@@ -438,6 +439,12 @@ class Autoterms_Logs extends WP_List_Table
         } else {
             return '<font color="red"> ' . esc_html__('None', 'simple-tags') . ' </font>';
         }
+    }
+
+    /** Display the engine or service that suggested each added term. */
+    protected function column_term_sources($item)
+    {
+        return taxopress_autoterms_log_term_sources_html($item->ID);
     }
 
     /**

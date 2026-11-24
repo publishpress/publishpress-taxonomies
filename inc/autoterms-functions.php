@@ -823,6 +823,90 @@ function taxopress_autoterms_logs_data($per_page = 20, $current_page = 1, $order
     return ['posts' => $logs->posts, 'counts' => $logs->found_posts];
 }
 
+/** Return the translated display label for a recorded Auto Terms suggestion source. */
+function taxopress_autoterm_source_label($source)
+{
+    $source_id = !empty($source['id']) ? sanitize_key($source['id']) : '';
+    $provider = !empty($source['provider']) ? sanitize_text_field($source['provider']) : '';
+
+    if ($source_id === 'wordpress_ai' && $provider !== '') {
+        return sprintf(
+            /* translators: %s: configured WordPress AI Connector name. */
+            esc_html__('AI Connector: %s', 'simple-tags'),
+            $provider
+        );
+    }
+
+    $labels = array(
+        'wordpress_ai'  => esc_html__('AI Connectors', 'simple-tags'),
+        'open_ai'       => esc_html__('OpenAI', 'simple-tags'),
+        'ibm_watson'    => esc_html__('IBM Watson', 'simple-tags'),
+        'dandelion'     => esc_html__('Dandelion', 'simple-tags'),
+        'open_calais'   => esc_html__('LSEG / Refinitiv', 'simple-tags'),
+        'specific_terms' => esc_html__('Specific terms', 'simple-tags'),
+        'taxonomy_terms' => esc_html__('Existing taxonomy terms', 'simple-tags'),
+    );
+
+    if (isset($labels[$source_id])) {
+        return $labels[$source_id];
+    }
+
+    return $provider !== '' ? $provider : ucwords(str_replace('_', ' ', $source_id));
+}
+
+/** Read and normalize per-term suggestion sources stored on an Auto Terms log. */
+function taxopress_get_autoterm_log_term_sources($log_id)
+{
+    $records = get_post_meta((int) $log_id, '_taxopress_log_term_sources', true);
+    if (!is_array($records)) {
+        return array();
+    }
+
+    $normalized = array();
+    foreach ($records as $record) {
+        if (!is_array($record) || empty($record['term']) || empty($record['sources']) || !is_array($record['sources'])) {
+            continue;
+        }
+
+        $sources = array();
+        foreach ($record['sources'] as $source) {
+            if (!is_array($source) || empty($source['id'])) {
+                continue;
+            }
+            $source['id'] = sanitize_key($source['id']);
+            $source['provider'] = !empty($source['provider']) ? sanitize_text_field($source['provider']) : '';
+            $sources[] = $source;
+        }
+
+        if (!empty($sources)) {
+            $normalized[] = array(
+                'term'    => sanitize_text_field($record['term']),
+                'sources' => $sources,
+            );
+        }
+    }
+
+    return $normalized;
+}
+
+/** Render the per-term suggestion sources for Auto Terms log tables. */
+function taxopress_autoterms_log_term_sources_html($log_id)
+{
+    $records = taxopress_get_autoterm_log_term_sources($log_id);
+    if (empty($records)) {
+        return '&mdash;';
+    }
+
+    $labels = array();
+    foreach ($records as $record) {
+        foreach ($record['sources'] as $source) {
+            $labels[] = taxopress_autoterm_source_label($source);
+        }
+    }
+
+    return esc_html(implode(', ', array_values(array_unique(array_filter($labels)))));
+}
+
 /** Native default data shared by initial presets and API previews. */
 function taxopress_get_autoterm_defaults($options_taxonomy = 'post_tag', $options_post_type = 'post', $options_taxonomy_data = [])
 {
