@@ -31,6 +31,10 @@ class SimpleTags_Client_Autoterms
      */
     public static function save_post($post_id = null, $object = null)
     {
+        if (TaxoPress_WooCommerce::is_syncing($post_id)) {
+            return false;
+        }
+
         // Get options
         $options = get_option(STAGS_OPTIONS_NAME_AUTO);
 
@@ -945,6 +949,8 @@ class SimpleTags_Client_Autoterms
             $terms_to_add = array_filter(array_values($terms_to_add));
 
             if (empty($terms_to_add)) {
+                // Repair attribute definitions for terms assigned by earlier Auto Terms runs.
+                TaxoPress_WooCommerce::sync_attribute($object->ID, $taxonomy);
                 // remove term if replace type is replace and term is empty
                 if ($autoterm_replace_type == 'replace') {
                     $empty_term_messages[$object->ID]['message'][] = esc_html__('No term was suggested but all post terms were removed based on Auto Terms replace settings.', 'simple-tags');
@@ -1140,6 +1146,14 @@ class SimpleTags_Client_Autoterms
             if (is_wp_error($result)) {
                 $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('Error adding terms: %s', 'simple-tags'), $result->get_error_message());
                 return false;
+            }
+
+            if ($result !== false) {
+                $attribute_result = TaxoPress_WooCommerce::sync_attribute($object->ID, $taxonomy, true);
+                if (is_wp_error($attribute_result)) {
+                    $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('Error saving product attribute: %s', 'simple-tags'), $attribute_result->get_error_message());
+                    return false;
+                }
             }
 
             // Clean cache
