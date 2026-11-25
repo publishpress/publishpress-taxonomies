@@ -445,7 +445,7 @@ class SimpleTags_Autoterms
                                             ?>
 
 
-                                            <ul class="taxopress-tab">
+                                            <ul class="taxopress-tab taxopress-autoterms-tabs">
                                                 <li class="autoterm_general_tab <?php echo $active_tab === 'autoterm_general' ? 'active' : ''; ?>" data-content="autoterm_general">
                                                     <a href="#autoterm_general"<?php echo $active_tab === 'autoterm_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('General',
                                                         'simple-tags'); ?></span></a>

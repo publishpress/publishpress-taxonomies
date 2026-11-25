@@ -41,6 +41,8 @@ class SimpleTags_Client
         }
 
         // Call auto terms ?
+        require_once STAGS_DIR . '/inc/class.client.woocommerce.php';
+        TaxoPress_WooCommerce::register();
         require(STAGS_DIR . '/inc/class.client.autoterms.php');
         new SimpleTags_Client_Autoterms();
 

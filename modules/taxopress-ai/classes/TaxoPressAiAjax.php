@@ -1123,6 +1123,12 @@ if (!class_exists('TaxoPressAiAjax')) {
                         $additional_message .= ' ' . sprintf(esc_html__('%1s terms removed from this %2s.', 'simple-tags'), '<strong>' . implode(', ', $escaped_removed_terms) . '</strong>', esc_html($post_type_label));
                     }
 
+                    $attribute_result = TaxoPress_WooCommerce::sync_attribute($post_id, $taxonomy, true);
+                    if (is_wp_error($attribute_result)) {
+                        $response['status'] = 'error';
+                        $additional_message .= ' ' . $attribute_result->get_error_message();
+                    }
+
                     $response['content'] = wp_kses($additional_message, ['strong' => []]);
                 }
             }
@@ -1252,6 +1258,7 @@ if (!class_exists('TaxoPressAiAjax')) {
                         if ($screen_source == 'st_taxopress_ai') {
                             wp_set_object_terms($post_id, $term->slug, $taxonomy, true);
                             clean_term_cache($term_id, $taxonomy);
+                            TaxoPress_WooCommerce::sync_attribute($post_id, $taxonomy, true);
                         }
                     }
                 }

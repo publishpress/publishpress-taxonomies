@@ -1734,6 +1734,18 @@ body.taxopress_page_st_suggestterms .taxopress-tab-content {
     width: 79%;
 }
 
+ul.taxopress-tab.taxopress-autoterms-tabs {
+    width: max(20%, 180px);
+}
+
+ul.taxopress-autoterms-tabs + .taxopress-tab-content {
+    width: calc(100% - max(20%, 180px));
+}
+
+ul.taxopress-autoterms-tabs li.autoterm_preview_settings_tab a {
+    white-space: nowrap;
+}
+
 ul.taxopress-tab li {
     margin: 0;
     padding: 0;
