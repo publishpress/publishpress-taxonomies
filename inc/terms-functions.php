@@ -3,6 +3,95 @@
 defined('ABSPATH') || exit;
 
 /**
+ * Set one parent for a validated selection of terms from a hierarchical taxonomy.
+ *
+ * @param string $taxonomy Taxonomy name.
+ * @param array  $term_ids Selected term IDs.
+ * @param int    $parent_id Parent term ID, or zero for top-level terms.
+ * @return array|WP_Error Outcome counts and term names, or a validation error.
+ */
+function taxopress_set_terms_parent($taxonomy, $term_ids, $parent_id)
+{
+    $taxonomy_object = get_taxonomy($taxonomy);
+    if (!$taxonomy_object || !$taxonomy_object->hierarchical) {
+        return new WP_Error('invalid_taxonomy', __('Select a hierarchical taxonomy before setting a parent.', 'simple-tags'));
+    }
+    if (!current_user_can('simple_tags') || !taxopress_current_user_can_for_taxonomy($taxonomy, 'edit_terms')) {
+        return new WP_Error('permission_denied', __('You do not have permission to edit terms in this taxonomy.', 'simple-tags'));
+    }
+    if (!is_scalar($parent_id) || !ctype_digit((string) $parent_id)) {
+        return new WP_Error('invalid_parent', __('Select a parent term, or choose No parent.', 'simple-tags'));
+    }
+    $parent_id = (int) $parent_id;
+    $blocked_ids = [];
+    if ($parent_id > 0) {
+        $parent = get_term($parent_id, $taxonomy);
+        if (!$parent || is_wp_error($parent)) {
+            return new WP_Error('invalid_parent', __('The parent term must belong to the selected taxonomy.', 'simple-tags'));
+        }
+        $blocked_ids = array_map('intval', get_ancestors($parent_id, $taxonomy, 'taxonomy'));
+        $blocked_ids[] = $parent_id;
+    }
+    if (empty($term_ids) || !is_array($term_ids)) {
+        return new WP_Error('missing_terms', __('Select at least one term to update.', 'simple-tags'));
+    }
+
+    $terms = [];
+    foreach ($term_ids as $term_id) {
+        if (!is_scalar($term_id) || !ctype_digit((string) $term_id) || (int) $term_id <= 0) {
+            return new WP_Error('invalid_term', __('The selection contains an invalid term.', 'simple-tags'));
+        }
+        $term_id = (int) $term_id;
+        $term = get_term($term_id, $taxonomy);
+        if (!$term || is_wp_error($term)) {
+            return new WP_Error('invalid_term', __('All selected terms must belong to the selected taxonomy.', 'simple-tags'));
+        }
+        if (!current_user_can('edit_term', $term_id)) {
+            return new WP_Error('permission_denied', __('You do not have permission to edit all selected terms.', 'simple-tags'));
+        }
+        $terms[$term_id] = $term;
+    }
+
+    $counts = [
+        'updated' => 0,
+        'unchanged' => 0,
+        'failed' => 0,
+        'skipped' => 0,
+        'parent_name' => $parent_id ? $parent->name : '',
+        'details' => ['updated' => [], 'unchanged' => [], 'failed' => [], 'self_parent' => [], 'descendant_parent' => []],
+    ];
+    foreach ($terms as $term_id => $term) {
+        if (in_array($term_id, $blocked_ids, true)) {
+            ++$counts['skipped'];
+            $reason = $term_id === $parent_id ? 'self_parent' : 'descendant_parent';
+            $counts['details'][$reason][] = $term->name;
+            continue;
+        }
+        if ((int) $term->parent === $parent_id) {
+            ++$counts['unchanged'];
+            $counts['details']['unchanged'][] = $term->name;
+            continue;
+        }
+        if (!current_user_can('edit_term', $term_id)) {
+            ++$counts['failed'];
+            $counts['details']['failed'][] = $term->name;
+            continue;
+        }
+        $result = wp_update_term($term_id, $taxonomy, ['parent' => $parent_id]);
+        $updated_term = !is_wp_error($result) ? get_term($term_id, $taxonomy) : null;
+        if (!$updated_term || is_wp_error($updated_term) || (int) $updated_term->parent !== $parent_id) {
+            ++$counts['failed'];
+            $counts['details']['failed'][] = $term->name;
+        } else {
+            ++$counts['updated'];
+            $counts['details']['updated'][] = $term->name;
+        }
+    }
+
+    return $counts;
+}
+
+/**
  * Generate a unique term slug should user decide to copy same term more than once.
  *
  * @param string $slug The initial slug to check

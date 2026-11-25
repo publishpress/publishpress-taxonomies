@@ -1268,6 +1268,28 @@
     // -------------------------------------------------------------
     //   Show or hide the copy terms selection box
     // -------------------------------------------------------------
+    var parentBulkActions = $('.manage-taxopress-terms .bulkactions select');
+
+    function updateBulkParentControls() {
+      parentBulkActions.each(function () {
+        var action = $(this);
+        var controls = action.closest('.tablenav').find('.taxopress-parent-selection');
+        var active = action.val() === 'taxopress-terms-set-parent';
+        controls.prop('hidden', !active);
+        controls.find('fieldset, select').prop('disabled', !active);
+      });
+    }
+
+    parentBulkActions.on('change', function () {
+      parentBulkActions.not(this).val('-1');
+      updateBulkParentControls();
+    });
+
+    if ($.fn.ppma_select2) {
+      $('.taxopress-parent-term-select').ppma_select2({ width: '220px' });
+    }
+    updateBulkParentControls();
+
     if ($('body').hasClass('taxopress_page_st_terms')) {
       $(document).on('change', '#bulk-action-selector-top', function (e) {
           e.preventDefault();
