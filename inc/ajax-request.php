@@ -142,37 +142,36 @@ function taxopress_autoterms_content_by_ajax()
     $post_types = $autoterm_data['post_types'];
     $post_status = isset($autoterm_data['post_status']) && is_array($autoterm_data['post_status']) ? $autoterm_data['post_status'] : ['publish'];
 
-    $total = isset($_POST['total']) ? (int)$_POST['total'] : 0;
-
     $post_types = array_map('sanitize_key', (array) $post_types);
     $post_status = array_map('sanitize_key', (array) $post_status);
 
     $post_types_placeholders = implode(',', array_fill(0, count($post_types), '%s'));
     $post_status_placeholders = implode(',', array_fill(0, count($post_status), '%s'));
 
+    $posts_from_sql = "FROM {$wpdb->posts}";
+    $exclude_sql = '';
     if ($autoterm_existing_content_exclude > 0) {
-        $sql = "SELECT ID, post_title, post_content FROM {$wpdb->posts} 
-                    LEFT JOIN {$wpdb->postmeta} ON ( ID = {$wpdb->postmeta}.post_id AND {$wpdb->postmeta}.meta_key = '_taxopress_autotermed' ) 
-                    WHERE post_type IN ({$post_types_placeholders}) 
-                    AND {$wpdb->postmeta}.post_id IS NULL 
-                    AND post_status IN ({$post_status_placeholders}) 
-                    {$limit_days_sql} 
-                    ORDER BY ID DESC 
-                    LIMIT %d OFFSET %d";
-
-        $prepare_args = array_merge($post_types, $post_status, [$limit, $offset_start_from]);
-        $objects = (array) $wpdb->get_results($wpdb->prepare($sql, $prepare_args));
-    } else {
-        $sql = "SELECT ID, post_title, post_content FROM {$wpdb->posts} 
-                    WHERE post_type IN ({$post_types_placeholders}) 
-                    AND post_status IN ({$post_status_placeholders}) 
-                    {$limit_days_sql} 
-                    ORDER BY ID DESC 
-                    LIMIT %d OFFSET %d";
-
-        $prepare_args = array_merge($post_types, $post_status, [$limit, $offset_start_from]);
-        $objects = (array) $wpdb->get_results($wpdb->prepare($sql, $prepare_args));
+        $posts_from_sql .= " LEFT JOIN {$wpdb->postmeta} ON ({$wpdb->posts}.ID = {$wpdb->postmeta}.post_id AND {$wpdb->postmeta}.meta_key = '_taxopress_autotermed')";
+        $exclude_sql = "AND {$wpdb->postmeta}.post_id IS NULL";
+        // Processed posts leave the eligible set, so always take its first batch.
+        $offset_start_from = 0;
     }
+
+    $eligible_posts_sql = "{$posts_from_sql}
+        WHERE post_type IN ({$post_types_placeholders})
+        AND post_status IN ({$post_status_placeholders})
+        {$exclude_sql} {$limit_days_sql}";
+    $filter_args = array_merge($post_types, $post_status);
+    $count_sql = "SELECT COUNT(*) {$eligible_posts_sql}";
+    $eligible_posts = (int) $wpdb->get_var($wpdb->prepare($count_sql, $filter_args));
+    // With exclusion enabled, the query counts only the posts still to be checked.
+    $total_posts = $autoterm_existing_content_exclude > 0 ? $start_from + $eligible_posts : $eligible_posts;
+
+    $sql = "SELECT {$wpdb->posts}.ID, post_title, post_content {$eligible_posts_sql}
+        ORDER BY {$wpdb->posts}.ID DESC LIMIT %d OFFSET %d";
+    $prepare_args = array_merge($filter_args, [$limit, $offset_start_from]);
+    $objects = (array) $wpdb->get_results($wpdb->prepare($sql, $prepare_args));
+    $response['total'] = $total_posts;
 
     $response_content = '';
     if (!empty($objects)) {
@@ -218,13 +217,14 @@ function taxopress_autoterms_content_by_ajax()
         $response['done'] = ($start_from + count($objects));
         $percentage = 100;
         $response['notice'] = '<div class="taxopress-response-css yellow"><p>' . sprintf(esc_html__('Please leave this screen running to continue the scan. To stop the scan, close this screen or click here: %1sStop%2s | %3sPause%4s', 'simple-tags'), '<a href="#" class="terminate-autoterm-scan">', '</a>', '<a href="#" class="pause-autoterm-scan" data-pause="0" data-pause-text="' . esc_html__('Pause', 'simple-tags') . '" data-resume-text="' . esc_html__('Resume', 'simple-tags') . '">', '</a>') . '</p></div>';
-        $progress_message = '<div class="taxopress-response-css yellow"><p>' . sprintf(esc_html__('Progress Report: %s posts checked.', 'simple-tags'), '<strong>' . ($start_from + count($objects)) . '</strong>') . '</p></div>';
+        /* translators: 1: Number of posts checked, 2: Total eligible posts. */
+        $progress_message = '<div class="taxopress-response-css yellow"><p>' . sprintf(esc_html__('Progress Report: %1$s of %2$s posts checked.', 'simple-tags'), '<strong>' . esc_html(number_format_i18n($start_from + count($objects))) . '</strong>', '<strong>' . esc_html(number_format_i18n($total_posts)) . '</strong>') . '</p></div>';
     } else {
         $counter = (int)get_option('tmp_auto_terms_st');
         delete_option('tmp_auto_terms_st');
         $percentage = 100;
         $response['status'] = 'sucess';
-        $response['done'] = $total;
+        $response['done'] = $start_from;
         $progress_message = '<div class="taxopress-response-css green"><p>' . sprintf(esc_html__('Completed: %s terms added from %s posts checked.', 'simple-tags'), $counter, ($start_from + count($objects))) . '</p><button type="button" class="notice-dismiss"></button></div>';
         $response['message'] = $progress_message;
     }
