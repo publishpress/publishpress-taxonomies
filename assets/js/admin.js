@@ -1266,18 +1266,46 @@
     });
 
     // -------------------------------------------------------------
-    //   Show or hide the copy terms selection box
+    //   Show the controls belonging to the active Terms bulk action
     // -------------------------------------------------------------
-    if ($('body').hasClass('taxopress_page_st_terms')) {
-      $(document).on('change', '#bulk-action-selector-top', function (e) {
-          e.preventDefault();
-          if (this.value === 'taxopress-terms-copy-terms') {
-              $('#taxopress-copy-selection-boxes').show();
-          } else {
-              $('#taxopress-copy-selection-boxes').hide();
-          }
+    var termBulkActions = $('.manage-taxopress-terms .bulkactions select');
+
+    function updateTermBulkControls() {
+      termBulkActions.each(function () {
+        var action = $(this);
+        var controls = action.closest('.tablenav').find('.taxopress-parent-selection');
+        var active = action.val() === 'taxopress-terms-set-parent';
+        controls.prop('hidden', !active);
+        controls.find('fieldset, select').prop('disabled', !active);
       });
-  }
+
+      var copyAction = termBulkActions.filter(function () {
+        return $(this).val() === 'taxopress-terms-copy-terms';
+      }).first();
+      var copyControls = $('.manage-taxopress-terms #taxopress-copy-selection-boxes');
+      var copying = copyAction.length > 0;
+      if (copying) {
+        copyControls.insertAfter(copyAction.closest('.bulkactions'));
+      }
+      copyControls.toggle(copying);
+      copyControls.find('select').prop('disabled', !copying);
+      copyControls.find('[name="taxopress_destination_taxonomy"]').prop('required', copying);
+    }
+
+    termBulkActions.on('change', function () {
+      termBulkActions.not(this).val('-1');
+      updateTermBulkControls();
+    });
+
+    if ($.fn.ppma_select2) {
+      $('.taxopress-parent-term-select').ppma_select2({ width: '220px' });
+    }
+    // WordPress can render the submitted action in both dropdowns after a reload.
+    var initialTermAction = termBulkActions.filter(function () {
+      return $(this).val() !== '-1';
+    }).first();
+    termBulkActions.not(initialTermAction).val('-1');
+    updateTermBulkControls();
 
     // -------------------------------------------------------------
     //   Auto term close button

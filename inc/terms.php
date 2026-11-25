@@ -300,6 +300,7 @@ class SimpleTags_Terms
 
                     //the terms table instance
                     $this->terms_table->prepare_items();
+                    $this->terms_table->display_bulk_parent_notice();
                     ?>
 
 
