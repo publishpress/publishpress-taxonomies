@@ -198,7 +198,6 @@ class TaxoPress_Taxonomy_Templates
                         <label><input type="checkbox" name="post_types[]" value="<?php echo esc_attr($type->name); ?>" <?php checked(in_array($type->name, $selected, true)); ?>> <?php echo esc_html($type->labels->name); ?></label>
                     <?php endforeach; ?>
                 </fieldset>
-                <p class="description"><?php esc_html_e('Public taxonomies have archive pages. Private taxonomies are available only in the admin area.', 'simple-tags'); ?></p>
                 <div class="taxopress-taxonomy-template-grid">
                     <?php foreach ($templates as $name => $template) : ?>
                         <?php $exists = self::exists($name); ?>

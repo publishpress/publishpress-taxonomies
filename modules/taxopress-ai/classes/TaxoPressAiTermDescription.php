@@ -158,7 +158,7 @@ if (!class_exists('TaxoPressAiTermDescription')) {
             ]);
         }
 
-        /** Build bounded, published-content context for either a saved or unsaved term. */
+        /** Build bounded context from readable, publicly viewable content without passwords. */
         private static function build_context($term_id, $taxonomy, $term_name, $parent_id, $user_context)
         {
             $taxonomy_object = get_taxonomy($taxonomy);
@@ -178,6 +178,7 @@ if (!class_exists('TaxoPressAiTermDescription')) {
                         'post__in'            => array_map('intval', array_slice($object_ids, 0, 40)),
                         'post_type'           => 'any',
                         'post_status'         => 'publish',
+                        'has_password'        => false,
                         'posts_per_page'      => 6,
                         'orderby'             => 'date',
                         'order'               => 'DESC',
@@ -185,6 +186,16 @@ if (!class_exists('TaxoPressAiTermDescription')) {
                     ]);
 
                     foreach ($post_objects as $post) {
+                        // Recheck returned posts before reading text, including restrictions supplied by filters.
+                        if (
+                            !is_post_publicly_viewable($post)
+                            || '' !== (string) $post->post_password
+                            || post_password_required($post)
+                            || !current_user_can('read_post', $post->ID)
+                        ) {
+                            continue;
+                        }
+
                         $excerpt = has_excerpt($post)
                             ? $post->post_excerpt
                             : wp_trim_words(wp_strip_all_tags(strip_shortcodes($post->post_content)), 45, '…');
