@@ -51,7 +51,7 @@ jobs:
             echo "target must be release or development." >&2
             exit 1
           fi
-          tag=$(gh release view --json tagName --jq .tagName)
+          tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName)
           if [[ -z "$tag" ]]; then
             echo "This repository has no published release." >&2
             exit 1
