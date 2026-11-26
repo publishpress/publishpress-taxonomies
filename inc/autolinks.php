@@ -770,6 +770,19 @@ class SimpleTags_Autolink
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     echo $ui->get_text_input([
                                                         'namearray' => 'taxopress_autolink',
+                                                        'name'      => 'autolink_exclude_post_ids',
+                                                        'textvalue' => isset($current['autolink_exclude_post_ids']) ? esc_attr($current['autolink_exclude_post_ids']) : '',
+                                                        'labeltext' => esc_html__('Exclude posts by ID', 'simple-tags'),
+                                                        'helptext'  => esc_html__(
+                                                            'Turn off Auto Links for specific posts or pages, including content displayed on those pages. Enter IDs separated by commas, for example: 123, 456.',
+                                                            'simple-tags'
+                                                        ),
+                                                        'required'  => false,
+                                                    ]);
+
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                                    echo $ui->get_text_input([
+                                                        'namearray' => 'taxopress_autolink',
                                                         'name'      => 'autolink_exclude_class',
                                                         'textvalue' => isset($current['autolink_exclude_class']) ? esc_attr($current['autolink_exclude_class']) : '',
                                                         'labeltext' => esc_html__(

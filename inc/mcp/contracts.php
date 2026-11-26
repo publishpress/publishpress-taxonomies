@@ -103,6 +103,7 @@ class SimpleTags_Mcp_Contracts
                 'autolink_max_char' => ['integer', 'Autolink max char'],
                 'whole_words' => ['string', 'Whole words', ['0', '1']],
                 'auto_link_exclude' => ['string', 'Auto link exclude'],
+                'autolink_exclude_post_ids' => ['string', 'Post IDs excluded from Auto Links, separated by commas'],
                 'autolink_exclude_class' => ['string', 'Autolink exclude class'],
                 'synonyms_link' => ['string', 'Synonyms link', ['0', '1']],
                 'unattached_terms' => ['string', 'Unattached terms', ['0', '1']],

@@ -411,6 +411,7 @@ function taxopress_get_autolink_defaults()
     $default['taxopress_autolink']['autolink_title_attribute_when_using_custom_url'] = __('Visit this URL for more on %s', 'simple-tags');
     $default['taxopress_autolink']['autolink_usage_min']       = '1';
     $default['taxopress_autolink']['auto_link_exclude']        = '';
+    $default['taxopress_autolink']['autolink_exclude_post_ids'] = '';
     $default['taxopress_autolink']['autolink_usage_max']       = '10';
     $default['taxopress_autolink']['autolink_same_usage_max']  = '1';
     $default['taxopress_autolink']['autolink_min_char']        = '';

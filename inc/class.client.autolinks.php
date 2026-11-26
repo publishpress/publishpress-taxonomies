@@ -24,7 +24,7 @@ class SimpleTags_Client_Autolinks
         // "enabled" status can force Auto Links on.
         add_filter('the_posts', array(__CLASS__, 'the_posts'), 10);
         add_filter('the_content', array(__CLASS__, 'taxopress_autolinks_the_content'), 5);
-        add_filter('the_title', array(__CLASS__, 'taxopress_autolinks_the_title'), 5);
+        add_filter('the_title', array(__CLASS__, 'taxopress_autolinks_the_title'), 5, 2);
         add_filter('get_the_excerpt', array(__CLASS__, 'taxopress_autolinks_the_excerpt'), 20, 2);
         add_filter('get_post_metadata', array(__CLASS__, 'taxopress_autolinks_post_metadata'), 20, 5);
 
@@ -406,6 +406,48 @@ class SimpleTags_Client_Autolinks
         }
 
         return array_unique($prepared_terms);
+    }
+
+    /**
+     * Check source and hosting page IDs against this instance's exclusions.
+     *
+     * @param array $settings Auto Links settings.
+     * @param int   $post_id  Source post ID.
+     * @return bool
+     */
+    private static function is_post_excluded($settings, $post_id)
+    {
+        $input = $settings['autolink_exclude_post_ids'] ?? '';
+        if (!is_string($input) || '' === trim($input)) {
+            return false;
+        }
+
+        static $parsed_ids = [];
+        if (!isset($parsed_ids[$input])) {
+            $parsed_ids[$input] = [];
+            foreach (preg_split('/[\s,]+/', trim($input)) as $entry) {
+                if (!ctype_digit($entry)) {
+                    continue;
+                }
+
+                $id = filter_var(ltrim($entry, '0'), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+                if (false !== $id) {
+                    $parsed_ids[$input][$id] = true;
+                }
+            }
+        }
+
+        if (empty($parsed_ids[$input])) {
+            return false;
+        }
+
+        if (isset($parsed_ids[$input][(int) $post_id])) {
+            return true;
+        }
+
+        // Only post queries identify a hosting page; term and author IDs can overlap.
+        $queried_post = get_queried_object();
+        return $queried_post instanceof WP_Post && isset($parsed_ids[$input][(int) $queried_post->ID]);
     }
 
     /**
@@ -1014,6 +1056,10 @@ class SimpleTags_Client_Autolinks
         if (count($post_tags) > 0) {
             $auto_link_replace = [];
             foreach ($post_tags as $post_tag) {
+                if (self::is_post_excluded($post_tag, $post->ID)) {
+                    continue;
+                }
+
                 // Get option
                 $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
 
@@ -1148,6 +1194,10 @@ class SimpleTags_Client_Autolinks
 
         $is_selected = false;
         foreach (taxopress_get_autolink_data() as $post_tag) {
+            if (self::is_post_excluded($post_tag, $object_id)) {
+                continue;
+            }
+
             if (
                 !empty($post_tag['autolink_custom_fields'])
                 && is_array($post_tag['autolink_custom_fields'])
@@ -1226,6 +1276,10 @@ class SimpleTags_Client_Autolinks
             $auto_link_replace = [];
 
             foreach ($post_tags as $post_tag) {
+                if (self::is_post_excluded($post_tag, $current_post->ID)) {
+                    continue;
+                }
+
                 $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
 
                 if (!$force_enabled && (!$embedded || !in_array($current_post->post_type, $embedded, true))) {
@@ -1323,10 +1377,11 @@ class SimpleTags_Client_Autolinks
      * Replace text by link to tag
      *
      * @param string $title
+     * @param int    $post_id Post ID supplied by the title filter.
      *
      * @return string
      */
-    public static function taxopress_autolinks_the_title($title = '')
+    public static function taxopress_autolinks_the_title($title = '', $post_id = 0)
     {
         global $post;
 
@@ -1350,6 +1405,10 @@ class SimpleTags_Client_Autolinks
 
         if (count($post_tags) > 0) {
             foreach ($post_tags as $post_tag) {
+                if (self::is_post_excluded($post_tag, $post_id > 0 ? $post_id : $post->ID)) {
+                    continue;
+                }
+
                 // Get option
                 $embedded = (isset($post_tag['embedded']) && is_array($post_tag['embedded']) && count($post_tag['embedded']) > 0) ? $post_tag['embedded'] : false;
 
