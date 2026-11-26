@@ -1,14 +1,9 @@
 /*!
- * Select2 4.0.13 - modified by PublishPress.
- * https://select2.github.io
+ * pp_select2 4.1.0-rc.0, forked by PublishPress
  *
  * Released under the MIT license
  * https://github.com/select2/select2/blob/master/LICENSE.md
  *
- * Changelog:
- *
- * [2019-06-24] - Refactored jQuery.fn.select2 to jQuery.fn.ppma_select2 to avoid conflict with 3rd party plugins that load legacy versions of this library;
- * [2020-12-07] - Refactored S2 to PPMAS2 to avoid conflict with 3rd party plugins that load legacy versions of this library;
  */
 ;(function (factory) {
   if (typeof define === 'function' && define.amd) {
@@ -40,14 +35,14 @@
   // This is needed so we can catch the AMD loader configuration and use it
   // The inner file should be wrapped (by `banner.start.js`) in a function that
   // returns the AMD loader references.
-  var PPMAS2 =(function () {
-  // Restore the PPMA_Select2 AMD loader so it can be used
+  var PPS2 =(function () {
+  // Restore the pp_select2 AMD loader so it can be used
   // Needed mostly in the language files, where the loader is not inserted
-  if (jQuery && jQuery.fn && jQuery.fn.ppma_select2 && jQuery.fn.ppma_select2.amd) {
-    var PPMAS2 = jQuery.fn.ppma_select2.amd;
+  if (jQuery && jQuery.fn && jQuery.fn.pp_select2 && jQuery.fn.pp_select2.amd) {
+    var PPS2 = jQuery.fn.pp_select2.amd;
   }
-var PPMAS2;(function () { if (!PPMAS2 || !PPMAS2.requirejs) {
-if (!PPMAS2) { PPMAS2 = {}; } else { require = PPMAS2; }
+var PPS2;(function () { if (!PPS2 || !PPS2.requirejs) {
+if (!PPS2) { PPS2 = {}; } else { require = PPS2; }
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
  * Released under MIT license, http://github.com/requirejs/almond/LICENSE
@@ -483,19 +478,19 @@ var requirejs, require, define;
     };
 }());
 
-PPMAS2.requirejs = requirejs;PPMAS2.require = require;PPMAS2.define = define;
+PPS2.requirejs = requirejs;PPS2.require = require;PPS2.define = define;
 }
 }());
-PPMAS2.define("almond", function(){});
+PPS2.define("almond", function(){});
 
 /* global jQuery:false, $:false */
-PPMAS2.define('jquery',[],function () {
+PPS2.define('jquery',[],function () {
   var _$ = jQuery || $;
 
   if (_$ == null && console && console.error) {
     console.error(
-      'PPMA_Select2: An instance of jQuery or a jQuery-compatible library was not ' +
-      'found. Make sure that you are including jQuery before PPMA_Select2 on your ' +
+      'pp_select2: An instance of jQuery or a jQuery-compatible library was not ' +
+      'found. Make sure that you are including jQuery before PPS2.define("pp_select2/utils") on your ' +
       'web page.'
     );
   }
@@ -503,7 +498,7 @@ PPMAS2.define('jquery',[],function () {
   return _$;
 });
 
-PPMAS2.define('ppma_select2/utils',[
+PPS2.define('pp_select2/utils',[
   'jquery'
 ], function ($) {
   var Utils = {};
@@ -760,23 +755,6 @@ PPMAS2.define('ppma_select2/utils',[
     });
   };
 
-  // Append an array of jQuery nodes to a given element.
-  Utils.appendMany = function ($element, $nodes) {
-    // jQuery 1.7.x does not support $.fn.append() with an array
-    // Fall back to a jQuery object collection using $.fn.add()
-    if ($.fn.jquery.substr(0, 3) === '1.7') {
-      var $jqNodes = $();
-
-      $.map($nodes, function (node) {
-        $jqNodes = $jqNodes.add(node);
-      });
-
-      $nodes = $jqNodes;
-    }
-
-    $element.append($nodes);
-  };
-
   // Cache objects in Utils.__cache instead of $.data (see #4346)
   Utils.__cache = {};
 
@@ -784,20 +762,25 @@ PPMAS2.define('ppma_select2/utils',[
   Utils.GetUniqueElementId = function (element) {
     // Get a unique element Id. If element has no id,
     // creates a new unique number, stores it in the id
-    // attribute and returns the new id.
-    // If an id already exists, it simply returns it.
+    // attribute and returns the new id with a prefix.
+    // If an id already exists, it simply returns it with a prefix.
 
-    var select2Id = element.getAttribute('data-ppma_select2-id');
-    if (select2Id == null) {
-      // If element has id, use it.
-      if (element.id) {
-        select2Id = element.id;
-        element.setAttribute('data-ppma_select2-id', select2Id);
-      } else {
-        element.setAttribute('data-ppma_select2-id', ++id);
-        select2Id = id.toString();
-      }
+    var select2Id = element.getAttribute('data-pp_select2-id');
+
+    if (select2Id != null) {
+      return select2Id;
     }
+
+    // If element has id, use it.
+    if (element.id) {
+      select2Id = 'pp_select2-data-' + element.id;
+    } else {
+      select2Id = 'pp_select2-data-' + (++id).toString() +
+        '-' + Utils.generateChars(4);
+    }
+
+    element.setAttribute('data-pp_select2-id', select2Id);
+
     return select2Id;
   };
 
@@ -838,13 +821,35 @@ PPMAS2.define('ppma_select2/utils',[
       delete Utils.__cache[id];
     }
 
-    element.removeAttribute('data-ppma_select2-id');
+    element.removeAttribute('data-pp_select2-id');
+  };
+
+  Utils.copyNonInternalCssClasses = function (dest, src) {
+    var classes;
+
+    var destinationClasses = dest.getAttribute('class').trim().split(/\s+/);
+
+    destinationClasses = destinationClasses.filter(function (clazz) {
+      // Save all pp_select2 classes
+      return clazz.indexOf('pp_select2-') === 0;
+    });
+
+    var sourceClasses = src.getAttribute('class').trim().split(/\s+/);
+
+    sourceClasses = sourceClasses.filter(function (clazz) {
+      // Only copy non-pp_select2 classes
+      return clazz.indexOf('pp_select2-') !== 0;
+    });
+
+    var replacements = destinationClasses.concat(sourceClasses);
+
+    dest.setAttribute('class', replacements.join(' '));
   };
 
   return Utils;
 });
 
-PPMAS2.define('ppma_select2/results',[
+PPS2.define('pp_select2/results',[
   'jquery',
   './utils'
 ], function ($, Utils) {
@@ -860,7 +865,7 @@ PPMAS2.define('ppma_select2/results',[
 
   Results.prototype.render = function () {
     var $results = $(
-      '<ul class="ppma_select2-results__options" role="listbox"></ul>'
+      '<ul class="pp_select2-results__options" role="listbox"></ul>'
     );
 
     if (this.options.get('multiple')) {
@@ -884,7 +889,7 @@ PPMAS2.define('ppma_select2/results',[
 
     var $message = $(
       '<li role="alert" aria-live="assertive"' +
-      ' class="ppma_select2-results__option"></li>'
+      ' class="pp_select2-results__option"></li>'
     );
 
     var message = this.options.get('translations').get(params.message);
@@ -895,13 +900,13 @@ PPMAS2.define('ppma_select2/results',[
       )
     );
 
-    $message[0].className += ' ppma_select2-results__message';
+    $message[0].className += ' pp_select2-results__message';
 
     this.$results.append($message);
   };
 
   Results.prototype.hideMessages = function () {
-    this.$results.find('.ppma_select2-results__message').remove();
+    this.$results.find('.pp_select2-results__message').remove();
   };
 
   Results.prototype.append = function (data) {
@@ -933,7 +938,7 @@ PPMAS2.define('ppma_select2/results',[
   };
 
   Results.prototype.position = function ($results, $dropdown) {
-    var $resultsContainer = $dropdown.find('.ppma_select2-results');
+    var $resultsContainer = $dropdown.find('.pp_select2-results');
     $resultsContainer.append($results);
   };
 
@@ -945,9 +950,9 @@ PPMAS2.define('ppma_select2/results',[
 
   Results.prototype.highlightFirstItem = function () {
     var $options = this.$results
-      .find('.ppma_select2-results__option[aria-selected]');
+      .find('.pp_select2-results__option--selectable');
 
-    var $selected = $options.filter('[aria-selected=true]');
+    var $selected = $options.filter('.pp_select2-results__option--selected');
 
     // Check if there are any selected options
     if ($selected.length > 0) {
@@ -966,12 +971,12 @@ PPMAS2.define('ppma_select2/results',[
     var self = this;
 
     this.data.current(function (selected) {
-      var selectedIds = $.map(selected, function (s) {
+      var selectedIds = selected.map(function (s) {
         return s.id.toString();
       });
 
       var $options = self.$results
-        .find('.ppma_select2-results__option[aria-selected]');
+        .find('.pp_select2-results__option--selectable');
 
       $options.each(function () {
         var $option = $(this);
@@ -982,9 +987,11 @@ PPMAS2.define('ppma_select2/results',[
         var id = '' + item.id;
 
         if ((item.element != null && item.element.selected) ||
-            (item.element == null && $.inArray(id, selectedIds) > -1)) {
+            (item.element == null && selectedIds.indexOf(id) > -1)) {
+          this.classList.add('pp_select2-results__option--selected');
           $option.attr('aria-selected', 'true');
         } else {
+          this.classList.remove('pp_select2-results__option--selected');
           $option.attr('aria-selected', 'false');
         }
       });
@@ -1014,11 +1021,11 @@ PPMAS2.define('ppma_select2/results',[
 
   Results.prototype.option = function (data) {
     var option = document.createElement('li');
-    option.className = 'ppma_select2-results__option';
+    option.classList.add('pp_select2-results__option');
+    option.classList.add('pp_select2-results__option--selectable');
 
     var attrs = {
-      'role': 'option',
-      'aria-selected': 'false'
+      'role': 'option'
     };
 
     var matches = window.Element.prototype.matches ||
@@ -1027,12 +1034,14 @@ PPMAS2.define('ppma_select2/results',[
 
     if ((data.element != null && matches.call(data.element, ':disabled')) ||
         (data.element == null && data.disabled)) {
-      delete attrs['aria-selected'];
       attrs['aria-disabled'] = 'true';
+
+      option.classList.remove('pp_select2-results__option--selectable');
+      option.classList.add('pp_select2-results__option--disabled');
     }
 
     if (data.id == null) {
-      delete attrs['aria-selected'];
+      option.classList.remove('pp_select2-results__option--selectable');
     }
 
     if (data._resultId != null) {
@@ -1040,13 +1049,15 @@ PPMAS2.define('ppma_select2/results',[
     }
 
     if (data.title) {
-      //option.title = data.title;
+      option.title = data.title;
     }
 
     if (data.children) {
       attrs.role = 'group';
       attrs['aria-label'] = data.text;
-      delete attrs['aria-selected'];
+
+      option.classList.remove('pp_select2-results__option--selectable');
+      option.classList.add('pp_select2-results__option--group');
     }
 
     for (var attr in attrs) {
@@ -1059,9 +1070,8 @@ PPMAS2.define('ppma_select2/results',[
       var $option = $(option);
 
       var label = document.createElement('strong');
-      label.className = 'ppma_select2-results__group';
+      label.className = 'pp_select2-results__group';
 
-      var $label = $(label);
       this.template(data, label);
 
       var $children = [];
@@ -1075,7 +1085,8 @@ PPMAS2.define('ppma_select2/results',[
       }
 
       var $childrenContainer = $('<ul></ul>', {
-        'class': 'ppma_select2-results__options ppma_select2-results__options--nested'
+        'class': 'pp_select2-results__options pp_select2-results__options--nested',
+        'role': 'none'
       });
 
       $childrenContainer.append($children);
@@ -1158,7 +1169,7 @@ PPMAS2.define('ppma_select2/results',[
       // When the dropdown is closed, aria-expended="false"
       self.$results.attr('aria-expanded', 'false');
       self.$results.attr('aria-hidden', 'true');
-      self.$results.removeAttr('aria-activedescendant');
+      self.$results[0].removeAttribute('aria-activedescendant');
     });
 
     container.on('results:toggle', function () {
@@ -1180,7 +1191,7 @@ PPMAS2.define('ppma_select2/results',[
 
       var data = Utils.GetData($highlighted[0], 'data');
 
-      if ($highlighted.attr('aria-selected') == 'true') {
+      if ($highlighted.hasClass('pp_select2-results__option--selected')) {
         self.trigger('close', {});
       } else {
         self.trigger('select', {
@@ -1192,7 +1203,7 @@ PPMAS2.define('ppma_select2/results',[
     container.on('results:previous', function () {
       var $highlighted = self.getHighlightedResults();
 
-      var $options = self.$results.find('[aria-selected]');
+      var $options = self.$results.find('.pp_select2-results__option--selectable');
 
       var currentIndex = $options.index($highlighted);
 
@@ -1227,7 +1238,7 @@ PPMAS2.define('ppma_select2/results',[
     container.on('results:next', function () {
       var $highlighted = self.getHighlightedResults();
 
-      var $options = self.$results.find('[aria-selected]');
+      var $options = self.$results.find('.pp_select2-results__option--selectable');
 
       var currentIndex = $options.index($highlighted);
 
@@ -1255,7 +1266,8 @@ PPMAS2.define('ppma_select2/results',[
     });
 
     container.on('results:focus', function (params) {
-      params.element.addClass('ppma_select2-results__option--highlighted');
+      params.element[0].classList.add('pp_select2-results__option--highlighted');
+      params.element[0].setAttribute('aria-selected', 'true');
     });
 
     container.on('results:message', function (params) {
@@ -1287,20 +1299,23 @@ PPMAS2.define('ppma_select2/results',[
       });
     }
 
-    this.$results.on('mouseup', '.ppma_select2-results__option[aria-selected]',
+    this.$results.on('mouseup', '.pp_select2-results__option--selectable',
       function (evt) {
       var $this = $(this);
 
       var data = Utils.GetData(this, 'data');
 
-      if ($this.attr('aria-selected') === 'true') {
+      if ($this.hasClass('pp_select2-results__option--selected')) {
         if (self.options.get('multiple')) {
           self.trigger('unselect', {
             originalEvent: evt,
             data: data
           });
         } else {
-          self.trigger('close', {});
+          self.trigger('close', {
+            originalEvent: evt,
+            data: data
+          });
         }
 
         return;
@@ -1312,12 +1327,13 @@ PPMAS2.define('ppma_select2/results',[
       });
     });
 
-    this.$results.on('mouseenter', '.ppma_select2-results__option[aria-selected]',
+    this.$results.on('mouseenter', '.pp_select2-results__option--selectable',
       function (evt) {
       var data = Utils.GetData(this, 'data');
 
       self.getHighlightedResults()
-          .removeClass('ppma_select2-results__option--highlighted');
+          .removeClass('pp_select2-results__option--highlighted')
+          .attr('aria-selected', 'false');
 
       self.trigger('results:focus', {
         data: data,
@@ -1328,7 +1344,7 @@ PPMAS2.define('ppma_select2/results',[
 
   Results.prototype.getHighlightedResults = function () {
     var $highlighted = this.$results
-    .find('.ppma_select2-results__option--highlighted');
+    .find('.pp_select2-results__option--highlighted');
 
     return $highlighted;
   };
@@ -1344,7 +1360,7 @@ PPMAS2.define('ppma_select2/results',[
       return;
     }
 
-    var $options = this.$results.find('[aria-selected]');
+    var $options = this.$results.find('.pp_select2-results__option--selectable');
 
     var currentIndex = $options.index($highlighted);
 
@@ -1380,7 +1396,7 @@ PPMAS2.define('ppma_select2/results',[
   return Results;
 });
 
-PPMAS2.define('ppma_select2/keys',[
+PPS2.define('pp_select2/keys',[
 
 ], function () {
   var KEYS = {
@@ -1406,7 +1422,7 @@ PPMAS2.define('ppma_select2/keys',[
   return KEYS;
 });
 
-PPMAS2.define('ppma_select2/selection/base',[
+PPS2.define('pp_select2/selection/base',[
   'jquery',
   '../utils',
   '../keys'
@@ -1422,7 +1438,7 @@ PPMAS2.define('ppma_select2/selection/base',[
 
   BaseSelection.prototype.render = function () {
     var $selection = $(
-      '<span class="ppma_select2-selection" role="combobox" ' +
+      '<span class="pp_select2-selection" role="combobox" ' +
       ' aria-haspopup="true" aria-expanded="false">' +
       '</span>'
     );
@@ -1435,7 +1451,7 @@ PPMAS2.define('ppma_select2/selection/base',[
       this._tabindex = this.$element.attr('tabindex');
     }
 
-    //$selection.attr('title', this.$element.attr('title'));
+    $selection.attr('title', this.$element.attr('title'));
     $selection.attr('tabindex', this._tabindex);
     $selection.attr('aria-disabled', 'false');
 
@@ -1486,8 +1502,8 @@ PPMAS2.define('ppma_select2/selection/base',[
     container.on('close', function () {
       // When the dropdown is closed, aria-expanded="false"
       self.$selection.attr('aria-expanded', 'false');
-      self.$selection.removeAttr('aria-activedescendant');
-      self.$selection.removeAttr('aria-owns');
+      self.$selection[0].removeAttribute('aria-activedescendant');
+      self.$selection[0].removeAttribute('aria-owns');
 
       self.$selection.trigger('focus');
 
@@ -1525,12 +1541,12 @@ PPMAS2.define('ppma_select2/selection/base',[
 
   BaseSelection.prototype._attachCloseHandler = function (container) {
 
-    $(document.body).on('mousedown.ppma_select2.' + container.id, function (e) {
+    $(document.body).on('mousedown.pp_select2.' + container.id, function (e) {
       var $target = $(e.target);
 
-      var $select = $target.closest('.ppma_select2');
+      var $select = $target.closest('.pp_select2');
 
-      var $all = $('.ppma_select2.ppma_select2-container--open');
+      var $all = $('.pp_select2.pp_select2-container--open');
 
       $all.each(function () {
         if (this == $select[0]) {
@@ -1539,13 +1555,13 @@ PPMAS2.define('ppma_select2/selection/base',[
 
         var $element = Utils.GetData(this, 'element');
 
-        $element.ppma_select2('close');
+        $element.pp_select2('close');
       });
     });
   };
 
   BaseSelection.prototype._detachCloseHandler = function (container) {
-    $(document.body).off('mousedown.ppma_select2.' + container.id);
+    $(document.body).off('mousedown.pp_select2.' + container.id);
   };
 
   BaseSelection.prototype.position = function ($selection, $container) {
@@ -1585,7 +1601,7 @@ PPMAS2.define('ppma_select2/selection/base',[
   return BaseSelection;
 });
 
-PPMAS2.define('ppma_select2/selection/single',[
+PPS2.define('pp_select2/selection/single',[
   'jquery',
   './base',
   '../utils',
@@ -1600,11 +1616,11 @@ PPMAS2.define('ppma_select2/selection/single',[
   SingleSelection.prototype.render = function () {
     var $selection = SingleSelection.__super__.render.call(this);
 
-    $selection.addClass('ppma_select2-selection--single');
+    $selection[0].classList.add('pp_select2-selection--single');
 
     $selection.html(
-      '<span class="ppma_select2-selection__rendered"></span>' +
-      '<span class="ppma_select2-selection__arrow" role="presentation">' +
+      '<span class="pp_select2-selection__rendered"></span>' +
+      '<span class="pp_select2-selection__arrow" role="presentation">' +
         '<b role="presentation"></b>' +
       '</span>'
     );
@@ -1619,11 +1635,12 @@ PPMAS2.define('ppma_select2/selection/single',[
 
     var id = container.id + '-container';
 
-    this.$selection.find('.ppma_select2-selection__rendered')
+    this.$selection.find('.pp_select2-selection__rendered')
       .attr('id', id)
       .attr('role', 'textbox')
       .attr('aria-readonly', 'true');
     this.$selection.attr('aria-labelledby', id);
+    this.$selection.attr('aria-controls', id);
 
     this.$selection.on('mousedown', function (evt) {
       // Only respond to left clicks
@@ -1652,9 +1669,9 @@ PPMAS2.define('ppma_select2/selection/single',[
   };
 
   SingleSelection.prototype.clear = function () {
-    var $rendered = this.$selection.find('.ppma_select2-selection__rendered');
+    var $rendered = this.$selection.find('.pp_select2-selection__rendered');
     $rendered.empty();
-    $rendered.removeAttr('title'); // clear tooltip on empty
+    $rendered[0].removeAttribute('title'); // clear tooltip on empty
   };
 
   SingleSelection.prototype.display = function (data, container) {
@@ -1676,7 +1693,7 @@ PPMAS2.define('ppma_select2/selection/single',[
 
     var selection = data[0];
 
-    var $rendered = this.$selection.find('.ppma_select2-selection__rendered');
+    var $rendered = this.$selection.find('.pp_select2-selection__rendered');
     var formatted = this.display(selection, $rendered);
 
     $rendered.empty().append(formatted);
@@ -1684,17 +1701,16 @@ PPMAS2.define('ppma_select2/selection/single',[
     var title = selection.title || selection.text;
 
     if (title) {
-      $rendered.removeAttr('title');
-      //$rendered.attr('title', title);
+      $rendered.attr('title', title);
     } else {
-      $rendered.removeAttr('title');
+      $rendered[0].removeAttribute('title');
     }
   };
 
   return SingleSelection;
 });
 
-PPMAS2.define('ppma_select2/selection/multiple',[
+PPS2.define('pp_select2/selection/multiple',[
   'jquery',
   './base',
   '../utils'
@@ -1708,10 +1724,10 @@ PPMAS2.define('ppma_select2/selection/multiple',[
   MultipleSelection.prototype.render = function () {
     var $selection = MultipleSelection.__super__.render.call(this);
 
-    $selection.addClass('ppma_select2-selection--multiple');
+    $selection[0].classList.add('pp_select2-selection--multiple');
 
     $selection.html(
-      '<ul class="ppma_select2-selection__rendered"></ul>'
+      '<ul class="pp_select2-selection__rendered"></ul>'
     );
 
     return $selection;
@@ -1722,6 +1738,9 @@ PPMAS2.define('ppma_select2/selection/multiple',[
 
     MultipleSelection.__super__.bind.apply(this, arguments);
 
+    var id = container.id + '-container';
+    this.$selection.find('.pp_select2-selection__rendered').attr('id', id);
+
     this.$selection.on('click', function (evt) {
       self.trigger('toggle', {
         originalEvent: evt
@@ -1730,7 +1749,7 @@ PPMAS2.define('ppma_select2/selection/multiple',[
 
     this.$selection.on(
       'click',
-      '.ppma_select2-selection__choice__remove',
+      '.pp_select2-selection__choice__remove',
       function (evt) {
         // Ignore the event if it is disabled
         if (self.isDisabled()) {
@@ -1748,10 +1767,23 @@ PPMAS2.define('ppma_select2/selection/multiple',[
         });
       }
     );
+
+    this.$selection.on(
+      'keydown',
+      '.pp_select2-selection__choice__remove',
+      function (evt) {
+        // Ignore the event if it is disabled
+        if (self.isDisabled()) {
+          return;
+        }
+
+        evt.stopPropagation();
+      }
+    );
   };
 
   MultipleSelection.prototype.clear = function () {
-    var $rendered = this.$selection.find('.ppma_select2-selection__rendered');
+    var $rendered = this.$selection.find('.pp_select2-selection__rendered');
     $rendered.empty();
     $rendered.removeAttr('title');
   };
@@ -1765,10 +1797,12 @@ PPMAS2.define('ppma_select2/selection/multiple',[
 
   MultipleSelection.prototype.selectionContainer = function () {
     var $container = $(
-      '<li class="ppma_select2-selection__choice">' +
-        '<span class="ppma_select2-selection__choice__remove" role="presentation">' +
-          '&times;' +
-        '</span>' +
+      '<li class="pp_select2-selection__choice">' +
+        '<button type="button" class="pp_select2-selection__choice__remove" ' +
+        'tabindex="-1">' +
+          '<span aria-hidden="true">&times;</span>' +
+        '</button>' +
+        '<span class="pp_select2-selection__choice__display"></span>' +
       '</li>'
     );
 
@@ -1784,37 +1818,57 @@ PPMAS2.define('ppma_select2/selection/multiple',[
 
     var $selections = [];
 
+    var selectionIdPrefix = this.$selection.find('.pp_select2-selection__rendered')
+      .attr('id') + '-choice-';
+
     for (var d = 0; d < data.length; d++) {
       var selection = data[d];
 
       var $selection = this.selectionContainer();
       var formatted = this.display(selection, $selection);
 
-      $selection.append(formatted);
+      var selectionId = selectionIdPrefix + Utils.generateChars(4) + '-';
+
+      if (selection.id) {
+        selectionId += selection.id;
+      } else {
+        selectionId += Utils.generateChars(4);
+      }
+
+      $selection.find('.pp_select2-selection__choice__display')
+        .append(formatted)
+        .attr('id', selectionId);
 
       var title = selection.title || selection.text;
 
       if (title) {
-        $selection.removeAttr('title');
-        //$selection.attr('title', title);
+        $selection.attr('title', title);
       }
+
+      var removeItem = this.options.get('translations').get('removeItem');
+
+      var $remove = $selection.find('.pp_select2-selection__choice__remove');
+
+      $remove.attr('title', removeItem());
+      $remove.attr('aria-label', removeItem());
+      $remove.attr('aria-describedby', selectionId);
 
       Utils.StoreData($selection[0], 'data', selection);
 
       $selections.push($selection);
     }
 
-    var $rendered = this.$selection.find('.ppma_select2-selection__rendered');
+    var $rendered = this.$selection.find('.pp_select2-selection__rendered');
 
-    Utils.appendMany($rendered, $selections);
+    $rendered.append($selections);
   };
 
   return MultipleSelection;
 });
 
-PPMAS2.define('ppma_select2/selection/placeholder',[
-  '../utils'
-], function (Utils) {
+PPS2.define('pp_select2/selection/placeholder',[
+
+], function () {
   function Placeholder (decorated, $element, options) {
     this.placeholder = this.normalizePlaceholder(options.get('placeholder'));
 
@@ -1836,8 +1890,17 @@ PPMAS2.define('ppma_select2/selection/placeholder',[
     var $placeholder = this.selectionContainer();
 
     $placeholder.html(this.display(placeholder));
-    $placeholder.addClass('ppma_select2-selection__placeholder')
-                .removeClass('ppma_select2-selection__choice');
+    $placeholder[0].classList.add('pp_select2-selection__placeholder');
+    $placeholder[0].classList.remove('pp_select2-selection__choice');
+
+    var placeholderTitle = placeholder.title ||
+      placeholder.text ||
+      $placeholder.text();
+
+    this.$selection.find('.pp_select2-selection__rendered').attr(
+      'title',
+      placeholderTitle
+    );
 
     return $placeholder;
   };
@@ -1856,13 +1919,13 @@ PPMAS2.define('ppma_select2/selection/placeholder',[
 
     var $placeholder = this.createPlaceholder(this.placeholder);
 
-    this.$selection.find('.ppma_select2-selection__rendered').append($placeholder);
+    this.$selection.find('.pp_select2-selection__rendered').append($placeholder);
   };
 
   return Placeholder;
 });
 
-PPMAS2.define('ppma_select2/selection/allowClear',[
+PPS2.define('pp_select2/selection/allowClear',[
   'jquery',
   '../keys',
   '../utils'
@@ -1877,13 +1940,13 @@ PPMAS2.define('ppma_select2/selection/allowClear',[
     if (this.placeholder == null) {
       if (this.options.get('debug') && window.console && console.error) {
         console.error(
-          'PPMA_Select2: The `allowClear` option should be used in combination ' +
+          'pp_select2: The `allowClear` option should be used in combination ' +
           'with the `placeholder` option.'
         );
       }
     }
 
-    this.$selection.on('mousedown', '.ppma_select2-selection__clear',
+    this.$selection.on('mousedown', '.pp_select2-selection__clear',
       function (evt) {
         self._handleClear(evt);
     });
@@ -1899,7 +1962,7 @@ PPMAS2.define('ppma_select2/selection/allowClear',[
       return;
     }
 
-    var $clear = this.$selection.find('.ppma_select2-selection__clear');
+    var $clear = this.$selection.find('.pp_select2-selection__clear');
 
     // Ignore the event if nothing has been selected
     if ($clear.length === 0) {
@@ -1956,27 +2019,37 @@ PPMAS2.define('ppma_select2/selection/allowClear',[
   AllowClear.prototype.update = function (decorated, data) {
     decorated.call(this, data);
 
-    if (this.$selection.find('.ppma_select2-selection__placeholder').length > 0 ||
+    this.$selection.find('.pp_select2-selection__clear').remove();
+    this.$selection[0].classList.remove('pp_select2-selection--clearable');
+
+    if (this.$selection.find('.pp_select2-selection__placeholder').length > 0 ||
         data.length === 0) {
       return;
     }
 
+    var selectionId = this.$selection.find('.pp_select2-selection__rendered')
+      .attr('id');
+
     var removeAll = this.options.get('translations').get('removeAllItems');
 
     var $remove = $(
-      '<span class="ppma_select2-selection__clear" title="' + removeAll() +'">' +
-        '&times;' +
-      '</span>'
+      '<button type="button" class="pp_select2-selection__clear" tabindex="-1">' +
+        '<span aria-hidden="true">&times;</span>' +
+      '</button>'
     );
+    $remove.attr('title', removeAll());
+    $remove.attr('aria-label', removeAll());
+    $remove.attr('aria-describedby', selectionId);
     Utils.StoreData($remove[0], 'data', data);
 
-    this.$selection.find('.ppma_select2-selection__rendered').prepend($remove);
+    this.$selection.prepend($remove);
+    this.$selection[0].classList.add('pp_select2-selection--clearable');
   };
 
   return AllowClear;
 });
 
-PPMAS2.define('ppma_select2/selection/search',[
+PPS2.define('pp_select2/selection/search',[
   'jquery',
   '../utils',
   '../keys'
@@ -1986,20 +2059,27 @@ PPMAS2.define('ppma_select2/selection/search',[
   }
 
   Search.prototype.render = function (decorated) {
+    var searchLabel = this.options.get('translations').get('search');
     var $search = $(
-      '<li class="ppma_select2-search ppma_select2-search--inline">' +
-        '<input class="ppma_select2-search__field" type="search" tabindex="-1"' +
-        ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
-        ' spellcheck="false" role="searchbox" aria-autocomplete="list" />' +
-      '</li>'
+      '<span class="pp_select2-search pp_select2-search--inline">' +
+        '<textarea class="pp_select2-search__field"'+
+        ' type="search" tabindex="-1"' +
+        ' autocorrect="off" autocapitalize="none"' +
+        ' spellcheck="false" role="searchbox" aria-autocomplete="list" >' +
+        '</textarea>' +
+      '</span>'
     );
 
     this.$searchContainer = $search;
-    this.$search = $search.find('input');
+    this.$search = $search.find('textarea');
+
+    this.$search.prop('autocomplete', this.options.get('autocomplete'));
+    this.$search.attr('aria-label', searchLabel());
 
     var $rendered = decorated.call(this);
 
     this._transferTabIndex();
+    $rendered.append(this.$searchContainer);
 
     return $rendered;
   };
@@ -2008,8 +2088,11 @@ PPMAS2.define('ppma_select2/selection/search',[
     var self = this;
 
     var resultsId = container.id + '-results';
+    var selectionId = container.id + '-container';
 
     decorated.call(this, container, $container);
+
+    self.$search.attr('aria-describedby', selectionId);
 
     container.on('open', function () {
       self.$search.attr('aria-controls', resultsId);
@@ -2018,8 +2101,9 @@ PPMAS2.define('ppma_select2/selection/search',[
 
     container.on('close', function () {
       self.$search.val('');
-      self.$search.removeAttr('aria-controls');
-      self.$search.removeAttr('aria-activedescendant');
+      self.resizeSearch();
+      self.$search[0].removeAttribute('aria-controls');
+      self.$search[0].removeAttribute('aria-activedescendant');
       self.$search.trigger('focus');
     });
 
@@ -2041,19 +2125,19 @@ PPMAS2.define('ppma_select2/selection/search',[
       if (params.data._resultId) {
         self.$search.attr('aria-activedescendant', params.data._resultId);
       } else {
-        self.$search.removeAttr('aria-activedescendant');
+        self.$search[0].removeAttribute('aria-activedescendant');
       }
     });
 
-    this.$selection.on('focusin', '.ppma_select2-search--inline', function (evt) {
+    this.$selection.on('focusin', '.pp_select2-search--inline', function (evt) {
       self.trigger('focus', evt);
     });
 
-    this.$selection.on('focusout', '.ppma_select2-search--inline', function (evt) {
+    this.$selection.on('focusout', '.pp_select2-search--inline', function (evt) {
       self._handleBlur(evt);
     });
 
-    this.$selection.on('keydown', '.ppma_select2-search--inline', function (evt) {
+    this.$selection.on('keydown', '.pp_select2-search--inline', function (evt) {
       evt.stopPropagation();
 
       self.trigger('keypress', evt);
@@ -2063,8 +2147,8 @@ PPMAS2.define('ppma_select2/selection/search',[
       var key = evt.which;
 
       if (key === KEYS.BACKSPACE && self.$search.val() === '') {
-        var $previousChoice = self.$searchContainer
-          .prev('.ppma_select2-selection__choice');
+        var $previousChoice = self.$selection
+          .find('.pp_select2-selection__choice').last();
 
         if ($previousChoice.length > 0) {
           var item = Utils.GetData($previousChoice[0], 'data');
@@ -2076,7 +2160,7 @@ PPMAS2.define('ppma_select2/selection/search',[
       }
     });
 
-    this.$selection.on('click', '.ppma_select2-search--inline', function (evt) {
+    this.$selection.on('click', '.pp_select2-search--inline', function (evt) {
       if (self.$search.val()) {
         evt.stopPropagation();
       }
@@ -2095,7 +2179,7 @@ PPMAS2.define('ppma_select2/selection/search',[
     // both the `keyup` and `input` events.
     this.$selection.on(
       'input.searchcheck',
-      '.ppma_select2-search--inline',
+      '.pp_select2-search--inline',
       function (evt) {
         // IE will trigger the `input` event when a placeholder is used on a
         // search box. To get around this issue, we are forced to ignore all
@@ -2112,7 +2196,7 @@ PPMAS2.define('ppma_select2/selection/search',[
 
     this.$selection.on(
       'keyup.search input.search',
-      '.ppma_select2-search--inline',
+      '.pp_select2-search--inline',
       function (evt) {
         // IE will trigger the `input` event when a placeholder is used on a
         // search box. To get around this issue, we are forced to ignore all
@@ -2162,9 +2246,6 @@ PPMAS2.define('ppma_select2/selection/search',[
 
     decorated.call(this, data);
 
-    this.$selection.find('.ppma_select2-selection__rendered')
-                   .append(this.$searchContainer);
-
     this.resizeSearch();
     if (searchHadFocus) {
       this.$search.trigger('focus');
@@ -2197,11 +2278,9 @@ PPMAS2.define('ppma_select2/selection/search',[
   Search.prototype.resizeSearch = function () {
     this.$search.css('width', '25px');
 
-    var width = '';
+    var width = '100%';
 
-    if (this.$search.attr('placeholder') !== '') {
-      width = this.$selection.find('.ppma_select2-selection__rendered').width();
-    } else {
+    if (this.$search.attr('placeholder') === '') {
       var minimumWidth = this.$search.val().length + 1;
 
       width = (minimumWidth * 0.75) + 'em';
@@ -2213,7 +2292,35 @@ PPMAS2.define('ppma_select2/selection/search',[
   return Search;
 });
 
-PPMAS2.define('ppma_select2/selection/eventRelay',[
+PPS2.define('pp_select2/selection/selectionCss',[
+  '../utils'
+], function (Utils) {
+  function SelectionCSS () { }
+
+  SelectionCSS.prototype.render = function (decorated) {
+    var $selection = decorated.call(this);
+
+    var selectionCssClass = this.options.get('selectionCssClass') || '';
+
+    if (selectionCssClass.indexOf(':all:') !== -1) {
+      selectionCssClass = selectionCssClass.replace(':all:', '');
+
+      Utils.copyNonInternalCssClasses($selection[0], this.$element[0]);
+    }
+
+    selectionCssClass.trim().split(' ').forEach(function(cssClass) {
+      if(cssClass.length > 0) {
+        $selection[0].classList.add(cssClass);
+      }
+    });
+
+    return $selection;
+  };
+
+  return SelectionCSS;
+});
+
+PPS2.define('pp_select2/selection/eventRelay',[
   'jquery'
 ], function ($) {
   function EventRelay () { }
@@ -2236,22 +2343,22 @@ PPMAS2.define('ppma_select2/selection/eventRelay',[
 
     container.on('*', function (name, params) {
       // Ignore events that should not be relayed
-      if ($.inArray(name, relayEvents) === -1) {
+      if (relayEvents.indexOf(name) === -1) {
         return;
       }
 
       // The parameters should always be an object
       params = params || {};
 
-      // Generate the jQuery event for the PPMA_Select2 event
-      var evt = $.Event('ppma_select2:' + name, {
+      // Generate the jQuery event for the pp_select2 event
+      var evt = $.Event('select2:' + name, {
         params: params
       });
 
       self.$element.trigger(evt);
 
       // Only handle preventable events if it was one
-      if ($.inArray(name, preventableEvents) === -1) {
+      if (preventableEvents.indexOf(name) === -1) {
         return;
       }
 
@@ -2262,7 +2369,7 @@ PPMAS2.define('ppma_select2/selection/eventRelay',[
   return EventRelay;
 });
 
-PPMAS2.define('ppma_select2/translation',[
+PPS2.define('pp_select2/translation',[
   'jquery',
   'require'
 ], function ($, require) {
@@ -2299,7 +2406,7 @@ PPMAS2.define('ppma_select2/translation',[
   return Translation;
 });
 
-PPMAS2.define('ppma_select2/diacritics',[
+PPS2.define('pp_select2/diacritics',[
 
 ], function () {
   var diacritics = {
@@ -3150,7 +3257,7 @@ PPMAS2.define('ppma_select2/diacritics',[
   return diacritics;
 });
 
-PPMAS2.define('ppma_select2/data/base',[
+PPS2.define('pp_select2/data/base',[
   '../utils'
 ], function (Utils) {
   function BaseAdapter ($element, options) {
@@ -3191,7 +3298,7 @@ PPMAS2.define('ppma_select2/data/base',[
   return BaseAdapter;
 });
 
-PPMAS2.define('ppma_select2/data/select',[
+PPS2.define('pp_select2/data/select',[
   './base',
   '../utils',
   'jquery'
@@ -3206,16 +3313,14 @@ PPMAS2.define('ppma_select2/data/select',[
   Utils.Extend(SelectAdapter, BaseAdapter);
 
   SelectAdapter.prototype.current = function (callback) {
-    var data = [];
     var self = this;
 
-    this.$element.find(':selected').each(function () {
-      var $option = $(this);
-
-      var option = self.item($option);
-
-      data.push(option);
-    });
+    var data = Array.prototype.map.call(
+      this.$element[0].querySelectorAll(':checked'),
+      function (selectedElement) {
+        return self.item($(selectedElement));
+      }
+    );
 
     callback(data);
   };
@@ -3226,7 +3331,9 @@ PPMAS2.define('ppma_select2/data/select',[
     data.selected = true;
 
     // If data.element is a DOM node, use it instead
-    if ($(data.element).is('option')) {
+    if (
+      data.element != null && data.element.tagName.toLowerCase() === 'option'
+    ) {
       data.element.selected = true;
 
       this.$element.trigger('input').trigger('change');
@@ -3244,7 +3351,7 @@ PPMAS2.define('ppma_select2/data/select',[
         for (var d = 0; d < data.length; d++) {
           var id = data[d].id;
 
-          if ($.inArray(id, val) === -1) {
+          if (val.indexOf(id) === -1) {
             val.push(id);
           }
         }
@@ -3269,7 +3376,10 @@ PPMAS2.define('ppma_select2/data/select',[
 
     data.selected = false;
 
-    if ($(data.element).is('option')) {
+    if (
+      data.element != null &&
+      data.element.tagName.toLowerCase() === 'option'
+    ) {
       data.element.selected = false;
 
       this.$element.trigger('input').trigger('change');
@@ -3283,7 +3393,7 @@ PPMAS2.define('ppma_select2/data/select',[
       for (var d = 0; d < currentData.length; d++) {
         var id = currentData[d].id;
 
-        if (id !== data.id && $.inArray(id, val) === -1) {
+        if (id !== data.id && val.indexOf(id) === -1) {
           val.push(id);
         }
       }
@@ -3311,7 +3421,7 @@ PPMAS2.define('ppma_select2/data/select',[
   SelectAdapter.prototype.destroy = function () {
     // Remove anything added to child elements
     this.$element.find('*').each(function () {
-      // Remove any custom data set by PPMA_Select2
+      // Remove any custom data set by pp_select2
       Utils.RemoveData(this);
     });
   };
@@ -3323,11 +3433,14 @@ PPMAS2.define('ppma_select2/data/select',[
     var $options = this.$element.children();
 
     $options.each(function () {
-      var $option = $(this);
-
-      if (!$option.is('option') && !$option.is('optgroup')) {
+      if (
+        this.tagName.toLowerCase() !== 'option' &&
+        this.tagName.toLowerCase() !== 'optgroup'
+      ) {
         return;
       }
+
+      var $option = $(this);
 
       var option = self.item($option);
 
@@ -3344,7 +3457,7 @@ PPMAS2.define('ppma_select2/data/select',[
   };
 
   SelectAdapter.prototype.addOptions = function ($options) {
-    Utils.appendMany(this.$element, $options);
+    this.$element.append($options);
   };
 
   SelectAdapter.prototype.option = function (data) {
@@ -3376,10 +3489,8 @@ PPMAS2.define('ppma_select2/data/select',[
     }
 
     if (data.title) {
-      //option.title = data.title;
+      option.title = data.title;
     }
-
-    var $option = $(option);
 
     var normalizedData = this._normalizeItem(data);
     normalizedData.element = option;
@@ -3387,7 +3498,7 @@ PPMAS2.define('ppma_select2/data/select',[
     // Override the option's data with the combined data
     Utils.StoreData(option, 'data', normalizedData);
 
-    return $option;
+    return $(option);
   };
 
   SelectAdapter.prototype.item = function ($option) {
@@ -3399,7 +3510,9 @@ PPMAS2.define('ppma_select2/data/select',[
       return data;
     }
 
-    if ($option.is('option')) {
+    var option = $option[0];
+
+    if (option.tagName.toLowerCase() === 'option') {
       data = {
         id: $option.val(),
         text: $option.text(),
@@ -3407,7 +3520,7 @@ PPMAS2.define('ppma_select2/data/select',[
         selected: $option.prop('selected'),
         title: $option.prop('title')
       };
-    } else if ($option.is('optgroup')) {
+    } else if (option.tagName.toLowerCase() === 'optgroup') {
       data = {
         text: $option.prop('label'),
         children: [],
@@ -3465,6 +3578,12 @@ PPMAS2.define('ppma_select2/data/select',[
       item._resultId = this.generateResultId(this.container, item);
     }
 
+    if (item.children) {
+        item.children = item.children.map(
+            SelectAdapter.prototype._normalizeItem
+        );
+    }
+
     return $.extend({}, defaults, item);
   };
 
@@ -3477,7 +3596,7 @@ PPMAS2.define('ppma_select2/data/select',[
   return SelectAdapter;
 });
 
-PPMAS2.define('ppma_select2/data/array',[
+PPS2.define('pp_select2/data/array',[
   './select',
   '../utils',
   'jquery'
@@ -3531,7 +3650,7 @@ PPMAS2.define('ppma_select2/data/array',[
       var item = this._normalizeItem(data[d]);
 
       // Skip items which were pre-loaded, only merge the data
-      if ($.inArray(item.id, existingIds) >= 0) {
+      if (existingIds.indexOf(item.id) >= 0) {
         var $existingOption = $existing.filter(onlyItem(item));
 
         var existingData = this.item($existingOption);
@@ -3549,7 +3668,7 @@ PPMAS2.define('ppma_select2/data/array',[
       if (item.children) {
         var $children = this.convertToOptions(item.children);
 
-        Utils.appendMany($option, $children);
+        $option.append($children);
       }
 
       $options.push($option);
@@ -3561,7 +3680,7 @@ PPMAS2.define('ppma_select2/data/array',[
   return ArrayAdapter;
 });
 
-PPMAS2.define('ppma_select2/data/ajax',[
+PPS2.define('pp_select2/data/ajax',[
   './array',
   '../utils',
   'jquery'
@@ -3608,7 +3727,7 @@ PPMAS2.define('ppma_select2/data/ajax',[
 
     if (this._request != null) {
       // JSONP requests cannot always be aborted
-      if ($.isFunction(this._request.abort)) {
+      if (typeof this._request.abort === 'function') {
         this._request.abort();
       }
 
@@ -3631,11 +3750,15 @@ PPMAS2.define('ppma_select2/data/ajax',[
       var $request = options.transport(options, function (data) {
         var results = self.processResults(data, params);
 
-        if (self.options.get('debug') && window.console && console.error) {
-          // Check to make sure that the response included a `results` key.
-          if (!results || !results.results || !$.isArray(results.results)) {
+        if (results && results.results && Array.isArray(results.results)) {
+          results.results = results.results.map(
+            AjaxAdapter.prototype._normalizeItem
+          );
+        } else {
+          if (self.options.get('debug') && window.console && console.error) {
+            // Check to make sure that the response included a `results` key.
             console.error(
-              'PPMA_Select2: The AJAX results did not return an array in the ' +
+              'pp_select2: The AJAX results did not return an array in the ' +
               '`results` key of the response.'
             );
           }
@@ -3645,7 +3768,7 @@ PPMAS2.define('ppma_select2/data/ajax',[
       }, function () {
         // Attempt to detect if a request was aborted
         // Only works if the transport exposes a status property
-        if ('status' in $request &&
+        if ($request && 'status' in $request &&
             ($request.status === 0 || $request.status === '0')) {
           return;
         }
@@ -3672,7 +3795,7 @@ PPMAS2.define('ppma_select2/data/ajax',[
   return AjaxAdapter;
 });
 
-PPMAS2.define('ppma_select2/data/tags',[
+PPS2.define('pp_select2/data/tags',[
   'jquery'
 ], function ($) {
   function Tags (decorated, $element, options) {
@@ -3692,7 +3815,7 @@ PPMAS2.define('ppma_select2/data/tags',[
 
     decorated.call(this, $element, options);
 
-    if ($.isArray(tags)) {
+    if (Array.isArray(tags)) {
       for (var t = 0; t < tags.length; t++) {
         var tag = tags[t];
         var item = this._normalizeItem(tag);
@@ -3752,7 +3875,7 @@ PPMAS2.define('ppma_select2/data/tags',[
 
       if (tag != null) {
         var $option = self.option(tag);
-        $option.attr('data-ppma_select2-tag', true);
+        $option.attr('data-pp_select2-tag', 'true');
 
         self.addOptions([$option]);
 
@@ -3768,7 +3891,11 @@ PPMAS2.define('ppma_select2/data/tags',[
   };
 
   Tags.prototype.createTag = function (decorated, params) {
-    var term = $.trim(params.term);
+    if (params.term == null) {
+      return null;
+    }
+
+    var term = params.term.trim();
 
     if (term === '') {
       return null;
@@ -3785,7 +3912,7 @@ PPMAS2.define('ppma_select2/data/tags',[
   };
 
   Tags.prototype._removeOldTags = function (_) {
-    var $options = this.$element.find('option[data-ppma_select2-tag]');
+    var $options = this.$element.find('option[data-pp_select2-tag]');
 
     $options.each(function () {
       if (this.selected) {
@@ -3799,7 +3926,7 @@ PPMAS2.define('ppma_select2/data/tags',[
   return Tags;
 });
 
-PPMAS2.define('ppma_select2/data/tokenizer',[
+PPS2.define('pp_select2/data/tokenizer',[
   'jquery'
 ], function ($) {
   function Tokenizer (decorated, $element, options) {
@@ -3816,7 +3943,7 @@ PPMAS2.define('ppma_select2/data/tokenizer',[
     decorated.call(this, container, $container);
 
     this.$search =  container.dropdown.$search || container.selection.$search ||
-      $container.find('.ppma_select2-search__field');
+      $container.find('.pp_select2-search__field');
   };
 
   Tokenizer.prototype.query = function (decorated, params, callback) {
@@ -3835,7 +3962,7 @@ PPMAS2.define('ppma_select2/data/tokenizer',[
       // If an existing option wasn't found for it, create the option
       if (!$existingOptions.length) {
         var $option = self.option(item);
-        $option.attr('data-ppma_select2-tag', true);
+        $option.attr('data-pp_select2-tag', true);
 
         self._removeOldTags();
         self.addOptions([$option]);
@@ -3883,7 +4010,7 @@ PPMAS2.define('ppma_select2/data/tokenizer',[
     while (i < term.length) {
       var termChar = term[i];
 
-      if ($.inArray(termChar, separators) === -1) {
+      if (separators.indexOf(termChar) === -1) {
         i++;
 
         continue;
@@ -3916,7 +4043,7 @@ PPMAS2.define('ppma_select2/data/tokenizer',[
   return Tokenizer;
 });
 
-PPMAS2.define('ppma_select2/data/minimumInputLength',[
+PPS2.define('pp_select2/data/minimumInputLength',[
 
 ], function () {
   function MinimumInputLength (decorated, $e, options) {
@@ -3947,7 +4074,7 @@ PPMAS2.define('ppma_select2/data/minimumInputLength',[
   return MinimumInputLength;
 });
 
-PPMAS2.define('ppma_select2/data/maximumInputLength',[
+PPS2.define('pp_select2/data/maximumInputLength',[
 
 ], function () {
   function MaximumInputLength (decorated, $e, options) {
@@ -3979,7 +4106,7 @@ PPMAS2.define('ppma_select2/data/maximumInputLength',[
   return MaximumInputLength;
 });
 
-PPMAS2.define('ppma_select2/data/maximumSelectionLength',[
+PPS2.define('pp_select2/data/maximumSelectionLength',[
 
 ], function (){
   function MaximumSelectionLength (decorated, $e, options) {
@@ -4034,7 +4161,7 @@ PPMAS2.define('ppma_select2/data/maximumSelectionLength',[
   return MaximumSelectionLength;
 });
 
-PPMAS2.define('ppma_select2/dropdown',[
+PPS2.define('pp_select2/dropdown',[
   'jquery',
   './utils'
 ], function ($, Utils) {
@@ -4049,8 +4176,8 @@ PPMAS2.define('ppma_select2/dropdown',[
 
   Dropdown.prototype.render = function () {
     var $dropdown = $(
-      '<span class="ppma_select2-dropdown">' +
-        '<span class="ppma_select2-results"></span>' +
+      '<span class="pp_select2-dropdown">' +
+        '<span class="pp_select2-results"></span>' +
       '</span>'
     );
 
@@ -4077,25 +4204,28 @@ PPMAS2.define('ppma_select2/dropdown',[
   return Dropdown;
 });
 
-PPMAS2.define('ppma_select2/dropdown/search',[
-  'jquery',
-  '../utils'
-], function ($, Utils) {
+PPS2.define('pp_select2/dropdown/search',[
+  'jquery'
+], function ($) {
   function Search () { }
 
   Search.prototype.render = function (decorated) {
     var $rendered = decorated.call(this);
+    var searchLabel = this.options.get('translations').get('search');
 
     var $search = $(
-      '<span class="ppma_select2-search ppma_select2-search--dropdown">' +
-        '<input class="ppma_select2-search__field" type="search" tabindex="-1"' +
-        ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
+      '<span class="pp_select2-search pp_select2-search--dropdown">' +
+        '<input class="pp_select2-search__field" type="search" tabindex="-1"' +
+        ' autocorrect="off" autocapitalize="none"' +
         ' spellcheck="false" role="searchbox" aria-autocomplete="list" />' +
       '</span>'
     );
 
     this.$searchContainer = $search;
     this.$search = $search.find('input');
+
+    this.$search.prop('autocomplete', this.options.get('autocomplete'));
+    this.$search.attr('aria-label', searchLabel());
 
     $rendered.prepend($search);
 
@@ -4140,8 +4270,8 @@ PPMAS2.define('ppma_select2/dropdown/search',[
 
     container.on('close', function () {
       self.$search.attr('tabindex', -1);
-      self.$search.removeAttr('aria-controls');
-      self.$search.removeAttr('aria-activedescendant');
+      self.$search[0].removeAttribute('aria-controls');
+      self.$search[0].removeAttribute('aria-activedescendant');
 
       self.$search.val('');
       self.$search.trigger('blur');
@@ -4158,9 +4288,9 @@ PPMAS2.define('ppma_select2/dropdown/search',[
         var showSearch = self.showSearch(params);
 
         if (showSearch) {
-          self.$searchContainer.removeClass('ppma_select2-search--hide');
+          self.$searchContainer[0].classList.remove('pp_select2-search--hide');
         } else {
-          self.$searchContainer.addClass('ppma_select2-search--hide');
+          self.$searchContainer[0].classList.add('pp_select2-search--hide');
         }
       }
     });
@@ -4169,7 +4299,7 @@ PPMAS2.define('ppma_select2/dropdown/search',[
       if (params.data._resultId) {
         self.$search.attr('aria-activedescendant', params.data._resultId);
       } else {
-        self.$search.removeAttr('aria-activedescendant');
+        self.$search[0].removeAttribute('aria-activedescendant');
       }
     });
   };
@@ -4193,7 +4323,7 @@ PPMAS2.define('ppma_select2/dropdown/search',[
   return Search;
 });
 
-PPMAS2.define('ppma_select2/dropdown/hidePlaceholder',[
+PPS2.define('pp_select2/dropdown/hidePlaceholder',[
 
 ], function () {
   function HidePlaceholder (decorated, $element, options, dataAdapter) {
@@ -4236,7 +4366,7 @@ PPMAS2.define('ppma_select2/dropdown/hidePlaceholder',[
   return HidePlaceholder;
 });
 
-PPMAS2.define('ppma_select2/dropdown/infiniteScroll',[
+PPS2.define('pp_select2/dropdown/infiniteScroll',[
   'jquery'
 ], function ($) {
   function InfiniteScroll (decorated, $element, options, dataAdapter) {
@@ -4315,7 +4445,7 @@ PPMAS2.define('ppma_select2/dropdown/infiniteScroll',[
   InfiniteScroll.prototype.createLoadingMore = function () {
     var $option = $(
       '<li ' +
-      'class="ppma_select2-results__option ppma_select2-results__option--load-more"' +
+      'class="pp_select2-results__option pp_select2-results__option--load-more"' +
       'role="option" aria-disabled="true"></li>'
     );
 
@@ -4329,7 +4459,7 @@ PPMAS2.define('ppma_select2/dropdown/infiniteScroll',[
   return InfiniteScroll;
 });
 
-PPMAS2.define('ppma_select2/dropdown/attachBody',[
+PPS2.define('pp_select2/dropdown/attachBody',[
   'jquery',
   '../utils'
 ], function ($, Utils) {
@@ -4372,8 +4502,8 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
     // Clone all of the container classes
     $dropdown.attr('class', $container.attr('class'));
 
-    $dropdown.removeClass('ppma_select2');
-    $dropdown.addClass('ppma_select2-container--open');
+    $dropdown[0].classList.remove('pp_select2');
+    $dropdown[0].classList.add('pp_select2-container--open');
 
     $dropdown.css({
       position: 'absolute',
@@ -4440,20 +4570,20 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
       function (decorated, container) {
     var self = this;
 
-    var scrollEvent = 'scroll.ppma_select2.' + container.id;
-    var resizeEvent = 'resize.ppma_select2.' + container.id;
-    var orientationEvent = 'orientationchange.ppma_select2.' + container.id;
+    var scrollEvent = 'scroll.pp_select2.' + container.id;
+    var resizeEvent = 'resize.pp_select2.' + container.id;
+    var orientationEvent = 'orientationchange.pp_select2.' + container.id;
 
     var $watchers = this.$container.parents().filter(Utils.hasScroll);
     $watchers.each(function () {
-      Utils.StoreData(this, 'ppma_select2-scroll-position', {
+      Utils.StoreData(this, 'pp_select2-scroll-position', {
         x: $(this).scrollLeft(),
         y: $(this).scrollTop()
       });
     });
 
     $watchers.on(scrollEvent, function (ev) {
-      var position = Utils.GetData(this, 'ppma_select2-scroll-position');
+      var position = Utils.GetData(this, 'pp_select2-scroll-position');
       $(this).scrollTop(position.y);
     });
 
@@ -4466,9 +4596,9 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
 
   AttachBody.prototype._detachPositioningHandler =
       function (decorated, container) {
-    var scrollEvent = 'scroll.ppma_select2.' + container.id;
-    var resizeEvent = 'resize.ppma_select2.' + container.id;
-    var orientationEvent = 'orientationchange.ppma_select2.' + container.id;
+    var scrollEvent = 'scroll.pp_select2.' + container.id;
+    var resizeEvent = 'resize.pp_select2.' + container.id;
+    var orientationEvent = 'orientationchange.pp_select2.' + container.id;
 
     var $watchers = this.$container.parents().filter(Utils.hasScroll);
     $watchers.off(scrollEvent);
@@ -4479,8 +4609,10 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
   AttachBody.prototype._positionDropdown = function () {
     var $window = $(window);
 
-    var isCurrentlyAbove = this.$dropdown.hasClass('ppma_select2-dropdown--above');
-    var isCurrentlyBelow = this.$dropdown.hasClass('ppma_select2-dropdown--below');
+    var isCurrentlyAbove = this.$dropdown[0].classList
+      .contains('pp_select2-dropdown--above');
+    var isCurrentlyBelow = this.$dropdown[0].classList
+      .contains('pp_select2-dropdown--below');
 
     var newDirection = null;
 
@@ -4552,12 +4684,13 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
     }
 
     if (newDirection != null) {
-      this.$dropdown
-        .removeClass('ppma_select2-dropdown--below ppma_select2-dropdown--above')
-        .addClass('ppma_select2-dropdown--' + newDirection);
-      this.$container
-        .removeClass('ppma_select2-container--below ppma_select2-container--above')
-        .addClass('ppma_select2-container--' + newDirection);
+      this.$dropdown[0].classList.remove('pp_select2-dropdown--below');
+      this.$dropdown[0].classList.remove('pp_select2-dropdown--above');
+      this.$dropdown[0].classList.add('pp_select2-dropdown--' + newDirection);
+
+      this.$container[0].classList.remove('pp_select2-container--below');
+      this.$container[0].classList.remove('pp_select2-container--above');
+      this.$container[0].classList.add('pp_select2-container--' + newDirection);
     }
 
     this.$dropdownContainer.css(css);
@@ -4587,7 +4720,7 @@ PPMAS2.define('ppma_select2/dropdown/attachBody',[
   return AttachBody;
 });
 
-PPMAS2.define('ppma_select2/dropdown/minimumResultsForSearch',[
+PPS2.define('pp_select2/dropdown/minimumResultsForSearch',[
 
 ], function () {
   function countResults (data) {
@@ -4627,7 +4760,7 @@ PPMAS2.define('ppma_select2/dropdown/minimumResultsForSearch',[
   return MinimumResultsForSearch;
 });
 
-PPMAS2.define('ppma_select2/dropdown/selectOnClose',[
+PPS2.define('pp_select2/dropdown/selectOnClose',[
   '../utils'
 ], function (Utils) {
   function SelectOnClose () { }
@@ -4643,8 +4776,8 @@ PPMAS2.define('ppma_select2/dropdown/selectOnClose',[
   };
 
   SelectOnClose.prototype._handleSelectOnClose = function (_, params) {
-    if (params && params.originalPPMA_Select2Event != null) {
-      var event = params.originalPPMA_Select2Event;
+    if (params && params.originalpp_select2Event != null) {
+      var event = params.originalpp_select2Event;
 
       // Don't select an item if the close event was triggered from a select or
       // unselect event
@@ -4678,7 +4811,7 @@ PPMAS2.define('ppma_select2/dropdown/selectOnClose',[
   return SelectOnClose;
 });
 
-PPMAS2.define('ppma_select2/dropdown/closeOnSelect',[
+PPS2.define('pp_select2/dropdown/closeOnSelect',[
 
 ], function () {
   function CloseOnSelect () { }
@@ -4707,14 +4840,74 @@ PPMAS2.define('ppma_select2/dropdown/closeOnSelect',[
 
     this.trigger('close', {
       originalEvent: originalEvent,
-      originalPPMA_Select2Event: evt
+      originalpp_select2Event: evt
     });
   };
 
   return CloseOnSelect;
 });
 
-PPMAS2.define('ppma_select2/i18n/en',[],function () {
+PPS2.define('pp_select2/dropdown/dropdownCss',[
+  '../utils'
+], function (Utils) {
+  function DropdownCSS () { }
+
+  DropdownCSS.prototype.render = function (decorated) {
+    var $dropdown = decorated.call(this);
+
+    var dropdownCssClass = this.options.get('dropdownCssClass') || '';
+
+    if (dropdownCssClass.indexOf(':all:') !== -1) {
+      dropdownCssClass = dropdownCssClass.replace(':all:', '');
+
+      Utils.copyNonInternalCssClasses($dropdown[0], this.$element[0]);
+    }
+
+    dropdownCssClass.trim().split(' ').forEach(function(cssClass) {
+      if(cssClass.length > 0) {
+        $dropdown[0].classList.add(cssClass);
+      }
+    });
+
+    return $dropdown;
+  };
+
+  return DropdownCSS;
+});
+
+PPS2.define('pp_select2/dropdown/tagsSearchHighlight',[
+  '../utils'
+], function (Utils) {
+  function TagsSearchHighlight () { }
+
+  TagsSearchHighlight.prototype.highlightFirstItem = function (decorated) {
+    var $options = this.$results
+    .find(
+      '.pp_select2-results__option--selectable' +
+      ':not(.pp_select2-results__option--selected)'
+    );
+
+    if ($options.length > 0) {
+      var $firstOption = $options.first();
+      var data = Utils.GetData($firstOption[0], 'data');
+      var firstElement = data.element;
+
+      if (firstElement && firstElement.getAttribute) {
+        if (firstElement.getAttribute('data-pp_select2-tag') === 'true') {
+          $firstOption.trigger('mouseenter');
+
+          return;
+        }
+      }
+    }
+
+    decorated.call(this);
+  };
+
+  return TagsSearchHighlight;
+});
+
+PPS2.define('pp_select2/i18n/en',[],function () {
   // English
   return {
     errorLoading: function () {
@@ -4758,13 +4951,18 @@ PPMAS2.define('ppma_select2/i18n/en',[],function () {
     },
     removeAllItems: function () {
       return 'Remove all items';
+    },
+    removeItem: function () {
+      return 'Remove item';
+    },
+    search: function() {
+      return 'Search';
     }
   };
 });
 
-PPMAS2.define('ppma_select2/defaults',[
+PPS2.define('pp_select2/defaults',[
   'jquery',
-  'require',
 
   './results',
 
@@ -4773,6 +4971,7 @@ PPMAS2.define('ppma_select2/defaults',[
   './selection/placeholder',
   './selection/allowClear',
   './selection/search',
+  './selection/selectionCss',
   './selection/eventRelay',
 
   './utils',
@@ -4796,14 +4995,16 @@ PPMAS2.define('ppma_select2/defaults',[
   './dropdown/minimumResultsForSearch',
   './dropdown/selectOnClose',
   './dropdown/closeOnSelect',
+  './dropdown/dropdownCss',
+  './dropdown/tagsSearchHighlight',
 
   './i18n/en'
-], function ($, require,
+], function ($,
 
              ResultsList,
 
              SingleSelection, MultipleSelection, Placeholder, AllowClear,
-             SelectionSearch, EventRelay,
+             SelectionSearch, SelectionCSS, EventRelay,
 
              Utils, Translation, DIACRITICS,
 
@@ -4812,6 +5013,7 @@ PPMAS2.define('ppma_select2/defaults',[
 
              Dropdown, DropdownSearch, HidePlaceholder, InfiniteScroll,
              AttachBody, MinimumResultsForSearch, SelectOnClose, CloseOnSelect,
+             DropdownCSS, TagsSearchHighlight,
 
              EnglishTranslation) {
   function Defaults () {
@@ -4861,24 +5063,6 @@ PPMAS2.define('ppma_select2/defaults',[
           Tokenizer
         );
       }
-
-      if (options.query != null) {
-        var Query = require(options.amdBase + 'compat/query');
-
-        options.dataAdapter = Utils.Decorate(
-          options.dataAdapter,
-          Query
-        );
-      }
-
-      if (options.initSelection != null) {
-        var InitSelection = require(options.amdBase + 'compat/initSelection');
-
-        options.dataAdapter = Utils.Decorate(
-          options.dataAdapter,
-          InitSelection
-        );
-      }
     }
 
     if (options.resultsAdapter == null) {
@@ -4902,6 +5086,13 @@ PPMAS2.define('ppma_select2/defaults',[
         options.resultsAdapter = Utils.Decorate(
           options.resultsAdapter,
           SelectOnClose
+        );
+      }
+
+      if (options.tags) {
+        options.resultsAdapter = Utils.Decorate(
+          options.resultsAdapter,
+          TagsSearchHighlight
         );
       }
     }
@@ -4929,13 +5120,7 @@ PPMAS2.define('ppma_select2/defaults',[
         );
       }
 
-      if (
-        options.dropdownCssClass != null ||
-        options.dropdownCss != null ||
-        options.adaptDropdownCssClass != null
-      ) {
-        var DropdownCSS = require(options.amdBase + 'compat/dropdownCss');
-
+      if (options.dropdownCssClass != null) {
         options.dropdownAdapter = Utils.Decorate(
           options.dropdownAdapter,
           DropdownCSS
@@ -4977,16 +5162,10 @@ PPMAS2.define('ppma_select2/defaults',[
         );
       }
 
-      if (
-        options.containerCssClass != null ||
-        options.containerCss != null ||
-        options.adaptContainerCssClass != null
-      ) {
-        var ContainerCSS = require(options.amdBase + 'compat/containerCss');
-
+      if (options.selectionCssClass != null) {
         options.selectionAdapter = Utils.Decorate(
           options.selectionAdapter,
-          ContainerCSS
+          SelectionCSS
         );
       }
 
@@ -5035,7 +5214,7 @@ PPMAS2.define('ppma_select2/defaults',[
 
     function matcher (params, data) {
       // Always return the object if there is nothing to compare
-      if ($.trim(params.term) === '') {
+      if (params.term == null || params.term.trim() === '') {
         return data;
       }
 
@@ -5079,8 +5258,8 @@ PPMAS2.define('ppma_select2/defaults',[
     }
 
     this.defaults = {
-      amdBase: './',
       amdLanguageBase: './i18n/',
+      autocomplete: 'off',
       closeOnSelect: true,
       debug: false,
       dropdownAutoWidth: false,
@@ -5140,7 +5319,7 @@ PPMAS2.define('ppma_select2/defaults',[
 
     var languages;
 
-    if (!$.isArray(language)) {
+    if (!Array.isArray(language)) {
       languages = [language];
     } else {
       languages = language;
@@ -5183,10 +5362,10 @@ PPMAS2.define('ppma_select2/defaults',[
           } catch (ex) {
             // The translation could not be loaded at all. Sometimes this is
             // because of a configuration problem, other times this can be
-            // because of how PPMA_Select2 helps load all possible translation files
+            // because of how pp_select2 helps load all possible translation files
             if (debug && window.console && console.warn) {
               console.warn(
-                'PPMA_Select2: The language file for "' + language + '" could ' +
+                'pp_select2: The language file for "' + language + '" could ' +
                 'not be automatically loaded. A fallback will be used instead.'
               );
             }
@@ -5205,7 +5384,10 @@ PPMAS2.define('ppma_select2/defaults',[
   };
 
   Defaults.prototype.set = function (key, value) {
-    var camelKey = $.camelCase(key);
+    function upperCaseLetter(_, letter) {
+      return letter.toUpperCase();
+    }
+    var camelKey = key.replace(/-([a-z])/g, upperCaseLetter);
 
     var data = {};
     data[camelKey] = value;
@@ -5220,12 +5402,11 @@ PPMAS2.define('ppma_select2/defaults',[
   return defaults;
 });
 
-PPMAS2.define('ppma_select2/options',[
-  'require',
+PPS2.define('pp_select2/options',[
   'jquery',
   './defaults',
   './utils'
-], function (require, $, Defaults, Utils) {
+], function ($, Defaults, Utils) {
   function Options (options, $element) {
     this.options = options;
 
@@ -5238,19 +5419,10 @@ PPMAS2.define('ppma_select2/options',[
     }
 
     this.options = Defaults.apply(this.options);
-
-    if ($element && $element.is('input')) {
-      var InputCompat = require(this.get('amdBase') + 'compat/inputData');
-
-      this.options.dataAdapter = Utils.Decorate(
-        this.options.dataAdapter,
-        InputCompat
-      );
-    }
   }
 
   Options.prototype.fromElement = function ($e) {
-    var excludedData = ['ppma_select2'];
+    var excludedData = ['pp_select2'];
 
     if (this.options.multiple == null) {
       this.options.multiple = $e.prop('multiple');
@@ -5258,6 +5430,10 @@ PPMAS2.define('ppma_select2/options',[
 
     if (this.options.disabled == null) {
       this.options.disabled = $e.prop('disabled');
+    }
+
+    if (this.options.autocomplete == null && $e.prop('autocomplete')) {
+      this.options.autocomplete = $e.prop('autocomplete');
     }
 
     if (this.options.dir == null) {
@@ -5273,25 +5449,25 @@ PPMAS2.define('ppma_select2/options',[
     $e.prop('disabled', this.options.disabled);
     $e.prop('multiple', this.options.multiple);
 
-    if (Utils.GetData($e[0], 'ppmaSelect2Tags')) {
+    if (Utils.GetData($e[0], 'pp_select2_tags')) {
       if (this.options.debug && window.console && console.warn) {
         console.warn(
-          'PPMA_Select2: The `data-ppma_select2-tags` attribute has been changed to ' +
+          'pp_select2: The `data-pp_select2-tags` attribute has been changed to ' +
           'use the `data-data` and `data-tags="true"` attributes and will be ' +
-          'removed in future versions of PPMA_Select2.'
+          'removed in future versions of pp_select2.'
         );
       }
 
-      Utils.StoreData($e[0], 'data', Utils.GetData($e[0], 'ppmaSelect2Tags'));
+      Utils.StoreData($e[0], 'data', Utils.GetData($e[0], 'pp_select2_tags'));
       Utils.StoreData($e[0], 'tags', true);
     }
 
     if (Utils.GetData($e[0], 'ajaxUrl')) {
       if (this.options.debug && window.console && console.warn) {
         console.warn(
-          'PPMA_Select2: The `data-ajax-url` attribute has been changed to ' +
+          'pp_select2: The `data-ajax-url` attribute has been changed to ' +
           '`data-ajax--url` and support for the old attribute will be removed' +
-          ' in future versions of PPMA_Select2.'
+          ' in future versions of pp_select2.'
         );
       }
 
@@ -5338,7 +5514,7 @@ PPMAS2.define('ppma_select2/options',[
     data = Utils._convertData(data);
 
     for (var key in data) {
-      if ($.inArray(key, excludedData) > -1) {
+      if (excludedData.indexOf(key) > -1) {
         continue;
       }
 
@@ -5363,15 +5539,15 @@ PPMAS2.define('ppma_select2/options',[
   return Options;
 });
 
-PPMAS2.define('ppma_select2/core',[
+PPS2.define('pp_select2/core',[
   'jquery',
   './options',
   './utils',
   './keys'
 ], function ($, Options, Utils, KEYS) {
-  var PPMA_Select2 = function ($element, options) {
-    if (Utils.GetData($element[0], 'ppma_select2') != null) {
-      Utils.GetData($element[0], 'ppma_select2').destroy();
+  var pp_select2 = function ($element, options) {
+    if (Utils.GetData($element[0], 'pp_select2') != null) {
+      Utils.GetData($element[0], 'pp_select2').destroy();
     }
 
     this.$element = $element;
@@ -5382,7 +5558,7 @@ PPMAS2.define('ppma_select2/core',[
 
     this.options = new Options(options, $element);
 
-    PPMA_Select2.__super__.constructor.call(this);
+    pp_select2.__super__.constructor.call(this);
 
     // Set up the tabindex
 
@@ -5442,21 +5618,21 @@ PPMAS2.define('ppma_select2/core',[
     });
 
     // Hide the original select
-    $element.addClass('ppma_select2-hidden-accessible');
+    $element[0].classList.add('pp_select2-hidden-accessible');
     $element.attr('aria-hidden', 'true');
 
     // Synchronize any monitored attributes
     this._syncAttributes();
 
-    Utils.StoreData($element[0], 'ppma_select2', this);
+    Utils.StoreData($element[0], 'pp_select2', this);
 
-    // Ensure backwards compatibility with $element.data('ppma_select2').
-    $element.data('ppma_select2', this);
+    // Ensure backwards compatibility with $element.data('select2').
+    $element.data('pp_select2', this);
   };
 
-  Utils.Extend(PPMA_Select2, Utils.Observable);
+  Utils.Extend(pp_select2, Utils.Observable);
 
-  PPMA_Select2.prototype._generateId = function ($element) {
+  pp_select2.prototype._generateId = function ($element) {
     var id = '';
 
     if ($element.attr('id') != null) {
@@ -5468,12 +5644,12 @@ PPMAS2.define('ppma_select2/core',[
     }
 
     id = id.replace(/(:|\.|\[|\]|,)/g, '');
-    id = 'ppma_select2-' + id;
+    id = 'pp_select2-' + id;
 
     return id;
   };
 
-  PPMA_Select2.prototype._placeContainer = function ($container) {
+  pp_select2.prototype._placeContainer = function ($container) {
     $container.insertAfter(this.$element);
 
     var width = this._resolveWidth(this.$element, this.options.get('width'));
@@ -5483,7 +5659,7 @@ PPMAS2.define('ppma_select2/core',[
     }
   };
 
-  PPMA_Select2.prototype._resolveWidth = function ($element, method) {
+  pp_select2.prototype._resolveWidth = function ($element, method) {
     var WIDTH = /^width:(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc))/i;
 
     if (method == 'resolve') {
@@ -5536,7 +5712,7 @@ PPMAS2.define('ppma_select2/core',[
     return method;
   };
 
-  PPMA_Select2.prototype._bindAdapters = function () {
+  pp_select2.prototype._bindAdapters = function () {
     this.dataAdapter.bind(this, this.$container);
     this.selection.bind(this, this.$container);
 
@@ -5544,10 +5720,10 @@ PPMAS2.define('ppma_select2/core',[
     this.results.bind(this, this.$container);
   };
 
-  PPMA_Select2.prototype._registerDomEvents = function () {
+  pp_select2.prototype._registerDomEvents = function () {
     var self = this;
 
-    this.$element.on('change.ppma_select2', function () {
+    this.$element.on('change.pp_select2', function () {
       self.dataAdapter.current(function (data) {
         self.trigger('selection:update', {
           data: data
@@ -5555,52 +5731,25 @@ PPMAS2.define('ppma_select2/core',[
       });
     });
 
-    this.$element.on('focus.ppma_select2', function (evt) {
+    this.$element.on('focus.pp_select2', function (evt) {
       self.trigger('focus', evt);
     });
 
     this._syncA = Utils.bind(this._syncAttributes, this);
     this._syncS = Utils.bind(this._syncSubtree, this);
 
-    if (this.$element[0].attachEvent) {
-      this.$element[0].attachEvent('onpropertychange', this._syncA);
-    }
-
-    var observer = window.MutationObserver ||
-      window.WebKitMutationObserver ||
-      window.MozMutationObserver
-    ;
-
-    if (observer != null) {
-      this._observer = new observer(function (mutations) {
-        self._syncA();
-        self._syncS(null, mutations);
-      });
-      this._observer.observe(this.$element[0], {
-        attributes: true,
-        childList: true,
-        subtree: false
-      });
-    } else if (this.$element[0].addEventListener) {
-      this.$element[0].addEventListener(
-        'DOMAttrModified',
-        self._syncA,
-        false
-      );
-      this.$element[0].addEventListener(
-        'DOMNodeInserted',
-        self._syncS,
-        false
-      );
-      this.$element[0].addEventListener(
-        'DOMNodeRemoved',
-        self._syncS,
-        false
-      );
-    }
+    this._observer = new window.MutationObserver(function (mutations) {
+      self._syncA();
+      self._syncS(mutations);
+    });
+    this._observer.observe(this.$element[0], {
+      attributes: true,
+      childList: true,
+      subtree: false
+    });
   };
 
-  PPMA_Select2.prototype._registerDataEvents = function () {
+  pp_select2.prototype._registerDataEvents = function () {
     var self = this;
 
     this.dataAdapter.on('*', function (name, params) {
@@ -5608,7 +5757,7 @@ PPMAS2.define('ppma_select2/core',[
     });
   };
 
-  PPMA_Select2.prototype._registerSelectionEvents = function () {
+  pp_select2.prototype._registerSelectionEvents = function () {
     var self = this;
     var nonRelayEvents = ['toggle', 'focus'];
 
@@ -5621,7 +5770,7 @@ PPMAS2.define('ppma_select2/core',[
     });
 
     this.selection.on('*', function (name, params) {
-      if ($.inArray(name, nonRelayEvents) !== -1) {
+      if (nonRelayEvents.indexOf(name) !== -1) {
         return;
       }
 
@@ -5629,7 +5778,7 @@ PPMAS2.define('ppma_select2/core',[
     });
   };
 
-  PPMA_Select2.prototype._registerDropdownEvents = function () {
+  pp_select2.prototype._registerDropdownEvents = function () {
     var self = this;
 
     this.dropdown.on('*', function (name, params) {
@@ -5637,7 +5786,7 @@ PPMAS2.define('ppma_select2/core',[
     });
   };
 
-  PPMA_Select2.prototype._registerResultsEvents = function () {
+  pp_select2.prototype._registerResultsEvents = function () {
     var self = this;
 
     this.results.on('*', function (name, params) {
@@ -5645,27 +5794,27 @@ PPMAS2.define('ppma_select2/core',[
     });
   };
 
-  PPMA_Select2.prototype._registerEvents = function () {
+  pp_select2.prototype._registerEvents = function () {
     var self = this;
 
     this.on('open', function () {
-      self.$container.addClass('ppma_select2-container--open');
+      self.$container[0].classList.add('pp_select2-container--open');
     });
 
     this.on('close', function () {
-      self.$container.removeClass('ppma_select2-container--open');
+      self.$container[0].classList.remove('pp_select2-container--open');
     });
 
     this.on('enable', function () {
-      self.$container.removeClass('ppma_select2-container--disabled');
+      self.$container[0].classList.remove('pp_select2-container--disabled');
     });
 
     this.on('disable', function () {
-      self.$container.addClass('ppma_select2-container--disabled');
+      self.$container[0].classList.add('pp_select2-container--disabled');
     });
 
     this.on('blur', function () {
-      self.$container.removeClass('ppma_select2-container--focus');
+      self.$container[0].classList.remove('pp_select2-container--focus');
     });
 
     this.on('query', function (params) {
@@ -5694,12 +5843,11 @@ PPMAS2.define('ppma_select2/core',[
       var key = evt.which;
 
       if (self.isOpen()) {
-        if (key === KEYS.ESC || key === KEYS.TAB ||
-            (key === KEYS.UP && evt.altKey)) {
+        if (key === KEYS.ESC || (key === KEYS.UP && evt.altKey)) {
           self.close(evt);
 
           evt.preventDefault();
-        } else if (key === KEYS.ENTER) {
+        } else if (key === KEYS.ENTER || key === KEYS.TAB) {
           self.trigger('results:select', {});
 
           evt.preventDefault();
@@ -5727,7 +5875,7 @@ PPMAS2.define('ppma_select2/core',[
     });
   };
 
-  PPMA_Select2.prototype._syncAttributes = function () {
+  pp_select2.prototype._syncAttributes = function () {
     this.options.set('disabled', this.$element.prop('disabled'));
 
     if (this.isDisabled()) {
@@ -5741,49 +5889,30 @@ PPMAS2.define('ppma_select2/core',[
     }
   };
 
-  PPMA_Select2.prototype._isChangeMutation = function (evt, mutations) {
-    var changed = false;
+  pp_select2.prototype._isChangeMutation = function (mutations) {
     var self = this;
 
-    // Ignore any mutation events raised for elements that aren't options or
-    // optgroups. This handles the case when the select element is destroyed
-    if (
-      evt && evt.target && (
-        evt.target.nodeName !== 'OPTION' && evt.target.nodeName !== 'OPTGROUP'
-      )
-    ) {
-      return;
-    }
-
-    if (!mutations) {
-      // If mutation events aren't supported, then we can only assume that the
-      // change affected the selections
-      changed = true;
-    } else if (mutations.addedNodes && mutations.addedNodes.length > 0) {
+    if (mutations.addedNodes && mutations.addedNodes.length > 0) {
       for (var n = 0; n < mutations.addedNodes.length; n++) {
         var node = mutations.addedNodes[n];
 
         if (node.selected) {
-          changed = true;
+          return true;
         }
       }
     } else if (mutations.removedNodes && mutations.removedNodes.length > 0) {
-      changed = true;
-    } else if ($.isArray(mutations)) {
-      $.each(mutations, function(evt, mutation) {
-        if (self._isChangeMutation(evt, mutation)) {
-          // We've found a change mutation.
-          // Let's escape from the loop and continue
-          changed = true;
-          return false;
-        }
+      return true;
+    } else if (Array.isArray(mutations)) {
+      return mutations.some(function (mutation) {
+        return self._isChangeMutation(mutation);
       });
     }
-    return changed;
+
+    return false;
   };
 
-  PPMA_Select2.prototype._syncSubtree = function (evt, mutations) {
-    var changed = this._isChangeMutation(evt, mutations);
+  pp_select2.prototype._syncSubtree = function (mutations) {
+    var changed = this._isChangeMutation(mutations);
     var self = this;
 
     // Only re-pull the data if we think there is a change
@@ -5800,8 +5929,8 @@ PPMAS2.define('ppma_select2/core',[
    * Override the trigger method to automatically trigger pre-events when
    * there are events that can be prevented.
    */
-  PPMA_Select2.prototype.trigger = function (name, args) {
-    var actualTrigger = PPMA_Select2.__super__.trigger;
+  pp_select2.prototype.trigger = function (name, args) {
+    var actualTrigger = pp_select2.__super__.trigger;
     var preTriggerMap = {
       'open': 'opening',
       'close': 'closing',
@@ -5834,7 +5963,7 @@ PPMAS2.define('ppma_select2/core',[
     actualTrigger.call(this, name, args);
   };
 
-  PPMA_Select2.prototype.toggleDropdown = function () {
+  pp_select2.prototype.toggleDropdown = function () {
     if (this.isDisabled()) {
       return;
     }
@@ -5846,7 +5975,7 @@ PPMAS2.define('ppma_select2/core',[
     }
   };
 
-  PPMA_Select2.prototype.open = function () {
+  pp_select2.prototype.open = function () {
     if (this.isOpen()) {
       return;
     }
@@ -5858,7 +5987,7 @@ PPMAS2.define('ppma_select2/core',[
     this.trigger('query', {});
   };
 
-  PPMA_Select2.prototype.close = function (evt) {
+  pp_select2.prototype.close = function (evt) {
     if (!this.isOpen()) {
       return;
     }
@@ -5873,7 +6002,7 @@ PPMAS2.define('ppma_select2/core',[
    * @return {true} if the instance is not disabled.
    * @return {false} if the instance is disabled.
    */
-  PPMA_Select2.prototype.isEnabled = function () {
+  pp_select2.prototype.isEnabled = function () {
     return !this.isDisabled();
   };
 
@@ -5883,33 +6012,33 @@ PPMAS2.define('ppma_select2/core',[
    * @return {true} if the disabled option is true.
    * @return {false} if the disabled option is false.
    */
-  PPMA_Select2.prototype.isDisabled = function () {
+  pp_select2.prototype.isDisabled = function () {
     return this.options.get('disabled');
   };
 
-  PPMA_Select2.prototype.isOpen = function () {
-    return this.$container.hasClass('ppma_select2-container--open');
+  pp_select2.prototype.isOpen = function () {
+    return this.$container[0].classList.contains('pp_select2-container--open');
   };
 
-  PPMA_Select2.prototype.hasFocus = function () {
-    return this.$container.hasClass('ppma_select2-container--focus');
+  pp_select2.prototype.hasFocus = function () {
+    return this.$container[0].classList.contains('pp_select2-container--focus');
   };
 
-  PPMA_Select2.prototype.focus = function (data) {
+  pp_select2.prototype.focus = function (data) {
     // No need to re-trigger focus events if we are already focused
     if (this.hasFocus()) {
       return;
     }
 
-    this.$container.addClass('ppma_select2-container--focus');
+    this.$container[0].classList.add('pp_select2-container--focus');
     this.trigger('focus', {});
   };
 
-  PPMA_Select2.prototype.enable = function (args) {
+  pp_select2.prototype.enable = function (args) {
     if (this.options.get('debug') && window.console && console.warn) {
       console.warn(
-        'PPMA_Select2: The `ppma_select2("enable")` method has been deprecated and will' +
-        ' be removed in later PPMA_Select2 versions. Use $element.prop("disabled")' +
+        'pp_select2: The `pp_select2("enable")` method has been deprecated and will' +
+        ' be removed in later pp_select2 versions. Use $element.prop("disabled")' +
         ' instead.'
       );
     }
@@ -5923,11 +6052,11 @@ PPMAS2.define('ppma_select2/core',[
     this.$element.prop('disabled', disabled);
   };
 
-  PPMA_Select2.prototype.data = function () {
+  pp_select2.prototype.data = function () {
     if (this.options.get('debug') &&
         arguments.length > 0 && window.console && console.warn) {
       console.warn(
-        'PPMA_Select2: Data can no longer be set using `ppma_select2("data")`. You ' +
+        'pp_select2: Data can no longer be set using `pp_select2("data")`. You ' +
         'should consider setting the value instead using `$element.val()`.'
       );
     }
@@ -5941,11 +6070,11 @@ PPMAS2.define('ppma_select2/core',[
     return data;
   };
 
-  PPMA_Select2.prototype.val = function (args) {
+  pp_select2.prototype.val = function (args) {
     if (this.options.get('debug') && window.console && console.warn) {
       console.warn(
-        'PPMA_Select2: The `ppma_select2("val")` method has been deprecated and will be' +
-        ' removed in later PPMA_Select2 versions. Use $element.val() instead.'
+        'pp_select2: The `pp_select2("val")` method has been deprecated and will be' +
+        ' removed in later pp_select2 versions. Use $element.val() instead.'
       );
     }
 
@@ -5955,8 +6084,8 @@ PPMAS2.define('ppma_select2/core',[
 
     var newVal = args[0];
 
-    if ($.isArray(newVal)) {
-      newVal = $.map(newVal, function (obj) {
+    if (Array.isArray(newVal)) {
+      newVal = newVal.map(function (obj) {
         return obj.toString();
       });
     }
@@ -5964,36 +6093,24 @@ PPMAS2.define('ppma_select2/core',[
     this.$element.val(newVal).trigger('input').trigger('change');
   };
 
-  PPMA_Select2.prototype.destroy = function () {
+  pp_select2.prototype.destroy = function () {
+    Utils.RemoveData(this.$container[0]);
     this.$container.remove();
 
-    if (this.$element[0].detachEvent) {
-      this.$element[0].detachEvent('onpropertychange', this._syncA);
-    }
-
-    if (this._observer != null) {
-      this._observer.disconnect();
-      this._observer = null;
-    } else if (this.$element[0].removeEventListener) {
-      this.$element[0]
-        .removeEventListener('DOMAttrModified', this._syncA, false);
-      this.$element[0]
-        .removeEventListener('DOMNodeInserted', this._syncS, false);
-      this.$element[0]
-        .removeEventListener('DOMNodeRemoved', this._syncS, false);
-    }
+    this._observer.disconnect();
+    this._observer = null;
 
     this._syncA = null;
     this._syncS = null;
 
-    this.$element.off('.ppma_select2');
+    this.$element.off('.pp_select2');
     this.$element.attr('tabindex',
     Utils.GetData(this.$element[0], 'old-tabindex'));
 
-    this.$element.removeClass('ppma_select2-hidden-accessible');
+    this.$element[0].classList.remove('pp_select2-hidden-accessible');
     this.$element.attr('aria-hidden', 'false');
     Utils.RemoveData(this.$element[0]);
-    this.$element.removeData('ppma_select2');
+    this.$element.removeData('pp_select2');
 
     this.dataAdapter.destroy();
     this.selection.destroy();
@@ -6006,9 +6123,9 @@ PPMAS2.define('ppma_select2/core',[
     this.results = null;
   };
 
-  PPMA_Select2.prototype.render = function () {
+  pp_select2.prototype.render = function () {
     var $container = $(
-      '<span class="ppma_select2 ppma_select2-container">' +
+      '<span class="pp_select2 pp_select2-container">' +
         '<span class="selection"></span>' +
         '<span class="dropdown-wrapper" aria-hidden="true"></span>' +
       '</span>'
@@ -6018,417 +6135,18 @@ PPMAS2.define('ppma_select2/core',[
 
     this.$container = $container;
 
-    this.$container.addClass('ppma_select2-container--' + this.options.get('theme'));
+    this.$container[0].classList
+      .add('pp_select2-container--' + this.options.get('theme'));
 
     Utils.StoreData($container[0], 'element', this.$element);
 
     return $container;
   };
 
-  return PPMA_Select2;
+  return pp_select2;
 });
 
-PPMAS2.define('ppma_select2/compat/utils',[
-  'jquery'
-], function ($) {
-  function syncCssClasses ($dest, $src, adapter) {
-    var classes, replacements = [], adapted;
-
-    classes = $.trim($dest.attr('class'));
-
-    if (classes) {
-      classes = '' + classes; // for IE which returns object
-
-      $(classes.split(/\s+/)).each(function () {
-        // Save all PPMA_Select2 classes
-        if (this.indexOf('ppma_select2-') === 0) {
-          replacements.push(this);
-        }
-      });
-    }
-
-    classes = $.trim($src.attr('class'));
-
-    if (classes) {
-      classes = '' + classes; // for IE which returns object
-
-      $(classes.split(/\s+/)).each(function () {
-        // Only adapt non-PPMA_Select2 classes
-        if (this.indexOf('ppma_select2-') !== 0) {
-          adapted = adapter(this);
-
-          if (adapted != null) {
-            replacements.push(adapted);
-          }
-        }
-      });
-    }
-
-    $dest.attr('class', replacements.join(' '));
-  }
-
-  return {
-    syncCssClasses: syncCssClasses
-  };
-});
-
-PPMAS2.define('ppma_select2/compat/containerCss',[
-  'jquery',
-  './utils'
-], function ($, CompatUtils) {
-  // No-op CSS adapter that discards all classes by default
-  function _containerAdapter (clazz) {
-    return null;
-  }
-
-  function ContainerCSS () { }
-
-  ContainerCSS.prototype.render = function (decorated) {
-    var $container = decorated.call(this);
-
-    var containerCssClass = this.options.get('containerCssClass') || '';
-
-    if ($.isFunction(containerCssClass)) {
-      containerCssClass = containerCssClass(this.$element);
-    }
-
-    var containerCssAdapter = this.options.get('adaptContainerCssClass');
-    containerCssAdapter = containerCssAdapter || _containerAdapter;
-
-    if (containerCssClass.indexOf(':all:') !== -1) {
-      containerCssClass = containerCssClass.replace(':all:', '');
-
-      var _cssAdapter = containerCssAdapter;
-
-      containerCssAdapter = function (clazz) {
-        var adapted = _cssAdapter(clazz);
-
-        if (adapted != null) {
-          // Append the old one along with the adapted one
-          return adapted + ' ' + clazz;
-        }
-
-        return clazz;
-      };
-    }
-
-    var containerCss = this.options.get('containerCss') || {};
-
-    if ($.isFunction(containerCss)) {
-      containerCss = containerCss(this.$element);
-    }
-
-    CompatUtils.syncCssClasses($container, this.$element, containerCssAdapter);
-
-    $container.css(containerCss);
-    $container.addClass(containerCssClass);
-
-    return $container;
-  };
-
-  return ContainerCSS;
-});
-
-PPMAS2.define('ppma_select2/compat/dropdownCss',[
-  'jquery',
-  './utils'
-], function ($, CompatUtils) {
-  // No-op CSS adapter that discards all classes by default
-  function _dropdownAdapter (clazz) {
-    return null;
-  }
-
-  function DropdownCSS () { }
-
-  DropdownCSS.prototype.render = function (decorated) {
-    var $dropdown = decorated.call(this);
-
-    var dropdownCssClass = this.options.get('dropdownCssClass') || '';
-
-    if ($.isFunction(dropdownCssClass)) {
-      dropdownCssClass = dropdownCssClass(this.$element);
-    }
-
-    var dropdownCssAdapter = this.options.get('adaptDropdownCssClass');
-    dropdownCssAdapter = dropdownCssAdapter || _dropdownAdapter;
-
-    if (dropdownCssClass.indexOf(':all:') !== -1) {
-      dropdownCssClass = dropdownCssClass.replace(':all:', '');
-
-      var _cssAdapter = dropdownCssAdapter;
-
-      dropdownCssAdapter = function (clazz) {
-        var adapted = _cssAdapter(clazz);
-
-        if (adapted != null) {
-          // Append the old one along with the adapted one
-          return adapted + ' ' + clazz;
-        }
-
-        return clazz;
-      };
-    }
-
-    var dropdownCss = this.options.get('dropdownCss') || {};
-
-    if ($.isFunction(dropdownCss)) {
-      dropdownCss = dropdownCss(this.$element);
-    }
-
-    CompatUtils.syncCssClasses($dropdown, this.$element, dropdownCssAdapter);
-
-    $dropdown.css(dropdownCss);
-    $dropdown.addClass(dropdownCssClass);
-
-    return $dropdown;
-  };
-
-  return DropdownCSS;
-});
-
-PPMAS2.define('ppma_select2/compat/initSelection',[
-  'jquery'
-], function ($) {
-  function InitSelection (decorated, $element, options) {
-    if (options.get('debug') && window.console && console.warn) {
-      console.warn(
-        'PPMA_Select2: The `initSelection` option has been deprecated in favor' +
-        ' of a custom data adapter that overrides the `current` method. ' +
-        'This method is now called multiple times instead of a single ' +
-        'time when the instance is initialized. Support will be removed ' +
-        'for the `initSelection` option in future versions of PPMA_Select2'
-      );
-    }
-
-    this.initSelection = options.get('initSelection');
-    this._isInitialized = false;
-
-    decorated.call(this, $element, options);
-  }
-
-  InitSelection.prototype.current = function (decorated, callback) {
-    var self = this;
-
-    if (this._isInitialized) {
-      decorated.call(this, callback);
-
-      return;
-    }
-
-    this.initSelection.call(null, this.$element, function (data) {
-      self._isInitialized = true;
-
-      if (!$.isArray(data)) {
-        data = [data];
-      }
-
-      callback(data);
-    });
-  };
-
-  return InitSelection;
-});
-
-PPMAS2.define('ppma_select2/compat/inputData',[
-  'jquery',
-  '../utils'
-], function ($, Utils) {
-  function InputData (decorated, $element, options) {
-    this._currentData = [];
-    this._valueSeparator = options.get('valueSeparator') || ',';
-
-    if ($element.prop('type') === 'hidden') {
-      if (options.get('debug') && console && console.warn) {
-        console.warn(
-          'PPMA_Select2: Using a hidden input with PPMA_Select2 is no longer ' +
-          'supported and may stop working in the future. It is recommended ' +
-          'to use a `<select>` element instead.'
-        );
-      }
-    }
-
-    decorated.call(this, $element, options);
-  }
-
-  InputData.prototype.current = function (_, callback) {
-    function getSelected (data, selectedIds) {
-      var selected = [];
-
-      if (data.selected || $.inArray(data.id, selectedIds) !== -1) {
-        data.selected = true;
-        selected.push(data);
-      } else {
-        data.selected = false;
-      }
-
-      if (data.children) {
-        selected.push.apply(selected, getSelected(data.children, selectedIds));
-      }
-
-      return selected;
-    }
-
-    var selected = [];
-
-    for (var d = 0; d < this._currentData.length; d++) {
-      var data = this._currentData[d];
-
-      selected.push.apply(
-        selected,
-        getSelected(
-          data,
-          this.$element.val().split(
-            this._valueSeparator
-          )
-        )
-      );
-    }
-
-    callback(selected);
-  };
-
-  InputData.prototype.select = function (_, data) {
-    if (!this.options.get('multiple')) {
-      this.current(function (allData) {
-        $.map(allData, function (data) {
-          data.selected = false;
-        });
-      });
-
-      this.$element.val(data.id);
-      this.$element.trigger('input').trigger('change');
-    } else {
-      var value = this.$element.val();
-      value += this._valueSeparator + data.id;
-
-      this.$element.val(value);
-      this.$element.trigger('input').trigger('change');
-    }
-  };
-
-  InputData.prototype.unselect = function (_, data) {
-    var self = this;
-
-    data.selected = false;
-
-    this.current(function (allData) {
-      var values = [];
-
-      for (var d = 0; d < allData.length; d++) {
-        var item = allData[d];
-
-        if (data.id == item.id) {
-          continue;
-        }
-
-        values.push(item.id);
-      }
-
-      self.$element.val(values.join(self._valueSeparator));
-      self.$element.trigger('input').trigger('change');
-    });
-  };
-
-  InputData.prototype.query = function (_, params, callback) {
-    var results = [];
-
-    for (var d = 0; d < this._currentData.length; d++) {
-      var data = this._currentData[d];
-
-      var matches = this.matches(params, data);
-
-      if (matches !== null) {
-        results.push(matches);
-      }
-    }
-
-    callback({
-      results: results
-    });
-  };
-
-  InputData.prototype.addOptions = function (_, $options) {
-    var options = $.map($options, function ($option) {
-      return Utils.GetData($option[0], 'data');
-    });
-
-    this._currentData.push.apply(this._currentData, options);
-  };
-
-  return InputData;
-});
-
-PPMAS2.define('ppma_select2/compat/matcher',[
-  'jquery'
-], function ($) {
-  function oldMatcher (matcher) {
-    function wrappedMatcher (params, data) {
-      var match = $.extend(true, {}, data);
-
-      if (params.term == null || $.trim(params.term) === '') {
-        return match;
-      }
-
-      if (data.children) {
-        for (var c = data.children.length - 1; c >= 0; c--) {
-          var child = data.children[c];
-
-          // Check if the child object matches
-          // The old matcher returned a boolean true or false
-          var doesMatch = matcher(params.term, child.text, child);
-
-          // If the child didn't match, pop it off
-          if (!doesMatch) {
-            match.children.splice(c, 1);
-          }
-        }
-
-        if (match.children.length > 0) {
-          return match;
-        }
-      }
-
-      if (matcher(params.term, data.text, data)) {
-        return match;
-      }
-
-      return null;
-    }
-
-    return wrappedMatcher;
-  }
-
-  return oldMatcher;
-});
-
-PPMAS2.define('ppma_select2/compat/query',[
-
-], function () {
-  function Query (decorated, $element, options) {
-    if (options.get('debug') && window.console && console.warn) {
-      console.warn(
-        'PPMA_Select2: The `query` option has been deprecated in favor of a ' +
-        'custom data adapter that overrides the `query` method. Support ' +
-        'will be removed for the `query` option in future versions of ' +
-        'PPMA_Select2.'
-      );
-    }
-
-    decorated.call(this, $element, options);
-  }
-
-  Query.prototype.query = function (_, params, callback) {
-    params.callback = callback;
-
-    var query = this.options.get('query');
-
-    query.call(null, params);
-  };
-
-  return Query;
-});
-
-PPMAS2.define('ppma_select2/dropdown/attachContainer',[
+PPS2.define('pp_select2/dropdown/attachContainer',[
 
 ], function () {
   function AttachContainer (decorated, $element, options) {
@@ -6440,14 +6158,14 @@ PPMAS2.define('ppma_select2/dropdown/attachContainer',[
     var $dropdownContainer = $container.find('.dropdown-wrapper');
     $dropdownContainer.append($dropdown);
 
-    $dropdown.addClass('ppma_select2-dropdown--below');
-    $container.addClass('ppma_select2-container--below');
+    $dropdown[0].classList.add('pp_select2-dropdown--below');
+    $container[0].classList.add('pp_select2-container--below');
   };
 
   return AttachContainer;
 });
 
-PPMAS2.define('ppma_select2/dropdown/stopPropagation',[
+PPS2.define('pp_select2/dropdown/stopPropagation',[
 
 ], function () {
   function StopPropagation () { }
@@ -6486,7 +6204,7 @@ PPMAS2.define('ppma_select2/dropdown/stopPropagation',[
   return StopPropagation;
 });
 
-PPMAS2.define('ppma_select2/selection/stopPropagation',[
+PPS2.define('pp_select2/selection/stopPropagation',[
 
 ], function () {
   function StopPropagation () { }
@@ -6534,9 +6252,9 @@ PPMAS2.define('ppma_select2/selection/stopPropagation',[
  */
 
 (function (factory) {
-    if ( typeof PPMAS2.define === 'function' && PPMAS2.define.amd ) {
+    if ( typeof PPS2.define === 'function' && PPS2.define.amd ) {
         // AMD. Register as an anonymous module.
-        PPMAS2.define('jquery-mousewheel',['jquery'], factory);
+        PPS2.define('jquery-mousewheel',['jquery'], factory);
     } else if (typeof exports === 'object') {
         // Node/CommonJS style for Browserify
         module.exports = factory;
@@ -6747,26 +6465,26 @@ PPMAS2.define('ppma_select2/selection/stopPropagation',[
 
 }));
 
-PPMAS2.define('jquery.ppma_select2',[
+PPS2.define('jquery.pp_select2',[
   'jquery',
   'jquery-mousewheel',
 
-  './ppma_select2/core',
-  './ppma_select2/defaults',
-  './ppma_select2/utils'
-], function ($, _, PPMA_Select2, Defaults, Utils) {
-  if ($.fn.ppma_select2 == null) {
+  './pp_select2/core',
+  './pp_select2/defaults',
+  './pp_select2/utils'
+], function ($, _, pp_select2, Defaults, Utils) {
+  if ($.fn.pp_select2 == null) {
     // All methods that should return the element
     var thisMethods = ['open', 'close', 'destroy'];
 
-    $.fn.ppma_select2 = function (options) {
+    $.fn.pp_select2 = function (options) {
       options = options || {};
 
       if (typeof options === 'object') {
         this.each(function () {
           var instanceOptions = $.extend(true, {}, options);
 
-          var instance = new PPMA_Select2($(this), instanceOptions);
+          var instance = new pp_select2($(this), instanceOptions);
         });
 
         return this;
@@ -6775,12 +6493,12 @@ PPMAS2.define('jquery.ppma_select2',[
         var args = Array.prototype.slice.call(arguments, 1);
 
         this.each(function () {
-          var instance = Utils.GetData(this, 'ppma_select2');
+          var instance = Utils.GetData(this, 'pp_select2');
 
           if (instance == null && window.console && console.error) {
             console.error(
-              'The ppma_select2(\'' + options + '\') method was called on an ' +
-              'element that is not using PPMA_Select2.'
+              'The pp_select2(\'' + options + '\') method was called on an ' +
+              'element that is not using pp_select2.'
             );
           }
 
@@ -6788,40 +6506,40 @@ PPMAS2.define('jquery.ppma_select2',[
         });
 
         // Check if we should be returning `this`
-        if ($.inArray(options, thisMethods) > -1) {
+        if (thisMethods.indexOf(options) > -1) {
           return this;
         }
 
         return ret;
       } else {
-        throw new Error('Invalid arguments for PPMA_Select2: ' + options);
+        throw new Error('Invalid arguments for pp_select2: ' + options);
       }
     };
   }
 
-  if ($.fn.ppma_select2.defaults == null) {
-    $.fn.ppma_select2.defaults = Defaults;
+  if ($.fn.pp_select2.defaults == null) {
+    $.fn.pp_select2.defaults = Defaults;
   }
 
-  return PPMA_Select2;
+  return pp_select2;
 });
 
   // Return the AMD loader configuration so it can be used outside of this file
   return {
-    define: PPMAS2.define,
-    require: PPMAS2.require
+    define: PPS2.define,
+    require: PPS2.require
   };
 }());
 
   // Autoload the jQuery bindings
   // We know that all of the modules exist above this, so we're safe
-  var ppma_select2 = PPMAS2.require('jquery.ppma_select2');
+  var pp_select2 = PPS2.require('jquery.pp_select2');
 
   // Hold the AMD module references on the jQuery function that was just loaded
-  // This allows PPMA_Select2 to use the internal loader outside of this file, such
+  // This allows pp_select2 to use the internal loader outside of this file, such
   // as in the language files.
-  jQuery.fn.ppma_select2.amd = PPMAS2;
+  jQuery.fn.pp_select2.amd = PPS2;
 
-  // Return the PPMA_Select2 instance for anyone who is importing it.
-  return ppma_select2;
+  // Return the pp_select2 instance for anyone who is importing it.
+  return pp_select2;
 }));
