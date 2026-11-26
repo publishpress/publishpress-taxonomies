@@ -238,6 +238,9 @@ function taxopress_update_taxonomy($data = [])
     if (!isset($data['cpt_custom_tax']['show_in_quick_edit'])) {
         $data['cpt_custom_tax']['show_in_quick_edit'] = 0;
     }
+    if (!isset($data['cpt_custom_tax']['enable_term_authors'])) {
+        $data['cpt_custom_tax']['enable_term_authors'] = 'default';
+    }
     if (!isset($data['cpt_custom_tax']['public'])) {
         $data['cpt_custom_tax']['public'] = 0;
     }
@@ -411,6 +414,7 @@ function taxopress_update_taxonomy($data = [])
             'show_admin_column'     => taxopress_disp_boolean($data['cpt_custom_tax']['show_admin_column']),
             'show_in_rest'          => taxopress_disp_boolean($data['cpt_custom_tax']['show_in_rest']),
             'show_in_quick_edit'    => $show_quickpanel_bulk,
+            'enable_term_authors'   => Taxopress_Term_Authors::normalize_override($data['cpt_custom_tax']['enable_term_authors']),
             'rest_base'             => $rest_base,
             'rest_controller_class' => $rest_controller_class,
             'labels'                => $data['cpt_tax_labels'],
@@ -465,6 +469,7 @@ function taxopress_update_taxonomy($data = [])
             'show_admin_column'     => taxopress_disp_boolean($data['cpt_custom_tax']['show_admin_column']),
             'show_in_rest'          => taxopress_disp_boolean($data['cpt_custom_tax']['show_in_rest']),
             'show_in_quick_edit'    => $show_quickpanel_bulk,
+            'enable_term_authors'   => Taxopress_Term_Authors::normalize_override($data['cpt_custom_tax']['enable_term_authors']),
             'rest_base'             => $rest_base,
             'rest_controller_class' => $rest_controller_class,
             'labels'                => $data['cpt_tax_labels'],

@@ -1011,6 +1011,10 @@ class SimpleTags_Admin
                 }
 
                 foreach ($options as $key => $value) {
+                    if ($is_fast_update_submission && $key === 'enable_term_authors') {
+                        $sanitized_options[$key] = $value;
+                        continue;
+                    }
                     // If this is NOT a Fast Update submission, preserve metabox/metabox-access keys
                     if (!$is_fast_update_submission && preg_match('/^(enable_taxopress_ai_|taxopress_ai_|enable_.*_metabox|enable_restrict.*_metabox|enable_edit_.*_metabox|enable_metabox_|remove_taxonomy_metabox_)/', $key)) {
                         // Keep existing value as-is
@@ -1302,6 +1306,10 @@ class SimpleTags_Admin
                     case 'checkbox':
                         $desc_html_tag = 'span';
                         $input_type    = '<input type="checkbox" id="' . $option[0] . '" name="' . $option[0] . '" value="' . esc_attr($option[3]) . '" ' . (($option_actual[$option[0]]) ? 'checked="checked"' : '') . ' />' . PHP_EOL;
+                        if (!empty($option[7]['checkbox_label'])) {
+                            $input_type = '<label>' . $input_type . ' ' . esc_html($option[7]['checkbox_label']) . '</label>';
+                            $desc_html_tag = 'div';
+                        }
                         break;
 
                     case 'multiselect':
@@ -1480,6 +1488,8 @@ class SimpleTags_Admin
                 return esc_html__('License', 'simple-tags');
             case 'hidden_terms':
                 return esc_html__('Hidden Terms', 'simple-tags');
+            case 'term_authors':
+                return esc_html__('Term Authors', 'simple-tags');
             case 'frontend_scripts':
                 return esc_html__('Frontend Scripts', 'simple-tags');
             case 'manage_terms':

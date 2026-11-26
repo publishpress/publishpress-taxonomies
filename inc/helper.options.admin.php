@@ -332,6 +332,19 @@ foreach (taxopress_get_all_wp_roles() as $role_name => $role_info) {
 }
 
 $options = array(
+    'term_authors' => array(
+        array(
+            'enable_term_authors',
+            __('Enable Term Authors:', 'simple-tags'),
+            'checkbox',
+            '1',
+            '<p>' . esc_html__('To enable or disable for a specific taxonomy, go to Taxonomies, edit the taxonomy, and choose Term Authors under Admin Area.', 'simple-tags') . '</p>'
+                . '<p>' . esc_html__('Individual taxonomy choices take priority over this setting.', 'simple-tags') . '</p>',
+            '',
+            null,
+            ['checkbox_label' => __('Enable authors for all taxonomies.', 'simple-tags')]
+        ),
+    ),
     // post tab
     'posts'       => array(
         array(

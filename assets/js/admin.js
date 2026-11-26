@@ -242,7 +242,8 @@
         params = {
           action: 'taxopress_terms_inline_save_term',
           tax_ID: id,
-          taxonomy: tax
+          taxonomy: tax,
+          terms_filter_taxonomy: $('.manage-taxopress-terms [name="terms_filter_taxonomy"]').first().val() || ''
         };
     
         fields = $('#edit-'+id).find(':input').serialize();
@@ -1521,6 +1522,7 @@
       $('input[name="taxonomy_type"]').val($('#terms_filter_select_taxonomy_type :selected').val());
       $('input[name="terms_filter_post_type"]').val($('#terms_filter_select_post_type :selected').val());
       $('input[name="terms_filter_taxonomy"]').val($('#terms_filter_select_taxonomy :selected').val());
+      $('input[name="taxopress_author"]').val($('#terms-filter-author').val() || '');
       $('input[name="terms_filter_status_message"]').val($('#terms_filter_select_status_message :selected').val());
       $('input[name="terms_filter_settings"]').val($('#terms_filter_select_settings :selected').val());
       $('#taxopress-terms-search-submit').trigger('click');
