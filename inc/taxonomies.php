@@ -1142,6 +1142,21 @@ class SimpleTags_Admin_Taxonomies
                                                     )
                                                 );
 
+                                                $author_setting = Taxopress_Term_Authors::normalize_override($current['enable_term_authors'] ?? 'default');
+                                                ?>
+                                                <tr>
+                                                    <th scope="row"><label for="enable_term_authors"><?php esc_html_e('Term Authors', 'simple-tags'); ?></label></th>
+                                                    <td>
+                                                        <select id="enable_term_authors" name="cpt_custom_tax[enable_term_authors]" aria-describedby="term-authors-description">
+                                                            <option value="default" <?php selected($author_setting, 'default'); ?>><?php esc_html_e('Use global setting', 'simple-tags'); ?></option>
+                                                            <option value="1" <?php selected($author_setting, '1'); ?>><?php esc_html_e('Enabled', 'simple-tags'); ?></option>
+                                                            <option value="0" <?php selected($author_setting, '0'); ?>><?php esc_html_e('Disabled', 'simple-tags'); ?></option>
+                                                        </select>
+                                                        <p id="term-authors-description" class="description"><?php esc_html_e('Choose whether terms in this taxonomy can have authors. The global setting is in Settings → Term Authors. New terms default to the logged-in user.', 'simple-tags'); ?></p>
+                                                    </td>
+                                                </tr>
+                                                <?php
+
                                                 ?>
 
                                             </table>

@@ -16,6 +16,8 @@ require STAGS_DIR . '/inc/related-posts-functions.php'; // Related posts functio
 require STAGS_DIR . '/inc/autolinks-functions.php'; // Auto links functions
 require STAGS_DIR . '/inc/autoterms-functions.php'; // Auto terms functions
 require STAGS_DIR . '/inc/terms-functions.php'; // terms functions
+require_once STAGS_DIR . '/inc/term-authors.php';
+Taxopress_Term_Authors::register();
 require STAGS_DIR . '/inc/functions.deprecated.php'; // Deprecated functions
 require STAGS_DIR . '/inc/functions.tpl.php';  // Templates functions
 

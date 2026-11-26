@@ -139,6 +139,8 @@ class SimpleTags_Terms
             wp_die(esc_html__('Error updating term.'));
         }
 
+        Taxopress_Term_Authors::save_from_request($tag->term_id, $tag->taxonomy);
+
         $wp_list_table = new Taxopress_Terms_List();
 
         $wp_list_table->single_row($tag);

@@ -53,6 +53,10 @@ function wp_update_term($id, $taxonomy, $args) {
     return ['term_id' => $id];
 }
 require dirname(__DIR__, 2) . '/inc/terms-functions.php';
+function taxopress_get_all_edited_taxonomy_data() { return []; }
+function get_taxopress_disp_boolean($value) { return (bool) $value; }
+class SimpleTags_Plugin { public static function get_option_value($name) { return 0; } }
+require dirname(__DIR__, 2) . '/inc/term-authors.php';
 require dirname(__DIR__, 2) . '/inc/terms-table.php';
 class ParentTermsTable extends Taxopress_Terms_List
 {
