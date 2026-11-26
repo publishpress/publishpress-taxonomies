@@ -154,6 +154,13 @@ class SimpleTags_Admin_Taxonomies
      */
     public function page_manage_taxonomies()
     {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only page routing.
+        if (isset($_GET['templates'])) {
+            TaxoPress_Taxonomy_Templates::render();
+            SimpleTags_Admin::printAdminFooter();
+            return;
+        }
+
         // Default order
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading non-state-modifying GET parameter for default value
         if (!isset($_GET['order'])) {
@@ -172,6 +179,8 @@ class SimpleTags_Admin_Taxonomies
                 <h1 class="wp-heading-inline"><?php _e('Taxonomies', 'simple-tags'); ?></h1>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=st_taxonomies&add=taxonomy')); ?>"
                    class="page-title-action"><?php esc_html_e('Add New', 'simple-tags'); ?></a>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=st_taxonomies&templates=1')); ?>"
+                   class="page-title-action"><?php esc_html_e('Add from Templates', 'simple-tags'); ?></a>
 
                    <div class="taxopress-description"><?php esc_html_e('This feature allows you to create new taxonomies and edit all the settings for each taxonomy.', 'simple-tags'); ?></div>
 
