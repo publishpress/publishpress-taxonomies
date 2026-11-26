@@ -584,7 +584,7 @@
       taxopressPostSelect2($('.taxopress-ai-post-search'));
       function taxopressPostSelect2(selector) {
         selector.each(function () {
-            var postsSearch = $(this).ppma_select2({
+            var postsSearch = $(this).pp_select2({
                 placeholder: $(this).data("placeholder"),
                 allowClear: $(this).data("allow-clear"),
                 ajax: {
@@ -610,7 +610,7 @@
        */
       $(document).on("change", ".preview-post-types-select", function (event) {
         var post_select = $(this).closest('.taxopress-preview-filters').find('.preview-post-select');
-        post_select.val('').empty().ppma_select2('destroy');
+        post_select.val('').empty().pp_select2('destroy');
         taxopressPostSelect2($('.taxopress-ai-post-search'));
       });
 
@@ -700,7 +700,7 @@
      * Add ai select 2 if the div is present on the page
      */
     if ($('.taxopress-ai-select2').length > 0) {
-      $('.taxopress-ai-select2').ppma_select2({
+      $('.taxopress-ai-select2').pp_select2({
         placeholder: $(this).data("placeholder"),
         allowClear: $(this).data("allow-clear"),
       });
@@ -879,7 +879,7 @@
     }
 
     function autoterm_option_select2() {
-      $('.auto_term_terms_options.select').ppma_select2({
+      $('.auto_term_terms_options.select').pp_select2({
         placeholder: $(this).data("placeholder"),
       });
     }
@@ -1031,8 +1031,8 @@
     });
 
     // Override the existing post search functionality to use selected post type
-    if ($.fn.ppma_select2) {
-        $('.preview-post-select').ppma_select2({
+    if ($.fn.pp_select2) {
+        $('.preview-post-select').pp_select2({
             placeholder: $(this).data("placeholder"),
             allowClear: $(this).data("allow-clear"),
             ajax: {
@@ -1215,9 +1215,9 @@
 
                 // Trigger normal change and select2-specific event to ensure UI updates
                 $taxonomySelect.trigger('change');
-                $taxonomySelect.trigger('change.select2');
+                $taxonomySelect.trigger('change.pp_select2');
                 $createTaxonomySelect.trigger('change');
-                $createTaxonomySelect.trigger('change.select2');
+                $createTaxonomySelect.trigger('change.pp_select2');
 
                 // Update UI based on permissions
                 if (!response.data.can_create_terms) {

@@ -713,18 +713,19 @@ class SimpleTags_Admin
         wp_enqueue_style('taxopress-admin-tooltip');
 
         // Register Select 2
+        $select2_version = '4.1.0.1';
         wp_register_script(
             'taxopress-admin-select2',
             STAGS_URL . '/assets/lib/select2/js/select2.full.min.js',
             ['jquery'],
-            STAGS_VERSION
+            $select2_version
         );
 
         wp_register_style(
             'taxopress-admin-select2',
             STAGS_URL . '/assets/lib/select2/css/select2.min.css',
             [],
-            STAGS_VERSION
+            $select2_version
         );
 
         if ($select_2_page) {

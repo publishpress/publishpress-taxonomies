@@ -86,7 +86,9 @@ class TaxopressCoreAdmin
 
     public function taxopress_load_admin_core_assets()
     {
-        wp_register_style('st-admin-core', STAGS_URL . '/includes-core/assets/css/core.css', array(), STAGS_VERSION, 'all');
+        $style_path = STAGS_DIR . '/includes-core/assets/css/core.css';
+        $style_version = file_exists($style_path) ? STAGS_VERSION . '.' . filemtime($style_path) : STAGS_VERSION;
+        wp_register_style('st-admin-core', STAGS_URL . '/includes-core/assets/css/core.css', array(), $style_version, 'all');
     }
 
     public function taxopress_load_admin_core_styles()
