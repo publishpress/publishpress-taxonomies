@@ -9,6 +9,16 @@ jobs:
     uses: ./.github/workflows/code-standards.yml
     secrets: inherit
 
+  language-packs:
+    needs:
+      - code-check
+    permissions:
+      contents: write
+    uses: publishpress/github-workflows/.github/workflows/language-pack.yml@v3
+    secrets: inherit
+    with:
+      text_domain: simple-tags
+
   deploy-wp-org:
     needs:
       - code-check
