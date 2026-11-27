@@ -8,6 +8,8 @@ readme.txt whitespace=cr-at-eol
 
 *.code-workspace export-ignore
 .babelrc export-ignore
+.agents export-ignore
+/composer.json export-ignore
 .env.example export-ignore
 .env.testing.linux.dist export-ignore
 .env.testing.mac.dist export-ignore
@@ -18,6 +20,7 @@ readme.txt whitespace=cr-at-eol
 .ide.php export-ignore
 .php-cs-fixer.cache export-ignore
 .phpcs.xml export-ignore
+.phpcs-plugin-review.xml export-ignore
 .phplint-cache export-ignore
 .phplint.yml export-ignore
 .rsync-filters-pre-build export-ignore
@@ -41,7 +44,7 @@ legacy-tests export-ignore
 node_modules export-ignore
 package-lock.json export-ignore
 package.json export-ignore
-phpmd-ruleset.xml export-ignore
+phpmd.*.xml export-ignore
 psalm.xml export-ignore
 ray-dist.php export-ignore
 ray.php export-ignore

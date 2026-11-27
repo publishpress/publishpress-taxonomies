@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e773121d81a18981408025f58be1ef60",
+    "content-hash": "b9e66c84a6889728ec95227439c55a84",
     "packages": [
         {
             "name": "publishpress/bundled-translations",

@@ -110,7 +110,7 @@ tr.taxopress-select-with-icon .taxopress-stpexplan {
 }
 
 .taxopress-autoterm-additional-taxonomies-promo > select,
-.taxopress-autoterm-additional-taxonomies-promo > .ppma_select2-container {
+.taxopress-autoterm-additional-taxonomies-promo > .pp_select2-container {
     flex: 1 1 auto;
     width: auto !important;
     min-width: 0;

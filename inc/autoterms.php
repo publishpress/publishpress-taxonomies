@@ -445,7 +445,7 @@ class SimpleTags_Autoterms
                                             ?>
 
 
-                                            <ul class="taxopress-tab">
+                                            <ul class="taxopress-tab taxopress-autoterms-tabs">
                                                 <li class="autoterm_general_tab <?php echo $active_tab === 'autoterm_general' ? 'active' : ''; ?>" data-content="autoterm_general">
                                                     <a href="#autoterm_general"<?php echo $active_tab === 'autoterm_general' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('General',
                                                         'simple-tags'); ?></span></a>
@@ -479,6 +479,11 @@ class SimpleTags_Autoterms
 
                                                 <li class="autoterm_preview_tab <?php echo $active_tab === 'autoterm_preview' ? 'active' : ''; ?>" data-content="autoterm_preview">
                                                     <a href="#autoterm_preview"<?php echo $active_tab === 'autoterm_preview' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Preview',
+                                                        'simple-tags'); ?></span></a>
+                                                </li>
+
+                                                <li class="autoterm_preview_settings_tab <?php echo $active_tab === 'autoterm_preview_settings' ? 'active' : ''; ?>" data-content="autoterm_preview_settings">
+                                                    <a href="#autoterm_preview_settings"<?php echo $active_tab === 'autoterm_preview_settings' ? ' aria-current="true"' : ''; ?>><span><?php esc_html_e('Preview Settings',
                                                         'simple-tags'); ?></span></a>
                                                 </li>
 
@@ -1600,6 +1605,18 @@ class SimpleTags_Autoterms
 
                                                 <table class="form-table taxopress-table autoterm_preview"
                                                        style="<?php echo $active_tab === 'autoterm_preview' ? '' : 'display:none;'; ?>">
+                                                    <?php
+                                                    $autoterm_preview_colors = TaxoPressAiUtilities::get_autoterm_preview_colors(isset($current) ? (array) $current : []);
+                                                    $autoterm_preview_color_style = sprintf(
+                                                        '--taxopress-term-on-post-color:%1$s;--taxopress-term-on-post-text-color:%2$s;--taxopress-existing-term-color:%3$s;--taxopress-existing-term-text-color:%4$s;--taxopress-new-term-color:%5$s;--taxopress-new-term-text-color:%6$s;',
+                                                        $autoterm_preview_colors['term_on_post'],
+                                                        TaxoPressAiUtilities::get_contrast_text_color($autoterm_preview_colors['term_on_post']),
+                                                        $autoterm_preview_colors['existing_term'],
+                                                        TaxoPressAiUtilities::get_contrast_text_color($autoterm_preview_colors['existing_term']),
+                                                        $autoterm_preview_colors['new_term'],
+                                                        TaxoPressAiUtilities::get_contrast_text_color($autoterm_preview_colors['new_term'])
+                                                    );
+                                                    ?>
                                                     <tr class="autoterm-description-tr">
                                                         <td colspan="2">
                                                         <p class="description" style="margin-bottom: 20px;"><?php echo esc_attr__('Save changes to the settings before using this feature.', 'simple-tags'); ?></p>
@@ -1669,13 +1686,75 @@ class SimpleTags_Autoterms
                                                                 data-copy-error-message="<?php echo esc_attr__('The debug information could not be copied. Please try again.', 'simple-tags'); ?>"
                                                                 data-download-filename="publishpress-taxonomies-auto-terms-debug"
                                                                 hidden></div>
-                                                            <div class="taxopress-autoterm-result">
+                                                            <div class="taxopress-autoterm-result" style="<?php echo esc_attr($autoterm_preview_color_style); ?>">
                                                                 <div class="output"></div>
                                                                 <div class="response"></div>
                                                             </div>
                                                         </td>
                                                     </tr>
 
+                                                </table>
+
+                                                <table class="form-table taxopress-table autoterm_preview_settings"
+                                                       style="<?php echo $active_tab === 'autoterm_preview_settings' ? '' : 'display:none;'; ?>">
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <div class="taxopress-autoterm-color-settings">
+                                                                <h3><?php esc_html_e('Preview Term Colors', 'simple-tags'); ?></h3>
+
+                                                                <div class="taxopress-autoterm-color-setting">
+                                                                    <label for="autoterm_preview_term_on_post_color">
+                                                                        <?php esc_html_e('Term Assigned to Post', 'simple-tags'); ?>
+                                                                    </label>
+                                                                    <input type="text"
+                                                                        id="autoterm_preview_term_on_post_color"
+                                                                        name="taxopress_autoterm[autoterm_preview_term_on_post_color]"
+                                                                        class="text-color taxopress-autoterm-color"
+                                                                        value="<?php echo esc_attr($autoterm_preview_colors['term_on_post']); ?>"
+                                                                        data-default-color="#5ecd8a"
+                                                                        data-css-variable="--taxopress-term-on-post-color"
+                                                                        data-text-css-variable="--taxopress-term-on-post-text-color">
+                                                                    <p class="description">
+                                                                        <?php esc_html_e('The background color for terms already assigned to the selected post.', 'simple-tags'); ?>
+                                                                    </p>
+                                                                </div>
+
+                                                                <div class="taxopress-autoterm-color-setting">
+                                                                    <label for="autoterm_preview_existing_term_color">
+                                                                        <?php esc_html_e('Existing Term Not Assigned', 'simple-tags'); ?>
+                                                                    </label>
+                                                                    <input type="text"
+                                                                        id="autoterm_preview_existing_term_color"
+                                                                        name="taxopress_autoterm[autoterm_preview_existing_term_color]"
+                                                                        class="text-color taxopress-autoterm-color"
+                                                                        value="<?php echo esc_attr($autoterm_preview_colors['existing_term']); ?>"
+                                                                        data-default-color="#dddddd"
+                                                                        data-css-variable="--taxopress-existing-term-color"
+                                                                        data-text-css-variable="--taxopress-existing-term-text-color">
+                                                                    <p class="description">
+                                                                        <?php esc_html_e('The background color for existing terms not assigned to the selected post.', 'simple-tags'); ?>
+                                                                    </p>
+                                                                </div>
+
+                                                                <div class="taxopress-autoterm-color-setting">
+                                                                    <label for="autoterm_preview_new_term_color">
+                                                                        <?php esc_html_e('Term Does Not Exist', 'simple-tags'); ?>
+                                                                    </label>
+                                                                    <input type="text"
+                                                                        id="autoterm_preview_new_term_color"
+                                                                        name="taxopress_autoterm[autoterm_preview_new_term_color]"
+                                                                        class="text-color taxopress-autoterm-color"
+                                                                        value="<?php echo esc_attr($autoterm_preview_colors['new_term']); ?>"
+                                                                        data-default-color="#dddddd"
+                                                                        data-css-variable="--taxopress-new-term-color"
+                                                                        data-text-css-variable="--taxopress-new-term-text-color">
+                                                                    <p class="description">
+                                                                        <?php esc_html_e('The background color for suggested terms that have not been created yet.', 'simple-tags'); ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </table>
 
 

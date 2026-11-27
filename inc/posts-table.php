@@ -241,7 +241,7 @@ class Taxopress_Posts_List extends WP_List_Table
         /**
          * Pagination.
          */
-        $current_page = $this->get_pagenum();
+        $this->get_pagenum();
         $total_items  = $posts_data['max_num_posts'];
 
         /**

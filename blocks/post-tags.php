@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  */
 function st_post_tags_block_init()
 {
-    global $post, $pagenow;
+    global $pagenow;
 
     if (!function_exists('register_block_type')) {
         return;
@@ -54,17 +54,6 @@ function st_post_tags_block_init()
         'render_callback' => 'st_post_tags_render',
     ]);
 
-    $shortcode_page = sprintf(
-        '<a href="%s">%s</a>',
-        add_query_arg(
-            [
-                'page'               => 'st_post_tags',
-            ],
-            admin_url('admin.php')
-        ),
-        esc_html__('Here', 'simple-tags')
-    );
-
     $select_label = __(' Select current post', 'simple-tags');
     $panel_title  = __('Current Posts (PublishPress Taxonomies)', 'simple-tags');
 
@@ -84,7 +73,6 @@ add_action('init', 'st_post_tags_block_init');
  */
 function st_post_tags_render($attributes)
 {
-    global $post;
     ob_start();
     echo do_shortcode('[taxopress_postterms id="' . $attributes['posttags_id'] . '"]');
 

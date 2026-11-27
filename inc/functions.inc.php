@@ -717,20 +717,26 @@ function taxopress_get_linked_terms($term_id, $taxonomy = '', $term_object = fal
     }
 
     $table_name = $wpdb->prefix . 'taxopress_linked_terms';
+    // Ignore older orphaned rows, including when the feature has not yet run admin maintenance.
+    $valid_relations = " FROM $table_name AS relations
+        INNER JOIN {$wpdb->term_taxonomy} AS primary_term
+            ON primary_term.term_id = relations.term_id AND primary_term.taxonomy = relations.term_taxonomy
+        INNER JOIN {$wpdb->term_taxonomy} AS secondary_term
+            ON secondary_term.term_id = relations.linked_term_id AND secondary_term.taxonomy = relations.linked_term_taxonomy";
 
     if ($linked_terms_type == 'primary') {
         $query = $wpdb->prepare(
-            "SELECT * FROM $table_name WHERE term_id = %d",
+            "SELECT relations.* $valid_relations WHERE relations.term_id = %d",
             $term_id
         );
     } elseif ($linked_terms_type == 'secondary') {
         $query = $wpdb->prepare(
-            "SELECT * FROM $table_name WHERE linked_term_id = %d",
+            "SELECT relations.* $valid_relations WHERE relations.linked_term_id = %d",
             $term_id
         );
     } else {
         $query = $wpdb->prepare(
-            "SELECT * FROM $table_name WHERE term_id = %d OR linked_term_id = %d",
+            "SELECT relations.* $valid_relations WHERE relations.term_id = %d OR relations.linked_term_id = %d",
             $term_id,
             $term_id
         );
@@ -801,7 +807,8 @@ function taxopress_add_linked_term_options($lists, $term, $taxonomy, $linked = f
         }
     }
 
-    if ($term_id > 0) {
+    $source_term = $term_id > 0 ? get_term((int) $term_id, $taxonomy) : null;
+    if ($source_term && !is_wp_error($source_term)) {
         // get linked terms
         $linked_terms_type = SimpleTags_Plugin::get_option_value('linked_terms_type');
         $linked_terms = taxopress_get_linked_terms($term_id, $taxonomy, true, $linked_terms_type);
@@ -813,12 +820,21 @@ function taxopress_add_linked_term_options($lists, $term, $taxonomy, $linked = f
                         continue;
                     }
                     $linked_term_data = taxopress_get_linked_term_data($linked_term, $term_id);
-                    $linked_term_name = stripslashes($linked_term_data->term_name);
-                    $linked_term_id   = $linked_term_data->term_id;
+                    $target_term = get_term((int) $linked_term_data->term_id, $linked_term_data->term_taxonomy);
+                    if (!$target_term || is_wp_error($target_term)) {
+                        continue;
+                    }
+                    $linked_term_name = stripslashes($target_term->name);
+                    $linked_term_id   = $target_term->term_id;
                     if ($linked) {
-                        $term_value = get_term_link($linked_term->term_id, $linked_term_data->term_taxonomy);
-                        if (is_wp_error($term_value)) {
-                            $term_value = '';
+                        // Keep the existing primary-archive behavior, using a validated term object.
+                        $primary_term = get_term((int) $linked_term->term_id, $linked_term->term_taxonomy);
+                        if (!$primary_term || is_wp_error($primary_term)) {
+                            continue;
+                        }
+                        $term_value = get_term_link($primary_term);
+                        if (is_wp_error($term_value) || !$term_value) {
+                            continue;
                         }
                     } elseif ($named_term) {
                         $term_value = $linked_term_name;
@@ -1075,6 +1091,7 @@ function taxopress_get_posts_data(array $filters)
                     'taxonomy' => $term_filter_data->taxonomy,
                     'field'     => 'term_id',
                     'terms'    => $term_filter_data->term_id,
+                    'include_children' => false,
                 )
             );
         }

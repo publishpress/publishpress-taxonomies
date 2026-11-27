@@ -154,6 +154,13 @@ class SimpleTags_Admin_Taxonomies
      */
     public function page_manage_taxonomies()
     {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only page routing.
+        if (isset($_GET['templates'])) {
+            TaxoPress_Taxonomy_Templates::render();
+            SimpleTags_Admin::printAdminFooter();
+            return;
+        }
+
         // Default order
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading non-state-modifying GET parameter for default value
         if (!isset($_GET['order'])) {
@@ -172,6 +179,8 @@ class SimpleTags_Admin_Taxonomies
                 <h1 class="wp-heading-inline"><?php _e('Taxonomies', 'simple-tags'); ?></h1>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=st_taxonomies&add=taxonomy')); ?>"
                    class="page-title-action"><?php esc_html_e('Add New', 'simple-tags'); ?></a>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=st_taxonomies&templates=1')); ?>"
+                   class="page-title-action"><?php esc_html_e('Add from Templates', 'simple-tags'); ?></a>
 
                    <div class="taxopress-description"><?php esc_html_e('This feature allows you to create new taxonomies and edit all the settings for each taxonomy.', 'simple-tags'); ?></div>
 
@@ -395,7 +404,6 @@ class SimpleTags_Admin_Taxonomies
 
         $external_edit = false;
         $taxonomy_edit = false;
-        $core_edit = false;
 
         if ('edit' === $tab) {
             $taxonomies = taxopress_get_taxonomy_data();
@@ -422,15 +430,6 @@ class SimpleTags_Admin_Taxonomies
 
             if ($request_tax === 'media_tag') {
                 $external_edit = false;
-            }
-        }
-
-        if ($taxonomy_edit) {
-            $wordpress_core_tax = array_keys(get_taxonomies(['_builtin' => true]));
-            $wordpress_core_tax[] = 'post_tag';
-            $wordpress_core_tax[] = 'category';
-            if (in_array($current['name'], $wordpress_core_tax)) {
-                $core_edit = true;
             }
         }
 
@@ -728,13 +727,6 @@ class SimpleTags_Admin_Taxonomies
                                                 );
 
                                                 foreach ($post_types as $post_type) {
-                                                    $core_label = in_array($post_type->name, [
-                                                        'post',
-                                                        'page',
-                                                        'attachment',
-                                                    ], true) ? '' : '';
-
-
                                                     echo '<tr valign="top"><th scope="row"><label for="' . esc_attr($post_type->name) . '">' . esc_html($post_type->label) . '</label></th><td>';
 
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -1141,6 +1133,21 @@ class SimpleTags_Admin_Taxonomies
                                                     'selections' => $select, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     )
                                                 );
+
+                                                $author_setting = Taxopress_Term_Authors::normalize_override($current['enable_term_authors'] ?? 'default');
+                                                ?>
+                                                <tr>
+                                                    <th scope="row"><label for="enable_term_authors"><?php esc_html_e('Term Authors', 'simple-tags'); ?></label></th>
+                                                    <td>
+                                                        <select id="enable_term_authors" name="cpt_custom_tax[enable_term_authors]" aria-describedby="term-authors-description">
+                                                            <option value="default" <?php selected($author_setting, 'default'); ?>><?php esc_html_e('Use global setting', 'simple-tags'); ?></option>
+                                                            <option value="1" <?php selected($author_setting, '1'); ?>><?php esc_html_e('Enabled', 'simple-tags'); ?></option>
+                                                            <option value="0" <?php selected($author_setting, '0'); ?>><?php esc_html_e('Disabled', 'simple-tags'); ?></option>
+                                                        </select>
+                                                        <p id="term-authors-description" class="description"><?php esc_html_e('Choose whether terms in this taxonomy can have authors. The global setting is in Settings → Term Authors. New terms default to the logged-in user.', 'simple-tags'); ?></p>
+                                                    </td>
+                                                </tr>
+                                                <?php
 
                                                 ?>
 

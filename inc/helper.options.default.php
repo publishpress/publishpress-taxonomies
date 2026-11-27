@@ -22,6 +22,8 @@ return array(
     'active_features_core_synonyms_terms' => 1,
     'active_st_posts'        => 1,
 
+    'enable_term_authors' => 0,
+
     // post terms filter format
     'post_terms_filter_format'  => 'term_name',
     'post_terms_taxonomy_type' => 'public',
@@ -54,6 +56,7 @@ return array(
     'taxopress_ai_post_metabox_filters' => 1,
     'enable_taxopress_ai_post_suggest_local_terms_tab' => 1,
     'enable_taxopress_ai_post_existing_terms_tab' => 1,
+    'enable_taxopress_ai_post_term_colors' => 1,
     'taxopress_ai_post_metabox_default_taxonomy' => 'post_tag',
 
     // PublishPress Taxonomies ai tab labels
@@ -67,6 +70,9 @@ return array(
     'taxopress_ai_post_metabox_maximum_terms' => 45,
     'taxopress_ai_post_metabox_show_post_count' => 0,
     'taxopress_ai_post_metabox_show_term_slug' => 0,
+    'taxopress_ai_post_metabox_term_on_post_color' => '#5ecd8a',
+    'taxopress_ai_post_metabox_existing_term_color' => '#dddddd',
+    'taxopress_ai_post_metabox_new_term_color' => '#dddddd',
 
     'taxopress_ai_post_minimum_term_length' => 2,
     'taxopress_ai_post_maximum_term_length' => 40,

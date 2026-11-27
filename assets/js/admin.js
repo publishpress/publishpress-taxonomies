@@ -242,7 +242,8 @@
         params = {
           action: 'taxopress_terms_inline_save_term',
           tax_ID: id,
-          taxonomy: tax
+          taxonomy: tax,
+          terms_filter_taxonomy: $('.manage-taxopress-terms [name="terms_filter_taxonomy"]').first().val() || ''
         };
     
         fields = $('#edit-'+id).find(':input').serialize();
@@ -1266,18 +1267,46 @@
     });
 
     // -------------------------------------------------------------
-    //   Show or hide the copy terms selection box
+    //   Show the controls belonging to the active Terms bulk action
     // -------------------------------------------------------------
-    if ($('body').hasClass('taxopress_page_st_terms')) {
-      $(document).on('change', '#bulk-action-selector-top', function (e) {
-          e.preventDefault();
-          if (this.value === 'taxopress-terms-copy-terms') {
-              $('#taxopress-copy-selection-boxes').show();
-          } else {
-              $('#taxopress-copy-selection-boxes').hide();
-          }
+    var termBulkActions = $('.manage-taxopress-terms .bulkactions select');
+
+    function updateTermBulkControls() {
+      termBulkActions.each(function () {
+        var action = $(this);
+        var controls = action.closest('.tablenav').find('.taxopress-parent-selection');
+        var active = action.val() === 'taxopress-terms-set-parent';
+        controls.prop('hidden', !active);
+        controls.find('fieldset, select').prop('disabled', !active);
       });
-  }
+
+      var copyAction = termBulkActions.filter(function () {
+        return $(this).val() === 'taxopress-terms-copy-terms';
+      }).first();
+      var copyControls = $('.manage-taxopress-terms #taxopress-copy-selection-boxes');
+      var copying = copyAction.length > 0;
+      if (copying) {
+        copyControls.insertAfter(copyAction.closest('.bulkactions'));
+      }
+      copyControls.toggle(copying);
+      copyControls.find('select').prop('disabled', !copying);
+      copyControls.find('[name="taxopress_destination_taxonomy"]').prop('required', copying);
+    }
+
+    termBulkActions.on('change', function () {
+      termBulkActions.not(this).val('-1');
+      updateTermBulkControls();
+    });
+
+    if ($.fn.pp_select2) {
+      $('.taxopress-parent-term-select').pp_select2({ width: '220px' });
+    }
+    // WordPress can render the submitted action in both dropdowns after a reload.
+    var initialTermAction = termBulkActions.filter(function () {
+      return $(this).val() !== '-1';
+    }).first();
+    termBulkActions.not(initialTermAction).val('-1');
+    updateTermBulkControls();
 
     // -------------------------------------------------------------
     //   Auto term close button
@@ -1493,6 +1522,7 @@
       $('input[name="taxonomy_type"]').val($('#terms_filter_select_taxonomy_type :selected').val());
       $('input[name="terms_filter_post_type"]').val($('#terms_filter_select_post_type :selected').val());
       $('input[name="terms_filter_taxonomy"]').val($('#terms_filter_select_taxonomy :selected').val());
+      $('input[name="taxopress_author"]').val($('#terms-filter-author').val() || '');
       $('input[name="terms_filter_status_message"]').val($('#terms_filter_select_status_message :selected').val());
       $('input[name="terms_filter_settings"]').val($('#terms_filter_select_settings :selected').val());
       $('#taxopress-terms-search-submit').trigger('click');
@@ -1567,7 +1597,7 @@
       // Give the select2 combobox an accessible name (the native select is hidden).
       $('.taxopress-select2-term-filter').each(function () {
         var $select = $(this);
-        var $selection = $select.next('.select2').find('.select2-selection');
+        var $selection = $select.next('.pp_select2').find('.pp_select2-selection');
         var $label = $select.attr('id') ? $('label[for="' + $select.attr('id') + '"]') : $();
         if ($label.length) {
           if (!$label.attr('id')) {
@@ -1582,7 +1612,7 @@
         
             function taxopressTaxSelect2(selector) {
               selector.each(function() {
-                  $(this).ppma_select2({
+                  $(this).pp_select2({
                       placeholder: $(this).data('placeholder') || $(this).find('option:first').text(),
                       allowClear: true,
                       ajax: {
@@ -1612,7 +1642,7 @@
                   });
 
                   if ($('body.taxopress_page_st_mass_terms').length > 0) {
-                    $(this).on('ppma_select2:select', function () {
+                    $(this).on('select2:select', function () {
                       $(this).closest('form').submit();
                     });
                   }
@@ -1628,7 +1658,7 @@
       taxopressFieldSelect2($('.taxopress-custom-fields-search'));
       function taxopressFieldSelect2(selector) {
         selector.each(function () {
-            var fieldSearch = $(this).ppma_select2({
+            var fieldSearch = $(this).pp_select2({
                 placeholder: $(this).data("placeholder"),
                 allowClear: true,
                 ajax: {
@@ -1643,7 +1673,7 @@
                         };
                     }
                 }
-            }).on('ppma_select2:select', function (e) {
+            }).on('select2:select', function (e) {
               
               var data = e.params.data;
               var selected_name = data.id;
@@ -1659,7 +1689,7 @@
      */
     if ($('.taxopress-autolink-custom-fields-search').length > 0) {
       $('.taxopress-autolink-custom-fields-search').each(function () {
-        $(this).ppma_select2({
+        $(this).pp_select2({
           placeholder: $(this).data('placeholder'),
           allowClear: true,
           ajax: {
@@ -1680,13 +1710,13 @@
      */
     if ($('.taxopress-term-search').length > 0) {
         taxopressTermSelect2($('.taxopress-term-search'));
-        $('.taxopress-simple-select2').ppma_select2({
+        $('.taxopress-simple-select2').pp_select2({
           placeholder: $(this).data("placeholder"),
           allowClear: true,
         });
         function taxopressTermSelect2(selector) {
           selector.each(function () {
-              var termsSearch = $(this).ppma_select2({
+              var termsSearch = $(this).pp_select2({
                   placeholder: $(this).data("placeholder"),
                   allowClear: true,
                   ajax: {
@@ -1733,7 +1763,7 @@
                 }).join('');
             }
 
-            var postsSearch = $(this).ppma_select2({
+            var postsSearch = $(this).pp_select2({
                 placeholder: $(this).data("placeholder"),
                 allowClear: $(this).data("allow-clear"),
                 ajax: {
@@ -1753,13 +1783,13 @@
     }
 
     if ($('.taxopress-multi-select2').length > 0) {
-        $('.taxopress-multi-select2').ppma_select2({
+        $('.taxopress-multi-select2').pp_select2({
           placeholder: $(this).data("placeholder"),
         });
     }
 
     if ($('.taxopress-single-select2').length > 0) {
-        $('.taxopress-single-select2').ppma_select2({
+        $('.taxopress-single-select2').pp_select2({
           placeholder: $(this).data("placeholder"),
         });
     }
@@ -2038,6 +2068,54 @@
       });
 
       debugLog.prop('hidden', false);
+    }
+
+    function getAutoTermPreviewContrastColor(backgroundColor) {
+      var color = String(backgroundColor || '').replace('#', '');
+      if (!/^[0-9a-f]{6}$/i.test(color)) {
+        return '#1e1e1e';
+      }
+
+      var channels = [0, 2, 4].map(function (offset) {
+        var channel = parseInt(color.substring(offset, offset + 2), 16) / 255;
+        return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+      });
+      var luminance = (0.2126 * channels[0]) + (0.7152 * channels[1]) + (0.0722 * channels[2]);
+
+      return luminance > 0.179 ? '#1e1e1e' : '#ffffff';
+    }
+
+    function applyAutoTermPreviewColor(input, color) {
+      var colorInput = $(input);
+      var backgroundVariable = colorInput.data('css-variable');
+      var textVariable = colorInput.data('text-css-variable');
+      var validColor = /^#[0-9a-f]{6}$/i.test(color) ? color : colorInput.data('default-color');
+      var preview = colorInput.closest('.taxopress-tab-content').find('.autoterm_preview .taxopress-autoterm-result');
+
+      if (!preview.length) {
+        return;
+      }
+
+      if (backgroundVariable) {
+        preview.get(0).style.setProperty(backgroundVariable, validColor);
+      }
+      if (textVariable) {
+        preview.get(0).style.setProperty(textVariable, getAutoTermPreviewContrastColor(validColor));
+      }
+    }
+
+    if ($.fn.wpColorPicker) {
+      $('.taxopress-autoterm-color').each(function () {
+        var colorInput = $(this);
+        colorInput.wpColorPicker({
+          change: function (event, ui) {
+            applyAutoTermPreviewColor(colorInput, ui.color.toString());
+          },
+          clear: function () {
+            applyAutoTermPreviewColor(colorInput, colorInput.data('default-color'));
+          }
+        });
+      });
     }
 
     /**
@@ -2708,7 +2786,7 @@
     
 
     function autoterm_option_select2() {
-      $('.auto_term_terms_options.select').ppma_select2({
+      $('.auto_term_terms_options.select').pp_select2({
         placeholder: $(this).data("placeholder"),
       });
     }
@@ -2730,6 +2808,69 @@
             if ($el.hasClass('remove-terms-autocomplete'))   return flagEnabled(st_admin_localize.enable_remove_terms_slug);
             if ($el.hasClass('rename-terms-autocomplete'))   return flagEnabled(st_admin_localize.enable_rename_terms_slug);
             return false;
+        }
+
+        function identityField($field) {
+            const fieldName = $field.attr('name');
+            if (!fieldName) return jQuery();
+
+            const identityName = fieldName + '_identities';
+            let $identity = $field.siblings('input.taxopress-term-identities[name="' + identityName + '"]');
+            if (!$identity.length) {
+                $identity = jQuery('<input>', {
+                    type: 'hidden',
+                    name: identityName,
+                    class: 'taxopress-term-identities',
+                    value: '[]'
+                });
+                $field.after($identity);
+            }
+
+            return $identity;
+        }
+
+        function readIdentities($field) {
+            const $identity = identityField($field);
+            if (!$identity.length) return [];
+
+            try {
+                const identities = JSON.parse($identity.val() || '[]');
+                return Array.isArray(identities) ? identities : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function visibleTermName(value) {
+            return String(value || '').trim().replace(/\s*\([^()]*\)\s*$/, '').trim();
+        }
+
+        function rememberIdentity($field, item) {
+            const termId = parseInt(item.id, 10);
+            if (!termId || !item.name) return;
+
+            const identities = readIdentities($field);
+            identities.push({
+                term_id: termId,
+                name: String(item.name),
+                slug: String(item.slug || '')
+            });
+            identityField($field).val(JSON.stringify(identities));
+        }
+
+        function discardRemovedIdentities($field) {
+            const counts = {};
+            $field.val().split(',').map(visibleTermName).filter(Boolean).forEach(function(name) {
+                counts[name] = (counts[name] || 0) + 1;
+            });
+
+            const identities = readIdentities($field).filter(function(identity) {
+                const name = String(identity.name || '');
+                if (!counts[name]) return false;
+                counts[name]--;
+                return true;
+            });
+            identityField($field).val(JSON.stringify(identities));
         }
 
         function currentTaxonomy($el){
@@ -2778,7 +2919,10 @@
                                 const label = useSlug && item.slug ? (item.name + ' (' + item.slug + ')') : item.name;
                                 return {
                                     label: label,
-                                    value: label
+                                    value: label,
+                                    id: item.id,
+                                    name: item.name,
+                                    slug: item.slug
                                 };
                             }));
                         },
@@ -2791,6 +2935,7 @@
                     parts[parts.length - 1] = ui.item.value;
                     const cleaned = parts.map(p=>p.trim()).filter(Boolean);
                     $field.val(cleaned.join(', ') + ', ');
+                    rememberIdentity($field, ui.item);
                     return false;
                 }
             }).on('keydown', function(evt){
@@ -2798,6 +2943,8 @@
                     const frag = jQuery(this).val().split(',').pop().trim();
                     jQuery(this).autocomplete('search', frag);
                 }
+            }).on('input', function(){
+                discardRemovedIdentities(jQuery(this));
             });
         });
 
@@ -2910,6 +3057,7 @@
 
               $('#mergeterm_old').val(currentOldValue ? currentOldValue + ', ' + allOldTerms : allOldTerms);
               $('#mergeterm_new').val(lastSuggestedName);
+              $('input[name="renameterm_new_identities"]').val('[]');
 
           }
           
@@ -2967,6 +3115,7 @@
 
               $('#mergeterm_old').val(currentOldValue ? currentOldValue + ', ' + allOldTerms : allOldTerms);
               $('#mergeterm_new').val(lastSuggestedName);
+              $('input[name="renameterm_new_identities"]').val('[]');
           }
       });
 
@@ -3074,6 +3223,8 @@
       const oldTermsRaw = $form.find('#mergeterm_old').val().split(',').map(function(term) {
         return term.trim();
       }).filter(Boolean);
+      const oldTermIdentities = $form.find('input[name="renameterm_old_identities"]').val() || '[]';
+      const newTermIdentities = $form.find('input[name="renameterm_new_identities"]').val() || '[]';
       const batchSize = 20;
 
       if ((mergeType === 'different_name' || mergeType === 'same_name') && oldTermsRaw.length > 2) {
@@ -3219,6 +3370,8 @@
             action: 'taxopress_merge_terms_batch',
             taxonomy: taxonomy,
             old_terms: batches[index],
+            old_term_identities: oldTermIdentities,
+            new_term_identities: newTermIdentities,
             merge_type: mergeType,
             nonce: st_admin_localize.check_nonce
         };
@@ -3319,6 +3472,8 @@
             action: 'taxopress_merge_terms_batch',
             taxonomy: taxonomy,
             old_terms: retainedSlugs,
+            old_term_identities: oldTermIdentities,
+            new_term_identities: newTermIdentities,
             merge_type: mergeType,
             nonce: st_admin_localize.check_nonce
           };
@@ -3375,6 +3530,7 @@
         if (mergeType === 'different_name') {
           $form.find('#mergeterm_new').val('');
         }
+        $form.find('input.taxopress-term-identities').val('[]');
       }
       
 
@@ -3435,6 +3591,7 @@
           action: 'taxopress_merge_terms_preflight',
           taxonomy: taxonomy,
           old_terms: oldTermsRaw,
+          old_term_identities: oldTermIdentities,
           merge_type: mergeType,
           nonce: st_admin_localize.check_nonce
         }, function(response) {
@@ -3733,7 +3890,7 @@
         selector.each(function () {
             const $select = $(this);
 
-            $select.ppma_select2({
+            $select.pp_select2({
                 placeholder: $select.data('placeholder') || st_admin_localize.select_post_label,
                 allowClear: true,
                 minimumInputLength: 0,
@@ -3771,22 +3928,289 @@
                         return taxopressDecodeHtmlEntities(data.text);
                     }
                     return data.id;
-                },
-                escapeMarkup: function(markup) {
-                    return markup; 
                 }
             });
 
             $select.on('select2:open', function () {
                 if (!$select.data('fetched-initial')) {
                     $select.data('fetched-initial', true);
-                    $select.select2('open');
+                    $select.pp_select2('open');
                 }
             });
         });
         }
 
     }
+
+    // Term description suggestions for native term forms and the TaxoPress Terms screen.
+    (function initTermDescriptionSuggestions() {
+      const config = window.st_admin_localize || {};
+      const sources = Array.isArray(config.term_description_sources) ? config.term_description_sources : [];
+      if (!sources.length) return;
+
+      let dialogState = null;
+
+      function speak(message) {
+        if (window.wp && wp.a11y && typeof wp.a11y.speak === 'function') {
+          wp.a11y.speak(message);
+        }
+      }
+
+      function requestError(xhr) {
+        return xhr && xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message
+          ? xhr.responseJSON.data.message
+          : (config.request_error || 'The request could not be completed. Please try again.');
+      }
+
+      function ensureDialog() {
+        let $dialog = $('#taxopress-term-description-dialog');
+        if ($dialog.length) return $dialog;
+
+        const $source = $('<select>', { id: 'taxopress-term-description-source' });
+        sources.forEach(function(source) {
+          $('<option>', { value: source.id, text: source.label }).appendTo($source);
+        });
+
+        $dialog = $('<div>', {
+          id: 'taxopress-term-description-dialog',
+          class: 'taxopress-term-description-overlay',
+          hidden: true,
+          role: 'dialog',
+          'aria-modal': 'true',
+          'aria-labelledby': 'taxopress-term-description-title'
+        });
+        const $panel = $('<div>', { class: 'taxopress-term-description-dialog' }).appendTo($dialog);
+        $('<button>', {
+          type: 'button',
+          class: 'taxopress-term-description-close',
+          'aria-label': config.close_suggestions || 'Close',
+          text: '×'
+        }).appendTo($panel);
+        $('<h2>', {
+          id: 'taxopress-term-description-title',
+          text: config.suggest_description_label || 'Suggest Description'
+        }).appendTo($panel);
+
+        const $sourceField = $('<div>', { class: 'taxopress-term-description-field' }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-source',
+          text: config.term_description_source_label || 'Description source'
+        }).appendTo($sourceField);
+        $source.appendTo($sourceField);
+
+        const $contextField = $('<div>', { class: 'taxopress-term-description-field' }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-context',
+          text: config.term_description_context_label || 'Additional context (optional)'
+        }).appendTo($contextField);
+        $('<textarea>', {
+          id: 'taxopress-term-description-context',
+          rows: 3
+        }).appendTo($contextField);
+        $('<p>', {
+          class: 'description',
+          text: config.term_description_context_help || ''
+        }).appendTo($contextField);
+
+        const $generateActions = $('<div>', { class: 'taxopress-term-description-actions' }).appendTo($panel);
+        $('<button>', {
+          type: 'button',
+          class: 'button button-secondary taxopress-generate-term-description',
+          text: config.generate_description_label || 'Generate Suggestion'
+        }).appendTo($generateActions);
+        $('<span>', { class: 'spinner' }).appendTo($generateActions);
+
+        $('<div>', {
+          class: 'taxopress-term-description-status',
+          role: 'status',
+          'aria-live': 'polite'
+        }).appendTo($panel);
+
+        const $suggestionField = $('<div>', {
+          class: 'taxopress-term-description-field taxopress-term-description-result',
+          hidden: true
+        }).appendTo($panel);
+        $('<label>', {
+          for: 'taxopress-term-description-suggestion',
+          text: config.description_suggestion_label || 'Suggested description'
+        }).appendTo($suggestionField);
+        $('<textarea>', {
+          id: 'taxopress-term-description-suggestion',
+          rows: 5
+        }).appendTo($suggestionField);
+        $('<button>', {
+          type: 'button',
+          class: 'button button-primary taxopress-apply-term-description',
+          text: config.apply_description_label || 'Apply Description'
+        }).appendTo($suggestionField);
+
+        $('body').append($dialog);
+        return $dialog;
+      }
+
+      function openDialog(state) {
+        if (!state.termName) {
+          const message = config.description_name_required || 'Enter a term name before requesting a description.';
+          window.alert(message);
+          return;
+        }
+
+        dialogState = state;
+        const $dialog = ensureDialog();
+        $dialog.find('#taxopress-term-description-context').val('');
+        $dialog.find('#taxopress-term-description-suggestion').val('');
+        $dialog.find('.taxopress-term-description-result').prop('hidden', true);
+        $dialog.find('.taxopress-term-description-status').removeClass('notice-error notice-success').text('');
+        $dialog.find('.taxopress-apply-term-description').text(
+          state.mode === 'form'
+            ? (config.use_description_label || 'Use This Description')
+            : (config.apply_description_label || 'Apply Description')
+        );
+        $dialog.prop('hidden', false).find('.taxopress-generate-term-description').trigger('focus');
+      }
+
+      function closeDialog() {
+        const $dialog = ensureDialog();
+        $dialog.prop('hidden', true);
+        dialogState = null;
+      }
+
+      $(document).on('click', '.taxopress-suggest-term-description', function() {
+        const $button = $(this);
+        openDialog({
+          mode: 'saved',
+          termId: parseInt($button.attr('data-term-id'), 10) || 0,
+          taxonomy: String($button.attr('data-taxonomy') || ''),
+          termName: String($button.attr('data-term-name') || ''),
+          parentId: parseInt($button.attr('data-parent-id'), 10) || 0,
+          $trigger: $button
+        });
+      });
+
+      $(document).on('click', '.taxopress-term-description-close', closeDialog);
+      $(document).on('click', '.taxopress-term-description-overlay', function(event) {
+        if (event.target === this) closeDialog();
+      });
+      $(document).on('keydown', function(event) {
+        if (event.key === 'Escape' && !$('#taxopress-term-description-dialog').prop('hidden')) {
+          closeDialog();
+        }
+      });
+
+      $(document).on('click', '.taxopress-generate-term-description', function() {
+        if (!dialogState) return;
+
+        const $dialog = ensureDialog();
+        const $button = $(this);
+        const $spinner = $button.siblings('.spinner');
+        const $status = $dialog.find('.taxopress-term-description-status');
+        $button.prop('disabled', true);
+        $spinner.addClass('is-active');
+        $status.removeClass('notice-error notice-success').text(
+          config.description_generating || 'Generating a description suggestion...'
+        );
+
+        $.post(config.ajaxurl, {
+          action: 'taxopress_suggest_term_description',
+          nonce: config.ai_nonce,
+          taxonomy: dialogState.taxonomy,
+          term_id: dialogState.termId,
+          term_name: dialogState.termName,
+          parent_id: dialogState.parentId,
+          source: $dialog.find('#taxopress-term-description-source').val(),
+          context: $dialog.find('#taxopress-term-description-context').val()
+        }).done(function(response) {
+          if (!response || !response.success) {
+            $status.addClass('notice-error').text(
+              response && response.data && response.data.message ? response.data.message : config.request_error
+            );
+            return;
+          }
+
+          dialogState.originalHash = response.data.original_hash;
+          dialogState.source = response.data.source;
+          $dialog.find('#taxopress-term-description-suggestion').val(response.data.description);
+          $dialog.find('.taxopress-term-description-result').prop('hidden', false);
+          $status.addClass('notice-success').text(response.data.context_message || '');
+          $button.text(config.regenerate_description_label || 'Regenerate');
+          speak(response.data.context_message || 'Description suggestion generated.');
+        }).fail(function(xhr) {
+          $status.addClass('notice-error').text(requestError(xhr));
+        }).always(function() {
+          $button.prop('disabled', false);
+          $spinner.removeClass('is-active');
+        });
+      });
+
+      $(document).on('click', '.taxopress-apply-term-description', function() {
+        if (!dialogState) return;
+
+        const $dialog = ensureDialog();
+        const description = $dialog.find('#taxopress-term-description-suggestion').val().trim();
+        if (!description) return;
+
+        if (dialogState.mode === 'form') {
+          dialogState.$target.val(description).trigger('input').trigger('change');
+          closeDialog();
+          speak(config.description_saved || 'The term description was updated.');
+          return;
+        }
+
+        const $button = $(this).prop('disabled', true);
+        const $status = $dialog.find('.taxopress-term-description-status');
+        $.post(config.ajaxurl, {
+          action: 'taxopress_apply_term_description',
+          nonce: config.ai_nonce,
+          taxonomy: dialogState.taxonomy,
+          term_id: dialogState.termId,
+          description: description,
+          original_hash: dialogState.originalHash,
+          source: dialogState.source || 'local'
+        }).done(function(response) {
+          if (!response || !response.success) {
+            $status.addClass('notice-error').text(
+              response && response.data && response.data.message ? response.data.message : config.request_error
+            );
+            return;
+          }
+
+          $('#term-' + dialogState.termId + ' .column-description').html(response.data.rendered_description);
+          speak(response.data.message || config.description_saved);
+          closeDialog();
+        }).fail(function(xhr) {
+          $status.addClass('notice-error').text(requestError(xhr));
+        }).always(function() {
+          $button.prop('disabled', false);
+        });
+      });
+
+      const nativeTermPage = /\/(edit-tags|term)\.php$/.test(window.location.pathname);
+      if (nativeTermPage) {
+        const $description = $('textarea#tag-description, textarea#description').first();
+        const $name = $('input#tag-name, input#name').first();
+        if ($description.length && $name.length) {
+          const $suggestButton = $('<button>', {
+            type: 'button',
+            class: 'button button-secondary taxopress-native-suggest-description',
+            text: config.suggest_description_label || 'Suggest Description'
+          });
+          $description.after($('<p>', { class: 'taxopress-native-description-action' }).append($suggestButton));
+
+          $suggestButton.on('click', function() {
+            const query = new URLSearchParams(window.location.search);
+            openDialog({
+              mode: 'form',
+              termId: parseInt($('input#tag_ID').val() || query.get('tag_ID'), 10) || 0,
+              taxonomy: String($('input#taxonomy').val() || query.get('taxonomy') || ''),
+              termName: String($name.val() || '').trim(),
+              parentId: parseInt($('select#parent').val(), 10) || 0,
+              $target: $description,
+              $trigger: $suggestButton
+            });
+          });
+        }
+      }
+    })();
 
     // Schedule Frequency toggle
     if ($('.taxopress-autoterm-schedule').length > 0) {

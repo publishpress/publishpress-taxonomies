@@ -311,6 +311,9 @@ function taxopress_create_default_autoterm()
         $default['taxopress_autoterm']['schedule_autoterm_word']    = '0';
         $default['taxopress_autoterm']['schedule_autoterm_hash']    = '0';
         $default['taxopress_autoterm']['existing_content_terms_limit'] = '5';
+        $default['taxopress_autoterm']['autoterm_preview_term_on_post_color'] = '#5ecd8a';
+        $default['taxopress_autoterm']['autoterm_preview_existing_term_color'] = '#dddddd';
+        $default['taxopress_autoterm']['autoterm_preview_new_term_color'] = '#dddddd';
         $default['specific_terms']                                  = [];
         $default['find_in_customs_entries']                         = [];
         $default['find_in_custom_fields_custom_items']              = [];
@@ -458,6 +461,11 @@ function taxopress_filter_autoterm_excluded_results($results, $exclusions)
 function taxopress_update_autoterm($data = [])
 {
     $sanitized_data = [];
+    $preview_color_defaults = [
+        'autoterm_preview_term_on_post_color' => '#5ecd8a',
+        'autoterm_preview_existing_term_color' => '#dddddd',
+        'autoterm_preview_new_term_color' => '#dddddd',
+    ];
     foreach ($data as $key => $value) {
         if ($key === 'specific_terms') {
             $sanitized_data[$key] = taxopress_sanitize_specific_terms($value);
@@ -466,6 +474,12 @@ function taxopress_update_autoterm($data = [])
         } else {
             $new_value = [];
             foreach ($data[$key] as $option_key => $option_value) {
+                if (isset($preview_color_defaults[$option_key])) {
+                    $sanitized_color = sanitize_hex_color((string) $option_value);
+                    $new_value[$option_key] = $sanitized_color ?: $preview_color_defaults[$option_key];
+                    continue;
+                }
+
                 $filtered_value = apply_filters(
                     'taxopress_sanitize_autoterm_option',
                     null,
@@ -823,6 +837,90 @@ function taxopress_autoterms_logs_data($per_page = 20, $current_page = 1, $order
     return ['posts' => $logs->posts, 'counts' => $logs->found_posts];
 }
 
+/** Return the translated display label for a recorded Auto Terms suggestion source. */
+function taxopress_autoterm_source_label($source)
+{
+    $source_id = !empty($source['id']) ? sanitize_key($source['id']) : '';
+    $provider = !empty($source['provider']) ? sanitize_text_field($source['provider']) : '';
+
+    if ($source_id === 'wordpress_ai' && $provider !== '') {
+        return sprintf(
+            /* translators: %s: configured WordPress AI Connector name. */
+            esc_html__('AI Connector: %s', 'simple-tags'),
+            $provider
+        );
+    }
+
+    $labels = array(
+        'wordpress_ai'  => esc_html__('AI Connectors', 'simple-tags'),
+        'open_ai'       => esc_html__('OpenAI', 'simple-tags'),
+        'ibm_watson'    => esc_html__('IBM Watson', 'simple-tags'),
+        'dandelion'     => esc_html__('Dandelion', 'simple-tags'),
+        'open_calais'   => esc_html__('LSEG / Refinitiv', 'simple-tags'),
+        'specific_terms' => esc_html__('Specific terms', 'simple-tags'),
+        'taxonomy_terms' => esc_html__('Existing taxonomy terms', 'simple-tags'),
+    );
+
+    if (isset($labels[$source_id])) {
+        return $labels[$source_id];
+    }
+
+    return $provider !== '' ? $provider : ucwords(str_replace('_', ' ', $source_id));
+}
+
+/** Read and normalize per-term suggestion sources stored on an Auto Terms log. */
+function taxopress_get_autoterm_log_term_sources($log_id)
+{
+    $records = get_post_meta((int) $log_id, '_taxopress_log_term_sources', true);
+    if (!is_array($records)) {
+        return array();
+    }
+
+    $normalized = array();
+    foreach ($records as $record) {
+        if (!is_array($record) || empty($record['term']) || empty($record['sources']) || !is_array($record['sources'])) {
+            continue;
+        }
+
+        $sources = array();
+        foreach ($record['sources'] as $source) {
+            if (!is_array($source) || empty($source['id'])) {
+                continue;
+            }
+            $source['id'] = sanitize_key($source['id']);
+            $source['provider'] = !empty($source['provider']) ? sanitize_text_field($source['provider']) : '';
+            $sources[] = $source;
+        }
+
+        if (!empty($sources)) {
+            $normalized[] = array(
+                'term'    => sanitize_text_field($record['term']),
+                'sources' => $sources,
+            );
+        }
+    }
+
+    return $normalized;
+}
+
+/** Render the per-term suggestion sources for Auto Terms log tables. */
+function taxopress_autoterms_log_term_sources_html($log_id)
+{
+    $records = taxopress_get_autoterm_log_term_sources($log_id);
+    if (empty($records)) {
+        return '&mdash;';
+    }
+
+    $labels = array();
+    foreach ($records as $record) {
+        foreach ($record['sources'] as $source) {
+            $labels[] = taxopress_autoterm_source_label($source);
+        }
+    }
+
+    return esc_html(implode(', ', array_values(array_unique(array_filter($labels)))));
+}
+
 /** Native default data shared by initial presets and API previews. */
 function taxopress_get_autoterm_defaults($options_taxonomy = 'post_tag', $options_post_type = 'post', $options_taxonomy_data = [])
 {
@@ -841,6 +939,9 @@ function taxopress_get_autoterm_defaults($options_taxonomy = 'post_tag', $option
     $default['specific_terms']            = isset($options_taxonomy_data['auto_list']) ? taxopress_sanitize_specific_terms($options_taxonomy_data['auto_list']) : [];
     $default['taxopress_autoterm']['terms_limit']              = '5';
     $default['taxopress_autoterm']['synonyms_term']            = 1;
+    $default['taxopress_autoterm']['autoterm_preview_term_on_post_color'] = '#5ecd8a';
+    $default['taxopress_autoterm']['autoterm_preview_existing_term_color'] = '#dddddd';
+    $default['taxopress_autoterm']['autoterm_preview_new_term_color'] = '#dddddd';
 
     return $default;
 }

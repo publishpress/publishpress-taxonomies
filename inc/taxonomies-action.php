@@ -2,6 +2,9 @@
 
 defined('ABSPATH') || exit;
 
+require_once STAGS_DIR . '/inc/class-taxopress-taxonomy-templates.php';
+add_action('admin_post_taxopress_add_taxonomy_template', ['TaxoPress_Taxonomy_Templates', 'handle_create']);
+
 add_action('admin_init', 'taxopress_flush_rewrite_rules');
 add_action('admin_init', 'taxopress_process_taxonomy', 8);
 add_action('init', 'taxopress_do_convert_taxonomy_terms');

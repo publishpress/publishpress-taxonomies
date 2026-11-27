@@ -392,7 +392,7 @@ if (!class_exists('Taxopress_Modules_Reviews')) {
             $group  = self::get_trigger_group();
             $code   = self::get_trigger_code();
             $pri    = self::get_current_trigger('pri');
-            $tigger = self::get_current_trigger();
+            self::get_current_trigger();
 
             // Used to anonymously distinguish unique site+user combinations in terms of effectiveness of each trigger.
             $uuid = wp_hash(home_url() . '-' . get_current_user_id());

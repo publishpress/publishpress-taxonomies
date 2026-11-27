@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  */
 function st_related_posts_block_init()
 {
-    global $post, $pagenow;
+    global $pagenow;
 
     if (!function_exists('register_block_type')) {
         return;
@@ -71,17 +71,6 @@ function st_related_posts_block_init()
         'render_callback' => 'st_related_posts_render',
     ]);
 
-    $shortcode_page = sprintf(
-        '<a href="%s">%s</a>',
-        add_query_arg(
-            [
-                'page' => 'st_related_posts',
-            ],
-            admin_url('admin.php')
-        ),
-        __('this page.', 'simple-tags')
-    );
-
     $select_label = __('Select related post', 'simple-tags');
     $panel_title  = __('Related Posts (PublishPress Taxonomies)', 'simple-tags');
 
@@ -101,7 +90,6 @@ add_action('init', 'st_related_posts_block_init');
  */
 function st_related_posts_render($attributes)
 {
-    global $post;
     ob_start();
 
     $relatedpost_id = '';

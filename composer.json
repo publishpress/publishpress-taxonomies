@@ -35,6 +35,9 @@
         "publishpress/dev-workspace": "^2.1.0"
     },
     "scripts": {
+        "lint:phpmd": "vendor/publishpress/dev-workspace/scripts/run.sh phpmd blocks,inc,includes-core,modules,review-request,views,simple-tags.php ansi phpmd.ruleset.xml",
+        "lint:phpmd:ci": "vendor/publishpress/dev-workspace/scripts/run.sh phpmd blocks,inc,includes-core,modules,review-request,views,simple-tags.php github phpmd.ruleset.xml",
+        "lint:phpmd:text": "vendor/publishpress/dev-workspace/scripts/run.sh phpmd blocks,inc,includes-core,modules,review-request,views,simple-tags.php text phpmd.ruleset.xml",
         "fix:php": [
             "php-cs-fixer fix .",
             "@fix:cs"

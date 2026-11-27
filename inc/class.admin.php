@@ -190,7 +190,7 @@ class SimpleTags_Admin
 
         if (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages)) {
             echo '<style>
-				.notice:not(.taxopress-notice) {
+				.notice:not(.taxopress-notice):not(.publishpress-bundled-translations-hub-notice) {
 					display: none !important;
 				}
 			</style>';
@@ -618,10 +618,6 @@ class SimpleTags_Admin
             return;
         }
 
-        if (strpos($screen->id, 'taxopress_page_') === false) {
-            return;
-        }
-
         $is_edit_mode = isset($_GET['action']) && in_array($_GET['action'], ['edit'], true);
         if (!$is_edit_mode) {
             return;
@@ -637,6 +633,11 @@ class SimpleTags_Admin
         ];
 
         if (!in_array($current_page, $preview_pages, true)) {
+            return;
+        }
+
+        // WordPress derives the screen ID prefix from the translated parent menu title.
+        if (!str_ends_with((string) $screen->id, '_page_' . $current_page)) {
             return;
         }
 
@@ -712,18 +713,19 @@ class SimpleTags_Admin
         wp_enqueue_style('taxopress-admin-tooltip');
 
         // Register Select 2
+        $select2_version = '4.1.0.1';
         wp_register_script(
             'taxopress-admin-select2',
             STAGS_URL . '/assets/lib/select2/js/select2.full.min.js',
             ['jquery'],
-            STAGS_VERSION
+            $select2_version
         );
 
         wp_register_style(
             'taxopress-admin-select2',
             STAGS_URL . '/assets/lib/select2/css/select2.min.css',
             [],
-            STAGS_VERSION
+            $select2_version
         );
 
         if ($select_2_page) {
@@ -743,6 +745,9 @@ class SimpleTags_Admin
         if ($select_2_page) {
             $script_dependencies[] = 'taxopress-admin-select2';
             $script_dependencies[] = 'wp-util';
+        }
+        if (isset($_GET['page']) && $_GET['page'] === 'st_autoterms') {
+            $script_dependencies[] = 'wp-color-picker';
         }
 
         $taxopress_pages = taxopress_admin_pages();
@@ -842,6 +847,19 @@ class SimpleTags_Admin
             'terms_to_merge_text' => esc_html__('Terms to Merge', 'simple-tags'),
             'new_term_text' => esc_html__('New Term', 'simple-tags'),
             'reasons_text' => esc_html__('Reasons', 'simple-tags'),
+            'term_description_sources' => class_exists('TaxoPressAiTermDescription') ? TaxoPressAiTermDescription::get_sources() : [],
+            'suggest_description_label' => esc_html__('Suggest Description', 'simple-tags'),
+            'term_description_source_label' => esc_html__('Description source', 'simple-tags'),
+            'term_description_context_label' => esc_html__('Additional context (optional)', 'simple-tags'),
+            'term_description_context_help' => esc_html__('Add details that are not clear from the term name or its assigned content.', 'simple-tags'),
+            'generate_description_label' => esc_html__('Generate Suggestion', 'simple-tags'),
+            'regenerate_description_label' => esc_html__('Regenerate', 'simple-tags'),
+            'apply_description_label' => esc_html__('Apply Description', 'simple-tags'),
+            'use_description_label' => esc_html__('Use This Description', 'simple-tags'),
+            'description_suggestion_label' => esc_html__('Suggested description', 'simple-tags'),
+            'description_generating' => esc_html__('Generating a description suggestion...', 'simple-tags'),
+            'description_saved' => esc_html__('The term description was updated.', 'simple-tags'),
+            'description_name_required' => esc_html__('Enter a term name before requesting a description.', 'simple-tags'),
         ]);
 
 
@@ -853,6 +871,7 @@ class SimpleTags_Admin
         // Register location
         $wp_post_pages = array('post.php', 'post-new.php');
         $wp_page_pages = array('page.php', 'page-new.php');
+        $wp_term_pages = array('edit-tags.php', 'term.php');
 
         wp_enqueue_style('st-admin-global');
 
@@ -860,6 +879,7 @@ class SimpleTags_Admin
         if (
             in_array($pagenow, $wp_post_pages) ||
             (in_array($pagenow, $wp_page_pages) && is_page_have_tags()) ||
+            in_array($pagenow, $wp_term_pages) ||
             (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages))
         ) {
             wp_enqueue_script('st-remodal-js');
@@ -955,6 +975,9 @@ class SimpleTags_Admin
                         $options['taxopress_ai_' . $post_type . '_metabox_maximum_terms'] = 45;
                         $options['taxopress_ai_' . $post_type . '_metabox_show_post_count'] = 0;
                         $options['taxopress_ai_' . $post_type . '_metabox_show_term_slug'] = 0;
+                        $options['taxopress_ai_' . $post_type . '_metabox_term_on_post_color'] = '#5ecd8a';
+                        $options['taxopress_ai_' . $post_type . '_metabox_existing_term_color'] = '#dddddd';
+                        $options['taxopress_ai_' . $post_type . '_metabox_new_term_color'] = '#dddddd';
 
                         $options['taxopress_ai_' . $post_type . '_minimum_term_length'] = 2;
                         $options['taxopress_ai_' . $post_type . '_maximum_term_length'] = 40;
@@ -962,6 +985,7 @@ class SimpleTags_Admin
                         $options['taxopress_ai_' . $post_type . '_exclusions'] = '';
                         $options['enable_taxopress_ai_' . $post_type . '_metabox'] = $opt_default_value;
                         $options['taxopress_ai_' . $post_type . '_metabox_filters'] = 1;
+                        $options['enable_taxopress_ai_' . $post_type . '_term_colors'] = 1;
                         foreach (['post_terms', 'existing_terms', 'suggest_local_terms', 'create_terms'] as $taxopress_ai_tab) {
                             $options['enable_taxopress_ai_' . $post_type . '_' . $taxopress_ai_tab . '_tab'] = $opt_default_value;
                         }
@@ -988,6 +1012,10 @@ class SimpleTags_Admin
                 }
 
                 foreach ($options as $key => $value) {
+                    if ($is_fast_update_submission && $key === 'enable_term_authors') {
+                        $sanitized_options[$key] = $value;
+                        continue;
+                    }
                     // If this is NOT a Fast Update submission, preserve metabox/metabox-access keys
                     if (!$is_fast_update_submission && preg_match('/^(enable_taxopress_ai_|taxopress_ai_|enable_.*_metabox|enable_restrict.*_metabox|enable_edit_.*_metabox|enable_metabox_|remove_taxonomy_metabox_)/', $key)) {
                         // Keep existing value as-is
@@ -1279,6 +1307,10 @@ class SimpleTags_Admin
                     case 'checkbox':
                         $desc_html_tag = 'span';
                         $input_type    = '<input type="checkbox" id="' . $option[0] . '" name="' . $option[0] . '" value="' . esc_attr($option[3]) . '" ' . (($option_actual[$option[0]]) ? 'checked="checked"' : '') . ' />' . PHP_EOL;
+                        if (!empty($option[7]['checkbox_label'])) {
+                            $input_type = '<label>' . $input_type . ' ' . esc_html($option[7]['checkbox_label']) . '</label>';
+                            $desc_html_tag = 'div';
+                        }
                         break;
 
                     case 'multiselect':
@@ -1457,6 +1489,8 @@ class SimpleTags_Admin
                 return esc_html__('License', 'simple-tags');
             case 'hidden_terms':
                 return esc_html__('Hidden Terms', 'simple-tags');
+            case 'term_authors':
+                return esc_html__('Term Authors', 'simple-tags');
             case 'frontend_scripts':
                 return esc_html__('Frontend Scripts', 'simple-tags');
             case 'manage_terms':

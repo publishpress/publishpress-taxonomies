@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Reviewed legacy size/complexity findings and compatibility-sensitive signatures. No variable, unused-local, or duplicate-key findings are suppressed here. PHPMD matches exceptions by rule, file, and method where available. -->
+<phpmd-baseline>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/post-tags-functions.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/post-tags-table.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/related-posts-functions.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/related-posts-table.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/tag-clouds-functions.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/tag-clouds-table.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="inc/terms-table.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="review-request/review.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/post-tags-table.php" method="prepare_items"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/post-tags.php" method="page_manage_posttags"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/posts.php" method="page_manage_posts"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/related-posts-table.php" method="prepare_items"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/related-posts.php" method="page_manage_relatedposts"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/tag-clouds-table.php" method="prepare_items"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/tag-clouds.php" method="page_manage_tagclouds"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/taxonomies.php" method="page_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\CleanCode\IfStatementAssignment" file="inc/terms.php" method="page_manage_terms"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="blocks/related-posts.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/post-tags-functions.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/post-tags.php" method="handle_posttags_preview"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/post-tags.php" method="taxopress_manage_posttags"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/posts-table.php" method="column_taxonomy_terms"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/related-posts-functions.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/related-posts-table.php" method="column_post_type"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/related-posts.php" method="handle_relatedposts_preview"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/related-posts.php" method="taxopress_manage_relatedposts"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/schedule.php" method="page_manage_autoterms_schedule"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/schedule.php" method="save_autoterms_schedule_settings"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/tag-clouds-functions.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/tag-clouds.php" method="taxopress_manage_tagclouds"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/taxonomies.php" method="handle_taxopress_select2_filter"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/taxonomies.php" method="page_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/taxonomies.php" method="taxopress_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/term-authors.php" method="native_query_args"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-functions.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="display_bulk_parent_notice"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="extra_tablenav"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="get_all_terms"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="get_terms_from_refs"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="handle_row_actions"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="prioritize_copied_term"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="process_bulk_action"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="search_box"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="taxopress_arrange_terms_hierarchically"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms-table.php" method="taxopress_flatten_terms_tree"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms.php" method="page_manage_terms"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="inc/terms.php" method="taxopress_terms_inline_save_term_callback"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="includes-core/TaxopressCoreAdmin.php" method="taxopress_terms_order_free"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="add_preview_debug_entry"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="get_existing_terms_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_new_term"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_post_term"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_preview_feature"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="taxopress_validate_term_before_insert"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_dandelion_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_ibm_watson_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_ai_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_calais_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_wordpress_ai_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="is_valid_ibm_watson_url"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="build_context"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="generate_local_description"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="generate_openai_description"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="handle_apply"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="handle_suggestion"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="format_taxonomy_term_results"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="get_taxonomies"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="get_term_fieldset_html"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="admin_enqueue_scripts"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="ajax_suggest_local"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="editor_metabox"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="load_result"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="migrate_legacy_settings"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_metabox_fields"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_preview_tab"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_taxopress_ai_fields"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="save_settings"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="simple-tags.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="inc/post-tags.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="inc/related-posts.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="inc/tag-clouds.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="inc/taxonomies.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="inc/terms-table.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="includes-core/TaxopressCoreAdmin.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="modules/taxopress-ai/classes/TaxoPressAiApi.php"/>
+  <violation rule="PHPMD\Rule\Design\LongClass" file="modules/taxopress-ai/taxopress-ai.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/post-tags.php" method="taxopress_manage_posttags"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/related-posts.php" method="taxopress_manage_relatedposts"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/schedule.php" method="page_manage_autoterms_schedule"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/schedule.php" method="save_autoterms_schedule_settings"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/tag-clouds.php" method="taxopress_manage_tagclouds"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/taxonomies.php" method="page_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/taxonomies.php" method="taxopress_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms-table.php" method="extra_tablenav"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms-table.php" method="get_all_terms"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms-table.php" method="handle_row_actions"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms-table.php" method="process_bulk_action"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="inc/terms.php" method="page_manage_terms"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="get_existing_terms_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_new_term"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_post_term"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_preview_feature"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_dandelion_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_ibm_watson_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_ai_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_calais_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_wordpress_ai_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="format_taxonomy_term_results"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="get_term_fieldset_html"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/taxopress-ai.php" method="admin_enqueue_scripts"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/taxopress-ai.php" method="editor_metabox"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/taxopress-ai.php" method="render_taxopress_ai_fields"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="modules/taxopress-ai/taxopress-ai.php" method="save_settings"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="review-request/review.php" method="admin_footer"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/post-tags-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/post-tags.php" method="handle_posttags_preview"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/post-tags.php" method="taxopress_manage_posttags"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/related-posts-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/related-posts.php" method="handle_relatedposts_preview"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/related-posts.php" method="taxopress_manage_relatedposts"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/schedule.php" method="page_manage_autoterms_schedule"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/schedule.php" method="save_autoterms_schedule_settings"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/tag-clouds-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/tag-clouds.php" method="taxopress_manage_tagclouds"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/taxonomies.php" method="handle_taxopress_select2_filter"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/taxonomies.php" method="page_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/taxonomies.php" method="taxopress_manage_taxonomies"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-functions.php"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="display_bulk_parent_notice"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="extra_tablenav"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="get_all_terms"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="prioritize_copied_term"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="process_bulk_action"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms-table.php" method="search_box"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="inc/terms.php" method="taxopress_terms_inline_save_term_callback"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="add_preview_debug_entry"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="get_existing_terms_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_new_term"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_post_term"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="handle_taxopress_ai_preview_feature"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php" method="taxopress_validate_term_before_insert"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_dandelion_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_ibm_watson_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_ai_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_open_calais_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiApi.php" method="get_wordpress_ai_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="build_context"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="generate_local_description"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="generate_openai_description"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="handle_apply"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php" method="handle_suggestion"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="format_taxonomy_term_results"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php" method="get_term_fieldset_html"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="admin_enqueue_scripts"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="ajax_suggest_local"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="editor_metabox"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="migrate_legacy_settings"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_metabox_fields"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_preview_tab"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="render_taxopress_ai_fields"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="modules/taxopress-ai/taxopress-ai.php" method="save_settings"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="simple-tags.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyMethods" file="inc/terms-table.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyMethods" file="includes-core/TaxopressCoreAdmin.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyPublicMethods" file="inc/term-authors.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyPublicMethods" file="inc/terms-table.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyPublicMethods" file="includes-core/TaxopressCoreAdmin.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyPublicMethods" file="modules/taxopress-ai/taxopress-ai.php"/>
+  <violation rule="PHPMD\Rule\Design\TooManyPublicMethods" file="review-request/review.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/post-tags.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/posts-table.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/related-posts.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/schedule.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/tag-clouds.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/taxonomies.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/term-authors.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="inc/terms-table.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="includes-core/TaxopressCoreAdmin.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="modules/taxopress-ai/classes/TaxoPressAiApi.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="modules/taxopress-ai/classes/TaxoPressAiTermDescription.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="modules/taxopress-ai/taxopress-ai.php"/>
+  <violation rule="PHPMD\Rule\Design\WeightedMethodCount" file="review-request/review.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/post-tags.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/posts.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/related-posts.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/tag-clouds.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/taxonomies-functions.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/taxonomies.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/term-authors.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="inc/terms.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="includes-core/TaxopressCoreAdmin.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="modules/taxopress-ai/classes/TaxoPressAiAjax.php"/>
+  <violation rule="PHPMD\Rule\UnusedFormalParameter" file="modules/taxopress-ai/classes/TaxoPressAiUtilities.php"/>
+</phpmd-baseline>

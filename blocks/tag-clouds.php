@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  */
 function st_tag_clouds_block_init()
 {
-    global $post, $pagenow;
+    global $pagenow;
 
     if (!function_exists('register_block_type')) {
         return;
@@ -54,17 +54,6 @@ function st_tag_clouds_block_init()
         'render_callback' => 'st_tag_clouds_render',
     ]);
 
-    $shortcode_page = sprintf(
-        '<a href="%s">%s</a>',
-        add_query_arg(
-            [
-                'page'               => 'st_terms_display',
-            ],
-            admin_url('admin.php')
-        ),
-        esc_html__('this page.', 'simple-tags')
-    );
-
     $select_label = __('Select Terms Display', 'simple-tags');
     $panel_title  = __('Terms Display (PublishPress Taxonomies)', 'simple-tags');
 
@@ -84,7 +73,6 @@ add_action('init', 'st_tag_clouds_block_init');
  */
 function st_tag_clouds_render($attributes)
 {
-    global $post;
     ob_start();
     echo do_shortcode('[taxopress_termsdisplay id="' . $attributes['tagcloud_id'] . '"]');
 

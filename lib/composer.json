@@ -14,6 +14,6 @@
         "publishpress/wordpress-version-notices": "^2.2.1",
         "publishpress/wordpress-reviews": "^1.2.1",
         "publishpress/instance-protection": "^1.0",
-        "publishpress/bundled-translations": "^1.0.3"
+        "publishpress/bundled-translations": "^1.0.6"
     }
 }

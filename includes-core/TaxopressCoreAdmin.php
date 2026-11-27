@@ -86,7 +86,9 @@ class TaxopressCoreAdmin
 
     public function taxopress_load_admin_core_assets()
     {
-        wp_register_style('st-admin-core', STAGS_URL . '/includes-core/assets/css/core.css', array(), STAGS_VERSION, 'all');
+        $style_path = STAGS_DIR . '/includes-core/assets/css/core.css';
+        $style_version = file_exists($style_path) ? STAGS_VERSION . '.' . filemtime($style_path) : STAGS_VERSION;
+        wp_register_style('st-admin-core', STAGS_URL . '/includes-core/assets/css/core.css', array(), $style_version, 'all');
     }
 
     public function taxopress_load_admin_core_styles()
@@ -855,23 +857,20 @@ class TaxopressCoreAdmin
             [ 'attr' => 'random_free', 'text' => esc_attr__('Random (Pro)', 'simple-tags') ],
             [ 'attr' => 'taxopress_term_order_free', 'text' => esc_attr__('Term Order (Pro)', 'simple-tags') ],
         ];
-        $selected_orderby = isset($current['orderby']) ? $current['orderby'] : '';
 
-        $name = isset($current['name']) ? $current['name'] : '';
-        $terms_table_url = esc_url(
-            admin_url(
-                'admin.php?page=st_terms&taxopress_terms_taxonomy=' . rawurlencode($name) . '&taxopress_pro_notice=term_order'
-            )
-        );
         ?>
             <tr>
                 <th scope="row"><?php echo esc_html__('Order terms for display by', 'simple-tags'); ?></th>
                 <td>
                     <?php foreach ($orderby_options as $option) :
-                        $is_id = ($option['attr'] === 'term_id');
-                        $disabled = $is_id ? '' : 'disabled';
-                        $blur_class = $is_id ? '' : 'taxopress-blur-option';
-                        $checked = $is_id ? 'checked="checked"' : '';
+                        $disabled = 'disabled';
+                        $blur_class = 'taxopress-blur-option';
+                        $checked = '';
+                        if ($option['attr'] === 'term_id') {
+                            $disabled = '';
+                            $blur_class = '';
+                            $checked = 'checked="checked"';
+                        }
                         ?>
                         <label style="display:block;margin-bottom:4px;" class="<?php echo esc_attr($blur_class); ?>">
                             <input type="radio"
@@ -902,14 +901,13 @@ class TaxopressCoreAdmin
                 [ 'attr' => 'asc', 'text' => esc_attr__('Ascending', 'simple-tags'), 'default' => true ],
                 [ 'attr' => 'desc', 'text' => esc_attr__('Descending', 'simple-tags') ],
             ];
-            $selected_order = isset($current['order']) ? $current['order'] : '';
+            $selected_order = !empty($current['order']) ? $current['order'] : 'asc';
             ?>
             <tr>
                 <th scope="row"><?php echo esc_html__('Order direction', 'simple-tags'); ?></th>
                 <td>
                 <?php foreach ($order_options as $option) :
-                    $is_asc = ($option['attr'] === 'asc');
-                    $checked = ($selected_order === $option['attr'] || (empty($selected_order) && $is_asc)) ? 'checked="checked"' : '';
+                    $checked = $selected_order === $option['attr'] ? 'checked="checked"' : '';
                     ?>
                     <label style="display:block;margin-bottom:4px;">
                         <input type="radio"

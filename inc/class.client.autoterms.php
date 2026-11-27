@@ -31,6 +31,10 @@ class SimpleTags_Client_Autoterms
      */
     public static function save_post($post_id = null, $object = null)
     {
+        if (TaxoPress_WooCommerce::is_syncing($post_id)) {
+            return false;
+        }
+
         // Get options
         $options = get_option(STAGS_OPTIONS_NAME_AUTO);
 
@@ -46,6 +50,36 @@ class SimpleTags_Client_Autoterms
 
         if (!isset($object->post_type)) {
             return;
+        }
+
+        if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+            return false;
+        }
+
+        $save_fingerprint = hash(
+            'sha256',
+            wp_json_encode(
+                array(
+                    'post_id'      => (int) $post_id,
+                    'post_status'  => isset($object->post_status) ? $object->post_status : '',
+                    'post_title'   => isset($object->post_title) ? $object->post_title : '',
+                    'post_excerpt' => isset($object->post_excerpt) ? $object->post_excerpt : '',
+                    'post_content' => isset($object->post_content) ? $object->post_content : '',
+                )
+            )
+        );
+        static $processed_saves = array();
+        $dedupe_window = max(0, (int) apply_filters('taxopress_autoterms_save_dedupe_window', 10, $post_id, $object));
+        $dedupe_key = 'taxopress_autoterms_save_' . md5(get_current_blog_id() . '|' . $save_fingerprint);
+        if (
+            isset($processed_saves[$save_fingerprint])
+            || ($dedupe_window > 0 && get_transient($dedupe_key))
+        ) {
+            return false;
+        }
+        $processed_saves[$save_fingerprint] = true;
+        if ($dedupe_window > 0) {
+            set_transient($dedupe_key, 1, $dedupe_window);
         }
 
         // Loop option for find if autoterms is actived on any taxonomy and post type
@@ -185,6 +219,27 @@ class SimpleTags_Client_Autoterms
         }
 
         $terms_to_add = array();
+        $term_sources = array();
+        $record_term_sources = static function ($start_index, $source_id, $provider_name = '') use (&$terms_to_add, &$term_sources) {
+            foreach (array_slice($terms_to_add, (int) $start_index) as $term_name) {
+                $term_name = is_string($term_name) ? trim($term_name) : '';
+                if ($term_name === '') {
+                    continue;
+                }
+
+                if (!isset($term_sources[$term_name])) {
+                    $term_sources[$term_name] = array();
+                }
+
+                $source = array(
+                    'id'       => sanitize_key($source_id),
+                    'provider' => sanitize_text_field($provider_name),
+                );
+                if (!in_array($source, $term_sources[$term_name], true)) {
+                    $term_sources[$term_name][] = $source;
+                }
+            }
+        };
         if ($preview) {
             foreach (['autoterm_use_wordpress_ai', 'autoterm_use_open_ai', 'autoterm_use_ibm_watson', 'autoterm_use_dandelion', 'autoterm_use_opencalais'] as $provider) {
                 if (!empty($options[$provider])) {
@@ -317,6 +372,13 @@ class SimpleTags_Client_Autoterms
                 ? $wordpress_ai_results['provider_results']
                 : [$wordpress_ai_results];
             foreach ($provider_results as $provider_result) {
+                $source_start = count($terms_to_add);
+                $provider_name = !empty($provider_result['provider_name'])
+                    ? sanitize_text_field($provider_result['provider_name'])
+                    : '';
+                $provider_label = $provider_name !== ''
+                    ? $provider_name
+                    : esc_html__('AI Connectors', 'simple-tags');
                 if (!empty($provider_result['results'])) {
                     foreach ((array) $provider_result['results'] as $term) {
                         $term = is_string($term) ? trim(stripslashes($term)) : '';
@@ -375,16 +437,15 @@ class SimpleTags_Client_Autoterms
                         }
                     }
                 } else {
-                    $provider_label = !empty($provider_result['provider_name'])
-                        ? $provider_result['provider_name']
-                        : esc_html__('AI Connectors', 'simple-tags');
                     $empty_term_messages[$object->ID]['message'][] = $provider_label . ': ' . $provider_result['message'];
                 }
+                $record_term_sources($source_start, 'wordpress_ai', $provider_name);
             }
         }
 
         //Autoterm with OpenAI
         if ($autoterm_use_open_ai > 0 && taxopress_is_pro_version()) {
+            $source_start = count($terms_to_add);
             $open_ai_results = TaxoPressAiApi::get_open_ai_results($args);
             if (!empty($open_ai_results['results'])) {
                 $term_results = $open_ai_results['results'];
@@ -461,9 +522,11 @@ class SimpleTags_Client_Autoterms
             } else {
                 $empty_term_messages[$object->ID]['message'][] = esc_html__('OpenAI', 'simple-tags') . ': ' . $open_ai_results['message'];
             }
+            $record_term_sources($source_start, 'open_ai');
         }
 
         if ($autoterm_use_ibm_watson > 0 && taxopress_is_pro_version()) {
+            $source_start = count($terms_to_add);
             //Autoterm with IBM Watson
             $ibm_watson_results = TaxoPressAiApi::get_ibm_watson_results($args);
             if (!empty($ibm_watson_results['results'])) {
@@ -541,9 +604,11 @@ class SimpleTags_Client_Autoterms
             } else {
                 $empty_term_messages[$object->ID]['message'][] = esc_html__('IBM Watson', 'simple-tags') . ': ' . $ibm_watson_results['message'];
             }
+            $record_term_sources($source_start, 'ibm_watson');
         }
 
         if ($autoterm_use_dandelion > 0 && taxopress_is_pro_version()) {
+            $source_start = count($terms_to_add);
             //Autoterm with Dandelion
             $dandelion_results = TaxoPressAiApi::get_dandelion_results($args);
             if (!empty($dandelion_results['results'])) {
@@ -623,9 +688,11 @@ class SimpleTags_Client_Autoterms
             } else {
                 $empty_term_messages[$object->ID]['message'][] = esc_html__('Dandelion', 'simple-tags') . ': ' . $dandelion_results['message'];
             }
+            $record_term_sources($source_start, 'dandelion');
         }
 
         if ($autoterm_use_opencalais > 0 && taxopress_is_pro_version()) {
+            $source_start = count($terms_to_add);
             //Autoterm with OpenCalais
             $open_calais_results = TaxoPressAiApi::get_open_calais_results($args);
             if (!empty($open_calais_results['results'])) {
@@ -703,9 +770,11 @@ class SimpleTags_Client_Autoterms
             } else {
                 $empty_term_messages[$object->ID]['message'][] = esc_html__('OpenCalais', 'simple-tags') . ': ' . $open_calais_results['message'];
             }
+            $record_term_sources($source_start, 'open_calais');
         }
 
         if ($autoterm_use_taxonomy && $autoterm_useonly && !empty($options['specific_terms'])) {
+            $source_start = count($terms_to_add);
             // Auto term with specific auto terms list
             $terms = taxopress_sanitize_specific_terms($options['specific_terms']);
             foreach ($terms as $term) {
@@ -771,8 +840,10 @@ class SimpleTags_Client_Autoterms
                     }
                 }
             }
+            $record_term_sources($source_start, 'specific_terms');
             unset($terms, $term);
         } elseif ($autoterm_use_taxonomy && $autoterm_useall) {
+            $source_start = count($terms_to_add);
             // Auto terms with all terms
             // Get all terms
             $terms = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT name
@@ -848,6 +919,7 @@ class SimpleTags_Client_Autoterms
                     }
                 }
             }
+            $record_term_sources($source_start, 'taxonomy_terms');
         }
 
         // Append terms if terms to add
@@ -877,15 +949,17 @@ class SimpleTags_Client_Autoterms
             $terms_to_add = array_filter(array_values($terms_to_add));
 
             if (empty($terms_to_add)) {
+                // Repair attribute definitions for terms assigned by earlier Auto Terms runs.
+                TaxoPress_WooCommerce::sync_attribute($object->ID, $taxonomy);
                 // remove term if replace type is replace and term is empty
                 if ($autoterm_replace_type == 'replace') {
                     $empty_term_messages[$object->ID]['message'][] = esc_html__('No term was suggested but all post terms were removed based on Auto Terms replace settings.', 'simple-tags');
                     wp_set_object_terms($object->ID, [], $taxonomy, true);
                     //update log
-                    self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms_remove_all');
+                    self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms_remove_all', $term_sources);
                 } else {
                     //update log
-                    self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms');
+                    self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms', $term_sources);
                 }
                 return false;
             }
@@ -1074,11 +1148,19 @@ class SimpleTags_Client_Autoterms
                 return false;
             }
 
+            if ($result !== false) {
+                $attribute_result = TaxoPress_WooCommerce::sync_attribute($object->ID, $taxonomy, true);
+                if (is_wp_error($attribute_result)) {
+                    $empty_term_messages[$object->ID]['message'][] = sprintf(esc_html__('Error saving product attribute: %s', 'simple-tags'), $attribute_result->get_error_message());
+                    return false;
+                }
+            }
+
             // Clean cache
             clean_post_cache($object->ID);
 
             //update log
-            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'success', 'terms_added');
+            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'success', 'terms_added', $term_sources);
 
             return true;
         } else {
@@ -1091,7 +1173,7 @@ class SimpleTags_Client_Autoterms
             }
 
             //update log
-            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms_remove_all');
+            self::update_taxopress_logs($object, $taxonomy, $options, $counter, $action, $component, $terms_to_add, 'failed', 'empty_terms_remove_all', $term_sources);
         }
 
         return false;
@@ -1116,11 +1198,12 @@ class SimpleTags_Client_Autoterms
      * @param array $terms_to_add
      * @param string $status
      * @param string $status_message
+     * @param array $term_sources Suggestion sources keyed by exact term name.
      *
      * @return boolean
      * @author olatechpro
      */
-    public static function update_taxopress_logs($object, $taxonomy = 'post_tag', $options = array(), $counter = false, $action = 'save_posts', $component = 'st_autoterms', $terms_to_add = [], $status = 'failed', $status_message = 'not_provided')
+    public static function update_taxopress_logs($object, $taxonomy = 'post_tag', $options = array(), $counter = false, $action = 'save_posts', $component = 'st_autoterms', $terms_to_add = [], $status = 'failed', $status_message = 'not_provided', $term_sources = [])
     {
         if (get_option('taxopress_autoterms_logs_disabled') || !post_type_exists('taxopress_logs')) {
             return;
@@ -1140,6 +1223,41 @@ class SimpleTags_Client_Autoterms
         update_post_meta($post_id, '_taxopress_log_action', $action);
         update_post_meta($post_id, '_taxopress_log_component', $component);
         update_post_meta($post_id, '_taxopress_log_terms', implode(", ", $terms_to_add));
+        $term_sources = apply_filters(
+            'taxopress_autoterms_log_term_sources',
+            $term_sources,
+            $object,
+            $taxonomy,
+            $options
+        );
+        $logged_term_sources = array();
+        foreach ($terms_to_add as $term_name) {
+            if (!isset($term_sources[$term_name]) || !is_array($term_sources[$term_name])) {
+                continue;
+            }
+
+            $sources = array();
+            foreach ($term_sources[$term_name] as $source) {
+                if (!is_array($source) || empty($source['id'])) {
+                    continue;
+                }
+                $normalized_source = array(
+                    'id'       => sanitize_key($source['id']),
+                    'provider' => !empty($source['provider']) ? sanitize_text_field($source['provider']) : '',
+                );
+                if (!in_array($normalized_source, $sources, true)) {
+                    $sources[] = $normalized_source;
+                }
+            }
+
+            if (!empty($sources)) {
+                $logged_term_sources[] = array(
+                    'term'    => sanitize_text_field($term_name),
+                    'sources' => $sources,
+                );
+            }
+        }
+        update_post_meta($post_id, '_taxopress_log_term_sources', $logged_term_sources);
         update_post_meta($post_id, '_taxopress_log_status', $status);
         update_post_meta($post_id, '_taxopress_log_status_message', $status_message);
         update_post_meta($post_id, '_taxopress_log_options', $options);

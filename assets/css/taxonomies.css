@@ -566,3 +566,70 @@ ul.st-taxonomy-tab li.active a {
         float: none !important;
     }
 }
+
+.taxopress-template-post-types {
+    margin: 24px 0;
+}
+
+.taxopress-template-post-types label {
+    display: inline-block;
+    margin: 12px 20px 0 0;
+}
+
+.taxopress-taxonomy-template-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.taxopress-taxonomy-template-grid .card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20px;
+}
+
+.taxopress-template-description,
+.taxopress-template-visibility {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.taxopress-template-description {
+    flex-grow: 1;
+}
+
+.taxopress-template-visibility select,
+.taxopress-template-description textarea {
+    width: 100%;
+}
+
+.taxopress-template-description textarea {
+    resize: vertical;
+}
+
+.taxopress-template-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.taxopress-taxonomy-template-grid .card.is-added {
+    border-color: #008a20;
+    box-shadow: 0 0 0 1px #008a20;
+}
+
+.taxopress-template-added-status {
+    color: #006b1b;
+    font-weight: 600;
+}

@@ -1,5 +1,6 @@
 - *.code-workspace
 - .babelrc
+- .agents/
 - .distignore
 - .git
 - .gitattributes
@@ -8,6 +9,7 @@
 - .idea
 - .php-cs-fixer.cache
 - .phpcs-php-compatibility.xml
+- .phpcs-plugin-review.xml
 - .phpcs.xml
 - .phplint-cache
 - .phplint.yml
@@ -29,6 +31,7 @@
 - builder
 - builder.yml
 - codeception.dist.yml
+- /composer.json
 - cs
 - dev-workspace
 - cache
@@ -43,6 +46,7 @@
 - ray.php
 - screenshot-*.png
 - phpstan.neon
+- phpmd.*.xml
 - codeception.yml
 - CHANGELOG.md
 - gh_token.txt

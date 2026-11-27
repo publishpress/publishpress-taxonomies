@@ -11,6 +11,7 @@ defined('ABSPATH') || exit;
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiAjax.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiApi.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiFields.php';
+require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiTermDescription.php';
 require_once plugin_dir_path(__FILE__) . 'classes/TaxoPressAiUtilities.php';
 
 if (!class_exists('TaxoPress_AI_Module')) {
@@ -49,6 +50,9 @@ if (!class_exists('TaxoPress_AI_Module')) {
             add_action('wp_ajax_taxopress_ai_add_post_term', ['TaxoPressAiAjax', 'handle_taxopress_ai_post_term']);
             // Handle AI new term.
             add_action('wp_ajax_taxopress_ai_add_new_term', ['TaxoPressAiAjax', 'handle_taxopress_ai_new_term']);
+            // Suggest and apply reviewable term descriptions.
+            add_action('wp_ajax_taxopress_suggest_term_description', ['TaxoPressAiTermDescription', 'handle_suggestion']);
+            add_action('wp_ajax_taxopress_apply_term_description', ['TaxoPressAiTermDescription', 'handle_apply']);
             // Ajax action, JS Helper and admin action
             add_action('wp_ajax_simpletags', [$this, 'ajax_check']);
             // PublishPress Taxonomies AI metabox default result on page load
@@ -240,6 +244,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
 
                 $expected_checkbox_keys = [];
                 $expected_multiselect_keys = [];
+                $expected_color_keys = [];
                 foreach ($sections_to_check as $section) {
                     if (empty($option_data[$section]) || !is_array($option_data[$section])) {
                         continue;
@@ -274,6 +279,12 @@ if (!class_exists('TaxoPress_AI_Module')) {
                             continue;
                         }
 
+                        if ($field_type === 'text-color' && $field_id) {
+                            $default_color = isset($opt[3]) ? sanitize_hex_color($opt[3]) : '';
+                            $expected_color_keys[$field_id] = $default_color ?: '#dddddd';
+                            continue;
+                        }
+
                         if ($field_type === 'sub_multiple_checkbox' && isset($opt[3]) && is_array($opt[3])) {
                             foreach ($opt[3] as $sub_key => $sub_val) {
                                 $expected_checkbox_keys[] = $sub_key;
@@ -301,10 +312,14 @@ if (!class_exists('TaxoPress_AI_Module')) {
                         continue;
                     }
 
-                    if (is_array($value)) {
-                        $current_options[$key] = array_map('sanitize_text_field', $value);
+                    $unslashed_value = wp_unslash($value);
+                    if (is_array($unslashed_value)) {
+                        $current_options[$key] = array_map('sanitize_text_field', $unslashed_value);
+                    } elseif (isset($expected_color_keys[$key])) {
+                        $sanitized_color = sanitize_hex_color($unslashed_value);
+                        $current_options[$key] = $sanitized_color ?: $expected_color_keys[$key];
                     } else {
-                        $current_options[$key] = sanitize_text_field($value);
+                        $current_options[$key] = sanitize_text_field($unslashed_value);
                     }
                 }
 
@@ -351,13 +366,6 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     $tp_current_screen = 'post.php';
                 }
 
-                $manage_link = add_query_arg(
-                    [
-                        'page' => 'st_taxopress_ai'
-                    ],
-                    admin_url('admin.php')
-                );
-
                 $removed_taxonomies = taxopress_user_role_removed_taxonomy();
                 $removed_taxonomies_tax = $removed_taxonomies['taxonomies'];
                 $removed_taxonomies_css = $removed_taxonomies['custom_css'];
@@ -387,11 +395,32 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 wp_enqueue_style('taxopress-admin-select2');
                 wp_enqueue_script('taxopress-admin-select2');
 
-                wp_enqueue_script('taxopress-ai-editor-js', plugins_url('', __FILE__) . '/assets/js/taxopress-ai-editor.js', array(
-                    'jquery', 'taxopress-admin-select2', 'wp-a11y'
-                ), STAGS_VERSION);
+                $editor_script_path = plugin_dir_path(__FILE__) . 'assets/js/taxopress-ai-editor.js';
+                $editor_style_path = plugin_dir_path(__FILE__) . 'assets/css/taxopress-ai-editor.css';
+                $editor_script_version = file_exists($editor_script_path) ? STAGS_VERSION . '.' . filemtime($editor_script_path) : STAGS_VERSION;
+                $editor_style_version = file_exists($editor_style_path) ? STAGS_VERSION . '.' . filemtime($editor_style_path) : STAGS_VERSION;
 
-                wp_enqueue_style('taxopress-ai-editor-css', plugins_url('', __FILE__) . '/assets/css/taxopress-ai-editor.css', [], STAGS_VERSION, 'all');
+                wp_enqueue_script('taxopress-ai-editor-js', plugins_url('', __FILE__) . '/assets/js/taxopress-ai-editor.js', array(
+                    'jquery', 'taxopress-admin-select2', 'wp-a11y', 'wp-color-picker'
+                ), $editor_script_version);
+
+                wp_enqueue_style('wp-color-picker');
+                wp_enqueue_style('taxopress-ai-editor-css', plugins_url('', __FILE__) . '/assets/css/taxopress-ai-editor.css', [], $editor_style_version, 'all');
+
+                $term_color_post_type = $fast_update_screen ? $preview_post_type : get_post_type();
+                if (!empty($term_color_post_type)) {
+                    $term_colors = TaxoPressAiUtilities::get_term_colors($term_color_post_type);
+                    $term_color_css = sprintf(
+                        '.taxopress-post-suggestterm{--taxopress-term-on-post-color:%1$s;--taxopress-term-on-post-text-color:%2$s;--taxopress-existing-term-color:%3$s;--taxopress-existing-term-text-color:%4$s;--taxopress-new-term-color:%5$s;--taxopress-new-term-text-color:%6$s;}',
+                        $term_colors['term_on_post'],
+                        TaxoPressAiUtilities::get_contrast_text_color($term_colors['term_on_post']),
+                        $term_colors['existing_term'],
+                        TaxoPressAiUtilities::get_contrast_text_color($term_colors['existing_term']),
+                        $term_colors['new_term'],
+                        TaxoPressAiUtilities::get_contrast_text_color($term_colors['new_term'])
+                    );
+                    wp_add_inline_style('taxopress-ai-editor-css', $term_color_css);
+                }
 
                 if (!empty($removed_taxonomies_css) && !$main_post_screen && !$fast_update_screen) {
                     wp_add_inline_style('taxopress-ai-editor-css', '' . implode(',', $removed_taxonomies_css) . ' {display:none !important;}');
@@ -412,10 +441,8 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     'taxopress-ai-editor-js',
                     'taxoPressAIRequestAction',
                     [
-                        'requiredSuffix' => esc_html__('Please choose a post to use with PublishPress Taxonomies AI.', 'simple-tags'),
                         'nonce' => wp_create_nonce('taxopress-ai-ajax-nonce'),
-                        // phpcs:ignore Squiz.PHP.CommentedOutCode -- Configuration URL, intentionally commented for future use
-                        'apiEditLink' => '',//'<span class="edit-suggest-term-metabox"> <a target="blank" href="' . $manage_link . '"> '. esc_html__('Manage API Configuration', 'simple-tags') .' </a></span>'
+                        'apiEditLink' => '',
                         'fieldTabs' => TaxoPressAiFields::get_fields_tabs(),
                         'removed_tax' => $removed_taxonomies_tax,
                         'current_screen' => $tp_current_screen,
@@ -440,7 +467,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
          */
         public function admin_menu()
         {
-            $hook = add_submenu_page(
+            add_submenu_page(
                 self::MENU_SLUG,
                 esc_html__('Metaboxes', 'simple-tags'),
                 esc_html__('Metaboxes', 'simple-tags'),
@@ -646,6 +673,18 @@ if (!class_exists('TaxoPress_AI_Module')) {
                             $input_type = '<input type="number" id="' . esc_attr($field_id) . '" name="' . esc_attr($field_id) . '" value="' . esc_attr($field_value) . '"' . $min_attr . ' />';
                             break;
 
+                        case 'text-color':
+                            $desc_html_tag = 'p';
+                            $default_color = sanitize_hex_color($field_options) ?: '#dddddd';
+                            $field_value = isset($option_actual[$field_id]) ? sanitize_hex_color($option_actual[$field_id]) : '';
+                            $field_value = $field_value ?: $default_color;
+                            $field_settings = isset($option[6]) && is_array($option[6]) ? $option[6] : [];
+                            $css_variable = isset($field_settings['css_variable']) ? $field_settings['css_variable'] : '';
+                            $text_css_variable = isset($field_settings['text_css_variable']) ? $field_settings['text_css_variable'] : '';
+
+                            $input_type = '<input type="text" id="' . esc_attr($field_id) . '" name="' . esc_attr($field_id) . '" value="' . esc_attr($field_value) . '" class="text-color taxopress-term-color" data-default-color="' . esc_attr($default_color) . '" data-css-variable="' . esc_attr($css_variable) . '" data-text-css-variable="' . esc_attr($text_css_variable) . '" />';
+                            break;
+
                         case 'textarea':
                             $rows_attr = isset($option[7]['rows']) ? ' rows="' . esc_attr($option[7]['rows']) . '"' : ' rows="4"';
                             $placeholder_attr = isset($option[7]['placeholder']) ? ' placeholder="' . esc_attr($option[7]['placeholder']) . '"' : '';
@@ -668,10 +707,11 @@ if (!class_exists('TaxoPress_AI_Module')) {
 
                     $extra_suffix = '';
                     if (!empty($field_description)) {
+                        $description_class = ($field_type === 'text-color') ? 'description stpexplan' : 'stpexplan';
                         if ($field_type == 'sub_multiple_checkbox') {
-                            $extra_prefix = '<' . $desc_html_tag . ' class="stpexplan">' . $field_description . '</' . $desc_html_tag . '>';
+                            $extra_prefix = '<' . $desc_html_tag . ' class="' . $description_class . '">' . $field_description . '</' . $desc_html_tag . '>';
                         } else {
-                            $extra_suffix = '<' . $desc_html_tag . ' class="stpexplan">' . $field_description . '</' . $desc_html_tag . '>';
+                            $extra_suffix = '<' . $desc_html_tag . ' class="' . $description_class . '">' . $field_description . '</' . $desc_html_tag . '>';
                         }
                     }
 
@@ -962,7 +1002,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     <div id="post-body" class="taxopress-section metabox-holder columns-2">
                         <div>
                             <div id="taxopress-preview-metabox-content" class="right-body-content taxopress-preview-metabox-content" style="position: relative;">
-                                <?php $this->editor_metabox($post, $context = 'fast_update'); ?>
+                                <?php $this->editor_metabox($post, 'fast_update'); ?>
                             </div>
                         </div>
                     </div>
@@ -971,156 +1011,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
             <?php
         }
 
-        /**
-         * Helper method to render settings fields
-         */
-        private function render_settings_field($args)
-        {
-            $defaults = [
-                'type' => 'text',
-                'value' => '',
-                'description' => '',
-                'key' => '',
-                'label' => ''
-            ];
-            $args = array_merge($defaults, $args);
 
-            ?>
-            <tr>
-                <th scope="row">
-                    <label for="<?php echo esc_attr($args['key']); ?>">
-                        <?php echo esc_html($args['label']); ?>
-                    </label>
-                </th>
-                <td>
-                    <?php if ($args['type'] === 'checkbox') : ?>
-                        <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
-                            id="<?php echo esc_attr($args['key']); ?>"
-                            type="checkbox" 
-                            aria-label="<?php echo esc_attr($args['label']); ?>"
-                            value="1" 
-                            <?php checked(1, (int) $args['value']); ?> />
-                    <?php else : ?>
-                        <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
-                            id="<?php echo esc_attr($args['key']); ?>"
-                            type="<?php echo esc_attr($args['type']); ?>" 
-                            aria-label="<?php echo esc_attr($args['label']); ?>"
-                            value="<?php echo esc_attr($args['value']); ?>" />
-                    <?php endif; ?>
-                    
-                    <?php if (!empty($args['description'])) : ?>
-                        <p class="description">
-                            <?php echo esc_html($args['description']); ?>
-                        </p>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php
-        }
-
-        /**
-         * Get a rendered field partial
-         *
-         * @param array $args Arguments to render in the partial.
-         */
-        private static function get_rendered_field_partial($args)
-        {
-            $defaults = [
-                'description' => '',
-                'type' => 'text',
-                'tab' => 'general',
-                'value' => '',
-                'key' => '',
-                'other_attr' => '',
-                'label' => '',
-                'required' => false,
-                'multiple' => false,
-                'classes' => '',
-                'options' => [],
-            ];
-            $args = array_merge($defaults, $args);
-
-            $key = $args['key'];
-            ?>
-                    <tr valign="top" class="<?php echo esc_attr('form-field settings-' . $key . '-wrap'); ?>">
-                        <th scope="row">
-                            <?php if (!empty($args['label'])) : ?>
-                                <label for="<?php echo esc_attr($key); ?>">
-                                    <?php echo esc_html($args['label']); ?>
-                                </label>
-                                <?php if ($args['required']) { ?>
-                                    <span class="required">*</span>
-                                <?php } ?>
-                            <?php endif; ?>
-                        </th>
-                        <td>
-                            <?php
-                            if ($args['type'] === 'checkbox') :
-                                ?>
-                                <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
-                                    type="<?php echo esc_attr($args['type']); ?>" value="1" <?php checked(1, (int) $args['value']); ?>
-                                    aria-label="<?php echo esc_attr($args['label']); ?>"
-                                    <?php echo($args['required'] ? 'required="true"' : ''); ?> />
-                                <?php if (!empty($args['description'])) : ?>
-                                                    <span class="description">
-                                        <?php echo esc_html($args['description']); ?>
-                                    </span>
-                                <?php endif; ?>
-                            <?php elseif ($args['type'] === 'select') : ?>
-                                <select 
-                                    name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]<?php echo $args['multiple'] ? '[]' : '';?>"
-                                    id="<?php echo esc_attr($key); ?>"
-                                    class="<?php echo esc_attr($args['classes']); ?>"
-                                    style="width: 95%;"
-                                    data-placeholder="<?php printf(esc_html__('Select %s', 'simple-tags'), esc_html(strtolower($args['label']))); ?>"
-                                    <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    <?php echo($args['multiple'] ? 'multiple' : '');?>
-                                    <?php echo($args['required'] ? 'required="true"' : '');?>>
-                                    <?php
-                                    foreach ($args['options'] as $select_key => $select_label) {
-                                        if ($args['multiple']) {
-                                            $selected_option = (isset($args['value']) && is_array($args['value']) && in_array($select_key, $args['value'])) ? true : false;
-                                        } else {
-                                            $selected_option = (isset($args['value']) && $select_key == $args['value']) ? true : false;
-                                        }
-                                        ?>
-                                        <option value="<?php esc_attr_e($select_key); ?>"
-                                                <?php selected(true, $selected_option); ?>>
-                                                <?php echo esc_html($select_label); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo esc_html($args['description']); ?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php elseif ($args['type'] === 'textarea') : ?>
-                                <?php
-                                $required_attr = ($args['required'] ? 'required="true"' : '');
-                                ?>
-                                <textarea style="min-height: 150px;" name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>><?php echo sanitize_textarea_field(stripslashes_deep($args['value'])); ?></textarea>
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php else : ?>
-                                <?php
-                                $required_attr = ($args['required'] ? 'required="true"' : '');
-                                ?>
-                                <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
-                                    type="<?php echo esc_attr($args['type']); ?>" value="<?php echo esc_attr($args['value']); ?>" aria-label="<?php echo esc_attr($args['label']); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?> />
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                    <?php
-        }
 
         /**
          * Ajax action, JS Helper and admin action
@@ -1249,7 +1140,6 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 return;
             }
 
-            $action       = $args['action'];
             $taxonomy     = $args['taxonomy'];
             $ai_group     = $args['ai_group'];
             $post_title   = $args['post_title'];
@@ -1349,7 +1239,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     if (!in_array($post_type, ['attachment'])) {
                         if (empty($default_post_type)) {
                             $default_post_type = $post_type;
-                            $posts = $posts = get_posts(['post_type' => $post_type, 'numberposts' => 1, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC']);
+                            $posts = get_posts(['post_type' => $post_type, 'numberposts' => 1, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC']);
                             if (!empty($posts)) {
                                 $post = $posts[0];
                             }

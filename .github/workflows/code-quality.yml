@@ -1,0 +1,70 @@
+name: Code quality
+on:
+  workflow_run:
+    workflows:
+      - Deploy plugin to WordPress.org
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Stored row to update
+        required: true
+        type: choice
+        options:
+          - release
+          - development
+permissions:
+  contents: read
+jobs:
+  resolve:
+    name: Choose the audited ref
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'release')
+    runs-on: ubuntu-latest
+    outputs:
+      ref: ${{ steps.ref.outputs.ref }}
+      source: ${{ steps.ref.outputs.source }}
+    steps:
+      - name: Resolve the ref
+        id: ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          TARGET: ${{ inputs.target }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
+            echo "ref=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+            echo "source=release" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ "$TARGET" == "development" ]]; then
+            branch=$(gh api "repos/${GITHUB_REPOSITORY}" --jq .default_branch)
+            echo "ref=$branch" >> "$GITHUB_OUTPUT"
+            echo "source=development" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ "$TARGET" != "release" ]]; then
+            echo "target must be release or development." >&2
+            exit 1
+          fi
+          tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName)
+          if [[ -z "$tag" ]]; then
+            echo "This repository has no published release." >&2
+            exit 1
+          fi
+          echo "ref=$tag" >> "$GITHUB_OUTPUT"
+          echo "source=release" >> "$GITHUB_OUTPUT"
+
+  quality:
+    name: Measure code quality
+    needs: resolve
+    uses: publishpress/github-workflows/.github/workflows/code-quality.yml@v3
+    with:
+      ref: ${{ needs.resolve.outputs.ref }}
+      entity_slug: wp-plugin-taxonomies-free
+      source: ${{ needs.resolve.outputs.source }}
+    secrets: inherit

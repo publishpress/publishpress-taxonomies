@@ -11,6 +11,7 @@
 .idea
 .php-cs-fixer.cache
 .phpcs-php-compatibility.xml
+.phpcs-plugin-review.xml
 .phpcs.xml
 .phplint-cache
 .phplint.yml
@@ -34,7 +35,7 @@ composer.json
 composer.lock
 README.md
 CONTRIBUTING.md
-phpmd-ruleset.xml
+phpmd.*.xml
 .wordpress-org
 dev-workspace
 dev-workspace-cache/

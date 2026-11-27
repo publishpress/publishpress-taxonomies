@@ -79,17 +79,11 @@ class SimpleTags_Mcp_Contracts
 
     public static function site_schema($registration = false)
     {
-        $fields = self::site_fields();
         if ($registration) {
-            // Runtime discovery validates current taxonomy/role choices, including objects created in this request.
-            foreach ($fields as &$field) {
-                if ($field['type'] === 'array') {
-                    unset($field['items']['enum']);
-                }
-            }
-            unset($field);
+            // Role and Pro controls may load later; writes validate the live site_fields() contract.
+            return ['type' => 'object'];
         }
-        return SimpleTags_Mcp::object_schema($fields);
+        return SimpleTags_Mcp::object_schema(self::site_fields());
     }
 
     public static function ui_fields()
@@ -109,6 +103,7 @@ class SimpleTags_Mcp_Contracts
                 'autolink_max_char' => ['integer', 'Autolink max char'],
                 'whole_words' => ['string', 'Whole words', ['0', '1']],
                 'auto_link_exclude' => ['string', 'Auto link exclude'],
+                'autolink_exclude_post_ids' => ['string', 'Post IDs excluded from Auto Links, separated by commas'],
                 'autolink_exclude_class' => ['string', 'Autolink exclude class'],
                 'synonyms_link' => ['string', 'Synonyms link', ['0', '1']],
                 'unattached_terms' => ['string', 'Unattached terms', ['0', '1']],
