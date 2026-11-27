@@ -43,6 +43,7 @@
 - ray.php
 - screenshot-*.png
 - phpstan.neon
+- phpmd.ruleset.xml
 - codeception.yml
 - CHANGELOG.md
 - gh_token.txt

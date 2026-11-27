@@ -41,7 +41,7 @@ legacy-tests export-ignore
 node_modules export-ignore
 package-lock.json export-ignore
 package.json export-ignore
-phpmd-ruleset.xml export-ignore
+phpmd.ruleset.xml export-ignore
 psalm.xml export-ignore
 ray-dist.php export-ignore
 ray.php export-ignore

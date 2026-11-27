@@ -34,7 +34,7 @@ composer.json
 composer.lock
 README.md
 CONTRIBUTING.md
-phpmd-ruleset.xml
+phpmd.ruleset.xml
 .wordpress-org
 dev-workspace
 dev-workspace-cache/
