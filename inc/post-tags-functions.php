@@ -268,14 +268,14 @@ function taxopress_update_posttags($data = [])
     if (isset($data['edited_posttags'])) {
         $posttags_id             = $data['edited_posttags'];
         $posttagss[$posttags_id] = $data['taxopress_post_tags'];
-        $success                 = update_option('taxopress_posttagss', $posttagss);
+        update_option('taxopress_posttagss', $posttagss);
         //return 'update_success';
     } else {
         $posttags_id                       = (int)get_option('taxopress_posttags_ids_increament') + 1;
         $data['taxopress_post_tags']['ID'] = $posttags_id;
         $posttagss[$posttags_id]           = $data['taxopress_post_tags'];
-        $success                           = update_option('taxopress_posttagss', $posttagss);
-        $update_id                         = update_option('taxopress_posttags_ids_increament', $posttags_id);
+        update_option('taxopress_posttagss', $posttagss);
+        update_option('taxopress_posttags_ids_increament', $posttags_id);
         //return 'add_success';
     }
 
@@ -317,11 +317,8 @@ function taxopress_action_delete_posttags($posttags_id, $redirect = true)
 
 function taxopress_posttags_shortcode($atts)
 {
-    extract(shortcode_atts([
-        'id' => 0
-    ], $atts));
-
-    $posttags_id = $id;
+    $attributes = shortcode_atts(['id' => 0], $atts);
+    $posttags_id = $attributes['id'];
     $posttagss   = taxopress_get_posttags_data();
 
     ob_start();

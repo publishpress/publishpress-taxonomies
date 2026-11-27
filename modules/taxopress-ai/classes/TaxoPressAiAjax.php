@@ -149,6 +149,7 @@ if (!class_exists('TaxoPressAiAjax')) {
          */
         public static function handle_taxopress_ai_preview_feature()
         {
+            $response = [];
 
             $response['status'] = 'success';
             $response['content'] = esc_html__('Request completed.', 'simple-tags');
@@ -643,11 +644,14 @@ if (!class_exists('TaxoPressAiAjax')) {
         /**
          * Get existing terms
          *
+         * @SuppressWarnings(PHPMD.ErrorControlOperator) User-supplied regular expressions are checked before matching.
+         *
          * @param  array $args
          * @return array
          */
         public static function get_existing_terms_results($args)
         {
+            $return = [];
             $return['status'] = 'error';
             $return['message'] = esc_html__('Existing Terms not found for the selected post type and taxonomies', 'simple-tags');
             $return['results'] = '';
@@ -981,6 +985,7 @@ if (!class_exists('TaxoPressAiAjax')) {
          */
         public static function handle_taxopress_ai_post_term()
         {
+            $response = [];
 
             $response['status'] = 'success';
             $response['content'] = esc_html__('Request completed.', 'simple-tags');
@@ -1142,6 +1147,7 @@ if (!class_exists('TaxoPressAiAjax')) {
          */
         public static function handle_taxopress_ai_new_term()
         {
+            $response = [];
 
             $response['status'] = 'error';
             $response['content'] = esc_html__('An error occured.', 'simple-tags');

@@ -227,7 +227,7 @@ class SimpleTags_Schedule_Logs extends WP_List_Table
         $results = $this->get_st_autoterms();
         $data = $results['posts'];
         $total_items  = $results['counts'];
-        $current_page = $this->get_pagenum();
+        $this->get_pagenum();
 
 
         $this->items = $data;

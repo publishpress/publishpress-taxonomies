@@ -1297,7 +1297,7 @@ class Taxopress_Terms_List extends WP_List_Table
         /**
          * Pagination.
          */
-        $current_page = $this->get_pagenum();
+        $this->get_pagenum();
         $total_items  = $this->record_count();
 
         /**

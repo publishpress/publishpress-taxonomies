@@ -1000,7 +1000,7 @@ function taxopress_flush_rewrite_rules()
      * post types or taxonomies are created, updated, deleted, or imported. Any other time and this condition
      * should not be met.
      */
-    if ('true' === ($flush_it = get_transient('taxopress_flush_rewrite_rules'))) {
+    if ('true' === get_transient('taxopress_flush_rewrite_rules')) {
         // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rewrite_rules_flush_rewrite_rules -- Necessary for custom taxonomy registration
         flush_rewrite_rules(false);
         // So we only run this once.
@@ -1570,8 +1570,8 @@ function taxopress_register_single_taxonomy($taxonomy = [])
     }
 
     $rest_controller_class = null;
-    if (!empty($post_type['rest_controller_class'])) {
-        $rest_controller_class = $post_type['rest_controller_class'];
+    if (!empty($taxonomy['rest_controller_class'])) {
+        $rest_controller_class = $taxonomy['rest_controller_class'];
     }
 
     $meta_box_cb = null;
@@ -1959,7 +1959,7 @@ function taxopress_deactivate_taxonomy($term_object)
     $all_taxonomies   = (array)get_option('taxopress_deactivated_taxonomies');
     $all_taxonomies[] = $term_object;
     $all_taxonomies   = array_unique(array_filter($all_taxonomies));
-    $success          = update_option('taxopress_deactivated_taxonomies', $all_taxonomies);
+    update_option('taxopress_deactivated_taxonomies', $all_taxonomies);
 }
 
 /**
@@ -1972,7 +1972,7 @@ function taxopress_activate_taxonomy($term_object)
     $all_taxonomies = (array)get_option('taxopress_deactivated_taxonomies');
     if (($key = array_search($term_object, $all_taxonomies)) !== false) {
         unset($all_taxonomies[$key]);
-        $success = update_option('taxopress_deactivated_taxonomies', $all_taxonomies);
+        update_option('taxopress_deactivated_taxonomies', $all_taxonomies);
     }
 }
 
@@ -2384,8 +2384,8 @@ function taxopress_re_register_single_taxonomy($taxonomy)
     }
 
     $rest_controller_class = null;
-    if (!empty($post_type['rest_controller_class'])) {
-        $rest_controller_class = $post_type['rest_controller_class'];
+    if (!empty($taxonomy['rest_controller_class'])) {
+        $rest_controller_class = $taxonomy['rest_controller_class'];
     }
 
     $meta_box_cb = null;
@@ -2548,7 +2548,7 @@ function taxopress_get_all_taxonomies()
 function taxopress_get_dropdown()
 {
 
-    global $pagenow, $typenow;
+    global $pagenow;
 
     if (is_admin()) {
         $type = 'post';

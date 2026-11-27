@@ -50,19 +50,14 @@ class SimpleTags_PostTags_Widget extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        extract($args);
-
-        // Set values and clean it
-        foreach ((array) self::get_fields() as $field => $field_value) {
-            ${$field} = isset($instance[$field]) ? trim($instance[$field]) : '';
-        }//$posttags_id;
+        $posttags_id = isset($instance['posttags_id']) ? trim($instance['posttags_id']) : '';
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo $before_widget;
+        echo $args['before_widget'] ?? '';
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo do_shortcode('[taxopress_postterms id="' . $posttags_id . '"]');
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo $after_widget;
+        echo $args['after_widget'] ?? '';
     }
 
     /**

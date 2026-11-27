@@ -216,13 +216,13 @@ function taxopress_update_relatedpost($data = [])
     if (isset($data['edited_relatedpost'])) {
         $relatedpost_id                = $data['edited_relatedpost'];
         $relatedposts[$relatedpost_id] = $data['taxopress_related_post'];
-        $success                       = update_option('taxopress_relatedposts', $relatedposts);
+        update_option('taxopress_relatedposts', $relatedposts);
     } else {
         $relatedpost_id                       = (int)get_option('taxopress_relatedpost_ids_increament') + 1;
         $data['taxopress_related_post']['ID'] = $relatedpost_id;
         $relatedposts[$relatedpost_id]        = $data['taxopress_related_post'];
-        $success                              = update_option('taxopress_relatedposts', $relatedposts);
-        $update_id                            = update_option('taxopress_relatedpost_ids_increament', $relatedpost_id);
+        update_option('taxopress_relatedposts', $relatedposts);
+        update_option('taxopress_relatedpost_ids_increament', $relatedpost_id);
     }
 
     return $relatedpost_id;
@@ -327,11 +327,8 @@ function taxopress_action_delete_relatedpost($relatedpost_id, $redirect = true)
 
 function taxopress_relatedposts_shortcode($atts)
 {
-    extract(shortcode_atts([
-        'id' => 0
-    ], $atts));
-
-    $relatedpost_id = $id;
+    $attributes = shortcode_atts(['id' => 0], $atts);
+    $relatedpost_id = $attributes['id'];
     $relatedposts   = taxopress_get_relatedpost_data();
 
     ob_start();

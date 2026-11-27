@@ -207,13 +207,13 @@ function taxopress_update_tagcloud($data = [])
     if (isset($data['edited_tagcloud'])) {
         $tagcloud_id = $data['edited_tagcloud'];
         $tagclouds[$tagcloud_id] = $data['taxopress_tag_cloud'];
-        $success = update_option('taxopress_tagclouds', $tagclouds);
+        update_option('taxopress_tagclouds', $tagclouds);
     } else {
         $tagcloud_id = (int)get_option('taxopress_tagcloud_ids_increament') + 1;
         $data['taxopress_tag_cloud']['ID'] = $tagcloud_id;
         $tagclouds[$tagcloud_id] = $data['taxopress_tag_cloud'];
-        $success = update_option('taxopress_tagclouds', $tagclouds);
-        $update_id = update_option('taxopress_tagcloud_ids_increament', $tagcloud_id);
+        update_option('taxopress_tagclouds', $tagclouds);
+        update_option('taxopress_tagcloud_ids_increament', $tagcloud_id);
     }
     return $tagcloud_id;
 }
@@ -317,11 +317,8 @@ function taxopress_action_delete_tagcloud($tagcloud_id, $redirect = true)
 
 function taxopress_termsdisplay_shortcode($atts)
 {
-    extract(shortcode_atts(array(
-        'id' => 0
-    ), $atts));
-
-    $tagcloud_id = $id;
+    $attributes = shortcode_atts(['id' => 0], $atts);
+    $tagcloud_id = $attributes['id'];
     $tagclouds = taxopress_get_tagcloud_data();
 
     ob_start();

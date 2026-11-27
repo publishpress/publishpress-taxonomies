@@ -44,18 +44,39 @@
     <rule ref="rulesets/cleancode.xml">
         <exclude name="StaticAccess"/>
         <exclude name="ElseExpression"/>
+        <!-- Global WordPress classes do not require namespace imports. -->
+        <exclude name="MissingImport"/>
     </rule>
 
+    <!-- Existing size, complexity, and API-signature findings are recorded in phpmd.baseline.xml. -->
     <rule ref="rulesets/codesize.xml"/>
 
-    <rule ref="rulesets/controversial.xml"/>
+    <!-- WordPress uses snake_case names and request globals; PHPCS checks input handling. -->
+    <rule ref="rulesets/controversial.xml">
+        <exclude name="CamelCaseClassName"/>
+        <exclude name="CamelCasePropertyName"/>
+        <exclude name="CamelCaseMethodName"/>
+        <exclude name="CamelCaseParameterName"/>
+        <exclude name="CamelCaseVariableName"/>
+        <exclude name="Superglobals"/>
+    </rule>
 
-    <rule ref="rulesets/design.xml"/>
+    <rule ref="rulesets/design.xml">
+        <!-- AJAX responses and redirects deliberately terminate the request. -->
+        <exclude name="ExitExpression"/>
+    </rule>
 
     <rule ref="rulesets/naming.xml">
         <exclude name="ShortVariable"/>
         <exclude name="LongVariable"/>
     </rule>
 
-    <rule ref="rulesets/unusedcode.xml"/>
+    <rule ref="rulesets/unusedcode.xml">
+        <exclude name="UnusedLocalVariable"/>
+    </rule>
+    <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable">
+        <properties>
+            <property name="allow-unused-foreach-variables" value="true"/>
+        </properties>
+    </rule>
 </ruleset>

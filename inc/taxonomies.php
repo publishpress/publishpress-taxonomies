@@ -404,7 +404,6 @@ class SimpleTags_Admin_Taxonomies
 
         $external_edit = false;
         $taxonomy_edit = false;
-        $core_edit = false;
 
         if ('edit' === $tab) {
             $taxonomies = taxopress_get_taxonomy_data();
@@ -431,15 +430,6 @@ class SimpleTags_Admin_Taxonomies
 
             if ($request_tax === 'media_tag') {
                 $external_edit = false;
-            }
-        }
-
-        if ($taxonomy_edit) {
-            $wordpress_core_tax = array_keys(get_taxonomies(['_builtin' => true]));
-            $wordpress_core_tax[] = 'post_tag';
-            $wordpress_core_tax[] = 'category';
-            if (in_array($current['name'], $wordpress_core_tax)) {
-                $core_edit = true;
             }
         }
 
@@ -737,13 +727,6 @@ class SimpleTags_Admin_Taxonomies
                                                 );
 
                                                 foreach ($post_types as $post_type) {
-                                                    $core_label = in_array($post_type->name, [
-                                                        'post',
-                                                        'page',
-                                                        'attachment',
-                                                    ], true) ? '' : '';
-
-
                                                     echo '<tr valign="top"><th scope="row"><label for="' . esc_attr($post_type->name) . '">' . esc_html($post_type->label) . '</label></th><td>';
 
                                                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

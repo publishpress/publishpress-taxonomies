@@ -366,13 +366,6 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     $tp_current_screen = 'post.php';
                 }
 
-                $manage_link = add_query_arg(
-                    [
-                        'page' => 'st_taxopress_ai'
-                    ],
-                    admin_url('admin.php')
-                );
-
                 $removed_taxonomies = taxopress_user_role_removed_taxonomy();
                 $removed_taxonomies_tax = $removed_taxonomies['taxonomies'];
                 $removed_taxonomies_css = $removed_taxonomies['custom_css'];
@@ -448,10 +441,8 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     'taxopress-ai-editor-js',
                     'taxoPressAIRequestAction',
                     [
-                        'requiredSuffix' => esc_html__('Please choose a post to use with PublishPress Taxonomies AI.', 'simple-tags'),
                         'nonce' => wp_create_nonce('taxopress-ai-ajax-nonce'),
-                        // phpcs:ignore Squiz.PHP.CommentedOutCode -- Configuration URL, intentionally commented for future use
-                        'apiEditLink' => '',//'<span class="edit-suggest-term-metabox"> <a target="blank" href="' . $manage_link . '"> '. esc_html__('Manage API Configuration', 'simple-tags') .' </a></span>'
+                        'apiEditLink' => '',
                         'fieldTabs' => TaxoPressAiFields::get_fields_tabs(),
                         'removed_tax' => $removed_taxonomies_tax,
                         'current_screen' => $tp_current_screen,
@@ -476,7 +467,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
          */
         public function admin_menu()
         {
-            $hook = add_submenu_page(
+            add_submenu_page(
                 self::MENU_SLUG,
                 esc_html__('Metaboxes', 'simple-tags'),
                 esc_html__('Metaboxes', 'simple-tags'),
@@ -1011,7 +1002,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     <div id="post-body" class="taxopress-section metabox-holder columns-2">
                         <div>
                             <div id="taxopress-preview-metabox-content" class="right-body-content taxopress-preview-metabox-content" style="position: relative;">
-                                <?php $this->editor_metabox($post, $context = 'fast_update'); ?>
+                                <?php $this->editor_metabox($post, 'fast_update'); ?>
                             </div>
                         </div>
                     </div>
@@ -1020,156 +1011,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
             <?php
         }
 
-        /**
-         * Helper method to render settings fields
-         */
-        private function render_settings_field($args)
-        {
-            $defaults = [
-                'type' => 'text',
-                'value' => '',
-                'description' => '',
-                'key' => '',
-                'label' => ''
-            ];
-            $args = array_merge($defaults, $args);
 
-            ?>
-            <tr>
-                <th scope="row">
-                    <label for="<?php echo esc_attr($args['key']); ?>">
-                        <?php echo esc_html($args['label']); ?>
-                    </label>
-                </th>
-                <td>
-                    <?php if ($args['type'] === 'checkbox') : ?>
-                        <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
-                            id="<?php echo esc_attr($args['key']); ?>"
-                            type="checkbox" 
-                            aria-label="<?php echo esc_attr($args['label']); ?>"
-                            value="1" 
-                            <?php checked(1, (int) $args['value']); ?> />
-                    <?php else : ?>
-                        <input name="taxopress_ai_integration[<?php echo esc_attr($args['key']); ?>]" 
-                            id="<?php echo esc_attr($args['key']); ?>"
-                            type="<?php echo esc_attr($args['type']); ?>" 
-                            aria-label="<?php echo esc_attr($args['label']); ?>"
-                            value="<?php echo esc_attr($args['value']); ?>" />
-                    <?php endif; ?>
-                    
-                    <?php if (!empty($args['description'])) : ?>
-                        <p class="description">
-                            <?php echo esc_html($args['description']); ?>
-                        </p>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php
-        }
-
-        /**
-         * Get a rendered field partial
-         *
-         * @param array $args Arguments to render in the partial.
-         */
-        private static function get_rendered_field_partial($args)
-        {
-            $defaults = [
-                'description' => '',
-                'type' => 'text',
-                'tab' => 'general',
-                'value' => '',
-                'key' => '',
-                'other_attr' => '',
-                'label' => '',
-                'required' => false,
-                'multiple' => false,
-                'classes' => '',
-                'options' => [],
-            ];
-            $args = array_merge($defaults, $args);
-
-            $key = $args['key'];
-            ?>
-                    <tr valign="top" class="<?php echo esc_attr('form-field settings-' . $key . '-wrap'); ?>">
-                        <th scope="row">
-                            <?php if (!empty($args['label'])) : ?>
-                                <label for="<?php echo esc_attr($key); ?>">
-                                    <?php echo esc_html($args['label']); ?>
-                                </label>
-                                <?php if ($args['required']) { ?>
-                                    <span class="required">*</span>
-                                <?php } ?>
-                            <?php endif; ?>
-                        </th>
-                        <td>
-                            <?php
-                            if ($args['type'] === 'checkbox') :
-                                ?>
-                                <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
-                                    type="<?php echo esc_attr($args['type']); ?>" value="1" <?php checked(1, (int) $args['value']); ?>
-                                    aria-label="<?php echo esc_attr($args['label']); ?>"
-                                    <?php echo($args['required'] ? 'required="true"' : ''); ?> />
-                                <?php if (!empty($args['description'])) : ?>
-                                                    <span class="description">
-                                        <?php echo esc_html($args['description']); ?>
-                                    </span>
-                                <?php endif; ?>
-                            <?php elseif ($args['type'] === 'select') : ?>
-                                <select 
-                                    name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]<?php echo $args['multiple'] ? '[]' : '';?>"
-                                    id="<?php echo esc_attr($key); ?>"
-                                    class="<?php echo esc_attr($args['classes']); ?>"
-                                    style="width: 95%;"
-                                    data-placeholder="<?php printf(esc_html__('Select %s', 'simple-tags'), esc_html(strtolower($args['label']))); ?>"
-                                    <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    <?php echo($args['multiple'] ? 'multiple' : '');?>
-                                    <?php echo($args['required'] ? 'required="true"' : '');?>>
-                                    <?php
-                                    foreach ($args['options'] as $select_key => $select_label) {
-                                        if ($args['multiple']) {
-                                            $selected_option = (isset($args['value']) && is_array($args['value']) && in_array($select_key, $args['value'])) ? true : false;
-                                        } else {
-                                            $selected_option = (isset($args['value']) && $select_key == $args['value']) ? true : false;
-                                        }
-                                        ?>
-                                        <option value="<?php esc_attr_e($select_key); ?>"
-                                                <?php selected(true, $selected_option); ?>>
-                                                <?php echo esc_html($select_label); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo esc_html($args['description']); ?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php elseif ($args['type'] === 'textarea') : ?>
-                                <?php
-                                $required_attr = ($args['required'] ? 'required="true"' : '');
-                                ?>
-                                <textarea style="min-height: 150px;" name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>><?php echo sanitize_textarea_field(stripslashes_deep($args['value'])); ?></textarea>
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php else : ?>
-                                <?php
-                                $required_attr = ($args['required'] ? 'required="true"' : '');
-                                ?>
-                                <input name="taxopress_ai_integration[<?php echo esc_attr($key); ?>]" id="<?php echo esc_attr($key); ?>"
-                                    type="<?php echo esc_attr($args['type']); ?>" value="<?php echo esc_attr($args['value']); ?>" aria-label="<?php echo esc_attr($args['label']); ?>" <?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>                 <?php echo $args['other_attr']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?> />
-                                <?php if (isset($args['description'])) : ?>
-                                    <p class="description">
-                                        <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
-                                    </p>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                    <?php
-        }
 
         /**
          * Ajax action, JS Helper and admin action
@@ -1298,7 +1140,6 @@ if (!class_exists('TaxoPress_AI_Module')) {
                 return;
             }
 
-            $action       = $args['action'];
             $taxonomy     = $args['taxonomy'];
             $ai_group     = $args['ai_group'];
             $post_title   = $args['post_title'];
@@ -1398,7 +1239,7 @@ if (!class_exists('TaxoPress_AI_Module')) {
                     if (!in_array($post_type, ['attachment'])) {
                         if (empty($default_post_type)) {
                             $default_post_type = $post_type;
-                            $posts = $posts = get_posts(['post_type' => $post_type, 'numberposts' => 1, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC']);
+                            $posts = get_posts(['post_type' => $post_type, 'numberposts' => 1, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC']);
                             if (!empty($posts)) {
                                 $post = $posts[0];
                             }

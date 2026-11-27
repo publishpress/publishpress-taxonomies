@@ -349,6 +349,7 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_dandelion_results($args)
         {
+            $return = [];
 
             if (empty(SimpleTags_Plugin::get_option_value('enable_dandelion_ai_source'))) {
                 return [
@@ -485,6 +486,7 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_open_calais_results($args)
         {
+            $return = [];
 
             if (empty(SimpleTags_Plugin::get_option_value('enable_lseg_ai_source'))) {
                 return [
@@ -629,6 +631,7 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_ibm_watson_results($args)
         {
+            $return = [];
 
             if (empty(SimpleTags_Plugin::get_option_value('enable_ibm_watson_ai_source'))) {
                 return [
@@ -1150,6 +1153,7 @@ if (!class_exists('TaxoPressAiApi')) {
          */
         public static function get_open_ai_results($args)
         {
+            $return = [];
             if (empty(SimpleTags_Plugin::get_option_value('enable_openai_ai_source'))) {
                 return [
                     'status' => 'error',
@@ -1173,7 +1177,6 @@ if (!class_exists('TaxoPressAiApi')) {
             $content        = $args['content'];
             $clean_content  = $args['clean_content'];
             $content_source = $args['content_source'];
-            $preview_feature = !empty($args['preview_feature']) ? $args['preview_feature'] : '';
             $taxonomy           = !empty($args['taxonomy']) ? $args['taxonomy'] : '';
 
             $post_id = !empty($args['post_id']) ? (int) $args['post_id'] : 0;

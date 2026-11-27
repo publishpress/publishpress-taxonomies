@@ -279,9 +279,6 @@ class SimpleTags_Tag_Clouds
                             <div class="inside">
                                 <div class="taxopress-preview-wrapper">
                                     <div class="taxopress-preview-control">
-                                        <?php
-                                        $preview_display_id = isset($current['ID']) ? (int) $current['ID'] : 0;
-                                        ?>
                                         <span class="spinner" style="visibility:hidden;"></span>
                                     </div>
                                     <div id="term-display-preview" class="taxopress-preview-content">
