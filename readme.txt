@@ -267,6 +267,25 @@ IBW Watson is one of the most powerful AI tools available today. The PublishPres
 
 == Changelog ==
 
+= [4.0.3] - 30 November, 2026 =
+* Update: configurable term colors for auto terms preview, #3143
+* Update: Adapt Free and Pro to translation delivery, #3135
+* Update: Provide default taxonomies that can be imported with a click, #2654
+* Update: Upgrade the select2 library, #2562
+* Update: Allow users to add post IDs as Autolink exclusion, #2491
+* Update: Allow Terms to Have Authors, #2430
+* Update: Bulk add terms to a parent item, #2420
+* Update: Support for WooCommerce attributes in Auto Terms, #2417
+* Update: Show how many posts will be scanned in Auto Terms Existing Content, #2415
+* Update: Allow users to customize term colors in the metabox, #2399
+* Update: Add Source from where the term is suggested in Auto Terms Log and Existing Terms log,  #2376
+* Update: Allow TaxoPress AI suggest descriptions for Terms, #2232
+* Update: Implement case-sensitive term operations in manage terms, #938
+* Fixed: Delete linked terms relationship when terms are deleted, #2436
+* Fixed: a missing closing brace caused the browser to discard the entire Manage Terms CSS section, #3134
+* Fixed: "See More"(Table List) button in terms display preview is not working, #3133
+* Fixed: PHP 8.6 deprecation: SimpleTags_Client::__construct() returns a value, #3131
+
 = [4.0.2] - 17 November, 2026 =
 * Added: MCP actions for native taxonomy, term, configuration and scheduling workflows with permission checks.
 * Fixed: Changelog missing on WordPress.org and update details since 4.0.1 (readme heading uses ==). #3114
