@@ -219,6 +219,32 @@ add_action('plugins_loaded', function () {
     }
 }, 10);
 
+add_filter('publishpress_bundled_translations_hub_notice_enabled', function ($enabled, $domain) {
+    return 'simple-tags' === $domain ? true : $enabled;
+}, 10, 2);
+
+add_filter('publishpress_bundled_translations_hub_notice_screens', function ($screens, $domain) {
+    if ('simple-tags' !== $domain) {
+        return $screens;
+    }
+
+    $screens = is_array($screens) ? $screens : [];
+    $screens[] = 'toplevel_page_st_options';
+    $screens[] = 'toplevel_page_st_posts';
+    $pages = function_exists('taxopress_admin_pages') ? taxopress_admin_pages() : [];
+    foreach ($pages as $page) {
+        // Retain current and legacy screen IDs used by the plugin's admin code.
+        $screens[] = 'taxonomies_page_' . $page;
+        $screens[] = 'taxopress_page_' . $page;
+        $screens[] = 'admin_page_' . $page;
+        if (function_exists('get_plugin_page_hookname')) {
+            // WordPress derives this prefix from the translated parent menu title.
+            $screens[] = get_plugin_page_hookname($page, 'st_options');
+        }
+    }
+    return $screens;
+}, 10, 2);
+
 $wordpressVersionNoticesPath = '/publishpress/wordpress-version-notices/src/include.php';
 
 if (file_exists(__DIR__ . '/lib/vendor' . $wordpressVersionNoticesPath)) {

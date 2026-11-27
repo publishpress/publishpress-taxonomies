@@ -190,7 +190,7 @@ class SimpleTags_Admin
 
         if (isset($_GET['page']) && in_array($_GET['page'], $taxopress_pages)) {
             echo '<style>
-				.notice:not(.taxopress-notice) {
+				.notice:not(.taxopress-notice):not(.publishpress-bundled-translations-hub-notice) {
 					display: none !important;
 				}
 			</style>';
